@@ -1,6 +1,5 @@
 import './App.css';
 import LandingPage from '../landing-page/LandingPage'
-import React, { useState } from 'react';
 import {
   Routes,
   Route,
