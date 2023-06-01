@@ -13,9 +13,8 @@ const Form = ({ dropdownItems, selectionField }) => {
   };
 
   return (
-    <div className="form-container">
       <form className="form">
-        <label htmlFor={selectionField}>Select {selectionField}:</label>
+        <label htmlFor={selectionField}>{selectionField}:</label>
         <select id={selectionField} value={selectedValue} onChange={handleDropdownChange}>
           <option value="">-- Select --</option>
           {dropdownItems.map((item) => (
@@ -24,12 +23,11 @@ const Form = ({ dropdownItems, selectionField }) => {
             </option>
           ))}
         </select>
-
         {selectedValue && (
-          <p onClick={clearSelection}>Selected: {selectedValue}</p>
+          <p onClick={clearSelection}></p>
         )}
+        
       </form>
-    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import'./App.css'
 import Form from '../formsContainer/Form';
 
@@ -8,12 +8,28 @@ const App = () => {
   const locations = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
   const styles = ['Steampunk', 'Emo', 'Cyberpunk', 'Pop Art', 'Gothic'];
 
+  const [formValues, setFormValues] = useState({
+    genre: '',
+    characters: '',
+    locations: '',
+    styles: ''
+  });
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Perform actions with the submitted form values
+    console.log(formValues);
+  };
+
   return (
     <div className="forms">
+      <div className="form-container">
       <Form dropdownItems={genres} selectionField="Genre" />
       <Form dropdownItems={characters} selectionField="Characters" />
       <Form dropdownItems={locations} selectionField="Locations" />
       <Form dropdownItems={styles} selectionField="Styles" />
+      <button type="submit" className="submit-button" onClick={handleFormSubmit}>Submit</button>
+      </div>
     </div>
   );
 };
