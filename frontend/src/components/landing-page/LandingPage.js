@@ -14,27 +14,6 @@ const LandingPage = () => {
     );
 }
 
-// import React, { useEffect } from 'react';
-
-// const LandingPage = () => {
-//   useEffect(() => {
-//     const getMessages = () => {
-//       fetch('/api/messages')
-//         .then((response) => response.json())
-//         .then((data) => {
-//           console.log(data);
-//         })
-//         .catch((error) => {
-//           console.error('Error retrieving messages:', error);
-//         });
-//     };
-
-//     getMessages();
-//   }, []);
-
-//   return <div>Landing Page</div>;
-// };
-
 export default LandingPage;
 
 
