@@ -1,4 +1,5 @@
 import React from 'react';
+import'./App.css'
 import Form from '../formsContainer/Form';
 
 const App = () => {
@@ -8,7 +9,7 @@ const App = () => {
   const styles = ['Steampunk', 'Emo', 'Cyberpunk', 'Pop Art', 'Gothic'];
 
   return (
-    <div>
+    <div className="forms">
       <Form dropdownItems={genres} selectionField="Genre" />
       <Form dropdownItems={characters} selectionField="Characters" />
       <Form dropdownItems={locations} selectionField="Locations" />

@@ -1,4 +1,4 @@
-import './Form.css'; 
+import './Form.css';
 import React, { useState } from 'react';
 
 const Form = ({ dropdownItems, selectionField }) => {
