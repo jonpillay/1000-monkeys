@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../formsContainer/FormGenerator';
+import Form from '../formsContainer/Form';
 
 const App = () => {
   const characters = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
