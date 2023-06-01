@@ -1,16 +1,20 @@
-import './App.css';
-import LandingPage from '../landing-page/LandingPage'
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import React from 'react';
+import Form from '../formsContainer/FormGenerator';
 
 const App = () => {
-    return (
-        <Routes>
-          <Route path='/' element={<LandingPage/>}/>
-        </Routes>
-    );
-}
+  const characters = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
+  const genres = ['Action', 'Horror', 'Sci-Fi', 'Fantasy', 'Fairy Tale'];
+  const locations = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
+  const styles = ['Steampunk', 'Emo', 'Cyberpunk', 'Pop Art', 'Gothic'];
+
+  return (
+    <div>
+      <Form dropdownItems={genres} selectionField="Genre" />
+      <Form dropdownItems={characters} selectionField="Characters" />
+      <Form dropdownItems={locations} selectionField="Locations" />
+      <Form dropdownItems={styles} selectionField="Styles" />
+    </div>
+  );
+};
 
 export default App;
