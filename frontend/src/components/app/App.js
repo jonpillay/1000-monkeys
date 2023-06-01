@@ -23,7 +23,9 @@ const App = () => {
 
   return (
     <div className="forms">
+      <h1 className="page-title">AI-Tistic Tales</h1>
       <div className="form-container">
+      <h1 className="form-title">Get started with some details...</h1>
       <Form dropdownItems={genres} selectionField="Genre" />
       <Form dropdownItems={characters} selectionField="Characters" />
       <Form dropdownItems={locations} selectionField="Locations" />

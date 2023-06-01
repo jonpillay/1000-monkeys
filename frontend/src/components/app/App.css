@@ -1,5 +1,19 @@
+body {
+  background-image: url('../../../public/images/background.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.page-title {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
 .forms {
-  margin-top: 250px;
+  margin-top: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +25,12 @@
   background-color: #B4D8E7; 
   border-radius: 20px;
   padding: 20px;
+}
+
+.form-title {
+  font-size: 20px;
+  padding: 10px;
+  align-items: center;
 }
 
 .submit-button {
