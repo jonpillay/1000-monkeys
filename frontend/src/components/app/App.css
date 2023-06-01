@@ -13,6 +13,8 @@ body {
 
 .title {
   margin: 20;
+  font-size: 80px;
+  font-family: papyrus;
   padding: 20px;
   text-align: center;
 }

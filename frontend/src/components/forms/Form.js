@@ -7,7 +7,7 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
 
   return (
     <div className="form">
-      <label htmlFor={selectionField}>Select {selectionField}:</label>
+      <label htmlFor={selectionField}>{selectionField}:</label>
       <select id={selectionField} value={selectedValue} onChange={handleDropdownChange}>
         <option value="">-- Select --</option>
         {dropdownItems.map((item) => (
