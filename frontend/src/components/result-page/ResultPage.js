@@ -8,6 +8,10 @@ const ResultPage = () => {
       <div className="container">
         <Image />
         <Story />
+        <div className="buttons">
+          <button>Save this story</button>
+          <button>Make a new story</button>
+        </div>
       </div>
     </div>
   );
