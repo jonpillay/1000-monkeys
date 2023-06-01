@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingIcon from '../loading/LoadingIcon';
 
 const LandingPage = () => {
 
@@ -10,30 +11,10 @@ const LandingPage = () => {
       <>
         <h1>Aitistic Tales</h1>
         <button onClick={getMessages}>Click me!</button>
+        <LoadingIcon />
       </>
     );
 }
-
-// import React, { useEffect } from 'react';
-
-// const LandingPage = () => {
-//   useEffect(() => {
-//     const getMessages = () => {
-//       fetch('/api/messages')
-//         .then((response) => response.json())
-//         .then((data) => {
-//           console.log(data);
-//         })
-//         .catch((error) => {
-//           console.error('Error retrieving messages:', error);
-//         });
-//     };
-
-//     getMessages();
-//   }, []);
-
-//   return <div>Landing Page</div>;
-// };
 
 export default LandingPage;
 

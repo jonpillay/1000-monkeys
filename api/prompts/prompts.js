@@ -21,7 +21,7 @@ const sdPromptBank = {
     },
 }
     
-const matchSelectionCriteria = (userSelection, sdPromptBank) => {
+const matchSelectionCriteria = (userSelection) => {
 const positivePrompts = []
 const negativePrompts = []
 for (let key in userSelection) {

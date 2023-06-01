@@ -1,17 +1,14 @@
+import React from 'react';
 import './App.css';
-import LandingPage from '../landing-page/LandingPage'
-import React, { useState } from 'react';
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import FormContainer from '../form-container/FormContainer';
 
 const App = () => {
-    return (
-        <Routes>
-          <Route path='/' element={<LandingPage/>}/>
-        </Routes>
-    );
-}
+  return (
+    <div className="forms">
+      <h1 className="page-title">AI-Tistic Tales</h1>
+      <FormContainer />
+    </div>
+  );
+};
 
 export default App;
