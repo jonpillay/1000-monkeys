@@ -2,12 +2,12 @@ const client = require("../clients/sdclient");
 
 const ImagesController = {
   Index: async (req, res) => {
-    let result;
     try {
-      result = await client.generateImage("positive", "negative");
+      const result = await client.generateImage(req.body.positivePrompt, req.body.negativePrompt);
       res.status(200).json({ imgUrl: result });
     } catch (error) {
-      res.status(400).json({ message: error.message });
+      const statusCode = error.status ? error.status : 500;
+      res.status(statusCode).json({ message: error.message });
     }
   },
 };
