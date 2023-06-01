@@ -19,12 +19,14 @@
     "test": "npm run test:unit && npm run test:feature",
     "test:unit": "cypress run --component",
     "test:feature": "cypress run",
+    "test:single": "cypress run --component --spec",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -38,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-cypress": "^2.13.3"
   }
 }
