@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Form from '../forms/Form';
+import './form-container.css'
 
 const FormContainer = () => {
   const characters = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
