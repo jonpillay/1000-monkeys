@@ -1,25 +1,20 @@
 import Form from "./Form"
 
 describe("Form", () => {
-  it("calls the / endpoint", () => {
-    let genres;
-
+  it("renders correctly", () => {
     cy.mount(
-      <Form dropdownItems={genres} selectionField="Genre" />
+      <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
     )
+    cy.get("label").should("have.text", "Genre:")
+    cy.get("select").should("have.value", "")
+    cy.get("select").should("have.text", "-- Select --ActionHorrorSci-FiFantasyFairy Tale")
+  });
 
-    cy.get("#comment").type("this is a test message");
-    cy.get("#submit-comment").click();
-    cy.wait('@createCommentRequest').then( interception => {
-      expect(interception.response.body.message).to.eq("OK");
-      expect(interception.request.body.comment).to.eq("this is a test message");
-    })
-  })
-})
-
-
-
-
-// label is correct: field is Genre when field is clicked
-// right field is appearing when rendering the component
-// clicking dropdown shows the right things appearing
+  it("selects an option", () => {
+    cy.mount(
+      <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
+    )
+    cy.get("select").select("Action")
+    cy.get("select").should("have.value", "Action")
+  });
+});
