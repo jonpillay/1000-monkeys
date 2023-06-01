@@ -28,19 +28,19 @@ const generateImage = (positivePrompt, negativePrompt) => {
     .then((response) => {
       if (!response.ok) {
         const error = new Error(`HTTP Error: Status ${response.status}`);
-        error.status = response.status
-        throw error
+        error.status = response.status;
+        throw error;
       }
       return response.json();
     })
     .then((result) => {
       if (result.status === "error") {
         const error = new Error(`${result.message}`);
-        error.status = 400
-        throw error
+        error.status = 400;
+        throw error;
       }
       return result.output[0];
-    })
+    });
 };
 
 module.exports = { generateImage: generateImage };
