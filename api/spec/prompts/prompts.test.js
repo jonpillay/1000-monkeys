@@ -1,43 +1,37 @@
 const { matchSelectionCriteria } = require('../../prompts/prompts');
 
 describe('matchSelectionCriteria', () => {
-    const dystopia = {
-      positiveKeywords: ['oppressive', 'society', 'resistance', 'dystopian', 'dark', 'funny', 'whimsical', 'colorful', 'lively'],
-      negativeKeywords: ['utopia', 'harmony', 'peace', 'ideal', 'happy']
-    };
-  
-    const fairytale = {
-      positiveKeywords: ['magic', 'enchanted', 'happily ever after', 'fantasy', 'adventure'],
-      negativeKeywords: ['dark', 'grim', 'tragedy', 'horror', 'sorrow']
-    };
-  
-    const cartoon = {
-      positiveKeywords: ['funny', 'whimsical', 'colorful', 'lively'],
-      negativeKeywords: ['dark', 'grim', 'sinister', 'serious']
-    };
-  
-    const photorealistic = {
-      positiveKeywords: ['vibrant', 'detailed', 'realistic', 'high-resolution'],
-      negativeKeywords: ['cartoonish', 'abstract', 'surreal']
-    };
-  
-    const selectionCriteriaArray = [dystopia, fairytale, cartoon, photorealistic];
-  
-    const userSelectionData = { char: 'spiderman', genre: 'dystopia', style: 'cartoon' };
+  const sdPromptBank = {
+    genre: {
+        dystopia: {
+            positivePrompts: ['oppressive', 'society', 'resistance', 'dystopian', 'dark', 'photorealistic dark sci-fi concept art', 'trending on artstation, synthwave neon retro', 'realistic proportions', 'dramatic lighting', 'synthwave neon retro'],
+            negativePrompts: ['utopia', 'harmony', 'peace', 'ideal', 'happy'],
+        },
+        fairytale: {
+            positivePrompts: ['magic', 'enchanted', 'happily ever after', 'fantasy', 'adventure', 'highly detailed', 'intricate', 'elegant', 'clouds', 'vivid colours'],
+            negativePrompts: ['dark', 'grim', 'tragedy', 'horror', 'sorrow', 'dystopian', 'sci-fi', 'space', 'future']
+        },
+    },
+    style: {
+        cartoon: {
+            positivePrompts: ['funny', 'whimsical', 'colorful', 'lively', 'cartoon', 'vivid', 'digital art', 'smooth', 'sharp focus', '4k', 'highly detailed', 'smooth drawn'],
+            negativePrompts: ['dark', 'grim', 'sinister', 'serious', 'realistic', 'photorealistic', 'unreal engine']
+        },
+        photorealistic: {
+            positivePrompts: ['vibrant', 'detailed', 'realistic', 'high-resolution', 'photorealistic', '8k', 'masterpiece', 'detailed', 'sharp focus', 'highly detailed'],
+            negativePrompts: ['cartoonish', 'abstract', 'surreal']
+        },
+    },
+}
+    const userSelection = { genre: 'dystopia', style: 'cartoon' };
   
     it('returns the expected criteria for genre and style', () => {
       const expectedCriteria = {
-        genre: {
-          positiveKeywords: [],
-          negativeKeywords: []
-        },
-        style: {
-          positiveKeywords: [],
-          negativeKeywords: ['dark', 'grim', 'sinister', 'serious']
-        }
+        negativePrompts: "utopia, harmony, peace, ideal, happy, dark, grim, sinister, serious, realistic, photorealistic, unreal engine",
+        positivePrompts: "oppressive, society, resistance, dystopian, dark, photorealistic dark sci-fi concept art, trending on artstation, synthwave neon retro, realistic proportions, dramatic lighting, synthwave neon retro, funny, whimsical, colorful, lively, cartoon, vivid, digital art, smooth, sharp focus, 4k, highly detailed, smooth drawn"
       };
   
-      const result = matchSelectionCriteria(selectionCriteriaArray, userSelectionData);
+      const result = matchSelectionCriteria(userSelection, sdPromptBank);
       console.log(result)
       expect(result).toEqual(expectedCriteria);
     });
