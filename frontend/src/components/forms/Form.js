@@ -16,10 +16,6 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
           </option>
         ))}
       </select>
-
-      {selectedValue && (
-        <p>Selected: {selectedValue}</p>
-      )}
     </div>
   );
 };

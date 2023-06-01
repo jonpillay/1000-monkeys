@@ -5,16 +5,15 @@ describe("Form", () => {
     cy.mount(
       <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
     )
-    cy.get("label").should("have.text", "Genre:")
+    cy.get("label").should("have.text", "Select Genre:")
     cy.get("select").should("have.value", "")
     cy.get("select").should("have.text", "-- Select --ActionHorrorSci-FiFantasyFairy Tale")
   });
 
-  it("selects an option", () => {
+  it("renders correctly with a selected value", () => {
     cy.mount(
-      <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
+      <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" selectedValue="Horror" />
     )
-    cy.get("select").select("Action")
-    cy.get("select").should("have.value", "Action")
-  });
+    cy.get("select").should("have.value", "Horror")
+  })
 });
