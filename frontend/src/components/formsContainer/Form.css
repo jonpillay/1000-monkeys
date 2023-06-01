@@ -1,0 +1,10 @@
+.form {
+  display: flex; 
+  align-items: center;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Additional styles as needed */
