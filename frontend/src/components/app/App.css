@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Storybook';
+  src: url('../../fonts/Storybook.TTF') format('truetype');
+}
 body {
   background-image: url('../../../public/images/background.jpeg');
   background-size: cover;
@@ -22,7 +26,7 @@ body {
 }
 
 .form-container {
-  background-color: #B4D8E7; 
+  background-color: #B4D8E7;
   border-radius: 20px;
   padding: 20px;
 }
@@ -34,31 +38,31 @@ body {
 }
 
 .submit-button {
-  background-color: grey; 
+  background-color: grey;
   color: white;
   border: none;
-  border-radius: 20px; 
+  border-radius: 20px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .submit-button:hover {
-  background-color: #8AB5D9; 
+  background-color: #8AB5D9;
 }
 
 select {
   appearance: none;
-  padding: 5px; 
-  font-size: 14px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
-  background-color: white; 
-  width: 100%; 
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  width: 100%;
 }
 
 select:focus {
   outline: none;
-  border-color: #B4D8E7; 
+  border-color: #B4D8E7;
 }

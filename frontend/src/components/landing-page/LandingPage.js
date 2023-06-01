@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingIcon from '../loading/LoadingIcon';
 
 const LandingPage = () => {
 
@@ -10,6 +11,7 @@ const LandingPage = () => {
       <>
         <h1>Aitistic Tales</h1>
         <button onClick={getMessages}>Click me!</button>
+        <LoadingIcon />
       </>
     );
 }
