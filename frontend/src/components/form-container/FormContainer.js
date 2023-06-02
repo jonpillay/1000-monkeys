@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from '../forms/Form';
 import './form-container.css'
 
-const FormContainer = () => {
+const FormContainer = ({ navigate }) => {
   const character = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
   const genres = ['dystopia', 'fairytale'];
   const location = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
@@ -17,8 +17,8 @@ const FormContainer = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    GPTClientCall(formValues)
-    sdClientCall(formValues)
+    localStorage.setItem('userChoices', JSON.stringify(formValues));
+    navigate('/results')
   };
 
   const handleDropdownChange = (fieldName, selectedValue) => {
@@ -27,30 +27,6 @@ const FormContainer = () => {
       [fieldName]: selectedValue
     }));
   };
-
-  const sdClientCall = (userInput) => {
-    fetch('/images', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userInput)
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-  }
-
-  const GPTClientCall = (userInput) => {
-    fetch("/story", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userInput)
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-  }
 
   return (
     <div className="forms">

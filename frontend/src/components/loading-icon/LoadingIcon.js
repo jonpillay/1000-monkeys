@@ -1,6 +1,6 @@
 import './LoadingIcon.css';
 
-const LoadingIcon = ({ navigate }) => {
+const LoadingIcon = () => {
   return (
     <div className="background">
       <div className="container">
