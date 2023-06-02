@@ -1,4 +1,4 @@
-function GPT_prompt_gen(inputs_dict) {
+const GPT_prompt_gen = (inputs_dict) => {
 
   const GPT_starter_prompts = [
     {
@@ -53,4 +53,4 @@ function GPT_prompt_gen(inputs_dict) {
   return promptResults
 }
 
-export default GPT_prompt_gen
+module.exports = GPT_prompt_gen

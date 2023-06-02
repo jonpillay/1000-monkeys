@@ -38,3 +38,12 @@ h1 {
 .button:not(:last-child) {
   margin-right: 10px;
 }
+
+body {
+  background-image: url('../../../public/images/book-background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from '../forms/Form';
 import './form-container.css'
 
-const FormContainer = () => {
+const FormContainer = ({ navigate }) => {
   const characters = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
   const genres = ['Action', 'Horror', 'Sci-Fi', 'Fantasy', 'Fairy Tale'];
   const locations = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
@@ -18,6 +18,7 @@ const FormContainer = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
+    navigate('/results');
   };
 
   const handleDropdownChange = (fieldName, selectedValue) => {
@@ -28,6 +29,7 @@ const FormContainer = () => {
   };
 
   return (
+    <div className="forms">
     <div className="form-container">
       <h1 className="form-title">Get started with some details...</h1>
       <form onSubmit={handleFormSubmit}>
@@ -57,6 +59,7 @@ const FormContainer = () => {
         />
         <button type="submit" className="submit-button">Submit</button>
       </form>
+    </div>
     </div>
   );
 };

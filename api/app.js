@@ -5,7 +5,7 @@ const logger = require("morgan");
 
 const MessagesRouter = require("./routes/messages");
 const ImagesRouter = require('./routes/images');
-const StoryController = require("./controllers/storyText");
+const StoryRouter = require("./routes/story");
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // route setup
 app.use("/", MessagesRouter);
 app.use("/images", ImagesRouter)
-app.use("/story", StoryController)
+app.use("/story", StoryRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
