@@ -5,7 +5,7 @@ const StoryController = {
   Index: async (req, res) => {
     try {
       const prompts = GPT_prompt_gen(req.body)
-      const story = generateStory(prompts)
+      const story = await generateStory(prompts)
       res.status(200).json({ storyText: story });
     } catch (error) {
       res.status(error.status).json({ message: error.message });

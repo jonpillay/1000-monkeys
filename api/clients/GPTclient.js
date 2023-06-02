@@ -9,7 +9,7 @@ async function generateStory(prompts) {
     model: "gpt-3.5-turbo",
     messages: prompts
   })
-  console.log(res.data.choices[0].message.content)
+  return res.data.choices[0].message.content
 }
 
 module.exports = generateStory
