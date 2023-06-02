@@ -53,6 +53,7 @@ const FormContainer = () => {
   }
 
   return (
+    <div className="forms">
     <div className="form-container">
       <h1 className="form-title">Get started with some details...</h1>
       <form onSubmit={handleFormSubmit}>
@@ -82,6 +83,7 @@ const FormContainer = () => {
         />
         <button type="submit" className="submit-button">Submit</button>
       </form>
+    </div>
     </div>
   );
 };

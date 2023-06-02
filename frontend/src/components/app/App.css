@@ -2,15 +2,6 @@ html, body {
   height: 100%;
 }
 
-body {
-  background-image: url('../../../public/images/background.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-}
-
 .title {
   margin: 20;
   font-size: 80px;
