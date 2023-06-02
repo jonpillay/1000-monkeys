@@ -12,15 +12,12 @@ import ResultPage from '../result-page/ResultPage';
 const App = () => {
   return (
     <div>
+      <h1 className="title">AI-Tistic Tales</h1>
       <Routes>
         <Route path="/" element={<FormContainer navigate={ useNavigate() }/>} />
         <Route path="/loading" element={<LoadingIcon navigate={ useNavigate() }/>} />
         <Route path="/results" element={<ResultPage navigate={ useNavigate() }/>} />
       </Routes>
-      {/* <h1 className="title">AI-Tistic Tales</h1>
-      <div className="forms">
-        <FormContainer />
-      </div> */}
     </div>
   );
 };

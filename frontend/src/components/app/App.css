@@ -1,14 +1,5 @@
-/* html, body {
+html, body {
   height: 100%;
-}
-
-body {
-  background-image: url('../../../public/images/background.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 0;
-  padding: 0;
 }
 
 .title {
@@ -17,4 +8,4 @@ body {
   font-family: papyrus;
   padding: 20px;
   text-align: center;
-} */
+}
