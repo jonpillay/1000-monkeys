@@ -1,6 +1,21 @@
-function GPT_prompt_gen(starter_prompts, inputs_dict) {
+function GPT_prompt_gen(inputs_dict) {
 
-  const promptResults = JSON.parse(JSON.stringify(starter_prompts)) 
+  const GPT_starter_prompts = [
+    {
+      role: "system",
+      content: "You are my story writing assistant. I am going to tell you what my next task will be. I want you to write me a chapter for each task which is connected to the last task and forms an overarching story of my day. I want it to be adventurous so it motivates me to complete my tasks"
+    },
+    {
+      role: "system",
+      content: "Be aware of the overarching story"
+    },
+    {
+      role: "system",
+      content: "after I submit each task, return a chapter in the story, between 50-70 words long. This needs a chapter number and also a chapter title"
+    },
+  ]
+
+  const promptResults = JSON.parse(JSON.stringify(GPT_starter_prompts)) 
 
   for (let key in inputs_dict) {
     if (key == 'name') {
@@ -23,7 +38,17 @@ function GPT_prompt_gen(starter_prompts, inputs_dict) {
         role: "system",
         content: `I want you to write this story in the style of ${inputs_dict[key]}`
       })
-    }
+    } else if (key == 'location') {
+      promptResults.push({
+        role: "system",
+        content: `I want the location of the story to be ${inputs_dict[key]}`
+      })
+    } else if (key == 'style') {
+      promptResults.push({
+        role: "system",
+        content: `I want the style of the story to be ${inputs_dict[key]}`
+      })
+    } 
   }
   return promptResults
 }
