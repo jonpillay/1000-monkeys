@@ -3,21 +3,22 @@ import Form from '../forms/Form';
 import './form-container.css'
 
 const FormContainer = () => {
-  const characters = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
-  const genres = ['Action', 'Horror', 'Sci-Fi', 'Fantasy', 'Fairy Tale'];
-  const locations = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
-  const styles = ['Steampunk', 'Emo', 'Cyberpunk', 'Pop Art', 'Gothic'];
+  const character = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
+  const genres = ['dystopia', 'fairytale'];
+  const location = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
+  const style = ['cartoon', 'photorealistic'];
 
   const [formValues, setFormValues] = useState({
     genre: '',
-    characters: '',
-    locations: '',
-    styles: ''
+    // character: '',
+    // location: '',
+    style: ''
   });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    GPTClientCall(formValues)
+    sdClientCall(formValues)
   };
 
   const handleDropdownChange = (fieldName, selectedValue) => {
@@ -26,6 +27,30 @@ const FormContainer = () => {
       [fieldName]: selectedValue
     }));
   };
+
+  const sdClientCall = (userInput) => {
+    fetch('/images', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInput)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
+
+  const GPTClientCall = (userInput) => {
+    fetch("/story", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInput)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
 
   return (
     <div className="form-container">
@@ -37,23 +62,23 @@ const FormContainer = () => {
           selectedValue={formValues.genre}
           onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
         />
-        <Form
-          dropdownItems={characters}
-          selectionField="Characters"
-          selectedValue={formValues.characters}
-          onDropdownChange={(selectedValue) => handleDropdownChange('characters', selectedValue)}
+        {/* <Form
+          dropdownItems={character}
+          selectionField="character"
+          selectedValue={formValues.character}
+          onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
         />
         <Form
-          dropdownItems={locations}
-          selectionField="Locations"
-          selectedValue={formValues.locations}
-          onDropdownChange={(selectedValue) => handleDropdownChange('locations', selectedValue)}
-        />
+          dropdownItems={location}
+          selectionField="location"
+          selectedValue={formValues.location}
+          onDropdownChange={(selectedValue) => handleDropdownChange('location', selectedValue)}
+        /> */}
         <Form
-          dropdownItems={styles}
-          selectionField="Styles"
-          selectedValue={formValues.styles}
-          onDropdownChange={(selectedValue) => handleDropdownChange('styles', selectedValue)}
+          dropdownItems={style}
+          selectionField="Style"
+          selectedValue={formValues.style}
+          onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
         />
         <button type="submit" className="submit-button">Submit</button>
       </form>
