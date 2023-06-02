@@ -1,7 +1,8 @@
-import { config } from "dotenv";
+const { config } = require("dotenv");
+
 config()
 
-import { Configuration, OpenAIApi } from "openai"
+const { Configuration, OpenAIApi } = require("openai");
 
 const openai = new OpenAIApi(new Configuration({
   apiKey: process.env.GPT_KEY
@@ -15,4 +16,4 @@ async function generateStory(prompts) {
   console.log(res.data.choices[0].message.content)
 }
 
-export default generateStory
+module.exports = { generateStory: generateStory }
