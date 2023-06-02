@@ -1,7 +1,3 @@
-const { config } = require("dotenv");
-
-config()
-
 const { Configuration, OpenAIApi } = require("openai");
 
 const openai = new OpenAIApi(new Configuration({
@@ -16,4 +12,4 @@ async function generateStory(prompts) {
   console.log(res.data.choices[0].message.content)
 }
 
-module.exports = { generateStory: generateStory }
+module.exports = generateStory

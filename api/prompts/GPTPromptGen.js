@@ -53,4 +53,4 @@ const GPT_prompt_gen = (inputs_dict) => {
   return promptResults
 }
 
-module.exports = { GPT_prompt_gen: GPT_prompt_gen }
+module.exports = GPT_prompt_gen
