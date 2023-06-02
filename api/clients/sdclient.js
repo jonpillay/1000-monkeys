@@ -5,8 +5,7 @@ const generateImage = (positivePrompt, negativePrompt) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // key: process.env.SD_KEY,
-      key: "",
+      key: process.env.SD_KEY,
       prompt: positivePrompt,
       negative_prompt: negativePrompt,
       width: "512",
