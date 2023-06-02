@@ -1,7 +1,7 @@
 import Image from '../image/image';
 import Story from '../story/Story';
 
-const ResultPage = () => {
+const ResultPage = ({ navigate }) => {
   return (
     <div className="result-page">
       <h1>Here's your story!</h1>
