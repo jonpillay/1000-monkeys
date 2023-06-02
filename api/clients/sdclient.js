@@ -27,13 +27,17 @@ const generateImage = (positivePrompt, negativePrompt) => {
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP Error: Status ${response.status}`);
+        const error = new Error(`HTTP Error: Status ${response.status}`);
+        error.status = response.status;
+        throw error;
       }
       return response.json();
     })
     .then((result) => {
       if (result.status === "error") {
-        throw new Error(`${result.message}`);
+        const error = new Error(`${result.message}`);
+        error.status = 400;
+        throw error;
       }
       return result.output[0];
     });
