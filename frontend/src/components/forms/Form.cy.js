@@ -5,7 +5,7 @@ describe("Form", () => {
     cy.mount(
       <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
     )
-    cy.get("label").should("have.text", "Select Genre:")
+    cy.get("label").should("have.text", "Genre:")
     cy.get("select").should("have.value", "")
     cy.get("select").should("have.text", "-- Select --ActionHorrorSci-FiFantasyFairy Tale")
   });
