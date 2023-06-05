@@ -5,7 +5,7 @@ import './form-container.css'
 
 const FormContainer = ({ navigate }) => {
   const character = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
-  const genres = ['dystopia', 'fairytale'];
+  const genre = ['dystopia', 'fairytale'];
   const location = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
   const style = ['cartoon', 'photorealistic'];
 
@@ -14,7 +14,8 @@ const FormContainer = ({ navigate }) => {
     // character: '',
     // location: '',
     style: '',
-    prompt: ''
+    prompt: '',
+    messageHistory: ''
   });
 
   const handleFormSubmit = (e) => {
@@ -44,7 +45,13 @@ const FormContainer = ({ navigate }) => {
         <h1 className="formcontainer-title">Get started with some details...</h1>
         <form onSubmit={handleFormSubmit}>
           <Form
-            dropdownItems={genres}
+            dropdownItems={character}
+            selectionField="Writing Style"
+            selectedValue={formValues.genre}
+            onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
+          />
+          <Form
+            dropdownItems={genre}
             selectionField="Writing Style"
             selectedValue={formValues.genre}
             onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
