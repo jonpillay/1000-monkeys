@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from '../forms/Form';
 import TextInput from '../text-input-form/TextInput';
 import './form-container.css'
@@ -36,6 +36,9 @@ const FormContainer = ({ navigate }) => {
       prompt: inputText
     }));
   }
+
+  useEffect(() => {
+  }, [formValues]);
 
   return (
     <div className="formcontainer">

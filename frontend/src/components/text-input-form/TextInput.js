@@ -1,20 +1,17 @@
-import { useState } from 'react';
+import React from 'react';
 
 const TextInput = ({ handleInputChange }) => {
-
-  const [textInput, setTextInput] = useState("");
-
   const handleFormChange = (event) => {
-    setTextInput(event.target.value);
-    handleInputChange(textInput)
-  };
+    const inputText = event.target.value;
+    handleInputChange(inputText);
+    };
 
   return (
     <div className='text-input'>
       <label className="form-label">
         Prompt:
       </label>
-      <input onChange={handleFormChange} type="text" />
+      <input type="text" onChange={handleFormChange} />
     </div>
   );
 };
