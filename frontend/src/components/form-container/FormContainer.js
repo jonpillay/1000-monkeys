@@ -4,8 +4,8 @@ import './form-container.css'
 
 const FormContainer = ({ navigate }) => {
   const character = ['Spiderman', 'Rapunzel', 'Darth Vader', 'Wonder Woman', 'Batman', 'Hermione Granger'];
-  const genres = ['Dystopia', 'Fairytale'];
-  const style = ['Cartoon', 'Realistic'];
+  const genres = ['Dystopian', 'Fairytale', 'Western', 'Cyberpunk', 'Sci-Fi'];
+  const style = ['Cartoon', 'Realistic', 'Pixar', 'Anime', 'Painting'];
 
   const [formValues, setFormValues] = useState({
     character: '',
@@ -28,13 +28,13 @@ const FormContainer = ({ navigate }) => {
 
   return (
     <div className="formcontainer">
-      <h2 className="sub-title">Welcome to AI-tistic Tales</h2>
+      <h2 className="sub-title">Welcome to AI-tastic Tales</h2>
       <div className="formcontainer-container">
         <h1 className="formcontainer-title">Get started with some details...</h1>
         <form onSubmit={handleFormSubmit}>
           <Form
             dropdownItems={character}
-            selectionField="Character"
+            selectionField="Character Select"
             selectedValue={formValues.character}
             onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
           />
