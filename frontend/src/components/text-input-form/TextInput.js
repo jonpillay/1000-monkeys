@@ -11,8 +11,10 @@ const TextInput = ({ handleInputChange }) => {
 
   return (
     <div className='text-input'>
-      <label htmlFor="prompt">Prompt:</label>
-      <input id="prompt" onChange={handleFormChange} type="text" />
+      <label className="form-label">
+        Prompt:
+      </label>
+      <input onChange={handleFormChange} type="text" />
     </div>
   );
 };

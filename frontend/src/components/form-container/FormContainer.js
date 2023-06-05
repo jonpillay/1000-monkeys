@@ -6,20 +6,19 @@ import './form-container.css'
 const FormContainer = ({ navigate }) => {
   const character = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
   const genre = ['dystopia', 'fairytale'];
-  const location = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
   const style = ['cartoon', 'photorealistic'];
 
   const [formValues, setFormValues] = useState({
+    character: '',
     genre: '',
-    // character: '',
-    // location: '',
     style: '',
     prompt: '',
-    messageHistory: ''
+    messageHistory: []
   });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    localStorage.removeItem('userChoices');
     localStorage.setItem('userChoices', JSON.stringify(formValues));
     navigate('/results')
   };
@@ -46,9 +45,9 @@ const FormContainer = ({ navigate }) => {
         <form onSubmit={handleFormSubmit}>
           <Form
             dropdownItems={character}
-            selectionField="Writing Style"
-            selectedValue={formValues.genre}
-            onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
+            selectionField="Character"
+            selectedValue={formValues.character}
+            onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
           />
           <Form
             dropdownItems={genre}
