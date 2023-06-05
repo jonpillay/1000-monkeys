@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from '../forms/Form';
 import './form-container.css'
+import logo from './homepageLogo.gif'
 
 const FormContainer = ({ navigate }) => {
   const character = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
@@ -8,12 +9,25 @@ const FormContainer = ({ navigate }) => {
   const location = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
   const style = ['cartoon', 'photorealistic'];
 
+  const [isAnimationVisible, setIsAnimationVisible] = useState(true);
+
   const [formValues, setFormValues] = useState({
     genre: '',
     // character: '',
     // location: '',
     style: ''
   });
+
+  useEffect(() => {
+    const animationDuration = 3000;
+    const animationTimeout = setTimeout(() => {
+      setIsAnimationVisible(false);
+    }, animationDuration);
+
+    return () => {
+      clearTimeout(animationTimeout);
+    };
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +44,10 @@ const FormContainer = ({ navigate }) => {
 
   return (
     <div className="formcontainer">
-      <h2 className="sub-title">Welcome to AI-tistic Tales</h2>
+      {isAnimationVisible && (
+        <img className="formcontainer-logo-gif" src={logo} alt="test" />
+      )}
+      {!isAnimationVisible && (
       <div className="formcontainer-container">
         <h1 className="formcontainer-title">Get started with some details...</h1>
         <form onSubmit={handleFormSubmit}>
@@ -47,8 +64,9 @@ const FormContainer = ({ navigate }) => {
             onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
           />
           <button type="submit" className="submit-button">Submit</button>
-        </form>
-      </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
