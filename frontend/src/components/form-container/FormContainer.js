@@ -3,15 +3,13 @@ import Form from '../forms/Form';
 import './form-container.css'
 
 const FormContainer = () => {
-  const character = ['Mickey Mouse', 'Bugs Bunny', 'Pikachu', 'Homer Simpson', 'Spongebob', 'Rapunzel', 'Superman'];
-  const genres = ['dystopia', 'fairytale'];
-  const location = ['Tesco', 'Trafalgar Square', 'London Bridge', 'London Underground'];
-  const style = ['cartoon', 'photorealistic'];
+  const character = ['Spiderman', 'Rapunzel', 'Darth Vader', 'Wonder Woman', 'Batman', 'Hermione Granger'];
+  const genres = ['Dystopia', 'Fairytale'];
+  const style = ['Cartoon', 'Realistic'];
 
   const [formValues, setFormValues] = useState({
+    character: '',
     genre: '',
-    // character: '',
-    // location: '',
     style: ''
   });
 
@@ -58,23 +56,17 @@ const FormContainer = () => {
       <h1 className="form-title">Get started with some details...</h1>
       <form onSubmit={handleFormSubmit}>
         <Form
+          dropdownItems={character}
+          selectionField="Character"
+          selectedValue={formValues.character}
+          onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
+        />
+        <Form
           dropdownItems={genres}
           selectionField="Genre"
           selectedValue={formValues.genre}
           onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
         />
-        {/* <Form
-          dropdownItems={character}
-          selectionField="character"
-          selectedValue={formValues.character}
-          onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
-        />
-        <Form
-          dropdownItems={location}
-          selectionField="location"
-          selectedValue={formValues.location}
-          onDropdownChange={(selectedValue) => handleDropdownChange('location', selectedValue)}
-        /> */}
         <Form
           dropdownItems={style}
           selectionField="Style"
