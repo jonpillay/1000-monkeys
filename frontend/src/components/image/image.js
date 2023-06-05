@@ -2,7 +2,7 @@ import './image.css';
 
 const Image = ({link}) => {
   return (
-    <div>
+    <div className='story'>
       <img className='story-image' src={ link } alt='story' />
     </div>
   )

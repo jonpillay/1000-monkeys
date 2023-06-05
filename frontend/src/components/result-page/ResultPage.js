@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
+import './ResultPage.css'
 import LoadingIcon from "../loading-icon/LoadingIcon";
 
 const ResultPage = ({ navigate }) => {
@@ -56,13 +57,15 @@ const ResultPage = ({ navigate }) => {
 
   return (
     <>
-      <button>Home</button>
+      <div>
+      <button className="results-page-home">Home</button>
+      </div>
       {isLoaded ? (
         <div className="result-page">
           <h1>Here's your story!</h1>
-          <div className="container">
+          <div className="results-page-container">
             <Image link={imgUrl} />
-            <Story storyString={story}/>
+            <Story storyString={story} />
             <div className="buttons">
               <button className="submit-button">Save this story</button>
               <button className="submit-button">What happens next?</button>
@@ -78,6 +81,7 @@ const ResultPage = ({ navigate }) => {
       )}
     </>
   );
+  
 };
 
 export default ResultPage;

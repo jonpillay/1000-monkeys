@@ -1,72 +1,59 @@
-.forms {
-  /* margin-top: 150px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.formcontainer {
+    align-items: center;
+    margin-top: 18px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    border: 0px solid #ffffff76;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 50%;
 }
 
-.form-container {
-  background-color: #B4D8E7;
-  border-radius: 20px;
-  padding: 20px;
+.form-label-container {
+    width: 50px;
+    padding: 10px;
+    border-radius: 4px;
 }
 
-.form-title {
-  font-size: 20px;
-  padding: 10px;
-  font-family: papyrus;
-  align-items: center;
+.formcontainer-container {
+    max-width: 600px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.formcontainer-title {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0px;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .submit-button {
-  background-color: grey;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
+    padding: 20px 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #2a2a2a48;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0.5px solid #ffa500;
+    width: 100%;
 }
 
 .submit-button:hover {
-  background-color: #8AB5D9;
+    background-color: #11111179;
 }
 
-select {
-  appearance: none;
-  padding: 5px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-  width: 100%;
-}
-
-select:focus {
-  outline: none;
-  border-color: #B4D8E7;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  background-image: url('../../../public/images/background.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-}
-
-.title {
-  margin: 20;
-  font-size: 80px;
-  font-family: papyrus;
-  padding: 20px;
-  text-align: center;
+.sub-title {
+    color: white;
+    font-weight: normal;
+    font-size: 24px;
+    align-items: center;
+    white-space: nowrap;
 }

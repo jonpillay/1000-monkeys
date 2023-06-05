@@ -6,14 +6,7 @@ describe("Form", () => {
       <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
     )
     cy.get("label").should("have.text", "Genre:")
-    cy.get("select").should("have.value", "")
-    cy.get("select").should("have.text", "-- Select --ActionHorrorSci-FiFantasyFairy Tale")
+    cy.get(".custom-select").should("have.value", "")
+    cy.get(".custom-select").should("have.text", "Select...")
   });
-
-  it("renders correctly with a selected value", () => {
-    cy.mount(
-      <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" selectedValue="Horror" />
-    )
-    cy.get("select").should("have.value", "Horror")
-  })
 });

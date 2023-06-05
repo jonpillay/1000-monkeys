@@ -1,10 +1,60 @@
-.form {
-  display: flex; 
-  align-items: center;
-  width: 300px;
-  margin-bottom: 20px;
+.form-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
+.form-label {
+    display: flex;
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    white-space: nowrap;
+}
 
+.custom-select-container {
+    background-color: #232323;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 60px;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    color: #2c2c2c;
+}
 
-/* Additional styles as needed */
+.custom-select__control {
+    border: none !important;
+    border-radius: 4px;
+    box-shadow: none !important;
+    padding: 8px;
+    background-color: #494949;
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    margin-left: 100px;
+}
+
+.custom-select__option {
+    padding: 8px;
+    background-color: #FFFFFF;
+    color: #FF6600;
+    margin-left: 100px;
+    
+}
+
+.custom-select__option--is-selected {
+    background-color: orange; /* Change the selected background color to orange */
+    color: #FFFFFF; /* Change the selected text color to white */
+    border-color: none !important; /* Remove the border color */
+}
+
+.custom-select__single-value {
+    color: #FF6600;
+}
+
+  
