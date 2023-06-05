@@ -1,13 +1,24 @@
+import { mount } from "@cypress/react";
 import ResultPage from "./ResultPage";
 
 describe("ResultPage", () => {
-  it("shows the result page", () => {
-    cy.mount(<ResultPage />);
-    cy.get(".result-page").should("be.visible");
-    cy.get(".result-page").should("contain", "Here's your story!");
-    cy.get(".container").should("be.visible");
-    cy.get(".buttons").should("be.visible");
-    cy.get(".buttons").should("contain", "Save this story");
-    cy.get(".buttons").should("contain", "Make a new story");
+  beforeEach(() => {
+    cy.intercept("POST", "/images", { fixture: "images.json" }).as("imagesRequest");
+    cy.intercept("POST", "/story", { fixture: "story.json" }).as("storyRequest");
+  });
+
+  it("shows the result page when loaded", () => {
+    mount(<ResultPage navigate={() => {}} />);
+
+    cy.wait(["@imagesRequest", "@storyRequest"]).then(() => {
+      cy.get(".result-page").should("be.visible");
+      cy.get(".result-page").should("contain", "Here's your story!");
+      cy.get(".results-page-container").should("be.visible");
+      cy.get(".buttons").should("be.visible");
+      cy.get(".buttons").should("contain", "Save this story");
+      cy.get(".buttons").should("contain", "What happens next?");
+      cy.get(".buttons").should("contain", "Steer this story");
+      cy.get(".buttons").should("contain", "Refresh the story");
+    });
   });
 });

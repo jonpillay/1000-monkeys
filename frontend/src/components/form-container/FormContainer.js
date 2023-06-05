@@ -38,38 +38,27 @@ const FormContainer = ({ navigate }) => {
   }
 
   return (
-    <div className="forms">
-    <div className="form-container">
-      <h1 className="form-title">Get started with some details...</h1>
-      <form onSubmit={handleFormSubmit}>
-        <Form
-          dropdownItems={genres}
-          selectionField="Genre"
-          selectedValue={formValues.genre}
-          onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
-        />
-        {/* <Form
-          dropdownItems={character}
-          selectionField="character"
-          selectedValue={formValues.character}
-          onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
-        />
-        <Form
-          dropdownItems={location}
-          selectionField="location"
-          selectedValue={formValues.location}
-          onDropdownChange={(selectedValue) => handleDropdownChange('location', selectedValue)}
-        /> */}
-        <Form
-          dropdownItems={style}
-          selectionField="Style"
-          selectedValue={formValues.style}
-          onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
-        />
-        <TextInput handleInputChange={handleInputChange}/>
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
-    </div>
+    <div className="formcontainer">
+      <h2 className="sub-title">Welcome to AI-tistic Tales</h2>
+      <div className="formcontainer-container">
+        <h1 className="formcontainer-title">Get started with some details...</h1>
+        <form onSubmit={handleFormSubmit}>
+          <Form
+            dropdownItems={genres}
+            selectionField="Writing Style"
+            selectedValue={formValues.genre}
+            onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
+          />
+          <Form
+            dropdownItems={style}
+            selectionField="Artistic Style"
+            selectedValue={formValues.style}
+            onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
+          />
+          <TextInput handleInputChange={handleInputChange}/>
+          <button type="submit" className="submit-button">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };
