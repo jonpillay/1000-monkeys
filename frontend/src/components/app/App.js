@@ -12,7 +12,6 @@ const App = () => {
   return (
     <div className="background-image-container">
       <div>
-        {/* <h1 className="title">AT</h1> */}
         <Routes>
           <Route path="/" element={<FormContainer navigate={ useNavigate() }/>} />
           <Route path="/results" element={<ResultPage navigate={ useNavigate() }/>} />
