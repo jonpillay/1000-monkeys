@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
-import './ResultPage.css'
+import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 
 const ResultPage = ({ navigate }) => {
@@ -12,7 +12,7 @@ const ResultPage = ({ navigate }) => {
   const [story, setStory] = useState();
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
 
   useEffect(() => {
     GPTClientCall(userChoices);
@@ -58,16 +58,16 @@ const ResultPage = ({ navigate }) => {
 
   const updateMessageHistory = (newMessage) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    tempStorage.messageHistory.push(newMessage)
-    localStorage.removeItem('userChoices');
-    localStorage.setItem('userChoices', JSON.stringify(tempStorage));
+    tempStorage.messageHistory.push(newMessage);
+    localStorage.removeItem("userChoices");
+    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
     setUserChoices(tempStorage);
-  }
+  };
 
   return (
     <>
       <div>
-      <button className="results-page-home">Home</button>
+        <button className="results-page-home">Home</button>
       </div>
       {isLoaded ? (
         <div className="result-page">
@@ -90,7 +90,6 @@ const ResultPage = ({ navigate }) => {
       )}
     </>
   );
-  
 };
 
 export default ResultPage;
