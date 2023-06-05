@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Form from '../forms/Form';
+import TextInput from '../text-input-form/TextInput';
 import './form-container.css'
 
 const FormContainer = ({ navigate }) => {
@@ -12,7 +13,8 @@ const FormContainer = ({ navigate }) => {
     genre: '',
     // character: '',
     // location: '',
-    style: ''
+    style: '',
+    prompt: ''
   });
 
   const handleFormSubmit = (e) => {
@@ -27,6 +29,13 @@ const FormContainer = ({ navigate }) => {
       [fieldName]: selectedValue
     }));
   };
+
+  const handleInputChange = (inputText) => {
+    setFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      prompt: inputText
+    }));
+  }
 
   return (
     <div className="forms">
@@ -57,6 +66,7 @@ const FormContainer = ({ navigate }) => {
           selectedValue={formValues.style}
           onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
         />
+        <TextInput handleInputChange={handleInputChange}/>
         <button type="submit" className="submit-button">Submit</button>
       </form>
     </div>
