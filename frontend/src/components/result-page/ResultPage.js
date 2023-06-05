@@ -12,7 +12,7 @@ const ResultPage = ({ navigate }) => {
   const [story, setStory] = useState();
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     GPTClientCall(userChoices);
@@ -80,6 +80,7 @@ const ResultPage = ({ navigate }) => {
               <button className="submit-button">What happens next?</button>
               <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
+              <button onClick={GPTClientCall}>Press me </button>
             </div>
           </div>
         </div>
