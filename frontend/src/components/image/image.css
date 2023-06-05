@@ -1,4 +1,18 @@
+.story {
+    margin: 10px;
+    height: 0;
+    padding: 10px;
+    padding-bottom: 100%; /* Maintain aspect ratio */
+    background-color: #f1f1f1;
+    background-image: url("./512-512-pixel-image.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .story-image {
-  width: 200px;
-  height: auto;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    height: auto;
 }

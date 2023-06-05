@@ -3,7 +3,7 @@ import './Story.css';
 const Story = ({storyString}) => {
   return (
     <div>
-      <p className='story-text'>{storyString}</p>
+      <p className='story-text-para'>{storyString}</p>
     </div>
   )
 };

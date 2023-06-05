@@ -1,23 +1,31 @@
 import React from 'react';
+import Select from 'react-select';
+import './Form.css';
 
 const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }) => {
-  const handleDropdownChange = (event) => {
-    onDropdownChange(event.target.value);
+  const handleDropdownChange = (selectedOption) => {
+    onDropdownChange(selectedOption.value);
   };
 
   return (
-    <div className="form">
-      <label htmlFor={selectionField}>{selectionField}:</label>
-      <select id={selectionField} value={selectedValue} onChange={handleDropdownChange}>
-        <option value="">-- Select --</option>
-        {dropdownItems.map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
-      </select>
+    <div className="form-container">
+      <div className="form-label-container">
+        <label className="form-label" htmlFor={selectionField}>
+          {selectionField}:
+        </label>
+      </div>
+      <div className="custom-select-container">
+        <Select
+          className="custom-select"
+          options={dropdownItems.map((item) => ({ value: item, label: item }))}
+          value={selectedValue ? { value: selectedValue, label: selectedValue } : null}
+          onChange={handleDropdownChange}
+          placeholder="Select..."
+        />
+      </div>
     </div>
   );
 };
 
 export default Form;
+
