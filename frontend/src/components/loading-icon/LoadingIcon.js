@@ -1,14 +1,19 @@
 import './LoadingIcon.css';
 
-const LoadingIcon = ({ navigate }) => {
+const LoadingIcon = () => {
   return (
-    <div className="background">
-      <div className="container">
-        <h2>Crafting your story...</h2>
-        <img className='loading-icon' src="/images/slow-turning-pages.gif" alt="book-gif" />
+    <div className="container">
+      <h2 className="sub-title">Please wait we are crafting your story...</h2>
+      <div className="book">
+        <div className="book__pg-shadow"></div>
+        <div className="book__pg"></div>
+        <div className="book__pg book__pg--2"></div>
+        <div className="book__pg book__pg--3"></div>
+        <div className="book__pg book__pg--4"></div>
+        <div className="book__pg book__pg--5"></div>
       </div>
     </div>
-  )
+  )  
 }
 
 export default LoadingIcon;
