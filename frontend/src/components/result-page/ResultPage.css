@@ -1,49 +1,64 @@
-.result-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  background-color: beige;
-  border-radius: 8px;
-  padding: 20px;
+.result-page, .nav-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 800px;
+    padding: 10px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-h1 {
-  margin-bottom: 20px;
+.results-page-container {
+    text-align: center;
+    margin-top: 100;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.results-page-home {
+    position: fixed;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    z-index: 999; /* Ensure it's above other elements */
+    padding: 20px 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #2a2a2a48;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0.5px solid #ffa500;
+    width: 10%;
+}
+  
+.results-page-home:hover {
+    background-color: #11111179;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.scroll-container {
+    max-height: 800px; /* Adjust the height as needed */
+    overflow-y: auto;
 }
 
 .button {
-  padding: 10px 20px;
-  background-color: #eaeaea;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.button:not(:last-child) {
-  margin-right: 10px;
+.button::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid white;
+    margin-right: 5px;
 }
 
-body {
-  background-image: url('../../../public/images/book-background.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-}

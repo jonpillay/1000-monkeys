@@ -3,9 +3,13 @@ import LoadingIcon from "./LoadingIcon";
 describe("LoadingIcon", () => {
   it("renders correctly", () => {
     cy.mount(<LoadingIcon />);
-    cy.get('.loading-icon')
-    .should('be.visible')
-    .should('have.attr', 'src')
-    .and('include', 'slow-turning-pages.gif')
+    cy.get('.sub-title')
+      .should('be.visible')
+      .should('have.text', 'Please wait we are crafting your story...');
+    cy.get('.book').should('be.visible');
   });
 });
+
+
+
+
