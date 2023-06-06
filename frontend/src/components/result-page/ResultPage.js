@@ -64,6 +64,21 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(tempStorage);
   };
 
+  const whatHappensNext = () => {
+    resetLoadingParameters()
+    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    tempStorage.prompt = "what you think will happen in the next chapter based on the history you received"
+    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    setUserChoices(tempStorage);
+    GPTClientCall(userChoices)
+  }
+
+  const resetLoadingParameters = () => {
+    setGPTLoaded(false)
+    // setSDLoaded(false)
+    setIsLoaded(false)
+  }
+
   return (
     <>
       <div>
@@ -76,8 +91,8 @@ const ResultPage = ({ navigate }) => {
             <Image link={imgUrl} />
             <Story storyString={story} />
             <div className="buttons">
+              <button className="submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">What happens next?</button>
               <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
             </div>
