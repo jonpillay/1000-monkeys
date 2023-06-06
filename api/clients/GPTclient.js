@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 const openai = new OpenAIApi(new Configuration({
-  apiKey: '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'
+  apiKey: process.env.GPT_KEY
 }))
 
 async function generateStory(prompts) {
