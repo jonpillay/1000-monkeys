@@ -6,7 +6,7 @@ import logo from './homepageLogo.gif'
 
 const FormContainer = ({ navigate }) => {
   const character = ['Spiderman', 'Rapunzel', 'Darth Vader', 'Wonder Woman', 'Batman', 'Hermione Granger'];
-  const genres = ['Dystopian', 'Fairytale', 'Western', 'Cyberpunk', 'Sci-Fi'];
+  const genre = ['Dystopian', 'Fairytale', 'Western', 'Cyberpunk', 'Sci-Fi'];
   const style = ['Cartoon', 'Realistic', 'Pixar', 'Anime', 'Painting'];
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true);
@@ -74,7 +74,7 @@ const FormContainer = ({ navigate }) => {
             }
           />
           <Form
-            dropdownItems={genres}
+            dropdownItems={genre}
             selectionField="Writing Style"
             selectedValue={formValues.genre}
             onDropdownChange={(selectedValue) =>
