@@ -8,8 +8,8 @@ const TextInput = ({ handleInputChange, textField }) => {
 
   return (
     <div className="text-input">
-      <label className="form-label">{textField + ":"}</label>
-      <input type="text" onChange={handleFormChange} />
+      <label className="text-input-label">{textField + ":"}</label>
+      <input className="text-input-input" type="text" onChange={handleFormChange} />
     </div>
   );
 };
