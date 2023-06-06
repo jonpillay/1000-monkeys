@@ -3,8 +3,12 @@ import ResultPage from "./ResultPage";
 
 describe("ResultPage", () => {
   beforeEach(() => {
-    cy.intercept("POST", "/images", { fixture: "images.json" }).as("imagesRequest");
-    cy.intercept("POST", "/story", { fixture: "story.json" }).as("storyRequest");
+    cy.intercept("POST", "/images", { fixture: "images.json" }).as(
+      "imagesRequest"
+    );
+    cy.intercept("POST", "/story", { fixture: "story.json" }).as(
+      "storyRequest"
+    );
   });
 
   it("shows the result page when loaded", () => {
