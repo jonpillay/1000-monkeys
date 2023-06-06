@@ -69,7 +69,7 @@ const ResultPage = ({ navigate }) => {
     <>
       <div>
         <button className="results-page-home">
-          <img src={HomeIcon} alt="home" onClick={() => navigate("/")} className="home-icon" />
+          <img src={HomeIcon} alt="home" className="home-icon" />
         </button>
       </div>
       {isLoaded ? (
