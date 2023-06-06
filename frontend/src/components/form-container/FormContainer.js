@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Form from '../forms/Form';
+import React, { useState, useEffect } from "react";
+import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
-import './form-container.css'
-import logo from './homepageLogo.gif'
+import "./form-container.css";
+import logo from "./homepageLogo.gif";
 
 const FormContainer = ({ navigate }) => {
   const character = ['Spiderman', 'Rapunzel', 'Darth Vader', 'Wonder Woman', 'Batman', 'Hermione Granger'];
@@ -20,7 +20,7 @@ const FormContainer = ({ navigate }) => {
   });
 
   useEffect(() => {
-    const animationDuration = 3000;
+    const animationDuration = 1;
     const animationTimeout = setTimeout(() => {
       setIsAnimationVisible(false);
     }, animationDuration);
