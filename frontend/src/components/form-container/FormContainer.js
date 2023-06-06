@@ -17,6 +17,7 @@ const FormContainer = ({ navigate }) => {
     style: "",
     prompt: "",
     messageHistory: [],
+    imageHistory: [],
   });
 
   useEffect(() => {

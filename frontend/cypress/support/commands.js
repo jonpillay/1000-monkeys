@@ -12,7 +12,7 @@
 // -- This is a parent command --
 Cypress.Commands.add('getThrough', () => {
   cy.fixture("images.json").as("imageData");
-  cy.fixture("storyChapter1.json").as("storyData");
+  cy.fixture("storyChapters.json").as("storyData");
   cy.visit("/");
   cy.get("@imageData").then((data) => {
     cy.intercept("POST", "/images", { imgUrl: data.imgUrl }).as(

@@ -17,7 +17,7 @@ const ResultPage = ({ navigate }) => {
 
   useEffect(() => {
     GPTClientCall(userChoices);
-    sdClientCall(userChoices);
+    imageClientCall(userChoices);
   }, [reload]);
 
   const triggerReload = () => {
@@ -30,7 +30,7 @@ const ResultPage = ({ navigate }) => {
     }
   }, [SDLoaded, GPTLoaded]);
 
-  const sdClientCall = (userChoices) => {
+  const imageClientCall = (userChoices) => {
     fetch("/images", {
       method: "POST",
       headers: {
@@ -41,6 +41,7 @@ const ResultPage = ({ navigate }) => {
       .then((response) => response.json())
       .then((data) => {
         setImgUrl(data.imgUrl);
+        updateStorageAndHooks("imageHistory", data["imgUrl"]);
         setSDLoaded(true);
       });
   };
@@ -78,8 +79,8 @@ const ResultPage = ({ navigate }) => {
 
   const updateStorageAndHooks = (key, value) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    if (key === "messageHistory") {
-      tempStorage.messageHistory.push(value);
+    if (key === "messageHistory" || key === "imageHistory") {
+      tempStorage[key].push(value);
     } else {
       tempStorage[key] = value;
     }
