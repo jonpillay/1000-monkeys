@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Form from "../forms/Form";
+import React, { useState, useEffect } from 'react';
+import Form from '../forms/Form';
 import TextInput from "../text-input-form/TextInput";
-import "./form-container.css";
+import './form-container.css'
+import logo from './homepageLogo.gif'
 
 const FormContainer = ({ navigate }) => {
   const character = [
@@ -16,6 +17,8 @@ const FormContainer = ({ navigate }) => {
   const genre = ["dystopia", "fairytale"];
   const style = ["cartoon", "photorealistic"];
 
+  const [isAnimationVisible, setIsAnimationVisible] = useState(true);
+
   const [formValues, setFormValues] = useState({
     character: "",
     genre: "",
@@ -23,6 +26,17 @@ const FormContainer = ({ navigate }) => {
     prompt: "",
     messageHistory: [],
   });
+
+  useEffect(() => {
+    const animationDuration = 3000;
+    const animationTimeout = setTimeout(() => {
+      setIsAnimationVisible(false);
+    }, animationDuration);
+
+    return () => {
+      clearTimeout(animationTimeout);
+    };
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +63,10 @@ const FormContainer = ({ navigate }) => {
 
   return (
     <div className="formcontainer">
-      <h2 className="sub-title">Welcome to AI-tistic Tales</h2>
+      {isAnimationVisible && (
+        <img className="formcontainer-logo-gif" src={logo} alt="test" />
+      )}
+      {!isAnimationVisible && (
       <div className="formcontainer-container">
         <h1 className="formcontainer-title">
           Get started with some details...
@@ -79,6 +96,7 @@ const FormContainer = ({ navigate }) => {
               handleDropdownChange("style", selectedValue)
             }
           />
+
           <TextInput
             handleInputChange={handleInputChange}
             textField={"Prompt"}
@@ -88,6 +106,7 @@ const FormContainer = ({ navigate }) => {
           </button>
         </form>
       </div>
+      )}
     </div>
   );
 };

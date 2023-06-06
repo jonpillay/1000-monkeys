@@ -52,7 +52,6 @@ Introducing "AI-tistic Tales: Personalized Storytelling & Visual Imagery Generat
 
 ## MERN STACK AND OTHER TECHNOLOGIES
 
-- [![Mongodb][mongodb-badge]][mongodb-url]
 - [![Express][express-badge]][express-url]
 - [![React][react-badge]][react-url]
 - [![Node.js][node-badge]][node-url]
@@ -61,7 +60,6 @@ additional tools:
 
 - [Jest](https://jestjs.io/) for unit testing on the back end
 - [Cypress](https://www.cypress.io/) for end-to-end testing and component testing, on the front end
-- [Mongoose](https://mongoosejs.com) to model objects in MongoDB.
 - [Handlebars](https://handlebarsjs.com/) for the `home` template.
 - [Nodemon](https://nodemon.io/) to reload the server automatically.
 
@@ -74,7 +72,7 @@ additional tools:
 
 ## Prerequisites
 
-Before running the project, ensure that you have installed `mongodb`, `npm` and `node` in your local machine. If they are not installed, please follow the steps below.
+Before running the project, ensure that you have installed `npm` and `node` in your local machine. If they are not installed, please follow the steps below.
 
 - npm
 
@@ -89,14 +87,6 @@ Before running the project, ensure that you have installed `mongodb`, `npm` and 
     brew install nvm
     nvm install node
     node -v
-    ```
-
-- mongodb
-
-    ```bash
-    brew tap mongodb/brew
-    brew install mongodb-community@5.0
-    brew services start mongodb-community@5.0
     ```
 
 ------
@@ -167,30 +157,17 @@ Before running the project, ensure that you have installed `mongodb`, `npm` and 
 
 - #### The Frontend (React)
 
-    create and seed the mongoDB
-
     ```bash
-    mongo
     use aitistic_tales
     db.createCollection("messages")
     db.messages.insertOne({ messages: "hello" })
     ```
 
     ```bash
-    mongo
     use aitistic_tales_test
     db.createCollection("messages")
     db.messages.insertOne({ messages: "hello" })
     ```
-
-- #### to view in tableplus
-
-    create new connection
-    name aitistic_tales
-    url mongodb://0.0.0.0/aitistic_tales
-
-    name aitistic_tales_test
-    url mongodb://0.0.0.0/aitistic_tales_test
 
 ------
 
