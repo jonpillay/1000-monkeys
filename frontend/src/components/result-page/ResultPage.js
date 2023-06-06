@@ -3,6 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
+import TextInput from "../text-input-form/TextInput";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -13,6 +14,8 @@ const ResultPage = ({ navigate }) => {
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
+  const [textAreaValue, setTextAreaValue] = useState('');
 
   useEffect(() => {
     GPTClientCall(userChoices);
@@ -64,6 +67,21 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(tempStorage);
   };
 
+  const handleButtonClick = () => {
+    setIsButtonPressed(true);
+  };
+
+  const handleButtonCancelClick = () => {
+    setIsButtonPressed(false);
+  };
+
+  const handleTextAreaChange = (event) => {
+    setTextAreaValue(event.target.value);
+  };
+
+  const handleFormSubmit = (e) => {
+  };
+
   return (
     <>
       <div>
@@ -77,9 +95,21 @@ const ResultPage = ({ navigate }) => {
             <Story storyString={story} />
             <div className="buttons">
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">What happens next?</button>
               <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
+            </div>
+            <div>
+            {isButtonPressed ? (
+              <div className="resultpage-steer">
+                <form onSubmit={handleFormSubmit}>
+                  <TextInput handleInputChange={handleTextAreaChange} textField="Prompt" />
+                  <button type="submit">  Craft the next chapter</button>
+                  <button onClick={handleButtonCancelClick}>Cancel</button>
+                </form>
+              </div>
+            ) : (
+              <button className="story-submit-button" onClick={handleButtonClick}>Steer this story</button>
+            )}
             </div>
           </div>
         </div>

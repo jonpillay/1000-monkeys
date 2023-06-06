@@ -62,11 +62,11 @@ const FormContainer = ({ navigate }) => {
   useEffect(() => {}, [formValues]);
 
   return (
-    <div className="formcontainer">
-      {isAnimationVisible && (
-        <img className="formcontainer-logo-gif" src={logo} alt="test" />
-      )}
-      {!isAnimationVisible && (
+      <div className="formcontainer">
+        {isAnimationVisible && (
+          <img className="formcontainer-logo-gif" src={logo} alt="test" />
+        )}
+        {!isAnimationVisible && (
       <div className="formcontainer-container">
         <h1 className="formcontainer-title">
           Get started with some details...
@@ -96,7 +96,6 @@ const FormContainer = ({ navigate }) => {
               handleDropdownChange("style", selectedValue)
             }
           />
-
           <TextInput
             handleInputChange={handleInputChange}
             textField={"Prompt"}
