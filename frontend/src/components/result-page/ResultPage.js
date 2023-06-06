@@ -80,7 +80,6 @@ const ResultPage = ({ navigate }) => {
               <button className="submit-button">What happens next?</button>
               <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
-              <button onClick={GPTClientCall}>Press me </button>
             </div>
           </div>
         </div>
