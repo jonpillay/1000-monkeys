@@ -5,6 +5,7 @@ describe("ResultPage", () => {
   beforeEach(() => {
     cy.intercept("POST", "/images", { fixture: "images.json" }).as(
       "imagesRequest"
+      // mock response from the server - message history
     );
     cy.intercept("POST", "/story", { fixture: "story.json" }).as(
       "storyRequest"
@@ -12,7 +13,7 @@ describe("ResultPage", () => {
   });
 
   it("shows the result page when loaded", () => {
-    mount(<ResultPage navigate={() => {}} />);
+    cy.mount(<ResultPage navigate={() => {}} />);
 
     cy.wait(["@imagesRequest", "@storyRequest"]).then(() => {
       cy.get(".result-page").should("be.visible");
