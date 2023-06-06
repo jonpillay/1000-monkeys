@@ -25,8 +25,10 @@ const matchSelectionCriteria = (userSelection) => {
 const positivePrompts = []
 const negativePrompts = []
 for (let key in userSelection) {
+    if (sdPromptBank.hasOwnProperty(key)) {
     positivePrompts.push(sdPromptBank[key][userSelection[key]]['positivePrompts'])
     negativePrompts.push(sdPromptBank[key][userSelection[key]]['negativePrompts'])
+    }
 }
 return {positivePrompts: positivePrompts.flat().join(', '), negativePrompts: negativePrompts.flat().join(', ')}
 }
