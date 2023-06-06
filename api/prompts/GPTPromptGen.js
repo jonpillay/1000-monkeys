@@ -11,7 +11,15 @@ const GPT_prompt_gen = (inputs_dict) => {
     },
     {
       role: "system",
-      content: "after I submit each task, return a chapter in the story, between 50-70 words long. This needs a chapter number and also a chapter title"
+      content: "after I submit each task, return the next chapter in the story, between 50-70 words long. This needs a chapter number and also a chapter title"
+    },
+    {
+      role: "system",
+      content: "sometimes I will send you content on what has happened in the previous chapters, you will continue the story based on my new input but will keep continuity with the previous chapters"
+    },
+    {
+      role: "system",
+      content: "if I send you the previous chapters, I will provide the numerical title of the chapters so you can keep track of the chronology"
     },
   ]
 
@@ -48,7 +56,17 @@ const GPT_prompt_gen = (inputs_dict) => {
         role: "system",
         content: `I want the style of the story to be ${inputs_dict[key]}`
       })
-    } 
+    } else if (key == 'prompt') {
+      promptResults.push({
+        role: "user",
+        content: `I want the story content to include ${inputs_dict[key]}`
+      })
+    } else if (key == 'messageHistory') {
+      promptResults.push({
+        role: "user",
+        content: `${inputs_dict[key]}`
+      })
+    }
   }
   return promptResults
 }

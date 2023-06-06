@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from '../forms/Form';
+import TextInput from "../text-input-form/TextInput";
 import './form-container.css'
 import logo from './homepageLogo.gif'
 
@@ -11,9 +12,11 @@ const FormContainer = ({ navigate }) => {
   const [isAnimationVisible, setIsAnimationVisible] = useState(true);
   
   const [formValues, setFormValues] = useState({
-    character: '',
-    genre: '',
-    style: ''
+    character: "",
+    genre: "",
+    style: "",
+    prompt: "",
+    messageHistory: [],
   });
 
   useEffect(() => {
@@ -29,16 +32,26 @@ const FormContainer = ({ navigate }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem('userChoices', JSON.stringify(formValues));
-    navigate('/results')
+    localStorage.removeItem("userChoices");
+    localStorage.setItem("userChoices", JSON.stringify(formValues));
+    navigate("/results");
   };
 
   const handleDropdownChange = (fieldName, selectedValue) => {
     setFormValues((prevFormValues) => ({
       ...prevFormValues,
-      [fieldName]: selectedValue
+      [fieldName]: selectedValue,
     }));
   };
+
+  const handleInputChange = (inputText) => {
+    setFormValues((prevFormValues) => ({
+      ...prevFormValues,
+      prompt: inputText,
+    }));
+  };
+
+  useEffect(() => {}, [formValues]);
 
   return (
     <div className="formcontainer">
@@ -47,29 +60,44 @@ const FormContainer = ({ navigate }) => {
       )}
       {!isAnimationVisible && (
       <div className="formcontainer-container">
-        <h1 className="formcontainer-title">Get started with some details...</h1>
+        <h1 className="formcontainer-title">
+          Get started with some details...
+        </h1>
         <form onSubmit={handleFormSubmit}>
+          
           <Form
             dropdownItems={character}
-            selectionField="Character Select"
+            selectionField="Character"
             selectedValue={formValues.character}
-            onDropdownChange={(selectedValue) => handleDropdownChange('character', selectedValue)}
+            onDropdownChange={(selectedValue) =>
+              handleDropdownChange("character", selectedValue)
+            }
           />
           <Form
             dropdownItems={genres}
             selectionField="Writing Style"
             selectedValue={formValues.genre}
-            onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
+            onDropdownChange={(selectedValue) =>
+              handleDropdownChange("genre", selectedValue)
+            }
           />
           <Form
             dropdownItems={style}
             selectionField="Artistic Style"
             selectedValue={formValues.style}
-            onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
+            onDropdownChange={(selectedValue) =>
+              handleDropdownChange("style", selectedValue)
+            }
           />
-          <button type="submit" className="submit-button">Submit</button>
-          </form>
-        </div>
+          <TextInput
+            handleInputChange={handleInputChange}
+            textField={"Prompt"}
+          />
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
+        </form>
+      </div>
       )}
     </div>
   );
