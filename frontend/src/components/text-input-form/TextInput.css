@@ -11,15 +11,16 @@
     height: 100px;
     flex: 1;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     white-space: normal;
     outline: none;
 }
 
 .text-input-label {
-    width: 30%;
+    width: 32%;
+    padding-top: 10px;
     color: rgb(255, 255, 255);
     font-size: 100%;
     text-align: left;

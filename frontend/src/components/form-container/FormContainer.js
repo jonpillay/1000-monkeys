@@ -82,7 +82,7 @@ const FormContainer = ({ navigate }) => {
           />
           <Form
             dropdownItems={genre}
-            selectionField="Writing Style"
+            selectionField="Genre"
             selectedValue={formValues.genre}
             onDropdownChange={(selectedValue) =>
               handleDropdownChange("genre", selectedValue)
@@ -90,7 +90,7 @@ const FormContainer = ({ navigate }) => {
           />
           <Form
             dropdownItems={style}
-            selectionField="Artistic Style"
+            selectionField="Style"
             selectedValue={formValues.style}
             onDropdownChange={(selectedValue) =>
               handleDropdownChange("style", selectedValue)
@@ -102,7 +102,7 @@ const FormContainer = ({ navigate }) => {
             textField={"Prompt"}
           />
           
-          <button type="submit" className="submit-button">
+          <button type="submit" className="formcontainer-submit-button">
             Submit
           </button>
         </form>

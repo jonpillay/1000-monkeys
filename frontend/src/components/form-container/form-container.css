@@ -19,13 +19,14 @@
 }
 
 .formcontainer-title {
+    margin-left: 0%;
+    margin-bottom: 32px;
     border-radius: 5px;
     color: white;
     font-weight: normal;
-    font-size: 18px;
-    margin: auto;
+    font-size: 32px;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
 }
 
 .formcontainer-submit-container{
@@ -35,19 +36,23 @@
 }
 
 .formcontainer-submit-button {
-  padding: 20px;
-  font-size: 20px;
-  color: #ffffff;
-  background-color: #2a2a2a48;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  border: 0.5px solid #ffa500;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 32%;
+    width: 68%;
+    padding: 20px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #2a2a2a48;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0.5px solid #ffa500;
 }
 
 .formcontainer-submit-button:hover {
-  background-color: #11111179;
+    background-color: #11111179;
 }
 
 @keyframes fadeOut {

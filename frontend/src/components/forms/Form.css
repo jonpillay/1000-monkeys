@@ -1,6 +1,5 @@
 .form-container {
     display: flex;
-    align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
@@ -8,6 +7,8 @@
 
 .form-label {
     display: flex;
+    padding-top: 10px;
+    width: 32%;
     font-family: Helvetica, sans-serif;
     font-size: 100%;
     color: #ffffff;
@@ -21,9 +22,9 @@
     border-radius: 4px;
 }
 
-.custom-select-container {
-        flex: 1 1 auto !important;
-        width: 100%;
+.css-b62m3t-container {
+    flex: 1 1 auto !important;
+    width: 68% !important;
 }
 
 .react-select__control {
@@ -34,7 +35,7 @@
     cursor: pointer !important;
     display: flex !important;
     align-items: centre !important;
-    padding: 5px !important;
+    padding: 4px !important;
 }
   
 .react-select__value-container {
@@ -44,8 +45,8 @@
 }
   
 .react-select__single-value {
-    color: #e22323 !important;
-    font-size: 16px !important;
+    color: #000000 !important;
+    font-size: 18px !important;
 }
   
 .react-select__indicator-separator {
@@ -53,11 +54,11 @@
 }
   
 .react-select__indicator {
-    color: #ce0000 !important;
+    color: #717171 !important;
 }
   
 .react-select__menu {
-    background-color: #ff3737 !important;
+    background-color: #ffffff !important;
     border: none !important;
     border-radius: 4px !important;
     box-shadow: none !important;
@@ -65,19 +66,19 @@
 }
   
 .react-select__option {
-    color: #080b14 !important;
+    color: #1c1c1c !important;
     cursor: pointer !important;
-    font-size: 20px !important;
+    font-size: 18px !important;
     padding: 8px 12px !important;
 }
   
 .react-select__option:hover {
-    background-color: #067e12 !important;
+    background-color: #ffa500 !important;
 }
   
 .react-select__option--is-selected {
-    background-color: #074620 !important;
-    color: #220505 !important;
+    background-color: #9d9d9d !important;
+    color: #4a4a4a !important;
 }
 
 
