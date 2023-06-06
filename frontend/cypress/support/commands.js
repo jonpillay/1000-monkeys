@@ -25,7 +25,7 @@ Cypress.Commands.add('getThrough', () => {
     );
   });
   cy.get(":nth-child(1) > .custom-select > .css-13cymwt-control").click();
-  cy.get("#react-select-3-listbox").type("Homer{enter}");
+  cy.get("#react-select-3-listbox").first().click();
   cy.get(":nth-child(2) > .custom-select > .css-13cymwt-control").click();
   cy.get("#react-select-5-listbox").first().click();
   cy.get(":nth-child(3) > .custom-select > .css-13cymwt-control").click();
