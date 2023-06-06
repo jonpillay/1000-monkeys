@@ -13,11 +13,16 @@ const ResultPage = ({ navigate }) => {
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     GPTClientCall(userChoices);
     sdClientCall(userChoices);
-  }, []);
+  }, [reload]);
+
+  const triggerReload = () => {
+    setReload((prevStat) => !prevStat);
+  };
 
   useEffect(() => {
     if (SDLoaded === true && GPTLoaded === true) {
@@ -51,15 +56,33 @@ const ResultPage = ({ navigate }) => {
       .then((response) => response.json())
       .then((data) => {
         setStory(data["storyText"]);
-        updateMessageHistory(data["storyText"]);
+        updateStorageAndHooks("messageHistory", data["storyText"]);
         setGPTLoaded(true);
       });
   };
 
-  const updateMessageHistory = (newMessage) => {
+  const whatHappensNext = () => {
+    resetLoadingParameters();
+    updateStorageAndHooks(
+      "prompt",
+      "what you think will happen in the next chapter based on the history you received"
+    );
+    triggerReload();
+  };
+
+  const resetLoadingParameters = () => {
+    setGPTLoaded(false);
+    setSDLoaded(false);
+    setIsLoaded(false);
+  };
+
+  const updateStorageAndHooks = (key, value) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    tempStorage.messageHistory.push(newMessage);
-    localStorage.removeItem("userChoices");
+    if (key === "messageHistory") {
+      tempStorage.messageHistory.push(value);
+    } else {
+      tempStorage[key] = value;
+    }
     localStorage.setItem("userChoices", JSON.stringify(tempStorage));
     setUserChoices(tempStorage);
   };
@@ -76,8 +99,14 @@ const ResultPage = ({ navigate }) => {
             <Image link={imgUrl} />
             <Story storyString={story} />
             <div className="buttons">
+              <button
+                className="submit-button"
+                data-cy="next"
+                onClick={whatHappensNext}
+              >
+                What happens next?
+              </button>
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">What happens next?</button>
               <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
             </div>
