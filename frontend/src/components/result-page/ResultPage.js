@@ -64,10 +64,15 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(tempStorage);
   };
 
+  const goHome = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <>
       <div>
-        <button className="results-page-home">Home</button>
+        <button className="results-page-home" onClick={goHome}>Home</button>
       </div>
       {isLoaded ? (
         <div className="result-page">
