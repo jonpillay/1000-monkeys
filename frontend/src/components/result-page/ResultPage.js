@@ -71,15 +71,14 @@ const ResultPage = ({ navigate }) => {
       </div>
       {isLoaded ? (
         <div className="result-page">
-          <h1>Here's your story!</h1>
           <div className="results-page-container">
             <Image link={imgUrl} />
             <Story storyString={story} />
             <div className="buttons">
-              <button className="submit-button">Save this story</button>
-              <button className="submit-button">What happens next?</button>
-              <button className="submit-button">Steer this story</button>
-              <button className="submit-button">Refresh the story</button>
+              <button className="result-button">Save Story</button>
+              <button className="result-button">Continue Story</button>
+              <button className="result-button">Steer Story</button>
+              <button className="result-button">Refresh Story</button>
             </div>
           </div>
         </div>
