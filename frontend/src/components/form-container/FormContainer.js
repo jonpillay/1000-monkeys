@@ -5,20 +5,12 @@ import './form-container.css'
 import logo from './homepageLogo.gif'
 
 const FormContainer = ({ navigate }) => {
-  const character = [
-    "Mickey Mouse",
-    "Bugs Bunny",
-    "Pikachu",
-    "Homer Simpson",
-    "Spongebob",
-    "Rapunzel",
-    "Superman",
-  ];
-  const genre = ["dystopia", "fairytale"];
-  const style = ["cartoon", "photorealistic"];
+  const character = ['Spiderman', 'Rapunzel', 'Darth Vader', 'Wonder Woman', 'Batman', 'Hermione Granger'];
+  const genre = ['Dystopian', 'Fairytale', 'Western', 'Cyberpunk', 'Sci-Fi'];
+  const style = ['Cartoon', 'Realistic', 'Pixar', 'Anime', 'Painting'];
 
   const [isAnimationVisible, setIsAnimationVisible] = useState(true);
-
+  
   const [formValues, setFormValues] = useState({
     character: "",
     genre: "",
@@ -72,6 +64,7 @@ const FormContainer = ({ navigate }) => {
           Get started with some details...
         </h1>
         <form onSubmit={handleFormSubmit}>
+          
           <Form
             dropdownItems={character}
             selectionField="Character"
@@ -96,7 +89,6 @@ const FormContainer = ({ navigate }) => {
               handleDropdownChange("style", selectedValue)
             }
           />
-
           <TextInput
             handleInputChange={handleInputChange}
             textField={"Prompt"}
