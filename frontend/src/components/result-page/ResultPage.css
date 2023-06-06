@@ -29,12 +29,6 @@
   width: 40px; /* Adjust the width as needed */
 }
 
-.home-icon {
-  width: 40px;
-  height: auto;
-  border-radius: 5px;
-}
-
 .scroll-container {
   max-height: 800px; /* Adjust the height as needed */
   overflow-y: auto;
