@@ -1,5 +1,6 @@
 const fs = require('fs');
 const DSPromptGen = require('../prompts/DSPromptGen')
+const imgBBUploader = require('../helpers/imgBBUploader')
 
 const engineId = 'stable-diffusion-v1-5';
 const apiHost = 'https://api.stability.ai';
@@ -38,12 +39,15 @@ async function generateImage(prompts, style) {
   }
 
   const responseJSON = await response.json();
-  responseJSON.artifacts.forEach((image, index) => {
-    console.log(image.seed)
+  responseJSON.artifacts.forEach(async (image, index) => {
+    console.log("upload started")
+    const remoteImage = await imgBBUploader("8c45bb90e9da6a60b29d0cafdbcf2015", image.base64)
     fs.writeFileSync(
       `./out/v1_txt2img_${Date.now()}.png`,
       Buffer.from(image.base64, 'base64')
     );
+    console.log(remoteImage.data.display_url)
+    return remoteImage.data.display_url
   });
 }
 
