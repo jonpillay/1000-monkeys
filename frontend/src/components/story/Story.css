@@ -1,12 +1,14 @@
-.story-text {
+.story-text-para {
     margin: 10px;
     width: 100%;
     height: auto;
     word-wrap: break-word;
-    color: white;
+    color: black;
     font-family: Helvetica, Arial, sans-serif;
     text-align: left;
+    border-radius: 4px;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 17px;
     box-sizing: border-box;
+    background: #f1f1f1; 
 }
