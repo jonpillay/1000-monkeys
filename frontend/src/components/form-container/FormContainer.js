@@ -101,6 +101,7 @@ const FormContainer = ({ navigate }) => {
             handleInputChange={handleInputChange}
             textField={"Prompt"}
           />
+          
           <button type="submit" className="submit-button">
             Submit
           </button>

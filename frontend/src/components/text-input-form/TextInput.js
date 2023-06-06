@@ -1,4 +1,5 @@
 import React from "react";
+import './TextInput.css'
 
 const TextInput = ({ handleInputChange, textField }) => {
   const handleFormChange = (event) => {
@@ -9,7 +10,7 @@ const TextInput = ({ handleInputChange, textField }) => {
   return (
     <div className="text-input">
       <label className="text-input-label">{textField + ":"}</label>
-      <input className="text-input-input" type="text" onChange={handleFormChange} />
+      <textarea className="text-input-input" type="textarea" onChange={handleFormChange} />
     </div>
   );
 };
