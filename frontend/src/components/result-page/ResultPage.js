@@ -56,31 +56,32 @@ const ResultPage = ({ navigate }) => {
       .then((response) => response.json())
       .then((data) => {
         setStory(data["storyText"]);
-        updateMessageHistory(data["storyText"]);
+        updateStorageAndHooks('messageHistory', data["storyText"])
         setGPTLoaded(true);
       });
   };
 
-  const updateMessageHistory = (newMessage) => {
-    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    tempStorage.messageHistory.push(newMessage);
-    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    setUserChoices(tempStorage);
-  };
-
   const whatHappensNext = () => {
     resetLoadingParameters()
-    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    tempStorage.prompt = "what you think will happen in the next chapter based on the history you received"
-    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    setUserChoices(tempStorage)
+    updateStorageAndHooks('prompt', 'what you think will happen in the next chapter based on the history you received')
     triggerReload()
   }
 
   const resetLoadingParameters = () => {
     setGPTLoaded(false)
-    // setSDLoaded(false)
+    setSDLoaded(false)
     setIsLoaded(false)
+  }
+
+  const updateStorageAndHooks = (key, value) => {
+    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    if (key === 'messageHistory') {
+      tempStorage.messageHistory.push(value);
+    } else {
+      tempStorage[key] = value
+    }
+    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    setUserChoices(tempStorage);
   }
 
   return (
