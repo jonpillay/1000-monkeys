@@ -13,11 +13,16 @@ const ResultPage = ({ navigate }) => {
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [reload, setReload] = useState(false)
 
   useEffect(() => {
     GPTClientCall(userChoices);
     sdClientCall(userChoices);
-  }, []);
+  }, [reload]);
+
+  const triggerReload = () => {
+    setReload(prevStat => !prevStat)
+  }
 
   useEffect(() => {
     if (SDLoaded === true && GPTLoaded === true) {
@@ -59,7 +64,6 @@ const ResultPage = ({ navigate }) => {
   const updateMessageHistory = (newMessage) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
     tempStorage.messageHistory.push(newMessage);
-    localStorage.removeItem("userChoices");
     localStorage.setItem("userChoices", JSON.stringify(tempStorage));
     setUserChoices(tempStorage);
   };
@@ -69,8 +73,8 @@ const ResultPage = ({ navigate }) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
     tempStorage.prompt = "what you think will happen in the next chapter based on the history you received"
     localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    setUserChoices(tempStorage);
-    GPTClientCall(userChoices)
+    setUserChoices(tempStorage)
+    triggerReload()
   }
 
   const resetLoadingParameters = () => {

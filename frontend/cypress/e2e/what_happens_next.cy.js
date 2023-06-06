@@ -4,10 +4,10 @@ describe("pressing the next button after submitting story", () => {
     let chapter2;
     cy.fixture("storyChapter2.json").as("storyData2").then((data) => {
       chapter2 = data.storyText
-    });
-      cy.intercept("POST", "/story", { storyText: chapter2 }).as(
-        "storyRequest"
+      cy.intercept("POST", "/story", { storyText: data.storyText }).as(
+        "storyRequest2"
       );
+    });
     cy.get('[data-cy="next"]').click()
     cy.window().then((win) => {
       const storedData = JSON.parse(win.localStorage.getItem("userChoices"));
