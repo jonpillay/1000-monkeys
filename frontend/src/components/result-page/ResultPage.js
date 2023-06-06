@@ -3,7 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
-import HomeIcon from "./home-icon.png"
+import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -88,17 +88,10 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(tempStorage);
   };
 
-  const goHome = () => {
-    localStorage.clear();
-    navigate("/");
-  };
-
   return (
     <>
       <div>
-        <button className="results-page-home">
-          <img src={HomeIcon} alt="home" className="home-icon" />
-        </button>
+        <HomeButton navigate={ navigate }/>
       </div>
       {isLoaded ? (
         <div className="result-page">
