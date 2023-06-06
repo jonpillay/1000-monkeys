@@ -81,12 +81,12 @@ const ResultPage = ({ navigate }) => {
   const updateStorageAndHooks = (key, value) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
     if (key === "messageHistory" || key === "imageHistory") {
-      tempStorage[key].push(value);
+      tempStorage[key] = [...tempStorage[key], value];
     } else {
       tempStorage[key] = value;
     }
     localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    setUserChoices(tempStorage);
+    setUserChoices(JSON.stringify(tempStorage));
   };
 
   return (
