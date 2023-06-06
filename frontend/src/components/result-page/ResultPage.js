@@ -3,7 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
-import TextInput from "../text-input-form/TextInput";
+import SteerStory from "../steer-story/SteerStory"
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -15,7 +15,6 @@ const ResultPage = ({ navigate }) => {
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isButtonPressed, setIsButtonPressed] = useState(false);
-  const [textAreaValue, setTextAreaValue] = useState('');
 
   useEffect(() => {
     GPTClientCall(userChoices);
@@ -75,12 +74,6 @@ const ResultPage = ({ navigate }) => {
     setIsButtonPressed(false);
   };
 
-  const handleTextAreaChange = (event) => {
-    setTextAreaValue(event.target.value);
-  };
-
-  const handleFormSubmit = (e) => {
-  };
 
   return (
     <>
@@ -95,21 +88,14 @@ const ResultPage = ({ navigate }) => {
             <Story storyString={story} />
             <div className="buttons">
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
             </div>
             <div>
-            {isButtonPressed ? (
-              <div className="resultpage-steer">
-                <form onSubmit={handleFormSubmit}>
-                  <TextInput handleInputChange={handleTextAreaChange} textField="Prompt" />
-                  <button type="submit">  Craft the next chapter</button>
-                  <button onClick={handleButtonCancelClick}>Cancel</button>
-                </form>
-              </div>
-            ) : (
-              <button className="story-submit-button" onClick={handleButtonClick}>Steer this story</button>
-            )}
+              <SteerStory
+                isButtonPressed={isButtonPressed}
+                handleButtonClick={handleButtonClick}
+                handleButtonCancelClick={handleButtonCancelClick}
+              />
             </div>
           </div>
         </div>
