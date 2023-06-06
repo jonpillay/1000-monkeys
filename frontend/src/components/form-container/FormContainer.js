@@ -28,7 +28,7 @@ const FormContainer = ({ navigate }) => {
   });
 
   useEffect(() => {
-    const animationDuration = 3000;
+    const animationDuration = 1;
     const animationTimeout = setTimeout(() => {
       setIsAnimationVisible(false);
     }, animationDuration);
