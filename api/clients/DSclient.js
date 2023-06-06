@@ -41,7 +41,7 @@ async function generateImage(prompts, style) {
   const responseJSON = await response.json();
   responseJSON.artifacts.forEach(async (image, index) => {
     console.log("upload started")
-    const remoteImage = await imgBBUploader("8c45bb90e9da6a60b29d0cafdbcf2015", image.base64)
+    const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, image.base64)
     fs.writeFileSync(
       `./out/v1_txt2img_${Date.now()}.png`,
       Buffer.from(image.base64, 'base64')
