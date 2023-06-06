@@ -3,6 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
+import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -91,11 +92,10 @@ const ResultPage = ({ navigate }) => {
   return (
     <>
       <div>
-        <button className="results-page-home">Home</button>
+        <HomeButton navigate={ navigate }/>
       </div>
       {isLoaded ? (
         <div className="result-page">
-          <h1>Here's your story!</h1>
           <div className="results-page-container">
             <Image link={imgUrl} />
             <Story storyString={story} />
