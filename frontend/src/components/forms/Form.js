@@ -8,13 +8,11 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
   };
 
   return (
+    <>
     <div className="form-container">
-      <div className="form-label-container">
         <label className="form-label" htmlFor={selectionField}>
           {selectionField}:
         </label>
-      </div>
-      <div className="custom-select-container">
         <Select
           className="custom-select"
           options={dropdownItems.map((item) => ({ value: item, label: item }))}
@@ -23,7 +21,7 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
           placeholder="Select..."
         />
       </div>
-    </div>
+    </>
   );
 };
 
