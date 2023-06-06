@@ -16,7 +16,7 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
       </div>
       <div className="custom-select-container">
         <Select
-          className="custom-select"
+          classNamePrefix="react-select"
           options={dropdownItems.map((item) => ({ value: item, label: item }))}
           value={selectedValue ? { value: selectedValue, label: selectedValue } : null}
           onChange={handleDropdownChange}

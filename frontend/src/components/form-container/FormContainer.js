@@ -43,31 +43,36 @@ const FormContainer = ({ navigate }) => {
   };
 
   return (
-    <div className="formcontainer">
-      {isAnimationVisible && (
-        <img className="formcontainer-logo-gif" src={logo} alt="test" />
-      )}
-      {!isAnimationVisible && (
+      <div className="formcontainer">
+        {isAnimationVisible && (
+          <img className="formcontainer-logo-gif" src={logo} alt="test" />
+        )}
+        {!isAnimationVisible && (
       <div className="formcontainer-container">
-        <h1 className="formcontainer-title">Get started with some details...</h1>
-        <form onSubmit={handleFormSubmit}>
-          <Form
-            dropdownItems={genres}
-            selectionField="Writing Style"
-            selectedValue={formValues.genre}
-            onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
-          />
-          <Form
-            dropdownItems={style}
-            selectionField="Artistic Style"
-            selectedValue={formValues.style}
-            onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
-          />
-          <button type="submit" className="submit-button">Submit</button>
+        <div>
+          <h1 className="formcontainer-title">Get started with some details...</h1>
+        </div>
+          <form onSubmit={handleFormSubmit}>
+            <Form
+              dropdownItems={genres}
+              selectionField="Writing Style"
+              selectedValue={formValues.genre}
+              onDropdownChange={(selectedValue) => handleDropdownChange('genre', selectedValue)}
+            />
+            <Form
+              dropdownItems={style}
+              selectionField="Artistic Style"
+              selectedValue={formValues.style}
+              onDropdownChange={(selectedValue) => handleDropdownChange('style', selectedValue)}
+            />
+
+            <div className='formcontainer-submit-container'>
+              <button type="submit" className="formcontainer-submit-button">Submit</button>
+            </div>
           </form>
         </div>
-      )}
-    </div>
+        )}
+      </div>
   );
 };
 

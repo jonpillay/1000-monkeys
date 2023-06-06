@@ -56,30 +56,37 @@ const ResultPage = ({ navigate }) => {
   };
 
   return (
-    <>
-      <div>
-      <button className="results-page-home">Home</button>
-      </div>
-      {isLoaded ? (
-        <div className="result-page">
-          <h1>Here's your story!</h1>
-          <div className="results-page-container">
+      <div className="resultpage-container">
+        <div>
+          <button className="resultspage-home">Home</button>
+        </div>
+        {isLoaded ? (
+        
+        <div className="resultpage">
+          <div className="resultpage-image">
             <Image link={imgUrl} />
+            <div className="resulpage-story">
+            <h1 className="resultpage-title">Here's your story!</h1>
             <Story storyString={story} />
-            <div className="buttons">
-              <button className="submit-button">Save this story</button>
-              <button className="submit-button">What happens next?</button>
-              <button className="submit-button">Steer this story</button>
-              <button className="submit-button">Refresh the story</button>
-            </div>
           </div>
         </div>
+
+        <div>
+          <div className="buttons">
+            <button className="submit-button">Save this story</button>
+            <button className="submit-button">What happens next?</button>
+            <button className="submit-button">Steer this story</button>
+            <button className="submit-button">Refresh the story</button>
+          </div>
+        </div>
+      </div>
+
       ) : (
         <div className="nav-box">
           <LoadingIcon />
         </div>
       )}
-    </>
+      </div>
   );
   
 };
