@@ -3,7 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
-import HouseSolid from "./house-solid.svg"
+import HomeIcon from "./home-icon.png"
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -69,7 +69,7 @@ const ResultPage = ({ navigate }) => {
     <>
       <div>
         <button className="results-page-home">
-          <img src={HouseSolid} alt="home" onClick={() => navigate("home")} />
+          <img src={HomeIcon} alt="home" onClick={() => navigate("/")} className="home-icon" />
         </button>
       </div>
       {isLoaded ? (

@@ -18,20 +18,20 @@
 
 .results-page-home {
   position: fixed;
-  top: 10px; /* Adjust the top position as needed */
+  top: 5px; /* Adjust the top position as needed */
   left: 10px; /* Adjust the left position as needed */
   z-index: 999; /* Ensure it's above other elements */
-  padding: 20px 20px;
-  font-size: 20px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
-  width: 10%;
+  width: 40px; /* Adjust the width as needed */
 }
 
-.results-page-home:hover {
-  background-color: #11111179;
+.home-icon {
+  width: 40px;
+  height: auto;
 }
 
 .scroll-container {
