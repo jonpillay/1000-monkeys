@@ -1,12 +1,8 @@
 describe("pressing the steer the story button after submitting story", () => {
 
   beforeEach(() => {
-
-  })
-
-  it("changes the prompt to user input, saves the message / image history and recalls the api", () => {
-    cy.getThrough();
     cy.viewport(1000,1000)
+    cy.getThrough();
     cy.fixture("storyChapters.json")
       .as("storyData2")
       .then((data) => {
@@ -21,6 +17,9 @@ describe("pressing the steer the story button after submitting story", () => {
         "imageRequest2"
       );
     });
+  })
+
+  it("changes the prompt to user input, saves the message / image history and recalls the api", () => {
     cy.get('[data-cy="steer-initiate"]').click()
     cy.get('input').type("going to the bank")
     cy.get('[data-cy="steer-submit"]').click()
@@ -41,4 +40,13 @@ describe("pressing the steer the story button after submitting story", () => {
       });
     });
   });
+
+  it("can be reverted to original state when cancel button is clicked", () => {
+    cy.get('[data-cy="steer-submit"]').should('not.exist')
+    cy.get('[data-cy="steer-initiate"]').click()
+    cy.get('[data-cy="steer-submit"]').should('be.visible')
+    cy.get('[data-cy="steer-cancel"]').should('be.visible')
+    cy.get('[data-cy="steer-cancel"]').click()
+    cy.get('[data-cy="steer-submit"]').should('not.exist')
+  })
 });
