@@ -5,10 +5,9 @@ import "./form-container.css";
 import logo from "./homepageLogo.gif";
 
 const FormContainer = ({ navigate }) => {
-  const character = ['Spiderman', 'Rapunzel', 'Darth Vader', 'Wonder Woman', 'Batman', 'Hermione Granger'];
-  const genre = ['Dystopian', 'Fairytale', 'Western', 'Cyberpunk', 'Sci-Fi'];
-  const style = ['Cartoon', 'Realistic', 'Pixar', 'Anime', 'Painting'];
-
+  const [character, setCharacter] = useState([]);
+  const [genre, setGenre] = useState([]);
+  const [style, setStyle] = useState([]);
   const [isAnimationVisible, setIsAnimationVisible] = useState(true);
   
   const [formValues, setFormValues] = useState({
@@ -19,6 +18,30 @@ const FormContainer = ({ navigate }) => {
     messageHistory: [],
     imageHistory: [],
   });
+
+  useEffect(() => {
+    fetch("/populate", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCharacter(data.character)
+        setStyle(data.style)
+        setGenre(data.genre)
+      });
+  }, [])
+
+  useEffect(() => {
+    fetch("/populate", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCharacter(data.character)
+        setStyle(data.style)
+        setGenre(data.genre)
+      });
+  }, [])
 
   useEffect(() => {
     const animationDuration = 3000;
