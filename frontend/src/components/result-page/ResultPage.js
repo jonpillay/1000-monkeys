@@ -4,7 +4,6 @@ import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory"
-import HomeIcon from "./home-icon.png"
 import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
@@ -16,7 +15,6 @@ const ResultPage = ({ navigate }) => {
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isButtonPressed, setIsButtonPressed] = useState(false);
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
@@ -92,15 +90,6 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(JSON.stringify(tempStorage));
   };
 
-  const handleButtonClick = () => {
-    setIsButtonPressed(true);
-  };
-
-  const handleButtonCancelClick = () => {
-    setIsButtonPressed(false);
-  };
-
-
   return (
     <>
       <div>
@@ -124,9 +113,7 @@ const ResultPage = ({ navigate }) => {
             </div>
             <div>
               <SteerStory
-                isButtonPressed={isButtonPressed}
-                handleButtonClick={handleButtonClick}
-                handleButtonCancelClick={handleButtonCancelClick}
+                callback={() => {}}
               />
             </div>
           </div>

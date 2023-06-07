@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import TextInput from '../text-input-form/TextInput';
 
-function SteerStory({ isButtonPressed, handleButtonClick, handleButtonCancelClick }) {
+function SteerStory({ callback }) {
   const [steerprompt, steerStoryPrompt] = useState('');
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -13,13 +14,17 @@ function SteerStory({ isButtonPressed, handleButtonClick, handleButtonCancelClic
     steerStoryPrompt(inputText);
   };
 
+  const handleButtonClick = () => {
+    setIsButtonPressed((state) => !state);
+  };
+
   return (
     <div>
       {isButtonPressed ? (
         <form onSubmit={handleFormSubmit}>
           <TextInput handleInputChange={handleInputChange} textField="Prompt" />
           <button type="submit">Craft the next chapter</button>
-          <button onClick={handleButtonCancelClick}>Cancel</button>
+          <button onClick={handleButtonClick}>Cancel</button>
         </form>
       ) : (
         <button className="submit-button" onClick={handleButtonClick}>
