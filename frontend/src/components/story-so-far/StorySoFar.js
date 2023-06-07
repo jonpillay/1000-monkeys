@@ -3,7 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import HomeButton from "../home-button/HomeButton";
 import "./StorySoFar.css";
-import html2pdf from "html2pdf.js";
+// import html2pdf from "html2pdf.js";
 
 const StorySoFar = ({ navigate  }) => {
   const [userChoices, setUserChoices] = useState(
@@ -13,22 +13,25 @@ const StorySoFar = ({ navigate  }) => {
   const messageHistory = userChoices.messageHistory;
   const imageHistory = userChoices.imageHistory;
 
-  const handleDownloadPDF = () => {
-    const element = document.querySelector('.story-so-far');
-    html2pdf()
-      .set({ margin: 0.5, filename: 'story_so_far.pdf' })
-      .from(element)
-      .save();
-  };
+  // const handleDownloadPDF = () => {
+  //   const content = `
+  //   <div>
+  //     ${imageHistory.map(image => `<img src="https://pub-8b49af329fae499aa563997f5d4068a4.r2.dev/generations/79dff0f1-123a-4554-a4cc-18932a8e85e7-0.png" />`).join('')}
+  //     ${messageHistory.map(str => `<p>${str}</p>`).join('')}
+  //   </div>
+  // `;
+
+  // html2pdf().from(content).save('myPdf.pdf');
+  // };
 
   return (
     <>
       <HomeButton navigate={ navigate }/>
       <h1 className="title">Your story so far!</h1>
-      <button className="download-button" onClick={handleDownloadPDF}>Download PDF</button>
+      {/* <button className="download-button" onClick={handleDownloadPDF}>Download PDF</button> */}
         <div className="story-so-far">
         {messageHistory.map((content, index) => (
-          <div key={index}>
+          <div className="chapter" key={index}>
             <Image link={imageHistory[index]} />
             <Story storyString={content}/>
           </div>
