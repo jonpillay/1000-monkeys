@@ -11,6 +11,7 @@
 //
 // -- This is a parent command --
 Cypress.Commands.add('getThrough', () => {
+  cy.clearLocalStorage()
   cy.fixture("images.json").as("imageData");
   cy.fixture("storyChapters.json").as("storyData");
   cy.visit("/");
