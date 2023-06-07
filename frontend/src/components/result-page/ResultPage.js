@@ -4,7 +4,7 @@ import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory"
-import HomeIcon from "./home-icon.png"
+// import HomeIcon from "./home-icon.png"
 import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
