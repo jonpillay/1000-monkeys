@@ -21,6 +21,10 @@ const GPT_prompt_gen = (inputs_dict) => {
       role: "system",
       content: "if I send you the previous chapters, I will provide the numerical title of the chapters so you can keep track of the chronology"
     },
+    {
+      role: "system",
+      content: "do not send me multiple chapters at once. you should only send me back one chapter at all times"
+    },
   ]
 
   const promptResults = JSON.parse(JSON.stringify(GPT_starter_prompts)) 
