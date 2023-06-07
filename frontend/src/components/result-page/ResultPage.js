@@ -106,15 +106,6 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(JSON.stringify(tempStorage));
   };
 
-  const handleButtonClick = () => {
-    setIsButtonPressed(true);
-  };
-
-  const handleButtonCancelClick = () => {
-    setIsButtonPressed(false);
-  };
-
-
   return (
     <>
       <div>
