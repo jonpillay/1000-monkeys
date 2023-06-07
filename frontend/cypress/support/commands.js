@@ -24,14 +24,14 @@ Cypress.Commands.add('getThrough', () => {
       "storyRequest"
     );
   });
-  cy.get(":nth-child(1) > .custom-select > .css-13cymwt-control").click();
+  cy.get(":nth-child(1) > .css-b62m3t-container > .css-13cymwt-control").click();
   cy.get("#react-select-3-listbox").first().click();
-  cy.get(":nth-child(2) > .custom-select > .css-13cymwt-control").click();
+  cy.get(":nth-child(2) > .css-b62m3t-container > .css-13cymwt-control").click();
   cy.get("#react-select-5-listbox").first().click();
-  cy.get(":nth-child(3) > .custom-select > .css-13cymwt-control").click();
+  cy.get(":nth-child(3) > .css-b62m3t-container > .css-13cymwt-control").click();
   cy.get("#react-select-7-listbox").first().click();
-  cy.get(".text-input > input").type("going to the shops");
-  cy.get(".submit-button").click();
+  cy.get(".text-input-input").type("going to the shops");
+  cy.get(".formcontainer-submit-button").click();
 })
 
 //

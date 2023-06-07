@@ -6,7 +6,7 @@ describe("TextInput component", () => {
     const inputValue = "Test Input";
 
     cy.mount(<TextInput handleInputChange={handleInputChange} />);
-    cy.get(".text-input input").type(inputValue);
-    cy.get(".text-input input").should("have.value", inputValue);
+    cy.get(".text-input-input").type(inputValue);
+    cy.get(".text-input-input").should("have.value", inputValue);
   });
 });
