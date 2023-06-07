@@ -10,8 +10,6 @@ const StorySoFar = ({ navigate  }) => {
   );
 
   const messageHistory = userChoices.messageHistory;
-  console.log(messageHistory[0])
-
   const imageHistory = userChoices.imageHistory;
 
   return (
