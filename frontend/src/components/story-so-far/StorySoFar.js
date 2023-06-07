@@ -17,8 +17,8 @@ const StorySoFar = ({ navigate  }) => {
   return (
     <>
       <HomeButton navigate={ navigate }/>
+      <h1 className="title">Your story so far!</h1>
         <div className="story-so-far">
-        <h1>Your story so far!</h1>
         {messageHistory.map((content, index) => (
           <div key={index}>
             <Image link={imageHistory[index]} />
