@@ -6,7 +6,6 @@ import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory"
 // import HomeIcon from "./home-icon.png"
 import HomeButton from "../home-button/HomeButton";
-import StorySoFar from "../story-so-far/StorySoFar";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
