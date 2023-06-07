@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
 import HomeButton from "../home-button/HomeButton";
+import "./StorySoFar.css";
 
 const StorySoFar = ({ navigate  }) => {
   const [userChoices, setUserChoices] = useState(

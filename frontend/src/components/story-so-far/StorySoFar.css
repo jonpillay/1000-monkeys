@@ -1,0 +1,6 @@
+.story-so-far {
+  margin-left: 10%;
+  max-width: 80vw;
+  max-height: 85vh;
+  overflow-y: auto;
+}
