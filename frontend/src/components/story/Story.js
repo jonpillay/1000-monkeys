@@ -2,7 +2,7 @@ import './Story.css';
 
 const Story = ({storyString}) => {
   return (
-    <div>
+    <div className='story-container'>
       <p className='story-text-para'>{storyString}</p>
     </div>
   )
