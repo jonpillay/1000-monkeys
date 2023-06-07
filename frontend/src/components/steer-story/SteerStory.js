@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import TextInput from '../text-input-form/TextInput';
 
 function SteerStory({ callback }) {
-  const [steerprompt, steerStoryPrompt] = useState('');
+  const [storyPrompt, steerStoryPrompt] = useState('');
   const [isButtonPressed, setIsButtonPressed] = useState(false);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Craft the next chapter:', steerprompt);
+    handleButtonClick();
+    callback(storyPrompt)
   };
 
   const handleInputChange = (inputText) => {
@@ -23,11 +24,11 @@ function SteerStory({ callback }) {
       {isButtonPressed ? (
         <form onSubmit={handleFormSubmit}>
           <TextInput handleInputChange={handleInputChange} textField="Prompt" />
-          <button type="submit">Craft the next chapter</button>
-          <button onClick={handleButtonClick}>Cancel</button>
+          <button className="submit-button" data-cy="steer-submit" type="submit">Craft the next chapter</button>
+          <button className="submit-button" data-cy="steer-cancel" onClick={handleButtonClick}>Cancel</button>
         </form>
       ) : (
-        <button className="submit-button" onClick={handleButtonClick}>
+        <button data-cy="steer-initiate" className="submit-button" onClick={handleButtonClick}>
           Steer this story
         </button>
       )}

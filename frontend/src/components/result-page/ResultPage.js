@@ -73,6 +73,15 @@ const ResultPage = ({ navigate }) => {
     triggerReload();
   };
 
+  const steerOnUserInput = (steerInput) => {
+    resetLoadingParameters();
+    updateStorageAndHooks(
+      "prompt",
+      steerInput
+    );
+    triggerReload();
+  }
+
   const resetLoadingParameters = () => {
     setGPTLoaded(false);
     setSDLoaded(false);
@@ -113,7 +122,7 @@ const ResultPage = ({ navigate }) => {
             </div>
             <div>
               <SteerStory
-                callback={() => {}}
+                callback={steerOnUserInput}
               />
             </div>
           </div>

@@ -1,6 +1,12 @@
 describe("pressing the steer the story button after submitting story", () => {
+
+  beforeEach(() => {
+
+  })
+
   it("changes the prompt to user input, saves the message / image history and recalls the api", () => {
     cy.getThrough();
+    cy.viewport(1000,1000)
     cy.fixture("storyChapters.json")
       .as("storyData2")
       .then((data) => {
@@ -15,11 +21,14 @@ describe("pressing the steer the story button after submitting story", () => {
         "imageRequest2"
       );
     });
-    cy.get('[data-cy="next"]').click();
+    cy.get('[data-cy="steer-initiate"]').click()
+    cy.get('input').type("going to the bank")
+    cy.get('[data-cy="steer-submit"]').click()
+
     cy.window().then((win) => {
       const storedData = JSON.parse(win.localStorage.getItem("userChoices"));
       expect(storedData.prompt).to.equal(
-        "what you think will happen in the next chapter based on the history you received"
+        "going to the bank"
       );
       expect(storedData.messageHistory.length).to.equal(2);
       cy.get("@storyData").then((data) => {
