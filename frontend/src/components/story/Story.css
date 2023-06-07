@@ -10,5 +10,17 @@
     font-weight: normal;
     font-size: 17px;
     box-sizing: border-box;
-    background: #f1f1f1; 
+    background: #f1f1f1;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
+
+.story-container {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    justify-content: center;
+    width: 100%;
+  }
+
