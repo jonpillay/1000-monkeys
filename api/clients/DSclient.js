@@ -40,34 +40,32 @@ async function DSGenerateImage(prompts, style) {
   }
 
   const responseJSON = await response.json();
-  responseJSON.artifacts.forEach(async (image, index) => {
-    // console.log("upload started")
-    // fs.writeFileSync(
-    //   `./out/v1_txt2img_${Date.now()}.png`,
-    //   Buffer.from(image.base64, 'base64')
-    // );
-    const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, image.base64)
-    // console.log(remoteImage.data.display_url)
-    return remoteImage.data.display_url
+  const imagePromises = responseJSON.artifacts.map(async (image, index) => {
+    const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, image.base64);
+    console.log(remoteImage.data.display_url);
+    return remoteImage.data.display_url;
   });
+  
+  const imageUrls = await Promise.all(imagePromises);
+  console.log(imageUrls);
+  return imageUrls;
+  
 }
 
 module.exports = DSGenerateImage
 
-// userinput = {
-//   character: 'Spiderman',
-//   genre: 'Fairytale',
-//   style: 'Realistic',
-//   prompt: 'go to the shops',
-//   messageHistory: [],
-//   imageHistory: []
-// }
+userinput = {
+  character: 'Spiderman',
+  genre: 'Fairytale',
+  style: 'Anime',
+  prompt: 'Spiderman on a horse',
+  messageHistory: [],
+  imageHistory: []
+}
 
 // const context = "Matilda and her children walking through the misty, cobblestone streets. Matilda wearing a cloak and carrying a wand. The gates of Hogwarts in the background. The magical world feeling alive and full of possibilities."
 
 // // testing script
-
-// console.log(context + prompts.prompts);
 
 // console.log(DSPromptGen(userinput))
 

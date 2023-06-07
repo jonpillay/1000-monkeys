@@ -12,6 +12,7 @@ const ImagesController = {
       const prompts = DSPromptGen(req.body)
       console.log(prompts)  
       const result = await DSGenerateImage(prompts.prompts, prompts.art_style);
+      console.log(`This is the img url on the backend ${result}`)
       res.status(200).json({ imgUrl: result });
     } catch (error) {
       res.status(error.status).json({ message: error.message });

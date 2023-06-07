@@ -44,8 +44,9 @@ const ResultPage = ({ navigate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("This is how the frontend receives the URl " + data)
-        setImgUrl(data);
+        console.log(data)
+        console.log(`This is how the frontend receives the URl ${data.imgUrl}`)
+        setImgUrl(data["imgUrl"]);
         updateStorageAndHooks("imageHistory", data["imgUrl"]);
         setSDLoaded(true);
       });
