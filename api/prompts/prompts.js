@@ -72,6 +72,14 @@ const sdPromptBank = {
         },
     },
 }
+
+const retrieveAllDropdowns = () => {
+    const dropdowns = {};
+    for (const category in sdPromptBank) {
+      dropdowns[category] = Object.keys(sdPromptBank[category]);
+    }
+    return dropdowns;
+}
     
 const matchSelectionCriteria = (userSelection) => {
 const positivePrompts = []
@@ -85,4 +93,7 @@ for (let key in userSelection) {
 return {positivePrompts: positivePrompts.flat().join(', '), negativePrompts: negativePrompts.flat().join(', ')}
 }
 
-module.exports = { matchSelectionCriteria };
+module.exports = { 
+    matchSelectionCriteria: matchSelectionCriteria,
+    retrieveAllDropdowns: retrieveAllDropdowns 
+};

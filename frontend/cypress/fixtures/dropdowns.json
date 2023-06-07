@@ -1,0 +1,24 @@
+{
+  "character": [
+      "Spiderman",
+      "Rapunzel",
+      "Darth Vader",
+      "Wonder Woman",
+      "Hermione Granger",
+      "Batman"
+  ],
+  "genre": [
+      "Dystopian",
+      "Fairytale",
+      "Western",
+      "Cyberpunk",
+      "Sci-Fi"
+  ],
+  "style": [
+      "Cartoon",
+      "Realistic",
+      "Pixar",
+      "Anime",
+      "Painting"
+  ]
+}
