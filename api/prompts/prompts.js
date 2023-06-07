@@ -82,7 +82,7 @@ const retrieveAllDropdowns = () => {
 }
     
 const matchSelectionCriteria = (userSelection) => {
-const positivePrompts = []
+const positivePrompts = [userSelection["prompt"]]
 const negativePrompts = []
 for (let key in userSelection) {
     if (sdPromptBank.hasOwnProperty(key)) {
