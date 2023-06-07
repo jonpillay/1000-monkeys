@@ -9,7 +9,7 @@ const sdPromptBank = {
           negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
       },
       'Darth Vader': {
-          positivePrompts: ['{{Darth Vader}}', 'human body', 'male', 'all black', 'fine detail', 'sharp focus'],
+          positivePrompts: ['Darth Vader', 'human body', 'male', 'all black', 'fine detail', 'sharp focus'],
           negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
       },
       'Wonder Woman': {
@@ -73,11 +73,8 @@ const sdPromptBank = {
   },
 }
 
-
-
-  
 const DSPromptGen = (userSelection) => {
-const prompts = ["go to the shops"]
+const prompts = []
 let art_style = ""
 for (let key in userSelection) {
   console.log(key)
@@ -93,17 +90,17 @@ for (let key in userSelection) {
     } else {
       art_style = "fantasy-art"
     }
-  } else if(key == 'prompt') {
-    prompts.push(userSelection[key])
   } else if (key == 'character' || key == 'genre' || key == 'style') {
     // console.log("here")
     prompts.push(sdPromptBank[key][userSelection[key]]['positivePrompts'])
     let negPrompts = sdPromptBank[key][userSelection[key]]['negativePrompts']
     prompts.push(negPrompts.join(':-1.0, ') + ':-1.0')
+  } else if(key == 'prompt') {
+    prompts.push(userSelection[key])
   }
 }
-// console.log(prompts.flat().join(', '))
-return {prompts: prompts.flat().join(', '), art_style: art_style}
+console.log(prompts.flat().join(', '))
+return {prompts: prompts.reverse().flat().join(', '), art_style: art_style}
 }
 
 module.exports = DSPromptGen;
@@ -118,4 +115,3 @@ module.exports = DSPromptGen;
 //   messageHistory: [],
 //   imageHistory: []
 // }))
-
