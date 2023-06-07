@@ -6,6 +6,7 @@ import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory"
 // import HomeIcon from "./home-icon.png"
 import HomeButton from "../home-button/HomeButton";
+import StorySoFar from "../story-so-far/StorySoFar";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -100,7 +101,6 @@ const ResultPage = ({ navigate }) => {
     setIsButtonPressed(false);
   };
 
-
   return (
     <>
       <div>
@@ -119,7 +119,11 @@ const ResultPage = ({ navigate }) => {
               >
                 What happens next?
               </button>
-              <button className="submit-button">Story so far...</button>
+              <button className="submit-button"
+                data-cy="story-so-far"
+                onClick={() => navigate(StorySoFar)}
+              >
+                Story so far...</button>
               <button className="submit-button">Refresh the story</button>
             </div>
             <div>

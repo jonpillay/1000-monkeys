@@ -4,13 +4,14 @@ import Story from "../story/Story";
 import HomeButton from "../home-button/HomeButton";
 
 const StorySoFar = ({ navigate  }) => {
-  const [messageHistory, setMessageHistory] = useState(
-    JSON.parse(window.localStorage.getItem("messageHistory")) || []
+  const [userChoices, setUserChoices] = useState(
+    JSON.parse(window.localStorage.getItem("userChoices")) || []
   );
 
-  const [imageHistory, setImageHistory] = useState(
-    JSON.parse(window.localStorage.getItem("imageHistory")) || []
-  );
+  const messageHistory = userChoices.messageHistory;
+  console.log(messageHistory[0])
+
+  const imageHistory = userChoices.imageHistory;
 
   return (
     <>
@@ -20,7 +21,7 @@ const StorySoFar = ({ navigate  }) => {
         {messageHistory.map((content, index) => (
           <div key={index}>
             <Image link={imageHistory[index]} />
-            <Story content={content} />
+            <Story storyString={content}/>
           </div>
         ))}
         </div>
