@@ -3,7 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
-import SteerStory from "../steer-story/SteerStory"
+import SteerStory from "../steer-story/SteerStory";
 import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
@@ -75,12 +75,19 @@ const ResultPage = ({ navigate }) => {
 
   const steerOnUserInput = (steerInput) => {
     resetLoadingParameters();
-    updateStorageAndHooks(
-      "prompt",
-      steerInput
-    );
+    updateStorageAndHooks("prompt", steerInput);
     triggerReload();
-  }
+  };
+
+  const refreshStory = () => {
+    resetLoadingParameters();
+    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    tempStorage.messageHistory.pop();
+    tempStorage.imageHistory.pop();
+    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    setUserChoices(JSON.stringify(tempStorage));
+    triggerReload();
+  };
 
   const resetLoadingParameters = () => {
     setGPTLoaded(false);
@@ -102,7 +109,7 @@ const ResultPage = ({ navigate }) => {
   return (
     <>
       <div>
-        <HomeButton navigate={ navigate }/>
+        <HomeButton navigate={navigate} />
       </div>
       {isLoaded ? (
         <div className="result-page">
@@ -118,12 +125,16 @@ const ResultPage = ({ navigate }) => {
                 What happens next?
               </button>
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">Refresh the story</button>
+              <button
+                className="submit-button"
+                data-cy="refresh"
+                onClick={refreshStory}
+              >
+                Refresh the story
+              </button>
             </div>
             <div>
-              <SteerStory
-                callback={steerOnUserInput}
-              />
+              <SteerStory callback={steerOnUserInput} />
             </div>
           </div>
         </div>
