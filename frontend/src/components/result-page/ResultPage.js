@@ -121,7 +121,7 @@ const ResultPage = ({ navigate }) => {
               </button>
               <button className="submit-button"
                 data-cy="story-so-far"
-                onClick={() => navigate(StorySoFar)}
+                onClick={() => navigate("/storysofar")}
               >
                 Story so far...</button>
               <button className="submit-button">Refresh the story</button>
