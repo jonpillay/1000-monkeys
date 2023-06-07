@@ -1,3 +1,13 @@
+.sub-title {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: normal;
+    font-size: 150%;
+    white-space: nowrap;
+    text-align: center;
+}
+
 :root {
     --hue: 223;
     --bg: hsl(var(--hue),10%,90%);

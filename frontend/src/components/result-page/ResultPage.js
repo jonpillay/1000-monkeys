@@ -111,14 +111,18 @@ const ResultPage = ({ navigate }) => {
       <div>
         <HomeButton navigate={navigate} />
       </div>
-      
       {isLoaded ? (
         <div className="result-page">
+          <h1 className="resultpage-title">Here's your story!</h1>
           <div className="results-page-container">
-            <Image link={imgUrl} />
-            <div className="resulpage-story">
-            <h1 className="resultpage-title">Here's your story!</h1>
-            <Story storyString={story} />
+            <div className="image-container">
+              <Image link={imgUrl} />
+            </div>
+            <div className="story-container">
+              <Story storyString={story} />
+            </div>
+        </div>
+          <SteerStory callback={steerOnUserInput} />
             <div className="buttons">
               <button className="submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
               <button className="submit-button">Save this story</button>
@@ -126,15 +130,12 @@ const ResultPage = ({ navigate }) => {
                 className="submit-button"
                 data-cy="refresh"
                 onClick={refreshStory}
-              >
+                >
                 Refresh the story
               </button>
-            </div>
             <div>
-              <SteerStory callback={steerOnUserInput} />
-            </div>
-          </div>
         </div>
+      </div>
       </div>
       ) : (
         <div className="nav-box">

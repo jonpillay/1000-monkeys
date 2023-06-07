@@ -1,5 +1,5 @@
 import './HomeButton.css';
-import HomeIcon from './home-icon.png';
+import HomeIcon from './home-icon-1.png';
 
 const HomeButton = ({ navigate }) => {
   const goHome = () => {
