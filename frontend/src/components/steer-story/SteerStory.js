@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import TextInput from '../text-input-form/TextInput';
 
-function SteerStory({ isButtonPressed, handleButtonClick, handleButtonCancelClick }) {
-  const [steerprompt, steerStoryPrompt] = useState('');
+function SteerStory({ callback }) {
+  const [storyPrompt, steerStoryPrompt] = useState('');
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('Craft the next chapter:', steerprompt);
+    handleButtonClick();
+    callback(storyPrompt)
   };
 
   const handleInputChange = (inputText) => {
     steerStoryPrompt(inputText);
+  };
+
+  const handleButtonClick = () => {
+    setIsButtonPressed((state) => !state);
   };
 
   return (
@@ -18,11 +24,11 @@ function SteerStory({ isButtonPressed, handleButtonClick, handleButtonCancelClic
       {isButtonPressed ? (
         <form onSubmit={handleFormSubmit}>
           <TextInput handleInputChange={handleInputChange} textField="Prompt" />
-          <button type="submit">Craft the next chapter</button>
-          <button onClick={handleButtonCancelClick}>Cancel</button>
+          <button className="submit-button" data-cy="steer-submit" type="submit">Craft the next chapter</button>
+          <button className="submit-button" data-cy="steer-cancel" onClick={handleButtonClick}>Cancel</button>
         </form>
       ) : (
-        <button className="submit-button" onClick={handleButtonClick}>
+        <button data-cy="steer-initiate" className="submit-button" onClick={handleButtonClick}>
           Steer this story
         </button>
       )}

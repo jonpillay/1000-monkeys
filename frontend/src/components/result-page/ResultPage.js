@@ -3,8 +3,7 @@ import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
-import SteerStory from "../steer-story/SteerStory"
-import HomeIcon from "./home-icon.png"
+import SteerStory from "../steer-story/SteerStory";
 import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
@@ -16,7 +15,6 @@ const ResultPage = ({ navigate }) => {
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isButtonPressed, setIsButtonPressed] = useState(false);
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
@@ -75,6 +73,22 @@ const ResultPage = ({ navigate }) => {
     triggerReload();
   };
 
+  const steerOnUserInput = (steerInput) => {
+    resetLoadingParameters();
+    updateStorageAndHooks("prompt", steerInput);
+    triggerReload();
+  };
+
+  const refreshStory = () => {
+    resetLoadingParameters();
+    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    tempStorage.messageHistory.pop();
+    tempStorage.imageHistory.pop();
+    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    setUserChoices(JSON.stringify(tempStorage));
+    triggerReload();
+  };
+
   const resetLoadingParameters = () => {
     setGPTLoaded(false);
     setSDLoaded(false);
@@ -92,19 +106,10 @@ const ResultPage = ({ navigate }) => {
     setUserChoices(JSON.stringify(tempStorage));
   };
 
-  const handleButtonClick = () => {
-    setIsButtonPressed(true);
-  };
-
-  const handleButtonCancelClick = () => {
-    setIsButtonPressed(false);
-  };
-
-
   return (
     <>
       <div>
-        <HomeButton navigate={ navigate }/>
+        <HomeButton navigate={navigate} />
       </div>
       
       {isLoaded ? (
@@ -117,14 +122,16 @@ const ResultPage = ({ navigate }) => {
             <div className="buttons">
               <button className="submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">Refresh the story</button>
+              <button
+                className="submit-button"
+                data-cy="refresh"
+                onClick={refreshStory}
+              >
+                Refresh the story
+              </button>
             </div>
             <div>
-              <SteerStory
-                isButtonPressed={isButtonPressed}
-                handleButtonClick={handleButtonClick}
-                handleButtonCancelClick={handleButtonCancelClick}
-              />
+              <SteerStory callback={steerOnUserInput} />
             </div>
           </div>
         </div>
