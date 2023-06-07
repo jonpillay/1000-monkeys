@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 
-const MessagesRouter = require("./routes/messages");
 const ImagesRouter = require('./routes/images');
 const StoryRouter = require("./routes/story");
 
@@ -16,11 +15,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-
-
-// JP. I'm a bit unser about how we're going to fire both controllers. I think we need to think about mixing them together 
 // route setup
-app.use("/", MessagesRouter);
 app.use("/images", ImagesRouter)
 app.use("/story", StoryRouter)
 

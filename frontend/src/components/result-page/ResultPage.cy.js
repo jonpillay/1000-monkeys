@@ -3,12 +3,17 @@ import ResultPage from "./ResultPage";
 
 describe("ResultPage", () => {
   beforeEach(() => {
-    cy.intercept("POST", "/images", { fixture: "images.json" }).as("imagesRequest");
-    cy.intercept("POST", "/story", { fixture: "story.json" }).as("storyRequest");
+    cy.intercept("POST", "/images", { fixture: "images.json" }).as(
+      "imagesRequest"
+      // mock response from the server - message history
+    );
+    cy.intercept("POST", "/story", { fixture: "story.json" }).as(
+      "storyRequest"
+    );
   });
 
   it("shows the result page when loaded", () => {
-    mount(<ResultPage navigate={() => {}} />);
+    cy.mount(<ResultPage navigate={() => {}} />);
 
     cy.wait(["@imagesRequest", "@storyRequest"]).then(() => {
       cy.get(".result-page").should("be.visible");

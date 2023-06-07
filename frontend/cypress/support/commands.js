@@ -10,12 +10,30 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('signup', (email, password) => {
-  cy.visit("/signup");
-  cy.get("#email").type(email);
-  cy.get("#password").type(password);
-  cy.get("#submit").click();
+Cypress.Commands.add('getThrough', () => {
+  cy.fixture("images.json").as("imageData");
+  cy.fixture("storyChapters.json").as("storyData");
+  cy.visit("/");
+  cy.get("@imageData").then((data) => {
+    cy.intercept("POST", "/images", { imgUrl: data.imgUrl }).as(
+      "imageRequest"
+    );
+  });
+  cy.get("@storyData").then((data) => {
+    cy.intercept("POST", "/story", { storyText: data.storyText }).as(
+      "storyRequest"
+    );
+  });
+  cy.get(":nth-child(1) > .custom-select > .css-13cymwt-control").click();
+  cy.get("#react-select-3-listbox").first().click();
+  cy.get(":nth-child(2) > .custom-select > .css-13cymwt-control").click();
+  cy.get("#react-select-5-listbox").first().click();
+  cy.get(":nth-child(3) > .custom-select > .css-13cymwt-control").click();
+  cy.get("#react-select-7-listbox").first().click();
+  cy.get(".text-input > input").type("going to the shops");
+  cy.get(".submit-button").click();
 })
+
 //
 //
 // -- This is a child command --
