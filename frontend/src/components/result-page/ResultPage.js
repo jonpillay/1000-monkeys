@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
-import './ResultPage.css'
+import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
+import SteerStory from "../steer-story/SteerStory"
+import HomeIcon from "./home-icon.png"
+import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
@@ -13,11 +16,17 @@ const ResultPage = ({ navigate }) => {
   const [SDLoaded, setSDLoaded] = useState(false);
   const [GPTLoaded, setGPTLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isButtonPressed, setIsButtonPressed] = useState(false);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    GPTClientCall(userChoices)
-    sdClientCall(userChoices);
-  }, []);
+    GPTClientCall(userChoices);
+    imageClientCall(userChoices);
+  }, [reload]);
+
+  const triggerReload = () => {
+    setReload((prevStat) => !prevStat);
+  };
 
   useEffect(() => {
     if (SDLoaded === true && GPTLoaded === true) {
@@ -25,7 +34,7 @@ const ResultPage = ({ navigate }) => {
     }
   }, [SDLoaded, GPTLoaded]);
 
-  const sdClientCall = (userChoices) => {
+  const imageClientCall = (userChoices) => {
     fetch("/images", {
       method: "POST",
       headers: {
@@ -36,6 +45,7 @@ const ResultPage = ({ navigate }) => {
       .then((response) => response.json())
       .then((data) => {
         setImgUrl(data.imgUrl);
+        updateStorageAndHooks("imageHistory", data["imgUrl"]);
         setSDLoaded(true);
       });
   };
@@ -51,26 +61,73 @@ const ResultPage = ({ navigate }) => {
       .then((response) => response.json())
       .then((data) => {
         setStory(data["storyText"]);
+        updateStorageAndHooks("messageHistory", data["storyText"]);
         setGPTLoaded(true);
       });
   };
 
+  const whatHappensNext = () => {
+    resetLoadingParameters();
+    updateStorageAndHooks(
+      "prompt",
+      "what you think will happen in the next chapter based on the history you received"
+    );
+    triggerReload();
+  };
+
+  const resetLoadingParameters = () => {
+    setGPTLoaded(false);
+    setSDLoaded(false);
+    setIsLoaded(false);
+  };
+
+  const updateStorageAndHooks = (key, value) => {
+    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    if (key === "messageHistory" || key === "imageHistory") {
+      tempStorage[key] = [...tempStorage[key], value];
+    } else {
+      tempStorage[key] = value;
+    }
+    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    setUserChoices(JSON.stringify(tempStorage));
+  };
+
+  const handleButtonClick = () => {
+    setIsButtonPressed(true);
+  };
+
+  const handleButtonCancelClick = () => {
+    setIsButtonPressed(false);
+  };
+
+
   return (
     <>
       <div>
-      <button className="results-page-home">Home</button>
+        <HomeButton navigate={ navigate }/>
       </div>
       {isLoaded ? (
         <div className="result-page">
-          <h1>Here's your story!</h1>
           <div className="results-page-container">
             <Image link={imgUrl} />
             <Story storyString={story} />
             <div className="buttons">
+              <button
+                className="submit-button"
+                data-cy="next"
+                onClick={whatHappensNext}
+              >
+                What happens next?
+              </button>
               <button className="submit-button">Save this story</button>
-              <button className="submit-button">What happens next?</button>
-              <button className="submit-button">Steer this story</button>
               <button className="submit-button">Refresh the story</button>
+            </div>
+            <div>
+              <SteerStory
+                isButtonPressed={isButtonPressed}
+                handleButtonClick={handleButtonClick}
+                handleButtonCancelClick={handleButtonCancelClick}
+              />
             </div>
           </div>
         </div>
@@ -81,7 +138,6 @@ const ResultPage = ({ navigate }) => {
       )}
     </>
   );
-  
 };
 
 export default ResultPage;

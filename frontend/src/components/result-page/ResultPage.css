@@ -1,64 +1,56 @@
-.result-page, .nav-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
-    margin-bottom: 800px;
-    padding: 10px;
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+.result-page,
+.nav-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 800px;
+  padding: 10px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .results-page-container {
-    text-align: center;
-    margin-top: 100;
+  text-align: center;
+  margin-top: 100;
 }
 
 .results-page-home {
-    position: fixed;
-    top: 10px; /* Adjust the top position as needed */
-    left: 10px; /* Adjust the left position as needed */
-    z-index: 999; /* Ensure it's above other elements */
-    padding: 20px 20px;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #2a2a2a48;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 0.5px solid #ffa500;
-    width: 10%;
-}
-  
-.results-page-home:hover {
-    background-color: #11111179;
+  position: fixed;
+  top: 5px; /* Adjust the top position as needed */
+  left: 10px; /* Adjust the left position as needed */
+  z-index: 999; /* Ensure it's above other elements */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  width: 40px; /* Adjust the width as needed */
 }
 
 .scroll-container {
-    max-height: 800px; /* Adjust the height as needed */
-    overflow-y: auto;
+  max-height: 800px; /* Adjust the height as needed */
+  overflow-y: auto;
 }
 
-.button {
-    background-color: orange;
-    color: white;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  /* margin-bottom: 800px; */
+  padding: 10px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 12px;
 }
 
-.button::before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid white;
-    margin-right: 5px;
+.result-button {
+  height: auto;
+  font-size: 17px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-

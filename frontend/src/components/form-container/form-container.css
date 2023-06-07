@@ -1,13 +1,15 @@
 .formcontainer {
+    display: flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: 18px;
     padding: 10px;
     text-align: center;
     border-radius: 8px;
-    border: 0px solid #ffffff76;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 20px;
     width: 50%;
 }
 
@@ -18,8 +20,9 @@
 }
 
 .formcontainer-container {
-    max-width: 600px;
-    margin: 10px;
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
     padding: 10px;
 }
 
@@ -50,10 +53,23 @@
     background-color: #11111179;
 }
 
-.sub-title {
-    color: white;
-    font-weight: normal;
-    font-size: 24px;
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+      }
+
+    100% {
+      opacity: 0;
+    }
+  }
+  
+.formcontainer-logo-gif {
+    display: flex;
     align-items: center;
-    white-space: nowrap;
-}
+    animation: fadeOut 3s linear forwards;
+  }
+  
