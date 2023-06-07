@@ -1,76 +1,74 @@
-#  AI-tistic-Tales
-
+![AI-Tastic Tales](/frontend/public/images/homepageLogo313.png)
+------
+------
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+## **Table of Contents**
+
+1. Project Description
+2. Features
+3. MVP (Miniman Viable Product)
+4. Technologies
+5. Prerequisites
+6. Installation
+7. Running the project
+8. Run tests in the:  
+    a. Backend  
+    b. Frontend  
+    c. Database
+9. Authors
 
 ------
-
-- Table of Contents
-- Project Description
-- Features
-- MVP
-- Technologies
-- How to run the project
-- Prerequisites
-- Installation
-  - How to run tests
-    - 1. Backend
-    - 2. Frontend
-  - Database
-
 ------
-
 <!-- ABOUT THE PROJECT -->
-## Project Description
+## **1. Project Description**
+
+Introducing "AI-Tastic Tales: Personalised Storytelling & Visual Imagery Generator." This innovative program harnesses the capabilities of the ChatGPT API to craft unique short stories, tailored chapter by chapter to user prompts. Additionally, it seamlessly incorporates the Stable Diffusion API, allowing for the generation of captivating visuals inspired by the story prompts. Users are invited to provide prompts, receive story chapters, and offer feedback to actively shape the narrative. AI-Tastic Tales dynamically generates visuals that complement the evolving story, resulting in a captivating and immersive experience. The final creation can be exported and shared in a variety of formats. Immerse yourself in the power of AI-driven storytelling and behold the beauty of stunning visuals with AI-Tastic Tales.
 
 ------
-
-Introducing "AI-tistic Tales: Personalized Storytelling & Visual Imagery Generator." This program utilizes the ChatGPT API to create customized short stories chapter by chapter based on user prompts. It also integrates the Stable Diffusion API to generate visuals inspired by the story prompts. Users provide prompts, receive story chapters, and provide feedback to shape the narrative. AI-tistic Tales dynamically creates visuals that accompany the evolving story. The final creation can be exported and shared in various formats. Experience the power of AI-driven storytelling and stunning visuals with AI-tistic Tales.
-
-## AI-tistic Tales Features
+------
+## **2. AI-Tastic Tales Features**
 
 - User Prompts: Users provide creative inputs like characters, settings, and themes for their story.
 - Chapter Generation: ChatGPT API generates captivating story chapters, incorporating user prompts seamlessly.
 - Iterative Storytelling: Users provide feedback and ideas for each chapter, shaping the story according to their preferences and imagination.
 - API Integration: Stable Diffusion API creates vivid visual descriptions based on story prompts, enhancing the immersive experience.
-- Dynamic Visuals: AI-tistic Tales generates visuals inspired by user prompts and AI-generated content, evolving with each chapter.
+- Dynamic Visuals: AI-Tastic Tales generates visuals inspired by user prompts and AI-generated content, evolving with each chapter.
 - Export and Sharing: Users can export personalized stories with visuals in various formats and share them with others.
 
 ------
+------
 
-## MVP
+## **3. MVP | Minimum Viable Product**
 
-![excalidraw plan](/frontend/public/images/AI-tistic_Tales-MVP-wireframe.png)
+Below is an example of our MVP:
+![excalidraw plan](/frontend/public/images/mvp_wireframes.png)
 
 ------
 
-## Card Wall
+### GitHub Project Table
 
-[Github Board link](https://github.com/orgs/AI-tistic-Tales/projects/1/views/1)
-
-------
-
-## MERN STACK AND OTHER TECHNOLOGIES
-
-- [![Express][express-badge]][express-url]
-- [![React][react-badge]][react-url]
-- [![Node.js][node-badge]][node-url]
-
-additional tools:
-
-- [Jest](https://jestjs.io/) for unit testing on the back end
-- [Cypress](https://www.cypress.io/) for end-to-end testing and component testing, on the front end
-- [Handlebars](https://handlebarsjs.com/) for the `home` template.
-- [Nodemon](https://nodemon.io/) to reload the server automatically.
+[Link to our Github Project Table](https://github.com/orgs/AI-tistic-Tales/projects/1/views/1)
 
 ------
-
-<!-- INSTALLATION -->
-## How to run the project
-
 ------
 
-## Prerequisites
+## **4. MERN stack and other technologies**
+
+- <img src="https://simpleicons.org/icons/express.svg" width="12" height="12">  [Express](https://expressjs.com/)
+- <img src="https://simpleicons.org/icons/react.svg" width="12" height="12">  [React](https://react.dev/)
+- <img src="https://simpleicons.org/icons/nodedotjs.svg" width="12" height="12">  [Node](https://nodejs.org/en)
+
+Additional technologies:
+
+- <img src="https://simpleicons.org/icons/jest.svg" width="12" height="12">  [Jest](https://jestjs.io/)
+- <img src="https://simpleicons.org/icons/cypress.svg" width="12" height="12">  [Cypress](https://www.cypress.io/)
+- <img src="https://simpleicons.org/icons/handlebarsdotjs.svg" width="12" height="12">  [Handlebars](https://handlebarsjs.com/)
+- <img src="https://simpleicons.org/icons/nodemon.svg" width="12" height="12">  [Nodemon](https://www.npmjs.com/package/nodemon)
+
+------
+------
+
+## **5. Prerequisites**
 
 Before running the project, ensure that you have installed `npm` and `node` in your local machine. If they are not installed, please follow the steps below.
 
@@ -90,8 +88,9 @@ Before running the project, ensure that you have installed `npm` and `node` in y
     ```
 
 ------
+------
 
-## Installation
+## **6. Installation**
 
 1. Clone the repo
 
@@ -108,15 +107,36 @@ Before running the project, ensure that you have installed `npm` and `node` in y
     cd ../frontend
     npm install
     ```
+------
+------
+<!-- INSTALLATION -->
+## **7. Running the project**
 
+Once the repository is cloned and the dependencies have been installed, run the program.
+
+1. To run the backend:
+
+    ```
+    cd api
+    npm start
+    ```
+2. Then to run the frontend:
+
+    ```
+    cd ../frontend
+    npm start
+    ```
+
+
+------
 ------
 
 <!-- TESTING -->
-## How to run the tests
+## **8. Run the tests**
 
-------
+Close the program by inputting `ctrl+c` in both the api and frontend terminal. Then do the following:
 
-- #### The Backend (API)
+- #### *a. The Backend (API)*
 
     Start the server in test mode (so that it connects to the test DB)
 
@@ -132,7 +152,7 @@ Before running the project, ensure that you have installed `npm` and `node` in y
     npm run test
     ```
 
-- #### The Frontend (React)
+- #### *b. The Frontend (React)*
 
     Start the server in test mode (so that it connects to the test DB)
 
@@ -155,7 +175,7 @@ Before running the project, ensure that you have installed `npm` and `node` in y
     npm run test
     ```
 
-- #### The Frontend (React)
+- ### b. The Frontend (React)
 
     ```bash
     use aitistic_tales
@@ -170,4 +190,21 @@ Before running the project, ensure that you have installed `npm` and `node` in y
     ```
 
 ------
+------
 
+## **9. Authors**
+
+### Each valued member of AI-Tastic Tales that contributed to this project:
+
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://avatars.githubusercontent.com/u/63741021?v=4" width="30" height="30"> [Jon Pillay](https://github.com/jonpillay)
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://avatars.githubusercontent.com/u/10515623?v=4" width="30" height="30"> [Natasha Buckham](https://github.com/natashabuckham)
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://avatars.githubusercontent.com/u/114309741?v=4" width="30" height="30"> [Sidra Iqbal](https://github.com/siqbal181)
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://ca.slack-edge.com/T03ALA7H4-U04NVL8MM3Q-1efd84dcd610-512" width="30" height="30"> [Chris Toplisek](https://github.com/toppy007)
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://avatars.githubusercontent.com/u/121251204?v=4" width="30" height="30"> [Umut Baykan](https://github.com/umutbaykan)
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://avatars.githubusercontent.com/u/124444624?v=4" width="30" height="30"> [Daniel John](https://github.com/djohn06)
+
+### Honarable Mention:
+
+#### &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; <img src="https://avatars.githubusercontent.com/u/32678879?v=4" width="30" height="30"> [Sunaina Rishi](https://github.com/SunainaR)
+
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;*For the original idea that eventually sprouted into AI-Tastic Tales!*
