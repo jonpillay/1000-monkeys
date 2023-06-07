@@ -24,7 +24,7 @@ const GPT_prompt_gen = (inputs_dict) => {
     {
       role: "system",
       content: "do not send me multiple chapters at once. you should only send me back one chapter at all times"
-    },
+    }
   ]
 
   const promptResults = JSON.parse(JSON.stringify(GPT_starter_prompts)) 
