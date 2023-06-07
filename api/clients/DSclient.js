@@ -42,15 +42,17 @@ async function DSGenerateImage(prompts, style) {
   const responseJSON = await response.json();
   responseJSON.artifacts.forEach(async (image, index) => {
     // console.log("upload started")
-    fs.writeFileSync(
-      `./out/v1_txt2img_${Date.now()}.png`,
-      Buffer.from(image.base64, 'base64')
-    );
+    // fs.writeFileSync(
+    //   `./out/v1_txt2img_${Date.now()}.png`,
+    //   Buffer.from(image.base64, 'base64')
+    // );
     const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, image.base64)
     // console.log(remoteImage.data.display_url)
     return remoteImage.data.display_url
   });
 }
+
+module.exports = DSGenerateImage
 
 // userinput = {
 //   character: 'Spiderman',
