@@ -11,8 +11,15 @@
 //
 // -- This is a parent command --
 Cypress.Commands.add('getThrough', () => {
+  cy.clearLocalStorage()
   cy.fixture("images.json").as("imageData");
   cy.fixture("storyChapters.json").as("storyData");
+  cy.fixture("dropdowns.json").as("dropdownData");
+  cy.get("@dropdownData").then((data) => {
+    cy.intercept("GET", "/populate", data).as(
+      "dropdownRequest"
+    );
+  });
   cy.visit("/");
   cy.get("@imageData").then((data) => {
     cy.intercept("POST", "/images", { imgUrl: data.imgUrl }).as(
