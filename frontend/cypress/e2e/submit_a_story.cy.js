@@ -11,6 +11,9 @@ describe("Submitting a story request initially", () => {
       cy.get("@storyData").then((data) => {
         expect(storedData.messageHistory[0]).to.equal(data.storyText);
       });
+      cy.get("@imageData").then((data) => {
+        expect(storedData.imageHistory[0]).to.equal(data.imgUrl);
+      });
     });
   });
 });
