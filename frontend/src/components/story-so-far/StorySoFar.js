@@ -26,8 +26,8 @@ const StorySoFar = ({ navigate  }) => {
 
   return (
     <>
+      <h1 className="story-title">Your story so far!</h1>
       <HomeButton navigate={ navigate }/>
-      <h1 className="title">Your story so far!</h1>
       {/* <button className="download-button" onClick={handleDownloadPDF}>Download PDF</button> */}
         <div className="story-so-far">
         {messageHistory.map((content, index) => (
