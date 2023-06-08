@@ -118,16 +118,15 @@ const ResultPage = ({ navigate }) => {
             <div className="image-container">
               <Image link={imgUrl} />
             </div>
-            <div className="story-container">
+            <div className="result-story-container">
               <Story storyString={story} />
             </div>
         </div>
           <SteerStory callback={steerOnUserInput} />
-            <div className="buttons">
-              <button className="submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-              <button className="submit-button">Save this story</button>
-              <button className="submit-button" data-cy="story-so-far" onClick={() => navigate("/storysofar")}>Story so far...</button> 
-              <button className="submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+            <div className="resultpage-buttons">
+              <button className="resultpage-submit-button" data-cy="story-so-far" onClick={() => navigate("/storysofar")}>Story so far...</button> 
+              <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+              <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
             <div>
         </div>
       </div>
