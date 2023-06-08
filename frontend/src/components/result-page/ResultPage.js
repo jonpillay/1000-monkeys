@@ -118,7 +118,7 @@ const ResultPage = ({ navigate }) => {
             <div className="image-container">
               <Image link={imgUrl} />
             </div>
-            <div className="story-container">
+            <div className="result-story-container">
               <Story storyString={story} />
             </div>
         </div>

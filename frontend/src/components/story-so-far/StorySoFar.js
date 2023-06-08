@@ -32,7 +32,9 @@ const StorySoFar = ({ navigate  }) => {
         <div className="story-so-far">
         {messageHistory.map((content, index) => (
           <div className="chapter" key={index}>
+            <div className="image-so-far">
             <Image link={imageHistory[index]} />
+            </div>
             <Story storyString={content}/>
           </div>
         ))}
