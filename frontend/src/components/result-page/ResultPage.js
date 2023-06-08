@@ -125,7 +125,6 @@ const ResultPage = ({ navigate }) => {
           <SteerStory callback={steerOnUserInput} />
             <div className="buttons">
               <button className="submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-              <button className="submit-button">Save this story</button>
               <button className="submit-button" data-cy="story-so-far" onClick={() => navigate("/storysofar")}>Story so far...</button> 
               <button className="submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
             <div>
