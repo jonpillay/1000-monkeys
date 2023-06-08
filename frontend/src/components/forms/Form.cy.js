@@ -6,7 +6,7 @@ describe("Form", () => {
       <Form dropdownItems={["Action", "Horror", "Sci-Fi", "Fantasy", "Fairy Tale"]} selectionField="Genre" />
     )
     cy.get("label").should("have.text", "Genre:")
-    cy.get(".custom-select").should("have.value", "")
-    cy.get(".custom-select").should("have.text", "Select...")
+    cy.get(".css-b62m3t-container").should("have.value", "")
+    cy.get(".css-b62m3t-container").should("have.text", "Select...")
   });
 });

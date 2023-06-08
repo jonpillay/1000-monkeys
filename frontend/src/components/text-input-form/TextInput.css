@@ -1,11 +1,27 @@
 .text-input {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  margin-bottom: 20px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.text-input label {
-  margin-bottom: 10px;
+.text-input-input {
+    width: 70%;
+    height: 100px;
+    flex: 1;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    white-space: normal;
+    outline: none;
+}
+
+.text-input-label {
+    width: 32%;
+    padding-top: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 100%;
+    text-align: left;
 }
