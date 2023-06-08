@@ -2,27 +2,27 @@ const sdPromptBank = {
     character: {
         'Spiderman': {
             positivePrompts: ['{{Spiderman in superhero suit}}', 'human body', 'male', 'fine detail', 'red and blue', 'sharp focus'],
-            negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
+            negativePrompts: ['out of frame', 'disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
         },
         'Rapunzel': {
             positivePrompts: ['{{Rapunzel}}', 'human body', 'female', 'very long blonde hair', 'fine detail', 'sharp focus'],
-            negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
+            negativePrompts: ['out of frame', 'disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
         },
         'Darth Vader': {
-            positivePrompts: ['{{Darth Vader}}', 'human body', 'male', 'all black', 'fine detail', 'sharp focus'],
-            negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
+            positivePrompts: ['{{Darth Vader in full suit}}', 'human body', 'male', 'all black', 'fine detail', 'sharp focus'],
+            negativePrompts: ['out of frame', 'disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
         },
         'Wonder Woman': {
             positivePrompts: ['{{Wonder Woman in superhero suit}}', 'human body', 'female', 'black hair', 'fine detail', 'sharp focus'],
-            negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
+            negativePrompts: ['out of frame', 'disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
         },
         'Hermione Granger': {
             positivePrompts: ['{{Hermione Granger}}', 'human body', 'female', 'Hogwarts', 'wearing Hogwarts uniform', 'fine detail', 'sharp focus'],
-            negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
+            negativePrompts: ['out of frame', 'disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'male']
         },
         'Batman': {
             positivePrompts: ['{{Batman in batsuit}}', 'human body', 'male', 'fine detail', 'sharp focus'],
-            negativePrompts: ['disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
+            negativePrompts: ['out of frame', 'disfigured', 'deformed', 'mutated hands', 'disproportioned', 'bad proportions', 'cross-eyed', 'low quality', 'blurry', 'female']
         }
     },
 
@@ -82,7 +82,7 @@ const retrieveAllDropdowns = () => {
 }
     
 const matchSelectionCriteria = (userSelection) => {
-const positivePrompts = []
+const positivePrompts = [`((${userSelection["prompt"]}))`]
 const negativePrompts = []
 for (let key in userSelection) {
     if (sdPromptBank.hasOwnProperty(key)) {

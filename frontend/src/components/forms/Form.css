@@ -1,60 +1,87 @@
 .form-container {
     display: flex;
-    align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .form-label {
     display: flex;
+    padding-top: 10px;
+    width: 32%;
     font-family: Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 100%;
     color: #ffffff;
     margin-bottom: 0px;
     margin-right: 0px;
     white-space: nowrap;
 }
 
-.custom-select-container {
-    background-color: #232323;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 60px;
-    font-family: Helvetica, sans-serif;
-    font-size: 14px;
-    color: #2c2c2c;
-}
-
-.custom-select__control {
-    border: none !important;
+.form-label-container {
+    width: 100%;
     border-radius: 4px;
+}
+
+.css-b62m3t-container {
+    flex: 1 1 auto !important;
+    width: 68% !important;
+}
+
+.react-select__control {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
     box-shadow: none !important;
-    padding: 8px;
-    background-color: #494949;
-    font-family: Helvetica, sans-serif;
-    font-size: 14px;
-    color: #333;
-    outline: none;
-    margin-left: 100px;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: centre !important;
+    padding: 4px !important;
+}
+  
+.react-select__value-container {
+    flex: 1 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+  
+.react-select__single-value {
+    color: #000000 !important;
+    font-size: 18px !important;
+}
+  
+.react-select__indicator-separator {
+    display: none !important;
+}
+  
+.react-select__indicator {
+    color: #717171 !important;
+}
+  
+.react-select__menu {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    margin-top: 4px !important;
+}
+  
+.react-select__option {
+    color: #1c1c1c !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    padding: 8px 12px !important;
+}
+  
+.react-select__option:hover {
+    background-color: #ffa500 !important;
+}
+  
+.react-select__option--is-selected {
+    background-color: #9d9d9d !important;
+    color: #4a4a4a !important;
 }
 
-.custom-select__option {
-    padding: 8px;
-    background-color: #FFFFFF;
-    color: #FF6600;
-    margin-left: 100px;
-    
-}
 
-.custom-select__option--is-selected {
-    background-color: orange; /* Change the selected background color to orange */
-    color: #FFFFFF; /* Change the selected text color to white */
-    border-color: none !important; /* Remove the border color */
-}
-
-.custom-select__single-value {
-    color: #FF6600;
-}
+  
 
   

@@ -1,5 +1,17 @@
-.home-icon {
-  width: 40px;
-  height: auto;
+.home-button {
+  margin: 2%;
+  width: 6%;
   border-radius: 5px;
+  background-color: #ffa500;/* or background-color: rgba(0, 0, 0, 0); */
+  cursor: pointer;
+  border: 0.5px solid #ffa500;
+}
+
+.home-icon {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.home-button:hover {
+  background-color: #acacac31;
 }
