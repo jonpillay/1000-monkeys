@@ -19,8 +19,11 @@
 
 .story-container {
     display: flex;
-    align-items: flex-start; /* Align items at the top */
+    align-items: flex-start; 
     justify-content: center;
     width: 100%;
+    margin: 0;
+    padding: 0; 
   }
+  
 
