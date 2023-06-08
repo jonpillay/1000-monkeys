@@ -14,7 +14,6 @@
 8. Run tests in the:  
     a. Backend  
     b. Frontend  
-    c. Database
 9. Authors
 
 ------
@@ -173,20 +172,6 @@ Close the program by inputting `ctrl+c` in both the api and frontend terminal. T
     ```bash
     cd frontend
     npm run test
-    ```
-
-- ### b. The Frontend (React)
-
-    ```bash
-    use aitistic_tales
-    db.createCollection("messages")
-    db.messages.insertOne({ messages: "hello" })
-    ```
-
-    ```bash
-    use aitistic_tales_test
-    db.createCollection("messages")
-    db.messages.insertOne({ messages: "hello" })
     ```
 
 ------
