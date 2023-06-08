@@ -96,11 +96,11 @@ for (let key in userSelection) {
     let negPrompts = sdPromptBank[key][userSelection[key]]['negativePrompts']
     prompts.push(negPrompts.join(':-1.0, ') + ':-1.0')
   } else if(key == 'prompt') {
-    prompts.push(userSelection[key])
+    prompts.unshift(userSelection[key])
   }
 }
 console.log(prompts.flat().join(', '))
-return {prompts: prompts.reverse().flat().join(', '), art_style: art_style}
+return {prompts: prompts.flat().join(', ')}
 }
 
 module.exports = DSPromptGen;

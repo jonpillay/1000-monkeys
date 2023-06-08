@@ -2,7 +2,7 @@ const fs = require('fs');
 const DSPromptGen = require('../prompts/DSPromptGen')
 const imgBBUploader = require('../helpers/imgBBUploader')
 
-const engineId = 'stable-diffusion-v1-5';
+const engineId = 'stable-diffusion-xl-beta-v2-2-2';
 const apiHost = 'https://api.stability.ai';
 const apiKey = process.env.DS_KEY;
 
@@ -10,7 +10,7 @@ if (!apiKey) throw new Error('Missing Stability API key.');
 
 // const context_prompts = 'Matilda walking through the quaint streets of the village. A magnificent apothecary filled with sparkling potions and magical herbs. The wizard running the shop chatting with Matilda. Matilda selecting the perfect ingredients for her soup. The enchanting world surrounding Matilda.'
 
-async function DSGenerateImage(prompts, style) {
+async function DSGenerateImage(prompts) {
   // console.log(prompts)
   const response = await fetch(`${apiHost}/v1/generation/${engineId}/text-to-image`, {
     method: 'POST',
@@ -18,6 +18,7 @@ async function DSGenerateImage(prompts, style) {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: `Bearer ${apiKey}`,
+      
     },
     body: JSON.stringify({
       text_prompts: [
@@ -31,7 +32,7 @@ async function DSGenerateImage(prompts, style) {
       width: 512,
       samples: 1,
       steps: 50,
-      style_preset: style,
+      style_preset: 'enhance',
     }),
   });
 
@@ -54,14 +55,14 @@ async function DSGenerateImage(prompts, style) {
 
 module.exports = DSGenerateImage
 
-userinput = {
-  character: 'Spiderman',
-  genre: 'Fairytale',
-  style: 'Anime',
-  prompt: 'Spiderman on a horse',
-  messageHistory: [],
-  imageHistory: []
-}
+// userinput = {
+//   character: 'Spiderman',
+//   genre: 'Fairytale',
+//   style: 'Anime',
+//   prompt: '{{Spiderman riding a horse}}',
+//   messageHistory: [],
+//   imageHistory: []
+// }
 
 // const context = "Matilda and her children walking through the misty, cobblestone streets. Matilda wearing a cloak and carrying a wand. The gates of Hogwarts in the background. The magical world feeling alive and full of possibilities."
 
