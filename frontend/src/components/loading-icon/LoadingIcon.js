@@ -3,7 +3,7 @@ import './LoadingIcon.css';
 const LoadingIcon = () => {
   return (
     <div className="container">
-      <h2 className="sub-title">Please wait we are crafting your story...</h2>
+      <h1 className="sub-title">Please wait we are crafting your story...</h1>
       <div className="book">
         <div className="book__pg-shadow"></div>
         <div className="book__pg"></div>

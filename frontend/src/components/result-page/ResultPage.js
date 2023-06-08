@@ -115,35 +115,25 @@ const ResultPage = ({ navigate }) => {
       </div>
       {isLoaded ? (
         <div className="result-page">
+          <h1 className="resultpage-title">Here's your story!</h1>
           <div className="results-page-container">
-            <Image link={imgUrl} />
-            <Story storyString={story} />
-            <div className="buttons">
-              <button
-                className="submit-button"
-                data-cy="next"
-                onClick={whatHappensNext}
-              >
-                What happens next?
-              </button>
-              <button className="submit-button"
-                data-cy="story-so-far"
-                onClick={() => navigate("/storysofar")}
-              >
-                Story so far...</button>
-              <button
-                className="submit-button"
-                data-cy="refresh"
-                onClick={refreshStory}
-              >
-                Refresh the story
-              </button>
+            <div className="image-container">
+              <Image link={imgUrl} />
             </div>
-            <div>
-              <SteerStory callback={steerOnUserInput} />
+            <div className="story-container">
+              <Story storyString={story} />
             </div>
-          </div>
         </div>
+          <SteerStory callback={steerOnUserInput} />
+            <div className="buttons">
+              <button className="submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
+              <button className="submit-button">Save this story</button>
+              <button className="submit-button" data-cy="story-so-far" onClick={() => navigate("/storysofar")}>Story so far...</button> 
+              <button className="submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+            <div>
+        </div>
+      </div>
+      </div>
       ) : (
         <div className="nav-box">
           <LoadingIcon />
