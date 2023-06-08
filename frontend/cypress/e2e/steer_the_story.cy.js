@@ -21,7 +21,7 @@ describe("pressing the steer the story button after submitting story", () => {
 
   it("changes the prompt to user input, saves the message / image history and recalls the api", () => {
     cy.get('[data-cy="steer-initiate"]').click()
-    cy.get('input').type("going to the bank")
+    cy.get('.text-input-input').type("going to the bank")
     cy.get('[data-cy="steer-submit"]').click()
 
     cy.window().then((win) => {

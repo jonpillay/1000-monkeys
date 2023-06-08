@@ -1,56 +1,48 @@
-.result-page,
-.nav-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-  margin-bottom: 800px;
-  padding: 10px;
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.results-page-container {
-  text-align: center;
-  margin-top: 100;
-}
-
-.results-page-home {
-  position: fixed;
-  top: 5px; /* Adjust the top position as needed */
-  left: 10px; /* Adjust the left position as needed */
-  z-index: 999; /* Ensure it's above other elements */
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: transparent;
-  cursor: pointer;
-  width: 40px; /* Adjust the width as needed */
-}
-
-.scroll-container {
-  max-height: 800px; /* Adjust the height as needed */
-  overflow-y: auto;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  /* margin-bottom: 800px; */
-  padding: 10px;
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 12px;
-}
-
-.result-button {
-  height: auto;
-  font-size: 17px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+.result-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto; 
+    justify-content: center;
+    width: 50%;
+    padding-top: 7%;  
+  }
+  
+  .resultpage-title {
+    margin-left: 0%;
+    margin-bottom: 32px;
+    border-radius: 5px;
+    color: white;
+    font-weight: normal;
+    font-size: 132%;
+    white-space: nowrap;
+    text-align: left;
+  }
+  
+  .results-page-container {
+    display: flex;
+  }
+  
+  .image-container,
+  .story-container {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .submit-button {
+    margin: 5px;
+  }
+  
+  .nav-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7%;
+  }
+  
