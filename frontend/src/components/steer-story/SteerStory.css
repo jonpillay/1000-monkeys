@@ -16,3 +16,13 @@
 .steer-button:hover {
   background-color: #11111179;
 }
+
+.prompt-steer-input {
+  width: 100%;
+}
+
+.prompt-form {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
