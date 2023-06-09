@@ -55,14 +55,14 @@ async function DSGenerateImage(prompts) {
 
 module.exports = DSGenerateImage
 
-// userinput = {
-//   character: 'Spiderman',
-//   genre: 'Fairytale',
-//   style: 'Anime',
-//   prompt: '{{Spiderman riding a horse}}',
-//   messageHistory: [],
-//   imageHistory: []
-// }
+userinput = {
+  character: 'Spiderman',
+  genre: 'Western',
+  style: 'Anime',
+  prompt: 'Spiderman looking bored with a todo list, make sure you show the list of tasks, I want a human body form, no extra limbs, do not draw extra fingers',
+  messageHistory: [],
+  imageHistory: []
+}
 
 // const context = "Matilda and her children walking through the misty, cobblestone streets. Matilda wearing a cloak and carrying a wand. The gates of Hogwarts in the background. The magical world feeling alive and full of possibilities."
 
@@ -70,6 +70,6 @@ module.exports = DSGenerateImage
 
 // console.log(DSPromptGen(userinput))
 
-// const prompts = DSPromptGen(userinput)
+const prompts = DSPromptGen(userinput)
 
-// console.log(DSGenerateImage(prompts.prompts, prompts.art_style))
+console.log(DSGenerateImage(prompts.prompts, prompts.art_style))
