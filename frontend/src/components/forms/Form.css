@@ -24,6 +24,7 @@
 
 .css-b62m3t-container {
     flex: 1 1 auto !important;
+    font-size: 90% !important;
     width: 68% !important;
 }
 
@@ -68,7 +69,7 @@
 .react-select__option {
     color: #1c1c1c !important;
     cursor: pointer !important;
-    font-size: 18px !important;
+    font-size: 90% !important;
     padding: 8px 12px !important;
 }
   

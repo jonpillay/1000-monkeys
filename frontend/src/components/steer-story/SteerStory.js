@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import TextInput from '../text-input-form/TextInput';
+import './SteerStory.css';
+import '../result-page/ResultPage.css'
 
 function SteerStory({ callback }) {
   const [storyPrompt, steerStoryPrompt] = useState('');
@@ -20,15 +22,15 @@ function SteerStory({ callback }) {
   };
 
   return (
-    <div>
+    <div className='prompt-form'>
       {isButtonPressed ? (
-        <form onSubmit={handleFormSubmit}>
+        <form className="prompt-steer-input" onSubmit={handleFormSubmit}>
           <TextInput handleInputChange={handleInputChange} textField="Prompt" />
-          <button className="submit-button" data-cy="steer-submit" type="submit">Craft the next chapter</button>
-          <button className="submit-button" data-cy="steer-cancel" onClick={handleButtonClick}>Cancel</button>
+          <button className="steer-button" data-cy="steer-submit" type="submit">Craft the next chapter</button>
+          <button className="steer-button" data-cy="steer-cancel" onClick={handleButtonClick}>Cancel</button>
         </form>
       ) : (
-        <button data-cy="steer-initiate" className="submit-button" onClick={handleButtonClick}>
+        <button data-cy="steer-initiate" className="steer-button" onClick={handleButtonClick}>
           Steer this story
         </button>
       )}
