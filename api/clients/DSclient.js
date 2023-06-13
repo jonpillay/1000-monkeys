@@ -8,8 +8,6 @@ const apiKey = process.env.DS_KEY;
 
 if (!apiKey) throw new Error('Missing Stability API key.');
 
-// const context_prompts = 'Matilda walking through the quaint streets of the village. A magnificent apothecary filled with sparkling potions and magical herbs. The wizard running the shop chatting with Matilda. Matilda selecting the perfect ingredients for her soup. The enchanting world surrounding Matilda.'
-
 async function DSGenerateImage(prompts) {
   const response = await fetch(`${apiHost}/v1/generation/${engineId}/text-to-image`, {
     method: 'POST',
