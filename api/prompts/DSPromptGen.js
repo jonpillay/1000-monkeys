@@ -77,7 +77,6 @@ const DSPromptGen = (userSelection) => {
 const prompts = []
 let art_style = ""
 for (let key in userSelection) {
-  console.log(key)
   if (key == 'style') {
     if (userSelection[key] == 'Cartoon') {
       art_style = "comic-book"
@@ -91,7 +90,6 @@ for (let key in userSelection) {
       art_style = "fantasy-art"
     }
   } else if (key == 'character' || key == 'genre' || key == 'style') {
-    // console.log("here")
     prompts.push(sdPromptBank[key][userSelection[key]]['positivePrompts'])
     let negPrompts = sdPromptBank[key][userSelection[key]]['negativePrompts']
     prompts.push(negPrompts.join(':-1.0, ') + ':-1.0')
@@ -99,19 +97,8 @@ for (let key in userSelection) {
     prompts.unshift(userSelection[key])
   }
 }
-console.log(prompts.flat().join(', '))
+
 return {prompts: prompts.flat().join(', ')}
 }
 
 module.exports = DSPromptGen;
-
-// testing script
-
-// console.log(DSPromptGen({
-//   character: 'Spiderman',
-//   genre: 'Fairytale',
-//   style: 'Realistic',
-//   prompt: 'go to the shops',
-//   messageHistory: [],
-//   imageHistory: []
-// }))
