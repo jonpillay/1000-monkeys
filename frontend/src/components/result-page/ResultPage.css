@@ -1,48 +1,71 @@
 .result-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto; 
-    justify-content: center;
-    width: 50%;
-    padding-top: 7%;  
-  }
-  
-  .resultpage-title {
-    margin-left: 0%;
-    margin-bottom: 32px;
-    border-radius: 5px;
-    color: white;
-    font-weight: normal;
-    font-size: 132%;
-    white-space: nowrap;
-    text-align: left;
-  }
-  
-  .results-page-container {
-    display: flex;
-  }
-  
-  .image-container,
-  .story-container {
-    flex: 1;
-    padding: 10px;
-  }
-  
-  .buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .submit-button {
-    margin: 5px;
-  }
-  
-  .nav-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 7%;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto; 
+  justify-content: center;
+  width: 50%;
+  padding-top: 1%;
+  overflow: auto;
+
+}
+
+.resultpage-title {
+  margin-left: 0%;
+  margin-bottom: 32px;
+  border-radius: 5px;
+  color: white;
+  font-weight: normal;
+  font-size: 132%;
+  white-space: nowrap;
+  text-align: left;
+}
+
+
+.results-page-container {
+  display: flex;
+  width: 100%;
+}
+
+.image-container {
+  flex: 1;
+  padding: 10px;
+}
+
+.result-story-container {
+  width: 68%;
+  /* padding: 10px; */
+}
+
+.resultpage-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.resultpage-submit-button {
+  margin: 1%;
+  width: 100%;
+  padding: 10px;
+  font-size: 68%;
+  text-align: left;
+  color: #ffffff;
+  background-color: #2a2a2a48;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 0.5px solid #ffa500;
+  white-space: nowrap;
+}
+
+.resultpage-submit-button:hover {
+  background-color: #11111179;
+}
+
+.nav-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7%;
+}
