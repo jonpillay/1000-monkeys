@@ -3,7 +3,7 @@ const GPT_prompt_gen = (inputs_dict) => {
   const GPT_starter_prompts = [
     {
       role: "system",
-      content: "You are my story writing assistant. I am going to tell you what my next task will be. I want you to write me a chapter for each task which is connected to the last task and forms an overarching story of my day. I want it to be adventurous so it motivates me to complete my tasks"
+      content: "You are my story writing assistant. I am going to tell you what my next task will be. I want you to write the task as an adventure story. This should be connected to the last task. I want it to be adventurous so it motivates me to complete my tasks"
     },
     {
       role: "system",
