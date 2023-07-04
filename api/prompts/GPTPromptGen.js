@@ -3,28 +3,20 @@ const GPT_prompt_gen = (inputs_dict) => {
   const GPT_starter_prompts = [
     {
       role: "system",
-      content: "You are my story writing assistant. I am going to tell you what my next task will be. I want you to write the task as an adventure story. This should be connected to the last task. I want it to be adventurous so it motivates me to complete my tasks"
+      content: "You are my story writing assistant. I am going to prompt you with simple outline of a chapter and you are going to make it an adventurous chapter for a book we are writing."
     },
     {
       role: "system",
-      content: "Be aware of the overarching story"
+      content: "The chapter should be between 30-50 words long."
     },
     {
       role: "system",
-      content: "after I submit each task, return the next chapter in the story, between 50-70 words long. This needs a chapter number and also a chapter title"
+      content: "Begin with chapter 1. Each chapter should have a sequential chapter number and a title."
     },
     {
       role: "system",
-      content: "sometimes I will send you content on what has happened in the previous chapters, you will continue the story based on my new input but will keep continuity with the previous chapters"
+      content: "Only return a single chapter everytime I prompt you"
     },
-    {
-      role: "system",
-      content: "if I send you the previous chapters, I will provide the numerical title of the chapters so you can keep track of the chronology"
-    },
-    {
-      role: "system",
-      content: "do not send me multiple chapters at once. you should only send me back one chapter at all times"
-    }
   ]
 
   const promptResults = JSON.parse(JSON.stringify(GPT_starter_prompts)) 
@@ -33,41 +25,36 @@ const GPT_prompt_gen = (inputs_dict) => {
     if (key == 'name') {
       promptResults.push({
         role: "system",
-        content: `My name is ${inputs_dict[key]} I want you to make me the main character in this story`
+        content: `My name is ${inputs_dict[key]} I want you to make me the main character`
       })
     } else if (key == 'character') {
       promptResults.push({
         role: "system",
-        content: `I want the famous ${inputs_dict[key]} to be the main character in this story`
+        content: `I want the famous ${inputs_dict[key]} to be the main character`
       })
     } else if (key == 'genre') {
       promptResults.push({
         role: "system",
-        content: `I want the genre of this story to be ${inputs_dict[key]}`
+        content: `I want the genre to be ${inputs_dict[key]}`
       }) 
     } else if (key == 'author') {
       promptResults.push({
         role: "system",
-        content: `I want you to write this story in the style of ${inputs_dict[key]}`
+        content: `I want you to write in the style of ${inputs_dict[key]}`
       })
     } else if (key == 'location') {
       promptResults.push({
         role: "system",
-        content: `I want the location of the story to be ${inputs_dict[key]}`
-      })
-    } else if (key == 'style') {
-      promptResults.push({
-        role: "system",
-        content: `I want the style of the story to be ${inputs_dict[key]}`
+        content: `I want the location to be ${inputs_dict[key]}`
       })
     } else if (key == 'prompt') {
       promptResults.push({
         role: "user",
-        content: `I want the story content to include ${inputs_dict[key]}`
+        content: `${inputs_dict[key]}`
       })
     } else if (key == 'messageHistory') {
-      promptResults.push({
-        role: "user",
+      promptResults.unshift({
+        role: "assistant",
         content: `${inputs_dict[key]}`
       })
     }

@@ -99,6 +99,7 @@ const ResultPage = ({ navigate }) => {
 
   const updateStorageAndHooks = (key, value) => {
     const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    console.log(tempStorage)
     if (key === "messageHistory" || key === "imageHistory") {
       tempStorage[key] = [...tempStorage[key], value];
     } else {
