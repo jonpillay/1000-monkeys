@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
 import logo from "./homepageLogo.gif";
 
 const FormContainer = ({ navigate }) => {
-  const [character, setCharacter] = useState([]);
-  const [genre, setGenre] = useState([]);
-  const [style, setStyle] = useState([]);
+  const [characterOptions, setCharacterOptions] = useState([]);
+  const [genreOptions, setGenreOptions] = useState([]);
+  const [styleOptions, setStyleOptions] = useState([]);
+
+  const promptRef = useRef()
+
   const [isAnimationVisible, setIsAnimationVisible] = useState(true);
-  
-  const [formValues, setFormValues] = useState({
-    character: "",
-    genre: "",
-    style: "",
-    prompt: "",
-    messageHistory: [],
-    imageHistory: [],
-  });
+
+  const [characterChoice, setCharacterChoice] = useState([]);
+  const [genreChoice, setGenreChoice] = useState([]);
+  const [styleChoice, setStyleChoice] = useState([]);
+
+
 
   useEffect(() => {
     fetch("/populate", {
@@ -25,21 +25,9 @@ const FormContainer = ({ navigate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCharacter(data.character)
-        setStyle(data.style)
-        setGenre(data.genre)
-      });
-  }, [])
-
-  useEffect(() => {
-    fetch("/populate", {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setCharacter(data.character)
-        setStyle(data.style)
-        setGenre(data.genre)
+        setCharacterOptions(data.character)
+        setStyleOptions(data.style)
+        setGenreOptions(data.genre)
       });
   }, [])
 
@@ -56,26 +44,20 @@ const FormContainer = ({ navigate }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    let userChoices = {
+      "character": characterChoice,
+      "genre": genreChoice,
+      "style": styleChoice,
+      "prompt": promptRef.current.value,
+      "messageHistory": [],
+      "imageHistory": []
+    }
     localStorage.removeItem("userChoices");
-    localStorage.setItem("userChoices", JSON.stringify(formValues));
+    localStorage.setItem("userChoices", JSON.stringify(userChoices));
     navigate("/results");
   };
 
-  const handleDropdownChange = (fieldName, selectedValue) => {
-    setFormValues((prevFormValues) => ({
-      ...prevFormValues,
-      [fieldName]: selectedValue,
-    }));
-  };
-
-  const handleInputChange = (inputText) => {
-    setFormValues((prevFormValues) => ({
-      ...prevFormValues,
-      prompt: inputText,
-    }));
-  };
-
-  useEffect(() => {}, [formValues]);
+  // useEffect(() => {}, [formValues]);
 
   return (
       <div className="formcontainer">
@@ -87,41 +69,29 @@ const FormContainer = ({ navigate }) => {
         <h1 className="formcontainer-title">
           Get started with some details...
         </h1>
-        <form onSubmit={handleFormSubmit}>
-          
           <Form
-            dropdownItems={character}
+            dropdownItems={characterOptions}
             selectionField="Character"
-            selectedValue={formValues.character}
-            onDropdownChange={(selectedValue) =>
-              handleDropdownChange("character", selectedValue)
-            }
+            onDropdownChange={(e) => setCharacterChoice(e.value)}
           />
           <Form
-            dropdownItems={genre}
+            dropdownItems={genreOptions}
             selectionField="Genre"
-            selectedValue={formValues.genre}
-            onDropdownChange={(selectedValue) =>
-              handleDropdownChange("genre", selectedValue)
-            }
+            onDropdownChange={(e) => setGenreChoice(e.value)}
           />
           <Form
-            dropdownItems={style}
+            dropdownItems={styleOptions}
             selectionField="Style"
-            selectedValue={formValues.style}
-            onDropdownChange={(selectedValue) =>
-              handleDropdownChange("style", selectedValue)
-            }
+            onDropdownChange={(e) => setStyleChoice(e.value)}
           />
           <TextInput
-            handleInputChange={handleInputChange}
-            textField={"Prompt"}
+            label={"Prompt"}
+            ref={promptRef}
           />
           
-          <button type="submit" className="formcontainer-submit-button">
+          <button onClick={handleFormSubmit} type="submit" className="formcontainer-submit-button">
             Submit
           </button>
-        </form>
       </div>
       )}
     </div>

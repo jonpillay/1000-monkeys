@@ -3,9 +3,6 @@ import Select from 'react-select';
 import './Form.css';
 
 const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }) => {
-  const handleDropdownChange = (selectedOption) => {
-    onDropdownChange(selectedOption.value);
-  };
 
   return (
     <>
@@ -16,8 +13,8 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
         <Select
           classNamePrefix="react-select"
           options={dropdownItems.map((item) => ({ value: item, label: item }))}
-          value={selectedValue ? { value: selectedValue, label: selectedValue } : null}
-          onChange={handleDropdownChange}
+          onChange={onDropdownChange}
+          // value={selectedValue ? { value: selectedValue, label: selectedValue } : null}
           placeholder="Select..."
         />
       </div>

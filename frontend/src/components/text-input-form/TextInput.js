@@ -1,18 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 import './TextInput.css'
 
-const TextInput = ({ handleInputChange, textField }) => {
-  const handleFormChange = (event) => {
-    const inputText = event.target.value;
-    handleInputChange(inputText);
-  };
+const TextInput = React.forwardRef(( label, ref ) => {
 
   return (
     <div className="text-input">
-      <label className="text-input-label">{textField + ":"}</label>
-      <textarea className="text-input-input" type="textarea" onChange={handleFormChange} />
+      <label className="text-input-label">{label + ":"}</label>
+      <textarea className="text-input-input" type="textarea" ref={ref}/>
     </div>
   );
-};
+});
 
 export default TextInput;
