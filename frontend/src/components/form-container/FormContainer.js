@@ -57,8 +57,6 @@ const FormContainer = ({ navigate }) => {
     navigate("/results");
   };
 
-  // useEffect(() => {}, [formValues]);
-
   return (
       <div className="formcontainer">
         {isAnimationVisible && (
@@ -85,7 +83,7 @@ const FormContainer = ({ navigate }) => {
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
           <TextInput
-            label={"Prompt"}
+            label="Prompt"
             ref={promptRef}
           />
           
