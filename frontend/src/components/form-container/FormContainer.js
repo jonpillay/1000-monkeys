@@ -44,15 +44,29 @@ const FormContainer = ({ navigate }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
     let userChoices = {
       "character": characterChoice,
       "genre": genreChoice,
       "style": styleChoice,
-      "prompt": promptRef.current.value,
       "messageHistory": [],
       "imageHistory": []
     }
-    localStorage.removeItem("userChoices");
+
+    let prompt = {
+      role: "user",
+      content: promptRef.current.value
+    }
+
+    let GPTPromptHistory = []
+
+    GPTPromptHistory.push(prompt)
+
+    console.log(userChoices)
+    console.log(GPTPromptHistory)
+
+    localStorage.clear()
+    localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
     localStorage.setItem("userChoices", JSON.stringify(userChoices));
     navigate("/results");
   };

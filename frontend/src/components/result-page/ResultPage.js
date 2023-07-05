@@ -8,7 +8,7 @@ import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
   const [userChoices, setUserChoices] = useState(
-    window.localStorage.getItem("userChoices")
+    localStorage.getItem("userChoices")
   );
   const [imgUrl, setImgUrl] = useState();
   const [story, setStory] = useState();
@@ -17,7 +17,10 @@ const ResultPage = ({ navigate }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [reload, setReload] = useState(false);
 
+  const GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+
   useEffect(() => {
+    console.log("We are here")
     GPTClientCall(userChoices);
     imageClientCall(userChoices);
   }, [reload]);
