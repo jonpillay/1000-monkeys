@@ -1,7 +1,7 @@
 const generateStory = require("../clients/GPTclient");
 const GPT_prompt_gen = require("../prompts/GPTPromptGen")
 
-const StoryController = {
+const TextController = {
   Index: async (req, res) => {
     try {
       const prompts = GPT_prompt_gen(req.body)
@@ -13,4 +13,4 @@ const StoryController = {
   },
 };
 
-module.exports = StoryController;
+module.exports = TextController;
