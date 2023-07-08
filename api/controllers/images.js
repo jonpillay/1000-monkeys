@@ -1,6 +1,5 @@
-const client = require("../clients/sdclient");
-const DSGenerateImage = require("../clients/DSclient")
-const DSPromptGen = require('../prompts/DSPromptGen')
+import DSGenerateImage from "../clients/DSclient"
+import DSPromptGen from '../prompts/DSPromptGen'
 
 
 const ImagesController = {

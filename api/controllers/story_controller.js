@@ -1,10 +1,10 @@
-const generateStory = require("../clients/GPTclient");
-const GPTPromptGen = require("../prompts/GPTPromptGen")
+import generateStory from "../clients/GPTclient";
+import GPTPromptGen from "../prompts/GPTPromptGen";
 
-const DSDescriptionGen = require("../clients/DS_description_gen")
+import DSDescriptionGen from "../clients/DS_description_gen";
 
-const generateImage = require("../clients/DSclient")
-const DSPromptGen = require('../prompts/DSPromptGen')
+import generateImage from "../clients/DSclient"
+import  DSPromptGen from '../prompts/DSPromptGen'
 
 const StoryController = {
   CreateChapter: async (req, res) => {

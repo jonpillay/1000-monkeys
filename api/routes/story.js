@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
+router = express.Router();
 
 const TextController = require("../controllers/storyText");
 

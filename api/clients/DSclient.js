@@ -1,6 +1,4 @@
-const fs = require('fs');
-const DSPromptGen = require('../prompts/DSPromptGen')
-const imgBBUploader = require('../helpers/imgBBUploader')
+import imgBBUploader from '../helpers/imgBBUploader'
 
 const engineId = 'stable-diffusion-xl-beta-v2-2-2';
 const apiHost = 'https://api.stability.ai';

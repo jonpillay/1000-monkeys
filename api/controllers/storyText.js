@@ -1,5 +1,5 @@
-const generateStory = require("../clients/GPTclient");
-const GPT_prompt_gen = require("../prompts/GPTPromptGen")
+import generateStory from "../clients/GPTclient"
+import GPT_prompt_gen from "../prompts/GPTPromptGen"
 
 const TextController = {
   Index: async (req, res) => {

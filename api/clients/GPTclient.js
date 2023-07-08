@@ -1,4 +1,4 @@
-const { Configuration, OpenAIApi } = require("openai");
+import { Configuration, OpenAIApi } from "openai"
 
 const openai = new OpenAIApi(
   new Configuration({

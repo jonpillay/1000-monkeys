@@ -4,9 +4,8 @@
   "description": "Template for the AI-tistic Tales project",
   "license": "CC BY-NC-SA",
   "private": true,
-  "type": "module",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www.js",
     "start:test": "MONGODB_URL='mongodb://0.0.0.0/aitistic_tales_test' npm start",
     "test": "jest",
     "test:coverage": "jest --coverage"
@@ -14,6 +13,7 @@
   "engines": {
     "node": ">=18.1.0"
   },
+  "type": "module",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
