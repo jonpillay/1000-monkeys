@@ -19,9 +19,13 @@ const ResultPage = ({ navigate }) => {
 
   const GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
 
+  const test_prompt = {
+    role: "user",
+    content: "This is a test"
+  }
+
   useEffect(() => {
-    console.log("We are here")
-    GPTClientCall(userChoices);
+    GPTClientCall(userChoices, GPTPromptHistory);
     imageClientCall(userChoices);
   }, [reload]);
 
@@ -59,7 +63,7 @@ const ResultPage = ({ navigate }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: userChoices,
+      body: userChoices
     })
       .then((response) => response.json())
       .then((data) => {

@@ -9,6 +9,7 @@ const DSPromptGen = require('../prompts/DSPromptGen')
 const StoryController = {
   CreateChapter: async (req, res) => {
     try {
+      console.log(req.body)
       const GPT_prompts = GPTPromptGen(req.body) // Prompt gen here needs the prompt history in proper format as well as the user choices
       const story_text = await generateStory(GPT_prompts)
       const DS_descpription = await DSDescriptionGen(story_text) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object

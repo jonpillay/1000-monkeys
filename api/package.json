@@ -4,6 +4,7 @@
   "description": "Template for the AI-tistic Tales project",
   "license": "CC BY-NC-SA",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "nodemon ./bin/www",
     "start:test": "MONGODB_URL='mongodb://0.0.0.0/aitistic_tales_test' npm start",

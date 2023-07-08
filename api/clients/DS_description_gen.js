@@ -1,4 +1,9 @@
 import { config } from "dotenv";
+
+// const config = require('dotenv/config')
+
+import { Configuration, OpenAIApi } from "openai"
+
 config()
 
 const starter_prompts = [
@@ -15,8 +20,6 @@ const starter_prompts = [
     content: "Do not return anything longer than 15 words"
   },
 ]
-
-import { Configuration, OpenAIApi } from "openai"
 
 const openai = new OpenAIApi(new Configuration({
   apiKey: process.env.GPT_KEY

@@ -45,7 +45,7 @@ const FormContainer = ({ navigate }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    let userChoices = {
+    let memory = {
       "character": characterChoice,
       "genre": genreChoice,
       "style": styleChoice,
@@ -53,23 +53,18 @@ const FormContainer = ({ navigate }) => {
       "imageHistory": []
     }
 
-    let prompt = {
+    let GPT_prompt_history = {
       role: "user",
       content: promptRef.current.value
     }
 
-    let GPTPromptHistory = []
-
-    GPTPromptHistory.push(prompt)
-
-    console.log(userChoices)
-    console.log(GPTPromptHistory)
-
     localStorage.clear()
-    localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
-    localStorage.setItem("userChoices", JSON.stringify(userChoices));
+    localStorage.setItem("GPT_prompt_histroy", JSON.stringify(GPT_prompt_history))
+    localStorage.setItem("memory", JSON.stringify(memory));
     navigate("/results");
   };
+
+  //  GET THE FRONTEND AND RESULTS WORKING WITH THE NEW MEMORY OBJ WHICH INCLUDES GPT PROMPT HISTORY
 
   return (
       <div className="formcontainer">
