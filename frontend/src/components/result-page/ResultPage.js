@@ -7,9 +7,7 @@ import SteerStory from "../steer-story/SteerStory";
 import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
-  const [userChoices, setUserChoices] = useState(
-    localStorage.getItem("userChoices")
-  );
+
   const [imgUrl, setImgUrl] = useState();
   const [story, setStory] = useState();
   const [SDLoaded, setSDLoaded] = useState(false);
@@ -17,12 +15,15 @@ const ResultPage = ({ navigate }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [reload, setReload] = useState(false);
 
-  const GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+  const userChoices = localStorage.getItem("userChoices")
+  const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
+
+  console.log(userChoices)
 
   useEffect(() => {
     console.log("We are here")
-    GPTClientCall(userChoices);
-    imageClientCall(userChoices);
+    GPTClientCall(userChoices, GPTPromptHistory);
+    // imageClientCall(userChoices);
   }, [reload]);
 
   const triggerReload = () => {
@@ -36,6 +37,7 @@ const ResultPage = ({ navigate }) => {
   }, [SDLoaded, GPTLoaded]);
 
   const imageClientCall = (userChoices) => {
+
     fetch("/images", {
       method: "POST",
       headers: {
@@ -53,13 +55,19 @@ const ResultPage = ({ navigate }) => {
       });
   };
 
-  const GPTClientCall = (userChoices) => {
+  const GPTClientCall = (userChoices, GPTPromptHistory) => {
+
+    const reqBody = {
+      userchoices: userChoices,
+      GPTPromptHistory: GPTPromptHistory
+    }
+
     fetch("/story", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: userChoices,
+      body: JSON.stringify(reqBody),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -90,7 +98,7 @@ const ResultPage = ({ navigate }) => {
     tempStorage.messageHistory.pop();
     tempStorage.imageHistory.pop();
     localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    setUserChoices(JSON.stringify(tempStorage));
+    // setUserChoices(JSON.stringify(tempStorage));
     triggerReload();
   };
 
@@ -109,7 +117,7 @@ const ResultPage = ({ navigate }) => {
       tempStorage[key] = value;
     }
     localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    setUserChoices(JSON.stringify(tempStorage));
+    // setUserChoices(JSON.stringify(tempStorage));
   };
 
   return (

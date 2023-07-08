@@ -1,4 +1,6 @@
-const GPT_prompt_gen = (inputs_dict) => {
+const GPT_prompt_gen = (user_choices, story_prompts) => {
+
+  console.log("GPT Prompt gen fired")
 
   const GPT_starter_prompts = [
     {
@@ -21,44 +23,45 @@ const GPT_prompt_gen = (inputs_dict) => {
 
   const promptResults = JSON.parse(JSON.stringify(GPT_starter_prompts)) 
 
-  for (let key in inputs_dict) {
+  for (let key in user_choices) {
+    console.log("going through user choices")
     if (key == 'name') {
       promptResults.push({
         role: "system",
-        content: `My name is ${inputs_dict[key]} I want you to make me the main character`
+        content: `My name is ${user_choices[key]} I want you to make me the main character`
       })
     } else if (key == 'character') {
       promptResults.push({
         role: "system",
-        content: `I want the famous ${inputs_dict[key]} to be the main character`
+        content: `I want the famous ${user_choices[key]} to be the main character`
       })
     } else if (key == 'genre') {
       promptResults.push({
         role: "system",
-        content: `I want the genre to be ${inputs_dict[key]}`
+        content: `I want the genre to be ${user_choices[key]}`
       }) 
     } else if (key == 'author') {
       promptResults.push({
         role: "system",
-        content: `I want you to write in the style of ${inputs_dict[key]}`
+        content: `I want you to write in the style of ${user_choices[key]}`
       })
     } else if (key == 'location') {
       promptResults.push({
         role: "system",
-        content: `I want the location to be ${inputs_dict[key]}`
+        content: `I want the location to be ${user_choices[key]}`
       })
     } else if (key == 'prompt') {
       promptResults.push({
         role: "user",
-        content: `${inputs_dict[key]}`
-      })
-    } else if (key == 'messageHistory') {
-      promptResults.unshift({
-        role: "assistant",
-        content: `${inputs_dict[key]}`
+        content: `${user_choices[key]}`
       })
     }
   }
+
+  promptResults.push(story_prompts)
+
+  console.log(promptResults)
+
   return promptResults
 }
 

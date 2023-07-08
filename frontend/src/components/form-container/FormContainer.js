@@ -53,14 +53,10 @@ const FormContainer = ({ navigate }) => {
       "imageHistory": []
     }
 
-    let prompt = {
+    let GPTPromptHistory = {
       role: "user",
       content: promptRef.current.value
     }
-
-    let GPTPromptHistory = []
-
-    GPTPromptHistory.push(prompt)
 
     console.log(userChoices)
     console.log(GPTPromptHistory)
