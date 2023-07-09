@@ -17,8 +17,9 @@ const ResultPage = ({ navigate }) => {
 
   const userChoices = localStorage.getItem("userChoices")
   const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
+  const storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  console.log(userChoices)
+  console.log(typeof storyPages)
 
   useEffect(() => {
     console.log("We are here")
@@ -71,9 +72,11 @@ const ResultPage = ({ navigate }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setStory(data["storyText"]);
-        updateStorageAndHooks("messageHistory", data["storyText"]);
-        setGPTLoaded(true);
+        console.log(data)
+        console.log(data["page_text"])
+        storyPages["textHistory"].push(data["page_text"])
+        storyPages["imageHistory"].push(data["page_image"])
+        console.log(storyPages)
       });
   };
 

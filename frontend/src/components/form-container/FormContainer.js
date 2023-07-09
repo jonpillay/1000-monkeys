@@ -58,12 +58,19 @@ const FormContainer = ({ navigate }) => {
       content: promptRef.current.value
     }
 
+    let storyPages = {
+      "textHistory": [],
+      "imageHistory": []
+    }
+
     console.log(userChoices)
     console.log(GPTPromptHistory)
 
     localStorage.clear()
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
     localStorage.setItem("userChoices", JSON.stringify(userChoices));
+    localStorage.setItem("storyPages", JSON.stringify(storyPages));
+
     navigate("/results");
   };
 

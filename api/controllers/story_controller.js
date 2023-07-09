@@ -21,15 +21,11 @@ const StoryController = {
       
       const story_text = await generateStory(GPT_prompts)
 
-      console.log(story_text)
-
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
-      
-      console.log(DS_descpription)
 
       const story_image = await generateImage(DS_descpription)
 
-      console.log(story_image)
+      res.status(200).json({ page_image: story_image[0], page_text: story_text });
 
     } catch (error) {
       res.status(error.status).json({ message: error.message });
