@@ -43,8 +43,8 @@ const ResultPage = ({ navigate }) => {
         console.log(data["page_text"])
         storyPages["textHistory"].push(data["page_text"])
         storyPages["imageHistory"].push(data["page_image"])
-        setStory(storyPages["textHistory"][renderChapter])
-        setImgUrl(storyPages["imageHistory"][renderChapter])
+        setStory(storyPages["textHistory"].slice(-1))
+        setImgUrl(storyPages["imageHistory"].slice(-1))
         setIsLoaded(true)
         console.log(storyPages)
         let GPTPrompts = JSON.parse(GPTPromptHistory)
@@ -52,6 +52,7 @@ const ResultPage = ({ navigate }) => {
           role: "assistant",
           content: data["page_text"]
         })
+        localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
         console.log(GPTPrompts)
 
       });
@@ -67,6 +68,23 @@ const ResultPage = ({ navigate }) => {
   };
 
   const steerOnUserInput = (steerInput) => {
+    setIsLoaded(false)
+
+    let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+
+    console.log(steerInput)
+
+    GPTPrompts.push({
+      role: "user",
+      content: steerInput
+    })
+
+    localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
+
+    setRenderChapter(renderChapter+1)
+
+    GPTClientCall()
+
     // resetLoadingParameters();
     // updateStorageAndHooks("prompt", steerInput);
     // triggerReload();
@@ -122,7 +140,7 @@ const ResultPage = ({ navigate }) => {
       ) : (
         <div className="nav-box">
           <LoadingIcon />
-        </div>
+        </div>    
       )}
     </>
   );
