@@ -19,7 +19,9 @@ const ResultPage = ({ navigate }) => {
   const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
   const storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  console.log(typeof storyPages)
+  console.log(userChoices)
+  console.log(GPTPromptHistory)
+  console.log(storyPages)
 
   useEffect(() => {
     console.log("We are here")
@@ -77,6 +79,12 @@ const ResultPage = ({ navigate }) => {
         storyPages["textHistory"].push(data["page_text"])
         storyPages["imageHistory"].push(data["page_image"])
         console.log(storyPages)
+        let GPTPrompts = JSON.parse(GPTPromptHistory)
+        GPTPrompts.push({
+          role: "assistant",
+          content: data["page_text"]
+        })
+        console.log(GPTPrompts)
       });
   };
 

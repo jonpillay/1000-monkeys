@@ -58,11 +58,10 @@ const GPT_prompt_gen = (user_choices, story_prompts) => {
     }
   }
 
-  promptResults.push(story_prompts)
+  let finalResults = promptResults.concat(story_prompts)
+  console.log(finalResults)
 
-  console.log(promptResults)
-
-  return promptResults
+  return finalResults
 }
 
 module.exports = GPT_prompt_gen

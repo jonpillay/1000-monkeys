@@ -7,6 +7,7 @@ const openai = new OpenAIApi(
 );
 
 async function generateStory(prompts) {
+  console.log(prompts)
   try {
     const res = await openai.createChatCompletion({
       model: "gpt-3.5-turbo-0613",

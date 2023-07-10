@@ -53,10 +53,10 @@ const FormContainer = ({ navigate }) => {
       "imageHistory": []
     }
 
-    let GPTPromptHistory = {
+    let GPTPromptHistory = [{
       role: "user",
       content: promptRef.current.value
-    }
+    }]
 
     let storyPages = {
       "textHistory": [],
