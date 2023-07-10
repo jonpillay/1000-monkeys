@@ -10,55 +10,20 @@ const ResultPage = ({ navigate }) => {
 
   const [imgUrl, setImgUrl] = useState();
   const [story, setStory] = useState();
-  const [SDLoaded, setSDLoaded] = useState(false);
-  const [GPTLoaded, setGPTLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [reload, setReload] = useState(false);
+  const [renderChapter, setRenderChapter] = useState(0)
 
-  const userChoices = localStorage.getItem("userChoices")
-  const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  console.log(userChoices)
-  console.log(GPTPromptHistory)
-  console.log(storyPages)
-
   useEffect(() => {
-    console.log("We are here")
-    GPTClientCall(userChoices, GPTPromptHistory);
-    // imageClientCall(userChoices);
-  }, [reload]);
+    GPTClientCall();
+  }, []);
 
-  const triggerReload = () => {
-    setReload((prevStat) => !prevStat);
-  };
+  const GPTClientCall = () => {
 
-  useEffect(() => {
-    if (SDLoaded === true && GPTLoaded === true) {
-      setIsLoaded(true);
-    }
-  }, [SDLoaded, GPTLoaded]);
-
-  const imageClientCall = (userChoices) => {
-
-    fetch("/images", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: userChoices,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        console.log(`This is how the frontend receives the URl ${data.imgUrl}`)
-        setImgUrl(data["imgUrl"]);
-        updateStorageAndHooks("imageHistory", data["imgUrl"]);
-        setSDLoaded(true);
-      });
-  };
-
-  const GPTClientCall = (userChoices, GPTPromptHistory) => {
+    const userChoices = localStorage.getItem("userChoices")
+    const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
 
     const reqBody = {
       userchoices: userChoices,
@@ -78,6 +43,9 @@ const ResultPage = ({ navigate }) => {
         console.log(data["page_text"])
         storyPages["textHistory"].push(data["page_text"])
         storyPages["imageHistory"].push(data["page_image"])
+        setStory(storyPages["textHistory"][renderChapter])
+        setImgUrl(storyPages["imageHistory"][renderChapter])
+        setIsLoaded(true)
         console.log(storyPages)
         let GPTPrompts = JSON.parse(GPTPromptHistory)
         GPTPrompts.push({
@@ -85,50 +53,45 @@ const ResultPage = ({ navigate }) => {
           content: data["page_text"]
         })
         console.log(GPTPrompts)
+
       });
   };
 
   const whatHappensNext = () => {
-    resetLoadingParameters();
-    updateStorageAndHooks(
-      "prompt",
-      "what you think will happen in the next chapter based on the history you received"
-    );
-    triggerReload();
+    // resetLoadingParameters();
+    // updateStorageAndHooks(
+    //   "prompt",
+    //   "what you think will happen in the next chapter based on the history you received"
+    // );
+    // triggerReload();
   };
 
   const steerOnUserInput = (steerInput) => {
-    resetLoadingParameters();
-    updateStorageAndHooks("prompt", steerInput);
-    triggerReload();
+    // resetLoadingParameters();
+    // updateStorageAndHooks("prompt", steerInput);
+    // triggerReload();
   };
 
   const refreshStory = () => {
-    resetLoadingParameters();
-    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    tempStorage.messageHistory.pop();
-    tempStorage.imageHistory.pop();
-    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    // setUserChoices(JSON.stringify(tempStorage));
-    triggerReload();
-  };
-
-  const resetLoadingParameters = () => {
-    setGPTLoaded(false);
-    setSDLoaded(false);
-    setIsLoaded(false);
+    // resetLoadingParameters();
+    // const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    // tempStorage.messageHistory.pop();
+    // tempStorage.imageHistory.pop();
+    // localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    // // setUserChoices(JSON.stringify(tempStorage));
+    // triggerReload();
   };
 
   const updateStorageAndHooks = (key, value) => {
-    const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    console.log(tempStorage)
-    if (key === "messageHistory" || key === "imageHistory") {
-      tempStorage[key] = [...tempStorage[key], value];
-    } else {
-      tempStorage[key] = value;
-    }
-    localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    // setUserChoices(JSON.stringify(tempStorage));
+    // const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
+    // console.log(tempStorage)
+    // if (key === "messageHistory" || key === "imageHistory") {
+    //   tempStorage[key] = [...tempStorage[key], value];
+    // } else {
+    //   tempStorage[key] = value;
+    // }
+    // localStorage.setItem("userChoices", JSON.stringify(tempStorage));
+    // // setUserChoices(JSON.stringify(tempStorage));
   };
 
   return (
