@@ -13,11 +13,11 @@ const GPT_prompt_gen = (user_choices, story_prompts) => {
     },
     {
       role: "system",
-      content: "Begin with chapter 1. Each chapter should have a sequential chapter number and a title."
+      content: "Each chapter should have a sequential chapter number and a title."
     },
     {
       role: "system",
-      content: "Only return a single chapter everytime I prompt you"
+      content: "Begin with chapter 1 and only return a single chapter everytime I prompt you"
     },
   ]
 
