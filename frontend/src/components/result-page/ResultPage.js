@@ -10,17 +10,29 @@ const ResultPage = ({ navigate }) => {
 
   const [imgUrl, setImgUrl] = useState();
   const [story, setStory] = useState();
-  const [renderChapter, setRenderChapter] = useState(0)
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
+  const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+
+  let renderChapter = sysInfo["currentPage"]
+
   useEffect(() => {
-    GPTClientCall();
+    if (sysInfo["firstLoad"] === true) {
+      console.log("First load useEffect")
+      GPTClientCall();
+      sysInfo["firstLoad"] = false
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+    } else {
+      loadFromLocal()
+    }
   }, []);
 
   const GPTClientCall = () => {
+
+    setIsLoading(true)
 
     console.log(`This is story pages from the GPTcall funct`)
 
@@ -49,7 +61,7 @@ const ResultPage = ({ navigate }) => {
       storyPages["imageHistory"].push(data["page_image"])
       setStory(storyPages["textHistory"].slice(-1))
       setImgUrl(storyPages["imageHistory"].slice(-1))
-      setIsLoaded(true)
+      setIsLoading(false)
       console.log(storyPages)
       let GPTPrompts = JSON.parse(GPTPromptHistory)
 
@@ -67,8 +79,13 @@ const ResultPage = ({ navigate }) => {
       });
   };
 
+  const loadFromLocal = () => {
+    setImgUrl(storyPages["imageHistory"][sysInfo["currentPage"]])
+    setStory(storyPages["textHistory"][sysInfo["currentPage"]])
+  }
+
   const steerOnUserInput = (steerInput) => {
-    setIsLoaded(false)
+    setIsLoading(true)
 
     let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
 
@@ -81,7 +98,7 @@ const ResultPage = ({ navigate }) => {
 
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
 
-    setRenderChapter(renderChapter+1)
+    renderChapter = renderChapter + 1
 
     GPTClientCall()
 
@@ -125,7 +142,7 @@ const ResultPage = ({ navigate }) => {
 
   const refreshImage = () => {
 
-    setIsLoaded(false)
+    setIsLoading(true)
 
     const userChoices = localStorage.getItem("userChoices")
 
@@ -155,7 +172,7 @@ const ResultPage = ({ navigate }) => {
     .then((data) => {
       storyPages["imageHistory"].push(data["page_image"])
       setImgUrl(storyPages["imageHistory"].slice(-1))
-      setIsLoaded(true)
+      setIsLoading(false)
     })
   }
 
@@ -176,9 +193,9 @@ const ResultPage = ({ navigate }) => {
       <div>
         <HomeButton navigate={navigate} />
       </div>
-      {isLoaded ? (
+      {!isLoading ? (
         <div className="result-page">
-          <h1 className="resultpage-title">Here's your story!</h1>
+          <h1 className="resultpage-title">Here's your story! This is page {renderChapter}</h1>
           <div className="results-page-container">
             <div className="image-container">
               <Image link={imgUrl} />

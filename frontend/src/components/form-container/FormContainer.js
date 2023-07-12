@@ -63,6 +63,11 @@ const FormContainer = ({ navigate }) => {
       "imageHistory": []
     }
 
+    let sysInfo = {
+      "currentPage": 0,
+      "firstLoad": true
+    }
+
     console.log(userChoices)
     console.log(GPTPromptHistory)
 
@@ -70,6 +75,7 @@ const FormContainer = ({ navigate }) => {
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
     localStorage.setItem("userChoices", JSON.stringify(userChoices));
     localStorage.setItem("storyPages", JSON.stringify(storyPages));
+    localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
 
     navigate("/results");
   };
