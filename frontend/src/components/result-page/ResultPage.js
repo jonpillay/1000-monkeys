@@ -36,10 +36,11 @@ const ResultPage = ({ navigate }) => {
 
     console.log(`This is story pages from the GPTcall funct`)
 
-    console.log(storyPages)
-
     const userChoices = localStorage.getItem("userChoices")
     const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
+    const storyPages = JSON.parse(localStorage.getItem("storyPages"))
+
+    console.log(storyPages)
 
     const reqBody = {
       userchoices: userChoices,
@@ -135,6 +136,8 @@ const ResultPage = ({ navigate }) => {
     console.log(GPTPromptHistory)
 
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
+    localStorage.setItem("storyPages", JSON.stringify(storyPages))
+
 
     GPTClientCall()
     
@@ -172,6 +175,7 @@ const ResultPage = ({ navigate }) => {
     .then((data) => {
       storyPages["imageHistory"].push(data["page_image"])
       setImgUrl(storyPages["imageHistory"].slice(-1))
+      localStorage.setItem("storyPages", JSON.stringify(storyPages))
       setIsLoading(false)
     })
   }
