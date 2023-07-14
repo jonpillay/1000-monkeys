@@ -64,7 +64,7 @@ const FormContainer = ({ navigate }) => {
     }
 
     let sysInfo = {
-      "currentPage": 0,
+      "currentPage": -1,
       "firstLoad": true
     }
 

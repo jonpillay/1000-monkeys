@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
 import "./ResultPage.css";
@@ -8,8 +8,10 @@ import HomeButton from "../home-button/HomeButton";
 
 const ResultPage = ({ navigate }) => {
 
-  const [imgUrl, setImgUrl] = useState();
-  const [story, setStory] = useState();
+  console.log("ResultPage rerendered")
+
+  const imgUrl = useRef();
+  const story = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +19,11 @@ const ResultPage = ({ navigate }) => {
 
   const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
-  let renderChapter = sysInfo["currentPage"]
+  const [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
+
+  // let renderChapter = sysInfo["currentPage"]
+
+  
 
   useEffect(() => {
     if (sysInfo["firstLoad"] === true) {
@@ -30,6 +36,10 @@ const ResultPage = ({ navigate }) => {
     }
   }, []);
 
+  // useEffect(() => {
+
+  // }, [isLoading])
+
   const GPTClientCall = () => {
 
     setIsLoading(true)
@@ -39,6 +49,8 @@ const ResultPage = ({ navigate }) => {
     const userChoices = localStorage.getItem("userChoices")
     const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
     const storyPages = JSON.parse(localStorage.getItem("storyPages"))
+    const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+
 
     console.log(storyPages)
 
@@ -60,9 +72,12 @@ const ResultPage = ({ navigate }) => {
       console.log(data["page_text"])
       storyPages["textHistory"].push(data["page_text"])
       storyPages["imageHistory"].push(data["page_image"])
-      setStory(storyPages["textHistory"].slice(-1))
-      setImgUrl(storyPages["imageHistory"].slice(-1))
+      story.current = storyPages["textHistory"].slice(-1)
+      imgUrl.current = storyPages["imageHistory"].slice(-1)
       setIsLoading(false)
+      sysInfo["currentPage"] ++
+      console.log(sysInfo)
+      setRenderChapter(sysInfo["currentPage"])
       console.log(storyPages)
       let GPTPrompts = JSON.parse(GPTPromptHistory)
 
@@ -70,6 +85,8 @@ const ResultPage = ({ navigate }) => {
         role: "assistant",
         content: data["page_text"]
       })
+
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
 
       localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
 
@@ -81,8 +98,8 @@ const ResultPage = ({ navigate }) => {
   };
 
   const loadFromLocal = () => {
-    setImgUrl(storyPages["imageHistory"][sysInfo["currentPage"]])
-    setStory(storyPages["textHistory"][sysInfo["currentPage"]])
+    imgUrl.current = storyPages["imageHistory"][storyPages["currentPage"]]
+    story.current = storyPages["textHistory"][storyPages["currentPage"]]
   }
 
   const steerOnUserInput = (steerInput) => {
@@ -98,8 +115,6 @@ const ResultPage = ({ navigate }) => {
     })
 
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
-
-    renderChapter = renderChapter + 1
 
     GPTClientCall()
 
@@ -121,6 +136,8 @@ const ResultPage = ({ navigate }) => {
 
     const storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
+    const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+
     console.log(storyPages)
 
     console.log(GPTPromptHistory.length)
@@ -131,10 +148,13 @@ const ResultPage = ({ navigate }) => {
 
     storyPages["imageHistory"].pop()
 
-    console.log(storyPages)
+    sysInfo["currentPage"] = renderChapter -1
 
-    console.log(GPTPromptHistory)
+    console.log(sysInfo)
 
+    // console.log(GPTPromptHistory)
+
+    localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
     localStorage.setItem("storyPages", JSON.stringify(storyPages))
 
@@ -174,7 +194,7 @@ const ResultPage = ({ navigate }) => {
     .then((response) => response.json())
     .then((data) => {
       storyPages["imageHistory"].push(data["page_image"])
-      setImgUrl(storyPages["imageHistory"].slice(-1))
+      imgUrl.current = storyPages["imageHistory"].slice(-1)
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
       setIsLoading(false)
     })
@@ -202,10 +222,10 @@ const ResultPage = ({ navigate }) => {
           <h1 className="resultpage-title">Here's your story! This is page {renderChapter}</h1>
           <div className="results-page-container">
             <div className="image-container">
-              <Image link={imgUrl} />
+              <Image link={imgUrl.current} />
             </div>
             <div className="result-story-container">
-              <Story storyString={story} />
+              <Story storyString={story.current} />
             </div>
         </div>
           <SteerStory callback={steerOnUserInput} />

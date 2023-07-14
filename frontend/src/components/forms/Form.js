@@ -7,7 +7,7 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
   return (
     <>
     <div className="form-container">
-        <label className="form-label" htmlFor={selectionField}>
+        <label htmlFor={selectionField} className="form-label">
           {selectionField}:
         </label>
         <Select
