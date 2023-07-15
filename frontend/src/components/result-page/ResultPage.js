@@ -32,10 +32,6 @@ const ResultPage = ({ navigate }) => {
     }
   }, []);
 
-  // useEffect(() => {
-
-  // }, [isLoading])
-
   const GPTClientCall = () => {
 
     setIsLoading(true)
@@ -201,9 +197,9 @@ const ResultPage = ({ navigate }) => {
       imgUrl.current = storyPages["imageHistory"][renderChapter +1]
       setRenderChapter(renderChapter +1)
     } else if (direct == 'last') {
-      story.current = storyPages["storyHistory"].slice(-1)
+      story.current = storyPages["textHistory"].slice(-1)
       imgUrl.current = storyPages["imageHistory"].slice(-1)
-      setRenderChapter = storyPages["storyHistory"].length -1
+      setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
     }
   }
 
@@ -244,8 +240,8 @@ const ResultPage = ({ navigate }) => {
             <div>
         </div>
         <div>
-        <button className="resultpage-submit-button" onClick={() => turnPage()}>Previous Chapter</button>
-        <button className="resultpage-submit-button" onClick={() => turnPage()}>Next Chapter</button>
+        <button className="resultpage-submit-button" onClick={() => turnPage('back')}>Previous Chapter</button>
+        <button className="resultpage-submit-button" onClick={() => turnPage('next')}>Next Chapter</button>
         </div>
       </div>
       </div>
