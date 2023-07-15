@@ -1,7 +1,7 @@
 import React from 'react';
 import './image.css';
 
-const Image = ({link}) => {
+const Image = React.memo(({link}) => {
   console.log("Image rerendered")
 
   return (
@@ -9,6 +9,6 @@ const Image = ({link}) => {
       <img className='story-image' src={ link } alt='story' />
     </div>
   )
-};
+});
 
 export default Image;

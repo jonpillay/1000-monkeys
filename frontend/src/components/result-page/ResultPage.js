@@ -10,29 +10,25 @@ const ResultPage = ({ navigate }) => {
 
   console.log("ResultPage rerendered")
 
-  const imgUrl = useRef();
-  const story = useRef();
+  let [isLoading, setIsLoading] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
+  let storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  const storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
-  const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  const [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "");
 
   // let renderChapter = sysInfo["currentPage"]
 
-  
-
   useEffect(() => {
     if (sysInfo["firstLoad"] === true) {
-      console.log("First load useEffect")
-      GPTClientCall();
       sysInfo["firstLoad"] = false
       localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-    } else {
-      loadFromLocal()
+      console.log("First load useEffect")
+      GPTClientCall();
     }
   }, []);
 
@@ -47,9 +43,9 @@ const ResultPage = ({ navigate }) => {
     console.log(`This is story pages from the GPTcall funct`)
 
     const userChoices = localStorage.getItem("userChoices")
-    const GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
-    const storyPages = JSON.parse(localStorage.getItem("storyPages"))
-    const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+    let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
+    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+    let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
 
     console.log(storyPages)
@@ -97,11 +93,6 @@ const ResultPage = ({ navigate }) => {
       });
   };
 
-  const loadFromLocal = () => {
-    imgUrl.current = storyPages["imageHistory"][storyPages["currentPage"]]
-    story.current = storyPages["textHistory"][storyPages["currentPage"]]
-  }
-
   const steerOnUserInput = (steerInput) => {
     setIsLoading(true)
 
@@ -132,11 +123,11 @@ const ResultPage = ({ navigate }) => {
 
   const refreshStory = () => {
     
-    const GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+    let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
 
-    const storyPages = JSON.parse(localStorage.getItem("storyPages"))
+    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
-    const sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+    let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
     console.log(storyPages)
 
@@ -169,7 +160,7 @@ const ResultPage = ({ navigate }) => {
 
     const userChoices = localStorage.getItem("userChoices")
 
-    const storyPages = JSON.parse(localStorage.getItem("storyPages"))
+    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
     storyPages["imageHistory"].pop()
 
@@ -198,6 +189,22 @@ const ResultPage = ({ navigate }) => {
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
       setIsLoading(false)
     })
+  }
+
+  const turnPage = (direct) => {
+    if (direct == 'back') {
+      story.current = storyPages["textHistory"][renderChapter -1]
+      imgUrl.current = storyPages["imageHistory"][renderChapter -1]
+      setRenderChapter(renderChapter -1)
+    } else if (direct == 'next') {
+      story.current = storyPages["textHistory"][renderChapter +1]
+      imgUrl.current = storyPages["imageHistory"][renderChapter +1]
+      setRenderChapter(renderChapter +1)
+    } else if (direct == 'last') {
+      story.current = storyPages["storyHistory"].slice(-1)
+      imgUrl.current = storyPages["imageHistory"].slice(-1)
+      setRenderChapter = storyPages["storyHistory"].length -1
+    }
   }
 
   const updateStorageAndHooks = (key, value) => {
@@ -235,6 +242,10 @@ const ResultPage = ({ navigate }) => {
               <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
               <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
             <div>
+        </div>
+        <div>
+        <button className="resultpage-submit-button" onClick={() => turnPage()}>Previous Chapter</button>
+        <button className="resultpage-submit-button" onClick={() => turnPage()}>Next Chapter</button>
         </div>
       </div>
       </div>
