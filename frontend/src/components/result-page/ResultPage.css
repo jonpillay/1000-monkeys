@@ -4,10 +4,9 @@
   align-items: center;
   margin: auto; 
   justify-content: center;
-  width: 50%;
+  width: 100%;
   padding-top: 1%;
   overflow: auto;
-
 }
 
 .resultpage-title {
@@ -18,13 +17,22 @@
   font-weight: normal;
   font-size: 132%;
   white-space: nowrap;
-  text-align: left;
 }
 
+/* .book-background {
+  background-image: url("image_adobe_express.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  height: 60%;
+} */
 
 .results-page-container {
+
   display: flex;
-  width: 100%;
+  width: 80%;
+  opacity: 97%;
+  height: 100%;
+  margin: auto;
 }
 
 .image-container {
@@ -33,7 +41,10 @@
 }
 
 .result-story-container {
-  width: 68%;
+  width: 50%;
+  background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+  background: rgba(204, 204, 204, 0.5);
+
   /* padding: 10px; */
 }
 
@@ -41,7 +52,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
 }
 
 .resultpage-submit-button {

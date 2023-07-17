@@ -221,37 +221,38 @@ const ResultPage = ({ navigate }) => {
         <HomeButton navigate={navigate} />
       </div>
       {!isLoading ? (
-        <div className="result-page">
-          <h1 className="resultpage-title">Here's your story! This is page {renderChapter}</h1>
-          <div className="results-page-container">
-            <div className="image-container">
-              <Image link={imgUrl.current} />
+        <>
+          <div className="book-background">
+            <div className="results-page-container">
+              <div>
+                <button className="resultpage-submit-button" onClick={() => turnPage('back')}>Previous Chapter</button>
+              </div>
+              <div className="image-container">
+                <Image link='https://i.ibb.co/HGwQ6wQ/77925a535c9e.png' />
+              </div>
+              <div className="result-story-container">
+                <Story storyString="'As the moon hung high in the sky, Batman found himself in the Wild West, grappling with a new challenge – learning to ride a horse. Determined to master this essential skill, he approached the corral with steely determination. With grit and resilience, he hopped onto the back of the untamed stallion, holding on for dear life as the chase began under the starlit night. The pursuit of taming not only the wild horse but also the untamed frontier had begun.'" />
+              </div>
+              <div>
+                <button className="resultpage-submit-button" onClick={() => turnPage('next')}>Next Chapter</button>
+              </div>
             </div>
-            <div className="result-story-container">
-              <Story storyString={story.current} />
-            </div>
-        </div>
+          </div>
           <SteerStory callback={steerOnUserInput} />
-            <div className="resultpage-buttons">
-              <button className="resultpage-submit-button" data-cy="story-so-far" onClick={() => navigate("/storysofar")}>Story so far...</button> 
-              <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
-              <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-              <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
-            <div>
-        </div>
-        <div>
-        <button className="resultpage-submit-button" onClick={() => turnPage('back')}>Previous Chapter</button>
-        <button className="resultpage-submit-button" onClick={() => turnPage('next')}>Next Chapter</button>
-        </div>
-      </div>
-      </div>
+          <div className="resultpage-buttons">
+            <button className="resultpage-submit-button" data-cy="story-so-far" onClick={() => navigate("/storysofar")}>Story so far...</button> 
+            <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+            <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
+            <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
+          </div>
+        </>
       ) : (
         <div className="nav-box">
           <LoadingIcon />
         </div>    
       )}
     </>
-  );
-};
+  )};
+  
 
 export default ResultPage;
