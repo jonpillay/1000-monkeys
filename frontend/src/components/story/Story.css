@@ -1,3 +1,5 @@
+
+
 .story-text-para {
     margin: 10px;
     width: 100%;
@@ -6,7 +8,7 @@
     font-family: Helvetica, Arial, sans-serif;
     text-align: center;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 1.4vw;
     box-sizing: border-box;
     padding-left: 2%;
     padding-right: 2%;

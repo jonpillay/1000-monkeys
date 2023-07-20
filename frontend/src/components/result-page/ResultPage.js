@@ -191,14 +191,20 @@ const ResultPage = ({ navigate }) => {
     if (direct == 'back') {
       story.current = storyPages["textHistory"][renderChapter -1]
       imgUrl.current = storyPages["imageHistory"][renderChapter -1]
+      sysInfo["currentPage"] --
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
       setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
+      sysInfo["currentPage"] ++
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
       story.current = storyPages["textHistory"][renderChapter +1]
       imgUrl.current = storyPages["imageHistory"][renderChapter +1]
       setRenderChapter(renderChapter +1)
     } else if (direct == 'last') {
       story.current = storyPages["textHistory"].slice(-1)
       imgUrl.current = storyPages["imageHistory"].slice(-1)
+      sysInfo["currentPage"] = storyPages["textHistory"].length -1
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
       setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
     }
   }
@@ -224,18 +230,22 @@ const ResultPage = ({ navigate }) => {
         <>
           <div className="book-background">
             <div className="results-page-container">
+              {renderChapter>0 &&
               <div>
                 <button className="resultpage-submit-button" onClick={() => turnPage('back')}>Previous Chapter</button>
               </div>
+              }
               <div className="image-container">
-                <Image link='https://i.ibb.co/HGwQ6wQ/77925a535c9e.png' />
+                <Image link={imgUrl.current} />
               </div>
               <div className="result-story-container">
-                <Story storyString="'As the moon hung high in the sky, Batman found himself in the Wild West, grappling with a new challenge – learning to ride a horse. Determined to master this essential skill, he approached the corral with steely determination. With grit and resilience, he hopped onto the back of the untamed stallion, holding on for dear life as the chase began under the starlit night. The pursuit of taming not only the wild horse but also the untamed frontier had begun.'" />
+                <Story storyString={story.current} />
               </div>
+              {renderChapter!=storyPages["textHistory"].length-1 &&
               <div>
                 <button className="resultpage-submit-button" onClick={() => turnPage('next')}>Next Chapter</button>
               </div>
+              }
             </div>
           </div>
           <SteerStory callback={steerOnUserInput} />

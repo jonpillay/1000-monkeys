@@ -14,8 +14,7 @@
     margin: auto; 
     flex-direction: column;
     justify-content: center;
-    width: 50%;
-    padding-top: 15%;  
+    width: 50%; 
 }
 
 .formcontainer-title {
