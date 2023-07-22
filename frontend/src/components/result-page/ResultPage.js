@@ -66,10 +66,9 @@ const ResultPage = ({ navigate }) => {
       storyPages["imageHistory"].push(data["page_image"])
       story.current = storyPages["textHistory"].slice(-1)
       imgUrl.current = storyPages["imageHistory"].slice(-1)
-      setIsLoading(false)
       sysInfo["currentPage"] ++
+      setIsLoading(false)
       console.log(sysInfo)
-      setRenderChapter(sysInfo["currentPage"])
       console.log(storyPages)
       let GPTPrompts = JSON.parse(GPTPromptHistory)
 
@@ -83,6 +82,8 @@ const ResultPage = ({ navigate }) => {
       localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
 
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
+
+      setRenderChapter(sysInfo["currentPage"])
       
       console.log(GPTPrompts)
 
@@ -228,32 +229,38 @@ const ResultPage = ({ navigate }) => {
       </div>
       {!isLoading ? (
         <>
-          <div className="book-background">
-            <div className="results-page-container">
+        <div className="page-container">
+          <div className="results-container">
+            <div>
               {renderChapter>0 &&
-              <div>
-                <button className="resultpage-submit-button" onClick={() => turnPage('back')}>Previous Chapter</button>
-              </div>
+                <button className="turn-page-button" onClick={() => turnPage('back')}>Previous Chapter</button>
               }
+            </div>
+            <div className="storybook-container">
               <div className="image-container">
                 <Image link={imgUrl.current} />
               </div>
-              <div className="result-story-container">
+              <div className="story-container">
                 <Story storyString={story.current} />
               </div>
-              {renderChapter!=storyPages["textHistory"].length-1 &&
-              <div>
-                <button className="resultpage-submit-button" onClick={() => turnPage('next')}>Next Chapter</button>
-              </div>
-              }
+            </div>
+            <div>
+            {renderChapter!=storyPages["textHistory"].length-1 &&
+              <button className="turn-page-button" onClick={() => turnPage('next')}>Next Chapter</button>
+            }
             </div>
           </div>
-          <SteerStory callback={steerOnUserInput} />
-          <div className="resultpage-buttons">
-            <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
-            <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-            <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
+          <div>
+          <div>
+            <SteerStory callback={steerOnUserInput} />
+            </div>
+            <div className="resultpage-buttons">
+              <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+              <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
+              <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
+            </div>
           </div>
+        </div>
         </>
       ) : (
         <div className="nav-box">

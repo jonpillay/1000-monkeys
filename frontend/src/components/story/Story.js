@@ -5,9 +5,7 @@ const Story = (props) => {
   console.log("Story rerendered")
 
   return (
-    <div className='story-container'>
-      <p className='story-text-para'>{props.storyString}</p>
-    </div>
+    <div className='story-text'>{props.storyString}</div>
   )
 };
 

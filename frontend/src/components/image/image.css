@@ -1,20 +1,18 @@
-.story {
+/* .story {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     position: relative;
-  }
+  } */
 
 .story-image {
-  position: relative;
-  padding-left: 5%;
-  height: 100%;
-  width: 100%;
-  border-radius: 7px;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.story::before {
+/* .story::before {
   content: "";
   position: absolute;
   top: 10px;
@@ -22,4 +20,4 @@
   left: 0;
   right: 0;
   z-index: -1;
-}
+} */
