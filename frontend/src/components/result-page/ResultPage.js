@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
+import TurnPageButton from "../turn-page-button/turnPageButton";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory";
@@ -233,7 +234,7 @@ const ResultPage = ({ navigate }) => {
           <div className="results-container">
             <div className="next-page-container">
               {renderChapter>0 &&
-                <button className="button-55" id="previous-page-button" onClick={() => turnPage('back')}>Previous Chapter</button>
+                <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
               }
             </div>
             <div className="storybook-container">
@@ -242,7 +243,7 @@ const ResultPage = ({ navigate }) => {
             </div>
             <div className="next-page-container">
               {renderChapter!=storyPages["textHistory"].length-1 &&
-                <button className="button-55" id="next-page-button" onClick={() => turnPage('next')}>Next Chapter</button>
+                <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
               }
             </div>
           </div>
