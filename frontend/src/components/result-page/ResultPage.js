@@ -231,9 +231,9 @@ const ResultPage = ({ navigate }) => {
         <>
         <div className="page-container">
           <div className="results-container">
-            <div>
+            <div className="next-page-container">
               {renderChapter>0 &&
-                <button className="turn-page-button" id="previous-page-button" onClick={() => turnPage('back')}>Previous Chapter</button>
+                <button className="button-55" id="previous-page-button" onClick={() => turnPage('back')}>Previous Chapter</button>
               }
             </div>
             <div className="storybook-container">
@@ -242,7 +242,7 @@ const ResultPage = ({ navigate }) => {
             </div>
             <div className="next-page-container">
               {renderChapter!=storyPages["textHistory"].length-1 &&
-                <button className="turn-page-button" id="next-page-button" onClick={() => turnPage('next')}>Next Chapter</button>
+                <button className="button-55" id="next-page-button" onClick={() => turnPage('next')}>Next Chapter</button>
               }
             </div>
           </div>

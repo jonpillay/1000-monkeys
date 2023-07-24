@@ -10,7 +10,8 @@
 }
   
 .story-container {
-    align-items: baseline;
+    justify-content: right;
+    /* align-items: baseline; */
     padding: 10px;
     background: rgb(204, 204, 204);
     background: rgba(204, 204, 204, 0.5);
@@ -18,6 +19,7 @@
     height: 380px;
     width: 100%;
     display: flex;
+    border-radius: 3%;
     /* align-items: start; */
     /* justify-content: left; */
   }
