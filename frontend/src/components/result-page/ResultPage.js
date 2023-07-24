@@ -233,32 +233,28 @@ const ResultPage = ({ navigate }) => {
           <div className="results-container">
             <div>
               {renderChapter>0 &&
-                <button className="turn-page-button" onClick={() => turnPage('back')}>Previous Chapter</button>
+                <button className="turn-page-button" id="previous-page-button" onClick={() => turnPage('back')}>Previous Chapter</button>
               }
             </div>
             <div className="storybook-container">
-              <div className="image-container">
                 <Image link={imgUrl.current} />
-              </div>
-              <div className="story-container">
                 <Story storyString={story.current} />
-              </div>
             </div>
-            <div>
-            {renderChapter!=storyPages["textHistory"].length-1 &&
-              <button className="turn-page-button" onClick={() => turnPage('next')}>Next Chapter</button>
-            }
+            <div className="next-page-container">
+              {renderChapter!=storyPages["textHistory"].length-1 &&
+                <button className="turn-page-button" id="next-page-button" onClick={() => turnPage('next')}>Next Chapter</button>
+              }
             </div>
           </div>
-          <div>
+          <div className="nav-container">
           <div>
             <SteerStory callback={steerOnUserInput} />
-            </div>
-            <div className="resultpage-buttons">
-              <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
-              <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-              <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
-            </div>
+          </div>
+          <div className="resultpage-buttons">
+            <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+            <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
+            <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
+          </div>
           </div>
         </div>
         </>

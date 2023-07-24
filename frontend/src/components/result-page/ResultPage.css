@@ -25,32 +25,45 @@
 
 .page-container {
   display: grid;
-  grid-template-rows: 70% 30%;
+  grid-template-rows: 50% 50%;
+  max-width: 80%;
+  min-width: 1000px;
+  min-height: 800px;
+  margin: auto;
 }
 
 .results-container {
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 10% 80% 10%;
+  min-width: 800px;
+}
+
+.nav-container {
+  min-width: 900px;
 }
 
 .storybook-container {
+  /* max-width: 1500px; */
+  min-width: 700px;
   display: grid;
-  grid-template-columns: 50% 50%;
-  justify-content: center;
+  grid-template-columns: 40% 60%;
+  /* justify-content: center; */
 }
 
-.image-container {
-  padding: 10px;
-  margin-bottom: 10px;
+.turn-page-button {
+  color: red;
 }
 
-.story-container {
-  background: rgb(204, 204, 204);
-  background: rgba(204, 204, 204, 0.5);
-  overflow-y: auto;
-  height: auto;
-  position: relative;
-  padding: 10px;
+#next-page-button {
+  margin-left: 10px;
+}
+
+#previous-page-button {
+  margin-right: 10px;
+}
+
+.next-page-container {
+  display: block;
 }
 
 .resultpage-buttons {
