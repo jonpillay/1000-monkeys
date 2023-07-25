@@ -1,11 +1,9 @@
 .image-container {
   display: flex;
-  /* align-items: right; */
   justify-content: right;
 }
 
 .story-image {
   height: 400px;
   border-radius: 3%;
-  justify-content: right;
 }

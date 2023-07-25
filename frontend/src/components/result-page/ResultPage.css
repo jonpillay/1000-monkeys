@@ -27,15 +27,17 @@
   display: grid;
   grid-template-rows: 50% 50%;
   max-width: 80%;
-  min-width: 1100px;
+  min-width: 1300px;
   min-height: 800px;
   margin: auto;
 }
 
 .results-container {
   display: grid;
+  justify-content: space-between;
+  align-items: center;
   grid-template-columns: 17% 63% 17%;
-  min-width: 1000px;
+  min-width: 1200px;
 }
 
 .nav-container {
@@ -49,16 +51,12 @@
   /* justify-content: center; */
 }
 
-.next-page-container {
-  margin-top: 70%;
-}
-
 #previous-page-button {
-  margin-right: 65px;
+  margin-right: 20px;
 }
 
 #next-page-button {
-  margin-left: 65px;
+  margin-left: 50px;
 }
 
 .button-55:hover {

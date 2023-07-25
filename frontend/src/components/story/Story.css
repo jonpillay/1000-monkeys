@@ -19,7 +19,7 @@
     overflow-y: scroll;
     height: 373px;
     width: 106%;
-    display: flex;
+    /* display: flex; */
     /* align-items: start; */
     /* justify-content: left; */
     border: 3px solid #333333;

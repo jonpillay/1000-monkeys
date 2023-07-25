@@ -19,16 +19,17 @@ function SteerStory({ callback }) {
   };
 
   return (
-    <div className='prompt-form'>
+    <div className='prompt-form-container'>
       {isButtonPressed ? (
-        <form className="prompt-steer-input" onSubmit={handleFormSubmit}>
+        <form className="prompt-form" onSubmit={handleFormSubmit}>
+          {/* TextInput needs to be rewriten */}
           <TextInput label="Prompt" ref={promptRef} />
           <button className="steer-button" data-cy="steer-submit" type="submit">Craft the next chapter</button>
           <button className="steer-button" data-cy="steer-cancel" onClick={handleButtonClick}>Cancel</button>
         </form>
       ) : (
-        <button data-cy="steer-initiate" className="steer-button" onClick={handleButtonClick}>
-          Steer this story
+        <button data-cy="steer-initiate" className="steer-button" id='init-steer-button' onClick={handleButtonClick}>
+          Craft Next Chapter
         </button>
       )}
     </div>
