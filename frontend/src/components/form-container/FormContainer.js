@@ -81,19 +81,24 @@ const FormContainer = ({ navigate }) => {
   };
 
   return (
-      <div className="formcontainer">
+    <>
         {isAnimationVisible && (
+        <div>
           <img className="formcontainer-logo-gif" src={logo} alt="test" />
+        </div>
         )}
         {!isAnimationVisible && (
       <div className="formcontainer-container">
-        <h1 className="formcontainer-title">
-          Get started with some details...
-        </h1>
+        <div>
+          <h1 className="formcontainer-title">
+            Get started with some details...
+          </h1>
+        </div>
+        <div>
           <Form
-            dropdownItems={characterOptions}
-            selectionField="Character"
-            onDropdownChange={(e) => setCharacterChoice(e.value)}
+              dropdownItems={characterOptions}
+              selectionField="Character"
+              onDropdownChange={(e) => setCharacterChoice(e.value)}
           />
           <Form
             dropdownItems={genreOptions}
@@ -109,13 +114,13 @@ const FormContainer = ({ navigate }) => {
             label="Prompt"
             ref={promptRef}
           />
-          
           <button onClick={handleFormSubmit} type="submit" className="formcontainer-submit-button">
             Submit
           </button>
+        </div>
       </div>
       )}
-    </div>
+    </>
   );
 };
 

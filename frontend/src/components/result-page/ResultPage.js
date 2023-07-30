@@ -5,8 +5,9 @@ import TurnPageButton from "../turn-page-button/turnPageButton";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory";
-import HomeButton from "../home-button/HomeButton";
 import ChapterTitle from "../chapter-title/ChapterTitle";
+import HomeButton from "../home-button/HomeButton";
+
 
 const ResultPage = ({ navigate }) => {
 
@@ -226,11 +227,9 @@ const ResultPage = ({ navigate }) => {
 
   return (
     <>
-      <div>
-        <HomeButton navigate={navigate} />
-      </div>
       {!isLoading ? (
         <>
+        <HomeButton/>
         <div className="page-container">
           <ChapterTitle chapterNumber={renderChapter + 1}/>
           <div className="results-container">
