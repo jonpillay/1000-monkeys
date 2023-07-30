@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'special-elite';
+  src: url("./fonts/SpecialElite-Regular.ttf");
+  font-style: normal;
+  font-weight: 300;
+}
+
+.title {
+  font-family: 'special-elite';
+  font-size: 60px;
+}

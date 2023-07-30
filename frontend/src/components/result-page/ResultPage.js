@@ -249,10 +249,10 @@ const ResultPage = ({ navigate }) => {
           </div>
           <div className="nav-container">
           <SteerStory callback={steerOnUserInput} />
-          <div className="resultpage-buttons">
-            <button className="resultpage-submit-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
-            <button className="resultpage-submit-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-            <button className="resultpage-submit-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
+          <div className="resultpage-button-container">
+            <button className="resultpage-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
+            <button className="resultpage-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
+            <button className="resultpage-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
           </div>
           </div>
         </div>

@@ -1,17 +1,31 @@
+.home-button-container {
+  display: grid;
+  grid-template-columns: 9% 91%;
+  min-width: 1500px;
+  margin-bottom: 7%;
+  margin: 1%;
+}
+
 .home-button {
-  margin: 2%;
-  width: 6%;
-  border-radius: 5px;
-  background-color: #ffa500;/* or background-color: rgba(0, 0, 0, 0); */
+  /* margin: 2%;
+  width: 6%; */
+  /* border-radius: 5px; */
+  background-color: #ffffff00;
+  /* background-color: #ffa500;or background-color: rgba(0, 0, 0, 0); */
   cursor: pointer;
-  border: 0.5px solid #ffa500;
+  /* border: 0.5px solid #ffa500; */
 }
 
 .home-icon {
-  width: 100%;
-  border-radius: 5px;
+  height: 90px;
+  /* border-radius: 5px; */
 }
 
-.home-button:hover {
-  background-color: #acacac31;
+.title-container {
+  margin-top: 24px;
+  margin-left: 5px;
 }
+
+/* .home-button:hover {
+  background-color: #acacac31;
+} */
