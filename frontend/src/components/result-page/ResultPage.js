@@ -6,6 +6,7 @@ import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory";
 import HomeButton from "../home-button/HomeButton";
+import ChapterTitle from "../chapter-title/ChapterTitle";
 
 const ResultPage = ({ navigate }) => {
 
@@ -231,6 +232,7 @@ const ResultPage = ({ navigate }) => {
       {!isLoading ? (
         <>
         <div className="page-container">
+          <ChapterTitle chapterNumber={renderChapter + 1}/>
           <div className="results-container">
             <div className="next-page-container">
               {renderChapter>0 &&
