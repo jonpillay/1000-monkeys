@@ -162,9 +162,9 @@ const ResultPage = ({ navigate }) => {
 
     let storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
-    storyPages["imageHistory"].pop()
+    storyPages["imageHistory"].splice(renderChapter, 1)
 
-    const chapterText = storyPages["textHistory"][storyPages["textHistory"].length -1]
+    const chapterText = storyPages["textHistory"][renderChapter]
 
     console.log(typeof userChoices)
 
@@ -184,8 +184,8 @@ const ResultPage = ({ navigate }) => {
     })
     .then((response) => response.json())
     .then((data) => {
-      storyPages["imageHistory"].push(data["page_image"])
-      imgUrl.current = storyPages["imageHistory"].slice(-1)
+      storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
+      imgUrl.current = storyPages["imageHistory"][renderChapter]
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
       setIsLoading(false)
     })
