@@ -1,13 +1,12 @@
 .splash-container {
   display: flex;
   justify-content: center;
-  margin-top: 5%;
   min-width: 1300px;
 }
 
 .splash-grid {
-  width: 80%;
+  width: 85%;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 63% 37%;
   margin: 0 auto;
 }

@@ -3,9 +3,13 @@ import './TextInput.css'
 
 const TextInput = React.forwardRef(( label, ref ) => {
   return (
-    <div className="text-input">
-      <label className="text-input-label">{`${label.label}:`}</label>
-      <textarea className="text-input-input" type="text" ref={ref}/>
+    <div className="text-input-container">
+      <div>
+        <label className="text-input-label">{`${label.label}:`}</label>
+      </div>
+      <div>
+        <textarea className="text-input-box" type="text" ref={ref}/>
+      </div>
     </div>
   );
 });

@@ -1,14 +1,18 @@
-.text-input {
-    display: flex;
+.text-input-container {
+    display: grid;
+    grid-template-columns: 33% 59%;
     align-items: center;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
-.text-input-input {
+.text-input-box {
+    /* align-items: flex-end; */
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: antiquewhite;
     text-align: left;
-    margin: auto;
-    width: 80%;
+    width: 100%;
     border-radius: 5px;
     font-family: Helvetica, Arial, sans-serif;
     height: 50px;
@@ -28,6 +32,7 @@
 }
 
 .text-input-label {
-    color: rgb(255, 255, 255);
-    font-size: 120%;
+    color: black;
+    font-weight: 170;
+    font-size: 100%;
 }

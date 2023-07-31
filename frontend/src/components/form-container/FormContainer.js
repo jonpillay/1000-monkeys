@@ -91,7 +91,7 @@ const FormContainer = ({ navigate }) => {
       <div className="formcontainer-container">
         <div>
           <h1 className="formcontainer-title">
-            Get started with some details...
+            Let's start with some details!
           </h1>
         </div>
         <div>
@@ -115,7 +115,7 @@ const FormContainer = ({ navigate }) => {
             ref={promptRef}
           />
           <button onClick={handleFormSubmit} type="submit" className="formcontainer-submit-button">
-            Submit
+            Begin Your Adventure!
           </button>
         </div>
       </div>
