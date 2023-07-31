@@ -40,6 +40,10 @@
     border-top-right-radius: 15px 225px;
 }
 
+.css-b62m3t-container:hover {
+    border-color: rgb(8, 113, 8);
+}
+
 .react-select__control {
     background-color: white !important;
     border: none !important;

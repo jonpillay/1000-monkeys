@@ -12,9 +12,8 @@
 .formcontainer-container {
     padding-top: 23%;
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 23% 77%;
     margin-right: -5%;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 .formcontainer-title {
@@ -22,7 +21,6 @@
     color: black;
     font-weight: normal;
     font-size: 140%;
-    font-weight: 500;
     text-align: center;
 }
 
@@ -37,8 +35,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3%;
-    margin-left: 11%;
+    margin-top: 20px;
+    margin-left: 16%;
     width: 75%;
     min-width: 75%;
     padding: 20px;
@@ -62,8 +60,7 @@
     opacity: 90%;
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
     transform: translate3d(0, 2px, 0);
-    /* border-color: green; */
-    border-width: 4px;
+    border-width: 3px;
     text-decoration: underline;
 }
 
