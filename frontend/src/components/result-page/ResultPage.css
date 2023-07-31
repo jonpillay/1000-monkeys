@@ -61,9 +61,9 @@
 
 .resultpage-button-container {
   padding-top: 15px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
+  margin-left: 200px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
   width: 80%;
 }
 
