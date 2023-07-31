@@ -5,8 +5,8 @@
 }
 
 .splash-grid {
-  width: 85%;
+  width: 90%;
   display: grid;
-  grid-template-columns: 63% 37%;
+  grid-template-columns: 60% 35%;
   margin: 0 auto;
 }

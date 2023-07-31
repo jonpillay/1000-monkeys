@@ -1,0 +1,22 @@
+.welcome-panel-container {
+  display: grid;
+  grid-template-rows: 12% 88%;
+  padding-right: 10%;
+  margin-top: 2%;
+}
+
+.welcome-title-container {
+  font-family: 'special-elite';
+  font-size: 130%;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.welcome-text {
+  text-align: center;
+  margin-top: -2%;
+  text-indent: 30px;
+  font-family: 'merriweather';
+  font-size: 90%;
+  width: 106%;
+}

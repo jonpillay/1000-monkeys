@@ -7,13 +7,14 @@
 
 .form-label {
     display: flex;
-    padding-top: 10px;
+    padding-top: 18px;
     width: 32%;
     font-size: 100%;
     color: black;
-    margin-bottom: 0px;
-    margin-right: 0px;
+    /* margin-bottom: 0px;
+    margin-right: 0px; */
     white-space: nowrap;
+    font-family: 'special-elite';
 }
 
 .form-label-container {
@@ -23,8 +24,9 @@
 
 .css-b62m3t-container {
     flex: 1 1 auto !important;
-    font-size: 90% !important;
+    font-size: 70% !important;
     width: 50% !important;
+    font-family: 'merriweather';
 }
 
 .react-select__control {
@@ -39,9 +41,9 @@
 }
   
 .react-select__value-container {
-    flex: 1 !important;
+    /* flex: 1 !important;
     overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    text-overflow: ellipsis !important; */
     border-radius: 5px;
     height: 50px;
     font-size: 30px;
@@ -52,17 +54,25 @@
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
     box-sizing: border-box;
     color: #41403e;
-    transition: all 235ms ease-in-out;
+    transition: all 100ms ease-in-out;
     border-bottom-left-radius: 15px 255px;
     border-bottom-right-radius: 225px 15px;
     border-top-left-radius: 255px 15px;
     border-top-right-radius: 15px 225px;
     /* background-color: #ffffff00; */
 }
+
+.react-select__value-container:hover {
+    opacity: 90%;
+    /* box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0); */
+    border-color: black;
+    border-width: 3px;
+}
   
 .react-select__single-value {
     color: #000000 !important;
-    font-size: 18px !important;
+    font-size: 22px !important;
 }
   
 .react-select__indicator-separator {

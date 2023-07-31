@@ -15,7 +15,6 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
           options={dropdownItems.map((item) => ({ value: item, label: item }))}
           onChange={onDropdownChange}
           // value={selectedValue ? { value: selectedValue, label: selectedValue } : null}
-          placeholder="Select..."
         />
       </div>
     </>
