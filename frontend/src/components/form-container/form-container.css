@@ -42,7 +42,7 @@
     width: 75%;
     min-width: 75%;
     padding: 20px;
-    background-color: rgba(240, 248, 255, 0);
+    background-color: white;
     height: 50px;
     font-size: 100%;
     background-size: 4px 3px;
@@ -62,8 +62,9 @@
     opacity: 90%;
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
     transform: translate3d(0, 2px, 0);
-    border-color: green;
+    /* border-color: green; */
     border-width: 4px;
+    text-decoration: underline;
 }
 
 @keyframes fadeOut {

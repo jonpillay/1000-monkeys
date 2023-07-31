@@ -27,6 +27,8 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  /* width: 60px;
+  height: 350px; */
 }
 
 .turn-page-button:hover {
