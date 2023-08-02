@@ -91,7 +91,7 @@ const FormContainer = ({ navigate }) => {
       <div className="formcontainer-container">
         <div>
           <h1 className="formcontainer-title">
-            Let's start with some details!
+            Let's start at the beginning
           </h1>
         </div>
         <div>

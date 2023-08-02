@@ -4,7 +4,7 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
-const mongoose = require('mongoose')
+const connectToMongo = require("./database/db-connection")
 
 const ImagesRouter = require('./routes/images');
 const StoryRouter = require("./routes/story");
@@ -26,7 +26,7 @@ app.use("/populate", PopulateRouter)
 
 // connect to db
 
-const PORT = process.env.DB_PORT || 5050;
+connectToMongo()
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -42,15 +42,5 @@ app.use((err, req, res) => {
   // respond with details of the error
   res.status(err.status || 500).json({message: 'server error'})
 });
-
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log("connection to db successful")
-    })
-  })
-  .catch((error) => {
-    console.log(error)
-})
 
 module.exports = app;
