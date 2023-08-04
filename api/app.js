@@ -8,7 +8,9 @@ const connectToMongo = require("./database/db-connection")
 
 const ImagesRouter = require('./routes/images');
 const StoryRouter = require("./routes/story");
-const PopulateRouter = require("./routes/populate")
+const PopulateRouter = require("./routes/populate");
+const UserRouter = require('./routes/users');
+
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/images", ImagesRouter)
 app.use("/story", StoryRouter)
 app.use("/populate", PopulateRouter)
+app.use("/user", UserRouter)
+
 
 // connect to db
 

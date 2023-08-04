@@ -115,7 +115,7 @@ const FormContainer = ({ navigate }) => {
             ref={promptRef}
           />
           <button onClick={handleFormSubmit} type="submit" className="formcontainer-submit-button">
-            Begin Your Adventure!
+            Start Your Adventure!
           </button>
         </div>
       </div>
