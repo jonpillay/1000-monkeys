@@ -3,6 +3,7 @@ import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
 import logo from "./homepageLogo.gif";
+import SignupForm from "../signup-form/SignupForm";
 
 const FormContainer = ({ navigate }) => {
   const [characterOptions, setCharacterOptions] = useState([]);
@@ -82,12 +83,10 @@ const FormContainer = ({ navigate }) => {
 
   return (
     <>
-        {isAnimationVisible && (
-        <div>
-          <img className="formcontainer-logo-gif" src={logo} alt="test" />
-        </div>
+        {true && (
+          <SignupForm/>
         )}
-        {!isAnimationVisible && (
+        {false && (
       <div className="formcontainer-container">
         <div>
           <h1 className="formcontainer-title">
@@ -114,7 +113,7 @@ const FormContainer = ({ navigate }) => {
             label="Prompt"
             ref={promptRef}
           />
-          <button onClick={handleFormSubmit} type="submit" className="formcontainer-submit-button">
+          <button onClick={handleFormSubmit} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
         </div>

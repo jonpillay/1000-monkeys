@@ -4,13 +4,15 @@ import './index.css';
 import App from './components/app/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import HomeButton from "./components/home-button/HomeButton";
+import { AuthContextProvider } from './context/AuthContext';
 
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <AuthContextProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </AuthContextProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

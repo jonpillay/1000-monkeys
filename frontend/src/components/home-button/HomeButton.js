@@ -13,7 +13,7 @@ const HomeButton = ({ navigate }) => {
         <img className="home-icon" src={HomeIcon} alt="home" />
       </div>
       <div className='title-container'>
-        <text className='title'>1000 Monkeys</text>
+        <div className='title'>1000 Monkeys</div>
       </div>
     </div>
   );

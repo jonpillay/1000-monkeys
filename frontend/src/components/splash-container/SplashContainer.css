@@ -7,6 +7,6 @@
 .splash-grid {
   width: 90%;
   display: grid;
-  grid-template-columns: 60% 35%;
+  grid-template-columns: 60% 40%;
   margin: 0 auto;
 }
