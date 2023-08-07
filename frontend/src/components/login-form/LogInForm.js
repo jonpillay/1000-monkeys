@@ -37,7 +37,6 @@ const LogInForm = () => {
         </div>
       </form>
     </div>
-
   )
 }
 
