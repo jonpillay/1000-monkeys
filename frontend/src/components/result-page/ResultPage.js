@@ -7,9 +7,14 @@ import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory";
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import HomeButton from "../home-button/HomeButton";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useNavigate } from "react-router";
 
+const ResultPage = () => {
 
-const ResultPage = ({ navigate }) => {
+  const navigate = useNavigate()
+
+  const { user } = useAuthContext()
 
   console.log("ResultPage rerendered")
 
@@ -27,13 +32,18 @@ const ResultPage = ({ navigate }) => {
   // let renderChapter = sysInfo["currentPage"]
 
   useEffect(() => {
-    if (sysInfo["firstLoad"] === true) {
-      sysInfo["firstLoad"] = false
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      console.log("First load useEffect")
-      GPTClientCall();
+    if (user) {
+      if (sysInfo["firstLoad"] === true) {
+        sysInfo["firstLoad"] = false
+        localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+        console.log("First load useEffect")
+        GPTClientCall();
+      }
+    } else {
+      navigate('/')
     }
-  }, []);
+
+  }, [user]);
 
   const GPTClientCall = () => {
 
@@ -57,7 +67,8 @@ const ResultPage = ({ navigate }) => {
     fetch("/story", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(reqBody),
     })
@@ -94,101 +105,116 @@ const ResultPage = ({ navigate }) => {
   };
 
   const steerOnUserInput = (steerInput) => {
-    setIsLoading(true)
+    if (user) {
+      setIsLoading(true)
 
-    let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+      let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+  
+      console.log(steerInput)
+  
+      GPTPrompts.push({
+        role: "user",
+        content: steerInput
+      })
+  
+      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
+  
+      GPTClientCall()
+    } else {
+      navigate('/')
+    }
 
-    console.log(steerInput)
-
-    GPTPrompts.push({
-      role: "user",
-      content: steerInput
-    })
-
-    localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
-
-    GPTClientCall()
-
-    // resetLoadingParameters();
-    // updateStorageAndHooks("prompt", steerInput);
-    // triggerReload();
   };
 
   const whatHappensNext = () => {
 
-    const imaginationPrompt = "Use your imagination to write the next chapter of the story."
+    if (user) {
+      const imaginationPrompt = "Use your imagination to write the next chapter of the story."
 
-    steerOnUserInput(imaginationPrompt)
+      steerOnUserInput(imaginationPrompt)
+    } else {
+      navigate('/')
+    }
+
   };
 
   const refreshStory = () => {
+
+    if (user) {
+      let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+
+      let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  
+      let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  
+      console.log(storyPages)
+  
+      console.log(GPTPromptHistory.length)
+  
+      GPTPromptHistory.pop()
+  
+      storyPages["textHistory"].pop()
+  
+      storyPages["imageHistory"].pop()
+  
+      sysInfo["currentPage"] = renderChapter -1
+  
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
+      localStorage.setItem("storyPages", JSON.stringify(storyPages))
+  
+  
+      GPTClientCall()
+    } else {
+      navigate('/')
+    }
     
-    let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
 
-    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-
-    let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
-
-    console.log(storyPages)
-
-    console.log(GPTPromptHistory.length)
-
-    GPTPromptHistory.pop()
-
-    storyPages["textHistory"].pop()
-
-    storyPages["imageHistory"].pop()
-
-    sysInfo["currentPage"] = renderChapter -1
-
-    console.log(sysInfo)
-
-    // console.log(GPTPromptHistory)
-
-    localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-    localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
-    localStorage.setItem("storyPages", JSON.stringify(storyPages))
-
-
-    GPTClientCall()
     
   };
 
   const refreshImage = () => {
 
-    setIsLoading(true)
+    if (user) {
 
-    const userChoices = localStorage.getItem("userChoices")
+      setIsLoading(true)
 
-    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-
-    storyPages["imageHistory"].splice(renderChapter, 1)
-
-    const chapterText = storyPages["textHistory"][renderChapter]
-
-    console.log(typeof userChoices)
-
-    console.log(typeof chapterText)
-
-    const reqBody = {
-      userChoices: userChoices,
-      chapterText: chapterText
+      const userChoices = localStorage.getItem("userChoices")
+  
+      let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  
+      storyPages["imageHistory"].splice(renderChapter, 1)
+  
+      const chapterText = storyPages["textHistory"][renderChapter]
+  
+      console.log(typeof userChoices)
+  
+      console.log(typeof chapterText)
+  
+      const reqBody = {
+        userChoices: userChoices,
+        chapterText: chapterText
+      }
+  
+      fetch("/images", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(reqBody),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
+        imgUrl.current = storyPages["imageHistory"][renderChapter]
+        localStorage.setItem("storyPages", JSON.stringify(storyPages))
+        setIsLoading(false)
+      })
+    } else {
+      navigate('/')
     }
 
-    fetch("/images", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reqBody),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
-      imgUrl.current = storyPages["imageHistory"][renderChapter]
-      localStorage.setItem("storyPages", JSON.stringify(storyPages))
-      setIsLoading(false)
-    })
   }
 
   const turnPage = (direct) => {

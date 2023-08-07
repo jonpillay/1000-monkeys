@@ -1,10 +1,16 @@
 import './HomeButton.css';
 import HomeIcon from './typing-logo.png';
 import Nav from '../nav/Nav'
+import { useNavigate } from 'react-router';
 
-const HomeButton = ({ navigate }) => {
+const HomeButton = () => {
+  const navigate = useNavigate()
   const goHome = () => {
-    localStorage.clear();
+    localStorage.removeItem("GPTPromptHistory")
+    localStorage.removeItem("userChoices");
+    localStorage.removeItem("storyPages");
+    localStorage.removeItem("sysInfo")
+
     navigate("/");
   };
 

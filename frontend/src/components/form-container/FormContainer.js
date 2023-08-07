@@ -4,8 +4,12 @@ import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
 import SignupForm from "../signup-form/SignupForm"
 import LogInForm from "../login-form/LogInForm";
+import { useNavigate } from "react-router";
 
-const FormContainer = ({ navigate }) => {
+import { useAuthContext } from "../../hooks/useAuthContext";
+
+const FormContainer = () => {
+  const { user } = useAuthContext()
   const [characterOptions, setCharacterOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
   const [styleOptions, setStyleOptions] = useState([]);
@@ -18,7 +22,7 @@ const FormContainer = ({ navigate }) => {
   const [genreChoice, setGenreChoice] = useState([]);
   const [styleChoice, setStyleChoice] = useState([]);
 
-
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("/populate", {
@@ -44,7 +48,13 @@ const FormContainer = ({ navigate }) => {
   // }, []);
 
   const handleFormSubmit = (e) => {
+
     e.preventDefault();
+
+    if ( !user ) {
+      navigate('/')
+      return
+    }
 
     let userChoices = {
       "character": characterChoice,
@@ -72,7 +82,11 @@ const FormContainer = ({ navigate }) => {
     console.log(userChoices)
     console.log(GPTPromptHistory)
 
-    localStorage.clear()
+    localStorage.removeItem("GPTPromptHistory")
+    localStorage.removeItem("userChoices");
+    localStorage.removeItem("storyPages");
+    localStorage.removeItem("sysInfo")
+
     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
     localStorage.setItem("userChoices", JSON.stringify(userChoices));
     localStorage.setItem("storyPages", JSON.stringify(storyPages));
@@ -83,12 +97,12 @@ const FormContainer = ({ navigate }) => {
 
   return (
     <>
-        {true && (
+        {!user && (
           <>
           <LogInForm/>
           </>
         )}
-        {false && (
+        {user && (
       <div className="formcontainer-container">
         <div>
           <h1 className="formcontainer-title">
