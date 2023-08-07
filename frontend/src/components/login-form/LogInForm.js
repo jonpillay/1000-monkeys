@@ -5,9 +5,12 @@ import './LogInForm.css'
 const LogInForm = () => {
   const email = useRef()
   const password = useRef()
-
-  const handleSubmit = (e) => {
+  const { login, error, isLoading } = useLogin()
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    await login(email.current.value, password.current.value)
 
     console.log(email.current.value)
     console.log(password.current.value)
@@ -29,7 +32,8 @@ const LogInForm = () => {
           </div>
         </div>
         <div className="user-submit-container">
-          <button className="submit-button" id="user-submit-button" type="submit">LOGIN</button>
+          <button disabled={isLoading} className="submit-button" id="user-submit-button" type="submit">LOGIN</button>
+          {error && <div className="error">{error}</div>}
         </div>
       </form>
     </div>

@@ -1,5 +1,7 @@
-.steer-button {
-  margin-top: 20px;
+/* our brand colours are white and #3b5998 */
+
+.logout-button {
+  margin-top: 4px;
   background-color: #fff;
   opacity: 98%;
   background-image: none;
@@ -30,34 +32,38 @@
   touch-action: manipulation;
 }
 
-.steer-button:hover {
+.logout-button:hover {
   opacity: 90%;
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);
 }
 
-#craft-chapter:hover {
-  background-color: #87fe26;
+:root {
+  --primary: #3b5998;
+  --secondary: white;
 }
 
-#cancel-prompt:hover {
-  background-color: #fe2626;
-}
-
-#init-steer-button {
-  margin-left: 39%;
-}
-
-.prompt-form-container {
-  width: 100%;
-}
-
-.prompt-form {
+.nav-box {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
-  width: 80%;
-  margin: auto;
-  height: 20%;
-  padding: 0;
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+  
+
+
+/* .nav-bar button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.nav-bar button:hover {
+    text-decoration: underline;
+} */
+

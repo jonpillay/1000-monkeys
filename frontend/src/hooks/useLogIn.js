@@ -7,7 +7,7 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
 
@@ -33,5 +33,5 @@ export const useLogin = () => {
     }
   }
 
-  return { signup, isLoading, error }
+  return { login, isLoading, error }
 }

@@ -5,9 +5,12 @@ import './SignupForm.css'
 const SignupForm = () => {
   const email = useRef()
   const password = useRef()
+  const { signup, error, isLoading } = useSignup()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    await signup(email.current.value, password.current.value)
 
     console.log(email.current.value)
     console.log(password.current.value)
@@ -29,7 +32,8 @@ const SignupForm = () => {
           </div>
         </div>
         <div className="user-submit-container">
-          <button className="submit-button" id="user-submit-button" type="submit">Sign Up</button>
+          <button disabled={isLoading} className="submit-button" id="user-submit-button" type="submit">Sign Up</button>
+          {error && <div className="error">{error}</div>}
         </div>
       </form>
     </div>

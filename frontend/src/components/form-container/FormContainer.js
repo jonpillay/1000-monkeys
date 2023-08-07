@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
-import logo from "./homepageLogo.gif";
 import SignupForm from "../signup-form/SignupForm"
 import LogInForm from "../login-form/LogInForm";
 
@@ -13,7 +12,7 @@ const FormContainer = ({ navigate }) => {
 
   const promptRef = useRef()
 
-  const [isAnimationVisible, setIsAnimationVisible] = useState(true);
+  // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
 
   const [characterChoice, setCharacterChoice] = useState([]);
   const [genreChoice, setGenreChoice] = useState([]);
@@ -33,16 +32,16 @@ const FormContainer = ({ navigate }) => {
       });
   }, [])
 
-  useEffect(() => {
-    const animationDuration = 3000;
-    const animationTimeout = setTimeout(() => {
-      setIsAnimationVisible(false);
-    }, animationDuration);
+  // useEffect(() => {
+  //   const animationDuration = 3000;
+  //   const animationTimeout = setTimeout(() => {
+  //     setIsAnimationVisible(false);
+  //   }, animationDuration);
 
-    return () => {
-      clearTimeout(animationTimeout);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(animationTimeout);
+  //   };
+  // }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -85,7 +84,9 @@ const FormContainer = ({ navigate }) => {
   return (
     <>
         {true && (
+          <>
           <LogInForm/>
+          </>
         )}
         {false && (
       <div className="formcontainer-container">

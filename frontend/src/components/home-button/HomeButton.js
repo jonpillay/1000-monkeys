@@ -1,5 +1,6 @@
 import './HomeButton.css';
 import HomeIcon from './typing-logo.png';
+import Nav from '../nav/Nav'
 
 const HomeButton = ({ navigate }) => {
   const goHome = () => {
@@ -14,6 +15,9 @@ const HomeButton = ({ navigate }) => {
       </div>
       <div className='title-container'>
         <div className='title'>1000 Monkeys</div>
+      </div>
+      <div>
+        <Nav/>
       </div>
     </div>
   );

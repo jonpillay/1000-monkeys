@@ -16,7 +16,7 @@ const UserController = {
 
       const JWT = genJWT(user._id)
 
-      res.status(200).json({ email, token: JWT })
+      res.status(200).json({ email: email, token: JWT })
     } catch (error) {
 
       res.status(400).json({error: error.message })
@@ -34,7 +34,7 @@ const UserController = {
 
       const JWT = genJWT(user._id)
 
-      res.status(200).json({ email, token: JWT })
+      res.status(200).json({ email: email, token: JWT })
     } catch (error) {
       res.status(400).json({error: error.message})
     }
