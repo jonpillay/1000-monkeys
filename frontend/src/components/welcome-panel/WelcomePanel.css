@@ -1,7 +1,7 @@
 .welcome-panel-container {
   display: grid;
   grid-template-rows: 12% 88%;
-  padding-right: 10%;
+  padding-right: 9%;
   margin-top: 2%;
 }
 

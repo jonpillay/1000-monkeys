@@ -3,7 +3,8 @@ import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
 import logo from "./homepageLogo.gif";
-import SignupForm from "../signup-form/SignupForm";
+import SignupForm from "../signup-form/SignupForm"
+import LogInForm from "../login-form/LogInForm";
 
 const FormContainer = ({ navigate }) => {
   const [characterOptions, setCharacterOptions] = useState([]);
@@ -84,7 +85,7 @@ const FormContainer = ({ navigate }) => {
   return (
     <>
         {true && (
-          <SignupForm/>
+          <LogInForm/>
         )}
         {false && (
       <div className="formcontainer-container">

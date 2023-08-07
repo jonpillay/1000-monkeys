@@ -1,0 +1,40 @@
+import { useState, useRef } from "react";
+import { useLogin } from "../../hooks/useLogIn";
+import './LogInForm.css'
+
+const LogInForm = () => {
+  const email = useRef()
+  const password = useRef()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log(email.current.value)
+    console.log(password.current.value)
+
+  }
+
+  return (
+    <div className="form-container">
+      <form className="user-form" onSubmit={handleSubmit}>
+        <div className="user-title-container">
+          <div className="user-title">Adventurer's Log In</div>
+        </div>
+        <div className="input-container">
+          <div>
+            <input type="email" className="user-input-box" ref={email} placeholder="email..."/> 
+          </div>
+          <div>
+            <input type="password" className="user-input-box" ref={password} placeholder="password..."/> 
+          </div>
+        </div>
+        <div className="user-submit-container">
+          <button className="submit-button" id="user-submit-button" type="submit">LOGIN</button>
+        </div>
+      </form>
+    </div>
+
+  )
+}
+
+export default LogInForm;
