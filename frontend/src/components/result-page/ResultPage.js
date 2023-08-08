@@ -27,8 +27,8 @@ const ResultPage = () => {
 
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-superJumbo.jpg?quality=75&auto=webp");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "big cat");
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "");
 
   let [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +40,7 @@ const ResultPage = () => {
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
         console.log("First load useEffect")
-        // GPTClientCall();
+        GPTClientCall();
       }
     } else {
       navigate('/')

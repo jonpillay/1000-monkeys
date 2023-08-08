@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="background-image-container">
       <Routes>
-        <Route path="/" element={<SplashConatiner/>} />
+        <Route path="/" element={storyHistory ? <Navigate to='/results' /> : <SplashConatiner/> } />
         <Route path="/results" element={user ? <ResultPage/> : <Navigate to='/' />} />
       </Routes>
     </div>

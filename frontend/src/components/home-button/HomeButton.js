@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router';
 const HomeButton = () => {
   const navigate = useNavigate()
   const goHome = () => {
-    localStorage.removeItem("GPTPromptHistory")
-    localStorage.removeItem("userChoices");
-    localStorage.removeItem("storyPages");
-    localStorage.removeItem("sysInfo");
+    const goHome = setTimeout(function(){
+      localStorage.removeItem("storyPages");
+      localStorage.removeItem("GPTPromptHistory")
+      localStorage.removeItem("userChoices");
+      localStorage.removeItem("sysInfo");
+    }, 200);
 
     navigate("/");
   };
