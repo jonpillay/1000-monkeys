@@ -8,6 +8,9 @@ export const useLogout = () => {
   const { dispatch } = useAuthContext()
 
   const logout = () => {
+    const disLogout = setTimeout(function(){
+      localStorage.clear()
+    }, 200);
     dispatch({type: 'LOGOUT'})
   }
 

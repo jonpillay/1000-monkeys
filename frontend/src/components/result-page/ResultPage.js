@@ -35,7 +35,7 @@ const ResultPage = () => {
   // let renderChapter = sysInfo["currentPage"]
 
   useEffect(() => {
-    if (localStorage.getItem('user')) {
+    if (user) {
       if (sysInfo["firstLoad"] === true) {
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))

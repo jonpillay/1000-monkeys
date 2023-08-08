@@ -1,5 +1,5 @@
-const clearLocal = () => {
-  localStorage.removeItem("user")
+const clearLocal = async() => {
+  await localStorage.clear()
 }
 
   module.exports = clearLocal

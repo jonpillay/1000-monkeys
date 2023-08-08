@@ -2,11 +2,15 @@ import { useContext } from "react";
 import './nav.css'
 import NavButton from '../navbutton/NavButton';
 import { useLog, useLogout } from "../../hooks/useLogout";
-import { useClearLocal } from "../../hooks/useClearLocal";
+import { useNavigate } from "react-router";
+// import { clearLocal } from "../../hooks/useClearLocal";
 
 // import logged in context as defined in App.js
 // import {loggedInContext} from '../app/App';
-import { useNavigate } from "react-router";
+
+const clearLocal = require('../../hooks/useClearLocal')
+
+
 
 const NavBar = () => {
 
@@ -16,7 +20,7 @@ const NavBar = () => {
   const navigate = useNavigate()
   const { logout } = useLogout()
 
-  const handleClick = () => {
+  const handleClick = async() => {
     localStorage.removeItem('user')
     logout()
   }
