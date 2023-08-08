@@ -2,6 +2,7 @@ import { useContext } from "react";
 import './nav.css'
 import NavButton from '../navbutton/NavButton';
 import { useLog, useLogout } from "../../hooks/useLogout";
+import { useClearLocal } from "../../hooks/useClearLocal";
 
 // import logged in context as defined in App.js
 // import {loggedInContext} from '../app/App';
@@ -16,6 +17,7 @@ const NavBar = () => {
   const { logout } = useLogout()
 
   const handleClick = () => {
+    localStorage.removeItem('user')
     logout()
   }
 

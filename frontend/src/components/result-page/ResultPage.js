@@ -10,15 +10,16 @@ import HomeButton from "../home-button/HomeButton";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
 
-const ResultPage = () => {
 
-  const navigate = useNavigate()
+
+const ResultPage = () => {
 
   const { user } = useAuthContext()
 
+  const navigate = useNavigate()
+
   console.log("ResultPage rerendered")
 
-  let [isLoading, setIsLoading] = useState(false);
 
   let storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
@@ -26,18 +27,20 @@ const ResultPage = () => {
 
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "");
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "https://static01.nyt.com/images/2021/09/14/science/07CAT-STRIPES/07CAT-STRIPES-superJumbo.jpg?quality=75&auto=webp");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "big cat");
+
+  let [isLoading, setIsLoading] = useState(false);
 
   // let renderChapter = sysInfo["currentPage"]
 
   useEffect(() => {
-    if (user) {
+    if (localStorage.getItem('user')) {
       if (sysInfo["firstLoad"] === true) {
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
         console.log("First load useEffect")
-        GPTClientCall();
+        // GPTClientCall();
       }
     } else {
       navigate('/')

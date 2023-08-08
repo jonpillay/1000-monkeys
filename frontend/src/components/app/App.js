@@ -13,14 +13,18 @@ import SplashConatiner from '../splash-container/SplashContainer'
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-const App = () => {
-  const { user } = useAuthContext()
+const App = () => {   
+
+  const storyHistory = localStorage.getItem('storyPages')
+
+  const user = useAuthContext()
+  console.log(user)
 
   return (
     <div className="background-image-container">
       <Routes>
         <Route path="/" element={<SplashConatiner/>} />
-        <Route path="/results" element={user ? <ResultPage /> : <Navigate to='/'/>} />
+        <Route path="/results" element={user ? <ResultPage/> : <Navigate to='/' />} />
       </Routes>
     </div>
   );

@@ -9,7 +9,7 @@ const HomeButton = () => {
     localStorage.removeItem("GPTPromptHistory")
     localStorage.removeItem("userChoices");
     localStorage.removeItem("storyPages");
-    localStorage.removeItem("sysInfo")
+    localStorage.removeItem("sysInfo");
 
     navigate("/");
   };
