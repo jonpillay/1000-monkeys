@@ -1,17 +1,18 @@
-import { useAuthContext } from "./useAuthContext"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
 import { useNavigate } from "react-router"
 const clearLocal = require("./useClearLocal")
 
 export const useLogout = () => {
 
   // const { clearLocal } = useClearLocal()
-  const { dispatch } = useAuthContext()
+  const {dispatch} = useContext(AuthContext)
+
+  const { navigate } = useNavigate()
 
   const logout = () => {
-    const disLogout = setTimeout(function(){
-      localStorage.clear()
-    }, 200);
-    dispatch({type: 'LOGOUT'})
+    localStorage.removeItem('user')
+    dispatch({type: 'LOGOUT'}) 
   }
 
   return {logout}

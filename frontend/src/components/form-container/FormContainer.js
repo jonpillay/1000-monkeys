@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
@@ -6,10 +6,14 @@ import SignupForm from "../signup-form/SignupForm"
 import LogInForm from "../login-form/LogInForm";
 import { useNavigate } from "react-router";
 
+import { StoryContext } from "../../context/StoryContext";
+
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useStoryContext } from "../../hooks/useStoryContext";
 
 const FormContainer = () => {
-  const { user } = useAuthContext()
+  const {user} = useAuthContext()
+  console.log(user)
   const [characterOptions, setCharacterOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
   const [styleOptions, setStyleOptions] = useState([]);
@@ -24,6 +28,8 @@ const FormContainer = () => {
 
   const navigate = useNavigate()
 
+  const { dispatch } = useContext(StoryContext)
+
   useEffect(() => {
     fetch("/populate", {
       method: "GET",
@@ -36,25 +42,24 @@ const FormContainer = () => {
       });
   }, [])
 
-  // useEffect(() => {
-  //   const animationDuration = 3000;
-  //   const animationTimeout = setTimeout(() => {
-  //     setIsAnimationVisible(false);
-  //   }, animationDuration);
+  async function initialiseLocal(prompts, choices, pages, sys) {
+    return new Promise((resolve) => {
+    localStorage.removeItem("GPTPromptHistory")
+    localStorage.removeItem("userChoices");
+    localStorage.removeItem("storyPages");
+    localStorage.removeItem("sysInfo")
 
-  //   return () => {
-  //     clearTimeout(animationTimeout);
-  //   };
-  // }, []);
+    localStorage.setItem("GPTPromptHistory", JSON.stringify(prompts))
+    localStorage.setItem("userChoices", JSON.stringify(choices));
+    localStorage.setItem("storyPages", JSON.stringify(pages));
+    localStorage.setItem("sysInfo", JSON.stringify(sys))
+    resolve()
+    })
+  }
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
 
     e.preventDefault();
-
-    if ( !user ) {
-      navigate('/')
-      return
-    }
 
     let userChoices = {
       "character": characterChoice,
@@ -70,8 +75,8 @@ const FormContainer = () => {
     }]
 
     let storyPages = {
-      "textHistory": [],
-      "imageHistory": []
+      "textHistory": ["This is some text"],
+      "imageHistory": ["this is a URL"]
     }
 
     let sysInfo = {
@@ -82,27 +87,16 @@ const FormContainer = () => {
     console.log(userChoices)
     console.log(GPTPromptHistory)
 
-    localStorage.removeItem("GPTPromptHistory")
-    localStorage.removeItem("userChoices");
-    localStorage.removeItem("storyPages");
-    localStorage.removeItem("sysInfo")
+    await initialiseLocal(GPTPromptHistory, userChoices, storyPages, sysInfo)
 
-    localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
-    localStorage.setItem("userChoices", JSON.stringify(userChoices));
-    localStorage.setItem("storyPages", JSON.stringify(storyPages));
-    localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+    dispatch({type: 'BEGIN'})
 
     navigate("/results");
   };
 
   return (
     <>
-        {!user && (
-          <>
-          <LogInForm/>
-          </>
-        )}
-        {user && (
+      {user && (
       <div className="formcontainer-container">
         <div>
           <h1 className="formcontainer-title">
@@ -134,6 +128,11 @@ const FormContainer = () => {
           </button>
         </div>
       </div>
+      )}
+      {!user && (
+        <>
+        <LogInForm/>
+        </>
       )}
     </>
   );

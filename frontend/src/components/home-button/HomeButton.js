@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 const HomeButton = () => {
   const navigate = useNavigate()
   const goHome = () => {
-    const goHome = setTimeout(function(){
+    setTimeout(function(){
       localStorage.removeItem("storyPages");
       localStorage.removeItem("GPTPromptHistory")
       localStorage.removeItem("userChoices");

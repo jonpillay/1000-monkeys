@@ -17,11 +17,24 @@ const NavBar = () => {
 // set consts for loggedIn and setLoggedIn (funct) to be accessed within the component
 // const [loggedIn, setLoggedIn] = useContext(loggedInContext)
 
-  const navigate = useNavigate()
+  const { navigate } = useNavigate()
   const { logout } = useLogout()
 
+  async function clearLocalLogout() {
+    return new Promise((resolve) => {
+    localStorage.removeItem("user")
+    localStorage.removeItem("GPTPromptHistory")
+    localStorage.removeItem("userChoices");
+    localStorage.removeItem("storyPages");
+    localStorage.removeItem("sysInfo")
+    resolve()
+    })
+  }
+
+
+
   const handleClick = async() => {
-    localStorage.removeItem('user')
+    await clearLocalLogout()
     logout()
   }
 

@@ -1,31 +1,45 @@
 import React from 'react';
 import './App.css';
 import {
+  BrowserRouter,
   Navigate,
   useNavigate,
   Routes,
-  Route
+  Route,
+  Router
 } from 'react-router-dom';
 import FormContainer from '../form-container/FormContainer';
 import ResultPage from '../result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
-import SplashConatiner from '../splash-container/SplashContainer'
+import SplashContainer from '../splash-container/SplashContainer'
 
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useStoryContext } from '../../hooks/useStoryContext';
+import { useState } from 'react';   
 
-const App = () => {   
+const App = () => {
 
-  const storyHistory = localStorage.getItem('storyPages')
+  
 
-  const user = useAuthContext()
+  // const getStory = () => {
+  //   const storyHistory = localStorage.getItem('storyPages')
+  //   return storyHistory
+  // }
+
+  const {story} = useStoryContext()
+  const {user} = useAuthContext()
+
+  console.log(story)
   console.log(user)
 
   return (
     <div className="background-image-container">
-      <Routes>
-        <Route path="/" element={storyHistory ? <Navigate to='/results' /> : <SplashConatiner/> } />
-        <Route path="/results" element={user ? <ResultPage/> : <Navigate to='/' />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={ <SplashContainer/> } />
+          <Route exact path="/results" element={ <ResultPage/> } />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

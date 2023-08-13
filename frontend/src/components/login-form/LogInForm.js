@@ -5,15 +5,12 @@ import './LogInForm.css'
 const LogInForm = () => {
   const email = useRef()
   const password = useRef()
-  const { login, error, isLoading } = useLogin()
+  const { login, isLoading, error } = useLogin()
  
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     await login(email.current.value, password.current.value)
-
-    console.log(email.current.value)
-    console.log(password.current.value)
 
   }
 

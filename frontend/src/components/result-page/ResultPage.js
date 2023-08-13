@@ -27,20 +27,20 @@ const ResultPage = () => {
 
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "");
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=620&dpr=2&s=none");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "blah blah");
 
   let [isLoading, setIsLoading] = useState(false);
 
   // let renderChapter = sysInfo["currentPage"]
 
   useEffect(() => {
-    if (user) {
+    if (localStorage.getItem('user')) {
       if (sysInfo["firstLoad"] === true) {
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
         console.log("First load useEffect")
-        GPTClientCall();
+        // GPTClientCall();
       }
     } else {
       navigate('/')
