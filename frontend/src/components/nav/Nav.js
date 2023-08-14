@@ -26,13 +26,13 @@ const NavBar = () => {
 
   async function clearStorageLogout() {
     return new Promise((resolve) => {
-    dispatch({type: "END", payload: null})
-    localStorage.removeItem("user")
-    localStorage.removeItem("GPTPromptHistory")
-    localStorage.removeItem("userChoices");
-    localStorage.removeItem("storyPages");
-    localStorage.removeItem("sysInfo")
-    resolve()
+      dispatch({type: "END", payload: null})
+      localStorage.removeItem("user")
+      localStorage.removeItem("GPTPromptHistory")
+      localStorage.removeItem("userChoices");
+      localStorage.removeItem("storyPages");
+      localStorage.removeItem("sysInfo")
+      resolve()
     })
   }
 

@@ -1,0 +1,12 @@
+.invite-container {
+  display: flex;
+  justify-content: center;
+  min-width: 1300px;
+}
+
+.invite-grid {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  margin: 0 auto;
+}
