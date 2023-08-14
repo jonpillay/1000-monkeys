@@ -36,8 +36,8 @@ const App = () => {
     <div className="background-image-container">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={ <SplashContainer/> } />
-          <Route exact path="/results" element={ <ResultPage/> } />
+          <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
+          <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
         </Routes>
       </BrowserRouter>
     </div>

@@ -22,7 +22,7 @@ export const StoryContextProvider = ({ children }) => {
   useEffect(() => {
     const story = JSON.parse(localStorage.getItem('storyPages'))
     if (story) {
-      dispatch({ type: 'BEGIN', payload: "this" })
+      dispatch({ type: 'BEGIN', payload: true })
     }
   }, [])
 

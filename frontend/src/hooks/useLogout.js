@@ -5,13 +5,15 @@ const clearLocal = require("./useClearLocal")
 
 export const useLogout = () => {
 
-  // const { clearLocal } = useClearLocal()
   const {dispatch} = useContext(AuthContext)
 
-  const { navigate } = useNavigate()
-
-  const logout = () => {
+  const clearLocalLogout = () => {
     localStorage.removeItem('user')
+    // localStorage.removeItem('story')
+  }
+
+  const logout = async () => {
+    await clearLocalLogout()
     dispatch({type: 'LOGOUT'}) 
   }
 

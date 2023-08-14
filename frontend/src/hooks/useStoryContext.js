@@ -8,5 +8,5 @@ export const useStoryContext = () => {
     throw Error('must be inside storyContextProvider to use')
   }
 
-  return {context}
+  return context
 }

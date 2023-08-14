@@ -242,18 +242,6 @@ const ResultPage = () => {
     }
   }
 
-  const updateStorageAndHooks = (key, value) => {
-    // const tempStorage = JSON.parse(localStorage.getItem("userChoices"));
-    // console.log(tempStorage)
-    // if (key === "messageHistory" || key === "imageHistory") {
-    //   tempStorage[key] = [...tempStorage[key], value];
-    // } else {
-    //   tempStorage[key] = value;
-    // }
-    // localStorage.setItem("userChoices", JSON.stringify(tempStorage));
-    // // setUserChoices(JSON.stringify(tempStorage));
-  };
-
   return (
     <>
       {!isLoading ? (
