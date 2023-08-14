@@ -18,4 +18,4 @@ const InviteAvtivation = (props) => {
   )
 }
 
-export default SplashContainer;
+export default InviteAvtivation;

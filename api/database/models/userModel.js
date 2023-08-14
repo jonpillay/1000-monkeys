@@ -12,17 +12,28 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
   },
   credits: {
     type: Number,
     required: true
-  }
+  },
+  invite_code: {
+    type: String,
+    required: true
+  },
+  isActivated: {
+    type: Boolean,
+    default: false
+  },
+  isSuper: {
+    type: Boolean,
+    default: false
+  },
 })
 
 // static methods
 
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (email, invite_code, password) {
 
   if (!email || !password) {
     throw Error("Must have email and password")
@@ -33,25 +44,50 @@ userSchema.statics.signup = async function (email, password) {
   if (!validator.isStrongPassword(password)) {
     throw Error("Please enter a strong password.")
   }
+  // validator for intive code?
 
   const emailCheck = await this.findOne({ email })
 
-  if (emailCheck) {
-    throw Error("Email in use!")
+  if (!emailCheck) {
+    throw Error("Email not found.")
   }
 
   const salt = await bcrypt.genSalt()
   const passwordHash = await bcrypt.hash(password, salt)
 
-  const user = await this.create({ email, password: passwordHash, credits: 50 })
+  const filter = {email: email}
+
+  const update = { isActivated: true, password: passwordHash }
+
+  const options = { new: true }
+
+  const user = await this.findOneAndUpdate(filter, update, options)
 
   return user
 }
 
+userSchema.statics.create = async function (email, invite_code) {
+  if (!email || !invite_code) {
+    throw Error("Please enter email and invite-code")
+  }
+  if (!validator.isEmail(email)) {
+    throw Error("Please enter a valid email.")
+  }
+
+  const salt = await bcrypt.genSalt()
+  const inviteHash = await bcrypt.hash(invite_code, salt)
+
+  await this.create({ email, invite_code: inviteHash, credits: 50 })
+}
+
 userSchema.statics.login = async function (email, password) {
 
+  if (password == "") {
+    throw Error("Enter proper credentials.")
+  }
+
   if (!email || !password) {
-    throw Error("Please enter email and password")
+    throw Error("Please enter email and password.")
   }
   if (!validator.isEmail(email)) {
     throw Error("Please enter a valid email.")
@@ -60,7 +96,11 @@ userSchema.statics.login = async function (email, password) {
   const login_user = await this.findOne({ email })
 
   if (!login_user) {
-    throw Error("Email not found")
+    throw Error("Email not found.")
+  }
+
+  if (login_user.isActivated == false) {
+    throw Error("Activate account with invite code.")
   }
 
   const passwordCheck = await bcrypt.compare(password, login_user.password)

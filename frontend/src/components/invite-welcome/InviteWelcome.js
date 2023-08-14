@@ -18,3 +18,5 @@ const InviteWelcome = () => {
     </div>
   )
 }
+
+export default InviteWelcome
