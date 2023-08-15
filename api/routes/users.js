@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/login', UserController.LoginUser)
 
-router.post('/activate', UserController.ActivateUser)
+router.post('/activate', UserController.Activation)
 
 router.post('/signup', UserController.SignUpUser)
 

@@ -4,7 +4,7 @@ import InviteForm from "../invite-form/FormContainer"
 import HomeButton from "../home-button/HomeButton";
 import { useNavigate } from "react-router";
 
-const InviteAvtivation = (props) => {
+const InviteActivation = (props) => {
   return (
     <>
     <HomeButton/>
@@ -18,4 +18,4 @@ const InviteAvtivation = (props) => {
   )
 }
 
-export default InviteAvtivation;
+export default InviteActivation;

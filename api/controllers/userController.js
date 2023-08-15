@@ -1,7 +1,11 @@
 const User = require('../database/models/userModel')
 const jwt = require('jsonwebtoken')
 
-const genJWT = (_id, isAdmin) => {
+const genActivationJWT = (invite_code) => {
+  return jwt.sign({invite_code}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
+}
+
+const genLoginJWT = (_id, isAdmin) => {
   return jwt.sign({_id, isAdmin}, process.env.JWT_SIGNATURE, {expiresIn: '1d'})
 }
 
@@ -14,9 +18,9 @@ const UserController = {
 
       const user = await User.login(email, password)
 
-      const JWT = genJWT(user._id)
+      const JWT = genLoginJWT(user._id)
 
-      res.status(200).json({ email: email, token: JWT })
+      res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper })
     } catch (error) {
 
       res.status(400).json({error: error.message })
@@ -28,11 +32,16 @@ const UserController = {
   },
   SignUpUser: async (req, res) => {
     const {email, password} = req.body
+    const authEmail = req.user
+
+    if (authEmail != email) {
+      res.status(400).json({error: "invalid request"})
+    } 
 
     try {
       const user = await User.signup(email, password)
 
-      const JWT = genJWT(user._id, user.isAdmin)
+      const JWT = genLoginJWT(user._id, user.isSuper)
 
       res.status(200).json({ email: email, token: JWT })
     } catch (error) {
@@ -43,9 +52,21 @@ const UserController = {
     const {email, invite_code} = req.body
 
     try {
-      const user = await User.signup(email, password)
+      const user = await User.create(email, invite_code)
 
-      const JWT = genJWT(user._id, user.isAdmin)
+      res.status(200).json({error: "user created"})
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
+  },
+  Activation: async (req, res) => {
+    const {email, invite_code} = req.body
+
+    try {
+      const user = await User.activate(email, invite_code)
+
+      // JWT should be a seperate one for activation only
+      const JWT = genActivationJWT(user.invite_code)
 
       res.status(200).json({ email: email, token: JWT })
     } catch (error) {

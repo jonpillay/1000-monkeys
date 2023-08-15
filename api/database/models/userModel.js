@@ -33,7 +33,7 @@ const userSchema = new Schema({
 
 // static methods
 
-userSchema.statics.signup = async function (email, invite_code, password) {
+userSchema.statics.signup = async function (email, password) {
 
   if (!email || !password) {
     throw Error("Must have email and password")
@@ -78,6 +78,33 @@ userSchema.statics.create = async function (email, invite_code) {
   const inviteHash = await bcrypt.hash(invite_code, salt)
 
   await this.create({ email, invite_code: inviteHash, credits: 50 })
+}
+
+userSchema.statics.activate = async function (email, invite_code) {
+  if (!email || !invite_code) {
+    throw Error("Please enter email and invite-code")
+  }
+  if (!validator.isEmail(email)) {
+    throw Error("Please enter a valid email.")
+  }
+
+  const activation_user = await this.findOne({ email })
+
+  if (!activation_user) {
+    throw Error("Email not found.")
+  }
+
+  if (activation_user.isActivated == true) {
+    throw Error("Invite code already used, please contact admin")
+  }
+
+  const inviteCheck = await bcrypt.compare(invite_code, activation_user.invite_code)
+
+  if (!inviteCheck) {
+    throw Error("Invite code and email don't match")
+  } else {
+    return activation_user
+  }
 }
 
 userSchema.statics.login = async function (email, password) {
