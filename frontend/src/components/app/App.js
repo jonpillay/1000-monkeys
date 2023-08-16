@@ -19,14 +19,15 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 import { useState } from 'react';
 
-const getAdmin = (obj, property) => {
-  if (obj) {
-    return property in obj
-  } else {
-    console.log("Well this fired off")
-    return false
-  }
-}
+// const getAdmin = (obj) => {
+//   if (obj) {
+//     if (obj.isSuper == true)
+//     return true
+//   } else {
+//     console.log("Well this fired off")
+//     return null
+//   }
+// }
 
 const App = () => {
 
@@ -52,10 +53,9 @@ const App = () => {
     <div className="background-image-container">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
           <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
-          <Route path="/userfactoryintheenv" element={ admin ? <AdminPanel/> : <Navigate to="/"/> } />
-
+          <Route path="/userfactoryintheenv" element={ admin != false ? <AdminPanel/> : <Navigate to="/"/> } />
+          <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
         </Routes>
       </BrowserRouter>
     </div>
