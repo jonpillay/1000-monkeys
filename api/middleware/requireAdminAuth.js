@@ -25,7 +25,7 @@ const requireAdminAuth = async (req, res, next) => {
     
     console.log(req.user)
 
-    if (isSuper != "true") {
+    if (isSuper != true) {
       res.status(401).json({ error: "Must be admin super check." })
     }
 

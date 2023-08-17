@@ -1,0 +1,11 @@
+.activation-container {
+  display: flex;
+  justify-content: center;
+  min-width: 1300px;
+}
+
+.activation-grid {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}

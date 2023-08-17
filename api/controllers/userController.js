@@ -2,11 +2,9 @@ const User = require('../database/models/userModel')
 const jwt = require('jsonwebtoken')
 
 const genActivationJWT = (invite_code) => {
-  return jwt.sign({invite_code}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
+  return jwt.sign({email, invite_code}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
 }
 
-
-// IS THIS MALFORMING THE JWT?
 const genLoginJWT = (_id, isSuper) => {
   return jwt.sign({_id, isSuper}, process.env.JWT_SIGNATURE, {expiresIn: '1d'})
 }
@@ -20,7 +18,7 @@ const UserController = {
 
       const user = await User.login(email, password)
 
-      const JWT = genLoginJWT(user._id, "true")
+      const JWT = genLoginJWT(user._id, user.isSuper)
 
       res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper })
     } catch (error) {

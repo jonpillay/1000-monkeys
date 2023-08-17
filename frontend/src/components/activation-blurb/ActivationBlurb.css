@@ -1,0 +1,22 @@
+.activation-blurb-container {
+  display: grid;
+  grid-template-rows: 12% 88%;
+  padding-right: 9%;
+  margin-top: 2%;
+}
+
+.activation-title-container {
+  font-family: 'special-elite';
+  font-size: 130%;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.activation-text {
+  text-align: center;
+  margin-top: -2%;
+  text-indent: 30px;
+  font-family: 'merriweather';
+  font-size: 90%;
+  width: 106%;
+}
