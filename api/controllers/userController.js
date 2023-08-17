@@ -68,7 +68,7 @@ const UserController = {
       const user = await User.activate(email, invite_code)
 
       // JWT should be a seperate one for activation only
-      const JWT = genActivationJWT(user.invite_code)
+      const JWT = genActivationJWT(user.email, user.invite_code)
 
       res.status(200).json({ email: email, token: JWT })
     } catch (error) {

@@ -1,16 +1,18 @@
 import { useState, useRef } from "react";
 import { useLogin } from "../../hooks/useLogIn";
 import './ActivationForm.css'
+import { useActivate } from "../../hooks/useActivate";
+const jwt = require("jsonwebtoken");
 
 const ActivationForm = () => {
   const activationEmail = useRef()
   const activationInviteCode = useRef()
-  const { login, isLoading, error } = useLogin()
+  const { activate, isLoading, error } = useActivate()
  
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // await login(email.current.value, password.current.value)
+    await activate(activationEmail.current.value, activationInviteCode.current.value)
 
   }
 
