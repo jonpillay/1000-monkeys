@@ -21,11 +21,14 @@ import { useState } from 'react';
 
 // const getAdmin = (obj) => {
 //   if (obj) {
-//     if (obj.isSuper == true)
-//     return true
+//     if (obj.isSuper == true) {
+//       return true
+//     } else {
+//       return false
+//     }
 //   } else {
 //     console.log("Well this fired off")
-//     return null
+//     return false
 //   }
 // }
 
@@ -39,9 +42,9 @@ const App = () => {
   const {story} = useStoryContext()
   const {user} = useAuthContext()
 
-  const admin = user && user.isSuper;
+  const admin = !user || user.isSuper
 
-  console.log("This is the admin value ", admin === true)
+  console.log("This is the admin value ", admin)
 
   // route to signup (that should only activationJWT from invite code verification) only protected by presence of obj named activationJWT, JWT checks in middleware on form submission. 
   const activationJWT = localStorage.getItem('activationJWT')
@@ -54,7 +57,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
-          <Route path="/userfactoryintheenv" element={ admin != false ? <AdminPanel/> : <Navigate to="/"/> } />
+          <Route exact path="/userfactoryintheenv" element={ admin != false ? <AdminPanel/> : <Navigate to="/"/> } />
           <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
         </Routes>
       </BrowserRouter>

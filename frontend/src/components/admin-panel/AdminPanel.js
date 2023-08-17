@@ -8,8 +8,8 @@ const AdminPanel = (props) => {
   return (
     <>
     <HomeButton/>
-    <div className="splash-container">
-      <div className="splash-grid">
+    <div className="admin-container">
+      <div className="admin-grid">
         <CreateUserForm/>
         <UpdateUserForm/>
       </div>

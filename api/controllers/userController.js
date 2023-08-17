@@ -5,8 +5,10 @@ const genActivationJWT = (invite_code) => {
   return jwt.sign({invite_code}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
 }
 
-const genLoginJWT = (_id, isAdmin) => {
-  return jwt.sign({_id, isAdmin}, process.env.JWT_SIGNATURE, {expiresIn: '1d'})
+
+// IS THIS MALFORMING THE JWT?
+const genLoginJWT = (_id, isSuper) => {
+  return jwt.sign({_id, isSuper}, process.env.JWT_SIGNATURE, {expiresIn: '1d'})
 }
 
 const UserController = {
@@ -18,7 +20,7 @@ const UserController = {
 
       const user = await User.login(email, password)
 
-      const JWT = genLoginJWT(user._id)
+      const JWT = genLoginJWT(user._id, "true")
 
       res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper })
     } catch (error) {
@@ -49,10 +51,12 @@ const UserController = {
     }
   },
   CreateUser: async (req, res) => {
+    console.log("This is the req obj!")
+    console.log(req.body)
     const {email, invite_code} = req.body
 
     try {
-      const user = await User.create(email, invite_code)
+      const user = await User.newUser(email, invite_code)
 
       res.status(200).json({error: "user created"})
     } catch (error) {

@@ -52,13 +52,13 @@
   color: red;
 } */
 
-.user-form {
+.admin-user-form {
   display: grid;
   grid-template-rows: 20% 42% 33%;
   height: 280px;
 }
 
-.input-container {
+.admin-input-container {
   display: grid;
   grid-template-rows: 60% 35%;
 
