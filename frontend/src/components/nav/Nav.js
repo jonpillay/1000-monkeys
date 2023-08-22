@@ -62,8 +62,8 @@ const NavBar = () => {
           </>
           :
             <>
-              <NavButton className="nav-button" to="/signup" value="I Have an Invite Key!"/>
-              <NavButton className="login-button" to="/" value="Login"/>
+              <NavButton to="/activate" value="I Have an Invite Key!" className="nav-button" />
+              <NavButton to="/" value="Login" className="login-button" />
             </>
           )}
         </div>

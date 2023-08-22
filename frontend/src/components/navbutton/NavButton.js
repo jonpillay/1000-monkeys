@@ -6,7 +6,7 @@ function NavButton(props) {
   const value = props.value;
 
   return (
-    <button to={to} className="nav-button">{value}</button>
+    <NavLink to={to} className="nav-button">{value}</NavLink>
   )
 }
 
