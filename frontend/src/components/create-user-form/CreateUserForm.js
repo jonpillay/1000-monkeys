@@ -30,8 +30,8 @@ const CreateUserForm = () => {
         </div>
         <div className="user-submit-container">
           <button disabled={isLoading} className="submit-button" id="user-submit-button" type="submit">Create User</button>
-          {error && <div className="error">{error}</div>}
         </div>
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   )
