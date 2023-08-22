@@ -56,9 +56,9 @@ const UserController = {
     try {
       const user = await User.newUser(email, invite_code)
 
-      res.status(200).json({error: "user created"})
+      res.status(200).json({message: "user created"})
     } catch (error) {
-      res.status(400).json({error: error.message})
+      console.log(error)
     }
   },
   Activation: async (req, res) => {

@@ -43,7 +43,9 @@ const App = () => {
   const {story} = useStoryContext()
   const {user} = useAuthContext()
 
-  const admin = !user || user.isSuper
+  const admin = user ? user.isSuper : false
+  
+  const admin_str = admin.toString()
 
   console.log("This is the admin value ", admin)
 
@@ -59,7 +61,7 @@ const App = () => {
         <Routes>
           <Route exact path="/activate" element={ <ActivationPanel/> } />
           <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
-          <Route exact path="/userfactoryintheenv" element={ admin != false ? <AdminPanel/> : <Navigate to="/"/> } />
+          <Route exact path="/userfactoryintheenv" element={ <AdminPanel/> } />
           <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
         </Routes>
       </BrowserRouter>
