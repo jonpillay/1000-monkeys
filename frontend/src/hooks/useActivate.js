@@ -28,8 +28,8 @@ export const useActivate = () => {
     }
 
     if (response.ok) {
-
       setIsLoading(false)
+      setError(JSONres.error)
     }
   }
 

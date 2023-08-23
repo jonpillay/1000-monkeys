@@ -11,6 +11,8 @@ const ActivationForm = () => {
  
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log(activationEmail.current.value)
+    console.log(activationInviteCode.current.value)
 
     await activate(activationEmail.current.value, activationInviteCode.current.value)
 

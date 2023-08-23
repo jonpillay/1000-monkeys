@@ -14,9 +14,9 @@ const requireActivationAuth = async (req, res, next) => {
   const token = authorization.split(' ')[1]
 
   try {
-    const {email} = JWT.verify(token, process.env.JWT_SIGNATURE)
+    const email = JWT.verify(token, process.env.JWT_SIGNATURE)
 
-    req.user = await User.findOne({ email }).select('email')
+    req.user = await User.findOne(email).select('email')
     next()
 
   } catch (error) {

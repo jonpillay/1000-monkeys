@@ -1,7 +1,7 @@
 const User = require('../database/models/userModel')
 const jwt = require('jsonwebtoken')
 
-const genActivationJWT = (invite_code) => {
+const genActivationJWT = (email, invite_code) => {
   return jwt.sign({email, invite_code}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
 }
 
@@ -71,7 +71,7 @@ const UserController = {
       // JWT should be a seperate one for activation only
       const JWT = genActivationJWT(user.email, user.invite_code)
 
-      res.status(200).json({ email: email, token: JWT })
+      res.status(200).json({ email: email, token: JWT, error:"made it" })
     } catch (error) {
       res.status(400).json({error: error.message})
     }
