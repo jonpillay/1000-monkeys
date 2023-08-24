@@ -5,6 +5,7 @@ import { useActivate } from "../../hooks/useActivate";
 // const jwt = require("jsonwebtoken");
 
 const ActivationForm = () => {
+  console.log("Activate Form Rerender")
   const activationEmail = useRef()
   const activationInviteCode = useRef()
   const { activate, isLoading, error } = useActivate()

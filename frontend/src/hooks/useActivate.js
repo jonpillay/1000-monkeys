@@ -29,7 +29,12 @@ export const useActivate = () => {
 
     if (response.ok) {
       setIsLoading(false)
-      setError(JSONres.error)
+      const {email, token, error } = JSONres
+
+      const activateLocalStorage = {email, token}
+
+      localStorage.setItem('activateLocal', JSON.stringify(activateLocalStorage))
+      setError(error)
     }
   }
 
