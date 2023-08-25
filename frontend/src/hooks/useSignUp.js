@@ -15,9 +15,16 @@ export const useSignup = () => {
     setIsLoading(true)
     setError(null)
 
+    const token = JSON.parse(localStorage.getItem('activateLocal'))
+
+    console.log(token.token)
+
     const response = await fetch('./user/signup', {
       method: 'Post',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token.token}`
+      },
       body: JSON.stringify({email, password})
     })
 
@@ -29,6 +36,7 @@ export const useSignup = () => {
     }
 
     if (response.ok) {
+      localStorage.removeItem('activateLocal')
       localStorage.setItem('user', JSON.stringify(JSONres))
 
       dispatch({type: 'LOGIN', payload: JSONres})

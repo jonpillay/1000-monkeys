@@ -3,7 +3,7 @@ const User = require('../database/models/userModel')
 
 const requireAdminAuth = async (req, res, next) => {
 
-  // console.log(req.headers)
+  console.log(req.headers)
 
   const { authorization } = req.headers
 
