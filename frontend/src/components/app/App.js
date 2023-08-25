@@ -44,8 +44,6 @@ const App = () => {
   const {user} = useAuthContext()
 
   const admin = user ? user.isSuper : false
-  
-  const admin_str = admin.toString()
 
   console.log("This is the admin value ", admin)
 

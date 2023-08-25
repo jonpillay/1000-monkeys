@@ -34,9 +34,12 @@ const UserController = {
     const {email, password} = req.body
     const authEmail = req.user
 
-    if (authEmail != email) {
-      res.status(400).json({error: "invalid request"})
-    } 
+    console.log(authEmail)
+
+    // if (authEmail != email) {
+    //   throw Error("Invalid request")
+    //   res.status(400).json({error: "invalid request"})
+    // } 
 
     try {
       const user = await User.signup(email, password)

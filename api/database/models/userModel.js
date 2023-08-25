@@ -46,7 +46,7 @@ userSchema.statics.signup = async function (email, password) {
   }
   // validator for intive code?
 
-  const emailCheck = await this.findOne(email)
+  const emailCheck = await this.findOne({email})
 
   if (!emailCheck) {
     throw Error("Email not found.")
