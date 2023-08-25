@@ -4,11 +4,10 @@ import './ActivationForm.css'
 import { useActivate } from "../../hooks/useActivate";
 // const jwt = require("jsonwebtoken");
 
-const ActivationForm = () => {
+const ActivationForm = ({activate, isLoading, error}) => {
   console.log("Activate Form Rerender")
   const activationEmail = useRef()
   const activationInviteCode = useRef()
-  const { activate, isLoading, error } = useActivate()
  
   const handleSubmit = async (e) => {
     e.preventDefault()

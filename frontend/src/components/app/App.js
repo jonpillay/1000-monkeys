@@ -14,7 +14,7 @@ import ResultPage from '../result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
 import AdminPanel from '../admin-panel/AdminPanel';
-import ActivationPanel from '../activation-page.js/ActivationPage';
+import ActivationPage from '../activation-page.js/ActivationPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
@@ -59,7 +59,7 @@ const App = () => {
     <div className="background-image-container">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/activate" element={ <ActivationPanel/> } />
+          <Route exact path="/activate" element={ <ActivationPage/> } />
           <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
           <Route exact path="/userfactoryintheenv" element={ <AdminPanel/> } />
           <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />

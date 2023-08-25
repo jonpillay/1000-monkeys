@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useStoryContext } from "./useStoryContext";
 import { AuthContext } from "../context/AuthContext";
@@ -7,8 +7,14 @@ import { AuthContext } from "../context/AuthContext";
 export const useActivate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  const { dispatch } = useContext(AuthContext)
+  const [ signupActive, setSignupActive ] = useState(false)
   const user = useAuthContext()
+
+  useEffect(()=> {
+    if (localStorage.getItem('activateLocal')) {
+      setSignupActive(true)
+    }
+  }, [])
 
   const activate = async (email, invite_code) => {
     setIsLoading(true)
@@ -29,14 +35,14 @@ export const useActivate = () => {
 
     if (response.ok) {
       setIsLoading(false)
+      setSignupActive(true)
       const {email, token, error } = JSONres
 
       const activateLocalStorage = {email, token}
 
       localStorage.setItem('activateLocal', JSON.stringify(activateLocalStorage))
-      setError(error)
     }
   }
 
-  return { activate, isLoading, error }
+  return { activate, isLoading, error, signupActive }
 }
