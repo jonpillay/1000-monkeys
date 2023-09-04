@@ -13,7 +13,6 @@ import { useStoryContext } from "../../hooks/useStoryContext";
 
 const FormContainer = () => {
   const {user} = useAuthContext()
-  console.log(user)
   const [characterOptions, setCharacterOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
   const [styleOptions, setStyleOptions] = useState([]);

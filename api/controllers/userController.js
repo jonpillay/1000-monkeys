@@ -20,7 +20,7 @@ const UserController = {
 
       const JWT = genLoginJWT(user._id, user.isSuper)
 
-      res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper })
+      res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper, credits: user.credits })
     } catch (error) {
 
       res.status(400).json({error: error.message })

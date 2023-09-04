@@ -1,4 +1,4 @@
-import HomeButton from "./HomeButton";
+import HomeButton from "./Header";
 
 describe("HomeButton", () => {
   it("shows the home button when loaded", () => {

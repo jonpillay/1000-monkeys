@@ -1,8 +1,7 @@
-.home-button-container {
+.header-container {
   display: grid;
   grid-template-columns: 9% 35% 56%;
   min-width: 1200px;
-  margin-bottom: 7%;
   margin: 1%;
 }
 

@@ -9,6 +9,7 @@ import {
   Router
 } from 'react-router-dom';
 
+import Header from '../header/Header';
 import FormContainer from '../form-container/FormContainer';
 import ResultPage from '../result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
@@ -56,6 +57,7 @@ const App = () => {
   return (
     <div className="background-image-container">
       <BrowserRouter>
+      <Header/>
         <Routes>
           <Route exact path="/activate" element={ <ActivationPage/> } />
           <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />

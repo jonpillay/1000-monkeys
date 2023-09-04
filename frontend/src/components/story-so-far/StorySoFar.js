@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
-import HomeButton from "../home-button/HomeButton";
+import HomeButton from "../header/Header";
 import "./StorySoFar.css";
 // import html2pdf from "html2pdf.js";
 

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import './nav.css'
 import NavButton from '../navbutton/NavButton';
+import UserPanel from "../user-panel/UserPanel";
+
 import { useLogout } from "../../hooks/useLogout";
 import { useNavigate } from "react-router";
 import { useStoryContext } from "../../hooks/useStoryContext";
@@ -47,8 +49,7 @@ const NavBar = () => {
 
     return (
       <>
-      <div className="nav-container">
-        <div className="nav-box">
+      <div className="header-nav-container">
           {(story ? 
           <>
             <button className="nav-button" onClick={endStory}>End Story</button>
@@ -58,6 +59,7 @@ const NavBar = () => {
           )}
           {(user ?
           <>
+            <UserPanel/>
             <button className="logout-button" onClick={Logout}>Logout</button>
           </>
           :
@@ -67,7 +69,6 @@ const NavBar = () => {
             </>
           )}
         </div>
-      </div>
       </>
     );
 }

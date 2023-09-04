@@ -6,7 +6,6 @@ import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
 import SteerStory from "../steer-story/SteerStory";
 import ChapterTitle from "../chapter-title/ChapterTitle";
-import HomeButton from "../home-button/HomeButton";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
 
@@ -27,8 +26,8 @@ const ResultPage = () => {
 
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=620&dpr=2&s=none");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "blah blah");
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "");
 
   let [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +39,7 @@ const ResultPage = () => {
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
         console.log("First load useEffect")
-        // GPTClientCall();
+        GPTClientCall();
       }
     } else {
       navigate('/')
@@ -246,7 +245,6 @@ const ResultPage = () => {
     <>
       {!isLoading ? (
         <>
-        <HomeButton/>
         <div className="page-container">
           <ChapterTitle chapterNumber={renderChapter + 1}/>
           <div className="results-container">
