@@ -24,12 +24,14 @@ const FormContainer = () => {
   const [characterChoice, setCharacterChoice] = useState([]);
   const [genreChoice, setGenreChoice] = useState([]);
   const [styleChoice, setStyleChoice] = useState([]);
+  const [error, setError] = useState("")
 
   const navigate = useNavigate()
 
   const { dispatch } = useContext(StoryContext)
 
   useEffect(() => {
+    setError("")
     fetch("/populate", {
       method: "GET",
     })
@@ -57,6 +59,11 @@ const FormContainer = () => {
   }
 
   const handleFormSubmit = async (e) => {
+
+    if (user.credits < 10) {
+      setError("Infufficient Credits. Contact Admin")
+      return null
+    }
 
     e.preventDefault();
 
@@ -125,6 +132,11 @@ const FormContainer = () => {
           <button onClick={handleFormSubmit} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
+          { error && (
+            <>
+            {error}
+            </>
+          )}
         </div>
       </div>
       )}

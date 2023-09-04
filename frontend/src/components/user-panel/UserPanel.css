@@ -4,6 +4,7 @@
   right: 0%;
   margin-top: 8px;
   margin-right: 5px;
+  width: 450px;
   
   background-color: #fff;
   opacity: 98%;
@@ -29,11 +30,6 @@
   border-top-right-radius: 15px 5px;
   /* user-select: none;
   -webkit-user-select: none; */
-}
-
-.user-name-container {
-  display: flex;
-  width: 300px;
 }
 
 .nut-count {
