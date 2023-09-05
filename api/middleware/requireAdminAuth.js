@@ -21,7 +21,7 @@ const requireAdminAuth = async (req, res, next) => {
     console.log("made it here")
     console.log(typeof isSuper)
 
-    req.user = await User.findOne({ _id }).select('_id')
+    req.user = await User.findOne({ _id }).select('_id credits')
     
     console.log(req.user)
 

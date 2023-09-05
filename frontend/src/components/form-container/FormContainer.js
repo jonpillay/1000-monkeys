@@ -31,7 +31,7 @@ const FormContainer = () => {
   const { dispatch } = useContext(StoryContext)
 
   useEffect(() => {
-    setError("")
+    setError(null)
     fetch("/populate", {
       method: "GET",
     })
@@ -41,7 +41,7 @@ const FormContainer = () => {
         setStyleOptions(data.style)
         setGenreOptions(data.genre)
       });
-  }, [])
+  }, [user])
 
   async function initialiseLocal(prompts, choices, pages, sys) {
     return new Promise((resolve) => {

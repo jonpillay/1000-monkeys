@@ -16,7 +16,7 @@ const requireAuth = async (req, res, next) => {
   try {
     const {_id} = JWT.verify(token, process.env.JWT_SIGNATURE)
 
-    req.user = await User.findOne({ _id }).select('_id')
+    req.user = await User.findOne({ _id }).select('_id credits')
     next()
 
   } catch (error) {

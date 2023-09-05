@@ -2,7 +2,6 @@ const express = require('express')
 
 const UserController = require('../controllers/userController')
 
-const adminAuth = require('../middleware/requireAdminAuth')
 const requireAdminAuth = require('../middleware/requireAdminAuth')
 const requireInviteMatch = require('../middleware/requireInviteMatch')
 

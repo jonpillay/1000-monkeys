@@ -7,14 +7,14 @@ export const useNewUser = () => {
   const [isLoading, setIsLoading] = useState(null)
   const {user}  = useAuthContext()
 
-  if (user) {
-    console.log(user.token)
-  }
-  
-
   const newUser = async (email, invite_code) => {
     setIsLoading(true)
     setError(null)
+
+    if (!user) {
+      setError("Must be logged in")
+      setIsLoading(false)
+    }
 
     const reqBody = {
       email: email,
