@@ -145,4 +145,18 @@ userSchema.statics.login = async function (email, password) {
   }
 }
 
+userSchema.statics.credits = async function (_id, amount) {
+
+  const filter = { _id: _id }
+
+  const update = { $inc: { credits: amount } }
+
+  const options = { new: true }
+
+  const credit_user = await this.findOneAndUpdate(filter, update, options)
+
+  return credit_user
+ 
+}
+
 module.exports = mongoose.model('User', userSchema)

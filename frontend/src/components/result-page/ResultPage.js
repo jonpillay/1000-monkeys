@@ -63,7 +63,8 @@ const ResultPage = () => {
 
     const reqBody = {
       userchoices: userChoices,
-      GPTPromptHistory: GPTPromptHistory
+      GPTPromptHistory: GPTPromptHistory,
+      credits_needed: 3
     }
 
     fetch("/story", {
@@ -125,7 +126,6 @@ const ResultPage = () => {
     } else {
       navigate('/')
     }
-
   };
 
   const whatHappensNext = () => {

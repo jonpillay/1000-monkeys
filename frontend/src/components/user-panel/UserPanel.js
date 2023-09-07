@@ -1,12 +1,13 @@
 import './UserPanel.css'
 
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useEffect, useState } from 'react';
 
 const UserPanel = () => {
 
   const {user} = useAuthContext()
 
-  console.log(user)
+  const [credits, setCredits] = useState(user ? user.credits : 0)
 
   return (
     <>
@@ -18,7 +19,7 @@ const UserPanel = () => {
       </div>
       <div>
         <div className='nut-count'>
-          {`You have ${user.credits}`}
+          {`You have ${credits}`}
         </div>
       </div>
     </div>

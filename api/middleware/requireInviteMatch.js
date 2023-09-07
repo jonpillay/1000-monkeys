@@ -35,7 +35,6 @@ const requireInviteMatch = async (req, res, next) => {
     
     console.log(req.user)
 
-    console.log("we shouldn't be here!!")
     next()
 
   } catch (error) {

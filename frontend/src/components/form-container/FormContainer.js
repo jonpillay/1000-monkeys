@@ -81,8 +81,8 @@ const FormContainer = () => {
     }]
 
     let storyPages = {
-      "textHistory": ["This is some text"],
-      "imageHistory": ["this is a URL"]
+      "textHistory": [],
+      "imageHistory": []
     }
 
     let sysInfo = {
