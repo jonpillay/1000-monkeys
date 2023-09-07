@@ -51,17 +51,17 @@ const NavBar = () => {
       <>
       <div className="header-nav-container">
           {(story ? 
-          <>
-            <button className="nav-button" onClick={endStory}>End Story</button>
-          </>
+            <>
+              <button className="nav-button" onClick={endStory}>End Story</button>
+            </>
           :
           <></>
           )}
           {(user ?
-          <>
-            <UserPanel/>
-            <button className="logout-button" onClick={Logout}>Logout</button>
-          </>
+            <>
+              <UserPanel/>
+              <button className="logout-button" onClick={Logout}>Logout</button>
+            </>
           :
             <>
               <NavButton to="/activate" value="I Have an Invite Key!" className="invite-button" />

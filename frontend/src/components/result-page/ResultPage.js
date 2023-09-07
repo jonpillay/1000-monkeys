@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
 import TurnPageButton from "../turn-page-button/turnPageButton";
@@ -8,7 +8,7 @@ import SteerStory from "../steer-story/SteerStory";
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
-
+import { CreditsContext } from "../../context/CreditsContext";
 
 
 const ResultPage = () => {
@@ -16,6 +16,8 @@ const ResultPage = () => {
   const { user } = useAuthContext()
 
   const navigate = useNavigate()
+
+  const { dispatch } = useContext(CreditsContext)
 
   console.log("ResultPage rerendered")
 
@@ -99,6 +101,10 @@ const ResultPage = () => {
       localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
 
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
+
+      console.log(user.credits)
+
+      dispatch({type: 'UPDATE', payload: user.credits })
 
       setRenderChapter(sysInfo["currentPage"])
       

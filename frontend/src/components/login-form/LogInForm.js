@@ -22,7 +22,7 @@ const LogInForm = () => {
         </div>
         <div className="input-container">
           <div>
-            <input type="email" className="user-input-box" ref={email} placeholder="email..."/> 
+            <input type="email" className="user-input-box" ref={email} placeholder="email..."/>
           </div>
           <div>
             <input type="password" className="user-input-box" ref={password} placeholder="password..."/> 

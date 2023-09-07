@@ -19,7 +19,7 @@ import ActivationPage from '../activation-page.js/ActivationPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
-import { useState } from 'react';
+import { useCredits } from '../../hooks/useCredits';
 
 // const getAdmin = (obj) => {
 //   if (obj) {
@@ -53,6 +53,8 @@ const App = () => {
 
   console.log(story)
   console.log(user)
+
+
 
   return (
     <div className="background-image-container">

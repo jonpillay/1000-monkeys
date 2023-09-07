@@ -1,13 +1,23 @@
 import './UserPanel.css'
 
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useCreditsContext } from '../../hooks/useCreditsContext';
+
 import { useEffect, useState } from 'react';
 
 const UserPanel = () => {
 
+  console.log("UserPanel rerendered")
+
   const {user} = useAuthContext()
 
-  const [credits, setCredits] = useState(user ? user.credits : 0)
+  const {credits} = useCreditsContext()
+
+  const [displayCredits, setDisplayCredits] = useState(credits)
+
+  useEffect(() => {
+    setDisplayCredits(credits)
+  });
 
   return (
     <>
@@ -19,7 +29,7 @@ const UserPanel = () => {
       </div>
       <div>
         <div className='nut-count'>
-          {`You have ${credits}`}
+          {`You have ${displayCredits}`}
         </div>
       </div>
     </div>
