@@ -7,6 +7,7 @@ export const CreditsContext = createContext()
 export const CreditsReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE':
+      localStorage.setItem('credits', action.payload)
       return {credits: action.payload}
     default:
       return state
@@ -15,7 +16,7 @@ export const CreditsReducer = (state, action) => {
 
 export const CreditsContextProvider = ({ children }) => {
 
-  const [state, dispatch] = useReducer(CreditsReducer, {
+  const [state, creditDispatch] = useReducer(CreditsReducer, {
     credits: null
   })
 
@@ -23,17 +24,16 @@ export const CreditsContextProvider = ({ children }) => {
   console.log(authUser);
   
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'))
-    console.log(user)
-    if (user) {
-      dispatch({ type: 'UPDATE', payload: user.credits })
+    const credits = localStorage.getItem('credits')
+    if (credits) {
+      creditDispatch({ type: 'UPDATE', payload: credits })
     } 
   }, [])
 
   console.log(`CreditsContext state:`, state)
 
   return (
-    <CreditsContext.Provider value={{...state, dispatch}}>
+    <CreditsContext.Provider value={{...state, creditDispatch}}>
       {children}
     </CreditsContext.Provider>
   )

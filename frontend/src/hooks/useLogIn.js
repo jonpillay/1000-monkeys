@@ -2,12 +2,14 @@ import { useState, useContext } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useStoryContext } from "./useStoryContext";
 import { AuthContext } from "../context/AuthContext";
+import { CreditsContext } from "../context/CreditsContext";
 
 
 export const useLogin = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useContext(AuthContext)
+  const { creditDispatch } = useContext(CreditsContext)
   // const { dispatch } = useStoryContext()
 
   console.log(dispatch)
@@ -30,6 +32,8 @@ export const useLogin = () => {
     }
 
     if (response.ok) {
+      creditDispatch({type: 'UPDATE', payload: JSONres.credits})
+      localStorage.setItem('credits', JSONres.credits)
       localStorage.setItem('user', JSON.stringify(JSONres))
 
       dispatch({type: 'LOGIN', payload: JSONres})

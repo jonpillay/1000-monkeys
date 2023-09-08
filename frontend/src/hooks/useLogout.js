@@ -8,6 +8,7 @@ export const useLogout = () => {
 
   const clearLocalLogout = () => {
     localStorage.removeItem('user')
+    localStorage.removeItem('credits')
     // localStorage.removeItem('story')
   }
 
