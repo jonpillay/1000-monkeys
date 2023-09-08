@@ -17,7 +17,7 @@ const ResultPage = () => {
 
   const navigate = useNavigate()
 
-  const { dispatch } = useContext(CreditsContext)
+  const { creditDispatch } = useContext(CreditsContext)
 
   console.log("ResultPage rerendered")
 
@@ -81,7 +81,7 @@ const ResultPage = () => {
     .then((data) => {
       console.log(data)
       console.log(data.credits_update)
-      dispatch({type: 'UPDATE', payload: data.credits_update})
+      creditDispatch({type: 'UPDATE', payload: data.credits_update})
       storyPages["textHistory"].push(data["page_text"])
       storyPages["imageHistory"].push(data["page_image"])
       story.current = storyPages["textHistory"].slice(-1)
