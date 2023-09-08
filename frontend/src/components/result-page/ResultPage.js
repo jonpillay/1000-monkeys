@@ -80,7 +80,8 @@ const ResultPage = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
-      console.log(data["page_text"])
+      console.log(data.credits_update)
+      dispatch({type: 'UPDATE', payload: data.credits_update})
       storyPages["textHistory"].push(data["page_text"])
       storyPages["imageHistory"].push(data["page_image"])
       story.current = storyPages["textHistory"].slice(-1)
@@ -103,8 +104,6 @@ const ResultPage = () => {
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
 
       console.log(user.credits)
-
-      dispatch({type: 'UPDATE', payload: user.credits })
 
       setRenderChapter(sysInfo["currentPage"])
       

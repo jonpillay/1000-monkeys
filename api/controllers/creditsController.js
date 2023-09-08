@@ -25,9 +25,9 @@ const creditController = {
 
 
       // not a function is it
-      const credit_user = await User.credits(_id, amount)
+      const credit_update = await User.credits(_id, amount)
 
-      return true
+      return credit_update
 
       // const user = await User.login(email, password)
 

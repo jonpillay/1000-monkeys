@@ -153,7 +153,7 @@ userSchema.statics.credits = async function (_id, amount) {
 
   const options = { new: true }
 
-  const credit_user = await this.findOneAndUpdate(filter, update, options)
+  const credit_user = await this.findOneAndUpdate(filter, update, options).select('credits')
 
   return credit_user
  
