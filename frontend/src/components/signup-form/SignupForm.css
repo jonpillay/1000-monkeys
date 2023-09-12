@@ -1,23 +1,27 @@
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* This will center the form vertically */
+.signup-form-container {
+  display: grid;
+  grid-template-rows: 50% 38%;
+  margin-top: 35%;
   height: auto;
   width: 100%;
 }
 
-.user-title-container {
-  margin: auto;
-  background-color: rgb(52, 233, 89, 0);
-  border-radius: 10px;
-  padding: 7px;
-}
-
-.user-title {
+.signup-title {
   font-family: 'special-elite';
   font-size: 140%;
-  margin-top: 5px;
+}
+
+.countdown-notification-container {
+  display: grid;
+  grid-template-columns: 17% 83%;
+  margin: auto;
+}
+
+.countdown-notification-text {
+  margin-top: 11px;
+  font-size: 25px;
+  font-family: 'special-elite';
+  width: 110%;
 }
 
 .user-input-box {
@@ -52,24 +56,25 @@
   color: red;
 } */
 
-.user-form {
+.signup-form {
   display: grid;
-  grid-template-rows: 20% 42% 33%;
-  height: 280px;
+  grid-template-rows: 15% 33% 25%;
+  height: 355px;
 }
 
 .input-container {
   display: grid;
-  grid-template-rows: 60% 35%;
-
+  grid-template-rows: 57% 35%;
   margin: auto;
 }
 
-.user-submit-container {
+.signup-submit-container {
+  display: grid;
+  grid-template-rows: 70% 30%;
   margin: auto;
 }
 
-#user-submit-button {
+#signup-submit-button {
   width: 100%;
   margin: auto;
 }

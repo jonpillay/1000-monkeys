@@ -16,6 +16,11 @@
   src: url("./fonts/Merriweather-Black.ttf");
 }
 
+@font-face {
+  font-family: 'digital-7';
+  src: url("./fonts/digital-7.ttf");
+}
+
 
 .title {
   font-family: 'special-elite';

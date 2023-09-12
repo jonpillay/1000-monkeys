@@ -1,0 +1,19 @@
+.counter-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  font-size: 35px;
+  width: 80%;
+}
+
+.minutes {
+  font-family:'digital-7';
+}
+
+.colon {
+  font-family:'digital-7';
+  margin-left: 40%;
+}
+
+.seconds {
+  font-family:'digital-7';
+}

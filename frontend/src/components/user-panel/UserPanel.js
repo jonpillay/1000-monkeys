@@ -17,7 +17,7 @@ const UserPanel = () => {
 
   useEffect(() => {
     setDisplayCredits(credits)
-  });
+  }, [credits]);
 
   return (
     <>
