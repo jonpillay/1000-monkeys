@@ -17,7 +17,7 @@ const ActivationSignupPanel = (props) => {
     {(!signupActive ? 
       <ActivationForm activate={activate} isLoading={isLoading} error={error}/>
       :
-      <SignupForm/>
+      <SignupForm signupActive={signupActive}/>
     )}
     </div>
 

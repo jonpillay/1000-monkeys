@@ -1,5 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
+import { useTimer } from "./useTimer";
+
 import { useStoryContext } from "./useStoryContext";
 import { AuthContext } from "../context/AuthContext";
 
@@ -8,6 +10,7 @@ export const useActivate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const [ signupActive, setSignupActive ] = useState(false)
+  const { setTimer } = useTimer()
   const user = useAuthContext()
 
   useEffect(()=> {
@@ -41,6 +44,12 @@ export const useActivate = () => {
       const activateLocalStorage = {email, token}
 
       localStorage.setItem('activateLocal', JSON.stringify(activateLocalStorage))
+
+      const endTime = Date.now() + 599400
+
+      setTimer(setSignupActive, endTime, activateLocalStorage)
+
+      localStorage.setItem('activateEndtime', endTime.toString())
     }
   }
 

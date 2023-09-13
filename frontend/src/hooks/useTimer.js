@@ -1,37 +1,17 @@
-import { useState, useContext } from "react";
-import { useAuthContext } from "./useAuthContext";
-import { useStoryContext } from "./useStoryContext";
-import { AuthContext } from "../context/AuthContext";
-import { CreditsContext } from "../context/CreditsContext";
+export const useTimer = () => {
 
+  const setTimer = (setState, duration, localClear) => {
 
-export const useSwitchTimer = () => {
+    // also needs a clear timeout
 
-  const setTimer = async (setState) => {
-
-    const response = await fetch('./user/login', {
-      method: 'Post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email, password})
-    })
-
-    const JSONres = await response.json()
-
-    if (!response.ok) {
-      setIsLoading(false)
-      setError(JSONres.error)
-    }
-
-    if (response.ok) {
-      creditDispatch({type: 'UPDATE', payload: JSONres.credits})
-      localStorage.setItem('credits', JSONres.credits)
-      localStorage.setItem('user', JSON.stringify(JSONres))
-
-      dispatch({type: 'LOGIN', payload: JSONres})
-
-      setIsLoading(false)
-    }
+    setTimeout(() => {
+      localStorage.removeItem(localClear)
+      setState(false)
+    }, duration);
+    
   }
 
-  return { login, isLoading, error }
+  return { setTimer }
 }
+
+// note to self, not sure if I needed to right this as a deconstructured hook
