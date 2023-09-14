@@ -9,12 +9,13 @@ import { AuthContext } from "../context/AuthContext";
 export const useActivate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  const [ signupActive, setSignupActive ] = useState(false)
+  const [ signupActive, setSignupActive ] = useState()
   const { setTimer } = useTimer()
   const user = useAuthContext()
 
   useEffect(()=> {
     if (localStorage.getItem('activateLocal')) {
+      console.log("this happened")
       setSignupActive(true)
     }
   }, [])
@@ -39,19 +40,21 @@ export const useActivate = () => {
     if (response.ok) {
       setIsLoading(false)
       setSignupActive(true)
+
       const {email, token, error } = JSONres
 
       const activateLocalStorage = {email, token}
 
       localStorage.setItem('activateLocal', JSON.stringify(activateLocalStorage))
 
-      const endTime = Date.now() + 599400
+      const endTime = Date.now() + 599000
 
-      setTimer(setSignupActive, endTime, activateLocalStorage)
+      setTimer(setSignupActive, 599000, 'activateLocal')
 
-      localStorage.setItem('activateEndtime', endTime.toString())
+      await localStorage.setItem('activateEndtime', endTime.toString())
+
     }
   }
 
-  return { activate, isLoading, error, signupActive }
+  return { activate, isLoading, error, signupActive, setSignupActive }
 }

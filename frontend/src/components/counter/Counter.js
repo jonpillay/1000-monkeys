@@ -4,17 +4,16 @@ import './Counter.css';
 const Counter = (props) => {
   console.log("Coutner rerendered")
 
-  
-
   const [minutes, setMinutes] = useState()
 
   const [seconds, setSeconds] = useState()
 
   useEffect(() =>{
 
-    const endTime = parseInt(localStorage.getItem("activateEndtime"))
+    const endTime = parseInt(localStorage.getItem('activateEndtime'))
 
     if (!endTime) {
+      console.log('activateEndTime is not evaluating properly')
       setSeconds('00')
       setMinutes('00')
     } else {
