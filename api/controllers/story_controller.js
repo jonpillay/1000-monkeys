@@ -24,22 +24,19 @@ const StoryController = {
       let story_prompts = JSON.parse(req.body["GPTPromptHistory"])
 
       let user_choices = JSON.parse(req.body["userchoices"])
+
+      const GPT_prompts = GPTPromptGen(user_choices, story_prompts) // Prompt gen here needs the prompt history in proper format as well as the user choices
       
-      // console.log("Controller fired")
-      // console.log("req.bod that gets sent to the story_controller", req)
+      const story_text = await generateStory(GPT_prompts)
 
-      // const GPT_prompts = GPTPromptGen(user_choices, story_prompts) // Prompt gen here needs the prompt history in proper format as well as the user choices
-      
-      // const story_text = await generateStory(GPT_prompts)
+      const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
 
-      // const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
-
-      // const story_image = await generateImage(DS_descpription)
+      const story_image = await generateImage(DS_descpription)
       console.log("This is the user in the credits controller!", credits_update)
 
       console.log("Pure Credits ", credits_update.credits)
 
-      res.status(200).json({  credits_update: credits_update.credits });
+      res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits });
 
     } catch (error) {
       res.status(401).json({ message: error.message });

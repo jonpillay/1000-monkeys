@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './Counter.css';
 
 const Counter = (props) => {
-  console.log("Coutner rerendered")
 
-  const [minutes, setMinutes] = useState()
+  const endTime = parseInt(localStorage.getItem('activateEndtime'))
 
-  const [seconds, setSeconds] = useState()
+  const initTime = endTime - Date.now()
+
+  const [minutes, setMinutes] = useState(Math.floor((initTime % (1000 * 60 * 60)) / (1000 * 60)))
+
+  const [seconds, setSeconds] = useState(Math.floor((initTime % (1000 * 60)) / 1000))
 
   useEffect(() =>{
-
-    const endTime = parseInt(localStorage.getItem('activateEndtime'))
 
     if (!endTime) {
       console.log('activateEndTime is not evaluating properly')

@@ -194,8 +194,6 @@ const ResultPage = () => {
   
       const chapterText = storyPages["textHistory"][renderChapter]
   
-      console.log(typeof userChoices)
-  
       console.log(typeof chapterText)
   
       const reqBody = {

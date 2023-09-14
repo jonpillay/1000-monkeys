@@ -2,10 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useTimer } from "./useTimer";
 
-import { useStoryContext } from "./useStoryContext";
-import { AuthContext } from "../context/AuthContext";
-
-
 export const useActivate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
@@ -15,7 +11,6 @@ export const useActivate = () => {
 
   useEffect(()=> {
     if (localStorage.getItem('activateLocal')) {
-      console.log("this happened")
       setSignupActive(true)
     }
   }, [])
