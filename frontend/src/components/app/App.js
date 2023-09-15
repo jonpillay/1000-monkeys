@@ -21,6 +21,8 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 import { useCredits } from '../../hooks/useCredits';
 
+import monkeySpinner from "../../img/favpng_infinite-monkey-theorem.png"
+
 // const getAdmin = (obj) => {
 //   if (obj) {
 //     if (obj.isSuper == true) {
@@ -58,15 +60,17 @@ const App = () => {
 
   return (
     <div className="background-image-container">
-      <BrowserRouter>
-      <Header/>
-        <Routes>
-          <Route exact path="/activate" element={ <ActivationPage/> } />
-          <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
-          <Route exact path="/userfactoryintheenv" element={ <AdminPanel/> } />
-          <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
-        </Routes>
-      </BrowserRouter>
+      <div className='monkey-spinner'>
+        <BrowserRouter>
+        <Header/>
+          <Routes>
+            <Route exact path="/activate" element={ <ActivationPage/> } />
+            <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
+            <Route exact path="/userfactoryintheenv" element={ admin == true ? <AdminPanel/> : <Navigate to="/"/> } />
+            <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   );
 };
