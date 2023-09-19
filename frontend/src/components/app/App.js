@@ -50,9 +50,6 @@ const App = () => {
 
   console.log("This is the admin value ", admin)
 
-  // route to signup (that should only activationJWT from invite code verification) only protected by presence of obj named activationJWT, JWT checks in middleware on form submission. 
-  const activationJWT = localStorage.getItem('activationJWT')
-
   console.log(story)
   console.log(user)
 
@@ -60,7 +57,7 @@ const App = () => {
 
   return (
     <div className="background-image-container">
-      <div className='monkey-spinner'>
+      <div className='monkey-spinner'></div>
         <BrowserRouter>
         <Header/>
           <Routes>
@@ -70,7 +67,6 @@ const App = () => {
             <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
           </Routes>
         </BrowserRouter>
-      </div>
     </div>
   );
 };
