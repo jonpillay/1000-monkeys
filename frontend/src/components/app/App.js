@@ -22,6 +22,7 @@ import { useStoryContext } from '../../hooks/useStoryContext';
 import { useCredits } from '../../hooks/useCredits';
 
 import monkeySpinner from "../../img/favpng_infinite-monkey-theorem.png"
+import LoadingPage from '../loading_page/LoadingPage';
 
 // const getAdmin = (obj) => {
 //   if (obj) {
@@ -61,6 +62,7 @@ const App = () => {
         <BrowserRouter>
         <Header/>
           <Routes>
+            <Route exact path="/loading" element={ <LoadingPage/> } />
             <Route exact path="/activate" element={ <ActivationPage/> } />
             <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />
             <Route exact path="/userfactoryintheenv" element={ admin == true ? <AdminPanel/> : <Navigate to="/"/> } />

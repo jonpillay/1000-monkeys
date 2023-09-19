@@ -1,12 +1,17 @@
 import './LoadingBlurb.css'
 
+import LLM_Blurb_List from './LLM_text';
+
+const blurb = LLM_Blurb_List[Math.floor(Math.random() * LLM_Blurb_List.length)]
+
 const LoadingBlurb = () => {
   return (
     <div className="loading-blurb-container">
       <div className='loading-llm-text'>
-        <p>
-        Pede etiam nullam porta conubia. At ridiculus platea penatibus. Elit. Accumsan dis lacinia est commodo in. Cras magna quisque pellentesque. Dictum venenatis turpis ultrices ullamcorper imperdiet neque aptent. Ligula. Turpis luctus hymenaeos auctor porttitor accumsan tellus ornare in tellus mi sodales sapien massa pede tellus neque convallis ornare eu platea aliquam tortor. Suspendisse praesent iaculis mollis, amet.
-        </p>
+        <span>"</span>{blurb}<span>"</span>
+      </div>
+      <div className='author-container'>
+        Random Wiki User
       </div>
     </div>
   )

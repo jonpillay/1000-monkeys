@@ -1,0 +1,7 @@
+.loading-page-container {
+  width: 70%;
+  height: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}

@@ -1,0 +1,35 @@
+.loading-blurb-container {
+  margin: 7% -5%;
+}
+
+.loading-llm-text {
+  font-size: 40px;
+  font-weight: 500;
+  font-family: "special-elite";
+  animation: fade-in ease 3s;
+}
+
+.author-container {
+  font-size: 37px;
+  font-family: 'special-elite';
+  float: right;
+  animation: author-fade-in ease 6s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes author-fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
