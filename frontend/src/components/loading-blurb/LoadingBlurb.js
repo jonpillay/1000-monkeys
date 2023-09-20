@@ -2,9 +2,10 @@ import './LoadingBlurb.css'
 
 import LLM_Blurb_List from './LLM_text';
 
-const blurb = LLM_Blurb_List[Math.floor(Math.random() * LLM_Blurb_List.length)]
-
 const LoadingBlurb = () => {
+
+  const blurb = LLM_Blurb_List[Math.floor(Math.random() * LLM_Blurb_List.length)]
+
   return (
     <div className="loading-blurb-container">
       <div className='loading-llm-text'>

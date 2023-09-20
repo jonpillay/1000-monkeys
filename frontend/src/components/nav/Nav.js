@@ -44,6 +44,7 @@ const NavBar = () => {
   }
 
   const endStory = () => {
+    localStorage.removeItem('storyPages')
     dispatch({type: "END", payload: null})
   }
 

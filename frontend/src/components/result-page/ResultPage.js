@@ -4,6 +4,7 @@ import Story from "../story/Story";
 import TurnPageButton from "../turn-page-button/turnPageButton";
 import "./ResultPage.css";
 import LoadingIcon from "../loading-icon/LoadingIcon";
+import LoadingPage from "../loading_page/LoadingPage";
 import SteerStory from "../steer-story/SteerStory";
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -284,7 +285,7 @@ const ResultPage = () => {
         </>
       ) : (
         <div className="nav-box">
-          <LoadingIcon />
+          <LoadingPage />
         </div>    
       )}
     </>
