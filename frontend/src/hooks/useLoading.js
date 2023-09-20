@@ -9,16 +9,16 @@ export const useLoading = () => {
     localStorage.removeItem('isLoading')
   }
 
-  const loading = async () => {
+  const isLoading = async () => {
     await localStorage.setItem('isLoading', 'yes')
     dispatch({type: 'LOADING'}) 
   }
 
-  const loaded = async () => {
+  const isLoaded = async () => {
     await clearLocalLoading()
     dispatch({type: 'LOADED'}) 
   }
 
-  return {loading, loaded}
+  return {isLoading, isLoaded}
 
 }

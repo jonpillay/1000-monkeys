@@ -14,7 +14,7 @@ export const loadingReducer = (state, action) => {
 }
 
 export const LoadingContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(loadingReducer, {
+  const [state, loadingDispatch] = useReducer(loadingReducer, {
     loading: localStorage.getItem('isLoading') ? true : null
   })
 
@@ -26,7 +26,7 @@ export const LoadingContextProvider = ({ children }) => {
   // }, [])
 
   return (
-  <LoadingContext.Provider value={{...state, dispatch}}>
+  <LoadingContext.Provider value={{...state, loadingDispatch}}>
     { children }
   </LoadingContext.Provider>
   )

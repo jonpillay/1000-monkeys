@@ -11,14 +11,21 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
 import { CreditsContext } from "../../context/CreditsContext";
 
+import { useLoadingContext } from "../../hooks/useLoadingContext";
+import { LoadingContext } from "../../context/LoadingContext";
+
 
 const ResultPage = () => {
+
+  const { loading } = useLoadingContext()
 
   const { user } = useAuthContext()
 
   const navigate = useNavigate()
 
   const { creditDispatch } = useContext(CreditsContext)
+
+  const { loadingDispatch } = useContext(LoadingContext)
 
   console.log("ResultPage rerendered")
 
@@ -52,7 +59,7 @@ const ResultPage = () => {
 
   const GPTClientCall = () => {
 
-    setIsLoading(true)
+    loadingDispatch({type: 'LOADING', payload: true})
 
     console.log(`This is story pages from the GPTcall funct`)
 
@@ -88,7 +95,7 @@ const ResultPage = () => {
       story.current = storyPages["textHistory"].slice(-1)
       imgUrl.current = storyPages["imageHistory"].slice(-1)
       sysInfo["currentPage"] ++
-      setIsLoading(false)
+      loadingDispatch({type: 'LOADED', payload: null})
       console.log(sysInfo)
       console.log(storyPages)
       let GPTPrompts = JSON.parse(GPTPromptHistory)
@@ -115,7 +122,7 @@ const ResultPage = () => {
 
   const steerOnUserInput = (steerInput) => {
     if (user) {
-      setIsLoading(true)
+      loadingDispatch({type: 'LOADING', payload: true})
 
       let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
   
@@ -185,7 +192,7 @@ const ResultPage = () => {
 
     if (user) {
 
-      setIsLoading(true)
+      loadingDispatch({type: 'LOADING', payload: true})
 
       const userChoices = localStorage.getItem("userChoices")
   
@@ -215,7 +222,7 @@ const ResultPage = () => {
         storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
         imgUrl.current = storyPages["imageHistory"][renderChapter]
         localStorage.setItem("storyPages", JSON.stringify(storyPages))
-        setIsLoading(false)
+        loadingDispatch({type: 'LOADED', payload: null})
       })
     } else {
       navigate('/')
@@ -247,7 +254,7 @@ const ResultPage = () => {
 
   return (
     <>
-      {!isLoading ? (
+      {!loading ? (
         <>
         <div className="page-container">
           <ChapterTitle chapterNumber={renderChapter + 1}/>

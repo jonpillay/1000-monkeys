@@ -3,8 +3,12 @@ import HomeIcon from './typing-logo.png';
 import Nav from '../nav/Nav'
 import UserPanel from '../user-panel/UserPanel';
 import { useNavigate } from 'react-router';
+import { useLoadingContext } from '../../hooks/useLoadingContext';
 
 const Header = () => {
+
+  const { loading } = useLoadingContext()
+
   const navigate = useNavigate()
   const goHome = () => {
     setTimeout(function(){
@@ -19,13 +23,13 @@ const Header = () => {
 
   return (
     <div className="header-container">
-      <div className="home-button" onClick={goHome}>
+      <button className="home-button" onClick={goHome} disabled={loading}>
         <img className="home-icon" src={HomeIcon} alt="home" />
-      </div>
+      </button>
       <div className='title-container'>
         <div className='title'>1000 Monkeys</div>
       </div>
-      <Nav/>
+      {!loading && <Nav />}
     </div>
   );
 };
