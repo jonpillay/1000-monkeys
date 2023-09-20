@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './context/AuthContext';
 import { StoryContextProvider } from './context/StoryContext';
 import { CreditsContextProvider } from './context/CreditsContext';
+import { LoadingContextProvider } from './context/LoadingContext';
 
 const container = document.getElementById('root');
 
@@ -13,13 +14,15 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <CreditsContextProvider>
-        <StoryContextProvider>
+    <LoadingContextProvider>
+      <AuthContextProvider>
+        <CreditsContextProvider>
+          <StoryContextProvider>
             <App />
-        </StoryContextProvider>
-      </CreditsContextProvider>
-    </AuthContextProvider>
+          </StoryContextProvider>
+        </CreditsContextProvider>
+      </AuthContextProvider>
+    </LoadingContextProvider>
   </React.StrictMode>
 );
 
