@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './LoadingText.css'
 
+import MonkeySpinner from '../monkey-spinner/MonkeySpinner';
+
 const LoadingText = () => {
 
   const [ellipsis, setEllipsis] = useState([])
@@ -18,6 +20,7 @@ const LoadingText = () => {
 
   return (
     <div className='loading-text-container'>
+      <MonkeySpinner/>
       <div>Loading<span className='ellipsis-list'>{ellipsisDots}</span></div>
     </div>
   )

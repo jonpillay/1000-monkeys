@@ -1,0 +1,11 @@
+.spinning-monkey {
+  height: 80px;
+  margin-right: 10px;
+  animation: spin 4s infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
