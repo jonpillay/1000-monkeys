@@ -19,7 +19,6 @@ import ActivationPage from '../activation-page.js/ActivationPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
-import { useCredits } from '../../hooks/useCredits';
 
 import monkeySpinner from "../../img/favpng_infinite-monkey-theorem.png"
 import LoadingPage from '../loading_page/LoadingPage';
@@ -58,7 +57,6 @@ const App = () => {
 
   return (
     <div className="background-image-container">
-      <div className='monkey-spinner'></div>
         <BrowserRouter>
         <Header/>
           <Routes>

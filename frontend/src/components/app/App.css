@@ -11,25 +11,17 @@ html, body {
 }
 
 .background-image-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: antiquewhite;
-  z-index: 0;
-}
-
-.monkey-spinner {
   background-image: url('../../img/favpng_infinite-monkey-theorem3.png');
   background-position-x: 800px;
   background-position-y: -150px;
   background-size: 60%;
   background-repeat: no-repeat;
   position: absolute;
+  position: absolute;
   width: 100%;
   height: 100%;
-  /* animation: spin 1.5s ease infinite; */
-  z-index: -1;
-  margin: auto;
+  background-color: antiquewhite;
+  z-index: 0;
 }
 
 @keyframes spin {

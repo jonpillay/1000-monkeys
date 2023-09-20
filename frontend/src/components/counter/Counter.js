@@ -14,7 +14,6 @@ const Counter = (props) => {
   useEffect(() =>{
 
     if (!endTime) {
-      console.log('activateEndTime is not evaluating properly')
       setSeconds('00')
       setMinutes('00')
     } else {
@@ -22,8 +21,19 @@ const Counter = (props) => {
         const time = endTime - Date.now()
         const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((time % (1000 * 60)) / 1000);
-        setMinutes(minutes)
-        setSeconds(seconds)
+
+        if (minutes < 10) {
+          setMinutes("0" + minutes.toString())
+        } else {
+          setMinutes(minutes)
+        }
+
+        if (seconds < 10) {
+          setSeconds("0" + seconds.toString())
+        } else {
+          setSeconds(seconds)
+        }
+        
       }, 1000)
 
       return () => clearInterval(countdown)

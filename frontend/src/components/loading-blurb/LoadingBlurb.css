@@ -13,7 +13,7 @@
   font-size: 37px;
   font-family: 'special-elite';
   float: right;
-  animation: author-fade-in ease 6s;
+  animation: author-fade-in ease 4s;
 }
 
 @keyframes fade-in {
@@ -27,6 +27,9 @@
 
 @keyframes author-fade-in {
   0% {
+    opacity: 0%;
+  }
+  50% {
     opacity: 0%;
   }
   100% {
