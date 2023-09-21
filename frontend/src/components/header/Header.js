@@ -9,6 +9,9 @@ const Header = () => {
 
   const { loading } = useLoadingContext()
 
+  console.log("This is the loading value on the header", loading)
+
+
   const navigate = useNavigate()
   const goHome = () => {
     setTimeout(function(){

@@ -12,7 +12,6 @@ const LoadingText = () => {
       setEllipsis([])
     } else {
       setEllipsis([...ellipsis, '.'])
-      console.log(ellipsis)
     }
   }, 400);
 

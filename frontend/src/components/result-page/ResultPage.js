@@ -19,6 +19,8 @@ const ResultPage = () => {
 
   const { loading } = useLoadingContext()
 
+  console.log("This is the loading value on the results page", loading)
+
   const { user } = useAuthContext()
 
   const navigate = useNavigate()
@@ -122,8 +124,6 @@ const ResultPage = () => {
 
   const steerOnUserInput = (steerInput) => {
     if (user) {
-      loadingDispatch({type: 'LOADING', payload: true})
-
       let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
   
       console.log(steerInput)
