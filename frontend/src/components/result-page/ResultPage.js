@@ -31,7 +31,6 @@ const ResultPage = () => {
 
   console.log("ResultPage rerendered")
 
-
   let storyPages = JSON.parse(localStorage.getItem("storyPages"))
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
@@ -227,7 +226,6 @@ const ResultPage = () => {
     } else {
       navigate('/')
     }
-
   }
 
   const turnPage = (direct) => {
