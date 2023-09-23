@@ -13,6 +13,7 @@ import { CreditsContext } from "../../context/CreditsContext";
 
 import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { LoadingContext } from "../../context/LoadingContext";
+import StoryBook from "../story-book/StoryBook";
 
 
 const ResultPage = () => {
@@ -256,22 +257,7 @@ const ResultPage = () => {
         <>
         <div className="page-container">
           <ChapterTitle chapterNumber={renderChapter + 1}/>
-          <div className="results-container">
-            <div className="next-page-container">
-              {renderChapter>0 &&
-                <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
-              }
-            </div>
-            <div className="storybook-container">
-                <Image link={imgUrl.current} />
-                <Story storyString={story.current} />
-            </div>
-            <div className="next-page-container">
-              {renderChapter!=storyPages["textHistory"].length-1 &&
-                <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
-              }
-            </div>
-          </div>
+          <StoryBook text={story.current} image={imgUrl.current} turnPage={turnPage} renderChapter={renderChapter} length={storyPages["textHistory"].length-1}/>
           <div className="nav-container">
           <SteerStory callback={steerOnUserInput} />
           <div className="resultpage-button-container">
