@@ -11,12 +11,12 @@ export const useActivate = () => {
 
   useEffect(()=> {
     const endTime = parseInt(localStorage.getItem('activateEndtime'))
-    console.log("This is the now time ", Date.now())
-    console.log(typeof endTime)
+
     if (Date.now() > endTime) {
       localStorage.clear()
       setSignupActive(false)
     } else if (localStorage.getItem('activateLocal')) {
+      setTimer(setSignupActive, endTime, 'activateLocal')
       setSignupActive(true)
     }
   }, [])
@@ -48,9 +48,9 @@ export const useActivate = () => {
 
       localStorage.setItem('activateLocal', JSON.stringify(activateLocalStorage))
 
-      const endTime = Date.now() + 599000
+      const endTime = Date.now() + 10900
 
-      setTimer(setSignupActive, 599000, 'activateLocal')
+      setTimer(setSignupActive, endTime, 'activateLocal')
 
       await localStorage.setItem('activateEndtime', endTime.toString())
 

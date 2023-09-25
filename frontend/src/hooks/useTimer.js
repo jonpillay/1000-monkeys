@@ -1,10 +1,15 @@
+import { useEffect } from "react";
+
 export const useTimer = () => {
 
-  const setTimer = (setState, duration, localClear) => {
+  const setTimer = (setState, endTime, localClear) => {
 
     // also needs a clear timeout
 
+    const duration = endTime - Date.now()
+
     setTimeout(() => {
+      console.log("This did fire")
       localStorage.removeItem(localClear)
       setState(false)
     }, duration);
