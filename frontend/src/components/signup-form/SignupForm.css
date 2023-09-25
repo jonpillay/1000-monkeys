@@ -1,7 +1,5 @@
 .signup-form-container {
-  display: grid;
-  grid-template-rows: 50% 38%;
-  margin-top: 35%;
+  margin-top: 20%;
   height: auto;
   width: 100%;
 }
@@ -14,8 +12,7 @@
 .countdown-notification-container {
   display: grid;
   grid-template-columns: 20% 80%;
-  margin: auto;
-  width: auto;
+  width: 100%;
 }
 
 .countdown-notification-text {
@@ -59,8 +56,8 @@
 
 .signup-form {
   display: grid;
-  grid-template-rows: 15% 33% 25%;
-  height: 355px;
+  grid-template-rows: 18% 50% 32%;
+  height: 260px;
 }
 
 .input-container {

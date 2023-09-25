@@ -14,7 +14,6 @@ export const useActivate = () => {
     console.log("This is the now time ", Date.now())
     console.log(typeof endTime)
     if (Date.now() > endTime) {
-      console.log("I did this")
       localStorage.clear()
       setSignupActive(false)
     } else if (localStorage.getItem('activateLocal')) {
