@@ -24,7 +24,6 @@ const StoryBook = (props) => {
         }
       </div>
     </div>
-
   )
 }
 

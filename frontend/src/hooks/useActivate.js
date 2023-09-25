@@ -10,7 +10,11 @@ export const useActivate = () => {
   const user = useAuthContext()
 
   useEffect(()=> {
-    if (Date.now() > localStorage.getItem('activateEndTime')) {
+    const endTime = parseInt(localStorage.getItem('activateEndtime'))
+    console.log("This is the now time ", Date.now())
+    console.log(typeof endTime)
+    if (Date.now() > endTime) {
+      console.log("I did this")
       localStorage.clear()
       setSignupActive(false)
     } else if (localStorage.getItem('activateLocal')) {
