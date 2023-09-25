@@ -54,7 +54,7 @@
 
 .activation-form {
   display: grid;
-  grid-template-rows: 20% 42% 33%;
+  grid-template-rows: 25% 42% 33%;
   height: 280px;
 }
 

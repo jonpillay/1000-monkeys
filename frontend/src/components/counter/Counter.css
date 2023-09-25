@@ -1,8 +1,10 @@
 .counter-container {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 38% 8% 38%;
   font-size: 35px;
   width: 100%;
+  min-width: 100px;
+  margin: auto;
 }
 
 .minutes {
@@ -11,7 +13,6 @@
 
 .colon {
   font-family:'digital-7';
-  margin-left: 45%;
 }
 
 .seconds {

@@ -11,8 +11,9 @@
 
 .countdown-notification-container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 19% 81%;
   width: 100%;
+  margin-left: 3%;
 }
 
 .countdown-notification-text {

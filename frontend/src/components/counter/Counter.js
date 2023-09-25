@@ -7,9 +7,13 @@ const Counter = (props) => {
 
   const initTime = endTime - Date.now()
 
-  const [minutes, setMinutes] = useState(Math.floor((initTime % (1000 * 60 * 60)) / (1000 * 60)))
+  const initMinutes = Math.floor((initTime % (1000 * 60 * 60)) / (1000 * 60)).toString()
 
-  const [seconds, setSeconds] = useState(Math.floor((initTime % (1000 * 60)) / 1000))
+  const initSeconds = Math.floor((initTime % (1000 * 60)) / 1000).toString()
+
+  const [minutes, setMinutes] = useState(initMinutes.length < 2 ? "0".concat(initMinutes) : initMinutes )
+
+  const [seconds, setSeconds] = useState(initSeconds.length < 2 ? "0".concat(initSeconds) : initSeconds )
 
   useEffect(() =>{
 
