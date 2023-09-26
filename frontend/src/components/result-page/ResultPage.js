@@ -91,8 +91,7 @@ const ResultPage = () => {
       creditDispatch({type: 'UPDATE', payload: data.credits_update})
       storyPages["textHistory"].push(data["page_text"])
       storyPages["imageHistory"].push(data["page_image"])
-      story.current = storyPages["textHistory"].slice(-1)
-      imgUrl.current = storyPages["imageHistory"].slice(-1)
+      setRenderChapter(storyPages["textHistory"].length-1)
       sysInfo["currentPage"] ++
       loadingDispatch({type: 'LOADED', payload: null})
       console.log(sysInfo)
@@ -217,7 +216,7 @@ const ResultPage = () => {
       .then((response) => response.json())
       .then((data) => {
         storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
-        imgUrl.current = storyPages["imageHistory"][renderChapter]
+        setRenderChapter(renderChapter)
         localStorage.setItem("storyPages", JSON.stringify(storyPages))
         loadingDispatch({type: 'LOADED', payload: null})
       })
@@ -254,7 +253,7 @@ const ResultPage = () => {
         <>
         <div className="page-container">
           <ChapterTitle chapterNumber={renderChapter + 1}/>
-          <StoryBook storyPages={storyPages} seRender={[renderChapter, setRenderChapter]} length={storyPages["textHistory"].length-1}/>
+          <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">
           <SteerStory callback={steerOnUserInput} />
           <div className="resultpage-button-container">

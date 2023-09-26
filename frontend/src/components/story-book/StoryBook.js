@@ -7,14 +7,16 @@ import { useRef } from 'react';
 
 const StoryBook = (props) => {
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "");
-
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
   const storyPages = props.storyPages
 
+  console.log(storyPages)
+
   const [renderChapter, setRenderChapter] = props.setRender
+
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "");
 
   const turnPage = (direct) => {
     if (direct == 'back') {
@@ -43,17 +45,17 @@ const StoryBook = (props) => {
   return (
     <div className="results-container">
       <div className="next-page-container">
-        {props.renderChapter>0 &&
-          <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" onClick={turnPage}/>
+        {renderChapter>0 &&
+          <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
         }
       </div>
       <div className="storybook-container">
-          <Image link={props.image} />
-          <Story storyString={props.text} />
+          <Image link={imgUrl.current} />
+          <Story storyString={story.current} />
       </div>
       <div className="next-page-container">
-        {props.renderChapter!=props.length &&
-          <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={props.turnPage}/>
+        {renderChapter<storyPages['textHistory'].length-1 &&
+          <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
         }
       </div>
     </div>
