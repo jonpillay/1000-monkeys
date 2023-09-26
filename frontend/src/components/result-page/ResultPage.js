@@ -38,9 +38,6 @@ const ResultPage = () => {
 
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "");
-
   let [isLoading, setIsLoading] = useState(false);
 
   // let renderChapter = sysInfo["currentPage"]
@@ -229,27 +226,27 @@ const ResultPage = () => {
     }
   }
 
-  const turnPage = (direct) => {
-    if (direct == 'back') {
-      story.current = storyPages["textHistory"][renderChapter -1]
-      imgUrl.current = storyPages["imageHistory"][renderChapter -1]
-      sysInfo["currentPage"] --
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      setRenderChapter(renderChapter -1)
-    } else if (direct == 'next') {
-      sysInfo["currentPage"] ++
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      story.current = storyPages["textHistory"][renderChapter +1]
-      imgUrl.current = storyPages["imageHistory"][renderChapter +1]
-      setRenderChapter(renderChapter +1)
-    } else if (direct == 'last') {
-      story.current = storyPages["textHistory"].slice(-1)
-      imgUrl.current = storyPages["imageHistory"].slice(-1)
-      sysInfo["currentPage"] = storyPages["textHistory"].length -1
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
-    }
-  }
+  // const turnPage = (direct) => {
+  //   if (direct == 'back') {
+  //     story.current = storyPages["textHistory"][renderChapter -1]
+  //     imgUrl.current = storyPages["imageHistory"][renderChapter -1]
+  //     sysInfo["currentPage"] --
+  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+  //     setRenderChapter(renderChapter -1)
+  //   } else if (direct == 'next') {
+  //     sysInfo["currentPage"] ++
+  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+  //     story.current = storyPages["textHistory"][renderChapter +1]
+  //     imgUrl.current = storyPages["imageHistory"][renderChapter +1]
+  //     setRenderChapter(renderChapter +1)
+  //   } else if (direct == 'last') {
+  //     story.current = storyPages["textHistory"].slice(-1)
+  //     imgUrl.current = storyPages["imageHistory"].slice(-1)
+  //     sysInfo["currentPage"] = storyPages["textHistory"].length -1
+  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+  //     setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
+  //   }
+  // }
 
   return (
     <>
@@ -257,7 +254,7 @@ const ResultPage = () => {
         <>
         <div className="page-container">
           <ChapterTitle chapterNumber={renderChapter + 1}/>
-          <StoryBook text={story.current} image={imgUrl.current} turnPage={turnPage} renderChapter={renderChapter} length={storyPages["textHistory"].length-1}/>
+          <StoryBook storyPages={storyPages} seRender={[renderChapter, setRenderChapter]} length={storyPages["textHistory"].length-1}/>
           <div className="nav-container">
           <SteerStory callback={steerOnUserInput} />
           <div className="resultpage-button-container">

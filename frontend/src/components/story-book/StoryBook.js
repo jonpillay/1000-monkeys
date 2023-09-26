@@ -3,7 +3,40 @@ import TurnPageButton from '../turn-page-button/turnPageButton';
 import Image from '../image/image';
 import Story from '../story/Story';
 
+import { useRef } from 'react';
+
 const StoryBook = (props) => {
+
+  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
+  let story = useRef(storyPages["textHistory"][renderChapter] || "");
+
+  let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+
+  const storyPages = props.storyPages
+
+  const [renderChapter, setRenderChapter] = props.setRender
+
+  const turnPage = (direct) => {
+    if (direct == 'back') {
+      story.current = storyPages["textHistory"][renderChapter -1]
+      imgUrl.current = storyPages["imageHistory"][renderChapter -1]
+      sysInfo["currentPage"] --
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      setRenderChapter(renderChapter -1)
+    } else if (direct == 'next') {
+      sysInfo["currentPage"] ++
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      story.current = storyPages["textHistory"][renderChapter +1]
+      imgUrl.current = storyPages["imageHistory"][renderChapter +1]
+      setRenderChapter(renderChapter +1)
+    } else if (direct == 'last') {
+      story.current = storyPages["textHistory"].slice(-1)
+      imgUrl.current = storyPages["imageHistory"].slice(-1)
+      sysInfo["currentPage"] = storyPages["textHistory"].length -1
+      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
+    }
+  }
 
   console.log("StoryBook rerendered")
 
@@ -11,7 +44,7 @@ const StoryBook = (props) => {
     <div className="results-container">
       <div className="next-page-container">
         {props.renderChapter>0 &&
-          <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={props.turnPage}/>
+          <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" onClick={turnPage}/>
         }
       </div>
       <div className="storybook-container">

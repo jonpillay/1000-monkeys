@@ -13,14 +13,14 @@
   display: grid;
   grid-template-columns: 19% 81%;
   width: 100%;
-  margin-left: 3%;
+  margin: auto;
 }
 
 .countdown-notification-text {
   margin-top: 11px;
   font-size: 25px;
   font-family: 'special-elite';
-  width: 110%;
+  width: 100%;
 }
 
 .user-input-box {

@@ -48,7 +48,7 @@ export const useActivate = () => {
 
       localStorage.setItem('activateLocal', JSON.stringify(activateLocalStorage))
 
-      const endTime = Date.now() + 10900
+      const endTime = Date.now() + 599350
 
       setTimer(setSignupActive, endTime, 'activateLocal')
 
