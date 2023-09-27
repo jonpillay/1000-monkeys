@@ -179,9 +179,7 @@ const ResultPage = () => {
     } else {
       navigate('/')
     }
-    
 
-    
   };
 
   const refreshImage = () => {
