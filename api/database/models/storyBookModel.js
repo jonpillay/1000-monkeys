@@ -15,15 +15,27 @@ const storyBookSchema = new Schema({
   },
   ratings: {
     type: [],
-    required: true
   },
-  tags: {
-    type: [],
+  genre: {
+    type: String,
   },
 })
 
 // static methods
 
+storyBookSchema.statics.saveStory = async function (localStoryPages, user_id, genre) {
+
+  // needs error handling
+
+  const storyPages = JSON.parse(localStoryPages)
+
+  const chapterTexts = storyPages['textHistory'] // this is already a list
+  const chapterImages = storyPages['imageHistory'] // this is already a list
+
+  await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre })
+
+  storyBookSchema.createIndex({ genre: genre })
+}
 
 
 userSchema.statics.signup = async function (email, password) {
