@@ -1,25 +1,31 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
+import { useAuthContext } from "./useAuthContext";
 
 
 export const useSaveStory = () => {
+  const { user } = useAuthContext()
+
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  const { dispatch } = useContext(AuthContext)
-  const { creditDispatch } = useContext(CreditsContext)
+  // const { dispatch } = useContext(AuthContext)
+  // const { creditDispatch } = useContext(CreditsContext)
   // const { dispatch } = useStoryContext()
 
-  console.log(dispatch)
+  // console.log(dispatch)
 
-  const login = async (email, password) => {
+  const saveStory = async (storyPages, genre) => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./user/login', {
+    const response = await fetch('./save/story', {
       method: 'Post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email, password})
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      },
+      body: JSON.stringify({storyPages, genre})
     })
 
     const JSONres = await response.json()
@@ -30,15 +36,9 @@ export const useSaveStory = () => {
     }
 
     if (response.ok) {
-      creditDispatch({type: 'UPDATE', payload: JSONres.credits})
-      localStorage.setItem('credits', JSONres.credits)
-      localStorage.setItem('user', JSON.stringify(JSONres))
-
-      dispatch({type: 'LOGIN', payload: JSONres})
-
       setIsLoading(false)
     }
   }
 
-  return { login, isLoading, error }
+  return { saveStory, isLoading, error }
 }

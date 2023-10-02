@@ -3,10 +3,10 @@
 
 const express = require("express");
 const router = express.Router();
-const SaveStoryController = require("../controllers/story_persitence_controller");
+const StoryPersistenceController = require("../controllers/storyPersistenceController");
 
 const requireAuth = require('../middleware/requireAuth');
 
-router.post("/save", requireAuth, SaveStoryController.Save);
+router.post("/story", requireAuth, StoryPersistenceController.SaveStory);
 
 module.exports = router;

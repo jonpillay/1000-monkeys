@@ -1,17 +1,17 @@
-const User = require('../database/models/userModel')
+const StoryBook = require('../database/models/storyBookModel')
 
-const UserController = {
-  LoginUser: async (req, res) => {
+const StoryPersistenceController = {
+  SaveStory: async (req, res) => {
 
-    const {email, password} = req.body
+    const {storyPages, genre} = req.body
+
+    const user_id = req.user._id
 
     try {
 
-      const user = await User.login(email, password)
+      const story = await StoryBook.saveStory(user_id, storyPages, genre)
 
-      const JWT = genLoginJWT(user._id, user.isSuper)
-
-      res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper, credits: user.credits })
+      res.status(200).json({ error: "Story saved" })
     } catch (error) {
 
       res.status(400).json({error: error.message })
@@ -73,4 +73,4 @@ const UserController = {
 }
 
 
-module.exports = UserController
+module.exports = StoryPersistenceController

@@ -14,6 +14,7 @@ import { CreditsContext } from "../../context/CreditsContext";
 import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { LoadingContext } from "../../context/LoadingContext";
 import StoryBook from "../story-book/StoryBook";
+import SaveStoryButton from "../save-story-button/SaveStoryButton";
 
 
 const ResultPage = () => {
@@ -250,6 +251,7 @@ const ResultPage = () => {
       {!loading ? (
         <>
         <div className="page-container">
+          <SaveStoryButton/>
           <ChapterTitle chapterNumber={renderChapter + 1}/>
           <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">

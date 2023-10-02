@@ -20,7 +20,9 @@ export const useLogin = () => {
 
     const response = await fetch('./user/login', {
       method: 'Post',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+    },
       body: JSON.stringify({email, password})
     })
 

@@ -1,29 +1,35 @@
 import { useAuthContext } from "../../hooks/useAuthContext"
+import { useSaveStory } from "../../hooks/useSaveStory"
 import "./SaveStoryButton.css"
 
-function NavButton(props) {
+function SaveStoryButton(props) {
 
   const { user } = useAuthContext()
+
+  const { saveStory, isLoading, error } = useSaveStory()
   
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const storyPages = localStorage.getItem('storyPages') 
+    const storyPages = localStorage.getItem('storyPages')
 
-    const storyText = storyPages['textHistory']
-    const storyImages = storyPages['imageHistory']
+    const genre = JSON.parse(localStorage.getItem('userChoices'))['genre']
 
-    await saveStory(storyText, storyImages, user)
+    console.log(genre)
+
+    await saveStory(storyPages, genre)
 
   }
   
-
   return (
-    <Button className="save-story-button" onClick={handleSubmit}>
+    <>
+    <button className="save-story-button" onClick={handleSubmit}>
       Save Story
-    </Button>
+    </button>
+    {error && <div className="error">{error}</div>}
+    </>
   )
 }
 
-export default NavButton;
+export default SaveStoryButton;
