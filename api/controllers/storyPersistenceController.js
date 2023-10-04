@@ -9,6 +9,32 @@ const StoryPersistenceController = {
 
     try {
 
+      const story = await StoryBook.saveStory(storyPages, genre)
+
+      res.status(200).json({ error: "Story saved" })
+    } catch (error) {
+
+      res.status(400).json({error: error.message })
+    }
+    // res.json({ mssg: 'user logged in (kinda)' })
+  },
+
+  UpdateStory: async (req, res) => {
+
+    const {story_id, storyPages, genre} = req.body
+
+    const storyBook = StoryBook.findById(story_id)
+
+    const user_id = req.user._id
+
+    console.log(storyBook.user_id)
+
+    if (storyBook.user_id != user_id) {
+      res.status(400).json({error: "Must be story creator to update" })
+    }
+
+    try {
+
       const story = await StoryBook.saveStory(user_id, storyPages, genre)
 
       res.status(200).json({ error: "Story saved" })
@@ -16,11 +42,12 @@ const StoryPersistenceController = {
 
       res.status(400).json({error: error.message })
     }
-
-
-
     // res.json({ mssg: 'user logged in (kinda)' })
   },
+
+
+
+
   SignUpUser: async (req, res) => {
     const {email, password} = req.body
     const authEmail = req.user

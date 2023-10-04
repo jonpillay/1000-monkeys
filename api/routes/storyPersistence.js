@@ -7,6 +7,9 @@ const StoryPersistenceController = require("../controllers/storyPersistenceContr
 
 const requireAuth = require('../middleware/requireAuth');
 
-router.post("/story", requireAuth, StoryPersistenceController.SaveStory);
+router.post("/create-story", requireAuth, StoryPersistenceController.SaveStory);
+
+router.post("/update-story", requireAuth, StoryPersistenceController.UpdateStory);
+
 
 module.exports = router;

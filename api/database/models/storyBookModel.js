@@ -38,4 +38,26 @@ storyBookSchema.statics.saveStory = async function (user_id, localStoryPages, ta
 
   storyBookSchema.index({ genre: tag })
 }
+
+storyBookSchema.statics.updateStory = async function (story_id, localStoryPages) {
+
+  // needs error handling
+
+  const storyPages = JSON.parse(localStoryPages)
+
+  const updatedTexts = storyPages['textHistory'] // this is already a list
+  const updatedImages = storyPages['imageHistory'] // this is already a list
+
+  await this.updateOne( { _id: story_id },
+    {
+      $set: {
+        chapterTexts: updatedTexts,
+        chapterImageURLs: updatedImages
+      }
+    }
+  )
+
+  storyBookSchema.index({ genre: tag })
+}
+
 module.exports = mongoose.model('storyBook', storyBookSchema)
