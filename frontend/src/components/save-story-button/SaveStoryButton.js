@@ -1,12 +1,13 @@
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useSaveStory } from "../../hooks/useSaveStory"
+
 import "./SaveStoryButton.css"
 
 function SaveStoryButton(props) {
 
   const { user } = useAuthContext()
 
-  const { saveStory, isLoading, error } = useSaveStory()
+  const { saveStory, updateStory, isLoading, error } = useSaveStory()
   
 
   const handleSubmit = async (e) => {
