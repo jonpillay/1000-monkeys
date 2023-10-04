@@ -36,6 +36,6 @@ storyBookSchema.statics.saveStory = async function (user_id, localStoryPages, ta
 
   await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: tag })
 
-  // storyBookSchema.index({ genre: tag })
+  storyBookSchema.index({ genre: tag })
 }
-module.exports = mongoose.model('storyBookSchema', storyBookSchema)
+module.exports = mongoose.model('storyBook', storyBookSchema)

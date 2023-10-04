@@ -46,7 +46,7 @@ async function DSGenerateImage(prompts) {
   
   const imageUrls = await Promise.all(imagePromises);
 
-  return imageUrls;
+  return imageUrls[0];
   
 }
 

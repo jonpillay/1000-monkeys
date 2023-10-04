@@ -250,8 +250,8 @@ const ResultPage = () => {
     <>
       {!loading ? (
         <>
+        <SaveStoryButton/>
         <div className="page-container">
-          <SaveStoryButton/>
           <ChapterTitle chapterNumber={renderChapter + 1}/>
           <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">
