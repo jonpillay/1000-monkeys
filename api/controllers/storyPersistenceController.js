@@ -23,11 +23,13 @@ const StoryPersistenceController = {
 
     const {story_id, storyPages, genre} = req.body
 
-    const storyBook = StoryBook.findById(story_id)
+    const storyBook = await StoryBook.findById(story_id)
 
     const user_id = req.user._id
 
-    console.log(storyBook.user_id)
+    console.log("this is the user_id attatched to storyBook obj ", storyBook.user_id)
+    console.log("this is the user_id attatched to request ", user_id)
+
 
     if (storyBook.user_id != user_id) {
       res.status(400).json({error: "Must be story creator to update" })
@@ -35,7 +37,7 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.saveStory(user_id, storyPages, genre)
+      const story = await StoryBook.updateStory(user_id, storyPages)
 
       res.status(200).json({ error: "Story saved"})
     } catch (error) {

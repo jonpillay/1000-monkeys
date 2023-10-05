@@ -60,8 +60,6 @@ storyBookSchema.statics.updateStory = async function (story_id, localStoryPages)
       }
     }
   )
-
-  storyBookSchema.index({ genre: tag })
 }
 
 module.exports = mongoose.model('storyBook', storyBookSchema)
