@@ -7,6 +7,8 @@ import LoadingIcon from "../loading-icon/LoadingIcon";
 import LoadingPage from "../loading_page/LoadingPage";
 import SteerStory from "../steer-story/SteerStory";
 import ChapterTitle from "../chapter-title/ChapterTitle";
+import StoryControlPanel from "../story-control-panel/StoryControlPanel";
+
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
 import { CreditsContext } from "../../context/CreditsContext";
@@ -252,21 +254,11 @@ const ResultPage = () => {
         <>
         <SaveStoryButton/>
         <div className="page-container">
-          <ChapterTitle chapterNumber={renderChapter + 1}/>
-          <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
+            <ChapterTitle chapterNumber={renderChapter + 1}/>
+            <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">
-          <SteerStory callback={steerOnUserInput} />
-          <div className="resultpage-button-container">
-            <div>
-              <button className="resultpage-button" data-cy="refresh" onClick={refreshStory}>Refresh the story</button>
-            </div>
-            <div>
-              <button className="resultpage-button" data-cy="next" onClick={whatHappensNext}>What happens next?</button>
-            </div>
-            <div>
-              <button className="resultpage-button" data-cy="next" onClick={refreshImage}>Refresh Image</button>
-            </div>
-          </div>
+            <SteerStory callback={steerOnUserInput} />
+            <StoryControlPanel refreshStory={refreshStory} refreshImage={refreshImage} whatHappensNext={whatHappensNext}/>
           </div>
         </div>
         </>
