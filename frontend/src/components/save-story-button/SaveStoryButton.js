@@ -13,19 +13,26 @@ function SaveStoryButton(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const storyPages = localStorage.getItem('storyPages')
+    const stringStoryPages = localStorage.getItem('storyPages')
+    console.log(stringStoryPages)
 
-    const genre = JSON.parse(localStorage.getItem('userChoices'))['genre']
+    const storyPages = JSON.parse(stringStoryPages)
 
-    console.log(genre)
+    const genre = JSON.parse(stringStoryPages)['genre']
 
-    await saveStory(storyPages, genre)
+    if (storyPages['storyID']) {
+      await updateStory(storyPages['storyID'], stringStoryPages)
+    } else {
+      const story_id = await saveStory(stringStoryPages, genre)
+    }
+
+    
 
   }
   
   return (
     <>
-    <button className="save-story-button" onClick={handleSubmit}>
+    <button disabled={isLoading} className="save-story-button" onClick={handleSubmit}>
       Save Story
     </button>
     {error && <div className="error">{error}</div>}

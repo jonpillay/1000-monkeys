@@ -9,9 +9,9 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.saveStory(storyPages, genre)
+      const story = await StoryBook.saveStory(user_id, storyPages, genre)
 
-      res.status(200).json({ error: "Story saved" })
+      res.status(200).json({ error: "Story saved", story_id: story._id  })
     } catch (error) {
 
       res.status(400).json({error: error.message })
@@ -37,7 +37,7 @@ const StoryPersistenceController = {
 
       const story = await StoryBook.saveStory(user_id, storyPages, genre)
 
-      res.status(200).json({ error: "Story saved" })
+      res.status(200).json({ error: "Story saved"})
     } catch (error) {
 
       res.status(400).json({error: error.message })

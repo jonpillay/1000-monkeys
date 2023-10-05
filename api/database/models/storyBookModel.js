@@ -31,12 +31,16 @@ storyBookSchema.statics.saveStory = async function (user_id, localStoryPages, ta
 
   const storyPages = JSON.parse(localStoryPages)
 
+  console.log("This is", storyPages)
+
   const chapterTexts = storyPages['textHistory'] // this is already a list
   const chapterImages = storyPages['imageHistory'] // this is already a list
 
-  await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: tag })
+  const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: tag })
 
   storyBookSchema.index({ genre: tag })
+
+  return story
 }
 
 storyBookSchema.statics.updateStory = async function (story_id, localStoryPages) {

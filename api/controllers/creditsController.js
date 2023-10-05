@@ -23,8 +23,6 @@ const creditController = {
         throw Error("Nice Try")
       }
 
-
-      // not a function is it
       const credit_update = await User.credits(_id, amount)
 
       return credit_update

@@ -36,6 +36,9 @@ export const useSaveStory = () => {
     }
 
     if (response.ok) {
+      const storyPages = JSON.parse(localStorage.getItem('storyPages'))
+      storyPages['storyID'] = JSONres.story_id
+      localStorage.setItem('storyPages', JSON.stringify(storyPages))
       setIsLoading(false)
     }
   }
