@@ -1,3 +1,13 @@
 .save-story-button {
-  margin: auto;
+  border: none;
+  margin-left: 1em;
+  cursor: pointer;
+  background-color: inherit;
+  margin-bottom: 21%;
+}
+
+.save-icon {
+  height: 50px;
+  opacity: 80%;
+  
 }

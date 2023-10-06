@@ -3,6 +3,8 @@ import { useSaveStory } from "../../hooks/useSaveStory"
 
 import "./SaveStoryButton.css"
 
+import SaveIcon from "../../img/floppy-disk-save.png"
+
 function SaveStoryButton(props) {
 
   const { user } = useAuthContext()
@@ -25,17 +27,16 @@ function SaveStoryButton(props) {
     } else {
       const story_id = await saveStory(stringStoryPages, genre)
     }
-
-    
-
   }
   
   return (
     <>
-    <button disabled={isLoading} className="save-story-button" onClick={handleSubmit}>
-      Save Story
-    </button>
-    {error && <div className="error">{error}</div>}
+    <div className="save-button-container">
+      <button disabled={isLoading} className="save-story-button" onClick={handleSubmit}>
+        <img className="save-icon" src={SaveIcon}/>
+      </button>
+      {error && <div className="error">{error}</div>}
+    </div>
     </>
   )
 }

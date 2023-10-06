@@ -101,3 +101,11 @@
   align-items: center;
   margin-top: 7%;
 }
+
+.storybook-header {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}

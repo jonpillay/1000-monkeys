@@ -252,9 +252,11 @@ const ResultPage = () => {
     <>
       {!loading ? (
         <>
-        <SaveStoryButton/>
         <div className="page-container">
+          <div className="storybook-header">
             <ChapterTitle chapterNumber={renderChapter + 1}/>
+            <SaveStoryButton/>
+          </div>
             <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">
             <SteerStory callback={steerOnUserInput} />
