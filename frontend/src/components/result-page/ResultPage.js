@@ -39,7 +39,11 @@ const ResultPage = () => {
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
+  const inSync = localStorage.getItem('storyInSync')
+
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
+
+  let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
 
   let [isLoading, setIsLoading] = useState(false);
 
@@ -113,6 +117,10 @@ const ResultPage = () => {
       localStorage.setItem("storyPages", JSON.stringify(storyPages))
 
       console.log(user.credits)
+
+      localStorage.removeItem('storyInSync')
+
+      setStoryInSync(false)
 
       setRenderChapter(sysInfo["currentPage"])
       
@@ -255,7 +263,7 @@ const ResultPage = () => {
         <div className="page-container">
           <div className="storybook-header">
             <ChapterTitle chapterNumber={renderChapter + 1}/>
-            <SaveStoryButton/>
+            <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>
           </div>
             <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">

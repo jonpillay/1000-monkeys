@@ -10,6 +10,8 @@ function SaveStoryButton(props) {
   const { user } = useAuthContext()
 
   const { saveStory, updateStory, isLoading, error } = useSaveStory()
+
+  const [storyInSync, setStoryInSync] = props.setStoryInSync
   
 
   const handleSubmit = async (e) => {
@@ -23,20 +25,36 @@ function SaveStoryButton(props) {
     const genre = JSON.parse(stringStoryPages)['genre']
 
     if (storyPages['storyID']) {
-      await updateStory(storyPages['storyID'], stringStoryPages)
+      try {
+        await updateStory(storyPages['storyID'], stringStoryPages)
+        localStorage.setItem('storyInSync', 'true')
+        setStoryInSync(true)
+      } catch (error) {
+        console.log(error)
+      }
+      
     } else {
       const story_id = await saveStory(stringStoryPages, genre)
+      localStorage.setItem('storyInSync', 'true')
+      setStoryInSync(true)
     }
   }
   
   return (
     <>
-    <div className="save-button-container">
-      <button disabled={isLoading} className="save-story-button" onClick={handleSubmit}>
-        <img className="save-icon" src={SaveIcon}/>
-      </button>
-      {error && <div className="error">{error}</div>}
-    </div>
+    {storyInSync == false ? (
+      <div className="save-button-container">
+        <button disabled={isLoading} className="save-story-button" onClick={handleSubmit}>
+          <img className="save-icon" src={SaveIcon}/>
+        </button>
+        {error && <div className="error">{error}</div>}
+      </div>
+    ) : (
+      <div className="save-button-container">
+
+      </div>
+    )}
+
     </>
   )
 }
