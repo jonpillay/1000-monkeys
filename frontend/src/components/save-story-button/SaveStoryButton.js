@@ -18,11 +18,14 @@ function SaveStoryButton(props) {
     e.preventDefault()
 
     const stringStoryPages = localStorage.getItem('storyPages')
+
+    const genre = JSON.parse(localStorage.getItem('userChoices'))['genre']
+
     console.log(stringStoryPages)
 
-    const storyPages = JSON.parse(stringStoryPages)
+    console.log(genre)
 
-    const genre = JSON.parse(stringStoryPages)['genre']
+    const storyPages = JSON.parse(stringStoryPages)
 
     if (storyPages['storyID']) {
       try {
