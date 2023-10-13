@@ -11,6 +11,7 @@ const StoryRouter = require("./routes/story");
 const PopulateRouter = require("./routes/populate");
 const UserRouter = require('./routes/users');
 const StoryPersistenceRouter = require('./routes/storyPersistence')
+const FetchStoriesRouter = require('./routes/fetchStories')
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/story", StoryRouter)
 app.use("/populate", PopulateRouter)
 app.use("/user", UserRouter)
 app.use("/save", StoryPersistenceRouter)
+app.use("/fetch-stories", FetchStoriesRouter)
 
 
 // connect to db

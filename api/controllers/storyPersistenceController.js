@@ -49,5 +49,4 @@ const StoryPersistenceController = {
 
 }
 
-
 module.exports = StoryPersistenceController
