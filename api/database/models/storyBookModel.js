@@ -52,6 +52,8 @@ storyBookSchema.statics.updateStory = async function (story_id, localStoryPages)
   const updatedTexts = storyPages['textHistory'] // this is already a list
   const updatedImages = storyPages['imageHistory'] // this is already a list
 
+  console.log(updatedImages)
+
   await this.updateOne( { _id: story_id },
     {
       $set: {

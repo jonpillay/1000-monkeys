@@ -37,14 +37,13 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.updateStory(user_id, storyPages)
+      const story = await StoryBook.updateStory(storyBook._id, storyPages)
 
       res.status(200).json({ error: "Story saved"})
     } catch (error) {
 
       res.status(400).json({error: error.message })
     }
-    // res.json({ mssg: 'user logged in (kinda)' })
   },
 
 }
