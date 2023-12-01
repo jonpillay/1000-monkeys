@@ -8,7 +8,13 @@ import ChapterTitle from "../chapter-title/ChapterTitle";
 import StoryBook from "../story-book/StoryBook";
 
 
-const StoryBookBrowseContainer = () => {
+const StoryBookBrowseContainer = (props) => {
+
+  /*
+
+  Needs a useEffect to load in the current page number in relation to the object key
+
+  */
 
   console.log("StoryBookBrowseContainer rerendered")
 

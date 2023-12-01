@@ -16,7 +16,6 @@ const StoryPersistenceController = {
 
       res.status(400).json({error: error.message })
     }
-    // res.json({ mssg: 'user logged in (kinda)' })
   },
 
   UpdateStory: async (req, res) => {

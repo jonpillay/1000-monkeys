@@ -6,7 +6,7 @@ const WelcomePanel = () => {
       <div className="welcome-title-container">
         Welcome! App/Development History
       </div>
-      <div>
+      <div className='welcome-text-container'>
         <div className='welcome-text'>
           Sem. Pellentesque Quisque ac nec leo taciti, metus tellus justo. Interdum nam mus dis mauris sodales. Ridiculus dapibus ornare sociis sociis. Pulvinar sed condimentum nostra etiam purus dolor nisi, ante. Urna libero diam dui. Rutrum, sodales faucibus Velit eget aptent nec rutrum at, adipiscing augue. Ultricies aenean, porttitor bibendum ante. Cubilia dolor tincidunt iaculis libero arcu etiam eu volutpat Enim penatibus ultrices ligula neque. Diam adipiscing pulvinar sapien posuere.
           <p>

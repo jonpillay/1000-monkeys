@@ -45,8 +45,6 @@ const ResultPage = () => {
 
   let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
 
-  let [isLoading, setIsLoading] = useState(false);
-
   // let renderChapter = sysInfo["currentPage"]
 
   useEffect(() => {

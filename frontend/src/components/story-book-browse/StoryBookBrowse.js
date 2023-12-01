@@ -6,6 +6,12 @@ import Story from '../story/Story';
 import { useRef } from 'react';
 
 const StoryBookBrowse = (props) => {
+  
+  /*
+  Needs to fetch only the local storage info related to its own instance (current page number). 
+  With different books rendered on the same page, will need to be referenced by its own key.
+  Should setup localStorage object to handle every time the page renders a new list of books? 
+  */
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
@@ -17,6 +23,10 @@ const StoryBookBrowse = (props) => {
 
   let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
   let story = useRef(storyPages["textHistory"][renderChapter] || "");
+
+  /*
+  Turnpage here needs to be rewritten to handle the new localStorage object.
+  */
 
   const turnPage = (direct) => {
     if (direct == 'back') {
