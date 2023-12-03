@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 
 
-export const useFetch = () => {
+export const useFetchStories = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const [bookList, setBookList] = useState([])

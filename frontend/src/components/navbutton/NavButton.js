@@ -1,12 +1,12 @@
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "./navbutton.css"
 
 function NavButton(props) {
-  const to = props.to;
+  const callback = props.callback;
   const value = props.value;
 
   return (
-    <NavLink to={to} className="nav-button">{value}</NavLink>
+    <NavLink onClick={callback} className="nav-button">{value}</NavLink>
   )
 }
 

@@ -20,5 +20,4 @@ const FetchStoriesController = {
 
 }
 
-
 module.exports = FetchStoriesController
