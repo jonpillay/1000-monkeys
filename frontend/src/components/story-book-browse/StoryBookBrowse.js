@@ -15,14 +15,14 @@ const StoryBookBrowse = (props) => {
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
-  const storyPages = props.storyPages
+  const chapterTexts = props.chapterTexts
 
-  console.log(storyPages)
+  const chapterImgURLs = props.chapterImgURLs
 
   const [renderChapter, setRenderChapter] = props.setRender
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "");
+  let imgUrl = useRef(chapterImgURLs[renderChapter] || "");
+  let story = useRef(chapterTexts[renderChapter] || "");
 
   /*
   Turnpage here needs to be rewritten to handle the new localStorage object.

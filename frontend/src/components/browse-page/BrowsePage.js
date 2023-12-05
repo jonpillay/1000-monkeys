@@ -4,6 +4,8 @@ import { useFetchStories } from "../../hooks/useFetchStories";
 
 import FetchStoriesControlPanel from "../fetch-control-panel/FetchControlPanel";
 
+import BrowseBookDisplay from "../browse-book-display/BrowseBookDisplay"
+
 import StoryBookBrowse from "../story-book-browse/StoryBookBrowse";
 
 const BrowsePage = (props) => {
@@ -23,6 +25,7 @@ const BrowsePage = (props) => {
     <>
     <div className="browse-container">
       <FetchStoriesControlPanel fetchByGenre={fetchByGenre} />
+      <BrowseBookDisplay/>
     </div>
     </>
   )

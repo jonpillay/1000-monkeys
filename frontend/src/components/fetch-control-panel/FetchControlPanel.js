@@ -15,10 +15,12 @@ const FetchStoriesControlPanel = (props) => {
   const browseStorySetup = async (keyword) => {
     const bookList = await fetchByGenre(keyword)
 
-    if (localStorage.getItem('pageNumbers')) {
-      const pageNumbers = JSON.parse(localStorage.getItem('pageNumbers'))
+    let pageNumbers;
+
+    if (localStorage.getItem('browsePageNumbers')) {
+      pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
     } else {
-      const pageNumbers = {}
+      pageNumbers = {}
     }
 
     bookList.forEach((book) => {
@@ -26,6 +28,8 @@ const FetchStoriesControlPanel = (props) => {
         pageNumbers[book.id] = 0
       }
     })
+
+    localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
   }
 
   return (

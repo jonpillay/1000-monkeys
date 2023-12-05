@@ -1,6 +1,6 @@
 import "./BrowseBookDisplay.css";
 
-import StoryBookBrowse from "../story-book-browse/StoryBookBrowse";
+import StoryBookBrowseContainer from "../story-book-browse-container/StoryBookBrowseContainer";
 
 const BrowseBookDisplay = (props) => {
 
@@ -10,11 +10,16 @@ const BrowseBookDisplay = (props) => {
 
   */
 
+  const pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
+
   const bookList = props.bookList
+
+  const browsingBooks = bookList.map(book => <li><StoryBookBrowseContainer key={book.id} chapterTexts={book.chapterText} chapterImgURLs={chapterImageURLs} pageNumber={pageNumbers[book.id]}/></li> ) 
 
   return (
     <>
     <div className="browse-book-display-container">
+      <ul>{browsingBooks}</ul>
     </div>
     </>
   )
