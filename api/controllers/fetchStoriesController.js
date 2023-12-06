@@ -4,14 +4,19 @@ const FetchStoriesController = {
 
   GetStoriesByGenre: async (req, res) => {
 
-    try {
-      const { genre } = req.body
+    console.log(req.body)
 
-      const bookList = StoryBook.find({genre: {genre}}).exec().lean()
+    const requestGenre = req.body;
+
+    try {
+
+      console.log({requestGenre})
+
+      const bookList = await StoryBook.find(requestGenre).exec()
 
       console.log(bookList)
 
-      req.status(200).json({ filteredList: bookList })
+      res.status(200).json({ filteredList: bookList })
     } catch (error) {
       
       res.status(400).json({error: error.message })

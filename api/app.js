@@ -6,14 +6,6 @@ const path = require("path");
 const logger = require("morgan");
 const connectToMongo = require("./database/db-connection")
 
-const ImagesRouter = require('./routes/images');
-const StoryRouter = require("./routes/story");
-const PopulateRouter = require("./routes/populate");
-const UserRouter = require('./routes/users');
-const StoryPersistenceRouter = require('./routes/storyPersistence')
-const FetchStoriesRouter = require('./routes/fetchStories')
-
-
 const app = express();
 
 // setup for receiving JSON
@@ -22,6 +14,13 @@ app.use(express.json())
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+const ImagesRouter = require('./routes/images');
+const StoryRouter = require("./routes/story");
+const PopulateRouter = require("./routes/populate");
+const UserRouter = require('./routes/users');
+const StoryPersistenceRouter = require('./routes/storyPersistence')
+const FetchStoriesRouter = require('./routes/fetchStories')
 
 // route setup
 app.use("/images", ImagesRouter)

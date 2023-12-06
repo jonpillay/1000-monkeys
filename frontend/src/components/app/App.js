@@ -16,6 +16,7 @@ import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
 import AdminPanel from '../admin-panel/AdminPanel';
 import ActivationPage from '../activation-page.js/ActivationPage';
+import BrowsePage from '../browse-page/BrowsePage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
@@ -60,6 +61,7 @@ const App = () => {
         <BrowserRouter>
         <Header/>
           <Routes>
+            <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />
             <Route exact path="/activate" element={ <ActivationPage/> } />
             <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } />

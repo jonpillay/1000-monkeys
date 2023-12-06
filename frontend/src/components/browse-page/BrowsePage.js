@@ -25,7 +25,7 @@ const BrowsePage = (props) => {
     <>
     <div className="browse-container">
       <FetchStoriesControlPanel fetchByGenre={fetchByGenre} />
-      <BrowseBookDisplay/>
+      <BrowseBookDisplay bookList={bookList}/>
     </div>
     </>
   )

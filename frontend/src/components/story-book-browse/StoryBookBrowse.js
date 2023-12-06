@@ -1,4 +1,4 @@
-import './StoryBook.css'
+import '../story-book/StoryBook.css'
 import TurnPageButton from '../turn-page-button/turnPageButton';
 import Image from '../image/image';
 import Story from '../story/Story';
@@ -29,25 +29,25 @@ const StoryBookBrowse = (props) => {
   */
 
   const turnPage = (direct) => {
-    if (direct == 'back') {
-      story.current = storyPages["textHistory"][renderChapter -1]
-      imgUrl.current = storyPages["imageHistory"][renderChapter -1]
-      sysInfo["currentPage"] --
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      setRenderChapter(renderChapter -1)
-    } else if (direct == 'next') {
-      sysInfo["currentPage"] ++
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      story.current = storyPages["textHistory"][renderChapter +1]
-      imgUrl.current = storyPages["imageHistory"][renderChapter +1]
-      setRenderChapter(renderChapter +1)
-    } else if (direct == 'last') {
-      story.current = storyPages["textHistory"].slice(-1)
-      imgUrl.current = storyPages["imageHistory"].slice(-1)
-      sysInfo["currentPage"] = storyPages["textHistory"].length -1
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
-    }
+    // if (direct == 'back') {
+    //   story.current = storyPages["textHistory"][renderChapter -1]
+    //   imgUrl.current = storyPages["imageHistory"][renderChapter -1]
+    //   sysInfo["currentPage"] --
+    //   localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+    //   setRenderChapter(renderChapter -1)
+    // } else if (direct == 'next') {
+    //   sysInfo["currentPage"] ++
+    //   localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+    //   story.current = storyPages["textHistory"][renderChapter +1]
+    //   imgUrl.current = storyPages["imageHistory"][renderChapter +1]
+    //   setRenderChapter(renderChapter +1)
+    // } else if (direct == 'last') {
+    //   story.current = storyPages["textHistory"].slice(-1)
+    //   imgUrl.current = storyPages["imageHistory"].slice(-1)
+    //   sysInfo["currentPage"] = storyPages["textHistory"].length -1
+    //   localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+    //   setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
+    // }
   }
 
   console.log("StoryBook rerendered")
@@ -64,7 +64,7 @@ const StoryBookBrowse = (props) => {
           <Story storyString={story.current} />
       </div>
       <div className="next-page-container">
-        {renderChapter<storyPages['textHistory'].length-1 &&
+        {renderChapter<chapterTexts.length-1 &&
           <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
         }
       </div>

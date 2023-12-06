@@ -23,6 +23,7 @@ export const useFetchStories = () => {
     if (!response.ok) {
       setIsLoading(false)
       setError(JSONres.error)
+      setIsLoading(false);
     }
 
     if (response.ok) {

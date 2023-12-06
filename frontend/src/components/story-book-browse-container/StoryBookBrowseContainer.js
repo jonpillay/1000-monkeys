@@ -2,8 +2,6 @@ import './StoryBookBrowseContainer.css'
 
 import React, { useState } from "react";
 
-import "./ResultPage.css";
-
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
 
@@ -32,7 +30,7 @@ const StoryBookBrowseContainer = (props) => {
       <div className="storybook-header">
         <ChapterTitle chapterNumber={renderChapter + 1}/>
       </div>
-        <StoryBookBrowse storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
+        <StoryBookBrowse chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} setRender={[renderChapter, setRenderChapter]}/>
     </div>
     </>
   )};

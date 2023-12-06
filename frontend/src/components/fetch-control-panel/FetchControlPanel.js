@@ -12,8 +12,15 @@ const FetchStoriesControlPanel = (props) => {
 
   const fetchByGenre = props.fetchByGenre
 
-  const browseStorySetup = async (keyword) => {
+  const browseStorySetup = async (e, keyword) => {
+
+    console.log("browse setup running")
+
+    e.preventDefault()
+
     const bookList = await fetchByGenre(keyword)
+
+    console.log(bookList)
 
     let pageNumbers;
 
@@ -23,11 +30,16 @@ const FetchStoriesControlPanel = (props) => {
       pageNumbers = {}
     }
 
+    console.log(pageNumbers)
+
     bookList.forEach((book) => {
       if (!(book.id in pageNumbers)) {
         pageNumbers[book.id] = 0
       }
     })
+
+    console.log("made is here")
+    console.log(pageNumbers)
 
     localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
   }
@@ -36,7 +48,7 @@ const FetchStoriesControlPanel = (props) => {
     <>
       <div className="filter-nav-container">
         <>
-          <NavButton onClick={browseStorySetup("Western")} value="Western" className="genre-button" />
+          <button onClick={(e) => browseStorySetup(e,"Western")} value="Western" className="genre-button" />
           {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </>
       </div>
