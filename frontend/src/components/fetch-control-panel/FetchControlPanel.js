@@ -12,6 +12,8 @@ const FetchStoriesControlPanel = (props) => {
 
   const fetchByGenre = props.fetchByGenre
 
+  const setBookList = props.setBookList
+
   const browseStorySetup = async (e, keyword) => {
 
     console.log("browse setup running")
@@ -33,15 +35,18 @@ const FetchStoriesControlPanel = (props) => {
     console.log(pageNumbers)
 
     bookList.forEach((book) => {
-      if (!(book.id in pageNumbers)) {
-        pageNumbers[book.id] = 0
+      if (!(book._id in pageNumbers)) {
+        console.log(pageNumbers)
+        pageNumbers[book._id] = 0
       }
     })
 
     console.log("made is here")
     console.log(pageNumbers)
 
-    localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
+    await localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
+
+    setBookList(bookList)
   }
 
   return (

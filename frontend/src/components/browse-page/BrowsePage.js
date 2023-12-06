@@ -10,7 +10,7 @@ import StoryBookBrowse from "../story-book-browse/StoryBookBrowse";
 
 const BrowsePage = (props) => {
 
-  const { fetchByGenre, isLoading, error, bookList } = useFetchStories()
+  const { fetchByGenre, isLoading, error, bookList, setBookList } = useFetchStories()
 
   /* 
   
@@ -24,7 +24,7 @@ const BrowsePage = (props) => {
   return (
     <>
     <div className="browse-container">
-      <FetchStoriesControlPanel fetchByGenre={fetchByGenre} />
+      <FetchStoriesControlPanel fetchByGenre={fetchByGenre} setBookList={setBookList} />
       <BrowseBookDisplay bookList={bookList}/>
     </div>
     </>

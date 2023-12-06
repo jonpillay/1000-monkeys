@@ -23,14 +23,13 @@ export const useFetchStories = () => {
     if (!response.ok) {
       setIsLoading(false)
       setError(JSONres.error)
-      setIsLoading(false);
     }
 
     if (response.ok) {
-      setBookList(JSONres.filteredList)
+      return (JSONres.filteredList)
       setIsLoading(false)
     }
   }
 
-  return { fetchByGenre, isLoading, error, bookList }
+  return { fetchByGenre, isLoading, error, bookList, setBookList }
 }

@@ -13,15 +13,8 @@ const BrowseBookDisplay = (props) => {
 
   const pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
 
-  const bookList = props.bookList || []
 
-  let browsingBooks;
-
-  useEffect(() =>{
-    if (bookList.length >0) {
-      const browsingBooks = bookList.map(book => <li><StoryBookBrowseContainer key={book.id} chapterTexts={book.chapterText} chapterImgURLs={book.chapterImageURLs} pageNumber={pageNumbers[book.id]}/></li> )
-    }
-  }, [bookList])
+  const browsingBooks = props.bookList.map(book => <li><StoryBookBrowseContainer key={book._id} chapterTexts={book.chapterText} chapterImgURLs={book.chapterImageURLs} pageNumber={pageNumbers[book._id]}/></li> )
 
 
   return (

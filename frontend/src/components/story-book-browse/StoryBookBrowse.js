@@ -19,7 +19,11 @@ const StoryBookBrowse = (props) => {
 
   const chapterImgURLs = props.chapterImgURLs
 
-  const [renderChapter, setRenderChapter] = props.setRender
+  const {setRenderChapter} = props.setRender
+
+  const renderChapter = props.renderChapter
+
+  console.log(renderChapter)
 
   let imgUrl = useRef(chapterImgURLs[renderChapter] || "");
   let story = useRef(chapterTexts[renderChapter] || "");
