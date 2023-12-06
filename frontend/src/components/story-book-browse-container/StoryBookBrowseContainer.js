@@ -16,6 +16,8 @@ const StoryBookBrowseContainer = (props) => {
 
   console.log("StoryBookBrowseContainer rerendered")
 
+  const key = props.key
+  
   const chapterTexts = props.chapterTexts
 
   const chapterImgURLs = props.chapterImgURLs
@@ -23,6 +25,7 @@ const StoryBookBrowseContainer = (props) => {
   const startingPage = props.pageNumber
 
   const [renderChapter, setRenderChapter] = useState(startingPage)
+
   console.log("this is the render chapter ", renderChapter)
 
   return (
@@ -31,7 +34,7 @@ const StoryBookBrowseContainer = (props) => {
       <div className="storybook-header">
         <ChapterTitle chapterNumber={renderChapter + 1}/>
       </div>
-        <StoryBookBrowse chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
+        <StoryBookBrowse key={key} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
     </div>
     </>
   )};

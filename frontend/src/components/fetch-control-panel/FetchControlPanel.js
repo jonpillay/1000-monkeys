@@ -53,7 +53,9 @@ const FetchStoriesControlPanel = (props) => {
     <>
       <div className="filter-nav-container">
         <>
+          <button onClick={(e) => browseStorySetup(e,"Dystopian")} value="Western" className="genre-button" />
           <button onClick={(e) => browseStorySetup(e,"Western")} value="Western" className="genre-button" />
+
           {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </>
       </div>

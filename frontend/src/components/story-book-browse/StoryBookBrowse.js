@@ -15,11 +15,13 @@ const StoryBookBrowse = (props) => {
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
+  const key = props.key
+
   const chapterTexts = props.chapterTexts
 
   const chapterImgURLs = props.chapterImgURLs
 
-  const {setRenderChapter} = props.setRender
+  const setRenderChapter = props.setRender
 
   const renderChapter = props.renderChapter
 
@@ -33,18 +35,22 @@ const StoryBookBrowse = (props) => {
   */
 
   const turnPage = (direct) => {
-    // if (direct == 'back') {
-    //   story.current = storyPages["textHistory"][renderChapter -1]
-    //   imgUrl.current = storyPages["imageHistory"][renderChapter -1]
-    //   sysInfo["currentPage"] --
-    //   localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-    //   setRenderChapter(renderChapter -1)
-    // } else if (direct == 'next') {
-    //   sysInfo["currentPage"] ++
-    //   localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-    //   story.current = storyPages["textHistory"][renderChapter +1]
-    //   imgUrl.current = storyPages["imageHistory"][renderChapter +1]
-    //   setRenderChapter(renderChapter +1)
+    if (direct == 'back') {
+      const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
+      story.current = chapterTexts[renderChapter -1]
+      imgUrl.current = chapterImgURLs[renderChapter -1]
+      localPageNumbers[key] = localPageNumbers[key] - 1
+      localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
+      setRenderChapter(renderChapter -1)
+    } else if (direct == 'next') {
+      const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
+      story.current = chapterTexts[renderChapter +1]
+      imgUrl.current = chapterImgURLs[renderChapter +1]
+      localPageNumbers[key] = localPageNumbers[key] + 1
+      localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
+      setRenderChapter(renderChapter +1)
+
+    }
     // } else if (direct == 'last') {
     //   story.current = storyPages["textHistory"].slice(-1)
     //   imgUrl.current = storyPages["imageHistory"].slice(-1)
