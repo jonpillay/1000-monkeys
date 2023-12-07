@@ -3,6 +3,7 @@
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
   margin: 1%;
+  padding-bottom: 10px;
 }
 
 .home-button {

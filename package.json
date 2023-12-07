@@ -3,6 +3,7 @@
     "dotenv": "^16.3.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
-    "openai": "^3.2.1"
+    "openai": "^3.2.1",
+    "react-headroom": "^3.2.1"
   }
 }
