@@ -1,4 +1,10 @@
 .filter-nav-container {
   width: 100%;
   background-color: green;
+  transition: 0.5s;
+}
+
+.filter-nav-container.active {
+  position: sticky;
+  top: 0;
 }

@@ -60,7 +60,7 @@ const App = () => {
   return (
     <div className="app">
         <BrowserRouter>
-          <Header/>
+          <Header />
           <Routes>
             <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />

@@ -4,7 +4,7 @@ import NavButton from '../navbutton/NavButton';
 import UserPanel from "../user-panel/UserPanel";
 
 import { useLogout } from "../../hooks/useLogout";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import { useStoryContext } from "../../hooks/useStoryContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 // import { clearLocal } from "../../hooks/useClearLocal";
@@ -19,7 +19,7 @@ const NavBar = () => {
 // set consts for loggedIn and setLoggedIn (funct) to be accessed within the component
 // const [loggedIn, setLoggedIn] = useContext(loggedInContext)
 
-  const { navigate } = useNavigate()
+  const navigate = useNavigate()
   const { logout } = useLogout()
 
   const { dispatch } = useStoryContext()
@@ -65,8 +65,8 @@ const NavBar = () => {
           </>
         :
           <>
-            <NavButton to="/activate" value="I Have an Invite Key!" className="invite-button" />
-            <NavButton to="/" value="Login" className="login-button" />
+            <button onClick={() => navigate('/activate')} className="invite-button">I have an invite key!</ button>
+            <button onClick={() => navigate('/')} className="login-button" >Login</button>
           </>
         )}
       </div>

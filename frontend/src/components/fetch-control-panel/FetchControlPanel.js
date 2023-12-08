@@ -1,6 +1,8 @@
 import './FetchControlPanel.css'
 import NavButton from '../navbutton/NavButton';
 
+import { useEffect, useState } from 'react';
+
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
@@ -8,7 +10,29 @@ const FetchStoriesControlPanel = (props) => {
 
   // import the callback from the FetchsStories and apply it to different genres etc... 
 
-  const { user } = useAuthContext()
+  const [controlPanelTop, setControlPanelTop] = useState(false)
+
+  useEffect(() => {
+    const controlTopScroll = () => {
+      if (window.scrollY > 50) {
+        setControlPanelTop(true)
+      } else {
+        setControlPanelTop(false)
+      }
+    };
+
+    window.addEventListener('scroll', controlTopScroll);
+
+    const controlTopMouse = (Mpos) => {
+      if (Mpos.clientY < 150) {
+        setControlPanelTop(false)
+      } else {
+        setControlPanelTop(true)
+      }
+    }
+
+    document.addEventListener('mousemove', controlTopMouse);
+  }, [])
 
   const fetchByGenre = props.fetchByGenre
 
@@ -51,7 +75,7 @@ const FetchStoriesControlPanel = (props) => {
 
   return (
     <>
-      <div className="filter-nav-container">
+      <div className={controlPanelTop ? "filter-nav-container active" : "filter-nav-container"}>
         <>
           <button onClick={(e) => browseStorySetup(e,"Dystopian")} value="Western" className="genre-button" />
           <button onClick={(e) => browseStorySetup(e,"Western")} value="Western" className="genre-button" />

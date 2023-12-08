@@ -1,10 +1,10 @@
 /* our brand colours are white and #3b5998 */
 
-.logout-button {
+.logout-button, .invite-button, .login-button {
   padding-right: 0px;
   margin-top: 4px;
   background-color: #fff;
-  opacity: 98%;
+  opacity: 100%;
   background-image: none;
   background-position: 0 90%;
   background-repeat: repeat no-repeat;
@@ -32,7 +32,7 @@
   touch-action: manipulation;
 }
 
-.logout-button:hover {
+.logout-button, .invite-button, .login-button:hover {
   opacity: 90%;
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);

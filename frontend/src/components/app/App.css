@@ -6,19 +6,19 @@
 html, body {
   font-family: Helvetica, Arial, sans-serif;
   margin: auto;
+  background-color: antiquewhite;
   /* width: 100vw;
   height: 100vw; */
-}
-
-.app {
   background-image: url('../../img/favpng_infinite-monkey-theorem3.png');
   background-position-x: 50vw;
   background-size: 65vw;
   background-repeat: no-repeat;
+}
+
+.app {
   position: absolute;
-  background-color: antiquewhite;
   z-index: 0;
-  height: 100vw;
+  height: fit-content;
   width: 100%;
 }
 
