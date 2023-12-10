@@ -13,11 +13,9 @@ const Header = () => {
 
   const [hideHeader, setHideHeader] = useState(false)
 
-  console.log("This is the loading value on the header", loading)
-
   useEffect(() => {
     const headerScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 28) {
         setHideHeader(true)
       } else {
         setHideHeader(false)

@@ -11,10 +11,12 @@ const FetchStoriesControlPanel = (props) => {
   // import the callback from the FetchsStories and apply it to different genres etc... 
 
   const [controlPanelTop, setControlPanelTop] = useState(false)
+  const [controlPanelScroll, setControlPanelScroll] = useState(false)
+
 
   useEffect(() => {
     const controlTopScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 100) {
         setControlPanelTop(true)
       } else {
         setControlPanelTop(false)
@@ -23,15 +25,27 @@ const FetchStoriesControlPanel = (props) => {
 
     window.addEventListener('scroll', controlTopScroll);
 
-    const controlTopMouse = (Mpos) => {
-      if (Mpos.clientY < 150) {
-        setControlPanelTop(false)
-      } else {
-        setControlPanelTop(true)
-      }
-    }
+    // const controlTopMouse = (Mpos) => {
+    //   if (Mpos.clientY < 70) {
+    //     setControlPanelTop(true)
+    //   } else {
+    //     setControlPanelTop(false)
+    //   }
+    // }
 
-    document.addEventListener('mousemove', controlTopMouse);
+    // const controlScrollnMouse = (Mpos) => {
+    //   if (Mpos.clientY < 70 && controlPanelTop == true) {
+    //     setControlPanelScroll(true)
+    //   } else {
+    //     setControlPanelScroll(false)
+    //   }
+    // }
+
+    // document.addEventListener('mousemove', controlScrollnMouse);
+
+
+    // document.addEventListener('mousemove', controlTopMouse);
+
   }, [])
 
   const fetchByGenre = props.fetchByGenre
@@ -48,25 +62,21 @@ const FetchStoriesControlPanel = (props) => {
 
     console.log(bookList)
 
-    let pageNumbers;
+    const pageNumbers = await JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
-    if (localStorage.getItem('browsePageNumbers')) {
-      pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
-    } else {
-      pageNumbers = {}
-    }
+    // if (localStorage.getItem('browsePageNumbers')) {
+    //   pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
+    // } else {
+    //   pageNumbers = {}
+    // }
 
     console.log(pageNumbers)
 
     bookList.forEach((book) => {
       if (!(book._id in pageNumbers)) {
-        console.log(pageNumbers)
         pageNumbers[book._id] = 0
       }
     })
-
-    console.log("made is here")
-    console.log(pageNumbers)
 
     await localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
 
@@ -75,7 +85,7 @@ const FetchStoriesControlPanel = (props) => {
 
   return (
     <>
-      <div className={controlPanelTop ? "filter-nav-container active" : "filter-nav-container"}>
+      <div className={controlPanelTop ? controlPanelScroll ? "filter-nav-container active-scroll" : "filter-nav-container active" : "filter-nav-container"}>
         <>
           <button onClick={(e) => browseStorySetup(e,"Dystopian")} value="Western" className="genre-button" />
           <button onClick={(e) => browseStorySetup(e,"Western")} value="Western" className="genre-button" />

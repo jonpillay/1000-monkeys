@@ -13,9 +13,7 @@ const StoryBookBrowse = (props) => {
   Should setup localStorage object to handle every time the page renders a new list of books? 
   */
 
-  let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
-
-  const key = props.key
+  const id = props.id
 
   const chapterTexts = props.chapterTexts
 
@@ -34,22 +32,27 @@ const StoryBookBrowse = (props) => {
   Turnpage here needs to be rewritten to handle the new localStorage object.
   */
 
-  const turnPage = (direct) => {
+  const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
+
+  console.log(localPageNumbers)
+
+  const turnPage = async (direct) => {
     if (direct == 'back') {
-      const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
+      console.log("turn page back")
+      console.log(typeof(localPageNumbers))
+      console.log(typeof(id))
       story.current = chapterTexts[renderChapter -1]
       imgUrl.current = chapterImgURLs[renderChapter -1]
-      localPageNumbers[key] = localPageNumbers[key] - 1
-      localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
+      localPageNumbers[id] = renderChapter - 1
+      await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
-      const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
+      console.log("turn page forward")
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
-      localPageNumbers[key] = localPageNumbers[key] + 1
-      localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
+      localPageNumbers[id] =+ 1
+      await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter +1)
-
     }
     // } else if (direct == 'last') {
     //   story.current = storyPages["textHistory"].slice(-1)

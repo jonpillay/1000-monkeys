@@ -8,3 +8,9 @@
   position: sticky;
   top: 0;
 }
+
+.filter-nav-container.active-scroll {
+  position: sticky;
+  background-color: red;
+  margin-top: 50px;
+}

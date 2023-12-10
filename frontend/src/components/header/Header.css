@@ -5,6 +5,7 @@
   margin: 1%;
   position: sticky;
   top: 0;
+  /* background-color: rgb(255, 221, 180); */
 }
 
 .header-container.active {
