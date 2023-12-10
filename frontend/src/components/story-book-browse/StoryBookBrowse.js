@@ -43,14 +43,14 @@ const StoryBookBrowse = (props) => {
       console.log(typeof(id))
       story.current = chapterTexts[renderChapter -1]
       imgUrl.current = chapterImgURLs[renderChapter -1]
-      localPageNumbers[id] = renderChapter - 1
+      localPageNumbers[id] -= 1
       await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
       console.log("turn page forward")
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
-      localPageNumbers[id] =+ 1
+      localPageNumbers[id] += 1
       await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter +1)
     }
