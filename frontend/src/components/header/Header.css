@@ -3,14 +3,19 @@
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
   margin: 1%;
-  position: sticky;
-  top: 0;
+  position: unset;
+  top: auto;
+  /* transition-timing-function: ease-in-out; */
+  background-color: green;
   /* background-color: rgb(255, 221, 180); */
 }
 
 .header-container.active {
-  position: unset;
-  offset-position: 0% -100%;
+  transition: top 0.5s;
+  position: sticky;
+  /* offset-position: 0% -100%; */
+  top: 0;
+  /* transition: 0.5s; */
 }
 
 .home-button {

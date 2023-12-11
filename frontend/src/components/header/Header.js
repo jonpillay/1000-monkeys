@@ -11,24 +11,22 @@ const Header = () => {
   const { loading } = useLoadingContext()
   const navigate = useNavigate()
 
-  const [hideHeader, setHideHeader] = useState(false)
+  const [showHeaderMouse, setShowHeaderMouse] = useState(false)
 
   useEffect(() => {
-    const headerScroll = () => {
-      if (window.scrollY > 28) {
-        setHideHeader(true)
-      } else {
-        setHideHeader(false)
-      }
-    };
+    // const headerScroll = () => {
+    //   if (window.scrollY > 28) {
+    //     setShowHeaderMouse(true)
+    //   }
+    // };
 
-    window.addEventListener('scroll', headerScroll);
+    // window.addEventListener('scroll', headerScroll);
 
     const headerMouse = (Mpos) => {
-      if (Mpos.clientY < 70) {
-        setHideHeader(false)
+      if (Mpos.clientY < 190) {
+        setShowHeaderMouse(true)
       } else {
-        setHideHeader(true)
+        setShowHeaderMouse(false)
       }
     }
 
@@ -47,7 +45,7 @@ const Header = () => {
   };
 
   return (
-    <div className={hideHeader ? 'header-container active' : 'header-container'}>
+    <div className={showHeaderMouse ? 'header-container active' : 'header-container'}>
       <button className="home-button" onClick={goHome} disabled={loading}>
         <img className="home-icon" src={HomeIcon} alt="home" />
       </button>

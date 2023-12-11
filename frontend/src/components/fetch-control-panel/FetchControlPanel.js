@@ -16,7 +16,7 @@ const FetchStoriesControlPanel = (props) => {
 
   useEffect(() => {
     const controlTopScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         setControlPanelTop(true)
       } else {
         setControlPanelTop(false)
@@ -33,15 +33,15 @@ const FetchStoriesControlPanel = (props) => {
     //   }
     // }
 
-    // const controlScrollnMouse = (Mpos) => {
-    //   if (Mpos.clientY < 70 && controlPanelTop == true) {
-    //     setControlPanelScroll(true)
-    //   } else {
-    //     setControlPanelScroll(false)
-    //   }
-    // }
+    const controlScrollnMouse = (Mpos) => {
+      if (window.scrollY > 10 && Mpos.clientY < 200) {
+        setControlPanelScroll(true)
+      } else {
+        setControlPanelScroll(false)
+      }
+    }
 
-    // document.addEventListener('mousemove', controlScrollnMouse);
+    document.addEventListener('mousemove', controlScrollnMouse);
 
 
     // document.addEventListener('mousemove', controlTopMouse);

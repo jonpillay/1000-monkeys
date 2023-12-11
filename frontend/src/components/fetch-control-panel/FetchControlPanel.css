@@ -1,7 +1,7 @@
 .filter-nav-container {
   width: 100%;
   background-color: green;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .filter-nav-container.active {
@@ -11,6 +11,5 @@
 
 .filter-nav-container.active-scroll {
   position: sticky;
-  background-color: red;
-  margin-top: 50px;
+  top: 100px;
 }
