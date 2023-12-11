@@ -6,15 +6,15 @@
   position: unset;
   top: auto;
   /* transition-timing-function: ease-in-out; */
-  background-color: green;
   /* background-color: rgb(255, 221, 180); */
 }
 
 .header-container.active {
-  transition: top 0.5s;
+  transition: top 0.5s, background-color 0.1s;
   position: sticky;
   /* offset-position: 0% -100%; */
   top: 0;
+  /* background-color: antiquewhite; */
   /* transition: 0.5s; */
 }
 

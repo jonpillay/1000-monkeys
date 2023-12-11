@@ -1,5 +1,5 @@
 import './FetchControlPanel.css'
-import NavButton from '../navbutton/NavButton';
+import FetchButton from '../fetch-button/FetchButton';
 
 import { useEffect, useState } from 'react';
 
@@ -52,13 +52,11 @@ const FetchStoriesControlPanel = (props) => {
 
   const setBookList = props.setBookList
 
-  const browseStorySetup = async (e, keyword) => {
+  const browseStorySetup = async (fetchFunct, keyword) => {
 
     console.log("browse setup running")
 
-    e.preventDefault()
-
-    const bookList = await fetchByGenre(keyword)
+    const bookList = await fetchFunct(keyword)
 
     console.log(bookList)
 
@@ -87,8 +85,14 @@ const FetchStoriesControlPanel = (props) => {
     <>
       <div className={controlPanelTop ? controlPanelScroll ? "filter-nav-container active-scroll" : "filter-nav-container active" : "filter-nav-container"}>
         <>
-          <button onClick={(e) => browseStorySetup(e,"Dystopian")} value="Western" className="genre-button" />
-          <button onClick={(e) => browseStorySetup(e,"Western")} value="Western" className="genre-button" />
+          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Dystopian")} font={"phage-rough"} value="Dystopian" className="genre-button" />
+          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Western")} font={"rye"} value="Western" className="genre-button" />
+          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Fairytale")} font={"flavors"} value="Fairytale" className="genre-button" />
+          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Cyberpunk")} font={"cynatar"} value="Cyberpunk" className="genre-button" />
+          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Sci-Fi")} font={"major-mono"} value="Sci-Fi" className="genre-button" />
+
+
+
 
           {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </>

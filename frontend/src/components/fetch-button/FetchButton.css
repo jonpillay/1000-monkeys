@@ -1,0 +1,14 @@
+.fetch-button {
+  opacity: 95%;
+  font-size: 2vw;
+  margin-inline-start: 1vw;
+  border: none;
+  background-color: transparent;
+  margin: auto;
+}
+
+.fetch-button-container {
+  margin: .4vw;
+  width: fit-content;
+  border-radius: 30%;
+}

@@ -21,6 +21,40 @@
   src: url("./fonts/digital-7.ttf");
 }
 
+@font-face {
+  font-family: 'cynatar';
+  src: url("./fonts/Cynatar.otf");
+}
+
+@font-face {
+  font-family: 'stalinist';
+  src: url("./fonts/StalinistOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'smokum';
+  src: url("./fonts/Smokum-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'rye';
+  src: url("./fonts/Rye-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'flavors';
+  src: url("./fonts/Flavors-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'major-mono';
+  src: url("./fonts/MajorMonoDisplay-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'phage-rough';
+  src: url("./fonts/Phage-Rough.otf");
+}
 
 .title {
   font-family: 'special-elite';

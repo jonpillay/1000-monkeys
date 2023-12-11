@@ -11,7 +11,7 @@ html, body {
   height: 100vw; */
   background-image: url('../../img/favpng_infinite-monkey-theorem3.png');
   background-position-x: 50vw;
-  background-size: 65vw;
+  background-size: 65%;
   background-repeat: no-repeat;
 }
 
