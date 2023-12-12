@@ -1,14 +1,19 @@
 .fetch-button {
   opacity: 95%;
-  font-size: 2vw;
-  margin-inline-start: 1vw;
+  font-size: 1.5vw;
   border: none;
   background-color: transparent;
-  margin: auto;
+  transition: 0.2s;
+  
+}
+
+.fetch-button.hover {
+  font-size: 1.7vw;
+  /* box-shadow: 0 0 50px 15px #4fe048; */
 }
 
 .fetch-button-container {
   margin: .4vw;
-  width: fit-content;
+  /* width: fit-content; */
   border-radius: 30%;
 }

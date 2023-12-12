@@ -5,21 +5,28 @@
 
 html, body {
   font-family: Helvetica, Arial, sans-serif;
-  margin: auto;
   background-color: antiquewhite;
+  background-image: url('../../img/favpng_infinite-monkey-theorem3.png');
+  background-position-x: 1000px;
+  /* background-size: 60vw; */
+  background-repeat: no-repeat;
+
+  /* object-fit: cover; */
+  /* object-position: top; */
   /* width: 100vw;
   height: 100vw; */
-  background-image: url('../../img/favpng_infinite-monkey-theorem3.png');
-  background-position-x: 50vw;
-  background-size: 65%;
-  background-repeat: no-repeat;
 }
 
+/* .background-container {
+  
+  min-height: 100%;
+  overflow-y: inherit;
+
+  
+} */
+
 .app {
-  position: absolute;
   z-index: 0;
-  height: fit-content;
-  width: 100%;
 }
 
 @keyframes spin {

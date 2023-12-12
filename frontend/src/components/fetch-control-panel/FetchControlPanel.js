@@ -84,18 +84,16 @@ const FetchStoriesControlPanel = (props) => {
   return (
     <>
       <div className={controlPanelTop ? controlPanelScroll ? "filter-nav-container active-scroll" : "filter-nav-container active" : "filter-nav-container"}>
-        <>
-          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Dystopian")} font={"phage-rough"} value="Dystopian" className="genre-button" />
-          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Western")} font={"rye"} value="Western" className="genre-button" />
-          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Fairytale")} font={"flavors"} value="Fairytale" className="genre-button" />
-          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Cyberpunk")} font={"cynatar"} value="Cyberpunk" className="genre-button" />
-          <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Sci-Fi")} font={"major-mono"} value="Sci-Fi" className="genre-button" />
-
-
-
-
-          {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
-        </>
+        <div className='button-container'>
+          <>
+            <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Dystopian")} font={"phage-rough"} value="Dystopian" className="genre-button" />
+            <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Western")} font={"rye"} value="Western" className="genre-button" />
+            <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Fairytale")} font={"flavors"} value="Fairytale" className="genre-button" />
+            <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Cyberpunk")} font={"cynatar"} value="Cyberpunk" className="genre-button" />
+            <FetchButton fetchFunct={() => browseStorySetup(fetchByGenre, "Sci-Fi")} font={"major-mono"} value="Sci-Fi" className="genre-button" />
+            {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
+          </>
+        </div>
       </div>
     </>
   );

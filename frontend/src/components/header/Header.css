@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
-  margin: 1%;
-  position: unset;
+  /* margin: 1%; */
+  /* position: unset; */
   top: auto;
   /* transition-timing-function: ease-in-out; */
   /* background-color: rgb(255, 221, 180); */

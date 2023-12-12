@@ -1,26 +1,27 @@
 .filter-nav-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-  opacity: 99%;
   transition: 0.3s;
-  max-width: max-content;
-  margin: 0 auto;
-  border-radius: 5%
+  display: flex;
+  justify-content: center;
 }
 
 .filter-nav-container.active {
   position: sticky;
-  top: 1vw;
+  top: 20px;
   opacity: 30%;
 }
 
 .filter-nav-container.active-scroll {
   position: sticky;
   top: 4.5vw;
-  background-color: rgb(255, 255, 255);
   opacity: 80%;
-  border: 3px;
-  border-color: black;
-  border-style: groove;
+}
+
+.button-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 99%;
+  position: absolute;
+  background-color: red;
 }
