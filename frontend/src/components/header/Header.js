@@ -14,23 +14,26 @@ const Header = () => {
   const [showHeaderMouse, setShowHeaderMouse] = useState(false)
 
   useEffect(() => {
-    // const headerScroll = () => {
-    //   if (window.scrollY > 28) {
-    //     setShowHeaderMouse(true)
-    //   }
-    // };
-
-    // window.addEventListener('scroll', headerScroll);
-
-    const headerMouse = (Mpos) => {
-      if (Mpos.clientY < 190) {
+    const headerScroll = (Mpos) => {
+      if (window.scrollY > 28 && Mpos.clientY < 190) {
+        console.log("Header mouse fired")
         setShowHeaderMouse(true)
       } else {
         setShowHeaderMouse(false)
       }
-    }
+    };
 
-    document.addEventListener('mousemove', headerMouse);
+    window.addEventListener('scroll', headerScroll);
+    window.addEventListener('mousemove', headerScroll);
+
+
+    // const headerMouse = (Mpos) => {
+    //   if (Mpos.clientY < 190) {
+    //     setShowHeaderMouse(true)
+    //   }
+    // }
+
+    // document.addEventListener('mousemove', headerMouse);
   }, [])
 
   const goHome = () => {
@@ -45,7 +48,7 @@ const Header = () => {
   };
 
   return (
-    <div className={showHeaderMouse ? 'header-container active' : 'header-container'}>
+    <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
       <button className="home-button" onClick={goHome} disabled={loading}>
         <img className="home-icon" src={HomeIcon} alt="home" />
       </button>
