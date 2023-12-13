@@ -44,7 +44,7 @@ const BrowseBookDisplay = (props) => {
   return (
     <>
       <div className="browse-book-display-container">
-        <ul>{browsingBooks}</ul>
+        <ul className="browse-book-list">{browsingBooks}</ul>
       </div>
     </>
   )

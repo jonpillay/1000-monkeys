@@ -1,4 +1,5 @@
 .browse-container {
+  background-color: green;
   display: grid;
   grid-template-rows: 20%, 80%;
 }
