@@ -1,7 +1,7 @@
 .filter-nav-container {
   transition: 0.3s;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 
 .filter-nav-container.active {
@@ -17,10 +17,13 @@
 }
 
 .button-container {
-  margin: 0 auto;
+  justify-self: end;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   opacity: 99%;
-  position: absolute;
+  /* position: absolute; */
+}
+
+.user-fetch-button {
+  justify-self: start;
 }

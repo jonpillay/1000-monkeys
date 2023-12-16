@@ -4,4 +4,6 @@ const FetchStoriesController = require("../controllers/fetchStoriesController");
 
 router.post("/genre", FetchStoriesController.GetStoriesByGenre);
 
+router.post("/user", FetchStoriesController.GetStoriesByUser);
+
 module.exports = router;

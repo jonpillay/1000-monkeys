@@ -47,6 +47,7 @@
   font-size: 2vw;
   color: red;
   text-decoration: underline;
+  opacity: 100%;
 }
 
 .fetch-button-container {

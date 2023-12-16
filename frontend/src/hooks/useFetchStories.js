@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 
 export const useFetchStories = () => {
@@ -26,10 +26,35 @@ export const useFetchStories = () => {
     }
 
     if (response.ok) {
-      return (JSONres.filteredList)
       setIsLoading(false)
+      return (JSONres.filteredList)
     }
   }
 
-  return { fetchByGenre, isLoading, error, bookList, setBookList }
+  const fetchByUser = async (user_id) => {
+    setIsLoading(true)
+    setError(null)
+
+    const response = await fetch('./fetch-stories/user', {
+      method: 'Post',
+      headers: {
+        'Content-Type': 'application/json',
+    },
+      body: JSON.stringify({user_id})
+    })
+
+    const JSONres = await response.json()
+
+    if (!response.ok) {
+      setIsLoading(false)
+      setError(JSONres.error)
+    }
+
+    if (response.ok) {
+      setIsLoading(false)
+      return (JSONres.filteredList)
+    }
+  }
+
+  return { fetchByGenre, fetchByUser, isLoading, error, bookList, setBookList }
 }

@@ -12,7 +12,7 @@ import Headroom from "react-headroom";
 
 const BrowsePage = (props) => {
 
-  const { fetchByGenre, isLoading, error, bookList, setBookList } = useFetchStories()
+  const { fetchByGenre, fetchByUser, isLoading, error, bookList, setBookList } = useFetchStories()
 
   /* 
   
@@ -26,7 +26,7 @@ const BrowsePage = (props) => {
   return (
     <>
     <div className="browse-container">
-      <FetchStoriesControlPanel fetchByGenre={fetchByGenre} setBookList={setBookList} />
+      <FetchStoriesControlPanel fetchByGenre={fetchByGenre} fetchByUser={fetchByUser} setBookList={setBookList} />
       <BrowseBookDisplay bookList={bookList}/>
     </div>
     </>
