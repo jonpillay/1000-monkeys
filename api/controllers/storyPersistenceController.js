@@ -20,7 +20,7 @@ const StoryPersistenceController = {
 
   UpdateStory: async (req, res) => {
 
-    const {story_id, storyPages, genre} = req.body
+    const {story_id, storyPages} = req.body
 
     const storyBook = await StoryBook.findById(story_id)
 

@@ -33,7 +33,8 @@ const NavBar = () => {
       localStorage.removeItem("GPTPromptHistory")
       localStorage.removeItem("userChoices");
       localStorage.removeItem("storyPages");
-      localStorage.removeItem("sysInfo")
+      localStorage.removeItem("sysInfo");
+      localStorage.removeItem("browsePageNumbers")
       resolve()
     })
   }
@@ -43,8 +44,13 @@ const NavBar = () => {
     logout()
   }
 
-  const endStory = () => {
-    localStorage.removeItem('storyPages')
+  const endStory = async () => {
+    await localStorage.removeItem('storyPages')
+    await localStorage.removeItem('sysInfo');
+    await localStorage.removeItem('userChoices');
+    await localStorage.removeItem('GPTPromptHistory');
+
+
     dispatch({type: "END", payload: null})
   }
 

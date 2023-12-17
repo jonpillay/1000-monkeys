@@ -25,15 +25,17 @@ function SaveStoryButton(props) {
 
     const artstyle = JSON.parse(localStorage.getItem('userChoices'))['style']
 
-    console.log(stringStoryPages)
+    console.log("This is the stringStoryPages object that gets sent for save", stringStoryPages)
 
     console.log(genre)
 
     const storyPages = JSON.parse(stringStoryPages)
 
+    console.log("This is the storyPages object that gets sent for save", storyPages)
+
     if (storyPages['storyID']) {
       try {
-        await updateStory(storyPages['storyID'], stringStoryPages)
+        await updateStory(storyPages['storyID'], storyPages)
         localStorage.setItem('storyInSync', 'true')
         setStoryInSync(true)
       } catch (error) {

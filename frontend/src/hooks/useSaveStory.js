@@ -43,7 +43,7 @@ export const useSaveStory = () => {
     }
   }
 
-  const updateStory = async (story_id, storyPages, genre) => {
+  const updateStory = async (story_id, storyPages) => {
     setIsLoading(true)
     setError(null)
 
@@ -53,7 +53,7 @@ export const useSaveStory = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
       },
-      body: JSON.stringify({story_id, storyPages, genre})
+      body: JSON.stringify({story_id, storyPages})
     })
 
     const JSONres = await response.json()
