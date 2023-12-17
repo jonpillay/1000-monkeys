@@ -21,6 +21,10 @@ function SaveStoryButton(props) {
 
     const genre = JSON.parse(localStorage.getItem('userChoices'))['genre']
 
+    const character = JSON.parse(localStorage.getItem('userChoices'))['character']
+
+    const artstyle = JSON.parse(localStorage.getItem('userChoices'))['style']
+
     console.log(stringStoryPages)
 
     console.log(genre)
@@ -37,7 +41,7 @@ function SaveStoryButton(props) {
       }
       
     } else {
-      const story_id = await saveStory(stringStoryPages, genre)
+      const story_id = await saveStory(stringStoryPages, genre, character, artstyle)
       localStorage.setItem('storyInSync', 'true')
       setStoryInSync(true)
     }
