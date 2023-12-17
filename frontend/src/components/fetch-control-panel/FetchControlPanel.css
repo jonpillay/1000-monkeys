@@ -1,7 +1,7 @@
 .filter-nav-container {
   transition: 0.3s;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 60% 40%;
 }
 
 .filter-nav-container.active {
@@ -12,18 +12,18 @@
 
 .filter-nav-container.active-scroll {
   position: sticky;
-  top: 4.5vw;
+  top: 4.8vw;
   opacity: 80%;
 }
 
 .button-container {
-  justify-self: end;
+  justify-self: start;
   display: flex;
   justify-content: space-around;
   opacity: 99%;
   /* position: absolute; */
 }
 
-.user-fetch-button {
-  justify-self: start;
+.user-fetch-button-container {
+  justify-self: end;
 }

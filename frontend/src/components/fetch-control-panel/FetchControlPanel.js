@@ -102,9 +102,16 @@ const FetchStoriesControlPanel = (props) => {
             {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </div>
         </>
-        <div className="user-fetch-button-container">
+        {( user ?
+          <div className="user-fetch-button-container">
             <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByUser, user._id)} font={"major-mono"} value="My Stories" className="user-fetch-button" />
-        </div>
+          </div>
+          :
+          <div className="user-fetch-filler">
+            
+          </div>
+        )}
+
       </div>
     </>
   );
