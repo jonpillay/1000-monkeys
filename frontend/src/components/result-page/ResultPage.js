@@ -258,7 +258,7 @@ const ResultPage = () => {
     <>
       {!loading ? (
         <>
-        <div className="page-container">
+        <div className="create-page-container">
           <div className="storybook-header">
             <ChapterTitle chapterNumber={renderChapter + 1}/>
             <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>

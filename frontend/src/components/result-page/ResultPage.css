@@ -23,7 +23,7 @@
   height: 100%;
 } */
 
-.page-container {
+.create-page-container {
   display: grid;
   grid-template-rows: 10% 52% 38%;
   max-width: 80%;
