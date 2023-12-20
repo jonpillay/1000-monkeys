@@ -13,6 +13,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
 import { CreditsContext } from "../../context/CreditsContext";
 
+import {useCreateStory} from "../../hooks/useCreateStory"
+
 import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { LoadingContext } from "../../context/LoadingContext";
 import StoryBook from "../story-book/StoryBook";
@@ -20,6 +22,8 @@ import SaveStoryButton from "../save-story-button/SaveStoryButton";
 
 
 const ResultPage = () => {
+
+  const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, error } = useCreateStory()
 
   const { loading } = useLoadingContext()
 
@@ -43,8 +47,6 @@ const ResultPage = () => {
 
   let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
-
   // let renderChapter = sysInfo["currentPage"]
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const ResultPage = () => {
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
         console.log("First load useEffect")
-        GPTClientCall();
+        AIGenCall();
       }
     } else {
       navigate('/')
@@ -61,176 +63,186 @@ const ResultPage = () => {
 
   }, [user]);
 
-  const GPTClientCall = () => {
+  // const handleGenCall = () => {
+  //   try {
+  //     loadingDispatch({type: 'LOADING', payload: true})
+  //     AIGenCall()
+  //     loadingDispatch({type: 'LOADED', payload: null})
+  //   } catch {
+  //     setError(err)
+  //   }
+  // }
 
-    loadingDispatch({type: 'LOADING', payload: true})
+  // const GPTClientCall = () => {
 
-    console.log(`This is story pages from the GPTcall funct`)
+  //   loadingDispatch({type: 'LOADING', payload: true})
 
-    const userChoices = localStorage.getItem("userChoices")
-    let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
-    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-    let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  //   console.log(`This is story pages from the GPTcall funct`)
+
+  //   const userChoices = localStorage.getItem("userChoices")
+  //   let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
+  //   let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  //   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
 
-    console.log(storyPages)
+  //   console.log(storyPages)
 
-    const reqBody = {
-      userchoices: userChoices,
-      GPTPromptHistory: GPTPromptHistory,
-      credits_needed: 3
-    }
+  //   const reqBody = {
+  //     userchoices: userChoices,
+  //     GPTPromptHistory: GPTPromptHistory,
+  //     credits_needed: 3
+  //   }
 
-    fetch("/story", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`
-      },
-      body: JSON.stringify(reqBody),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data)
-      console.log(data.credits_update)
-      creditDispatch({type: 'UPDATE', payload: data.credits_update})
-      storyPages["textHistory"].push(data["page_text"])
-      storyPages["imageHistory"].push(data["page_image"])
-      setRenderChapter(storyPages["textHistory"].length-1)
-      sysInfo["currentPage"] ++
-      loadingDispatch({type: 'LOADED', payload: null})
-      console.log(sysInfo)
-      console.log(storyPages)
-      let GPTPrompts = JSON.parse(GPTPromptHistory)
+  //   fetch("/story", {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Bearer ${user.token}`
+  //     },
+  //     body: JSON.stringify(reqBody),
+  //   })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data)
+  //     console.log(data.credits_update)
+  //     creditDispatch({type: 'UPDATE', payload: data.credits_update})
+  //     storyPages["textHistory"].push(data["page_text"])
+  //     storyPages["imageHistory"].push(data["page_image"])
+  //     setRenderChapter(storyPages["textHistory"].length-1)
+  //     sysInfo["currentPage"] ++
+  //     loadingDispatch({type: 'LOADED', payload: null})
+  //     console.log(sysInfo)
+  //     console.log(storyPages)
+  //     let GPTPrompts = JSON.parse(GPTPromptHistory)
 
-      GPTPrompts.push({
-        role: "assistant",
-        content: data["page_text"]
-      })
+  //     GPTPrompts.push({
+  //       role: "assistant",
+  //       content: data["page_text"]
+  //     })
 
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
 
-      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
+  //     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
 
-      localStorage.setItem("storyPages", JSON.stringify(storyPages))
+  //     localStorage.setItem("storyPages", JSON.stringify(storyPages))
 
-      console.log(user.credits)
+  //     console.log(user.credits)
 
-      localStorage.removeItem('storyInSync')
+  //     localStorage.removeItem('storyInSync')
 
-      setStoryInSync(false)
+  //     setStoryInSync(false)
 
-      setRenderChapter(sysInfo["currentPage"])
+  //     setRenderChapter(sysInfo["currentPage"])
       
-      console.log(GPTPrompts)
+  //     console.log(GPTPrompts)
 
-      });
-  };
+  //     });
+  // };
 
-  const steerOnUserInput = (steerInput) => {
-    if (user) {
-      let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+  // const steerOnUserInput = (steerInput) => {
+  //   if (user) {
+  //     let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
   
-      console.log(steerInput)
+  //     console.log(steerInput)
   
-      GPTPrompts.push({
-        role: "user",
-        content: steerInput
-      })
+  //     GPTPrompts.push({
+  //       role: "user",
+  //       content: steerInput
+  //     })
   
-      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
+  //     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
   
-      GPTClientCall()
-    } else {
-      navigate('/')
-    }
-  };
+  //     GPTClientCall()
+  //   } else {
+  //     navigate('/')
+  //   }
+  // };
 
-  const whatHappensNext = () => {
+  // const whatHappensNext = () => {
 
-    if (user) {
-      const imaginationPrompt = "Use your imagination to write the next chapter of the story."
+  //   if (user) {
+  //     const imaginationPrompt = "Use your imagination to write the next chapter of the story."
 
-      steerOnUserInput(imaginationPrompt)
-    } else {
-      navigate('/')
-    }
+  //     steerOnUserInput(imaginationPrompt)
+  //   } else {
+  //     navigate('/')
+  //   }
 
-  };
+  // };
 
-  const refreshStory = () => {
+  // const refreshStory = () => {
 
-    if (user) {
-      let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+  //   if (user) {
+  //     let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
 
-      let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  //     let storyPages = JSON.parse(localStorage.getItem("storyPages"))
   
-      let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  //     let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
   
-      console.log(storyPages)
+  //     console.log(storyPages)
   
-      console.log(GPTPromptHistory.length)
+  //     console.log(GPTPromptHistory.length)
   
-      GPTPromptHistory.pop()
+  //     GPTPromptHistory.pop()
   
-      storyPages["textHistory"].pop()
+  //     storyPages["textHistory"].pop()
   
-      storyPages["imageHistory"].pop()
+  //     storyPages["imageHistory"].pop()
   
-      sysInfo["currentPage"] = renderChapter -1
+  //     sysInfo["currentPage"] = renderChapter -1
   
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
-      localStorage.setItem("storyPages", JSON.stringify(storyPages))
+  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+  //     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
+  //     localStorage.setItem("storyPages", JSON.stringify(storyPages))
   
   
-      GPTClientCall()
-    } else {
-      navigate('/')
-    }
+  //     GPTClientCall()
+  //   } else {
+  //     navigate('/')
+  //   }
 
-  };
+  // };
 
-  const refreshImage = () => {
+  // const refreshImage = () => {
 
-    if (user) {
+  //   if (user) {
 
-      loadingDispatch({type: 'LOADING', payload: true})
+  //     loadingDispatch({type: 'LOADING', payload: true})
 
-      const userChoices = localStorage.getItem("userChoices")
+  //     const userChoices = localStorage.getItem("userChoices")
   
-      let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  //     let storyPages = JSON.parse(localStorage.getItem("storyPages"))
   
-      storyPages["imageHistory"].splice(renderChapter, 1)
+  //     storyPages["imageHistory"].splice(renderChapter, 1)
   
-      const chapterText = storyPages["textHistory"][renderChapter]
+  //     const chapterText = storyPages["textHistory"][renderChapter]
   
-      console.log(typeof chapterText)
+  //     console.log(typeof chapterText)
   
-      const reqBody = {
-        userChoices: userChoices,
-        chapterText: chapterText
-      }
+  //     const reqBody = {
+  //       userChoices: userChoices,
+  //       chapterText: chapterText
+  //     }
   
-      fetch("/images", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`
-        },
-        body: JSON.stringify(reqBody),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
-        setRenderChapter(renderChapter)
-        localStorage.setItem("storyPages", JSON.stringify(storyPages))
-        loadingDispatch({type: 'LOADED', payload: null})
-      })
-    } else {
-      navigate('/')
-    }
-  }
+  //     fetch("/images", {
+  //       method: "POST",
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${user.token}`
+  //       },
+  //       body: JSON.stringify(reqBody),
+  //     })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
+  //       setRenderChapter(renderChapter)
+  //       localStorage.setItem("storyPages", JSON.stringify(storyPages))
+  //       loadingDispatch({type: 'LOADED', payload: null})
+  //     })
+  //   } else {
+  //     navigate('/')
+  //   }
+  // }
 
   // const turnPage = (direct) => {
   //   if (direct == 'back') {
@@ -256,7 +268,7 @@ const ResultPage = () => {
 
   return (
     <>
-      {!loading ? (
+      {!isLoading ? (
         <>
         <div className="create-page-container">
           <div className="storybook-header">
@@ -265,8 +277,8 @@ const ResultPage = () => {
           </div>
             <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
           <div className="nav-container">
-            <SteerStory callback={steerOnUserInput} />
-            <StoryControlPanel refreshStory={refreshStory} refreshImage={refreshImage} whatHappensNext={whatHappensNext}/>
+            <SteerStory callback={userPromtNextChapter} />
+            <StoryControlPanel refreshStory={refreshStory} refreshImage={refreshImage} whatHappensNext={AIPromptNextChapter}/>
           </div>
         </div>
         </>
