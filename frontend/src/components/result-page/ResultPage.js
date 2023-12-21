@@ -23,7 +23,7 @@ import SaveStoryButton from "../save-story-button/SaveStoryButton";
 
 const ResultPage = () => {
 
-  const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, error } = useCreateStory()
+  const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error } = useCreateStory()
 
   const { loading } = useLoadingContext()
 
@@ -39,7 +39,7 @@ const ResultPage = () => {
 
   console.log("ResultPage rerendered")
 
-  let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+  let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 

@@ -32,11 +32,11 @@ export const useCreateStory = () => {
 
     const userChoices = localStorage.getItem("userChoices")
     let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
-    let storyPages = JSON.parse(localStorage.getItem("storyPages"))
+    let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
     let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
 
-    console.log(storyPages)
+    console.log(localStoryPages)
 
     const reqBody = {
       userchoices: userChoices,
@@ -57,8 +57,9 @@ export const useCreateStory = () => {
       console.log(data)
       console.log(data.credits_update)
       creditDispatch({type: 'UPDATE', payload: data.credits_update})
-      storyPages["textHistory"].push(data["page_text"])
-      storyPages["imageHistory"].push(data["page_image"])
+      localStoryPages["textHistory"].push(data["page_text"])
+      localStoryPages["imageHistory"].push(data["page_image"])
+      setStoryPages(localStoryPages)
       setRenderChapter(storyPages["textHistory"].length-1)
       sysInfo["currentPage"] ++
       console.log(sysInfo)
@@ -194,5 +195,5 @@ export const useCreateStory = () => {
     }
   }
 
-  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, error }
+  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error }
 }
