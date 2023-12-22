@@ -60,7 +60,8 @@ export const useCreateStory = () => {
       localStoryPages["textHistory"].push(data["page_text"])
       localStoryPages["imageHistory"].push(data["page_image"])
       setStoryPages(localStoryPages)
-      setRenderChapter(storyPages["textHistory"].length-1)
+      console.log(storyPages)
+      setRenderChapter(localStoryPages["textHistory"].length-1)
       sysInfo["currentPage"] ++
       console.log(sysInfo)
       console.log(storyPages)
@@ -195,5 +196,5 @@ export const useCreateStory = () => {
     }
   }
 
-  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error }
+  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, setStoryPages, error }
 }

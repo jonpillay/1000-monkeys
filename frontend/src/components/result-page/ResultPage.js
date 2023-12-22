@@ -24,7 +24,7 @@ import StoryBook from "../story-book/StoryBook";
 import SaveStoryButton from "../save-story-button/SaveStoryButton";
 
 
-const ResultPage = async () => {
+const ResultPage = () => {
 
   const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error } = useCreateStory()
 
@@ -46,25 +46,29 @@ const ResultPage = async () => {
 
   let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  let sysInfo = await JSON.parse(localStorage.getItem("sysInfo"))
+  let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
   const inSync = localStorage.getItem('storyInSync')
 
   useEffect(() => {
-    console.log("userEffect triggered")
-    if (localStorage.getItem('user')) {
-      console.log("user eval triggred")
-      if (sysInfo["firstLoad"] === true) {
-        console.log("first load triggered")
-        sysInfo["firstLoad"] = false
-        localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-        console.log("First load useEffect")
-        AIGenCall();
-      }
+    const initialiseStory = async () => {
+      console.log("userEffect triggered")
+      if (localStorage.getItem('user')) {
+        console.log("user eval triggred")
+        let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+        if (sysInfo["firstLoad"] === true) {
+          console.log("first load triggered")
+          sysInfo["firstLoad"] = false
+          localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+          console.log("First load useEffect")
+          AIGenCall();
+    }
     } else {
       navigate('/')
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }
+  initialiseStory()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
 

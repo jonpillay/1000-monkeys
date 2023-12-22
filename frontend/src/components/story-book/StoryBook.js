@@ -15,8 +15,8 @@ const StoryBook = (props) => {
 
   const [renderChapter, setRenderChapter] = props.setRender
 
-  let imgUrl = useRef(storyPages["imageHistory"][renderChapter] || "");
-  let story = useRef(storyPages["textHistory"][renderChapter] || "");
+  let imgUrl = useRef( renderChapter != -1 ? storyPages["imageHistory"][renderChapter] : "");
+  let story = useRef( renderChapter != -1 ? storyPages["textHistory"][renderChapter] : "");
 
   const turnPage = (direct) => {
     if (direct == 'back') {
@@ -54,7 +54,7 @@ const StoryBook = (props) => {
           <Story storyString={story.current} />
       </div>
       <div className="next-page-container">
-        {renderChapter<storyPages['textHistory'].length-1 &&
+        {  renderChapter != -1 ? renderChapter<storyPages['textHistory'].length-1 : false &&
           <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
         }
       </div>

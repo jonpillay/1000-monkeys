@@ -99,7 +99,7 @@ const FormContainer = () => {
 
     dispatch({type: 'BEGIN'})
 
-    redirect("/results");
+    navigate("/results");
   };
 
   return (
