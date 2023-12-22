@@ -6,6 +6,8 @@ import SignupForm from "../signup-form/SignupForm"
 import LogInForm from "../login-form/LogInForm";
 import { useNavigate } from "react-router";
 
+import { redirect } from "react-router-dom";
+
 import { StoryContext } from "../../context/StoryContext";
 
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -97,7 +99,7 @@ const FormContainer = () => {
 
     dispatch({type: 'BEGIN'})
 
-    navigate("/results");
+    redirect("/results");
   };
 
   return (

@@ -13,15 +13,18 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
 import { CreditsContext } from "../../context/CreditsContext";
 
-import {useCreateStory} from "../../hooks/useCreateStory"
 
 import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { LoadingContext } from "../../context/LoadingContext";
+
+import { useStoryContext } from '../../hooks/useStoryContext';
+
+import {useCreateStory} from "../../hooks/useCreateStory"
 import StoryBook from "../story-book/StoryBook";
 import SaveStoryButton from "../save-story-button/SaveStoryButton";
 
 
-const ResultPage = () => {
+const ResultPage = async () => {
 
   const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error } = useCreateStory()
 
@@ -30,6 +33,8 @@ const ResultPage = () => {
   console.log("This is the loading value on the results page", loading)
 
   const { user } = useAuthContext()
+
+  const {story} = useStoryContext()
 
   const navigate = useNavigate()
 
@@ -41,17 +46,16 @@ const ResultPage = () => {
 
   let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  let sysInfo = await JSON.parse(localStorage.getItem("sysInfo"))
 
   const inSync = localStorage.getItem('storyInSync')
 
-  let [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
-
-  // let renderChapter = sysInfo["currentPage"]
-
   useEffect(() => {
+    console.log("userEffect triggered")
     if (localStorage.getItem('user')) {
+      console.log("user eval triggred")
       if (sysInfo["firstLoad"] === true) {
+        console.log("first load triggered")
         sysInfo["firstLoad"] = false
         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
         console.log("First load useEffect")
@@ -60,215 +64,18 @@ const ResultPage = () => {
     } else {
       navigate('/')
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  // const handleGenCall = () => {
-  //   try {
-  //     loadingDispatch({type: 'LOADING', payload: true})
-  //     AIGenCall()
-  //     loadingDispatch({type: 'LOADED', payload: null})
-  //   } catch {
-  //     setError(err)
-  //   }
-  // }
-
-  // const GPTClientCall = () => {
-
-  //   loadingDispatch({type: 'LOADING', payload: true})
-
-  //   console.log(`This is story pages from the GPTcall funct`)
-
-  //   const userChoices = localStorage.getItem("userChoices")
-  //   let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
-  //   let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-  //   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
 
-  //   console.log(storyPages)
+  const [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  //   const reqBody = {
-  //     userchoices: userChoices,
-  //     GPTPromptHistory: GPTPromptHistory,
-  //     credits_needed: 3
-  //   }
-
-  //   fetch("/story", {
-  //     method: "POST",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Bearer ${user.token}`
-  //     },
-  //     body: JSON.stringify(reqBody),
-  //   })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log(data)
-  //     console.log(data.credits_update)
-  //     creditDispatch({type: 'UPDATE', payload: data.credits_update})
-  //     storyPages["textHistory"].push(data["page_text"])
-  //     storyPages["imageHistory"].push(data["page_image"])
-  //     setRenderChapter(storyPages["textHistory"].length-1)
-  //     sysInfo["currentPage"] ++
-  //     loadingDispatch({type: 'LOADED', payload: null})
-  //     console.log(sysInfo)
-  //     console.log(storyPages)
-  //     let GPTPrompts = JSON.parse(GPTPromptHistory)
-
-  //     GPTPrompts.push({
-  //       role: "assistant",
-  //       content: data["page_text"]
-  //     })
-
-  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-
-  //     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
-
-  //     localStorage.setItem("storyPages", JSON.stringify(storyPages))
-
-  //     console.log(user.credits)
-
-  //     localStorage.removeItem('storyInSync')
-
-  //     setStoryInSync(false)
-
-  //     setRenderChapter(sysInfo["currentPage"])
-      
-  //     console.log(GPTPrompts)
-
-  //     });
-  // };
-
-  // const steerOnUserInput = (steerInput) => {
-  //   if (user) {
-  //     let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
-  
-  //     console.log(steerInput)
-  
-  //     GPTPrompts.push({
-  //       role: "user",
-  //       content: steerInput
-  //     })
-  
-  //     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
-  
-  //     GPTClientCall()
-  //   } else {
-  //     navigate('/')
-  //   }
-  // };
-
-  // const whatHappensNext = () => {
-
-  //   if (user) {
-  //     const imaginationPrompt = "Use your imagination to write the next chapter of the story."
-
-  //     steerOnUserInput(imaginationPrompt)
-  //   } else {
-  //     navigate('/')
-  //   }
-
-  // };
-
-  // const refreshStory = () => {
-
-  //   if (user) {
-  //     let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
-
-  //     let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-  
-  //     let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
-  
-  //     console.log(storyPages)
-  
-  //     console.log(GPTPromptHistory.length)
-  
-  //     GPTPromptHistory.pop()
-  
-  //     storyPages["textHistory"].pop()
-  
-  //     storyPages["imageHistory"].pop()
-  
-  //     sysInfo["currentPage"] = renderChapter -1
-  
-  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-  //     localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
-  //     localStorage.setItem("storyPages", JSON.stringify(storyPages))
-  
-  
-  //     GPTClientCall()
-  //   } else {
-  //     navigate('/')
-  //   }
-
-  // };
-
-  // const refreshImage = () => {
-
-  //   if (user) {
-
-  //     loadingDispatch({type: 'LOADING', payload: true})
-
-  //     const userChoices = localStorage.getItem("userChoices")
-  
-  //     let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-  
-  //     storyPages["imageHistory"].splice(renderChapter, 1)
-  
-  //     const chapterText = storyPages["textHistory"][renderChapter]
-  
-  //     console.log(typeof chapterText)
-  
-  //     const reqBody = {
-  //       userChoices: userChoices,
-  //       chapterText: chapterText
-  //     }
-  
-  //     fetch("/images", {
-  //       method: "POST",
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${user.token}`
-  //       },
-  //       body: JSON.stringify(reqBody),
-  //     })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
-  //       setRenderChapter(renderChapter)
-  //       localStorage.setItem("storyPages", JSON.stringify(storyPages))
-  //       loadingDispatch({type: 'LOADED', payload: null})
-  //     })
-  //   } else {
-  //     navigate('/')
-  //   }
-  // }
-
-  // const turnPage = (direct) => {
-  //   if (direct == 'back') {
-  //     story.current = storyPages["textHistory"][renderChapter -1]
-  //     imgUrl.current = storyPages["imageHistory"][renderChapter -1]
-  //     sysInfo["currentPage"] --
-  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-  //     setRenderChapter(renderChapter -1)
-  //   } else if (direct == 'next') {
-  //     sysInfo["currentPage"] ++
-  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-  //     story.current = storyPages["textHistory"][renderChapter +1]
-  //     imgUrl.current = storyPages["imageHistory"][renderChapter +1]
-  //     setRenderChapter(renderChapter +1)
-  //   } else if (direct == 'last') {
-  //     story.current = storyPages["textHistory"].slice(-1)
-  //     imgUrl.current = storyPages["imageHistory"].slice(-1)
-  //     sysInfo["currentPage"] = storyPages["textHistory"].length -1
-  //     localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-  //     setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
-  //   }
-  // }
+  // let renderChapter = sysInfo["currentPage"]
 
   return (
     <>
-      {!isLoading ? (
+      {!loading ? (
         <>
         <div className="create-page-container">
           <div className="storybook-header">
@@ -282,10 +89,10 @@ const ResultPage = () => {
           </div>
         </div>
         </>
-      ) : (
+        ) : (
         <div className="nav-box">
           <LoadingPage />
-        </div>    
+        </div>  
       )}
     </>
   )};
