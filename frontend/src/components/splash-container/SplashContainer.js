@@ -1,5 +1,6 @@
 import "./SplashContainer.css";
 import WelcomePanel from "../welcome-panel/WelcomePanel";
+import LogInForm from "../login-form/LogInForm";
 import FormContainer from "../form-container/FormContainer"
 import { useNavigate } from "react-router";
 
@@ -9,7 +10,7 @@ const SplashContainer = (props) => {
     <div className="splash-container">
       <div className="splash-grid">
         <WelcomePanel/>
-        <FormContainer  navigate={ useNavigate() }/>
+        <LogInForm/>
       </div>
     </div>
     </>

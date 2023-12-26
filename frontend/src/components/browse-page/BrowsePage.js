@@ -8,8 +8,6 @@ import BrowseBookDisplay from "../browse-book-display/BrowseBookDisplay"
 
 import StoryBookBrowse from "../story-book-browse/StoryBookBrowse";
 
-import Headroom from "react-headroom";
-
 const BrowsePage = (props) => {
 
   const { fetchByGenre, fetchByUser, isLoading, error, bookList, setBookList } = useFetchStories()

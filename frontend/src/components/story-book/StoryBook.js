@@ -43,22 +43,32 @@ const StoryBook = (props) => {
   console.log("StoryBook rerendered")
 
   return (
-    <div className="results-container">
-      <div className="next-page-container">
-        {renderChapter>0 &&
-          <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
-        }
+    <>
+    {storyPages.length <= 0 ? (
+      <div className="results-container">
+        Nothing to Show
       </div>
-      <div className="storybook-container">
-          <Image link={imgUrl.current} />
-          <Story storyString={story.current} />
+      ) : (
+      <div className="results-container">
+        <div className="next-page-container">
+          {renderChapter>0 &&
+            <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
+          }
+        </div>
+        <div className="storybook-container">
+            <Image link={imgUrl.current} />
+            <Story storyString={story.current} />
+        </div>
+        <div className="next-page-container">
+          {  renderChapter != -1 ? renderChapter<storyPages['textHistory'].length-1 : false &&
+            <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
+          }
+        </div>
       </div>
-      <div className="next-page-container">
-        {  renderChapter != -1 ? renderChapter<storyPages['textHistory'].length-1 : false &&
-          <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
-        }
-      </div>
-    </div>
+      )}
+   
+    </>
+
   )
 }
 
