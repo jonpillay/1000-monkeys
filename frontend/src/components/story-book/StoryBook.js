@@ -5,6 +5,12 @@ import Story from '../story/Story';
 
 import { useRef } from 'react';
 
+import { useSelector } from 'react-redux'
+
+import { selectAllChapterImages } from './storyBookSlice';
+import { selectAllChapterTexts } from './storyBookSlice';
+import { selectRenderChapter } from './storyBookSlice';
+
 const StoryBook = (props) => {
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
