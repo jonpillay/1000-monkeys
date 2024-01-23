@@ -8,9 +8,19 @@ const storyBookSlice = createSlice({
     renderChapter: 0,
   },
   reducers: {
-    addChapter: (state, action) => {
-      state.chapterImages = state.chapterImages.concat(action.payload.chapterImage)
-      state.chapterTexts = state.chapterTexts.concat(action.payload.chapterText)
+    addChapter: {
+      reducer(state, action) {
+      state.chapterImages = state.chapterImages.push(action.payload.chapterImage)
+      state.chapterTexts = state.chapterTexts.push(action.payload.chapterText)
+    },
+    prepare(chapterImage, chapterText) {
+      return {
+        payload: {
+          chapterImage,
+          chapterText,
+        }
+      }
+    }
     },
     nextPage: (state) => {
       state.renderChapter = state.renderChapter + 1

@@ -7,7 +7,15 @@ import { CreditsContext } from "../context/CreditsContext";
 
 import { useNavigate } from "react-router";
 
+import { useDispatch } from "react-redux";
+
+import { addChapter, nextPage, previousPage } from "../components/story-book/storyBookSlice";
+
+import { LoadingContext } from "../context/LoadingContext";
+
 export const useCreateStory = () => {
+  const reduxDispatch = useDispatch()
+  const { loadingDispatch } = useContext(LoadingContext)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState()
   const { dispatch } = useContext(AuthContext)
@@ -26,7 +34,9 @@ export const useCreateStory = () => {
 
   const AIGenCall = () => {
 
-    setIsLoading(true)
+    loadingDispatch({type: 'LOADING'})
+
+    // setIsLoading(true)
 
     console.log(`This is story pages from the GPTcall funct`)
 
@@ -59,7 +69,10 @@ export const useCreateStory = () => {
       creditDispatch({type: 'UPDATE', payload: data.credits_update})
       localStoryPages["textHistory"].push(data["page_text"])
       localStoryPages["imageHistory"].push(data["page_image"])
-      setStoryPages(localStoryPages)
+
+      reduxDispatch(addChapter(data["page_image"], data["page_text"]))
+
+      // setStoryPages(localStoryPages)
       console.log(storyPages)
       setRenderChapter(localStoryPages["textHistory"].length-1)
       sysInfo["currentPage"] ++
@@ -88,7 +101,9 @@ export const useCreateStory = () => {
       
       console.log(GPTPrompts)
 
-      setIsLoading(false)
+      loadingDispatch({type: 'LOADED'})
+
+      // setIsLoading(false)
 
       });
   };

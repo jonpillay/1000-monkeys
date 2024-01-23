@@ -19,10 +19,15 @@ const StoryBook = (props) => {
 
   console.log(storyPages)
 
+  const chapterImages = selectAllChapterImages
+  const chapterTexts = selectAllChapterTexts
+
+  console.log(chapterTexts)
+
   const [renderChapter, setRenderChapter] = props.setRender
 
-  let imgUrl = useRef( renderChapter != -1 ? storyPages["imageHistory"][renderChapter] : "");
-  let story = useRef( renderChapter != -1 ? storyPages["textHistory"][renderChapter] : "");
+  let imgUrl = useRef( renderChapter != -1 ? chapterImages[renderChapter] : "");
+  let story = useRef( renderChapter != -1 ? chapterTexts[renderChapter] : "");
 
   const turnPage = (direct) => {
     if (direct == 'back') {

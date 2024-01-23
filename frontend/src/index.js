@@ -9,7 +9,7 @@ import { CreditsContextProvider } from './context/CreditsContext';
 import { LoadingContextProvider } from './context/LoadingContext';
 
 import { store } from './redux-state/store';
-import { Provider } from react-redux;
+import { Provider } from 'react-redux';
 
 const container = document.getElementById('root');
 
