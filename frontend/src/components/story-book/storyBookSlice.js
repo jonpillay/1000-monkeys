@@ -10,23 +10,24 @@ const storyBookSlice = createSlice({
   reducers: {
     addChapter: {
       reducer(state, action) {
-      state.chapterImages = state.chapterImages.push(action.payload.chapterImage)
-      state.chapterTexts = state.chapterTexts.push(action.payload.chapterText)
-    },
-    prepare(chapterImage, chapterText) {
-      return {
-        payload: {
-          chapterImage,
-          chapterText,
+        console.log("made it here in the slice")
+        state.chapterImages.push(action.payload.chapterImage)
+        state.chapterTexts.push(action.payload.chapterText)
+      },
+      prepare(chapterImage, chapterText) {
+        return {
+          payload: {
+            chapterImage,
+            chapterText,
+          }
         }
-      }
-    }
+      },
     },
     nextPage: (state) => {
-      state.renderChapter = state.renderChapter + 1
+      state.renderChapter += 1
     },
     previousPage: (state) => {
-      state.renderChapter = state.renderChapter - 1
+      state.renderChapter -= 1
     },
   },
 });
@@ -34,6 +35,8 @@ const storyBookSlice = createSlice({
 export const selectAllChapterImages = (state) => state.chapterImages;
 export const selectAllChapterTexts = (state) => state.chapterTexts;
 export const selectRenderChapter = (state) => state.renderChapter;
+
+// export const storyBook = (state) => state.storyBook;
 
 export const { addChapter, nextPage, previousPage } = storyBookSlice.actions;
 export default storyBookSlice.reducer;

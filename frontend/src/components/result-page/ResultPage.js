@@ -53,7 +53,7 @@ const ResultPage = () => {
   useEffect(() => {
     const initialiseStory = async () => {
       console.log("userEffect triggered")
-      if (localStorage.getItem('user')) {
+      if (user) {
         console.log("user eval triggred")
         let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
         if (sysInfo["firstLoad"] === true) {

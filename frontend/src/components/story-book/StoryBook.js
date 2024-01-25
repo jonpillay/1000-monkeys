@@ -7,22 +7,33 @@ import { useRef } from 'react';
 
 import { useSelector } from 'react-redux'
 
-import { selectAllChapterImages } from './storyBookSlice';
-import { selectAllChapterTexts } from './storyBookSlice';
-import { selectRenderChapter } from './storyBookSlice';
+// import selectAllChapterImages from './storyBookSlice';
+// import selectAllChapterTexts from './storyBookSlice';
+// import selectRenderChapter from './storyBookSlice';
+
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter } from './storyBookSlice';
+
+// import storyBook from './storyBookSlice';
 
 const StoryBook = (props) => {
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
-  const storyPages = props.storyPages
+  // const storyPages = props.storyPages
 
-  console.log(storyPages)
+  // console.log(storyPages)
 
-  const chapterImages = selectAllChapterImages
-  const chapterTexts = selectAllChapterTexts
+  const chapterImages = useSelector(selectAllChapterImages)
+  const chapterTexts = useSelector(selectAllChapterTexts)
+  // const renderChapter = useSelector(selectRenderChapter)
 
-  console.log(chapterTexts)
+  // console.log(renderChapter)
+
+  // const componentReadBook = useSelector(storyBook)
+
+  // console.log("This is the image URLs from StoryBook component " + chapterImages)
+
+  // console.log(chapterTexts)
 
   const [renderChapter, setRenderChapter] = props.setRender
 
@@ -31,23 +42,23 @@ const StoryBook = (props) => {
 
   const turnPage = (direct) => {
     if (direct == 'back') {
-      story.current = storyPages["textHistory"][renderChapter -1]
-      imgUrl.current = storyPages["imageHistory"][renderChapter -1]
-      sysInfo["currentPage"] --
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      setRenderChapter(renderChapter -1)
+      // story.current = storyPages["textHistory"][renderChapter -1]
+      // imgUrl.current = storyPages["imageHistory"][renderChapter -1]
+      // sysInfo["currentPage"] --
+      // localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      // setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
-      sysInfo["currentPage"] ++
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      story.current = storyPages["textHistory"][renderChapter +1]
-      imgUrl.current = storyPages["imageHistory"][renderChapter +1]
-      setRenderChapter(renderChapter +1)
+      // sysInfo["currentPage"] ++
+      // localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      // story.current = storyPages["textHistory"][renderChapter +1]
+      // imgUrl.current = storyPages["imageHistory"][renderChapter +1]
+      // setRenderChapter(renderChapter +1)
     } else if (direct == 'last') {
-      story.current = storyPages["textHistory"].slice(-1)
-      imgUrl.current = storyPages["imageHistory"].slice(-1)
-      sysInfo["currentPage"] = storyPages["textHistory"].length -1
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
+      // story.current = storyPages["textHistory"].slice(-1)
+      // imgUrl.current = storyPages["imageHistory"].slice(-1)
+      // sysInfo["currentPage"] = storyPages["textHistory"].length -1
+      // localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+      // setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
     }
   }
 
@@ -55,7 +66,7 @@ const StoryBook = (props) => {
 
   return (
     <>
-    {storyPages.length <= 0 ? (
+    {10 < 0 ? (
       <div className="results-container">
         Nothing to Show
       </div>
@@ -71,7 +82,7 @@ const StoryBook = (props) => {
             <Story storyString={story.current} />
         </div>
         <div className="next-page-container">
-          {  renderChapter != -1 ? renderChapter<storyPages['textHistory'].length-1 : false &&
+          {  renderChapter != -1 ? renderChapter<0 : false &&
             <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
           }
         </div>
