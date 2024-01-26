@@ -8,8 +8,10 @@ import { StoryContextProvider } from './context/StoryContext';
 import { CreditsContextProvider } from './context/CreditsContext';
 import { LoadingContextProvider } from './context/LoadingContext';
 
-import { store } from './redux-state/store';
+import { store, persistor } from './redux-state/store';
 import { Provider } from 'react-redux';
+
+import { PersistGate } from 'redux-persist/integration/react';
 
 const container = document.getElementById('root');
 
@@ -22,7 +24,9 @@ root.render(
         <CreditsContextProvider>
           <StoryContextProvider>
             <Provider store={store}>
-              <App />
+              <PersistGate loading={null} persistor={persistor}>
+                <App />
+              </PersistGate>
             </Provider>
           </StoryContextProvider>
         </CreditsContextProvider>
