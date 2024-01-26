@@ -37,6 +37,8 @@ const StoryBook = (props) => {
 
   const [renderChapter, setRenderChapter] = props.setRender
 
+  console.log(chapterImages)
+
   let imgUrl = useRef( renderChapter != -1 ? chapterImages[renderChapter] : "");
   let story = useRef( renderChapter != -1 ? chapterTexts[renderChapter] : "");
 
@@ -66,7 +68,7 @@ const StoryBook = (props) => {
 
   return (
     <>
-    {10 < 0 ? (
+    {chapterImages <= 0 ? (
       <div className="results-container">
         Nothing to Show
       </div>

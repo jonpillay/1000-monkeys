@@ -32,9 +32,9 @@ const storyBookSlice = createSlice({
   },
 });
 
-export const selectAllChapterImages = (state) => state.chapterImages;
-export const selectAllChapterTexts = (state) => state.chapterTexts;
-export const selectRenderChapter = (state) => state.renderChapter;
+export const selectAllChapterImages = (state) => state.storyBook.chapterImages;
+export const selectAllChapterTexts = (state) => state.storyBook.chapterTexts;
+export const selectRenderChapter = (state) => state.storyBook.renderChapter;
 
 // export const storyBook = (state) => state.storyBook;
 
