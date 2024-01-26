@@ -7,9 +7,9 @@ import { CreditsContext } from "../context/CreditsContext";
 
 import { useNavigate } from "react-router";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { addChapter, nextPage, previousPage } from "../components/story-book/storyBookSlice";
+import { addChapter, nextPage, previousPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -27,7 +27,10 @@ export const useCreateStory = () => {
   const { navigate } = useNavigate()
 
   const [storyPages, setStoryPages] = useState([])
-  const [renderChapter, setRenderChapter] = useState(0)
+
+  const chapterImages = useSelector(selectAllChapterImages)
+
+  const [renderChapter, setRenderChapter] = useState(useSelector(selectRenderChapter))
 
   const inSync = localStorage.getItem('storyInSync')
   let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
@@ -42,7 +45,7 @@ export const useCreateStory = () => {
 
     const userChoices = localStorage.getItem("userChoices")
     let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
-    let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
+    // let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
     let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
 
@@ -67,14 +70,14 @@ export const useCreateStory = () => {
       console.log(data)
       console.log(data.credits_update)
       creditDispatch({type: 'UPDATE', payload: data.credits_update})
-      localStoryPages["textHistory"].push(data["page_text"])
-      localStoryPages["imageHistory"].push(data["page_image"])
+      // localStoryPages["textHistory"].push(data["page_text"])
+      // localStoryPages["imageHistory"].push(data["page_image"])
 
       reduxDispatch(addChapter(data["page_image"], data["page_text"]))
 
       // setStoryPages(localStoryPages)
       console.log(storyPages)
-      setRenderChapter(localStoryPages["textHistory"].length-1)
+      setRenderChapter(chapterImages.length-1)
       sysInfo["currentPage"] ++
       console.log(sysInfo)
       console.log(storyPages)
@@ -89,7 +92,7 @@ export const useCreateStory = () => {
 
       localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
 
-      localStorage.setItem("storyPages", JSON.stringify(storyPages))
+      // localStorage.setItem("storyPages", JSON.stringify(storyPages))
 
       console.log(user.credits)
 
