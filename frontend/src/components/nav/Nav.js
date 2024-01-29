@@ -7,6 +7,9 @@ import { useLogout } from "../../hooks/useLogout";
 import { Navigate, useNavigate } from "react-router";
 import { useStoryContext } from "../../hooks/useStoryContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
+
+import { clearReduxPersist } from "../../redux-state/store";
+import { UseDispatch, useDispatch } from "react-redux";
 // import { clearLocal } from "../../hooks/useClearLocal";
 
 // import logged in context as defined in App.js
@@ -18,6 +21,8 @@ const NavBar = () => {
 
 // set consts for loggedIn and setLoggedIn (funct) to be accessed within the component
 // const [loggedIn, setLoggedIn] = useContext(loggedInContext)
+
+  const reduxDispatch = useDispatch()
 
   const navigate = useNavigate()
   const { logout } = useLogout()
@@ -49,6 +54,10 @@ const NavBar = () => {
     await localStorage.removeItem('sysInfo');
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
+
+    reduxDispatch({ type: 'PURGE', key: 'root', result: () => {} })
+
+    clearReduxPersist()
 
 
     dispatch({type: "END", payload: null})

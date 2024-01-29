@@ -1,4 +1,8 @@
 import { createContext, useReducer, useEffect } from "react";
+
+import { UseDispatch, useDispatch } from "react-redux";
+import { clearReduxPersist } from "../redux-state/store";
+
 import { useStoryContext } from "../hooks/useStoryContext";
 
 export const StoryContext = createContext()
@@ -15,6 +19,7 @@ export const storyReducer = (state, action) => {
 }
 
 export const StoryContextProvider = ({ children }) => {
+
   const [state, dispatch] = useReducer(storyReducer, {
     story: null
   })

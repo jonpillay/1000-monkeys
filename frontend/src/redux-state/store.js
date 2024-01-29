@@ -30,4 +30,8 @@ export const store = configureStore({
   }),
 });
 
+export const clearReduxPersist = () => {
+  persistor.purge()
+}
+
 export const persistor = persistStore(store);

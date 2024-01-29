@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import {
   BrowserRouter,
@@ -25,6 +25,9 @@ import { useStoryContext } from '../../hooks/useStoryContext';
 import monkeySpinner from "../../img/favpng_infinite-monkey-theorem.png"
 import LoadingPage from '../loading_page/LoadingPage';
 
+import { UseDispatch, useDispatch } from 'react-redux';
+import { clearReduxPersist } from '../../redux-state/store';
+
 // const getAdmin = (obj) => {
 //   if (obj) {
 //     if (obj.isSuper == true) {
@@ -40,6 +43,8 @@ import LoadingPage from '../loading_page/LoadingPage';
 
 const App = () => {
 
+  const reduxDispatch = useDispatch()
+
   // const getStory = () => {
   //   const storyHistory = localStorage.getItem('storyPages')
   //   return storyHistory
@@ -50,12 +55,12 @@ const App = () => {
 
   const admin = user ? user.isSuper : false
 
-  console.log("This is the admin value ", admin)
-
-  console.log(story)
-  console.log(user)
-
-
+  useEffect(() => {
+    if (!story) {
+      reduxDispatch({ type: 'PURGE', key: 'root', result: () => {} })
+      clearReduxPersist()
+    } 
+  })
 
   return (
     <div className="app">
