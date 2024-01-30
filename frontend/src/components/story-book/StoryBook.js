@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 import { useDispatch } from 'react-redux';
 
-import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset } from './storyBookSlice';
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset, nextPage, previousPage } from './storyBookSlice';
 
 import { clearReduxPersist } from '../../redux-state/store';
 
@@ -34,17 +34,19 @@ const StoryBook = (props) => {
 
   const renderChapter = useSelector(selectRenderChapter)
 
+  const reduxDispatch = useDispatch()
+
   useEffect (() => {
   }, [renderChapter])
-
-  console.log(chapterImages.length)
 
   let imgUrl = useRef( chapterImages.length != 0 ? chapterImages[renderChapter] : "");
   let story = useRef( chapterImages.length != 0 ? chapterTexts[renderChapter] : "This is where it ended");
 
   const turnPage = (direct) => {
     if (direct == 'back') {
+      reduxDispatch(previousPage())
     } else if (direct == 'next') {
+      reduxDispatch(nextPage())
     } else if (direct == 'last') {
     }
   }
