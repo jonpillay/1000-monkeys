@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 import { useDispatch } from 'react-redux';
 
-import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter } from './storyBookSlice';
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset } from './storyBookSlice';
 
 import { clearReduxPersist } from '../../redux-state/store';
 
@@ -17,18 +17,15 @@ import { clearReduxPersist } from '../../redux-state/store';
 
 const StoryBook = (props) => {
 
-  const reduxDispatch = useDispatch()
+  // const handleStoryBookUnmount = () => {
+  //   clearReduxPersist()
+  // }
 
-  const handleStoryBookUnmount = () => {
-    // clearReduxPersist()
-    reduxDispatch({ type: 'PURGE', key: 'root', result: () => {} })
-  }
-
-  useEffect (() => {
-    return () => {
-      handleStoryBookUnmount()
-    } 
-  }, []);
+  // useEffect (() => {
+  //   return () => {
+  //     handleStoryBookUnmount()
+  //   } 
+  // }, []);
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 

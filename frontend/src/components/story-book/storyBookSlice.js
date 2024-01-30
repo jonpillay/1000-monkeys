@@ -29,6 +29,11 @@ const storyBookSlice = createSlice({
     previousPage: (state) => {
       state.renderChapter -= 1
     },
+    reset: (state, action) => {
+      state.chapterImages = []
+      state.chapterTexts = []
+      state.renderChapter = 0
+    }
   },
 });
 
@@ -38,5 +43,5 @@ export const selectRenderChapter = (state) => state.storyBook.renderChapter;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { addChapter, nextPage, previousPage } = storyBookSlice.actions;
+export const { addChapter, nextPage, previousPage, reset } = storyBookSlice.actions;
 export default storyBookSlice.reducer;

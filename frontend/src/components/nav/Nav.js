@@ -9,7 +9,9 @@ import { useStoryContext } from "../../hooks/useStoryContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 import { clearReduxPersist } from "../../redux-state/store";
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset } from '../story-book/storyBookSlice';
+
 // import { clearLocal } from "../../hooks/useClearLocal";
 
 // import logged in context as defined in App.js
@@ -31,6 +33,11 @@ const NavBar = () => {
   const { user } = useAuthContext()
   const { story } = useStoryContext()
 
+  const clearRedux = () => {
+    reduxDispatch(reset())
+    clearReduxPersist()
+  }
+
   async function clearStorageLogout() {
     return new Promise((resolve) => {
       dispatch({type: "END", payload: null})
@@ -40,6 +47,7 @@ const NavBar = () => {
       localStorage.removeItem("storyPages");
       localStorage.removeItem("sysInfo");
       localStorage.removeItem("browsePageNumbers")
+      clearRedux()
       resolve()
     })
   }
@@ -55,10 +63,7 @@ const NavBar = () => {
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
 
-    reduxDispatch({ type: 'PURGE', key: 'root', result: () => {} })
-
-    clearReduxPersist()
-
+    clearRedux()
 
     dispatch({type: "END", payload: null})
   }

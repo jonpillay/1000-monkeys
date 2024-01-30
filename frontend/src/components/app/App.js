@@ -43,7 +43,7 @@ import { clearReduxPersist } from '../../redux-state/store';
 
 const App = () => {
 
-  const reduxDispatch = useDispatch()
+  const reduxDispatch = useDispatch() 
 
   // const getStory = () => {
   //   const storyHistory = localStorage.getItem('storyPages')

@@ -1,6 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearReduxPersist } from "../redux-state/store";
 
 import { useStoryContext } from "../hooks/useStoryContext";
@@ -28,6 +28,8 @@ export const StoryContextProvider = ({ children }) => {
     const story = JSON.parse(localStorage.getItem('storyPages'))
     if (story) {
       dispatch({ type: 'BEGIN', payload: true })
+    } else {
+      clearReduxPersist()
     }
   }, [])
 
