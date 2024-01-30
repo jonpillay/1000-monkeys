@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { addChapter, nextPage, previousPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
+import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -30,7 +30,9 @@ export const useCreateStory = () => {
 
   const chapterImages = useSelector(selectAllChapterImages)
 
-  const [renderChapter, setRenderChapter] = useState(useSelector(selectRenderChapter))
+  const renderChapter = useSelector(selectRenderChapter)
+
+  // const [renderChapter, setRenderChapter] = useState(null)
 
   const inSync = localStorage.getItem('storyInSync')
   let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
@@ -77,7 +79,6 @@ export const useCreateStory = () => {
 
       // setStoryPages(localStoryPages)
       console.log(storyPages)
-      setRenderChapter(chapterImages.length-1)
       sysInfo["currentPage"] ++
       console.log(sysInfo)
       console.log(storyPages)
@@ -100,7 +101,7 @@ export const useCreateStory = () => {
 
       setStoryInSync(false)
 
-      setRenderChapter(sysInfo["currentPage"])
+      reduxDispatch(turnToLastPage())
       
       console.log(GPTPrompts)
 
@@ -205,7 +206,7 @@ export const useCreateStory = () => {
       .then((response) => response.json())
       .then((data) => {
         storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
-        setRenderChapter(renderChapter)
+        reduxDispatch(turnToPage(renderChapter))
         localStorage.setItem("storyPages", JSON.stringify(storyPages))
         setIsLoading(false)
       })

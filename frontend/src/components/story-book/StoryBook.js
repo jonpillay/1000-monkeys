@@ -32,12 +32,15 @@ const StoryBook = (props) => {
   const chapterImages = useSelector(selectAllChapterImages)
   const chapterTexts = useSelector(selectAllChapterTexts)
 
-  const [renderChapter, setRenderChapter] = props.setRender
+  const renderChapter = useSelector(selectRenderChapter)
 
-  console.log(chapterImages)
+  useEffect (() => {
+  }, [renderChapter])
 
-  let imgUrl = useRef( renderChapter != -1 ? chapterImages[renderChapter] : "");
-  let story = useRef( renderChapter != -1 ? chapterTexts[renderChapter] : "");
+  console.log(chapterImages.length)
+
+  let imgUrl = useRef( chapterImages.length != 0 ? chapterImages[renderChapter] : "");
+  let story = useRef( chapterImages.length != 0 ? chapterTexts[renderChapter] : "This is where it ended");
 
   const turnPage = (direct) => {
     if (direct == 'back') {
@@ -50,7 +53,7 @@ const StoryBook = (props) => {
 
   return (
     <>
-    {chapterImages <= 0 ? (
+    {chapterImages.length < 0 ? (
       <div className="results-container">
         Nothing to Show
       </div>
