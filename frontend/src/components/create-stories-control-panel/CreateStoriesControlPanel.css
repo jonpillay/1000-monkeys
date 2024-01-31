@@ -1,0 +1,12 @@
+.create-control-nav-container {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}
+
+.create-control-button-container {
+  justify-self: start;
+  display: flex;
+  justify-content: space-around;
+  opacity: 99%;
+}

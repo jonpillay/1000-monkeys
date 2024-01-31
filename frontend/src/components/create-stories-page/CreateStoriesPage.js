@@ -1,5 +1,7 @@
 import './CreateStoriesPage.css'
 
+import { useLoadingContext } from "../../hooks/useLoadingContext";
+
 import { useSelector } from 'react-redux';
 import { selectRenderChapter } from '../story-book/storyBookSlice';
 
@@ -7,10 +9,13 @@ import CreateStoriesControlPanel from '../create-stories-control-panel/CreateSto
 import ChapterTitle from '../chapter-title/ChapterTitle';
 import SaveStoryButton from '../save-story-button/SaveStoryButton';
 import StoryBook from '../story-book/StoryBook';
+import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../hooks/useCreateStory'
 
 const CreateStoriesPage = (props) => {
+  const { loading } = useLoadingContext()
+
   const { 
     AIGenCall,
     userPromtNextChapter,
@@ -28,14 +33,21 @@ const CreateStoriesPage = (props) => {
 
   return (
     <>
-      <div className="create-page-containter">
-        <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
-        <div className="storybook-header">
-            <ChapterTitle chapterNumber={renderChapter + 1}/>
-            <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>
+      {!loading ? (
+        <div className="create-page-containter">
+          <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
+          <div className="storybook-header">
+              <ChapterTitle chapterNumber={renderChapter + 1}/>
+              <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>
+          </div>
+          <StoryBook/>
         </div>
-        <StoryBook/>
-      </div>
+      ) : (
+        <div className="nav-box">
+          <LoadingPage />
+        </div> 
+      )}
+
     </>
   )
 };
