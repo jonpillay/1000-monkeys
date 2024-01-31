@@ -17,16 +17,6 @@ import { clearReduxPersist } from '../../redux-state/store';
 
 const StoryBook = (props) => {
 
-  // const handleStoryBookUnmount = () => {
-  //   clearReduxPersist()
-  // }
-
-  // useEffect (() => {
-  //   return () => {
-  //     handleStoryBookUnmount()
-  //   } 
-  // }, []);
-
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
   const chapterImages = useSelector(selectAllChapterImages)
@@ -36,11 +26,11 @@ const StoryBook = (props) => {
 
   const reduxDispatch = useDispatch()
 
-  useEffect (() => {
-  }, [renderChapter])
+  // useEffect (() => {
+  // }, [renderChapter])
 
-  let imgUrl = useRef( chapterImages.length != 0 ? chapterImages[renderChapter] : "");
-  let story = useRef( chapterImages.length != 0 ? chapterTexts[renderChapter] : "This is where it ended");
+  let imgUrl = chapterImages.length != 0 ? chapterImages[renderChapter] : "";
+  let story = chapterImages.length != 0 ? chapterTexts[renderChapter] : "This is where it ended";
 
   const turnPage = (direct) => {
     if (direct == 'back') {
@@ -67,8 +57,8 @@ const StoryBook = (props) => {
           }
         </div>
         <div className="storybook-container">
-            <Image link={imgUrl.current} />
-            <Story storyString={story.current} />
+            <Image link={imgUrl} />
+            <Story storyString={story} />
         </div>
         <div className="next-page-container">
           {  renderChapter != -1 ? renderChapter<0 : false &&
