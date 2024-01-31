@@ -61,7 +61,7 @@ const StoryBook = (props) => {
             <Story storyString={story} />
         </div>
         <div className="next-page-container">
-          {  renderChapter != -1 ? renderChapter<0 : false &&
+          {  renderChapter < chapterTexts.length -1 &&
             <TurnPageButton id="next-page-button" direct="next" label="Next Chapter" callback={turnPage}/>
           }
         </div>
