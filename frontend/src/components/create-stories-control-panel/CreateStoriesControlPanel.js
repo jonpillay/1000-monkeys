@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import CreateButton from '../create_button/CreateButton';
+import UserPromptInput from '../user-prompt-input/UserPromptInput';
 
 const CreateStoriesControlPanel = (props) => {
 
@@ -56,7 +57,10 @@ const CreateStoriesControlPanel = (props) => {
   userPromtNextChapter,
   AIPromptNextChapter,
   refreshStory,
-  refreshImage} = props;
+  refreshImage,
+  isLoading,
+  error,
+  } = props;
 
   // const browseStorySetup = async (fetchFunct, keyword) => {
 
@@ -99,6 +103,10 @@ const CreateStoriesControlPanel = (props) => {
             <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshImage()} font={"flavors"} value="Refresh the Text" className="genre-button" />
             {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </div>
+        <div className='create-control-user-prompt-input'>
+          <UserPromptInput userPromtNextChapter={userPromtNextChapter} isLoading={isLoading} />
+        </div>
+        {error && <div className="error">{error}</div>}
         </>
       </div>
     </>

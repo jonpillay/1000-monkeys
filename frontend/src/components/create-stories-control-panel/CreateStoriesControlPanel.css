@@ -1,5 +1,6 @@
 .create-control-nav-container {
-  display: flex;
+  display: grid;
+  grid-template-rows: 50% 50%;
   justify-content: center;
   margin: 1%;
 }
