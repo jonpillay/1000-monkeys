@@ -3,7 +3,6 @@ import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
 import { useAuthContext } from "./useAuthContext";
 
-
 export const useSaveStory = () => {
   const { user } = useAuthContext()
 
@@ -15,7 +14,7 @@ export const useSaveStory = () => {
 
   // console.log(dispatch)
 
-  const saveStory = async (storyPages, genre, character, artstyle) => {
+  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory) => {
     setIsLoading(true)
     setError(null)
 
@@ -25,7 +24,7 @@ export const useSaveStory = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
       },
-      body: JSON.stringify({storyPages, genre, character, artstyle})
+      body: JSON.stringify({chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory})
     })
 
     const JSONres = await response.json()

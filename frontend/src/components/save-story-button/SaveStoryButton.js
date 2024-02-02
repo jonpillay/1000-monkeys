@@ -1,6 +1,9 @@
 import { useAuthContext } from "../../hooks/useAuthContext"
 import { useSaveStory } from "../../hooks/useSaveStory"
 
+import { useSelector } from "react-redux"
+import { selectAllChapterTexts, selectAllChapterImages } from "../story-book/storyBookSlice"
+
 import "./SaveStoryButton.css"
 
 import SaveIcon from "../../img/floppy-disk-save.png"
@@ -12,6 +15,9 @@ function SaveStoryButton(props) {
   const { saveStory, updateStory, isLoading, error } = useSaveStory()
 
   const [storyInSync, setStoryInSync] = props.setStoryInSync
+
+  const reduxChapterImages = useSelector(selectAllChapterImages)
+  const reduxChapterText = useSelector(selectAllChapterTexts)
   
 
   const handleSubmit = async (e) => {
@@ -24,6 +30,11 @@ function SaveStoryButton(props) {
     const character = JSON.parse(localStorage.getItem('userChoices'))['character']
 
     const artstyle = JSON.parse(localStorage.getItem('userChoices'))['style']
+
+    const GPTChatHistory = JSON.parse(localStorage.getItem('GPTPromptHistory'))
+
+    const chapterImages = reduxChapterImages
+    const chapterTexts = reduxChapterText
 
     console.log("This is the stringStoryPages object that gets sent for save", stringStoryPages)
 
@@ -43,7 +54,7 @@ function SaveStoryButton(props) {
       }
       
     } else {
-      const story_id = await saveStory(stringStoryPages, genre, character, artstyle)
+      const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory)
       localStorage.setItem('storyInSync', 'true')
       setStoryInSync(true)
     }

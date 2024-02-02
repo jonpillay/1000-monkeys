@@ -3,13 +3,13 @@ const StoryBook = require('../database/models/storyBookModel')
 const StoryPersistenceController = {
   SaveStory: async (req, res) => {
 
-    const {storyPages, genre, character, artstyle} = req.body
+    const {chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory} = req.body
 
     const user_id = req.user._id
 
     try {
 
-      const story = await StoryBook.saveStory(user_id, storyPages, genre, character, artstyle)
+      const story = await StoryBook.saveStory(user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory)
 
       res.status(200).json({ error: "Story saved", story_id: story._id  })
     } catch (error) {

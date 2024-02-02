@@ -19,39 +19,39 @@ const CreateStoriesControlPanel = (props) => {
   const selectedButton = useRef()
 
 
-  useEffect(() => {
-    const controlTopScroll = () => {
-      if (window.scrollY > 50) {
-        setControlPanelTop(true)
-      } else {
-        setControlPanelTop(false)
-      }
-    };
+  // useEffect(() => {
+  //   const controlTopScroll = () => {
+  //     if (window.scrollY > 50) {
+  //       setControlPanelTop(true)
+  //     } else {
+  //       setControlPanelTop(false)
+  //     }
+  //   };
 
-    window.addEventListener('scroll', controlTopScroll);
+  //   window.addEventListener('scroll', controlTopScroll);
 
-    // const controlTopMouse = (Mpos) => {
-    //   if (Mpos.clientY < 70) {
-    //     setControlPanelTop(true)
-    //   } else {
-    //     setControlPanelTop(false)
-    //   }
-    // }
+  //   // const controlTopMouse = (Mpos) => {
+  //   //   if (Mpos.clientY < 70) {
+  //   //     setControlPanelTop(true)
+  //   //   } else {
+  //   //     setControlPanelTop(false)
+  //   //   }
+  //   // }
 
-    const controlScrollnMouse = (Mpos) => {
-      if (window.scrollY > 10 && Mpos.clientY < 200) {
-        setControlPanelScroll(true)
-      } else {
-        setControlPanelScroll(false)
-      }
-    }
+  //   const controlScrollnMouse = (Mpos) => {
+  //     if (window.scrollY > 10 && Mpos.clientY < 200) {
+  //       setControlPanelScroll(true)
+  //     } else {
+  //       setControlPanelScroll(false)
+  //     }
+  //   }
 
-    document.addEventListener('mousemove', controlScrollnMouse);
+  //   document.addEventListener('mousemove', controlScrollnMouse);
 
 
-    // document.addEventListener('mousemove', controlTopMouse);
+  //   // document.addEventListener('mousemove', controlTopMouse);
 
-  }, [])
+  // }, [])
 
   const {AIGenCall,
   userPromtNextChapter,
