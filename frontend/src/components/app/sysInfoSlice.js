@@ -36,7 +36,7 @@ const sysInfoSlice = createSlice({
   },
 });
 
-export const storyInProgress = (state) => state.storyBookSysInfo.storyInProgress;
+export const selectStoryInProgress = (state) => state.storyBookSysInfo.storyInProgress;
 export const selectCharacter = (state) => state.storyBookSysInfo.character;
 export const selectGenre = (state) => state.storyBookSysInfo.genre;
 export const selectArtStyle = (state) => state.storyBookSysInfo.artStyle;

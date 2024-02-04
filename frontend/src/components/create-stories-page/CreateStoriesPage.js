@@ -5,6 +5,8 @@ import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { useSelector } from 'react-redux';
 import { selectRenderChapter } from '../story-book/storyBookSlice';
 
+import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle } from '../app/SysInfoSlice';
+
 import CreateStoriesControlPanel from '../create-stories-control-panel/CreateStoriesControlPanel';
 import ChapterTitle from '../chapter-title/ChapterTitle';
 import SaveStoryButton from '../save-story-button/SaveStoryButton';
@@ -30,6 +32,11 @@ const CreateStoriesPage = (props) => {
     error } = useCreateStory()
 
     const renderChapter = useSelector(selectRenderChapter)
+
+    const storyInProgress = useSelector(selectStoryInProgress)
+    const character = useSelector(selectCharacter)
+    const genre = useSelector(selectGenre)
+    const artStyle = useSelector(selectArtStyle)
 
   return (
     <>
