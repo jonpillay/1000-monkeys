@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './App.css';
 import {
   BrowserRouter,
@@ -22,11 +22,16 @@ import CreateStoriesPage from '../create-stories-page/CreateStoriesPage';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 
+import { StoryContext } from '../../context/StoryContext';
+
 import monkeySpinner from "../../img/favpng_infinite-monkey-theorem.png"
 import LoadingPage from '../loading_page/LoadingPage';
 
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearReduxPersist } from '../../redux-state/store';
+
+import { UseSelector } from 'react-redux';
+import { selectAllChapterTexts } from '../story-book/storyBookSlice';
 
 // const getAdmin = (obj) => {
 //   if (obj) {
@@ -43,23 +48,33 @@ import { clearReduxPersist } from '../../redux-state/store';
 
 const App = () => {
 
-  const reduxDispatch = useDispatch() 
+  const storyDispatch = useContext(StoryContext)
+
+  const reduxDispatch = useDispatch()
 
   // const getStory = () => {
   //   const storyHistory = localStorage.getItem('storyPages')
   //   return storyHistory
   // }
 
-  const {story} = useStoryContext()
+  // const {story} = useStoryContext()
   const {user} = useAuthContext()
+
+  const reduxCheck = useSelector(selectAllChapterTexts)
+
+  const reduxLive = reduxCheck.length > 0
 
   const admin = user ? user.isSuper : false
 
   useEffect(() => {
-    if (!story) {
-      reduxDispatch({ type: 'PURGE', key: 'root', result: () => {} })
+    if (!reduxLive) {
+      console.log("reduxLive check working")
+      // storyDispatch({ type: 'END' })
+      // reduxDispatch({ type: 'PURGE', key: 'root', result: () => {} })
       clearReduxPersist()
-    } 
+    } else {
+      console.log("It fooking works!")
+    }
   })
 
   return (
@@ -73,7 +88,7 @@ const App = () => {
             <Route exact path="/activate" element={ <ActivationPage/> } />
             {/* <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } /> */}
             <Route exact path="/userfactoryintheenv" element={ admin == true ? <AdminPanel/> : <Navigate to="/"/> } />
-            <Route exact path="/" element={ story ? <Navigate to="/results"/> : <SplashContainer/> } />
+            <Route exact path="/" element={ reduxLive ? <Navigate to="/results"/> : <SplashContainer/> } />
           </Routes>
         </BrowserRouter>
     </div>
