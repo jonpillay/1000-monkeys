@@ -7,6 +7,7 @@ const storyBookSysInfo = createSlice({
     character: null,
     genre: null,
     artStyle: null,
+    GPTPromptHistory: []
   },
   reducers: {
     initialiseStory: {

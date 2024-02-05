@@ -1,5 +1,5 @@
 import "./CreateSplashPage.css";
-import WelcomePanel from "../welcome-panel/WelcomePanel";
+import CreateSplashIntro from '../create-splash-intro/CreateSplashIntro'
 import FormContainer from "../form-container/FormContainer"
 import { useNavigate } from "react-router";
 
@@ -8,7 +8,7 @@ const CreateSplashPage = (props) => {
     <>
     <div className="splash-container">
       <div className="splash-grid">
-        <WelcomePanel/>
+        <CreateSplashIntro/>
         <FormContainer  navigate={ useNavigate() }/>
       </div>
     </div>

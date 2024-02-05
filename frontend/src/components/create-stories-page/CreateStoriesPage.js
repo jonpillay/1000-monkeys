@@ -5,7 +5,7 @@ import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { useSelector } from 'react-redux';
 import { selectRenderChapter } from '../story-book/storyBookSlice';
 
-import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle } from '../app/sysInfoSlice';
+import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle } from './storyBookSysInfoSlice';
 
 import CreateStoriesControlPanel from '../create-stories-control-panel/CreateStoriesControlPanel';
 import ChapterTitle from '../chapter-title/ChapterTitle';

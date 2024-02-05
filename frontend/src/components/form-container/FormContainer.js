@@ -13,6 +13,11 @@ import { StoryContext } from "../../context/StoryContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useStoryContext } from "../../hooks/useStoryContext";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
+import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
+
 const FormContainer = () => {
   const {user} = useAuthContext()
   const [characterOptions, setCharacterOptions] = useState([]);
@@ -31,6 +36,7 @@ const FormContainer = () => {
   const navigate = useNavigate()
 
   const { dispatch } = useContext(StoryContext)
+  const reduxDispatch = useDispatch()
 
   useEffect(() => {
     setError(null)
@@ -43,22 +49,22 @@ const FormContainer = () => {
         setStyleOptions(data.style)
         setGenreOptions(data.genre)
       });
-  }, [user])
+  }, [])
 
-  async function initialiseLocal(prompts, choices, pages, sys) {
-    return new Promise((resolve) => {
-    localStorage.removeItem("GPTPromptHistory")
-    localStorage.removeItem("userChoices");
-    localStorage.removeItem("storyPages");
-    localStorage.removeItem("sysInfo")
+  // async function initialiseLocal(prompts, choices, pages, sys) {
+  //   return new Promise((resolve) => {
+  //   localStorage.removeItem("GPTPromptHistory")
+  //   localStorage.removeItem("userChoices");
+  //   localStorage.removeItem("storyPages");
+  //   localStorage.removeItem("sysInfo")
 
-    localStorage.setItem("GPTPromptHistory", JSON.stringify(prompts))
-    localStorage.setItem("userChoices", JSON.stringify(choices));
-    localStorage.setItem("storyPages", JSON.stringify(pages));
-    localStorage.setItem("sysInfo", JSON.stringify(sys))
-    resolve()
-    })
-  }
+  //   localStorage.setItem("GPTPromptHistory", JSON.stringify(prompts))
+  //   localStorage.setItem("userChoices", JSON.stringify(choices));
+  //   localStorage.setItem("storyPages", JSON.stringify(pages));
+  //   localStorage.setItem("sysInfo", JSON.stringify(sys))
+  //   resolve()
+  //   })
+  // }
 
   const handleFormSubmit = async (e) => {
 
@@ -69,33 +75,14 @@ const FormContainer = () => {
 
     e.preventDefault();
 
-    let userChoices = {
-      "character": characterChoice,
-      "genre": genreChoice,
-      "style": styleChoice,
-      "messageHistory": [],
-      "imageHistory": []
-    }
-
-    let GPTPromptHistory = [{
+    const GPTPrompt = {
       role: "user",
       content: promptRef.current.value
-    }]
-
-    let storyPages = {
-      "textHistory": [],
-      "imageHistory": []
     }
 
-    let sysInfo = {
-      "currentPage": -1,
-      "firstLoad": true
-    }
+    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
 
-    console.log(userChoices)
-    console.log(GPTPromptHistory)
-
-    await initialiseLocal(GPTPromptHistory, userChoices, storyPages, sysInfo)
+    // await initialiseLocal(GPTPromptHistory, userChoices, storyPages, sysInfo)
 
     dispatch({type: 'BEGIN'})
 
