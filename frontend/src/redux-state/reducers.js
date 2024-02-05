@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import storyBookReducer from '../components/story-book/storyBookSlice'
-import SysInfoReducer from "../components/app/SysInfoSlice";
+import storyBookSysInfoReducer from "../components/app/sysInfoSlice";
 
 const rootReducer = combineReducers({
   storyBook: storyBookReducer,
-  sysInfo: SysInfoReducer,
+  storyBookSysInfo: storyBookSysInfoReducer,
 });
 
 export default rootReducer;

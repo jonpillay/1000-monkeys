@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const sysInfoSlice = createSlice({
+const storyBookSysInfo = createSlice({
   name: 'storyBookSysInfo',
   initialState: {
     storyInProgress: false,
@@ -44,5 +44,5 @@ export const selectArtStyle = (state) => state.storyBookSysInfo.artStyle;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { initialiseStory, reset } = sysInfoSlice.actions;
-export default sysInfoSlice.reducer;
+export const { initialiseStory, reset } = storyBookSysInfo.actions;
+export default storyBookSysInfo.reducer;

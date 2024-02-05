@@ -5,7 +5,7 @@ import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { useSelector } from 'react-redux';
 import { selectRenderChapter } from '../story-book/storyBookSlice';
 
-import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle } from '../app/SysInfoSlice';
+import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle } from '../app/sysInfoSlice';
 
 import CreateStoriesControlPanel from '../create-stories-control-panel/CreateStoriesControlPanel';
 import ChapterTitle from '../chapter-title/ChapterTitle';
@@ -14,6 +14,7 @@ import StoryBook from '../story-book/StoryBook';
 import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../hooks/useCreateStory'
+import CreateSplashPage from '../create-splash-page/CreateSplashPage';
 
 const CreateStoriesPage = (props) => {
   const { loading } = useLoadingContext()
@@ -31,17 +32,20 @@ const CreateStoriesPage = (props) => {
     storyPages,
     error } = useCreateStory()
 
-    const renderChapter = useSelector(selectRenderChapter)
+    const renderChapter = useSelector(selectRenderChapter) || null
 
     const storyInProgress = useSelector(selectStoryInProgress)
-    const character = useSelector(selectCharacter)
-    const genre = useSelector(selectGenre)
-    const artStyle = useSelector(selectArtStyle)
+    // const character = useSelector(selectCharacter) || null
+    // const genre = useSelector(selectGenre) || null
+    // const artStyle = useSelector(selectArtStyle) || null
+
+    console.log(storyInProgress)
 
   return (
     <>
       {!loading ? (
-        <div className="create-page-containter">
+        storyInProgress ? (
+          <div className="create-page-containter">
           <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
           <div className="storybook-header">
               <ChapterTitle chapterNumber={renderChapter + 1}/>
@@ -49,6 +53,9 @@ const CreateStoriesPage = (props) => {
           </div>
           <StoryBook/>
         </div>
+        ) : (
+          <CreateSplashPage />
+        )
       ) : (
         <div className="nav-box">
           <LoadingPage />
