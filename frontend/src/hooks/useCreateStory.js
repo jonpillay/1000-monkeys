@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
+import { selectCharacter, selectGenre, selectStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -34,8 +35,10 @@ export const useCreateStory = () => {
 
   // const [renderChapter, setRenderChapter] = useState(null)
 
-  const inSync = localStorage.getItem('storyInSync')
-  let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
+  // const inSync = localStorage.getItem('storyInSync')
+  // let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
+
+  const inSync = useSelector(selectStoryInSync)
 
   const AIGenCall = () => {
 
@@ -43,9 +46,10 @@ export const useCreateStory = () => {
 
     // setIsLoading(true)
 
-    console.log(`This is story pages from the GPTcall funct`)
+    const userCharacter = useSelector(selectCharacter)
+    const userGenre = useSelector(selectGenre)
 
-    const userChoices = localStorage.getItem("userChoices")
+    const userChoices = JSON.stringify({ character: userCharacter, genre: userGenre })
     let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
     // let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
     let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
