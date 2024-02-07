@@ -45,6 +45,7 @@ const storyBookSysInfo = createSlice({
 export const selectStoryInProgress = (state) => state.storyBookSysInfo.storyInProgress;
 export const selectCharacter = (state) => state.storyBookSysInfo.character;
 export const selectGenre = (state) => state.storyBookSysInfo.genre;
+export const selectGPTPromptHistory = (state) => state.storyBookSysInfo.GPTPromptHistory;
 export const selectArtStyle = (state) => state.storyBookSysInfo.artStyle;
 export const selectStoryInSync = (state) => state.storyBookSysInfo.storyInSync;
 

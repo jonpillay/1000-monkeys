@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
-import { selectCharacter, selectGenre, selectStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectGPTPromptHistory, selectStoryInSync, setStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -38,7 +38,7 @@ export const useCreateStory = () => {
   // const inSync = localStorage.getItem('storyInSync')
   // let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
 
-  const inSync = useSelector(selectStoryInSync)
+  const storyInSync = useSelector(selectStoryInSync)
 
   const AIGenCall = () => {
 
@@ -50,12 +50,7 @@ export const useCreateStory = () => {
     const userGenre = useSelector(selectGenre)
 
     const userChoices = JSON.stringify({ character: userCharacter, genre: userGenre })
-    let GPTPromptHistory = localStorage.getItem("GPTPromptHistory")
-    // let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
-    let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
-
-
-    // console.log(localStoryPages)
+    const GPTPromptHistory = useSelector(selectGPTPromptHistory)
 
     const reqBody = {
       userchoices: userChoices,
@@ -81,27 +76,12 @@ export const useCreateStory = () => {
 
       reduxDispatch(addChapter(data["page_image"], data["page_text"]))
 
-      // setStoryPages(localStoryPages)
-      console.log(storyPages)
-      sysInfo["currentPage"] ++
-      console.log(sysInfo)
-      console.log(storyPages)
       let GPTPrompts = JSON.parse(GPTPromptHistory)
 
       GPTPrompts.push({
         role: "assistant",
         content: data["page_text"]
       })
-
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-
-      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
-
-      // localStorage.setItem("storyPages", JSON.stringify(storyPages))
-
-      console.log(user.credits)
-
-      localStorage.removeItem('storyInSync')
 
       setStoryInSync(false)
 

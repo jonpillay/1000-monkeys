@@ -55,7 +55,7 @@ const Header = () => {
       <div className='title-container'>
         <div className='title'>1000 Monkeys</div>
       </div>
-      {!loading && <Nav />}
+      <Nav />
     </div>
   );
 };

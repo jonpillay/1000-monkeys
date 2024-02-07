@@ -54,7 +54,7 @@ const CreateStoriesPage = (props) => {
           <StoryBook/>
         </div>
         ) : (
-          <CreateSplashPage />
+          <CreateSplashPage AIGenCall={AIGenCall} />
         )
       ) : (
         <div className="nav-box">

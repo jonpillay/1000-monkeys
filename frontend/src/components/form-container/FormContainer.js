@@ -18,7 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
 import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
 
-const FormContainer = () => {
+import { useCreateStory } from "../../hooks/useCreateStory";
+
+const FormContainer = (props) => {
   const {user} = useAuthContext()
   const [characterOptions, setCharacterOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
@@ -38,6 +40,8 @@ const FormContainer = () => {
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
 
+  const {AIGenCall} = useCreateStory()
+
   useEffect(() => {
     setError(null)
     fetch("/populate", {
@@ -51,27 +55,12 @@ const FormContainer = () => {
       });
   }, [])
 
-  // async function initialiseLocal(prompts, choices, pages, sys) {
-  //   return new Promise((resolve) => {
-  //   localStorage.removeItem("GPTPromptHistory")
-  //   localStorage.removeItem("userChoices");
-  //   localStorage.removeItem("storyPages");
-  //   localStorage.removeItem("sysInfo")
-
-  //   localStorage.setItem("GPTPromptHistory", JSON.stringify(prompts))
-  //   localStorage.setItem("userChoices", JSON.stringify(choices));
-  //   localStorage.setItem("storyPages", JSON.stringify(pages));
-  //   localStorage.setItem("sysInfo", JSON.stringify(sys))
-  //   resolve()
-  //   })
-  // }
-
   const handleFormSubmit = async (e) => {
 
-    if (user.credits < 10) {
-      setError("Infufficient Credits. Contact Admin")
-      return null
-    }
+    // if (user.credits < 10) {
+    //   setError("Infufficient Credits. Contact Admin")
+    //   return null
+    // }
 
     e.preventDefault();
 
@@ -81,12 +70,6 @@ const FormContainer = () => {
     }
 
     reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
-
-    // await initialiseLocal(GPTPromptHistory, userChoices, storyPages, sysInfo)
-
-    dispatch({type: 'BEGIN'})
-
-    navigate("/results");
   };
 
   return (
