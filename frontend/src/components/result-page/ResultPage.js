@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
 import TurnPageButton from "../turn-page-button/turnPageButton";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "../image/image";
 import Story from "../story/Story";
 import HomeButton from "../header/Header";

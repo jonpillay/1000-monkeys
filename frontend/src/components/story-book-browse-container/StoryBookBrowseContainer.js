@@ -1,6 +1,6 @@
 import './StoryBookBrowseContainer.css'
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
