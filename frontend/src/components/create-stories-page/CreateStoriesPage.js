@@ -15,6 +15,7 @@ import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../hooks/useCreateStory'
 import CreateSplashPage from '../create-splash-page/CreateSplashPage';
+import { useEffect } from 'react';
 
 const CreateStoriesPage = (props) => {
   const { loading } = useLoadingContext()
@@ -40,6 +41,12 @@ const CreateStoriesPage = (props) => {
     // const artStyle = useSelector(selectArtStyle) || null
 
     console.log(storyInProgress)
+
+    useEffect(() => {
+      if (storyInProgress && renderChapter == null) {
+        AIGenCall()
+      }
+    }, [])
 
   return (
     <>

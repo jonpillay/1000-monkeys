@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
 import SignupForm from "../signup-form/SignupForm"
 import LogInForm from "../login-form/LogInForm";
-import { useNavigate } from "react-router";
-
-import { redirect } from "react-router-dom";
 
 import { StoryContext } from "../../context/StoryContext";
 
@@ -35,12 +32,11 @@ const FormContainer = (props) => {
   const [styleChoice, setStyleChoice] = useState([]);
   const [error, setError] = useState("")
 
-  const navigate = useNavigate()
-
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
 
-  const {AIGenCall} = useCreateStory()
+  const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages } = useCreateStory()
+
 
   useEffect(() => {
     setError(null)
@@ -63,6 +59,8 @@ const FormContainer = (props) => {
     // }
 
     e.preventDefault();
+
+    AIGenCall()
 
     const GPTPrompt = {
       role: "user",
