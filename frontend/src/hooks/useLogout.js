@@ -4,10 +4,14 @@ import { clearReduxPersist } from "../redux-state/store"
 import { useDispatch } from "react-redux"
 import { reset } from "../components/story-book/storyBookSlice"
 import { resetSysInfo } from "../components/create-stories-page/storyBookSysInfoSlice"
+import { useNavigate } from "react-router"
+
 
 const clearLocal = require("./useClearLocal")
 
 export const useLogout = () => {
+
+  const navigate = useNavigate()
 
   const {dispatch} = useContext(AuthContext)
 
@@ -15,6 +19,7 @@ export const useLogout = () => {
 
   const clearLocalLogout = () => {
     localStorage.removeItem('user')
+    localStorage.removeItem('credits')
     localStorage.removeItem('credits')
     // localStorage.removeItem('story')
   }
@@ -25,6 +30,7 @@ export const useLogout = () => {
     reduxDispatch(resetSysInfo())
     clearReduxPersist()
     dispatch({type: 'LOGOUT'}) 
+    navigate('/')
   }
 
   return {logout}

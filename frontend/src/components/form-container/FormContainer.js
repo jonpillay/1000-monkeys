@@ -13,9 +13,9 @@ import { useStoryContext } from "../../hooks/useStoryContext";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
-import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
+// import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
 
-import { useCreateStory } from "../../hooks/useCreateStory";
+import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
 
 const FormContainer = (props) => {
   const {user} = useAuthContext()
@@ -24,6 +24,8 @@ const FormContainer = (props) => {
   const [styleOptions, setStyleOptions] = useState([]);
 
   const promptRef = useRef()
+
+  const { initialiseStoryHook } = useInitialiseStory()
 
   // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
 
@@ -35,7 +37,7 @@ const FormContainer = (props) => {
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
 
-  const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages } = useCreateStory()
+  // const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages } = useCreateStory()
 
 
   useEffect(() => {
@@ -51,28 +53,33 @@ const FormContainer = (props) => {
       });
   }, [])
 
-  const handleFormSubmit = async (e) => {
-
-    // if (user.credits < 10) {
-    //   setError("Infufficient Credits. Contact Admin")
-    //   return null
-    // }
-
-    e.preventDefault();
-
-    AIGenCall()
-
+  const initialiseStoryOnClick = () => {
     const GPTPrompt = {
       role: "user",
       content: promptRef.current.value
     }
+    initialiseStoryHook(characterChoice, genreChoice, styleChoice, GPTPrompt)
+  }
 
-    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
-  };
+  // const handleFormSubmit = (e) => {
+
+  //   // if (user.credits < 10) {
+  //   //   setError("Infufficient Credits. Contact Admin")
+  //   //   return null
+  //   // }
+
+  //   e.preventDefault();
+
+
+
+  //   // initialiseStoryHook(characterChoice, genreChoice, styleChoice, GPTPrompt)
+
+  //   reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
+
+  //   AIGenCall()
+  // };
 
   return (
-    <>
-      {user && (
       <div className="formcontainer-container">
         <div>
           <h1 className="formcontainer-title">
@@ -95,11 +102,10 @@ const FormContainer = (props) => {
             selectionField="Style"
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
-          <TextInput
-            label="Prompt"
-            ref={promptRef}
-          />
-          <button onClick={handleFormSubmit} type="submit" className="submit-button">
+          <div>
+            <input ref={promptRef} placeholder="Your first chapter..."/>
+          </div>
+          <button onClick={() => initialiseStoryOnClick()} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
           { error && (
@@ -109,13 +115,6 @@ const FormContainer = (props) => {
           )}
         </div>
       </div>
-      )}
-      {!user && (
-        <>
-        <LogInForm/>
-        </>
-      )}
-    </>
   );
 };
 

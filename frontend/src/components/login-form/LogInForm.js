@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useLogin } from "../../hooks/useLogIn";
 import './LogInForm.css'
+import { redirect } from "react-router";
 
 const LogInForm = () => {
   const email = useRef()
@@ -11,6 +12,8 @@ const LogInForm = () => {
     e.preventDefault()
 
     await login(email.current.value, password.current.value)
+
+    redirect('/create')
 
   }
 

@@ -42,11 +42,11 @@ const CreateStoriesPage = (props) => {
 
     console.log(storyInProgress)
 
-    useEffect(() => {
-      if (storyInProgress && renderChapter == null) {
-        AIGenCall()
-      }
-    }, [])
+    // useEffect(() => {
+    //   if (storyInProgress && renderChapter == null) {
+    //     AIGenCall()
+    //   }
+    // }, [])
 
   return (
     <>
@@ -61,7 +61,7 @@ const CreateStoriesPage = (props) => {
           <StoryBook/>
         </div>
         ) : (
-          <CreateSplashPage AIGenCall={AIGenCall} />
+          <CreateSplashPage />
         )
       ) : (
         <div className="nav-box">

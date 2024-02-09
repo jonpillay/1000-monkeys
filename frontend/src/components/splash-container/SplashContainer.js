@@ -14,11 +14,7 @@ const SplashContainer = (props) => {
     <div className="splash-container">
       <div className="splash-grid">
         <WelcomePanel/>
-        { user? 
-        <FormContainer/> : 
         <LogInForm/>
-        }
-
       </div>
     </div>
     </>

@@ -3,6 +3,7 @@ import { useAuthContext } from "./useAuthContext";
 import { useStoryContext } from "./useStoryContext";
 import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
+import { useNavigate } from "react-router";
 
 
 export const useLogin = () => {
@@ -11,6 +12,8 @@ export const useLogin = () => {
   const { dispatch } = useContext(AuthContext)
   const { creditDispatch } = useContext(CreditsContext)
   // const { dispatch } = useStoryContext()
+
+  const navigate = useNavigate()
 
   console.log(dispatch)
 
@@ -41,6 +44,8 @@ export const useLogin = () => {
       dispatch({type: 'LOGIN', payload: JSONres})
 
       setIsLoading(false)
+
+      navigate('/create')
     }
   }
 
