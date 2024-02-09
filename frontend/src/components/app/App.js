@@ -17,6 +17,7 @@ import SplashContainer from '../splash-container/SplashContainer'
 import AdminPanel from '../admin-panel/AdminPanel';
 import ActivationPage from '../activation-page.js/ActivationPage';
 import BrowsePage from '../browse-page/BrowsePage';
+import CreateSplashPage from '../create-splash-page/CreateSplashPage';
 import CreateStoriesPage from '../create-stories-page/CreateStoriesPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -82,6 +83,7 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
+            <Route exact path="/start-your-story" element={ <CreateSplashPage/> } />
             <Route exact path="/create" element={ <CreateStoriesPage/> } />
             <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />

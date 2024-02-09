@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
+import { useNavigate } from "react-router";
 import Form from "../forms/Form";
 import TextInput from "../text-input-form/TextInput";
 import "./form-container.css";
@@ -15,10 +16,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
 // import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
 
+
+import { useCreateStory } from "../../hooks/useCreateStory";
 import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
 
 const FormContainer = (props) => {
   const {user} = useAuthContext()
+  const navigate = useNavigate()
+
   const [characterOptions, setCharacterOptions] = useState([]);
   const [genreOptions, setGenreOptions] = useState([]);
   const [styleOptions, setStyleOptions] = useState([]);
@@ -26,6 +31,7 @@ const FormContainer = (props) => {
   const promptRef = useRef()
 
   const { initialiseStoryHook } = useInitialiseStory()
+  const { AIGenCall } = useCreateStory()
 
   // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
 
@@ -53,13 +59,11 @@ const FormContainer = (props) => {
       });
   }, [])
 
-  const initialiseStoryOnClick = () => {
-    const GPTPrompt = {
-      role: "user",
-      content: promptRef.current.value
-    }
-    initialiseStoryHook(characterChoice, genreChoice, styleChoice, GPTPrompt)
-  }
+  // const initialiseStoryOnClick = () => {
+
+  //   initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef)
+
+  // }
 
   // const handleFormSubmit = (e) => {
 
@@ -105,7 +109,7 @@ const FormContainer = (props) => {
           <div>
             <input ref={promptRef} placeholder="Your first chapter..."/>
           </div>
-          <button onClick={() => initialiseStoryOnClick()} type="submit" className="submit-button">
+          <button onClick={initialiseStoryHook} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
           { error && (

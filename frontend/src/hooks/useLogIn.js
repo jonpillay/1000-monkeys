@@ -40,12 +40,13 @@ export const useLogin = () => {
       creditDispatch({type: 'UPDATE', payload: JSONres.credits})
       localStorage.setItem('credits', JSONres.credits)
       localStorage.setItem('user', JSON.stringify(JSONres))
+      localStorage.removeItem('isLoading')
 
       dispatch({type: 'LOGIN', payload: JSONres})
 
       setIsLoading(false)
 
-      navigate('/create')
+      navigate('/start-your-story')
     }
   }
 
