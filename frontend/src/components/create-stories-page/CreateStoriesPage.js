@@ -55,6 +55,7 @@ const CreateStoriesPage = (props) => {
   return (
     <>
       {!loading ? (
+        storyInProgress ? (
           <div className="create-page-containter">
           <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
           <div className="storybook-header">
@@ -63,6 +64,9 @@ const CreateStoriesPage = (props) => {
           </div>
           <StoryBook/>
         </div>
+        ) : (
+          <CreateSplashPage AIGenCall={AIGenCall}/>
+        )
       ) : (
         <div className="nav-box">
           <LoadingPage />

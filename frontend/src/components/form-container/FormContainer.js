@@ -14,7 +14,7 @@ import { useStoryContext } from "../../hooks/useStoryContext";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
-// import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
+import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
 
 
 import { useCreateStory } from "../../hooks/useCreateStory";
@@ -31,7 +31,6 @@ const FormContainer = (props) => {
   const promptRef = useRef()
 
   const { initialiseStoryHook } = useInitialiseStory()
-  const { AIGenCall } = useCreateStory()
 
   // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
 
@@ -42,6 +41,8 @@ const FormContainer = (props) => {
 
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
+
+  const { AIGenCall } = props
 
   // const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages } = useCreateStory()
 
@@ -74,8 +75,14 @@ const FormContainer = (props) => {
       return null
     }
 
-    initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.value)
+    const GPTPrompt = {
+      role: "user",
+      content: promptRef.current.value,
+    }
 
+    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
+
+    AIGenCall()
   };
 
   return (

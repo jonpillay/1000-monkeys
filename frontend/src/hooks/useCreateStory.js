@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
-import { selectCharacter, selectGenre, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInSync, selectArtStyle } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -35,6 +35,7 @@ export const useCreateStory = () => {
 
   const userCharacter = useSelector(selectCharacter)
   const userGenre = useSelector(selectGenre)
+  const userStyle = useSelector(selectArtStyle)
   const GPTPromptHistory = useSelector(selectGPTPromptHistory)
 
   // const [renderChapter, setRenderChapter] = useState(null)
@@ -44,56 +45,68 @@ export const useCreateStory = () => {
 
   const storyInSync = useSelector(selectStoryInSync)
 
-  const AIGenCall = () => {
+  const AIGenCall = async () => {
 
     loadingDispatch({type: 'LOADING'})
 
     // setIsLoading(true)
-
-    const userChoicesJSON = { characterChoice: userCharacter, genreChoice: userGenre } 
-
-    // const userChoicesStringy = JSON.stringify(userChoicesJSON)  
-
-    const reqBody = {
-      userchoices: userChoicesJSON,
-      GPTPromptHistory: GPTPromptHistory,
-      credits_needed: 3
-    }
-
-    fetch("/story", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`
-      },
-      body: JSON.stringify(reqBody),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data)
-      console.log(data.credits_update)
-      creditDispatch({type: 'UPDATE', payload: data.credits_update})
-      // localStoryPages["textHistory"].push(data["page_text"])
-      // localStoryPages["imageHistory"].push(data["page_image"])
-
-      reduxDispatch(addChapter(data["page_image"], data["page_text"]))
-
-      const GPTPrompt = {
-        role: "assistant",
-        content: data["page_text"]
+    try {
+      const userChoicesJSON = { 
+        character: userCharacter,
+        genre: userGenre,
+        style: userStyle,
+      } 
+      console.log("This is the userChoices" + userChoicesJSON)
+      console.log("This is the userChoices type" + typeof userChoicesJSON)
+  
+  
+      // const userChoicesStringy = JSON.stringify(userChoicesJSON)  
+  
+      const reqBody = {
+        userchoices: userChoicesJSON,
+        GPTPromptHistory: GPTPromptHistory,
+        credits_needed: 3
       }
-
-      reduxDispatch(pushGPTPrompt(GPTPrompt))      
-
-      setStoryInSync(false)
-
-      reduxDispatch(turnToLastPage())
-
-      loadingDispatch({type: 'LOADED'})
-
-      // setIsLoading(false)
-
-      });
+  
+      console.log(reqBody)
+  
+      fetch("/story", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(reqBody),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        console.log(data.credits_update)
+        creditDispatch({type: 'UPDATE', payload: data.credits_update})
+        // localStoryPages["textHistory"].push(data["page_text"])
+        // localStoryPages["imageHistory"].push(data["page_image"])
+  
+        reduxDispatch(addChapter(data["page_image"], data["page_text"]))
+  
+        const GPTPrompt = {
+          role: "assistant",
+          content: data["page_text"]
+        }
+  
+        reduxDispatch(pushGPTPrompt(GPTPrompt))      
+  
+        setStoryInSync(false)
+  
+        reduxDispatch(turnToLastPage())
+  
+        loadingDispatch({type: 'LOADED'})
+  
+        // setIsLoading(false)
+  
+        });
+    } catch (error) {
+      console.error(error)
+    } 
   };
 
   const userPromtNextChapter = (prompt) => {

@@ -18,16 +18,26 @@ const genCreditJWT = (token_id, token_amount) => {
 const StoryController = {
   CreateChapter: async (req, res) => {
     try {
+      console.log("made it here")
       const creditJWT = genCreditJWT(req.user._id, -3)
       const credits_update = await creditController.AdjustCredits(req.user._id, -3, creditJWT)
+      console.log("made it here cred check")
+      console.log(req.body)
+      console.log(typeof req.body)
 
-      let story_prompts = JSON.parse(req.body["GPTPromptHistory"])
+      const request = req.body
 
-      let user_choices = JSON.parse(req.body["userchoices"])
+      const story_prompts = request["GPTPromptHistory"]
+      console.log("made it here prompt parse")
+      const user_choices = request["userchoices"]
+
+      console.log("made it here2")
 
       const GPT_prompts = GPTPromptGen(user_choices, story_prompts) // Prompt gen here needs the prompt history in proper format as well as the user choices
       
       const story_text = await generateStory(GPT_prompts)
+
+      console.log("made it here 3")
 
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
 

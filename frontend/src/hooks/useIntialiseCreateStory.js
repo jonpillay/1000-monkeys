@@ -9,21 +9,22 @@ import { useNavigate } from "react-router";
 
 
 export const useInitialiseStory = () => {
-  const navigate = useNavigate()
-  const { AIGenCall } = useCreateStory()
   const reduxDispatch = useDispatch()
 
-  const initialiseStoryHook = (characterChoice, genreChoice, styleChoice, prompt) => {
+  const initialiseStoryHook = (characterChoice, genreChoice, styleChoice) => {
+
+    console.log(characterChoice)
+    console.log(genreChoice)
+
+
     const GPTPrompt = {
       role: "user",
-      content: prompt
+      content: prompt,
     }
 
-    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
+    const GPTPromptStringy = JSON.stringify(GPTPrompt)
 
-    AIGenCall()
-
-    navigate('/create')
+    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPromptStringy))
   }
     
 

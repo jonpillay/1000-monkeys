@@ -5,12 +5,14 @@ import { useNavigate } from "react-router";
 
 const CreateSplashPage = (props) => {
 
+  const { AIGenCall } = props
+
   return (
     <>
     <div className="splash-container">
       <div className="splash-grid">
         <CreateSplashIntro/>
-        <FormContainer/>
+        <FormContainer AIGenCall={AIGenCall}/>
       </div>
     </div>
     </>
