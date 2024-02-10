@@ -22,6 +22,7 @@ export const useInitialiseStory = () => {
     reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
 
     AIGenCall()
+
     navigate('/create')
   }
     

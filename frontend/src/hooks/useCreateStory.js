@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
-import { selectCharacter, selectGenre, selectGPTPromptHistory, selectStoryInSync, setStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -33,6 +33,10 @@ export const useCreateStory = () => {
 
   const renderChapter = useSelector(selectRenderChapter)
 
+  const userCharacter = useSelector(selectCharacter)
+  const userGenre = useSelector(selectGenre)
+  const GPTPromptHistory = useSelector(selectGPTPromptHistory)
+
   // const [renderChapter, setRenderChapter] = useState(null)
 
   // const inSync = localStorage.getItem('storyInSync')
@@ -46,14 +50,12 @@ export const useCreateStory = () => {
 
     // setIsLoading(true)
 
-    const userCharacter = useSelector(selectCharacter)
-    const userGenre = useSelector(selectGenre)
+    const userChoicesJSON = { characterChoice: userCharacter, genreChoice: userGenre } 
 
-    const userChoices = JSON.stringify({ character: userCharacter, genre: userGenre })
-    const GPTPromptHistory = useSelector(selectGPTPromptHistory)
+    // const userChoicesStringy = JSON.stringify(userChoicesJSON)  
 
     const reqBody = {
-      userchoices: userChoices,
+      userchoices: userChoicesJSON,
       GPTPromptHistory: GPTPromptHistory,
       credits_needed: 3
     }
@@ -76,18 +78,16 @@ export const useCreateStory = () => {
 
       reduxDispatch(addChapter(data["page_image"], data["page_text"]))
 
-      let GPTPrompts = JSON.parse(GPTPromptHistory)
-
-      GPTPrompts.push({
+      const GPTPrompt = {
         role: "assistant",
         content: data["page_text"]
-      })
+      }
+
+      reduxDispatch(pushGPTPrompt(GPTPrompt))      
 
       setStoryInSync(false)
 
       reduxDispatch(turnToLastPage())
-      
-      console.log(GPTPrompts)
 
       loadingDispatch({type: 'LOADED'})
 

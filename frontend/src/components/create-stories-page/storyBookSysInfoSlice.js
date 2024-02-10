@@ -20,15 +20,28 @@ const storyBookSysInfo = createSlice({
         state.artStyle = action.payload.artStyle
         state.GPTPromptHistory.push(action.payload.GPTPrompt)
       },
-      prepare(character, genre, artStyle) {
+      prepare(character, genre, artStyle, GPTPrompt) {
         return {
           payload: {
             character,
             genre,
-            artStyle
+            artStyle,
+            GPTPrompt
           }
         }
       },
+    },
+    pushGPTPrompt: {
+      reducer(state, action) {
+        state.GPTPromptHistory.push(action.payload.GPTPrompt)
+      },
+      prepare(GPTPrompt) {
+        return {
+          payload: {
+            GPTPrompt
+          }
+        }
+      }
     },
     setStoryInSync: (state, action) => {
       state.storyInSync = action.payload
@@ -53,5 +66,5 @@ export const selectStoryInSync = (state) => state.storyBookSysInfo.storyInSync;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { initialiseStory, setStoryInSync, resetSysInfo } = storyBookSysInfo.actions;
+export const { initialiseStory, pushGPTPrompt, setStoryInSync, resetSysInfo } = storyBookSysInfo.actions;
 export default storyBookSysInfo.reducer;

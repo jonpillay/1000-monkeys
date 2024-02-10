@@ -42,9 +42,13 @@ const CreateStoriesPage = (props) => {
 
     console.log(storyInProgress)
 
+    // const genFirstChapter = () => {
+    //   AIGenCall()
+    // }
+
     // useEffect(() => {
     //   if (storyInProgress && renderChapter == null) {
-    //     AIGenCall()
+    //     genFirstChapter()
     //   }
     // }, [])
 

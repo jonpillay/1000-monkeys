@@ -65,23 +65,18 @@ const FormContainer = (props) => {
 
   // }
 
-  // const handleFormSubmit = (e) => {
+  const initialiseStoryOnClick = (e) => {
 
-  //   // if (user.credits < 10) {
-  //   //   setError("Infufficient Credits. Contact Admin")
-  //   //   return null
-  //   // }
+    e.preventDefault();
 
-  //   e.preventDefault();
+    if (user.credits < 10) {
+      setError("Infufficient Credits. Contact Admin")
+      return null
+    }
 
+    initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.value)
 
-
-  //   // initialiseStoryHook(characterChoice, genreChoice, styleChoice, GPTPrompt)
-
-  //   reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
-
-  //   AIGenCall()
-  // };
+  };
 
   return (
       <div className="formcontainer-container">
@@ -109,7 +104,7 @@ const FormContainer = (props) => {
           <div>
             <input ref={promptRef} placeholder="Your first chapter..."/>
           </div>
-          <button onClick={initialiseStoryHook} type="submit" className="submit-button">
+          <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
           { error && (
