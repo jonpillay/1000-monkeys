@@ -15,16 +15,16 @@ export const useInitialiseStory = () => {
 
     console.log(characterChoice)
     console.log(genreChoice)
-
+    console.log(styleChoice)
 
     const GPTPrompt = {
       role: "user",
       content: prompt,
     }
 
-    const GPTPromptStringy = JSON.stringify(GPTPrompt)
+    // const GPTPromptStringy = JSON.stringify(GPTPrompt)
 
-    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPromptStringy))
+    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
   }
     
 

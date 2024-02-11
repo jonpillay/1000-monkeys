@@ -10,7 +10,6 @@ const storyBookSlice = createSlice({
   reducers: {
     addChapter: {
       reducer(state, action) {
-        console.log("made it here in the slice")
         state.chapterImages.push(action.payload.chapterImage)
         state.chapterTexts.push(action.payload.chapterText)
       },

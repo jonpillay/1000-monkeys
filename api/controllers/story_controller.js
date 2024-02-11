@@ -26,7 +26,8 @@ const StoryController = {
       console.log(typeof req.body)
 
       const request = req.body
-
+      console.log("made it here prompt parse")
+      console.log(request)
       const story_prompts = request["GPTPromptHistory"]
       console.log("made it here prompt parse")
       const user_choices = request["userchoices"]

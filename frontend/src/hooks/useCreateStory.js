@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
-import { selectCharacter, selectGenre, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInSync, selectArtStyle } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
