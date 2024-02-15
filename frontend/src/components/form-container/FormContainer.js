@@ -18,7 +18,7 @@ import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
 
 
 import { useCreateStory } from "../../hooks/useCreateStory";
-import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
+// import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
 
 const FormContainer = (props) => {
   const {user} = useAuthContext()
@@ -30,7 +30,7 @@ const FormContainer = (props) => {
 
   const promptRef = useRef()
 
-  const { initialiseStoryHook } = useInitialiseStory()
+  // const { initialiseStoryHook } = useInitialiseStory()
 
   // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
 
@@ -42,7 +42,7 @@ const FormContainer = (props) => {
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
 
-  const { AIGenCall } = props
+  const { initialiseStoryHook, AIGenCall } = useCreateStory()
 
   // const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages } = useCreateStory()
 
@@ -66,21 +66,24 @@ const FormContainer = (props) => {
 
   // }
 
-  const initialiseStoryOnClick = (e) => {
-
-    e.preventDefault();
-
+  const initialiseStory = async () => {
     if (user.credits < 10) {
       setError("Infufficient Credits. Contact Admin")
       return null
+    } else {
+      await initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
     }
 
-    const GPTPrompt = {
-      role: "user",
-      content: promptRef.current.value,
-    }
+    
+  }
 
-    reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
+  const initialiseStoryOnClick = async (e) => {
+
+    e.preventDefault();
+
+    await initialiseStory()
+
+    // reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
 
     AIGenCall()
   };

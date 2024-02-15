@@ -14,7 +14,6 @@ const storyBookSysInfoSlice = createSlice({
     initialiseStory: {
       reducer(state, action) {
         console.log("made it here in the sysInfo slice")
-        state.storyInProgress = true
         state.character = action.payload.character
         state.genre = action.payload.genre
         state.artStyle = action.payload.artStyle
@@ -43,6 +42,9 @@ const storyBookSysInfoSlice = createSlice({
         }
       }
     },
+    setStoryInProgress: (state, action) => {
+       state.storyInProgress = action.payload
+    },
     setStoryInSync: (state, action) => {
       state.storyInSync = action.payload
     },
@@ -66,5 +68,5 @@ export const selectStoryInSync = (state) => state.storyBookSysInfo.storyInSync;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { initialiseStory, pushGPTPrompt, setStoryInSync, resetSysInfo } = storyBookSysInfoSlice.actions;
+export const { initialiseStory, pushGPTPrompt, setStoryInSync, setStoryInProgress, resetSysInfo } = storyBookSysInfoSlice.actions;
 export default storyBookSysInfoSlice.reducer;

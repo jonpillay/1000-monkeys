@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInSync } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInProgress, setStoryInSync, initialiseStory } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -38,6 +38,9 @@ export const useCreateStory = () => {
   const userStyle = useSelector(selectArtStyle)
   const GPTPromptHistory = useSelector(selectGPTPromptHistory)
 
+  console.log("This is what the AIGenFunction gets as a character from redux " + userCharacter)
+
+
   // const [renderChapter, setRenderChapter] = useState(null)
 
   // const inSync = localStorage.getItem('storyInSync')
@@ -49,26 +52,18 @@ export const useCreateStory = () => {
 
     loadingDispatch({type: 'LOADING'})
 
-    // setIsLoading(true)
     try {
       const userChoicesJSON = { 
         character: userCharacter,
         genre: userGenre,
         style: userStyle,
-      } 
-      console.log("This is the userChoices" + userChoicesJSON)
-      console.log("This is the userChoices type" + typeof userChoicesJSON)
-  
-  
-      // const userChoicesStringy = JSON.stringify(userChoicesJSON)  
+      }
   
       const reqBody = {
         userchoices: userChoicesJSON,
         GPTPromptHistory: GPTPromptHistory,
         credits_needed: 3
       }
-  
-      console.log(reqBody)
   
       fetch("/story", {
         method: "POST",
@@ -80,12 +75,7 @@ export const useCreateStory = () => {
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        console.log(data.credits_update)
         creditDispatch({type: 'UPDATE', payload: data.credits_update})
-        // localStoryPages["textHistory"].push(data["page_text"])
-        // localStoryPages["imageHistory"].push(data["page_image"])
-  
         reduxDispatch(addChapter(data["page_image"], data["page_text"]))
   
         const GPTPrompt = {
@@ -93,15 +83,11 @@ export const useCreateStory = () => {
           content: data["page_text"]
         }
   
-        reduxDispatch(pushGPTPrompt(GPTPrompt))      
-  
+        reduxDispatch(pushGPTPrompt(GPTPrompt))
+        reduxDispatch(setStoryInProgress(true))
         setStoryInSync(false)
-  
         reduxDispatch(turnToLastPage())
-  
         loadingDispatch({type: 'LOADED'})
-  
-        // setIsLoading(false)
   
         });
     } catch (error) {
@@ -109,18 +95,25 @@ export const useCreateStory = () => {
     } 
   };
 
+  const initialiseStoryHook = async (characterChoice, genreChoice, styleChoice, prompt) => {
+
+    const GPTPrompt = {
+      role: "user",
+      content: prompt,
+    }
+
+    await reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
+  };
+
   const userPromtNextChapter = (prompt) => {
     if (user) {
-      let GPTPrompts = JSON.parse(localStorage.getItem("GPTPromptHistory"))
   
-      console.log(prompt)
-  
-      GPTPrompts.push({
+      GPTPromptHistory.push({
         role: "user",
         content: prompt
       })
   
-      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPrompts))
+      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
       AIGenCall()
 
     } else {
@@ -212,5 +205,5 @@ export const useCreateStory = () => {
     }
   }
 
-  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, setStoryPages, error }
+  return { initialiseStoryHook, AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, setStoryPages, error }
 }

@@ -33,6 +33,10 @@ const CreateStoriesPage = (props) => {
     storyPages,
     error } = useCreateStory()
 
+    const character = useSelector(selectCharacter)
+
+    console.log(character)
+
     const renderChapter = useSelector(selectRenderChapter) || null
 
     const storyInProgress = useSelector(selectStoryInProgress)
