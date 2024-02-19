@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 export const useInitialiseStory = () => {
   const reduxDispatch = useDispatch()
 
-  const initialiseStoryHook = (characterChoice, genreChoice, styleChoice) => {
+  const initialiseStoryHook = (characterChoice, genreChoice, styleChoice, prompt) => {
 
     console.log(characterChoice)
     console.log(genreChoice)

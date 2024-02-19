@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const storyBookSysInfoSlice = createSlice({
   name: 'storyBookSysInfo',
   initialState: {
+    firstChapter: false,
     storyInProgress: false,
     character: null,
     genre: null,
@@ -14,6 +15,7 @@ const storyBookSysInfoSlice = createSlice({
     initialiseStory: {
       reducer(state, action) {
         console.log("made it here in the sysInfo slice")
+        state.firstChapter = true
         state.character = action.payload.character
         state.genre = action.payload.genre
         state.artStyle = action.payload.artStyle
@@ -59,6 +61,7 @@ const storyBookSysInfoSlice = createSlice({
 });
 
 export const selectStoryInProgress = (state) => state.storyBookSysInfo.storyInProgress;
+export const selectFirstChapter = (state) => state.storyBookSysInfo.firstChapter;
 export const selectCharacter = (state) => state.storyBookSysInfo.character;
 export const selectGenre = (state) => state.storyBookSysInfo.genre;
 export const selectGPTPromptHistory = (state) => state.storyBookSysInfo.GPTPromptHistory;

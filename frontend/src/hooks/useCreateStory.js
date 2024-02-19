@@ -38,6 +38,8 @@ export const useCreateStory = () => {
   const userStyle = useSelector(selectArtStyle)
   const GPTPromptHistory = useSelector(selectGPTPromptHistory)
 
+  console.log("This is the userGenre in the useCreateStory hook " + userGenre)
+
   console.log("This is what the AIGenFunction gets as a character from redux " + userCharacter)
 
 
@@ -95,15 +97,15 @@ export const useCreateStory = () => {
     } 
   };
 
-  const initialiseStoryHook = async (characterChoice, genreChoice, styleChoice, prompt) => {
+  // const initialiseStoryHook = (characterChoice, genreChoice, styleChoice, prompt) => {
 
-    const GPTPrompt = {
-      role: "user",
-      content: prompt,
-    }
+  //   const GPTPrompt = {
+  //     role: "user",
+  //     content: prompt,
+  //   }
 
-    await reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
-  };
+  //   reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
+  // };
 
   const userPromtNextChapter = (prompt) => {
     if (user) {
@@ -205,5 +207,5 @@ export const useCreateStory = () => {
     }
   }
 
-  return { initialiseStoryHook, AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, setStoryPages, error }
+  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, setStoryPages, error }
 }

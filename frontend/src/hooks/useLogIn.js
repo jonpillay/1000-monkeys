@@ -46,7 +46,7 @@ export const useLogin = () => {
 
       setIsLoading(false)
 
-      navigate('/create')
+      navigate('/start-your-story')
     }
   }
 

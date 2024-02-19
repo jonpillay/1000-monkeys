@@ -12,7 +12,7 @@ const CreateSplashPage = (props) => {
     <div className="splash-container">
       <div className="splash-grid">
         <CreateSplashIntro/>
-        <FormContainer AIGenCall={AIGenCall}/>
+        <FormContainer/>
       </div>
     </div>
     </>

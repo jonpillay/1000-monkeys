@@ -5,7 +5,7 @@ import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { useSelector } from 'react-redux';
 import { selectRenderChapter } from '../story-book/storyBookSlice';
 
-import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle } from './storyBookSysInfoSlice';
+import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter } from './storyBookSysInfoSlice';
 
 import CreateStoriesControlPanel from '../create-stories-control-panel/CreateStoriesControlPanel';
 import ChapterTitle from '../chapter-title/ChapterTitle';
@@ -37,6 +37,8 @@ const CreateStoriesPage = (props) => {
 
     console.log(character)
 
+    const firstChapter = useSelector(selectFirstChapter)
+
     const renderChapter = useSelector(selectRenderChapter) || null
 
     const storyInProgress = useSelector(selectStoryInProgress)
@@ -50,16 +52,15 @@ const CreateStoriesPage = (props) => {
     //   AIGenCall()
     // }
 
-    // useEffect(() => {
-    //   if (storyInProgress && renderChapter == null) {
-    //     genFirstChapter()
-    //   }
-    // }, [])
+    useEffect(() => {
+      if (firstChapter == true) {
+        AIGenCall()
+      }
+    }, [])
 
   return (
     <>
       {!loading ? (
-        storyInProgress ? (
           <div className="create-page-containter">
           <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
           <div className="storybook-header">
@@ -68,9 +69,6 @@ const CreateStoriesPage = (props) => {
           </div>
           <StoryBook/>
         </div>
-        ) : (
-          <CreateSplashPage AIGenCall={AIGenCall}/>
-        )
       ) : (
         <div className="nav-box">
           <LoadingPage />

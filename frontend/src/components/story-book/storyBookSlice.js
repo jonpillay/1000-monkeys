@@ -29,7 +29,7 @@ const storyBookSlice = createSlice({
       state.renderChapter -= 1
     },
     turnToPage: (state, action) => {
-      state.renderChapter = action
+      state.renderChapter = action.payload
     },
     turnToLastPage: (state) => {
       state.renderChapter = state.chapterImages.length-1

@@ -10,7 +10,7 @@ async function generateStory(prompts) {
   console.log(prompts)
   try {
     const res = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo-0613",
+      model: "gpt-3.5-turbo",
       messages: prompts,
     });
     return res.data.choices[0].message.content;
