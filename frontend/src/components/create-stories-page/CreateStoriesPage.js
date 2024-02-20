@@ -17,9 +17,11 @@ import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../hooks/useCreateStory'
 import CreateSplashPage from '../create-splash-page/CreateSplashPage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const CreateStoriesPage = (props) => {
+  const {user} = useAuthContext
   const { loading } = useLoadingContext()
 
   const reduxDispatch = useDispatch()
@@ -52,17 +54,17 @@ const CreateStoriesPage = (props) => {
 
     console.log(storyInProgress)
 
-    // const genFirstChapter = () => {
-    //   AIGenCall()
-    // }
+    const genFirstChapter = async () => {
+      console.log("gen first chapter called")
+      await AIGenCall()
+      reduxDispatch(setStoryInProgress(true))
+    }
 
     useEffect(() => {
-      if (firstChapter == true && storyInProgress == false) {
-        reduxDispatch(setFirstChapter(false))
-        AIGenCall()
-        console.log("useEffect on CreatePage fired")
+      if (firstChapter) {
+        genFirstChapter()
       }
-    }, [])
+    })
 
   return (
     <>

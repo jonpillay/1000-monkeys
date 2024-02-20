@@ -71,8 +71,6 @@ const FormContainer = (props) => {
     } else {
       initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
     }
-
-    
   }
 
   const initialiseStoryOnClick = async (e) => {
