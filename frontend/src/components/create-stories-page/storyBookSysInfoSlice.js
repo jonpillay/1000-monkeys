@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const storyBookSysInfoSlice = createSlice({
   name: 'storyBookSysInfo',
   initialState: {
+    userToken: null,
     firstChapter: false,
     storyInProgress: false,
     character: null,
@@ -12,6 +13,18 @@ const storyBookSysInfoSlice = createSlice({
     storyInSync: null
   },
   reducers: {
+    setUserToken: {
+      reducer(state, action) {
+        state.userToken = action.payload.userToken
+      },
+      prepare(userToken) {
+        return {
+          payload: {
+            userToken
+          }
+        }
+      }
+    },
     initialiseStory: {
       reducer(state, action) {
         console.log("made it here in the sysInfo slice")
@@ -44,14 +57,37 @@ const storyBookSysInfoSlice = createSlice({
         }
       }
     },
-    setStoryInProgress: (state, action) => {
-       state.storyInProgress = action.payload
+    setFirstChapter: {
+      reducer(state, action) {
+        state.firstChapter = action.payload.firstChapterBool
+      },
+      prepare(firstChapterBool) {
+        return {
+          payload: {
+            firstChapterBool
+          }
+        }
+      }
+    },
+    setStoryInProgress: {
+      reducer(state, action) {
+        state.storyInProgress = action.payload.inProgressBool
+    },
+      prepare(inProgressBool) {
+        return {
+          payload: {
+            inProgressBool
+          }
+        }
+      }
     },
     setStoryInSync: (state, action) => {
       state.storyInSync = action.payload
     },
     resetSysInfo: (state) => {
+      state.userToken = null
       state.storyInProgress = false
+      state.firstChapter = true
       state.character = null
       state.genre = null
       state.artStyle = null
@@ -60,6 +96,7 @@ const storyBookSysInfoSlice = createSlice({
   },
 });
 
+export const selectUserToken = (state) => state.storyBookSysInfo.userToken;
 export const selectStoryInProgress = (state) => state.storyBookSysInfo.storyInProgress;
 export const selectFirstChapter = (state) => state.storyBookSysInfo.firstChapter;
 export const selectCharacter = (state) => state.storyBookSysInfo.character;
@@ -71,5 +108,5 @@ export const selectStoryInSync = (state) => state.storyBookSysInfo.storyInSync;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { initialiseStory, pushGPTPrompt, setStoryInSync, setStoryInProgress, resetSysInfo } = storyBookSysInfoSlice.actions;
+export const { setUserToken, initialiseStory, pushGPTPrompt, setStoryInSync, setFirstChapter, setStoryInProgress, resetSysInfo } = storyBookSysInfoSlice.actions;
 export default storyBookSysInfoSlice.reducer;

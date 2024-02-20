@@ -2,10 +2,12 @@ import './CreateStoriesPage.css'
 
 import { useLoadingContext } from "../../hooks/useLoadingContext";
 
+import { UseDispatch, useDispatch } from 'react-redux';
+
 import { useSelector } from 'react-redux';
 import { selectRenderChapter } from '../story-book/storyBookSlice';
 
-import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter } from './storyBookSysInfoSlice';
+import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, setStoryInProgress, setFirstChapter } from './storyBookSysInfoSlice';
 
 import CreateStoriesControlPanel from '../create-stories-control-panel/CreateStoriesControlPanel';
 import ChapterTitle from '../chapter-title/ChapterTitle';
@@ -19,6 +21,8 @@ import { useEffect } from 'react';
 
 const CreateStoriesPage = (props) => {
   const { loading } = useLoadingContext()
+
+  const reduxDispatch = useDispatch()
 
   const { 
     AIGenCall,
@@ -53,8 +57,10 @@ const CreateStoriesPage = (props) => {
     // }
 
     useEffect(() => {
-      if (firstChapter == true) {
+      if (firstChapter == true && storyInProgress == false) {
+        reduxDispatch(setFirstChapter(false))
         AIGenCall()
+        console.log("useEffect on CreatePage fired")
       }
     }, [])
 

@@ -10,7 +10,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 import { clearReduxPersist } from "../../redux-state/store";
 import { useDispatch } from "react-redux";
-import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset } from '../story-book/storyBookSlice';
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../story-book/storyBookSlice';
 
 // import { clearLocal } from "../../hooks/useClearLocal";
 
@@ -34,7 +34,7 @@ const NavBar = () => {
   const { story } = useStoryContext()
 
   const clearRedux = () => {
-    reduxDispatch(reset())
+    reduxDispatch(resetStoryBookSlice())
     clearReduxPersist()
   }
 

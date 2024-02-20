@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { clearReduxPersist } from "../redux-state/store"
 import { useDispatch } from "react-redux"
-import { reset } from "../components/story-book/storyBookSlice"
+import { resetStoryBookSlice } from "../components/story-book/storyBookSlice"
 import { resetSysInfo } from "../components/create-stories-page/storyBookSysInfoSlice"
 import { useNavigate } from "react-router"
 
@@ -26,7 +26,7 @@ export const useLogout = () => {
 
   const logout = async () => {
     await clearLocalLogout()
-    reduxDispatch(reset())
+    reduxDispatch(resetStoryBookSlice())
     reduxDispatch(resetSysInfo())
     clearReduxPersist()
     dispatch({type: 'LOGOUT'}) 
