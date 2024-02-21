@@ -56,6 +56,8 @@ export const useCreateStory = () => {
 
   const AIGenCall = async () => {
 
+    console.log("This is the prompt history create chapter gets on AIGenCall " + GPTPromptHistory.filter(obj => obj.role === 'user').pop().content)
+
     await notFirstChapter()
 
     loadingDispatch({type: 'LOADING'})
@@ -115,11 +117,13 @@ export const useCreateStory = () => {
 
   const userPromtNextChapter = (prompt) => {
     if (user) {
-  
-      GPTPromptHistory.push({
+
+      const userPrompt = {
         role: "user",
         content: prompt
-      })
+      }
+  
+      reduxDispatch(pushGPTPrompt(userPrompt))
   
       localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
       AIGenCall()
