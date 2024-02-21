@@ -69,6 +69,7 @@ const FormContainer = (props) => {
       setError("Infufficient Credits. Contact Admin")
       return null
     } else {
+      localStorage.setItem('firstChapter', 'true')
       initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
     }
   }

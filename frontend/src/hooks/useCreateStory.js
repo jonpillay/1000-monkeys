@@ -50,9 +50,13 @@ export const useCreateStory = () => {
 
   const storyInSync = useSelector(selectStoryInSync)
 
+  const notFirstChapter = async () => {
+    reduxDispatch(setFirstChapter(false))
+  }
+
   const AIGenCall = async () => {
 
-    reduxDispatch(setFirstChapter(false))
+    await notFirstChapter()
 
     loadingDispatch({type: 'LOADING'})
 

@@ -55,16 +55,18 @@ const CreateStoriesPage = (props) => {
     console.log(storyInProgress)
 
     const genFirstChapter = async () => {
-      console.log("gen first chapter called")
+      await localStorage.removeItem('firstChapter')
       await AIGenCall()
-      reduxDispatch(setStoryInProgress(true))
+      console.log("gen first chapter called")
+      // await AIGenCall()
+      // reduxDispatch(setStoryInProgress(true))
     }
 
     useEffect(() => {
-      if (firstChapter) {
+      if (localStorage.getItem('firstChapter')) {
         genFirstChapter()
       }
-    })
+    }, [])
 
   return (
     <>
