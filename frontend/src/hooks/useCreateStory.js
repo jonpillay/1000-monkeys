@@ -58,7 +58,9 @@ export const useCreateStory = () => {
 
     const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory'))
 
-    console.log("This is the prompt history create chapter gets on AIGenCall " + GPTPromptHistory.filter(obj => obj.role === 'user').pop().content)
+    console.log(typeof GPTPromptHistory)
+
+    // console.log("This is the prompt history create chapter gets on AIGenCall " + GPTPromptHistory.filter(obj => obj.role === 'user').pop().content)
 
     await notFirstChapter()
 
@@ -96,6 +98,8 @@ export const useCreateStory = () => {
         }
 
         GPTPromptHistory.push(GPTResult)
+
+        localStorage.setItem('localGPTPromptHistory', JSON.stringify(GPTPromptHistory))
   
         reduxDispatch(pushGPTPrompt(GPTResult))
         reduxDispatch(setStoryInProgress(true))

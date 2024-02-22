@@ -17,12 +17,16 @@ export const useInitialiseStory = () => {
     console.log(genreChoice)
     console.log(styleChoice)
 
+    const localGPTPromptHistory = []
+
     const GPTPrompt = {
       role: "user",
       content: prompt,
     }
 
-    localStorage.setItem('localGPTPromptHistory', JSON.stringify(GPTPrompt))
+    localGPTPromptHistory.push(GPTPrompt)
+
+    localStorage.setItem('localGPTPromptHistory', JSON.stringify(localGPTPromptHistory))
 
     // const GPTPromptStringy = JSON.stringify(GPTPrompt)
 
