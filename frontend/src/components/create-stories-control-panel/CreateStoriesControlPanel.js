@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import CreateButton from '../create_button/CreateButton';
 import UserPromptInput from '../user-prompt-input/UserPromptInput';
+import { useCreateStory } from '../../hooks/useCreateStory';
 
 const CreateStoriesControlPanel = (props) => {
 
@@ -60,7 +61,7 @@ const CreateStoriesControlPanel = (props) => {
   refreshImage,
   isLoading,
   error,
-  } = props;
+  } = useCreateStory();
 
   // const browseStorySetup = async (fetchFunct, keyword) => {
 

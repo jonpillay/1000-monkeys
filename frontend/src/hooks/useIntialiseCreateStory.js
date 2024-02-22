@@ -22,6 +22,8 @@ export const useInitialiseStory = () => {
       content: prompt,
     }
 
+    localStorage.setItem('localGPTPromptHistory', JSON.stringify(GPTPrompt))
+
     // const GPTPromptStringy = JSON.stringify(GPTPrompt)
 
     reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
