@@ -27,23 +27,22 @@ const storyBookSchema = new Schema({
   },
   GPTChatHistory: {
     type: [],
+  },
+  title: {
+    type: String,
   }
 })
 
 // static methods
 
-storyBookSchema.statics.saveStory = async function (user_id, localStoryPages, genre, character, artstyle, GPTChatHistory) {
+storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory) {
 
   // needs error handling
 
   console.log(genre)
 
-  const storyPages = JSON.parse(localStoryPages)
-
-  console.log("This is", storyPages)
-
-  const chapterTexts = storyPages['textHistory'] // this is already a list
-  const chapterImages = storyPages['imageHistory'] // this is already a list
+  // const chapterTexts = storyPages['textHistory'] // this is already a list
+  // const chapterImages = storyPages['imageHistory'] // this is already a list
 
   const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre, character: character, artstyle: artstyle, GPTChatHistory: GPTChatHistory })
 

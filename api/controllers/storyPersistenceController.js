@@ -7,13 +7,16 @@ const StoryPersistenceController = {
 
     const user_id = req.user._id
 
+    console.log(user_id)
+    console.log(chapterImages)
+
     try {
 
       const story = await StoryBook.saveStory(user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory)
-
-      res.status(200).json({ error: "Story saved", story_id: story._id  })
+      console.log("we do get here")
+      res.status(200).json({ message: "Story saved", story_id: story._id  })
     } catch (error) {
-
+      console.log("We failing here")
       res.status(400).json({error: error.message })
     }
   },

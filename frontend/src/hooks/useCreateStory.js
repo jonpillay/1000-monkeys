@@ -103,6 +103,7 @@ export const useCreateStory = () => {
   
         reduxDispatch(pushGPTPrompt(GPTResult))
         reduxDispatch(setStoryInProgress(true))
+        reduxDispatch(setStoryInSync(false))
         setStoryInSync(false)
         reduxDispatch(turnToLastPage())
         loadingDispatch({type: 'LOADED'})
