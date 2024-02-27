@@ -64,7 +64,7 @@ function SaveStoryButton(props) {
       try {
         // needs to be updated to read from redux
         console.log("This is chapter textx from the updateButton " + chapterTexts)
-        await updateStory(storyID, chapterImages, chapterTexts)
+        await updateStory(storyID, chapterImages, chapterTexts, GPTPromptHistory)
         reduxDispatch(setStoryInSync(true))
         localStorage.setItem('storyInSync', 'true')
         setStoryInSync(true)

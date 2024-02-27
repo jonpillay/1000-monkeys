@@ -51,7 +51,7 @@ storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chap
   return story
 }
 
-storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts) {
+storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts, GPTChatHistory) {
 
   console.log("This is the updated image list that gets sent to update " + (typeof updatedImages))
   console.log("This is the updated text list that gets sent to update " + (typeof updatedTexts))
@@ -68,6 +68,7 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
       $set: {
         chapterText: updatedTexts,
         chapterImageURLs: updatedImages,
+        GPTChatHistory: GPTChatHistory,
       }
     }
   )

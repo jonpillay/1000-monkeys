@@ -65,7 +65,7 @@ export const useSaveStory = () => {
     }
   }
 
-  const updateStory = async (story_id, chapterImages, chapterTexts) => {
+  const updateStory = async (story_id, chapterImages, chapterTexts, GPTChatHistory) => {
     setIsLoading(true)
     setError(null)
 
@@ -75,12 +75,13 @@ export const useSaveStory = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
       },
-      body: JSON.stringify({story_id, chapterImages, chapterTexts})
+      body: JSON.stringify({story_id, chapterImages, chapterTexts, GPTChatHistory})
     })
 
     const JSONres = await response.json()
 
     if (!response.ok) {
+      console.log("Update failed")
       setIsLoading(false)
       setError(JSONres.error)
     }
