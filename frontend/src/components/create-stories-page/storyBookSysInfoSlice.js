@@ -118,7 +118,7 @@ export const selectGenre = (state) => state.storyBookSysInfo.genre;
 export const selectGPTPromptHistory = (state) => state.storyBookSysInfo.GPTPromptHistory;
 export const selectArtStyle = (state) => state.storyBookSysInfo.artStyle;
 export const selectStoryInSync = (state) => state.storyBookSysInfo.storyInSync;
-export const selectMongoID = (state) => state.storyBookSysInfo.mongo_id;
+export const selectMongoID = (state) => state.storyBookSysInfo.mongoID;
 
 
 // export const storyBook = (state) => state.storyBook;

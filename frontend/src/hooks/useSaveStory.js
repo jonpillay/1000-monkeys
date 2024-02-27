@@ -13,11 +13,6 @@ export const useSaveStory = () => {
 
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  // const { dispatch } = useContext(AuthContext)
-  // const { creditDispatch } = useContext(CreditsContext)
-  // const { dispatch } = useStoryContext()
-
-  // console.log(dispatch)
 
   const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory) => {
     setIsLoading(true)
@@ -70,7 +65,7 @@ export const useSaveStory = () => {
     }
   }
 
-  const updateStory = async (story_id, storyPages) => {
+  const updateStory = async (story_id, chapterImages, chapterTexts) => {
     setIsLoading(true)
     setError(null)
 
@@ -80,7 +75,7 @@ export const useSaveStory = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
       },
-      body: JSON.stringify({story_id, storyPages})
+      body: JSON.stringify({story_id, chapterImages, chapterTexts})
     })
 
     const JSONres = await response.json()
@@ -91,6 +86,7 @@ export const useSaveStory = () => {
     }
 
     if (response.ok) {
+      console.log("we got to update")
       setIsLoading(false)
     }
   }

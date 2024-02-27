@@ -50,21 +50,21 @@ function SaveStoryButton(props) {
     const genre = reduxGenre
     const artStyle = reduxArtStyle
     const GPTPromptHistory = reduxGPTPromptHistory
+    const storyID = story_id
 
-    console.log("This is the stringStoryPages object that gets sent for save", stringStoryPages)
+    console.log("This is the stringStoryPages object that gets sent for save", chapterTexts)
 
     console.log(genre)
 
     const storyPages = JSON.parse(stringStoryPages)
 
-    console.log("This is the storyPages object that gets sent for save", storyPages)
+    console.log("This is the storyPages object that gets sent for save", story_id)
 
-    if (true) {
+    if (storyID != null) {
       try {
         // needs to be updated to read from redux
-
-        console.log("we went here")
-        await updateStory(storyPages['storyID'], storyPages)
+        console.log("This is chapter textx from the updateButton " + chapterTexts)
+        await updateStory(storyID, chapterImages, chapterTexts)
         reduxDispatch(setStoryInSync(true))
         localStorage.setItem('storyInSync', 'true')
         setStoryInSync(true)
@@ -73,9 +73,9 @@ function SaveStoryButton(props) {
       }
       
     } else {
-      console.log(chapterImages)
+      console.log("This is chapter texts from the saveButton " + chapterTexts)
       const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artStyle, GPTPromptHistory)
-      console.log(story_id)
+      // console.log(story_id)
       localStorage.setItem('storyInSync', 'true')
       reduxDispatch(setStoryInSync(true))
       setStoryInSync(true)
@@ -84,7 +84,7 @@ function SaveStoryButton(props) {
   
   return (
     <>
-    {true ? (
+    {!storyInSync ? (
       <div className="save-button-container">
         <button disabled={isLoading} className="save-story-button" onClick={handleSubmit}>
           <img className="save-icon" src={SaveIcon}/>

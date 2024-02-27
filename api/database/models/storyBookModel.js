@@ -51,22 +51,23 @@ storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chap
   return story
 }
 
-storyBookSchema.statics.updateStory = async function (story_id, localStoryPages) {
+storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts) {
+
+  console.log("This is the updated image list that gets sent to update " + (typeof updatedImages))
+  console.log("This is the updated text list that gets sent to update " + (typeof updatedTexts))
 
   // needs error handling
 
-  const storyPages = JSON.parse(localStoryPages)
+  // const storyPages = JSON.parse(localStoryPages)
 
-  const updatedTexts = storyPages['textHistory'] // this is already a list
-  const updatedImages = storyPages['imageHistory'] // this is already a list
-
-  console.log(updatedImages)
+  // const updatedTexts = storyPages['textHistory'] // this is already a list
+  // const updatedImages = storyPages['imageHistory'] // this is already a list
 
   await this.updateOne( { _id: story_id },
     {
       $set: {
         chapterTexts: updatedTexts,
-        chapterImageURLs: updatedImages
+        chapterImageURLs: updatedImages,
       }
     }
   )

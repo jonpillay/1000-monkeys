@@ -7,8 +7,10 @@ const StoryPersistenceController = {
 
     const user_id = req.user._id
 
+    console.log("How save story sees the req objects")
     console.log(user_id)
     console.log(chapterImages)
+    console.log(chapterTexts)
 
     try {
 
@@ -23,14 +25,19 @@ const StoryPersistenceController = {
 
   UpdateStory: async (req, res) => {
 
-    const {story_id, storyPages} = req.body
+    const {story_id, chapterImages, chapterTexts} = req.body
+
+    console.log("How update story sees the req objects")
+    console.log(user_id)
+    console.log(chapterImages)
+    console.log(chapterTexts)
 
     const storyBook = await StoryBook.findById(story_id)
 
     const user_id = req.user._id
 
-    console.log("this is the user_id attatched to storyBook obj ", storyBook.user_id)
-    console.log("this is the user_id attatched to request ", user_id)
+    // console.log("this is the user_id attatched to storyBook obj ", storyBook.user_id)
+    // console.log("this is the user_id attatched to request ", user_id)
 
 
     if (storyBook.user_id != user_id) {
@@ -39,7 +46,7 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.updateStory(storyBook._id, storyPages)
+      const story = await StoryBook.updateStory(storyBook._id, chapterImages, chapterTexts)
 
       res.status(200).json({ error: "Story saved"})
     } catch (error) {
