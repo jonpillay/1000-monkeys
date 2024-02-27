@@ -66,7 +66,7 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
   await this.updateOne( { _id: story_id },
     {
       $set: {
-        chapterTexts: updatedTexts,
+        chapterText: updatedTexts,
         chapterImageURLs: updatedImages,
       }
     }

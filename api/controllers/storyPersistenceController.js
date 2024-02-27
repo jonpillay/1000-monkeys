@@ -28,7 +28,6 @@ const StoryPersistenceController = {
     const {story_id, chapterImages, chapterTexts} = req.body
 
     console.log("How update story sees the req objects")
-    console.log(user_id)
     console.log(chapterImages)
     console.log(chapterTexts)
 
