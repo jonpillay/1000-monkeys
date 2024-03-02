@@ -39,10 +39,27 @@ const FetchStoriesController = {
 
       res.status(200).json({ filteredList: bookList })
     } catch (error) {
-      
       res.status(400).json({error: error.message })
     }
   },
+
+  FetchStoryByID: async (req, res) => {
+
+    const { requestUser, requestStoryID } = req.body
+
+    try {
+      const storyBook = await StoryBook.findOne(requestStoryID)
+
+      if (storyBook.user_id != requestUser) {
+        res.status(401).json({error: "Must be story owner."})
+      } else {
+        res.status(200).json({ resStoryBook: storyBook })
+      }
+    } catch (error) {
+      res.status(400).json({error: error.message })
+    }
+
+  }  
 
 }
 
