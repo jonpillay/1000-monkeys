@@ -6,4 +6,6 @@ router.post("/genre", FetchStoriesController.GetStoriesByGenre);
 
 router.post("/user", FetchStoriesController.GetStoriesByUser);
 
+router.post("/ID", FetchStoriesController.FetchStoryByID);
+
 module.exports = router;
