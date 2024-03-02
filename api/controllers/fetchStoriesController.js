@@ -45,12 +45,14 @@ const FetchStoriesController = {
 
   FetchStoryByID: async (req, res) => {
 
-    const { requestUser, requestStoryID } = req.body
+    const { requestStoryID } = req.body
+
+    const user_id = req.user._id
 
     try {
       const storyBook = await StoryBook.findOne(requestStoryID)
 
-      if (storyBook.user_id != requestUser) {
+      if (storyBook.user_id != user_id) {
         res.status(401).json({error: "Must be story owner."})
       } else {
         res.status(200).json({ resStoryBook: storyBook })

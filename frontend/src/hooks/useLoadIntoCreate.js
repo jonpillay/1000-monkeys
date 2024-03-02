@@ -2,8 +2,10 @@ import { useState } from "react";
 
 import { UseDispatch } from "react-redux";
 import { initialiseStory } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { useAuthContext } from "./useAuthContext";
 
 export const useLoadIntoCreate = () => {
+  const { user } = useAuthContext()
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
 

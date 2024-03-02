@@ -38,6 +38,7 @@ const storyBookSlice = createSlice({
       reducer(state, action) {
         state.chapterImages = action.payload.chapterImages
         state.chapterTexts = action.payload.chapterTexts
+        state.renderChapter = action.payload.chapterImages.length - 1
       },
       prepare(chapterImages, chapterTexts) {
         return {
