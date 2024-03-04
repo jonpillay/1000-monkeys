@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
+import LoadIntoCreateButton from '../load-into-create-button/LoadIntoCreateButton';
 
 
 const StoryBookBrowseContainer = (props) => {
@@ -14,13 +15,17 @@ const StoryBookBrowseContainer = (props) => {
 
   */
 
-  useEffect(() => {
+  // useEffect(() => {
     
-  })
+  // })
 
-  console.log("StoryBookBrowseContainer rerendered")
+  // console.log("StoryBookBrowseContainer rerendered")
 
-  const id = props.id
+  const bookID = props.bookID
+
+  const authorID = props.authorID
+
+  const currentUser = props.currentUser
   
   const chapterTexts = props.chapterTexts
 
@@ -28,17 +33,28 @@ const StoryBookBrowseContainer = (props) => {
 
   const startingPage = props.pageNumber
 
+  const character = props.character
+
   const [renderChapter, setRenderChapter] = useState(startingPage)
 
   console.log("this is the render chapter ", renderChapter)
 
+  console.log(authorID)
+  console.log(currentUser)
+
   return (
     <>
+    <div>{character}</div>
+    {authorID == currentUser ? (
+    <LoadIntoCreateButton storyID={bookID} />
+    ) : (
+      <div className="buff"></div>
+    )}
     <div className="page-container">
       <div className="storybook-header">
         <ChapterTitle chapterNumber={renderChapter + 1}/>
       </div>
-        <StoryBookBrowse id={id} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
+        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
     </div>
     </>
   )};
