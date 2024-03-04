@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-import { UseDispatch } from "react-redux";
-import { initialiseStory } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { UseDispatch, useDispatch } from "react-redux";
+import { initialiseStoryFromDB } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { loadIntoCreate } from "../components/story-book/storyBookSlice";
 import { useAuthContext } from "./useAuthContext";
 
 export const useLoadIntoCreate = () => {
   const { user } = useAuthContext()
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
+
+  const reduxDispatch = useDispatch()
 
   const loadIntoCreate = async (storyID) => {
     setIsLoading(true)
@@ -32,8 +35,11 @@ export const useLoadIntoCreate = () => {
     }
 
     if (response.ok) {
+      const storyBook = JSONres
+      reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory))
+      reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
       setIsLoading(false)
-      return (JSONres.filteredList)
+      // return (JSONres.filteredList)
     }
   }
 
