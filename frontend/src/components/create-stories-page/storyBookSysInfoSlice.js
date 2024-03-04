@@ -41,7 +41,27 @@ const storyBookSysInfoSlice = createSlice({
             character,
             genre,
             artStyle,
-            GPTPrompt
+            GPTPrompt,
+          }
+        }
+      },
+    },
+    initialiseStoryFromDB: {
+      reducer(state, action) {
+        console.log("made it initialiseStoryFromDB")
+        state.firstChapter = false
+        state.character = action.payload.character
+        state.genre = action.payload.genre
+        state.artStyle = action.payload.artStyle
+        state.GPTPromptHistory = action.payload.GPTPrompt
+      },
+      prepare(character, genre, artStyle, GPTPrompt) {
+        return {
+          payload: {
+            character,
+            genre,
+            artStyle,
+            GPTPrompt,
           }
         }
       },
@@ -123,5 +143,5 @@ export const selectMongoID = (state) => state.storyBookSysInfo.mongoID;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { setUserToken, initialiseStory, pushGPTPrompt, setStoryInSync, setFirstChapter, setStoryInProgress, setMongoID, resetSysInfo } = storyBookSysInfoSlice.actions;
+export const { setUserToken, initialiseStory, initialiseStoryFromDB, pushGPTPrompt, setStoryInSync, setFirstChapter, setStoryInProgress, setMongoID, resetSysInfo } = storyBookSysInfoSlice.actions;
 export default storyBookSysInfoSlice.reducer;
