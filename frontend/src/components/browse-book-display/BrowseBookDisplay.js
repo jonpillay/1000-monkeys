@@ -7,7 +7,9 @@ import { useEffect } from "react";
 
 const BrowseBookDisplay = (props) => {
 
-  const { user } = useAuthContext()
+  const {user} = useAuthContext()
+
+  console.log("This is the user obj in browse page... " + user.id)
 
   /* 
   
