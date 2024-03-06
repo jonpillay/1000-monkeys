@@ -22,18 +22,6 @@ const storyBookSlice = createSlice({
         }
       },
     },
-    nextPage: (state) => {
-      state.renderChapter += 1
-    },
-    previousPage: (state) => {
-      state.renderChapter -= 1
-    },
-    turnToPage: (state, action) => {
-      state.renderChapter = action.payload
-    },
-    turnToLastPage: (state) => {
-      state.renderChapter = state.chapterImages.length-1
-    },
     loadIntoCreate: {
       reducer(state, action) {
         state.chapterImages = action.payload.chapterImages
@@ -48,6 +36,18 @@ const storyBookSlice = createSlice({
           }
         }
       }
+    },
+    nextPage: (state) => {
+      state.renderChapter += 1
+    },
+    previousPage: (state) => {
+      state.renderChapter -= 1
+    },
+    turnToPage: (state, action) => {
+      state.renderChapter = action.payload
+    },
+    turnToLastPage: (state) => {
+      state.renderChapter = state.chapterImages.length-1
     },
     resetStoryBookSlice: (state) => {
       state.chapterImages = []

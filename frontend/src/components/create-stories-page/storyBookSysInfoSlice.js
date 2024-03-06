@@ -50,6 +50,7 @@ const storyBookSysInfoSlice = createSlice({
       reducer(state, action) {
         console.log("made it initialiseStoryFromDB")
         state.firstChapter = false
+        state.storyInProgress = true
         state.character = action.payload.character
         state.genre = action.payload.genre
         state.artStyle = action.payload.artStyle

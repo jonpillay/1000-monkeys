@@ -23,8 +23,9 @@ export const useLoadIntoCreate = () => {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
     },
-      body: JSON.stringify({storyID})
+      body: JSON.stringify({storyID, userID: user.id})
     })
 
     const JSONres = await response.json()
@@ -35,9 +36,11 @@ export const useLoadIntoCreate = () => {
     }
 
     if (response.ok) {
-      const storyBook = JSONres
+      const storyBook = JSONres.resStoryBook
+      console.log("fetch by ID worked")
+      console.log(storyBook)
       reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory))
-      reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
+      // reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
       setIsLoading(false)
       // return (JSONres.filteredList)
     }

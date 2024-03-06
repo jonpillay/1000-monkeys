@@ -12,21 +12,9 @@ const LoadIntoCreateButton = (props) => {
 
   const [buttonHover, setButtonHover] = useState(false)
 
-  // useEffect(() => {
-  //   const controlButtonHover = () => {
-  //     if (onmouseenter) {
-  //       setButtonHover(true)
-  //     } if (onmouseleave) {
-  //       setButtonHover(false)
-  //     }
-  //   }
-
-  //   document.addEventListener('mousemove', controlButtonHover);
-  // })
-
   const handleClick = async () => {
     await loadIntoCreate(storyID)
-    navigate('./create')
+    navigate('../create')
   }
 
   return (
