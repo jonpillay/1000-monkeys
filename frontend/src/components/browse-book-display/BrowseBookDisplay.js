@@ -9,8 +9,6 @@ const BrowseBookDisplay = (props) => {
 
   const {user} = useAuthContext()
 
-  console.log("This is the user obj in browse page... " + user.id)
-
   /* 
   
   Browse renderer to map and display the return book list.
@@ -48,8 +46,6 @@ const BrowseBookDisplay = (props) => {
       </li>
     );
   });
-
-  console.log(browsingBooks)
 
   return (
     <>
