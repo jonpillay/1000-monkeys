@@ -14,8 +14,6 @@ const FetchStoriesController = {
 
       const bookList = await StoryBook.find(requestGenre).exec()
 
-      console.log(bookList)
-
       res.status(200).json({ filteredList: bookList })
     } catch (error) {
       
@@ -47,7 +45,7 @@ const FetchStoriesController = {
 
     console.log(req.body)
 
-    const requestStoryID = req.body.storyID
+    const requestStoryID = req.body
 
     const user_id = req.user._id
 

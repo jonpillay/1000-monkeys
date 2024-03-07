@@ -25,7 +25,7 @@ export const useLoadIntoCreate = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`,
     },
-      body: JSON.stringify({storyID, userID: user.id})
+      body: JSON.stringify({storyID})
     })
 
     const JSONres = await response.json()
