@@ -39,7 +39,7 @@ export const useLoadIntoCreate = () => {
       const storyBook = JSONres.resStoryBook
       console.log("fetch by ID worked")
       console.log(storyBook)
-      reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory))
+      reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory, storyBook._id))
       reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
       setIsLoading(false)
       // return (JSONres.filteredList)

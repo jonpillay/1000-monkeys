@@ -55,14 +55,16 @@ const storyBookSysInfoSlice = createSlice({
         state.genre = action.payload.genre
         state.artStyle = action.payload.artStyle
         state.GPTPromptHistory = action.payload.GPTPrompt
+        state.mongoID = action.payload.mongoID
       },
-      prepare(character, genre, artStyle, GPTPrompt) {
+      prepare(character, genre, artStyle, GPTPrompt, mongoID) {
         return {
           payload: {
             character,
             genre,
             artStyle,
             GPTPrompt,
+            mongoID,
           }
         }
       },
