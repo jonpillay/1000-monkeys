@@ -5,7 +5,7 @@ import './LoadIntoCreateButton.css'
 
 const LoadIntoCreateButton = (props) => {
   const storyID = props.storyID
-  const { loadIntoCreate } = useLoadIntoCreate()
+  const { loadIntoCreateHook } = useLoadIntoCreate()
   const navigate = useNavigate()
 
   const selectedButton = props.selectedButton
@@ -13,7 +13,7 @@ const LoadIntoCreateButton = (props) => {
   const [buttonHover, setButtonHover] = useState(false)
 
   const handleClick = async () => {
-    await loadIntoCreate(storyID)
+    await loadIntoCreateHook(storyID)
     navigate('../create')
   }
 

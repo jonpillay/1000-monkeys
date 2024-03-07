@@ -12,7 +12,7 @@ export const useLoadIntoCreate = () => {
 
   const reduxDispatch = useDispatch()
 
-  const loadIntoCreate = async (storyID) => {
+  const loadIntoCreateHook = async (storyID) => {
     setIsLoading(true)
     setError(null)
 
@@ -40,11 +40,11 @@ export const useLoadIntoCreate = () => {
       console.log("fetch by ID worked")
       console.log(storyBook)
       reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory))
-      // reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
+      reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
       setIsLoading(false)
       // return (JSONres.filteredList)
     }
   }
 
-  return { loadIntoCreate }
+  return { loadIntoCreateHook }
 }

@@ -24,15 +24,15 @@ const storyBookSlice = createSlice({
     },
     loadIntoCreate: {
       reducer(state, action) {
-        state.chapterImages = action.payload.chapterImages
-        state.chapterTexts = action.payload.chapterTexts
-        state.renderChapter = action.payload.chapterImages.length - 1
+        state.chapterImages = action.payload.loadChapterImages
+        state.chapterTexts = action.payload.loadChapterTexts
+        state.renderChapter = action.payload.loadChapterImages.length - 1
       },
-      prepare(chapterImages, chapterTexts) {
+      prepare(loadChapterImages, loadChapterTexts) {
         return {
           payload: {
-            chapterImages,
-            chapterTexts,
+            loadChapterImages,
+            loadChapterTexts,
           }
         }
       }
