@@ -1,16 +1,11 @@
 import './ChapterTitle.css';
 
-import { useSelector } from 'react-redux';
-import { selectRenderChapter } from '../story-book/storyBookSlice';
-
-const ChapterTitle = () => {
-
-  const chapterNumber = useSelector(selectRenderChapter)
+const ChapterTitle = (props) => {
 
   return (
     <div className="chapter-title-container">
       <div className="chapter-title">
-        Chapter {chapterNumber + 1}
+        Chapter {props.chapterNumber}
       </div>
     </div>
   )

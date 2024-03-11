@@ -74,7 +74,7 @@ const StoryBookBrowse = (props) => {
       </div>
       <div className="storybook-container">
           <Image link={imgUrl.current} />
-          <Story storyString={story.current} />
+          <Story chapterNumber={renderChapter + 1} storyString={story.current} />
       </div>
       <div className="next-page-container">
         {renderChapter<chapterTexts.length-1 &&

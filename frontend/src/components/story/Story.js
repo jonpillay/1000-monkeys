@@ -6,7 +6,7 @@ const Story = (props) => {
 
   return (
     <div className='story-container'>
-      <ChapterTitle/>
+      <ChapterTitle chapterNumber={props.chapterNumber}/>
       <div className='story-text'>{props.storyString}</div>
     </div>
   )

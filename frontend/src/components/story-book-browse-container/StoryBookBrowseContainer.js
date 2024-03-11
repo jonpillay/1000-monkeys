@@ -54,7 +54,7 @@ const StoryBookBrowseContainer = (props) => {
     )}
     <div className="page-container">
       <div className="storybook-header">
-        <ChapterTitle chapterNumber={renderChapter + 1} AIEngine={AIEngine}/>
+        <ChapterTitle AIEngine={AIEngine}/>
       </div>
         <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
     </div>
