@@ -30,6 +30,9 @@ const storyBookSchema = new Schema({
   },
   title: {
     type: String,
+  },
+  AIEngine: {
+    type: String,
   }
 })
 
