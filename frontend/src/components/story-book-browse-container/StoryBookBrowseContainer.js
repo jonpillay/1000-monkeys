@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import ChapterTitle from "../chapter-title/ChapterTitle";
 import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
 import LoadIntoCreateButton from '../load-into-create-button/LoadIntoCreateButton';
+import StoryBookBrowseInfoPanel from '../storybook-browse-info-panel/StoryBookBrowseInfoPanel';
 
 
 const StoryBookBrowseContainer = (props) => {
@@ -46,15 +47,10 @@ const StoryBookBrowseContainer = (props) => {
 
   return (
     <>
-    <div>{character}</div>
-    {authorID == currentUser ? (
-    <LoadIntoCreateButton storyID={bookID} />
-    ) : (
-      <div className="buff"></div>
-    )}
     <div className="page-container">
+      <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID}/>
       <div className="storybook-header">
-        <ChapterTitle AIEngine={AIEngine}/>
+        {/* <ChapterTitle AIEngine={AIEngine}/> */}
       </div>
         <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
     </div>
