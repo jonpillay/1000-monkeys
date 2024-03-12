@@ -12,19 +12,26 @@ const StoryBookBrowseInfoPanel = (props) => {
   const bookID = props.bookID
   const currentUser = props.currentUser
 
-  console.log("UserPanel rerendered")
-
-  const {user} = useAuthContext()
-
+  const character = props.character
+  const genre = props.genre
+  const artstyle = props.artstyle
+  const AIEngine = props.AIEngine
   return (
     <>
     <div className="storybook-browse-info-panel-container">
-      {authorID == currentUser ? (
-        <LoadIntoCreateButton storyID={bookID} />
-      ) : (
-        <div className="buff"></div>
-      )}
-    </div>
+      <div className="storybook-browse-info-panel">
+          <div className="browse-info-pane-container">
+            Character = {character}
+          </div>
+          <div className="browse-info-pane-container">
+            {authorID == currentUser ? (
+              <LoadIntoCreateButton storyID={bookID} />
+            ) : (
+              <div className="browse-info-pane-container"></div>
+            )}
+          </div>
+        </div>
+      </div>
     </>
 
   )

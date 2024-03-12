@@ -41,6 +41,8 @@ const BrowseBookDisplay = (props) => {
           chapterTexts={book.chapterText}
           chapterImgURLs={book.chapterImageURLs}
           character={book.character}
+          genre={book.genre}
+          artstyle={book.artstyle}
           AIEngine={book.AIEngine}
           pageNumber={pageNumbers[book._id]}
         />
