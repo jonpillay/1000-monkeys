@@ -38,7 +38,7 @@ const storyBookSchema = new Schema({
 
 // static methods
 
-storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory) {
+storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer) {
 
   // needs error handling
 
@@ -47,7 +47,7 @@ storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chap
   // const chapterTexts = storyPages['textHistory'] // this is already a list
   // const chapterImages = storyPages['imageHistory'] // this is already a list
 
-  const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre, character: character, artstyle: artstyle, GPTChatHistory: GPTChatHistory })
+  const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre, character: character, artstyle: artstyle, GPTChatHistory: GPTChatHistory, AIEngine: AIEngineVer })
 
   storyBookSchema.index({ genre: genre })
 

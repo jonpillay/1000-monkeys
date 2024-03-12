@@ -3,7 +3,7 @@ const StoryBook = require('../database/models/storyBookModel')
 const StoryPersistenceController = {
   SaveStory: async (req, res) => {
 
-    const {chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory} = req.body
+    const {chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer} = req.body
 
     const user_id = req.user._id
 
@@ -14,7 +14,7 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.saveStory(user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory)
+      const story = await StoryBook.saveStory(user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer)
       console.log("we do get here")
       res.status(200).json({ message: "Story saved", story_id: story._id  })
     } catch (error) {

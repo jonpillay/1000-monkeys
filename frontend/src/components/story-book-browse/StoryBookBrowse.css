@@ -2,3 +2,7 @@
   padding-top: 4vw;
   background-color: red;
 }
+
+.storybook-container {
+  width: 100%;
+}
