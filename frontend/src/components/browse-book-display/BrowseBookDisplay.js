@@ -38,6 +38,7 @@ const BrowseBookDisplay = (props) => {
           currentUser={user.id}
           authorID={book.user_id}
           bookID={book._id}
+          title={book.title}
           chapterTexts={book.chapterText}
           chapterImgURLs={book.chapterImageURLs}
           character={book.character}
