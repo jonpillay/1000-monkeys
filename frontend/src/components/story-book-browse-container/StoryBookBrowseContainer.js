@@ -46,10 +46,7 @@ const StoryBookBrowseContainer = (props) => {
 
   const [renderChapter, setRenderChapter] = useState(startingPage)
 
-  console.log("this is the render chapter ", renderChapter)
-
-  console.log(authorID)
-  console.log(currentUser)
+  
 
   return (
     <>

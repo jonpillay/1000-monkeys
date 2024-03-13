@@ -26,7 +26,7 @@ const StoryBookBrowseInfoPanel = (props) => {
         </div>
         <div className="storybook-browse-info-panel">
             <div className="browse-info-pane-container">
-              Character = {character}
+              <span className='starring-span'>Starring </span>{character} in a <span className='genre-span'>{genre}</span> Story!
             </div>
             <div className="browse-info-pane-container">
               {authorID == currentUser ? (

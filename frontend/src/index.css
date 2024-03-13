@@ -56,6 +56,21 @@
   src: url("./fonts/Phage-Rough.otf");
 }
 
+@font-face {
+  font-family: 'bungeespice-regular';
+  src: url("./fonts/BungeeSpice-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'codystar-regular';
+  src: url("./fonts/Codystar-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'codystar-light';
+  src: url("./fonts/Codystar-Light.ttf");
+}
+
 .title {
   font-family: 'special-elite';
   font-size: 60px;
