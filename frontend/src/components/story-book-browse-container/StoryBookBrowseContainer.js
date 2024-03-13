@@ -46,12 +46,26 @@ const StoryBookBrowseContainer = (props) => {
 
   const [renderChapter, setRenderChapter] = useState(startingPage)
 
-  
+  let genreFont = ''
+
+  if (genre == 'Western') {
+    genreFont = 'rye'
+  } else if (genre == 'Fairytale') {
+    genreFont = 'flavors'
+  } else if (genre == 'Cyberpunk') {
+    genreFont = 'cynatar'
+  } else if (genre == 'Sci-Fi') {
+    genreFont = 'major-mono'
+  }else if (genre == 'Cyberpunk') {
+    genreFont = 'cynatar'
+  } else if (genre == 'Dystopian') {
+    genreFont = 'phage-rough'
+  }
 
   return (
     <>
     <div className="page-container">
-      <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine}/>
+      <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont}/>
       <div className="storybook-header">
         {/* <ChapterTitle AIEngine={AIEngine}/> */}
       </div>

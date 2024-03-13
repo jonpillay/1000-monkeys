@@ -25,13 +25,13 @@
 }
 
 .browse-info-pane-container {
-  
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .starring-span {
   font-family: codystar-regular;
-  color: red;
-  font-weight: 600;
+  color: rgb(255, 0, 0);
+  font-weight: 999;
 }
 
 .storybook-browse-info-panel-grid {

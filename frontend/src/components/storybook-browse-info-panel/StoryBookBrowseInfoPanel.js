@@ -17,17 +17,19 @@ const StoryBookBrowseInfoPanel = (props) => {
   const genre = props.genre
   const artstyle = props.artstyle
   const AIEngine = props.AIEngine
+  const genreFont = props.genreFont
+
   return (
     <>
     <div className="storybook-browse-info-panel-container">
       <div className="storybook-browse-info-panel-grid">
+      <div className="browse-info-pane-container">
+              <span className='starring-span'>{character} </span> Stars In A <span style={{fontFamily:genreFont}}>{genre}</span> Story by {}
+            </div>
         <div className="storybook-browse-title-container">
           {title}
         </div>
         <div className="storybook-browse-info-panel">
-            <div className="browse-info-pane-container">
-              <span className='starring-span'>Starring </span>{character} in a <span className='genre-span'>{genre}</span> Story!
-            </div>
             <div className="browse-info-pane-container">
               {authorID == currentUser ? (
                 <LoadIntoCreateButton storyID={bookID} />
