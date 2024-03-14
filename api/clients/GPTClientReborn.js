@@ -1,10 +1,8 @@
-const { Configuration, OpenAIApi } = require("openai");
+import OpenAI from "openai";
 
-const openai = new OpenAIApi(
-  new Configuration({
-    apiKey: process.env.GPT_KEY,
-  })
-);
+const openai = new OpenAI({
+  apiKey: process.env.GPT_KEY,
+});
 
 async function generateStory(prompts) {
   console.log("Backend GPT_KEY ", process.env.GPT_KEY)

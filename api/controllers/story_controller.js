@@ -1,4 +1,4 @@
-const generateStory = require("../clients/GPTclient");
+const generateStory = require("../clients/GPTClientReborn");
 const GPTPromptGen = require("../prompts/GPTPromptGen")
 
 const DSDescriptionGen = require("../clients/DS_description_gen")

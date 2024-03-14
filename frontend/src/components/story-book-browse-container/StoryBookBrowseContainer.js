@@ -29,6 +29,8 @@ const StoryBookBrowseContainer = (props) => {
   const currentUser = props.currentUser
 
   const title = props.title
+
+  const author = props.author
   
   const chapterTexts = props.chapterTexts
 
@@ -65,7 +67,7 @@ const StoryBookBrowseContainer = (props) => {
   return (
     <>
     <div className="page-container">
-      <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont}/>
+      <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont}/>
       <div className="storybook-header">
         {/* <ChapterTitle AIEngine={AIEngine}/> */}
       </div>

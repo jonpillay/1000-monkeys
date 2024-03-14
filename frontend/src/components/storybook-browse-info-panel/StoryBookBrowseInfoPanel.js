@@ -12,6 +12,7 @@ const StoryBookBrowseInfoPanel = (props) => {
   const bookID = props.bookID
   const currentUser = props.currentUser
 
+  const author = props.author
   const title = props.title
   const character = props.character
   const genre = props.genre
@@ -24,7 +25,7 @@ const StoryBookBrowseInfoPanel = (props) => {
     <div className="storybook-browse-info-panel-container">
       <div className="storybook-browse-info-panel-grid">
       <div className="browse-info-pane-container">
-              <span className='starring-span'>{character} </span> Stars In A <span style={{fontFamily:genreFont}}>{genre}</span> Story by {}
+              <span className='starring-span'>{character} </span> Stars In A <span style={{fontFamily:genreFont}}>{genre}</span> Story by {author}
             </div>
         <div className="storybook-browse-title-container">
           {title}
