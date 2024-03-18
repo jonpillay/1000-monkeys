@@ -66,13 +66,10 @@ const StoryBookBrowseContainer = (props) => {
 
   return (
     <>
-    <div className="page-container">
-      <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont}/>
-      <div className="storybook-header">
-        {/* <ChapterTitle AIEngine={AIEngine}/> */}
-      </div>
+      <div className="page-container">
+        <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont}/>
         <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
-    </div>
+      </div>
     </>
   )};
   
