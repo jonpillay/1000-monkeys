@@ -13,6 +13,9 @@ const userSchema = new Schema({
   password: {
     type: String,
   },
+  username: {
+    type: String,
+  },
   credits: {
     type: Number,
     required: true

@@ -52,6 +52,7 @@ function SaveStoryButton(props) {
     const GPTPromptHistory = reduxGPTPromptHistory
     const storyID = story_id
     const AIEngineVer = "0.9"
+    const author = user.username
 
     console.log("This is the stringStoryPages object that gets sent for save", chapterTexts)
 
@@ -75,7 +76,7 @@ function SaveStoryButton(props) {
       
     } else {
       console.log("This is chapter texts from the saveButton " + chapterTexts)
-      const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artStyle, GPTPromptHistory, AIEngineVer)
+      const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artStyle, GPTPromptHistory, AIEngineVer, author)
       // console.log(story_id)
       localStorage.setItem('storyInSync', 'true')
       reduxDispatch(setStoryInSync(true))
