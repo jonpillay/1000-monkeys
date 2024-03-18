@@ -1,4 +1,4 @@
-const generateStory = require("../clients/GPTClientReborn");
+const generateStory = require("../clients/GPTclient");
 const GPTPromptGen = require("../prompts/GPTPromptGen")
 
 const DSDescriptionGen = require("../clients/DS_description_gen")
@@ -41,6 +41,8 @@ const StoryController = {
       console.log("made it here 3")
 
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
+
+      console.log("made it here 4")
 
       const story_image = await generateImage(DS_descpription)
       console.log("This is the user in the credits controller!", credits_update)

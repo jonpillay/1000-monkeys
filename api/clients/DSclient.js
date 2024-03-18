@@ -34,7 +34,10 @@ async function DSGenerateImage(prompts) {
   });
 
   if (!response.ok) {
+    console.log("this is where it eneded is DSClient")
+    console.log(await response.text())
     throw new Error(`Non-200 response: ${await response.text()}`);
+
   }
 
   const responseJSON = await response.json();

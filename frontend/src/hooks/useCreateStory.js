@@ -100,7 +100,6 @@ export const useCreateStory = () => {
         GPTPromptHistory.push(GPTResult)
 
         localStorage.setItem('localGPTPromptHistory', JSON.stringify(GPTPromptHistory))
-  
         reduxDispatch(pushGPTPrompt(GPTResult))
         reduxDispatch(setStoryInProgress(true))
         reduxDispatch(setStoryInSync(false))
@@ -110,6 +109,7 @@ export const useCreateStory = () => {
   
         });
     } catch (error) {
+      console.log("useCreateStory threw the error")
       console.error(error)
     } 
   };

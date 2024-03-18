@@ -1,4 +1,8 @@
-import OpenAI from "openai";
+import OpenAI from 'openai';
+
+// const openai = new Configuration({
+//   apiKey: process.env.GPT_KEY,
+// });
 
 const openai = new OpenAI({
   apiKey: process.env.GPT_KEY,
@@ -7,7 +11,7 @@ const openai = new OpenAI({
 async function generateStory(prompts) {
   console.log("Backend GPT_KEY ", process.env.GPT_KEY)
   try {
-    const res = await openai.createChatCompletion({
+    const res = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: prompts,
     });

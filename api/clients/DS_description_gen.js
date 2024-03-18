@@ -16,7 +16,7 @@ const starter_prompts = [
 ]
 
 const openai = new OpenAIApi(new Configuration({
-  apiKey: process.env.GPT_KEY
+  apiKey: process.env.OPENAI_API_KEY
 }))
 
 async function DSDescriptionGen(chapter, genre, main_character, system_prompts=starter_prompts) {
@@ -24,7 +24,7 @@ async function DSDescriptionGen(chapter, genre, main_character, system_prompts=s
   system_prompts.push({role: "user", content: `pick the main scene from this chapter to describe = ${chapter}`})
   system_prompts.push({role: "user", content: `the genre of the story is ${genre}`})
   const res = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo-0613",
+    model: "gpt-3.5-turbo",
     messages: system_prompts
   })
   system_prompts.push(res.data.choices[0].message)
