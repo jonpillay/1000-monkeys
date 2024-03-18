@@ -29,20 +29,22 @@ const StoryBookBrowseInfoPanel = (props) => {
         </div>
         <div className="star-title-container">
           <div className="browse-info-pane-container">
-            <span className='starring-span'>{character} </span> Stars In A <span style={{fontFamily:genreFont}}>{genre}</span> Story by {author}
+            <span className='starring-genre-span'>
+              <span className='starring-span'>{character} </span> Stars In A <span style={{fontFamily:genreFont}}>{genre}</span> Story by {author}
+            </span>
           </div>
           <div className="storybook-browse-title-container">
             {title}
           </div>
         </div>
         <div className="storybook-browse-info-panel">
+          {authorID == currentUser ? (
           <div className="browse-info-pane-container">
-            {authorID == currentUser ? (
-              <LoadIntoCreateButton storyID={bookID} />
-            ) : (
-              <div className="browse-info-pane-container"></div>
-            )}
+            <LoadIntoCreateButton storyID={bookID} />
           </div>
+          ) : (
+            <div className="browse-info-pane-container"></div>
+          )}
         </div>
       </div>
     </div>

@@ -14,15 +14,19 @@
 .filter-nav-container.active-scroll {
   position: sticky;
   top: 4.8vw;
-  opacity: 80%;
+  z-index: 999;
 }
 
 .button-container {
   justify-self: start;
   display: flex;
   justify-content: space-around;
-  opacity: 99%;
   /* position: absolute; */
+}
+
+.button-container.active-scroll {
+  color: bisque;
+  opacity: 100%;
 }
 
 .user-fetch-button-container {

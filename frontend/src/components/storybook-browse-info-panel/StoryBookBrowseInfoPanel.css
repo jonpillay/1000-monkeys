@@ -14,15 +14,8 @@
 
 .browse-info-pane-container {
   padding: 0.05vw;
-}
-
-.storybook-browse-title-container {
   display: flex;
   justify-content: center;
-  font-size: 2.5vw;
-  font-family: bungeespice-regular;
-  text-shadow: 2px 2px black;
-  border: dotted;
 }
 
 .star-title-container {
@@ -33,7 +26,12 @@
 
 .browse-info-pane-container {
   font-family: 'Times New Roman', Times, serif;
-  border: dotted;
+
+}
+
+.starring-genre-span {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  opacity: 85%;
 }
 
 .starring-span {
@@ -42,12 +40,18 @@
   font-weight: 999;
 }
 
-.storybook-browse-info-panel-grid {
+.storybook-browse-title-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 60%;
+  justify-content: center;
+  font-size: 2.5vw;
+  font-family: bungeespice-regular;
+  text-shadow: 2px 2px black;
+}
 
+.storybook-browse-info-panel-grid {
+  display: grid;
+  grid-template-columns: 8% 84% 8%;
+  width: 60%;
   background-color: #fff;
   opacity: 98%;
   background-image: none;
