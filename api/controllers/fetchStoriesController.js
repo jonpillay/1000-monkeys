@@ -45,7 +45,7 @@ const FetchStoriesController = {
 
     console.log(req.body)
 
-    const requestStoryID = req.body
+    const requestStoryID = req.body.storyID
 
     const user_id = req.user._id
 
