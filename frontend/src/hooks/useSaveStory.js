@@ -14,7 +14,7 @@ export const useSaveStory = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
 
-  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer) => {
+  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer, author) => {
     setIsLoading(true)
     setError(null)
 
@@ -28,6 +28,7 @@ export const useSaveStory = () => {
       artstyle: artstyle,
       GPTChatHistory: GPTChatHistory,
       AIEngineVer: AIEngineVer,
+      author: author,
     }
 
     console.log(reqBody)
