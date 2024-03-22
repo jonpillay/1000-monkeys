@@ -3,6 +3,7 @@ import './StoryBookBrowseInfoPanel.css'
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 import LoadIntoCreateButton from '../load-into-create-button/LoadIntoCreateButton';
+import RatingPanel from '../rating-panel/RatingPanel';
 
 import { useEffect, useState } from 'react';
 
@@ -25,7 +26,7 @@ const StoryBookBrowseInfoPanel = (props) => {
     <div className="storybook-browse-info-panel-container">
       <div className="storybook-browse-info-panel-grid">
         <div className="rating-container">
-          rating
+          <RatingPanel />
         </div>
         <div className="star-title-container">
           <div className="browse-info-pane-container">
