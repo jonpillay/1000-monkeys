@@ -1,9 +1,17 @@
 .storybook-browse-info-panel-container {
   display: flex;
   justify-content: center;
+  height: 7vw;
+  background-color: red;
 }
 
-.storybook-browse-info-panel {
+.storybook-browse-info-panel-grid {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  width: 60%;
+}
+
+.edit-read-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,46 +20,21 @@
   height: 4vw;
 }
 
-.browse-info-pane-container {
+.edit-container {
   padding: 0.05vw;
   display: flex;
   justify-content: center;
 }
 
+.rating-container {
+
+}
+
 .star-title-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
+  justify-content: space-around;
 
-.browse-info-pane-container {
-  font-family: 'Times New Roman', Times, serif;
-
-}
-
-.starring-genre-span {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  opacity: 85%;
-}
-
-.starring-span {
-  font-family: codystar-regular;
-  color: rgb(255, 0, 0);
-  font-weight: 999;
-}
-
-.storybook-browse-title-container {
-  display: flex;
-  justify-content: center;
-  font-size: 2.5vw;
-  font-family: bungeespice-regular;
-  text-shadow: 2px 2px black;
-}
-
-.storybook-browse-info-panel-grid {
-  display: grid;
-  grid-template-columns: 8% 84% 8%;
-  width: 60%;
   background-color: #fff;
   opacity: 98%;
   background-image: none;
@@ -74,4 +57,32 @@
   border-bottom-right-radius: 225px 15px;
   border-top-left-radius: 30px 15px;
   border-top-right-radius: 15px 5px;
+}
+
+.browse-info-pane-container {
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+.starring-genre-span {
+  display: flex;
+  justify-content: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  opacity: 85%;
+}
+
+.starring-container {
+  font-family: codystar-regular;
+  color: rgb(255, 0, 0);
+  font-weight: 999;
+  padding-right: 0.3vw;
+}
+
+.storybook-browse-title-container {
+  display: flex;
+  justify-content: center;
+  font-size: 3vw;
+  font-family: bungeespice-regular;
+  text-shadow: 2px 2px black;
+  opacity: 98%;
 }
