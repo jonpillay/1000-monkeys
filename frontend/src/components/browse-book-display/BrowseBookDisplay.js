@@ -46,6 +46,7 @@ const BrowseBookDisplay = (props) => {
           genre={book.genre}
           artstyle={book.artstyle}
           AIEngine={book.AIEngine}
+          ratings={book.ratings}
           pageNumber={pageNumbers[book._id]}
         />
       </li>

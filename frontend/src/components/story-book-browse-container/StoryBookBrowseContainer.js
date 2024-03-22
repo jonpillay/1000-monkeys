@@ -46,6 +46,8 @@ const StoryBookBrowseContainer = (props) => {
 
   const AIEngine = props.AIEngine
 
+  const ratings = props.ratings
+
   const [renderChapter, setRenderChapter] = useState(startingPage)
 
   let genreFont = ''
@@ -67,7 +69,7 @@ const StoryBookBrowseContainer = (props) => {
   return (
     <>
       <div className="page-container">
-        <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont}/>
+        <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont} ratings={ratings}/>
         <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
       </div>
     </>

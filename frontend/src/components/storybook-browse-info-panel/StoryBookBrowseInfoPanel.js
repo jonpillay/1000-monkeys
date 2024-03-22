@@ -20,13 +20,14 @@ const StoryBookBrowseInfoPanel = (props) => {
   const artstyle = props.artstyle
   const AIEngine = props.AIEngine
   const genreFont = props.genreFont
+  const ratings = props.ratings
 
   return (
     <>
     <div className="storybook-browse-info-panel-container">
       <div className="storybook-browse-info-panel-grid">
         <div className="rating-container">
-          <RatingPanel />
+          <RatingPanel ratings={ratings} />
         </div>
         <div className="star-title-container">
           <div className="browse-info-pane-container">
