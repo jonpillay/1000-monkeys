@@ -1,0 +1,19 @@
+.rating-panel-container {
+  height: 100%;
+  border: dotted;
+  background-color: green;
+}
+
+.rating-panel-grid {
+  display: grid;
+  grid-template-rows: 50% 50%;
+}
+
+.rating-container {
+  border: dotted;
+}
+
+.rate-verb-container {
+  border: dotted;
+  background-color: brown;
+}
