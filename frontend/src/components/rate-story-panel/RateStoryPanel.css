@@ -1,0 +1,28 @@
+.rate-story-grid {
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+}
+
+.rate-count-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inc-arrows-grid {
+  display: grid;
+  grid-template-rows: 50% 50%;
+}
+
+.inc-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+}
+
+.vote-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

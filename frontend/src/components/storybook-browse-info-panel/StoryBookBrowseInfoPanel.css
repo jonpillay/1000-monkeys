@@ -7,8 +7,8 @@
 
 .storybook-browse-info-panel-grid {
   display: grid;
-  grid-template-columns: 10% 80% 10%;
-  width: 60%;
+  grid-template-columns: 12% 76% 12%;
+  width: 65%;
 }
 
 .edit-read-container {

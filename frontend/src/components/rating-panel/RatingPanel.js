@@ -1,5 +1,7 @@
 import './RatingPanel.css'
 
+import RateStoryPanel from '../rate-story-panel/RateStoryPanel'
+
 function RatingPanel(props) {
 
   const ratings = props.ratings
@@ -13,7 +15,7 @@ function RatingPanel(props) {
           {rating}
         </div>
         <div className="rate-verb-container">
-          Hello!
+          <RateStoryPanel/>
         </div>
       </div>
     </div>
