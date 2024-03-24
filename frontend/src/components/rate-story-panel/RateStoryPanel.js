@@ -1,5 +1,7 @@
 import "./RateStoryPanel.css"
 
+import AnimatedNumbers from "react-animated-numbers";
+
 import { useState } from "react";
 
 function RateStoryPanel(props) {
@@ -10,15 +12,27 @@ function RateStoryPanel(props) {
     <div className="rate-story-panel-container">
       <div className="rate-story-grid">
         <div className="rate-count-container">
-          {currentRate}
+          <AnimatedNumbers
+            includeComma
+            className={'rating-ticker'}
+            transitions={(index) => ({
+              type: "spring",
+              duration: index + 0.09,
+            })}
+            animateToNumber={currentRate}
+            fontStyle={{
+              fontSize: 40,
+              color: "black",
+            }}
+          />
         </div>
         <div className="inc-arrows-container">
           <div className="inc-arrows-grid">
             <div className="inc-button-container">
-              <button onClick={()=>{setCurrentRate(currentRate+1)}}>U</button>
+              <button disabled={currentRate>=5} onClick={()=>{setCurrentRate(currentRate+1)}}>U</button>
             </div>
             <div className="inc-button-container">
-            <button onClick={()=>{setCurrentRate(currentRate-1)}}>D</button>
+              <button disabled={currentRate<=0} onClick={()=>{setCurrentRate(currentRate-1)}}>D</button>
             </div>
           </div>
         </div>
