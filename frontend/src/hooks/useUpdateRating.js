@@ -3,7 +3,7 @@ import { useAuthContext } from "./useAuthContext";
 
 import { useDispatch } from "react-redux";
 
-export const useSubmitRating = () => {
+export const useUpdateRating = () => {
   const { user } = useAuthContext()
 
   const reduxDispatch = useDispatch()
@@ -11,7 +11,7 @@ export const useSubmitRating = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
 
-  const submitRating = async (story_id, rating, setUserRated) => {
+  const submitRating = async (story_id, rating) => {
     setIsLoading(true)
     setError(null)
 
@@ -24,7 +24,7 @@ export const useSubmitRating = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`
         },
-        body: JSON.stringify(story_id, rating)
+        body: JSON.stringify({story_id, rating})
       })
   
       const JSONres = await response.json()
@@ -38,8 +38,6 @@ export const useSubmitRating = () => {
       if (response.ok) {
         console.log("response on the submitRating is ok")
 
-        setUserRated(true)
-        
         setIsLoading(false)
       }
     } catch (error) {

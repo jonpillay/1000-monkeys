@@ -55,6 +55,34 @@ const StoryPersistenceController = {
     }
   },
 
+  SubmitRating: async (req, res) => {
+
+    const { story_id, rating } = req.body
+
+    const user_id = req.user._id
+
+    const storyBook = await StoryBook.findById(story_id)
+
+    if (storyBook.user_id == user_id) {
+      res.status(400).json({error: "Cannot Rate Own Story" })
+    }
+
+    if (storyBook.ratings.find(rating => rating.user_id === newRating.user_id)) {
+      res.status(400).json({error: "Rating already submitted"})
+    }
+
+    try {
+
+      await StoryBook.submitRating(storyBook._id, user_id, rating)
+
+      res.status(200).json({ message: "Rating Submitted"})
+    } catch (error) {
+
+      res.status(400).json({error: error.message })
+    }
+
+  }
+
 }
 
 module.exports = StoryPersistenceController

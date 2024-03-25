@@ -80,4 +80,14 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
   )
 }
 
+storyBookSchema.statics.submitRating = async function (story_id, userID, rating) {
+
+  const newRating = { userID: rating }
+
+  this.updateOne(
+    { _id: story_id },
+    { $push : {ratings: "Blue" } }
+  )
+}
+
 module.exports = mongoose.model('storyBook', storyBookSchema)

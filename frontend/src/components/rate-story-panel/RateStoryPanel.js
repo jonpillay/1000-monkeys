@@ -8,6 +8,22 @@ function RateStoryPanel(props) {
 
   const [currentRate, setCurrentRate] = useState(0)
 
+  const submitRating = props.submitRating
+  const bookID = props.bookID
+  const setUserRated = props.setUserRated
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      await submitRating(bookID, currentRate)
+      setUserRated(true)
+    } catch(error) {
+      console.log(error)
+    }
+
+  }
+
   return (
     <div className="rate-story-panel-container">
       <div className="rate-story-grid">
@@ -37,7 +53,7 @@ function RateStoryPanel(props) {
           </div>
         </div>
         <div className="vote-button-container">
-          <button>Rate</button>
+          <button onClick={handleSubmit}>Rate</button>
         </div>
       </div>
     </div>

@@ -11,5 +11,8 @@ router.post("/create-story", requireAuth, StoryPersistenceController.SaveStory);
 
 router.post("/update-story", requireAuth, StoryPersistenceController.UpdateStory);
 
+router.post("/submit-rating", requireAuth, StoryPersistenceController.SubmitRating);
+
+
 
 module.exports = router;

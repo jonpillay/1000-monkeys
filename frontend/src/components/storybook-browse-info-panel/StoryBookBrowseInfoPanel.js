@@ -27,7 +27,7 @@ const StoryBookBrowseInfoPanel = (props) => {
     <div className="storybook-browse-info-panel-container">
       <div className="storybook-browse-info-panel-grid">
         <div className="rating-container">
-          <RatingPanel ratings={ratings} />
+          <RatingPanel ratings={ratings} bookID={bookID} />
         </div>
         <div className="star-title-container">
           <div className="browse-info-pane-container">
