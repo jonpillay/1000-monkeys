@@ -12,11 +12,11 @@ function RatingPanel(props) {
   let ratingTotal = 0
 
   if (ratings.length>0) {
-    ratings.forEach((entry) => ratingTotal += entry.value)
+    ratings.forEach((ratingEntry) => ratingTotal += Object.values(ratingEntry))
   }
 
-  const rating = ratings.length > 0 ? Math.floor((ratings.forEach((entry) => ratingTotal += entry.value
-  )/ratings.length) * 2) / 2 : 4.5
+  const rating = ratings.length > 0 ? Math.floor((
+  ratingTotal/ratings.length) * 2) / 2 : 4.5
 
   const [userRated, setUserRated ] = useState(false)
 
