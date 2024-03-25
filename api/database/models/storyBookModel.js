@@ -82,11 +82,12 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
 
 storyBookSchema.statics.submitRating = async function (story_id, userID, rating) {
 
-  const newRating = { userID: rating }
+  const newRating = {}
 
-  this.updateOne(
-    { _id: story_id },
-    { $push : {ratings: "Blue" } }
+  newRating[userID] = rating
+
+  await this.updateOne( { _id: story_id },
+    { $push : {ratings: newRating } }
   )
 }
 

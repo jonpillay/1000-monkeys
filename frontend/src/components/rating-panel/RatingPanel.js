@@ -9,7 +9,14 @@ function RatingPanel(props) {
   const ratings = props.ratings
   const bookID = props.bookID
 
-  const rating = ratings.length > 0 ? Math.floor((rating/rating.length) * 2) / 2 : 4.5
+  let ratingTotal = 0
+
+  if (ratings.length>0) {
+    ratings.forEach((entry) => ratingTotal += entry.value)
+  }
+
+  const rating = ratings.length > 0 ? Math.floor((ratings.forEach((entry) => ratingTotal += entry.value
+  )/ratings.length) * 2) / 2 : 4.5
 
   const [userRated, setUserRated ] = useState(false)
 
@@ -22,12 +29,11 @@ function RatingPanel(props) {
         <div className="rating-container">
           {( userRated ?
           <div> "it worked!" </div>
-           
             :
             <div>{rating} </div>)}
         </div>
         <div className="rate-verb-container">
-          <RateStoryPanel submitRating={submitRating} bookID={bookID}/>
+          <RateStoryPanel submitRating={submitRating} bookID={bookID} setUserRated={setUserRated}/>
         </div>
       </div>
     </div>
