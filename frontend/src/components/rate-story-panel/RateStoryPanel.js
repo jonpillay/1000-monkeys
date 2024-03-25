@@ -29,15 +29,15 @@ function RateStoryPanel(props) {
         <div className="inc-arrows-container">
           <div className="inc-arrows-grid">
             <div className="inc-button-container">
-              <button disabled={currentRate>=5} onClick={()=>{setCurrentRate(currentRate+1)}}>U</button>
+              <button disabled={currentRate>=5} onClick={()=>{setCurrentRate((state) => state + 1 )}}>U</button>
             </div>
             <div className="inc-button-container">
-              <button disabled={currentRate<=0} onClick={()=>{setCurrentRate(currentRate-1)}}>D</button>
+              <button disabled={currentRate<=0} onClick={()=>{setCurrentRate((state) => state - 1 )}}>D</button>
             </div>
           </div>
         </div>
         <div className="vote-button-container">
-          vote
+          <button>Rate</button>
         </div>
       </div>
     </div>
