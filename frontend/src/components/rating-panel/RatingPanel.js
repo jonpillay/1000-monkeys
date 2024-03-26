@@ -2,7 +2,7 @@ import './RatingPanel.css'
 
 import RateStoryPanel from '../rate-story-panel/RateStoryPanel'
 import { useUpdateRating } from '../../hooks/useUpdateRating'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 
@@ -12,8 +12,13 @@ function RatingPanel(props) {
 
   const ratings = props.ratings
   const bookID = props.bookID
+  const authorID = props.authorID
 
-  const ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
+  let ratedBool = false
+
+  useEffect(() => {
+    ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
+  }, [])
 
   let ratingTotal = 0
 
@@ -33,14 +38,17 @@ function RatingPanel(props) {
     <div className="rating-panel-container">
       <div className="rating-panel-grid">
         <div className="rating-container">
-          {( userRated ?
-          <div> "it worked!" </div>
-            :
-            <div>{rating} </div>)}
+          <div>{rating}</div>
         </div>
-        <div className="rate-verb-container">
-          <RateStoryPanel submitRating={submitRating} bookID={bookID} setUserRated={setUserRated}/>
-        </div>
+        {( authorID != user.id ? 
+          <div className="rate-verb-container">
+            <RateStoryPanel submitRating={submitRating} bookID={bookID} setUserRated={setUserRated}/>
+          </div>
+          :
+          <div className="rate-verb-container">
+            own story
+          </div>
+        )}
       </div>
     </div>
   </>
