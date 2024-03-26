@@ -13,22 +13,18 @@ function RatingPanel(props) {
   const ratings = props.ratings
   const bookID = props.bookID
 
-  const ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id) )
-
-  console.log(ratedBool)
+  const ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
 
   let ratingTotal = 0
 
   if (ratings.length>0) {
-    console.log(user.id)
     ratings.forEach((ratingEntry) => ratingTotal += Object.values(ratingEntry))
   }
-
 
   const rating = ratings.length > 0 ? Math.floor((
   ratingTotal/ratings.length) * 2) / 2 : 4.5
 
-  const [userRated, setUserRated ] = useState(ratings.forEach((rating) => rating.hasOwnProperty(user.id) ? true : {} ))
+  const [userRated, setUserRated ] = useState(ratedBool)
 
   const { submitRating, isLoading, error } = useUpdateRating()
 
