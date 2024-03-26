@@ -2,7 +2,6 @@ import React from 'react';
 import './image.css';
 
 const Image = React.memo(({link}) => {
-  console.log("Image rerendered")
 
   return (
     <div className='image-container'>

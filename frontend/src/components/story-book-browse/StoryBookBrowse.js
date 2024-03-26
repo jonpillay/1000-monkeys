@@ -25,8 +25,6 @@ const StoryBookBrowse = (props) => {
 
   const renderChapter = props.renderChapter
 
-  console.log(renderChapter)
-
   let imgUrl = useRef(chapterImgURLs[renderChapter] || "");
   let story = useRef(chapterTexts[renderChapter] || "");
 
@@ -40,16 +38,12 @@ const StoryBookBrowse = (props) => {
 
   const turnPage = async (direct) => {
     if (direct == 'back') {
-      console.log("turn page back")
-      console.log(typeof(localPageNumbers))
-      console.log(typeof(id))
       story.current = chapterTexts[renderChapter -1]
       imgUrl.current = chapterImgURLs[renderChapter -1]
       localPageNumbers[id] -= 1
       await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
-      console.log("turn page forward")
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
       localPageNumbers[id] += 1
@@ -64,8 +58,6 @@ const StoryBookBrowse = (props) => {
     //   setRenderChapter = storyPages["textHistory"][storyPages["textHistory"].length -1]
     // }
   }
-
-  console.log("StoryBook rerendered")
 
   return (
     <div className="results-container">

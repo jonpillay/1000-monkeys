@@ -4,7 +4,11 @@ import RateStoryPanel from '../rate-story-panel/RateStoryPanel'
 import { useUpdateRating } from '../../hooks/useUpdateRating'
 import { useState } from 'react'
 
+import { useAuthContext } from '../../hooks/useAuthContext'
+
 function RatingPanel(props) {
+
+  const { user } = useAuthContext()
 
   const ratings = props.ratings
   const bookID = props.bookID
@@ -12,13 +16,15 @@ function RatingPanel(props) {
   let ratingTotal = 0
 
   if (ratings.length>0) {
+    console.log(user.id)
     ratings.forEach((ratingEntry) => ratingTotal += Object.values(ratingEntry))
   }
+
 
   const rating = ratings.length > 0 ? Math.floor((
   ratingTotal/ratings.length) * 2) / 2 : 4.5
 
-  const [userRated, setUserRated ] = useState(false)
+  const [userRated, setUserRated ] = useState(ratings[user.id] ? true : false )
 
   const { submitRating, isLoading, error } = useUpdateRating()
 

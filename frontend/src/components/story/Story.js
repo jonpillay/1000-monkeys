@@ -2,7 +2,6 @@ import './Story.css';
 import ChapterTitle from '../chapter-title/ChapterTitle';
 
 const Story = (props) => {
-  console.log("Story rerendered")
 
   return (
     <div className='story-container'>
