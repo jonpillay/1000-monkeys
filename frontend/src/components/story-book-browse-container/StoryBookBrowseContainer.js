@@ -20,7 +20,7 @@ const StoryBookBrowseContainer = (props) => {
     
   // })
 
-  // console.log("StoryBookBrowseContainer rerendered")
+  console.log("StoryBookBrowseContainer rerendered")
 
   const bookID = props.bookID
 
@@ -49,6 +49,8 @@ const StoryBookBrowseContainer = (props) => {
   const ratings = props.ratings
 
   const [renderChapter, setRenderChapter] = useState(startingPage)
+
+  console.log("Boops")
 
   let genreFont = ''
 

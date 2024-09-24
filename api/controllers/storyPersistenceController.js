@@ -67,15 +67,15 @@ const StoryPersistenceController = {
       res.status(400).json({error: "Cannot Rate Own Story" })
     }
 
-    if (storyBook.ratings.find(rating => rating.user_id === newRating.user_id)) {
-      res.status(400).json({error: "Rating already submitted"})
-    }
+    // if (storyBook.ratings.find(rating => rating.user_id === newRating.user_id)) {
+    //   res.status(400).json({error: "Rating already submitted"})
+    // }
 
     try {
 
       await StoryBook.submitRating(storyBook._id, user_id, rating)
 
-      res.status(200).json({ message: "Rating Submitted"})
+      res.status(200).json({ message: "Rated"})
     } catch (error) {
 
       res.status(400).json({error: error.message })

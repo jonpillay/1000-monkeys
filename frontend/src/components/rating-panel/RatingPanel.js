@@ -14,22 +14,24 @@ function RatingPanel(props) {
   const bookID = props.bookID
   const authorID = props.authorID
 
-  let ratedBool = false
+  // let ratedBool = false
+
+  const [ratedBool, setRatedBool] = useState(false)
 
   useEffect(() => {
-    ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
-  }, [])
+    // ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
+    ratings.forEach((rating) => user.id in rating ? setRatedBool(true) : setRatedBool(false))
+    
+  },[])
 
+  let ratingStart = 0
   let ratingTotal = 0
 
-  if (ratings.length>0) {
-    ratings.forEach((ratingEntry) => ratingTotal += Object.values(ratingEntry))
-  }
+  ratings.forEach((rating) => {ratingTotal += Object.values(rating)[0]})
 
-  const rating = ratings.length > 0 ? Math.floor((
-  ratingTotal/ratings.length) * 2) / 2 : 4.5
+  const rating = ratings.length > 0 ? Math.floor(ratingTotal/ratings.length) : "Rate!"
 
-  const [userRated, setUserRated ] = useState(ratedBool)
+  console.log(rating)
 
   const { submitRating, isLoading, error } = useUpdateRating()
 
@@ -40,10 +42,16 @@ function RatingPanel(props) {
         <div className="rating-container">
           <div>{rating}</div>
         </div>
-        {( authorID != user.id ? 
-          <div className="rate-verb-container">
-            <RateStoryPanel submitRating={submitRating} bookID={bookID} setUserRated={setUserRated}/>
-          </div>
+        {( authorID != user.id ?
+            ( ratedBool == false ?
+              <div className="rate-verb-container">
+                <RateStoryPanel submitRating={submitRating} bookID={bookID} setUserRated={setRatedBool}/>
+              </div>
+              :
+              <div className="rate-verb-container">
+                "Already Rated"
+              </div>
+            )
           :
           <div className="rate-verb-container">
             own story
