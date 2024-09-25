@@ -6,13 +6,15 @@ import { useEffect, useState } from 'react'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 
+import RatingStar from "../../img/star.svg"
+
 function RatingPanel(props) {
 
   const { user } = useAuthContext()
 
   const bookID = props.bookID
   const authorID = props.authorID
-  const ratingsDict = props.ratings
+  const ratingsIDs = props.ratings
 
   // let ratedBool = false
 
@@ -29,6 +31,19 @@ function RatingPanel(props) {
   rawRatings.forEach((rating) => ratingTotal += rating)
 
   const [rating, setRating] = useState(ratings.length > 0 ? Math.floor(ratingTotal/ratings.length) : 0)
+
+  let userRating = null
+
+  for (const rating of ratings) {
+    if (user.id in rating) {
+      console.log("Pooy pooy lull")
+      userRating = Object.values(rating)[0]
+    } else {
+      console.log("SNARP")
+    }
+  }
+
+
 
   useEffect(() => {
 
@@ -50,24 +65,26 @@ function RatingPanel(props) {
       <div className="rating-panel-grid">
         <div className="rating-container">
           { (ratings.length > 0 ?
-            <div>{rating}</div>
+          <>
+            <div className='rating-span'>{rating}<span><img className='rating-star' src={RatingStar}/></span>({ratings.length})</div>
+          </>
             :
-            "Rate!"
+            <div className='needs-rating-span'>Awaiting Rating!</div>
           )}
         </div>
         {( authorID != user.id ?
             ( ratedBool == false ?
-              <div className="rate-verb-container">
+              <div className='rating-control-container'>
                 <RateStoryPanel submitRating={submitRating} bookID={bookID} setRated={setRatedBool} setRatings={setRatings}/>
               </div>
               :
               <div className="rate-verb-container">
-                "Already Rated"
+                <div className='your-rating'>You Rated {userRating}<span><img className='rating-star' src={RatingStar}/></span></div>
               </div>
             )
           :
-          <div className="rate-verb-container">
-            own story
+          <div className="your-story-container">
+            Your Story
           </div>
         )}
       </div>

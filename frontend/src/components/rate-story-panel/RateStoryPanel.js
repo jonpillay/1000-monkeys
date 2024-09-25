@@ -7,7 +7,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 
 function RateStoryPanel(props) {
 
-  const { user } = useAuthContext() 
+  const { user } = useAuthContext()
 
   const [currentRate, setCurrentRate] = useState(0)
 
@@ -43,23 +43,24 @@ function RateStoryPanel(props) {
           })}
           animateToNumber={currentRate}
           fontStyle={{
-            fontSize: 40,
+            fontSize: 35,
             color: "black",
+            fontFamily: "Impact",
           }}
         />
       </div>
       <div className="inc-arrows-container">
         <div className="inc-arrows-grid">
           <div className="inc-button-container">
-            <button disabled={currentRate>=5} onClick={()=>{setCurrentRate((state) => state + 1 )}}>U</button>
+            <button className="inc-button" disabled={currentRate>=5} onClick={()=>{setCurrentRate((state) => state + 1 )}}>U</button>
           </div>
           <div className="inc-button-container">
-            <button disabled={currentRate<=0} onClick={()=>{setCurrentRate((state) => state - 1 )}}>D</button>
+            <button className="inc-button" disabled={currentRate<=0} onClick={()=>{setCurrentRate((state) => state - 1 )}}>D</button>
           </div>
         </div>
       </div>
       <div className="vote-button-container">
-        <button onClick={handleSubmit}>Rate</button>
+        <button className="vote-button" onClick={handleSubmit}>Rate</button>
       </div>
     </div>
   </div>

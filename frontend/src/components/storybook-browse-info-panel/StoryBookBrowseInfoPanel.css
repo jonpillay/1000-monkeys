@@ -6,7 +6,7 @@
 
 .storybook-browse-info-panel-grid {
   display: grid;
-  grid-template-columns: 12% 76% 12%;
+  grid-template-columns: 15% 76% 9%;
   width: 65%;
 }
 
