@@ -10,28 +10,37 @@ function RatingPanel(props) {
 
   const { user } = useAuthContext()
 
-  const ratings = props.ratings
   const bookID = props.bookID
   const authorID = props.authorID
+  const ratingsDict = props.ratings
 
   // let ratedBool = false
 
   const [ratedBool, setRatedBool] = useState(false)
 
-  useEffect(() => {
-    // ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
-    ratings.forEach((rating) => user.id in rating ? setRatedBool(true) : setRatedBool(false))
-    
-  },[])
+  const [ratings, setRatings] = useState(props.ratings)
 
-  let ratingStart = 0
+  let rawRatings = []
+
+  ratings.forEach((rating) => (rawRatings.push(Object.values(rating)[0])))
+
   let ratingTotal = 0
 
-  ratings.forEach((rating) => {ratingTotal += Object.values(rating)[0]})
+  rawRatings.forEach((rating) => ratingTotal += rating)
 
-  const rating = ratings.length > 0 ? Math.floor(ratingTotal/ratings.length) : "Rate!"
+  const [rating, setRating] = useState(ratings.length > 0 ? Math.floor(ratingTotal/ratings.length) : 0)
 
-  console.log(rating)
+  useEffect(() => {
+
+    // ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
+    ratings.forEach((rating) => user.id in rating ? setRatedBool(true) : setRatedBool(false))
+
+    let ratingTotal = 0
+    console.log("This be ratings from use effect")
+    console.log(ratings)
+    rawRatings.forEach((rating) => ratingTotal += rating)
+    setRating(ratings.length > 0 ? Math.floor(ratingTotal/ratings.length) : 0)
+  },[ratings])
 
   const { submitRating, isLoading, error } = useUpdateRating()
 
@@ -40,12 +49,16 @@ function RatingPanel(props) {
     <div className="rating-panel-container">
       <div className="rating-panel-grid">
         <div className="rating-container">
-          <div>{rating}</div>
+          { (ratings.length > 0 ?
+            <div>{rating}</div>
+            :
+            "Rate!"
+          )}
         </div>
         {( authorID != user.id ?
             ( ratedBool == false ?
               <div className="rate-verb-container">
-                <RateStoryPanel submitRating={submitRating} bookID={bookID} setUserRated={setRatedBool}/>
+                <RateStoryPanel submitRating={submitRating} bookID={bookID} setRated={setRatedBool} setRatings={setRatings}/>
               </div>
               :
               <div className="rate-verb-container">

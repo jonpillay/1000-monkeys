@@ -13,13 +13,16 @@ function RateStoryPanel(props) {
 
   const submitRating = props.submitRating
   const bookID = props.bookID
-  const setUserRated = props.setUserRated
+  const setUserRated = props.setRated
+  const setRatings = props.setRatings
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     try {
       await submitRating(bookID, currentRate)
+      console.log(currentRate)
+      setRatings((prevRatings) => [...prevRatings, {[user.id]: currentRate}])
       setUserRated(true)
     } catch(error) {
       console.log(error)
