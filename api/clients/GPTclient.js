@@ -10,7 +10,7 @@ async function generateStory(prompts) {
   console.log("Backend GPT_KEY" + process.env.OPENAI_API_KEY)
   try {
     const res = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o-mini",
       messages: prompts,
     });
     // console.log("This is from completion ", res.choices[0])
