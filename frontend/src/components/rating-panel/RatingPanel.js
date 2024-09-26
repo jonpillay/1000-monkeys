@@ -35,11 +35,9 @@ function RatingPanel(props) {
   let userRating = null
 
   for (const rating of ratings) {
-    if (user.id in rating) {
+    if (user == null || user.id in rating) {
       console.log("Pooy pooy lull")
       userRating = Object.values(rating)[0]
-    } else {
-      console.log("SNARP")
     }
   }
 
@@ -48,7 +46,9 @@ function RatingPanel(props) {
   useEffect(() => {
 
     // ratedBool = ratings.some((rating) => rating.hasOwnProperty(user.id))
-    ratings.forEach((rating) => user.id in rating ? setRatedBool(true) : setRatedBool(false))
+    if (user != null) {
+      ratings.forEach((rating) => user.id in rating ? setRatedBool(true) : setRatedBool(false))
+    }
 
     let ratingTotal = 0
     console.log("This be ratings from use effect")
@@ -66,13 +66,14 @@ function RatingPanel(props) {
         <div className="rating-container">
           { (ratings.length > 0 ?
           <>
-            <div className='rating-span'>{rating}<span><img className='rating-star' src={RatingStar}/></span>({ratings.length})</div>
+            <div className='rating-span'>{rating}<span><img className='rating-star' src={RatingStar}/></span><span style={{fontSize:18}}>({ratings.length})</span></div>
           </>
             :
             <div className='needs-rating-span'>Awaiting Rating!</div>
           )}
         </div>
-        {( authorID != user.id ?
+        {(user != null ?
+          ( user != null && authorID != user.id ?
             ( ratedBool == false ?
               <div className='rating-control-container'>
                 <RateStoryPanel submitRating={submitRating} bookID={bookID} setRated={setRatedBool} setRatings={setRatings}/>
@@ -86,7 +87,16 @@ function RatingPanel(props) {
           <div className="your-story-container">
             Your Story
           </div>
+          )
+          :
+          (
+          <div className="your-story-container">
+            Log In To Rate
+          </div> 
+          )
+
         )}
+        
       </div>
     </div>
   </>

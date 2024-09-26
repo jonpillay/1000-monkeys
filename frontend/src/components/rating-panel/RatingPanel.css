@@ -76,8 +76,8 @@
 }
 
 .rating-star {
-  margin-top: 5px;
-  height: 0.9rem;
+  padding-top: 10px;
+  height: 0.7rem;
 }
 
 .your-rating {
