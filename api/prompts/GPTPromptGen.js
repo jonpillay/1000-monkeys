@@ -1,7 +1,5 @@
 const GPT_prompt_gen = (user_choices, story_prompts) => {
 
-  console.log("GPT Prompt gen fired")
-
   const GPT_starter_prompts = [
     {
       role: "system",
@@ -10,14 +8,6 @@ const GPT_prompt_gen = (user_choices, story_prompts) => {
     {
       role: "system",
       content: "The chapter should be between 30-50 words long."
-    },
-    {
-      role: "system",
-      content: "Each chapter should have a sequential chapter number and a title."
-    },
-    {
-      role: "system",
-      content: "Begin with chapter 1 and only return a single chapter everytime I prompt you"
     },
   ]
 
@@ -59,7 +49,6 @@ const GPT_prompt_gen = (user_choices, story_prompts) => {
   }
 
   let finalResults = promptResults.concat(story_prompts)
-  console.log(finalResults)
 
   return finalResults
 }

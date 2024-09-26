@@ -27,7 +27,6 @@ const StoryController = {
 
       const request = req.body
       console.log("made it here prompt parse")
-      console.log(request)
       const story_prompts = request["GPTPromptHistory"]
       console.log("made it here prompt parse")
       const user_choices = request["userchoices"]
@@ -45,7 +44,6 @@ const StoryController = {
       console.log("made it here 4")
 
       const story_image = await generateImage(DS_descpription)
-      console.log("This is the user in the credits controller!", credits_update)
 
       console.log("Pure Credits ", credits_update.credits)
 

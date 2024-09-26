@@ -29,11 +29,7 @@ const FetchStoriesController = {
 
     try {
 
-      console.log({requestUser})
-
       const bookList = await StoryBook.find(requestUser).exec()
-
-      console.log(bookList)
 
       res.status(200).json({ filteredList: bookList })
     } catch (error) {
