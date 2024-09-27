@@ -7,7 +7,7 @@ const starter_prompts = [
   },
   {
     role: "system",
-    content: "Decide what the most important scene in the chapter is and return to me a prompt to send to an AI text to image generator so that it can create an excellent illustration of the scene"
+    content: "Decide what the most important scene in the chapter is and return to me a descriptive visualisation of that scene to send to an AI text to image generator as a prompt so that it can create an excellent illustration of the scene"
   },
   {
     role: "system",
@@ -32,6 +32,8 @@ async function DSDescriptionGen(chapter, genre, main_character, system_prompts=s
     messages: system_prompts
   })
   system_prompts.push(res.data.choices[0].message)
+  console.log(res.data.choices[0].message.content)
+  console.log("coming from dc description gen")
   console.log(res.data.choices[0].message.content)
   return res.data.choices[0].message.content
 }
