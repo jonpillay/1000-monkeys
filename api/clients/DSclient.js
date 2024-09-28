@@ -72,11 +72,13 @@ async function DSGenerateImage(prompts) {
         },
       );
 
-    console.log(response.data)
-
     const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, response.data.image)
 
     console.log(remoteImage)
+
+    console.log(remoteImage.data.url)
+
+    return remoteImage.data.url
 
   } catch (error) {
     console.error("Status Code:", error.response.status);

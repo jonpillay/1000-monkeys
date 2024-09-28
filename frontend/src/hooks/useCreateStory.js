@@ -56,7 +56,7 @@ export const useCreateStory = () => {
 
   const AIGenCall = async () => {
 
-    const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory'))
+    const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory')) || []
 
     console.log(typeof GPTPromptHistory)
 

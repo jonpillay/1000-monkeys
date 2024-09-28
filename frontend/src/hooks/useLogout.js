@@ -21,7 +21,6 @@ export const useLogout = () => {
     localStorage.removeItem('user')
     localStorage.removeItem('credits')
     localStorage.removeItem('credits')
-    // localStorage.removeItem('story')
   }
 
   const logout = async () => {

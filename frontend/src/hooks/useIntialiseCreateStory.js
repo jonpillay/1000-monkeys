@@ -13,10 +13,6 @@ export const useInitialiseStory = () => {
 
   const initialiseStoryHook = (characterChoice, genreChoice, styleChoice, prompt) => {
 
-    console.log(characterChoice)
-    console.log(genreChoice)
-    console.log(styleChoice)
-
     const localGPTPromptHistory = []
 
     const GPTPrompt = {
@@ -28,11 +24,8 @@ export const useInitialiseStory = () => {
 
     localStorage.setItem('localGPTPromptHistory', JSON.stringify(localGPTPromptHistory))
 
-    // const GPTPromptStringy = JSON.stringify(GPTPrompt)
-
     reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
   }
-    
 
   return { initialiseStoryHook }
 }
