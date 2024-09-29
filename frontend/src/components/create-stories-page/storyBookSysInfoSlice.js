@@ -119,6 +119,9 @@ const storyBookSysInfoSlice = createSlice({
         }
       }
     },
+    refreshChapterPrep: (state) => {
+      state.GPTPromptHistory.pop()
+    },
     resetSysInfo: (state) => {
       state.userToken = null
       state.storyInProgress = false
@@ -143,5 +146,5 @@ export const selectStoryInSync = (state) => state.storyBookSysInfo.storyInSync;
 export const selectMongoID = (state) => state.storyBookSysInfo.mongoID;
 
 
-export const { setUserToken, initialiseStory, initialiseStoryFromDB, pushGPTPrompt, setStoryInSync, setFirstChapter, setStoryInProgress, setMongoID, resetSysInfo } = storyBookSysInfoSlice.actions;
+export const { setUserToken, initialiseStory, initialiseStoryFromDB, pushGPTPrompt, setStoryInSync, setFirstChapter, setStoryInProgress, setMongoID, refreshChapterPrep, resetSysInfo } = storyBookSysInfoSlice.actions;
 export default storyBookSysInfoSlice.reducer;

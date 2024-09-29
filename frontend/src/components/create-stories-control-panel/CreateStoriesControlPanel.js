@@ -100,8 +100,8 @@ const CreateStoriesControlPanel = (props) => {
         <>
         <div className='create-control-button-container'>
             <CreateButton selectedButton={selectedButton.current} createFunct={() => AIPromptNextChapter()} font={"phage-rough"} value="You write the next chapter" className="genre-button" />
-            <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshStory()} font={"rye"} value="Refresh the Image" className="genre-button" />
-            <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshImage()} font={"flavors"} value="Refresh the Text" className="genre-button" />
+            <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshImage()} font={"rye"} value="Refresh the Picture" className="genre-button" />
+            <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshStory()} font={"flavors"} value="Refresh the Text" className="genre-button" />
             {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </div>
         <div className='create-control-user-prompt-input'>

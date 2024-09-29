@@ -9,8 +9,8 @@ import { useNavigate } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../components/story-book/storyBookSlice";
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInProgress, setStoryInSync, initialiseStory, setFirstChapter } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages, prepStoryBookRefreshChapter } from "../components/story-book/storyBookSlice";
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInProgress, setStoryInSync, initialiseStory, refreshChapterPrep, setFirstChapter } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 
@@ -57,8 +57,6 @@ export const useCreateStory = () => {
   const AIGenCall = async () => {
 
     const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory')) || []
-
-    console.log(typeof GPTPromptHistory)
 
     // console.log("This is the prompt history create chapter gets on AIGenCall " + GPTPromptHistory.filter(obj => obj.role === 'user').pop().content)
 
@@ -142,8 +140,6 @@ export const useCreateStory = () => {
 
       await pushPromptToRedux(userPrompt)
   
-      // reduxDispatch(pushGPTPrompt(userPrompt))
-  
       localStorage.setItem("localGPTPromptHistory", JSON.stringify(GPTPromptHistory))
       AIGenCall()
 
@@ -166,29 +162,14 @@ export const useCreateStory = () => {
   const refreshStory = () => {
 
     if (user) {
-      let GPTPromptHistory = JSON.parse(localStorage.getItem("GPTPromptHistory"))
+      
+      reduxDispatch(prepStoryBookRefreshChapter())
+      reduxDispatch(refreshChapterPrep())
 
-      let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-  
-      let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
-  
-      console.log(storyPages)
-  
-      console.log(GPTPromptHistory.length)
-  
+      let GPTPromptHistory = JSON.parse(localStorage.getItem("localGPTPromptHistory"))
+
       GPTPromptHistory.pop()
-  
-      storyPages["textHistory"].pop()
-  
-      storyPages["imageHistory"].pop()
-  
-      sysInfo["currentPage"] = renderChapter -1
-  
-      localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-      localStorage.setItem("GPTPromptHistory", JSON.stringify(GPTPromptHistory))
-      localStorage.setItem("storyPages", JSON.stringify(storyPages))
-  
-  
+
       AIGenCall()
     } else {
       navigate('/')
