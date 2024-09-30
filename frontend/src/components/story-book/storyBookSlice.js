@@ -37,6 +37,31 @@ const storyBookSlice = createSlice({
         }
       }
     },
+    removeChapterImage: {
+      reducer(state, action) {
+        state.chapterImages.splice(action.payload.index, 1)
+      },
+      prepare(index) {
+        return {
+          payload: {
+            index
+          }
+        }
+      }
+    },
+    swapChapterImage: {
+      reducer(state, action) {
+        state.chapterImages.splice(action.payload.index, 1, action.payload.imageURL)
+      },
+      prepare(index, imageURL) {
+        return {
+          payload: {
+            index,
+            imageURL
+          }
+        }
+      }
+    },
     nextPage: (state) => {
       state.renderChapter += 1
     },
@@ -68,5 +93,5 @@ export const selectRenderChapter = (state) => state.storyBook.renderChapter;
 
 // export const storyBook = (state) => state.storyBook;
 
-export const { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, loadIntoCreate, prepStoryBookRefreshChapter, resetStoryBookSlice } = storyBookSlice.actions;
+export const { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, loadIntoCreate, prepStoryBookRefreshChapter, resetStoryBookSlice, removeChapterImage, swapChapterImage } = storyBookSlice.actions;
 export default storyBookSlice.reducer;

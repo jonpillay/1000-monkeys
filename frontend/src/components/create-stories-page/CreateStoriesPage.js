@@ -36,7 +36,6 @@ const CreateStoriesPage = (props) => {
     setStoryInSync,
     isLoading,
     setIsLoading,
-    storyPages,
     error } = useCreateStory()
 
     const character = useSelector(selectCharacter)

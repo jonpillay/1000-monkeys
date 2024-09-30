@@ -30,7 +30,7 @@ const StoryBook = (props) => {
   // }, [renderChapter])
 
   let imgUrl = chapterImages.length != 0 ? chapterImages[renderChapter] : "";
-  let story = chapterImages.length != 0 ? chapterTexts[renderChapter] : "This is where it ended";
+  let story = chapterTexts.length != 0 ? chapterTexts[renderChapter] : "This is where it ended";
 
   const turnPage = (direct) => {
     if (direct == 'back') {

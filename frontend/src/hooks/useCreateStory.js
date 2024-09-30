@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages, prepStoryBookRefreshChapter } from "../components/story-book/storyBookSlice";
+import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages, prepStoryBookRefreshChapter, selectAllChapterTexts, removeChapterImage, swapChapterImage } from "../components/story-book/storyBookSlice";
 import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, setStoryInProgress, setStoryInSync, initialiseStory, refreshChapterPrep, setFirstChapter } from "../components/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
@@ -27,8 +27,7 @@ export const useCreateStory = () => {
 
   const { navigate } = useNavigate()
 
-  const [storyPages, setStoryPages] = useState([])
-
+  const chapterTexts = useSelector(selectAllChapterTexts)
   const chapterImages = useSelector(selectAllChapterImages)
 
   const renderChapter = useSelector(selectRenderChapter)
@@ -180,20 +179,26 @@ export const useCreateStory = () => {
 
     if (user) {
 
-      setIsLoading(true)
+      // 
 
-      const userChoices = localStorage.getItem("userChoices")
+      console.log("We did here though")
+
+      loadingDispatch({type: 'LOADING'})
+
+      const userChoicesJSON = { 
+        character: userCharacter,
+        genre: userGenre,
+        style: userStyle,
+      }
+
+      // reduxDispatch(removeChapterImage(renderChapter))
   
-      let storyPages = JSON.parse(localStorage.getItem("storyPages"))
-  
-      storyPages["imageHistory"].splice(renderChapter, 1)
-  
-      const chapterText = storyPages["textHistory"][renderChapter]
+      const chapterText = chapterTexts[renderChapter]
   
       console.log(typeof chapterText)
   
       const reqBody = {
-        userChoices: userChoices,
+        userChoices: userChoicesJSON,
         chapterText: chapterText
       }
   
@@ -207,15 +212,15 @@ export const useCreateStory = () => {
       })
       .then((response) => response.json())
       .then((data) => {
-        storyPages["imageHistory"].splice(renderChapter, 0, data["page_image"])
+        console.log("MADE IT JENNY!")
+        reduxDispatch(swapChapterImage(renderChapter, data["page_image"]))
         reduxDispatch(turnToPage(renderChapter))
-        localStorage.setItem("storyPages", JSON.stringify(storyPages))
-        setIsLoading(false)
+        loadingDispatch({type: 'LOADED'})
       })
     } else {
       navigate('/')
     }
   }
 
-  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, setStoryPages, error }
+  return { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, error }
 }
