@@ -88,7 +88,7 @@ for (let key in userSelection) {
       art_style = "digital-art"
     } else {
       art_style = "fantasy-art"
-    }
+    }9
   } else if (key == 'character' || key == 'genre' || key == 'style') {
     prompts.push(sdPromptBank[key][userSelection[key]]['positivePrompts'])
     let negPrompts = sdPromptBank[key][userSelection[key]]['negativePrompts']

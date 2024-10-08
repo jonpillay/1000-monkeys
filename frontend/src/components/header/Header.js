@@ -6,12 +6,20 @@ import { useNavigate } from 'react-router';
 import { useLoadingContext } from '../../hooks/useLoadingContext';
 import { useEffect, useState } from 'react';
 
+
+import { resetStoryBookSlice } from "../story-book/storyBookSlice";
+import { resetSysInfo } from "../create-stories-page/storyBookSysInfoSlice";
+
+import { useDispatch } from "react-redux";
+
 const Header = () => {
 
   const { loading } = useLoadingContext()
   const navigate = useNavigate()
 
   const [showHeaderMouse, setShowHeaderMouse] = useState(false)
+
+  const reduxDispatch = useDispatch()
 
   useEffect(() => {
     const headerScroll = (Mpos) => {
@@ -38,6 +46,8 @@ const Header = () => {
 
   const goHome = () => {
     setTimeout(function(){
+      reduxDispatch(resetStoryBookSlice)
+      reduxDispatch(resetSysInfo)
       localStorage.removeItem("storyPages");
       localStorage.removeItem("GPTPromptHistory")
       localStorage.removeItem("userChoices");

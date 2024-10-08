@@ -18,20 +18,16 @@ async function DSGenerateImage(prompts) {
 
   console.log(prompts)
 
-  // const foramtttedPrompt = {
-  //   "text": prompts,
-  // }
-
   const requestForm = new FormData();
 
-  requestForm.append('prompt', JSON.stringify([{ text: prompts }]));  // Wrap prompt in array as the API expects
-  requestForm.append('cfg_scale', 7);
+  requestForm.append('prompt', JSON.stringify([{ text: prompts }]));
+  requestForm.append('cfg_scale', 3);
   requestForm.append('clip_guidance_preset', "FAST_BLUE");
   requestForm.append('height', 512);
   requestForm.append('width', 800);
   requestForm.append('samples', 1);
-  requestForm.append('steps', 50);
-  requestForm.append('sampler', 'k_lms');
+  requestForm.append('steps', 25);
+  requestForm.append('sampler', 'DPM++ 2M Karras');
   requestForm.append('output_format', 'png');
 
 

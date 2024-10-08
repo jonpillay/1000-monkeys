@@ -15,7 +15,7 @@ import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, s
 import { LoadingContext } from "../context/LoadingContext";
 
 export const useCreateStory = () => {
-  const reduxDispatch = useDispatch()
+  const reduxDispatch = useDispatch() 
   const { loadingDispatch } = useContext(LoadingContext)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState()
