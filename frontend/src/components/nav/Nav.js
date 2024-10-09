@@ -8,7 +8,8 @@ import { Navigate, useNavigate } from "react-router";
 import { useStoryContext } from "../../hooks/useStoryContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
-import { clearReduxPersist } from "../../redux-state/store";
+import { clearReduxPersist, clearStoryBookPersist } from "../../redux-state/store";
+// import { clearStoryBookPersist } from '../../redux-state/store';
 import { useDispatch } from "react-redux";
 import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../story-book/storyBookSlice';
 
@@ -63,7 +64,11 @@ const NavBar = () => {
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
 
-    clearRedux()
+    await localStorage.removeItem('persist:storyBook');
+
+    await reduxDispatch(resetStoryBookSlice())
+
+    await clearStoryBookPersist()
 
     dispatch({type: "END", payload: null})
   }

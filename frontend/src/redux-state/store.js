@@ -11,15 +11,37 @@ import {
  } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import rootReducer from './reducers';
+import storyBookReducer from '../components/story-book/storyBookSlice'
+import storyBookSysInfoReducer from "../components/create-stories-page/storyBookSysInfoSlice";
 
-const persistConfig = {
-  key: 'root',
+import { combineReducers } from '@reduxjs/toolkit';
+import rootReducer from './reducers';
+// import { version } from 'mongoose';
+
+// const persistConfig = {
+//   key: 'root',
+//   version: 1,
+//   storage,
+// };
+
+const storyBookPersistConfig = {
+  key: 'storyBookData',
   version: 1,
   storage,
-};
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const sysInfoPersistConfig = {
+  key: 'sysInfoData',
+  version: 1,
+  storage,
+}
+
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const persistedReducer = combineReducers({
+  storyBook: persistReducer(storyBookPersistConfig, storyBookReducer),
+  storyBookSysInfo: persistReducer(sysInfoPersistConfig, storyBookSysInfoReducer),
+})
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -33,5 +55,13 @@ export const store = configureStore({
 export const clearReduxPersist = () => {
   persistor.purge()
 }
+
+export const clearStoryBookPersist = async () => {
+  await localStorage.removeItem('persist:storyBook');
+};
+
+export const clearSPersist = () => {
+  localStorage.removeItem('persist:storyBook');
+};
 
 export const persistor = persistStore(store);
