@@ -68,7 +68,7 @@ const NavBar = () => {
 
     await reduxDispatch(resetStoryBookSlice())
 
-    await clearStoryBookPersist()
+    await clearReduxPersist()
 
     dispatch({type: "END", payload: null})
   }

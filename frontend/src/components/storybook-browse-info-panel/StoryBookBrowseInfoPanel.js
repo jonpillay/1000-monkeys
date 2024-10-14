@@ -40,7 +40,7 @@ const StoryBookBrowseInfoPanel = (props) => {
           </div>
         </div>
         <div className="edit-read-container">
-          {authorID == currentUser ? (
+          {authorID == currentUser.id ? (
           <div className="edit-container">
             <LoadIntoCreateButton storyID={bookID} />
           </div>

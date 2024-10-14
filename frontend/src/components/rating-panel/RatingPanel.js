@@ -36,7 +36,6 @@ function RatingPanel(props) {
 
   for (const rating of ratings) {
     if (user == null || user.id in rating) {
-      console.log("Pooy pooy lull")
       userRating = Object.values(rating)[0]
     }
   }

@@ -8,14 +8,22 @@ import { useEffect, useState } from 'react';
 
 
 import { resetStoryBookSlice } from "../story-book/storyBookSlice";
-import { resetSysInfo } from "../create-stories-page/storyBookSysInfoSlice";
+import { resetSysInfo, resetStorySysInfo } from "../create-stories-page/storyBookSysInfoSlice";
 
+import { useStoryContext } from "../../hooks/useStoryContext";
 import { useDispatch } from "react-redux";
+
+import { clearReduxPersist, clearStoryBookPersist } from "../../redux-state/store";
+
+import { store, persistor } from '../../redux-state/store';
 
 const Header = () => {
 
   const { loading } = useLoadingContext()
   const navigate = useNavigate()
+
+  const { dispatch } = useStoryContext()
+
 
   const [showHeaderMouse, setShowHeaderMouse] = useState(false)
 
@@ -44,22 +52,36 @@ const Header = () => {
     // document.addEventListener('mousemove', headerMouse);
   }, [])
 
-  const goHome = () => {
-    setTimeout(function(){
-      reduxDispatch(resetStoryBookSlice)
-      reduxDispatch(resetSysInfo)
-      localStorage.removeItem("storyPages");
-      localStorage.removeItem("GPTPromptHistory")
-      localStorage.removeItem("userChoices");
-      localStorage.removeItem("sysInfo");
-    }, 200);
+  // const goHome = () => {
+  //   setTimeout(function(){
+  //     reduxDispatch(resetStoryBookSlice)
+  //     reduxDispatch(resetStorySysInfo)
+  //     persistor.flush()
+  //     localStorage.removeItem("storyPages");
+  //     localStorage.removeItem("GPTPromptHistory")
+  //     localStorage.removeItem("userChoices");
+  //     localStorage.removeItem("sysInfo");
+  //   }, 200);
+
+  //   navigate("/");
+  // };
+
+  const endStory = async () => {
+    await reduxDispatch(resetStorySysInfo())
+    await reduxDispatch(resetStoryBookSlice())
+    await localStorage.removeItem('storyPages')
+    await localStorage.removeItem('sysInfo');
+    await localStorage.removeItem('userChoices');
+    await localStorage.removeItem('GPTPromptHistory');
+
+    await dispatch({type: "END", payload: null})
 
     navigate("/");
-  };
+  }
 
   return (
     <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
-      <button className="home-button" onClick={goHome} disabled={loading}>
+      <button className="home-button" onClick={endStory} disabled={loading}>
         <img className="home-icon" src={HomeIcon} alt="home" />
       </button>
       <div className='title-container'>

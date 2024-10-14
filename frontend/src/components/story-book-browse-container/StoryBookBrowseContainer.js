@@ -7,6 +7,8 @@ import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
 import LoadIntoCreateButton from '../load-into-create-button/LoadIntoCreateButton';
 import StoryBookBrowseInfoPanel from '../storybook-browse-info-panel/StoryBookBrowseInfoPanel';
 
+import { useAuthContext } from '../../hooks/useAuthContext';
+
 
 const StoryBookBrowseContainer = (props) => {
 
@@ -20,13 +22,15 @@ const StoryBookBrowseContainer = (props) => {
     
   // })
 
+  const {user} = useAuthContext()
+
   console.log("StoryBookBrowseContainer rerendered")
 
   const bookID = props.bookID
 
   const authorID = props.authorID
 
-  const currentUser = props.currentUser
+  const currentUser = user
 
   const title = props.title
 
