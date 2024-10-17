@@ -44,6 +44,7 @@ const NavBar = () => {
       dispatch({type: "END", payload: null})
       localStorage.removeItem("user")
       localStorage.removeItem("GPTPromptHistory")
+      localStorage.removeItem('localGPTPromptHistory');
       localStorage.removeItem("userChoices");
       localStorage.removeItem("storyPages");
       localStorage.removeItem("sysInfo");

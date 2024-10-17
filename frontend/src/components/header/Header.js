@@ -73,6 +73,7 @@ const Header = () => {
     await localStorage.removeItem('sysInfo');
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
+    await localStorage.removeItem('localGPTPromptHistory');
 
     await dispatch({type: "END", payload: null})
 
