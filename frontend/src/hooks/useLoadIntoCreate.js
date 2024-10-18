@@ -37,8 +37,7 @@ export const useLoadIntoCreate = () => {
 
     if (response.ok) {
       const storyBook = JSONres.resStoryBook
-      console.log("fetch by ID worked")
-      console.log(storyBook)
+      localStorage.setItem('localGPTPromptHistory', JSON.stringify(storyBook.GPTChatHistory))
       reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory, storyBook._id))
       reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
       setIsLoading(false)
