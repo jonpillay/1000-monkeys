@@ -35,7 +35,7 @@ export const useCreateStory = () => {
   const userCharacter = useSelector(selectCharacter)
   const userGenre = useSelector(selectGenre)
   const userStyle = useSelector(selectArtStyle)
-  // const GPTPromptHistory = useSelector(selectGPTPromptHistory)
+  const GPTPromptHistory = useSelector(selectGPTPromptHistory)
 
   console.log("This is the userGenre in the useCreateStory hook " + userGenre)
 
@@ -55,7 +55,7 @@ export const useCreateStory = () => {
 
   const AIGenCall = async () => {
 
-    const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory')) || []
+    const localGPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory')) || []
 
     // console.log("This is the prompt history create chapter gets on AIGenCall " + GPTPromptHistory.filter(obj => obj.role === 'user').pop().content)
 
@@ -72,7 +72,7 @@ export const useCreateStory = () => {
   
       const reqBody = {
         userchoices: userChoicesJSON,
-        GPTPromptHistory: GPTPromptHistory,
+        GPTPromptHistory: localGPTPromptHistory,
         credits_needed: 3
       }
   
@@ -94,9 +94,9 @@ export const useCreateStory = () => {
           content: data["page_text"]
         }
 
-        GPTPromptHistory.push(GPTResult)
+        localGPTPromptHistory.push(GPTResult)
 
-        localStorage.setItem('localGPTPromptHistory', JSON.stringify(GPTPromptHistory))
+        localStorage.setItem('localGPTPromptHistory', JSON.stringify(localGPTPromptHistory))
         reduxDispatch(pushGPTPrompt(GPTResult))
         reduxDispatch(setStoryInProgress(true))
         reduxDispatch(setStoryInSync(false))
@@ -111,15 +111,6 @@ export const useCreateStory = () => {
     } 
   };
 
-  // const initialiseStoryHook = (characterChoice, genreChoice, styleChoice, prompt) => {
-
-  //   const GPTPrompt = {
-  //     role: "user",
-  //     content: prompt,
-  //   }
-
-  //   reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
-  // };
 
   const pushPromptToRedux = async (prompt) => {
     reduxDispatch(pushGPTPrompt(prompt))
@@ -137,10 +128,11 @@ export const useCreateStory = () => {
 
       GPTPromptHistory.push(userPrompt)
 
-      await pushPromptToRedux(userPrompt)
+      await pushPromptToRedux(pushGPTPrompt(prompt))
   
       localStorage.setItem("localGPTPromptHistory", JSON.stringify(GPTPromptHistory))
-      AIGenCall()
+
+      await AIGenCall()
 
     } else {
       navigate('/')
