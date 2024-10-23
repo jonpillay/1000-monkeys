@@ -86,8 +86,8 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route exact path="/start-your-story" element={ <CreateSplashPage/> } />
-            <Route exact path="/create" element={ <CreateStoriesPage/> } />
+            <Route exact path="/start-your-story" element={ user ? <CreateSplashPage/> : <Navigate to="/"/>} />
+            <Route exact path="/create" element={  user ? <CreateStoriesPage/> : <Navigate to="/"/> } />
             <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />
             <Route exact path="/activate" element={ <ActivationPage/> } />

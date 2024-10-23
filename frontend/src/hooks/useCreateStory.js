@@ -161,6 +161,8 @@ export const useCreateStory = () => {
 
       GPTPromptHistory.pop()
 
+      localStorage.setItem("localGPTPromptHistory", JSON.stringify(GPTPromptHistory))
+
       AIGenCall()
     } else {
       navigate('/')
