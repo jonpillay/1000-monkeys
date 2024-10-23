@@ -50,7 +50,7 @@ export const useLogin = () => {
 
       setIsLoading(false)
 
-      navigate('/start-your-story')
+      // navigate('/start-your-story')
     }
   }
 

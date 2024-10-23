@@ -1,7 +1,7 @@
 import "./SplashContainer.css";
 import WelcomePanel from "../welcome-panel/WelcomePanel";
 import LogInForm from "../login-form/LogInForm";
-import FormContainer from "../form-container/FormContainer";
+import LoginCreateContainer from "../login-create-container/LoginCreateContainer"
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
@@ -14,7 +14,7 @@ const SplashContainer = (props) => {
     <div className="splash-container">
       <div className="splash-grid">
         <WelcomePanel/>
-        <LogInForm/>
+        <LoginCreateContainer/>
       </div>
     </div>
     </>
