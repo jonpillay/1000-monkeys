@@ -4,6 +4,7 @@ import "./LoginCreateContainer.css"
 
 import LogInForm from '../login-form/LogInForm';
 import StartYourStoryButton from '../start-your-story-button/StartYourStoryButton';
+import BrowseNavButton from '../browse-nav-button/BrowseNavButton';
 
 
 const LoginCreateContainer = () => {
@@ -12,10 +13,20 @@ const LoginCreateContainer = () => {
   
   return (
     <>
-    {!user ? 
-     <LogInForm/> :
-     <StartYourStoryButton/>
-     }
+      <div className="login-create-container">
+        <div className='login-container'>
+          {!user ? 
+            <LogInForm/> :
+            <StartYourStoryButton/>
+          }
+        </div>
+        <div className="or-container">
+          OR
+        </div>
+        <div>
+          <BrowseNavButton/>
+        </div>
+      </div>
     </>
   )
 

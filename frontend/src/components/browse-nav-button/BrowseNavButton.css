@@ -1,13 +1,13 @@
-.create-nav-container {
-  display: flex;
+.browse-nav-container {
+  padding-bottom: 0.5rem;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
   height: auto;
   width: 100%;
 }
 
-#start-story-button {
+#browse-button {
   margin: auto;
   width: fit-content;
 }

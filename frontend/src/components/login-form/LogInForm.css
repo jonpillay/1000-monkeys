@@ -1,4 +1,5 @@
 .form-container {
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,9 +45,9 @@
   border-top-right-radius: 15px 225px;
 }
 
-.user-text-input {
+/* .user-text-input {
   margin-bottom: 10%;
-}
+} */
 
 /* input.prepopulated  {
   color: red;
