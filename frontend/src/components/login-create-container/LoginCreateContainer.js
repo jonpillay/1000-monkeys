@@ -16,8 +16,8 @@ const LoginCreateContainer = () => {
       <div className="login-create-container">
         <div className='login-container'>
           {!user ? 
-            <LogInForm/> :
-            <StartYourStoryButton/>
+            <LogInForm /> :
+            <StartYourStoryButton />
           }
         </div>
         <div className="or-container">
