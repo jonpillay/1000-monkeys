@@ -51,8 +51,40 @@ html, body {
   }
 }
 
-/* .monkey-spinner {
-  background-color: red;
-  -webkit-mask-image: url('../../img/favpng_infinite-monkey-theorem.png');
-  mask-image: url('../../img/favpng_infinite-monkey-theorem.png');
-} */
+/* Global CSS stylers for StoryBook */
+
+.create-page-container {
+  display: grid;
+  grid-template-rows: 10% 52% 38%;
+  max-width: 80%;
+  min-width: 1300px;
+  min-height: 800px;
+  margin: auto;
+}
+
+.results-container {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: 17% 63% 17%;
+  min-width: 1200px;
+}
+
+.nav-container {
+  min-width: 900px;
+}
+
+.storybook-container {
+  max-width: 1500px;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  justify-content: center;
+}
+
+#previous-page-button {
+  margin-right: 20px;
+}
+
+#next-page-button {
+  margin-left: 50px;
+}

@@ -11,7 +11,7 @@ import {
 
 import Header from '../header/Header';
 import FormContainer from '../form-container/FormContainer';
-import ResultPage from '../Pages/result-page/ResultPage';
+// import ResultPage from '../Pages/result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
 import AdminPanel from '../admin-panel/AdminPanel';
