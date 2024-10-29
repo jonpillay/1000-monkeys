@@ -56,7 +56,6 @@ const App = () => {
             <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />
             <Route exact path="/activate" element={ <ActivationPage/> } />
-            {/* <Route exact path="/results" element={ !story ? <Navigate to="/"/> : <ResultPage/> } /> */}
             <Route exact path="/userfactoryintheenv" element={ admin == true ? <AdminPanel/> : <Navigate to="/"/> } />
             <Route exact path="/" element={ <SplashContainer/> } />
           </Routes>

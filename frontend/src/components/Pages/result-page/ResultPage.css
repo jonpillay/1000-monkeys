@@ -9,7 +9,7 @@
   overflow: auto;
 } */
 
-.resultpage-title {
+/* .resultpage-title {
   margin-left: 0%;
   margin-bottom: 32px;
   border-radius: 5px;
@@ -17,13 +17,13 @@
   font-weight: normal;
   font-size: 132%;
   white-space: nowrap;
-}
+} */
 
 /* .book-background {
   height: 100%;
 } */
 
-.create-page-container {
+/* .create-page-container {
   display: grid;
   grid-template-rows: 10% 52% 38%;
   max-width: 80%;
@@ -42,7 +42,7 @@
 
 .nav-container {
   min-width: 900px;
-}
+} */
 
 .storybook-container {
   /* max-width: 1500px; */
@@ -51,7 +51,7 @@
   /* justify-content: center; */
 }
 
-#previous-page-button {
+/* #previous-page-button {
   margin-right: 20px;
 }
 
@@ -89,13 +89,13 @@
 .resultpage-button:hover {
   border-width: 4px;
   background-color: #b7ff00ef;
-}
+} */
 
 /* .turn-page-button {
   display: inline;
 } */
 
-.nav-box {
+/* .nav-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,4 +108,4 @@
   align-items: center;
   justify-content: center;
   width: 25%;
-}
+} */

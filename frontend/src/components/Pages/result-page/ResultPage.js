@@ -2,96 +2,97 @@ import { useEffect, useState, useRef, useContext } from "react";
 import Image from "../../image/image";
 import Story from "../../story/Story";
 import TurnPageButton from "../../turn-page-button/turnPageButton";
-import "./ResultPage.css";
+// import "./ResultPage.css";
 import LoadingIcon from "../../loading-icon/LoadingIcon";
-import LoadingPage from "../loading_page/LoadingPage";
-import SteerStory from "../../steer-story/SteerStory";
-import ChapterTitle from "../../chapter-title/ChapterTitle";
-import StoryControlPanel from "../../story-control-panel/StoryControlPanel";
+// import LoadingPage from "../loading_page/LoadingPage";
+// import SteerStory from "../../steer-story/SteerStory";
+// import ChapterTitle from "../../chapter-title/ChapterTitle";
+// import StoryControlPanel from "../../story-control-panel/StoryControlPanel";
 
-import { useAuthContext } from "../../../hooks/useAuthContext";
-import { useNavigate } from "react-router";
-import { CreditsContext } from "../../../context/CreditsContext";
+// import { useAuthContext } from "../../../hooks/useAuthContext";
+// import { useNavigate } from "react-router";
+// import { CreditsContext } from "../../../context/CreditsContext";
 
 
-import { useLoadingContext } from "../../../hooks/useLoadingContext";
-import { LoadingContext } from "../../../context/LoadingContext";
+// import { useLoadingContext } from "../../../hooks/useLoadingContext";
+// import { LoadingContext } from "../../../context/LoadingContext";
 
-import { useStoryContext } from '../../../hooks/useStoryContext';
+// import { useStoryContext } from '../../../hooks/useStoryContext';
 
-import {useCreateStory} from "../../../hooks/useCreateStory"
-import StoryBook from "../../story-book/StoryBook";
-import SaveStoryButton from "../../save-story-button/SaveStoryButton";
+// import {useCreateStory} from "../../../hooks/useCreateStory"
+// import StoryBook from "../../story-book/StoryBook";
+// import SaveStoryButton from "../../save-story-button/SaveStoryButton";
 
 
 const ResultPage = () => {
 
-  const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error } = useCreateStory()
+  // const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages, error } = useCreateStory()
 
-  const { loading } = useLoadingContext()
+  // const { loading } = useLoadingContext()
 
-  const { user } = useAuthContext()
+  // const { user } = useAuthContext()
 
-  const {story} = useStoryContext()
+  // const {story} = useStoryContext()
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const { creditDispatch } = useContext(CreditsContext)
+  // const { creditDispatch } = useContext(CreditsContext)
 
-  const { loadingDispatch } = useContext(LoadingContext)
+  // const { loadingDispatch } = useContext(LoadingContext)
 
-  let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
+  // let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
 
-  let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  // let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
-  const inSync = localStorage.getItem('storyInSync')
+  // const inSync = localStorage.getItem('storyInSync')
 
-  useEffect(() => {
-    const initialiseStory = async () => {
-      if (user) {
-        let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
-        if (sysInfo["firstLoad"] === true) {
-          sysInfo["firstLoad"] = false
-          localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-          AIGenCall();
-    }
-    } else {
-      navigate('/')
-    }
-  }
-  initialiseStory()
+  // useEffect(() => {
+  //   const initialiseStory = async () => {
+  //     if (user) {
+  //       let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
+  //       if (sysInfo["firstLoad"] === true) {
+  //         sysInfo["firstLoad"] = false
+  //         localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
+  //         AIGenCall();
+  //   }
+  //   } else {
+  //     navigate('/')
+  //   }
+  // }
+  // initialiseStory()
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  // }, [user]);
 
 
 
-  const [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
+  // const [renderChapter, setRenderChapter] = useState(sysInfo["currentPage"])
 
-  // let renderChapter = sysInfo["currentPage"]
+  // // let renderChapter = sysInfo["currentPage"]
 
-  return (
-    <>
-      {!loading ? (
-        <>
-        <div className="create-page-container">
-          <div className="storybook-header">
-            <ChapterTitle chapterNumber={renderChapter + 1}/>
-            <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>
-          </div>
-            <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
-          <div className="nav-container">
-            <SteerStory callback={userPromtNextChapter} />
-            <StoryControlPanel refreshStory={refreshStory} refreshImage={refreshImage} whatHappensNext={AIPromptNextChapter}/>
-          </div>
-        </div>
-        </>
-        ) : (
-        <div className="nav-box">
-          <LoadingPage />
-        </div>  
-      )}
-    </>
-  )};
+  // return (
+  //   <>
+  //     {!loading ? (
+  //       <>
+  //       <div className="create-page-container">
+  //         <div className="storybook-header">
+  //           <ChapterTitle chapterNumber={renderChapter + 1}/>
+  //           <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>
+  //         </div>
+  //           <StoryBook storyPages={storyPages} setRender={[renderChapter, setRenderChapter]}/>
+  //         <div className="nav-container">
+  //           <SteerStory callback={userPromtNextChapter} />
+  //           <StoryControlPanel refreshStory={refreshStory} refreshImage={refreshImage} whatHappensNext={AIPromptNextChapter}/>
+  //         </div>
+  //       </div>
+  //       </>
+  //       ) : (
+  //       <div className="nav-box">
+  //         <LoadingPage />
+  //       </div>  
+  //     )}
+  //   </>
+  // )};
+}
   
 
 export default ResultPage;
