@@ -11,14 +11,14 @@ import {
 
 import Header from '../header/Header';
 import FormContainer from '../form-container/FormContainer';
-import ResultPage from '../result-page/ResultPage';
+import ResultPage from '../Pages/result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
 import AdminPanel from '../admin-panel/AdminPanel';
-import ActivationPage from '../activation-page.js/ActivationPage';
-import BrowsePage from '../browse-page/BrowsePage';
-import CreateSplashPage from '../create-splash-page/CreateSplashPage';
-import CreateStoriesPage from '../create-stories-page/CreateStoriesPage';
+import ActivationPage from '../Pages/activation-page/ActivationPage';
+import BrowsePage from '../Pages/browse-page/BrowsePage';
+import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
+import CreateStoriesPage from '../Pages/create-stories-page/CreateStoriesPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
@@ -26,10 +26,10 @@ import { useStoryContext } from '../../hooks/useStoryContext';
 import { StoryContext } from '../../context/StoryContext';
 
 import monkeySpinner from "../../img/favpng_infinite-monkey-theorem.png"
-import LoadingPage from '../loading_page/LoadingPage';
+import LoadingPage from '../Pages/loading_page/LoadingPage';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { resetSysInfo, selectUserToken } from '../create-stories-page/storyBookSysInfoSlice';
+import { resetSysInfo, selectUserToken } from '../Pages/create-stories-page/storyBookSysInfoSlice';
 import { resetStoryBookSlice } from '../story-book/storyBookSlice';
 import { clearReduxPersist } from '../../redux-state/store';
 

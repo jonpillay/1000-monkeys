@@ -1,27 +1,27 @@
 import { useEffect, useState, useRef, useContext } from "react";
-import Image from "../image/image";
-import Story from "../story/Story";
-import TurnPageButton from "../turn-page-button/turnPageButton";
+import Image from "../../image/image";
+import Story from "../../story/Story";
+import TurnPageButton from "../../turn-page-button/turnPageButton";
 import "./ResultPage.css";
-import LoadingIcon from "../loading-icon/LoadingIcon";
+import LoadingIcon from "../../loading-icon/LoadingIcon";
 import LoadingPage from "../loading_page/LoadingPage";
-import SteerStory from "../steer-story/SteerStory";
-import ChapterTitle from "../chapter-title/ChapterTitle";
-import StoryControlPanel from "../story-control-panel/StoryControlPanel";
+import SteerStory from "../../steer-story/SteerStory";
+import ChapterTitle from "../../chapter-title/ChapterTitle";
+import StoryControlPanel from "../../story-control-panel/StoryControlPanel";
 
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useNavigate } from "react-router";
-import { CreditsContext } from "../../context/CreditsContext";
+import { CreditsContext } from "../../../context/CreditsContext";
 
 
-import { useLoadingContext } from "../../hooks/useLoadingContext";
-import { LoadingContext } from "../../context/LoadingContext";
+import { useLoadingContext } from "../../../hooks/useLoadingContext";
+import { LoadingContext } from "../../../context/LoadingContext";
 
-import { useStoryContext } from '../../hooks/useStoryContext';
+import { useStoryContext } from '../../../hooks/useStoryContext';
 
-import {useCreateStory} from "../../hooks/useCreateStory"
-import StoryBook from "../story-book/StoryBook";
-import SaveStoryButton from "../save-story-button/SaveStoryButton";
+import {useCreateStory} from "../../../hooks/useCreateStory"
+import StoryBook from "../../story-book/StoryBook";
+import SaveStoryButton from "../../save-story-button/SaveStoryButton";
 
 
 const ResultPage = () => {

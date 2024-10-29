@@ -4,7 +4,7 @@ import { CreditsContext } from "../context/CreditsContext";
 import { useAuthContext } from "./useAuthContext";
 
 import { useDispatch } from "react-redux";
-import { setMongoID } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { setMongoID } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 export const useSaveStory = () => {
   const { user } = useAuthContext()

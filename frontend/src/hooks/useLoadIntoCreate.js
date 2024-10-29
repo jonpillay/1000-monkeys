@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { UseDispatch, useDispatch } from "react-redux";
-import { initialiseStoryFromDB } from "../components/create-stories-page/storyBookSysInfoSlice";
+import { initialiseStoryFromDB } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 import { loadIntoCreate } from "../components/story-book/storyBookSlice";
 import { useAuthContext } from "./useAuthContext";
 

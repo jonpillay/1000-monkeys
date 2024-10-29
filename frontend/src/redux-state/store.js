@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import storyBookReducer from '../components/story-book/storyBookSlice'
-import storyBookSysInfoReducer from "../components/create-stories-page/storyBookSysInfoSlice";
+import storyBookSysInfoReducer from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { combineReducers } from '@reduxjs/toolkit';
 import rootReducer from './reducers';

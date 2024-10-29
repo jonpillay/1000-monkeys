@@ -14,7 +14,7 @@ import { useStoryContext } from "../../hooks/useStoryContext";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
-import { initialiseStory } from "../create-stories-page/storyBookSysInfoSlice";
+import { initialiseStory } from "../Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
 

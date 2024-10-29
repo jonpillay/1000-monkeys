@@ -1,12 +1,12 @@
 import "./BrowsePage.css";
 
-import { useFetchStories } from "../../hooks/useFetchStories";
+import { useFetchStories } from "../../../hooks/useFetchStories";
 
-import FetchStoriesControlPanel from "../fetch-control-panel/FetchControlPanel";
+import FetchStoriesControlPanel from "../../fetch-control-panel/FetchControlPanel";
 
-import BrowseBookDisplay from "../browse-book-display/BrowseBookDisplay"
+import BrowseBookDisplay from "../../browse-book-display/BrowseBookDisplay"
 
-import StoryBookBrowse from "../story-book-browse/StoryBookBrowse";
+import StoryBookBrowse from "../../story-book-browse/StoryBookBrowse";
 
 const BrowsePage = (props) => {
 

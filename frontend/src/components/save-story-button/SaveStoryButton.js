@@ -3,7 +3,7 @@ import { useSaveStory } from "../../hooks/useSaveStory"
 
 import { useSelector, useDispatch } from "react-redux"
 import { selectAllChapterTexts, selectAllChapterImages } from "../story-book/storyBookSlice"
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID } from "../create-stories-page/storyBookSysInfoSlice"
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID } from "../Pages/create-stories-page/storyBookSysInfoSlice"
 
 import "./SaveStoryButton.css"
 

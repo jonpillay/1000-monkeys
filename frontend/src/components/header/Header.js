@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 
 import { resetStoryBookSlice } from "../story-book/storyBookSlice";
-import { resetSysInfo, resetStorySysInfo } from "../create-stories-page/storyBookSysInfoSlice";
+import { resetSysInfo, resetStorySysInfo } from "../Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { useStoryContext } from "../../hooks/useStoryContext";
 import { useDispatch } from "react-redux";

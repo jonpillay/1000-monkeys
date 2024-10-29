@@ -1,29 +1,29 @@
 import './CreateStoriesPage.css'
 
-import { useLoadingContext } from "../../hooks/useLoadingContext";
+import { useLoadingContext } from "../../../hooks/useLoadingContext";
 
 import { UseDispatch, useDispatch } from 'react-redux';
 
 import { useSelector } from 'react-redux';
-import { selectRenderChapter } from '../story-book/storyBookSlice';
+import { selectRenderChapter } from '../../story-book/storyBookSlice';
 
 import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, setStoryInProgress, setFirstChapter } from './storyBookSysInfoSlice';
 
-import CreateStoriesControlPanel from '../create-stories-control-panel/CreateStoriesControlPanel';
-import ChapterTitle from '../chapter-title/ChapterTitle';
-import SaveStoryButton from '../save-story-button/SaveStoryButton';
-import StoryBook from '../story-book/StoryBook';
+import CreateStoriesControlPanel from '../../create-stories-control-panel/CreateStoriesControlPanel';
+import ChapterTitle from '../../chapter-title/ChapterTitle';
+import SaveStoryButton from '../../save-story-button/SaveStoryButton';
+import StoryBook from '../../story-book/StoryBook';
 import LoadingPage from '../loading_page/LoadingPage'
 
-import { useCreateStory } from '../../hooks/useCreateStory'
+import { useCreateStory } from '../../../hooks/useCreateStory'
 import CreateSplashPage from '../create-splash-page/CreateSplashPage';
 import { useEffect, useState } from 'react';
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
-import { resetStoryBookSlice } from "../story-book/storyBookSlice";
-import { resetSysInfo, resetStorySysInfo } from "../create-stories-page/storyBookSysInfoSlice";
+import { resetStoryBookSlice } from "../../story-book/storyBookSlice";
+import { resetSysInfo, resetStorySysInfo } from "./storyBookSysInfoSlice";
 
-import { useStoryContext } from "../../hooks/useStoryContext";
+import { useStoryContext } from "../../../hooks/useStoryContext";
 
 const CreateStoriesPage = (props) => {
   const {user} = useAuthContext
