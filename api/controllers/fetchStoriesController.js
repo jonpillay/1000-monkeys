@@ -4,13 +4,9 @@ const FetchStoriesController = {
 
   GetStoriesByGenre: async (req, res) => {
 
-    console.log(req.body)
-
     const requestGenre = req.body;
 
     try {
-
-      console.log("This is from line 13 fetchController", {requestGenre})
 
       const bookList = await StoryBook.find(requestGenre).exec()
 
@@ -22,8 +18,6 @@ const FetchStoriesController = {
   },
 
   GetStoriesByUser: async (req, res) => {
-
-    console.log(req.body)
 
     const requestUser = req.body;
 
@@ -39,22 +33,15 @@ const FetchStoriesController = {
 
   FetchStoryByID: async (req, res) => {
 
-    console.log(req.body)
-
     const requestStoryID = req.body.storyID
 
     const user_id = req.user._id
 
-    console.log(requestStoryID)
-    console.log(user_id)
-
     try {
       const storyBook = await StoryBook.findById(requestStoryID)
-      console.log("This is the storybook object " + storyBook)
-      console.log(storyBook.user_id)
+
       const author = storyBook.user_id
-      console.log("This is the author " + author)
-      console.log(author)
+
       if (author != user_id) {
         res.status(401).json({error: "Must be story owner."})
       } else {

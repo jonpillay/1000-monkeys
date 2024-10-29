@@ -37,16 +37,6 @@ export const useCreateStory = () => {
   const userStyle = useSelector(selectArtStyle)
   const GPTPromptHistory = useSelector(selectGPTPromptHistory)
 
-  console.log("This is the userGenre in the useCreateStory hook " + userGenre)
-
-  console.log("This is what the AIGenFunction gets as a character from redux " + userCharacter)
-
-
-  // const [renderChapter, setRenderChapter] = useState(null)
-
-  // const inSync = localStorage.getItem('storyInSync')
-  // let [storyInSync, setStoryInSync] = useState(inSync ? true : false );
-
   const storyInSync = useSelector(selectStoryInSync)
 
   const notFirstChapter = async () => {
@@ -56,8 +46,6 @@ export const useCreateStory = () => {
   const AIGenCall = async () => {
 
     const localGPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory')) || []
-
-    // console.log("This is the prompt history create chapter gets on AIGenCall " + GPTPromptHistory.filter(obj => obj.role === 'user').pop().content)
 
     await notFirstChapter()
 
@@ -106,7 +94,6 @@ export const useCreateStory = () => {
   
         });
     } catch (error) {
-      console.log("useCreateStory threw the error")
       console.error(error)
     } 
   };
@@ -173,10 +160,6 @@ export const useCreateStory = () => {
 
     if (user) {
 
-      // 
-
-      console.log("We did here though")
-
       loadingDispatch({type: 'LOADING'})
 
       const userChoicesJSON = { 
@@ -188,9 +171,7 @@ export const useCreateStory = () => {
       // reduxDispatch(removeChapterImage(renderChapter))
   
       const chapterText = chapterTexts[renderChapter]
-  
-      console.log(typeof chapterText)
-  
+    
       const reqBody = {
         userChoices: userChoicesJSON,
         chapterText: chapterText
@@ -206,7 +187,6 @@ export const useCreateStory = () => {
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log("MADE IT JENNY!")
         reduxDispatch(swapChapterImage(renderChapter, data["page_image"]))
         reduxDispatch(turnToPage(renderChapter))
         loadingDispatch({type: 'LOADED'})

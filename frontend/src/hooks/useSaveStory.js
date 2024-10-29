@@ -18,8 +18,6 @@ export const useSaveStory = () => {
     setIsLoading(true)
     setError(null)
 
-    console.log(user.token)
-
     const reqBody = {
       chapterImages: chapterImages,
       chapterTexts: chapterTexts,
@@ -30,8 +28,6 @@ export const useSaveStory = () => {
       AIEngineVer: AIEngineVer,
       author: author,
     }
-
-    console.log(reqBody)
 
     try {
       const response = await fetch('./save/create-story', {
@@ -46,22 +42,18 @@ export const useSaveStory = () => {
       const JSONres = await response.json()
   
       if (!response.ok) {
-        console.log("ended here")
+        console.log(JSONres.error)
         setIsLoading(false)
         setError(JSONres.error)
       }
   
       if (response.ok) {
-        console.log("response on the saveStory is ok")
-        // const storyPages = JSON.parse(localStorage.getItem('storyPages'))
-        // storyPages['storyID'] = JSONres.story_id
-        console.log(JSONres.story_id)
+
         reduxDispatch(setMongoID(JSONres.story_id))
-        // localStorage.setItem('storyPages', JSON.stringify(storyPages['storyID']))
         setIsLoading(false)
       }
     } catch (error) {
-      console.log("actually ended here")
+      console.log(error.message)
       setIsLoading(false)
       setError(error.message)
     }
@@ -83,13 +75,12 @@ export const useSaveStory = () => {
     const JSONres = await response.json()
 
     if (!response.ok) {
-      console.log("Update failed")
+      console.log(JSONres.error)
       setIsLoading(false)
       setError(JSONres.error)
     }
 
     if (response.ok) {
-      console.log("we got to update")
       setIsLoading(false)
     }
   }

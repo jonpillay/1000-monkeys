@@ -34,8 +34,6 @@ const StoryBookBrowse = (props) => {
 
   const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
-  console.log(localPageNumbers)
-
   const turnPage = async (direct) => {
     if (direct == 'back') {
       story.current = chapterTexts[renderChapter -1]

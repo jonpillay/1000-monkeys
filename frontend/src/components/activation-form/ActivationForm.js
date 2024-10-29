@@ -5,14 +5,11 @@ import { useActivate } from "../../hooks/useActivate";
 // const jwt = require("jsonwebtoken");
 
 const ActivationForm = ({activate, isLoading, error}) => {
-  console.log("Activate Form Rerender")
   const activationEmail = useRef()
   const activationInviteCode = useRef()
  
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(activationEmail.current.value)
-    console.log(activationInviteCode.current.value)
 
     await activate(activationEmail.current.value, activationInviteCode.current.value)
 

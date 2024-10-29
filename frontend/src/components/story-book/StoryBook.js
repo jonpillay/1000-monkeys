@@ -41,8 +41,6 @@ const StoryBook = (props) => {
     }
   }
 
-  console.log("StoryBook rerendered")
-
   return (
     <>
     {chapterImages.length < 0 ? (

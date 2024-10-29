@@ -21,7 +21,6 @@ export const CreditsContextProvider = ({ children }) => {
   })
 
   const { authUser } = useAuthContext();
-  console.log(authUser);
   
   useEffect(() => {
     const credits = localStorage.getItem('credits')
@@ -29,8 +28,6 @@ export const CreditsContextProvider = ({ children }) => {
       creditDispatch({ type: 'UPDATE', payload: credits })
     } 
   }, [])
-
-  console.log(`CreditsContext state:`, state)
 
   return (
     <CreditsContext.Provider value={{...state, creditDispatch}}>

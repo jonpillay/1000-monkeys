@@ -8,12 +8,9 @@ const creditController = {
 
       const {token_id, token_amount} = jwt.verify(token, process.env.JWT_SIGNATURE)
 
-      console.log("Token comparrison")
-      console.log(token_amount)
-      console.log(token)
 
       if (token_id != _id || token_amount != amount) {
-        console.log("bad response coming from the token checks")
+        // console.log("bad response coming from the token checks")
         throw Error("Nice Try")
       }
 
@@ -27,14 +24,9 @@ const creditController = {
 
       return credit_update
 
-      // const user = await User.login(email, password)
-
-      // const JWT = genLoginJWT(user._id, user.isSuper)
-
-      // res.status(200).json({ email: email, token: JWT, isSuper: user.isSuper, credits: user.credits })
     } catch (error) {
-      console.log("coming from catch on credits")
-      console.log(error)
+      // console.log("coming from catch on credits")
+      // console.log(error)
       return error
     }
   }

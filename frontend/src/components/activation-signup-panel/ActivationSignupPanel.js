@@ -6,11 +6,8 @@ import { useActivate } from "../../hooks/useActivate";
 import { useEffect, useState } from "react";
 
 const ActivationSignupPanel = (props) => {
-  console.log("Activation cat panel rerender")
 
   const { activate, isLoading, error, signupActive } = useActivate()
-
-  console.log("This is from the panel", signupActive)
 
   return (
     <div className="activation-signup-panel">

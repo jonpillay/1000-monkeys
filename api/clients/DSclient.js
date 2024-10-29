@@ -16,8 +16,6 @@ if (!apiKey) throw new Error('Missing Stability API key.');
 
 async function DSGenerateImage(prompts) {
 
-  console.log(prompts)
-
   const requestForm = new FormData();
 
   requestForm.append('prompt', JSON.stringify([{ text: prompts }]));
@@ -29,8 +27,6 @@ async function DSGenerateImage(prompts) {
   requestForm.append('steps', 25);
   requestForm.append('sampler', 'DPM++ 2M Karras');
   requestForm.append('output_format', 'png');
-
-
 
   const payload = {
     text_prompts: prompts,
@@ -70,10 +66,6 @@ async function DSGenerateImage(prompts) {
 
     const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, response.data.image)
 
-    console.log(remoteImage)
-
-    console.log(remoteImage.data.url)
-
     return remoteImage.data.url
 
   } catch (error) {
@@ -83,55 +75,5 @@ async function DSGenerateImage(prompts) {
     // console.error("Error With SD API ", error)
   }
 }
-
-  // const response = await axios.post(
-  //   `https://api.stability.ai/v2beta/stable-image/generate/core`,
-  //   requestForm,
-  //   {
-  //     headers: { 
-  //       Authorization: `Bearer ${apiKey}`, 
-  //       Accept: "application/json" 
-  //       },
-  //     },
-  //   );
-
-  // if(response.status === 200) {
-  //   console.log("BE HERE THOUGH")
-  //   // const responseJSON = await response.json();
-  //   // const imagePromises = responseJSON.artifacts.map(async (image, index) => {
-  //   const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, image.base64);
-  
-  //   return remoteImage.data.display_url;
-    
-  //   // const imageUrls = await Promise.all(imagePromises);
-  
-  //   // return imageUrls[0];
-  // } else {
-  //   console.log("this is where it eneded is DSClient")
-  //   console.log(await response.text())
-  //   throw new Error(`Non-200 response: ${await response.text()}`);
-  // }
-
-
-
-  // if (!response.ok) {
-  //   console.log("this is where it eneded is DSClient")
-  //   console.log(await response.text())
-  //   throw new Error(`Non-200 response: ${await response.text()}`);
-
-  // }
-
-  // const responseJSON = await response.json();
-  // const imagePromises = responseJSON.artifacts.map(async (image, index) => {
-  // const remoteImage = await imgBBUploader(process.env.IMGBB_KEY, image.base64);
-
-  // return remoteImage.data.display_url;
-  // });
-  
-  // const imageUrls = await Promise.all(imagePromises);
-
-  // return imageUrls[0];
-  
-// }
 
 module.exports = DSGenerateImage

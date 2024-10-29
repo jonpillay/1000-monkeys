@@ -63,37 +63,6 @@ const CreateStoriesControlPanel = (props) => {
   error,
   } = useCreateStory();
 
-  // const browseStorySetup = async (fetchFunct, keyword) => {
-
-  //   selectedButton.current = keyword
-
-  //   console.log("browse setup running")
-
-  //   const bookList = await fetchFunct(keyword)
-
-  //   console.log(bookList)
-
-  //   const pageNumbers = await JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
-
-    // if (localStorage.getItem('browsePageNumbers')) {
-    //   pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
-    // } else {
-    //   pageNumbers = {}
-    // }
-
-  //   console.log(pageNumbers)
-
-  //   bookList.forEach((book) => {
-  //     if (!(book._id in pageNumbers)) {
-  //       pageNumbers[book._id] = 0
-  //     }
-  //   })
-
-  //   await localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
-
-  //   setBookList(bookList)
-  // }
-
   return (
     <>
       <div className='create-control-nav-container'>

@@ -30,8 +30,6 @@ const ResultPage = () => {
 
   const { loading } = useLoadingContext()
 
-  console.log("This is the loading value on the results page", loading)
-
   const { user } = useAuthContext()
 
   const {story} = useStoryContext()
@@ -42,8 +40,6 @@ const ResultPage = () => {
 
   const { loadingDispatch } = useContext(LoadingContext)
 
-  console.log("ResultPage rerendered")
-
   let localStoryPages = JSON.parse(localStorage.getItem("storyPages"))
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
@@ -52,15 +48,11 @@ const ResultPage = () => {
 
   useEffect(() => {
     const initialiseStory = async () => {
-      console.log("userEffect triggered")
       if (user) {
-        console.log("user eval triggred")
         let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
         if (sysInfo["firstLoad"] === true) {
-          console.log("first load triggered")
           sysInfo["firstLoad"] = false
           localStorage.setItem("sysInfo", JSON.stringify(sysInfo))
-          console.log("First load useEffect")
           AIGenCall();
     }
     } else {

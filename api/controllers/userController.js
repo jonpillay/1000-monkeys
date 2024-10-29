@@ -32,13 +32,6 @@ const UserController = {
     const {email, password} = req.body
     const authEmail = req.user
 
-    console.log(authEmail)
-
-    // if (authEmail != email) {
-    //   throw Error("Invalid request")
-    //   res.status(400).json({error: "invalid request"})
-    // } 
-
     try {
       const user = await User.signup(email, password)
 
@@ -50,8 +43,7 @@ const UserController = {
     }
   },
   CreateUser: async (req, res) => {
-    console.log("This is the req obj!")
-    console.log(req.body)
+
     const {email, invite_code} = req.body
 
     try {

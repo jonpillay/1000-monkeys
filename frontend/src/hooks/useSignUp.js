@@ -17,8 +17,6 @@ export const useSignup = () => {
 
     const token = JSON.parse(localStorage.getItem('activateLocal'))
 
-    console.log(token.token)
-
     const response = await fetch('./user/signup', {
       method: 'Post',
       headers: {

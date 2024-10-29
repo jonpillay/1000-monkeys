@@ -6,15 +6,11 @@ const generateImage = require("../clients/DSclient")
 
 const ImagesController = {
   RefreshImage: async (req, res) => {
-    console.log("WE GOT HERE")
+
     try {
       let user_choices = req.body["userChoices"]
 
       let story_text = req.body["chapterText"]
-
-      console.log(user_choices)
-
-      console.log(story_text)
 
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
 

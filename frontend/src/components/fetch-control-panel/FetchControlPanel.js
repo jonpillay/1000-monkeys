@@ -62,21 +62,9 @@ const FetchStoriesControlPanel = (props) => {
 
     selectedButton.current = keyword
 
-    console.log("browse setup running")
-
     const bookList = await fetchFunct(keyword)
 
-    console.log(bookList)
-
     const pageNumbers = await JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
-
-    // if (localStorage.getItem('browsePageNumbers')) {
-    //   pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers'))
-    // } else {
-    //   pageNumbers = {}
-    // }
-
-    console.log(pageNumbers)
 
     bookList.forEach((book) => {
       if (!(book._id in pageNumbers)) {

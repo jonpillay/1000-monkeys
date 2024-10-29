@@ -44,8 +44,7 @@ async function DSDescriptionGen(chapter, genre, main_character, system_prompts=s
     messages: system_prompts
   })
   system_prompts.push(res.data.choices[0].message)
-  console.log("coming from dc description gen")
-  console.log(res.data.choices[0].message.content)
+
   return res.data.choices[0].message.content
 }
 

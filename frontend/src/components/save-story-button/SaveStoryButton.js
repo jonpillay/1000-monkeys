@@ -31,17 +31,7 @@ function SaveStoryButton(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log(story_id)
-
     const stringStoryPages = localStorage.getItem('storyPages')
-
-    // const genre = JSON.parse(localStorage.getItem('userChoices'))['genre']
-
-    // const character = JSON.parse(localStorage.getItem('userChoices'))['character']
-
-    // const artstyle = JSON.parse(localStorage.getItem('userChoices'))['style']
-
-    // const GPTChatHistory = JSON.parse(localStorage.getItem('GPTPromptHistory'))
 
     const chapterImages = reduxChapterImages
     const chapterTexts = reduxChapterText
@@ -54,18 +44,10 @@ function SaveStoryButton(props) {
     const AIEngineVer = "0.9"
     const author = user.username
 
-    console.log("This is the stringStoryPages object that gets sent for save", chapterTexts)
-
-    console.log(genre)
-
     const storyPages = JSON.parse(stringStoryPages)
-
-    console.log("This is the storyPages object that gets sent for save", story_id)
 
     if (storyID != null) {
       try {
-        // needs to be updated to read from redux
-        console.log("This is chapter texts from the updateButton " + chapterTexts)
         await updateStory(storyID, chapterImages, chapterTexts, GPTPromptHistory)
         reduxDispatch(setStoryInSync(true))
         localStorage.setItem('storyInSync', 'true')
@@ -75,9 +57,7 @@ function SaveStoryButton(props) {
       }
       
     } else {
-      console.log("This is chapter texts from the saveButton " + chapterTexts)
       const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artStyle, GPTPromptHistory, AIEngineVer, author)
-      // console.log(story_id)
       localStorage.setItem('storyInSync', 'true')
       reduxDispatch(setStoryInSync(true))
       setStoryInSync(true)

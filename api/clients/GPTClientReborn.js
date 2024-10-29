@@ -9,7 +9,7 @@ const openai = new OpenAI({
 });
 
 async function generateStory(prompts) {
-  console.log("Backend GPT_KEY ", process.env.GPT_KEY)
+
   try {
     const res = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",

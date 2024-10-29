@@ -46,18 +46,11 @@ const CreateStoriesPage = (props) => {
 
     const character = useSelector(selectCharacter)
 
-    console.log(character)
-
     const firstChapter = useSelector(selectFirstChapter)
 
     const renderChapter = useSelector(selectRenderChapter) || null
 
     const storyInProgress = useSelector(selectStoryInProgress)
-    // const character = useSelector(selectCharacter) || null
-    // const genre = useSelector(selectGenre) || null
-    // const artStyle = useSelector(selectArtStyle) || null
-
-    console.log(storyInProgress)
 
     const genFirstChapter = async () => {
       await localStorage.removeItem('firstChapter')

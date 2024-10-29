@@ -18,7 +18,6 @@ export const useLogin = () => {
 
   const navigate = useNavigate()
 
-  console.log(dispatch)
 
   const login = async (email, password) => {
     setIsLoading(true)

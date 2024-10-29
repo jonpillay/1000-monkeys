@@ -50,8 +50,7 @@ function RatingPanel(props) {
     }
 
     let ratingTotal = 0
-    console.log("This be ratings from use effect")
-    console.log(ratings)
+
     rawRatings.forEach((rating) => ratingTotal += rating)
     setRating(ratings.length > 0 ? Math.floor(ratingTotal/ratings.length) : 0)
   },[ratings])

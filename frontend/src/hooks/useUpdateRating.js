@@ -15,8 +15,6 @@ export const useUpdateRating = () => {
     setIsLoading(true)
     setError(null)
 
-    console.log(user.token)
-
     try {
       const response = await fetch('./save/submit-rating', {
         method: 'Post',
@@ -30,18 +28,17 @@ export const useUpdateRating = () => {
       const JSONres = await response.json()
   
       if (!response.ok) {
-        console.log("rating failed")
+        console.log(JSONres.error)
         setIsLoading(false)
         setError(JSONres.error)
       }
   
       if (response.ok) {
-        console.log("response on the submitRating is ok")
 
         setIsLoading(false)
       }
     } catch (error) {
-      console.log("actually ended here")
+      console.log(error.message)
       setIsLoading(false)
       setError(error.message)
     }

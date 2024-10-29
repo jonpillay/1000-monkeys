@@ -22,7 +22,6 @@ function RateStoryPanel(props) {
     if (user != null) {
       try {
         await submitRating(bookID, currentRate)
-        console.log(currentRate)
         setRatings((prevRatings) => [...prevRatings, {[user.id]: currentRate}])
         setUserRated(true)
       } catch(error) {

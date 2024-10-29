@@ -47,7 +47,6 @@ const storyBookSysInfoSlice = createSlice({
     },
     initialiseStoryFromDB: {
       reducer(state, action) {
-        console.log("made it initialiseStoryFromDB")
         state.firstChapter = false
         state.storyInProgress = true
         state.storyInSync = true

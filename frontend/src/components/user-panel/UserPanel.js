@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 
 const UserPanel = () => {
 
-  console.log("UserPanel rerendered")
-
   const {user} = useAuthContext()
 
   const {credits} = useCreditsContext()

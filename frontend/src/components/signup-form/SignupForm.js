@@ -14,9 +14,6 @@ const SignupForm = () => {
 
     await signup(email.current.value, password.current.value)
 
-    console.log(email.current.value)
-    console.log(password.current.value)
-
   }
 
   return (

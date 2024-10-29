@@ -35,7 +35,6 @@ const generateImage = (positivePrompt, negativePrompt) => {
     })
     .then((result) => {
       if (result.status === "error") {
-        console.log(result.message)
         const error = new Error(`${result.message}`);
         error.status = 400;
         throw error;

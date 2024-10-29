@@ -14,7 +14,7 @@ const GPT_prompt_gen = (user_choices, story_prompts) => {
   const promptResults = JSON.parse(JSON.stringify(GPT_starter_prompts)) 
 
   for (let key in user_choices) {
-    console.log("going through user choices")
+
     if (key == 'name') {
       promptResults.push({
         role: "system",

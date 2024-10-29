@@ -9,7 +9,6 @@ export const useTimer = () => {
     const duration = endTime - Date.now()
 
     setTimeout(() => {
-      console.log("This did fire")
       localStorage.removeItem(localClear)
       setState(false)
     }, duration);

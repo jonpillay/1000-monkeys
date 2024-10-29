@@ -30,8 +30,6 @@ export const StoryContextProvider = ({ children }) => {
     }
   }, [])
 
-  console.log("StoryContext state:", state)
-
   return (
   <StoryContext.Provider value={{...state, dispatch}}>
     { children }

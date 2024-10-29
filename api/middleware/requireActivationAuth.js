@@ -3,8 +3,6 @@ const User = require('../database/models/userModel')
 
 const requireActivationAuth = async (req, res, next) => {
 
-  console.log(req.headers)
-
   const { authorization } = req.headers
 
   if (!authorization) {

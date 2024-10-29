@@ -32,7 +32,6 @@ const Header = () => {
   useEffect(() => {
     const headerScroll = (Mpos) => {
       if (window.scrollY > 28 && Mpos.clientY < 190) {
-        console.log("Header mouse fired")
         setShowHeaderMouse(true)
       } else {
         setShowHeaderMouse(false)

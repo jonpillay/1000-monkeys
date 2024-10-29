@@ -33,18 +33,6 @@ import { resetSysInfo, selectUserToken } from '../create-stories-page/storyBookS
 import { resetStoryBookSlice } from '../story-book/storyBookSlice';
 import { clearReduxPersist } from '../../redux-state/store';
 
-// const getAdmin = (obj) => {
-//   if (obj) {
-//     if (obj.isSuper == true) {
-//       return true
-//     } else {
-//       return false
-//     }
-//   } else {
-//     console.log("Well this fired off")
-//     return false
-//   }
-// }
 
 const App = () => {
 
@@ -52,34 +40,11 @@ const App = () => {
 
   const reduxDispatch = useDispatch()
 
-  // const getStory = () => {
-  //   const storyHistory = localStorage.getItem('storyPages')
-  //   return storyHistory
-  // }
-
-  // const {story} = useStoryContext()
   const {user} = useAuthContext()
-
-  // const reduxCheck = useSelector(selectAllChapterTexts)
-
-  // const reduxLive = reduxCheck.length > 0
 
   const reduxToken = useSelector(selectUserToken)
 
   const admin = user ? user.isSuper : false
-
-  // if (true) {
-  //   console.log("user id is " + user.token)
-  // }
-
-
-  // useEffect(() => {
-  //   if (user == null || reduxToken != user.token) {
-  //     clearReduxPersist()
-  //     reduxDispatch(resetSysInfo())
-  //     reduxDispatch(resetStoryBookSlice())
-  //   }
-  // }, [])
 
   return (
     <div className="app">
