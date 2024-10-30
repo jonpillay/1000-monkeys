@@ -2,8 +2,8 @@ import './StoryBookBrowseInfoPanel.css'
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-import LoadIntoCreateButton from '../load-into-create-button/LoadIntoCreateButton';
-import RatingPanel from '../rating-panel/RatingPanel';
+import LoadIntoCreateButton from '../BrowsePageParts/load-into-create-button/LoadIntoCreateButton';
+import RatingPanel from '../BrowsePageParts/rating-panel/RatingPanel';
 
 import { useEffect, useState } from 'react';
 

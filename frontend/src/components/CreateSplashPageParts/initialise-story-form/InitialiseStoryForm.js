@@ -1,22 +1,22 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router";
 import DropdownSelector from "../dropdown-selector/DropdownSelector";
-import TextInput from "../text-input-form/TextInput";
+import TextInput from "../../text-input-form/TextInput";
 import "./InitialiseStoryForm.css";
-import SignupForm from "../signup-form/SignupForm"
-import LogInForm from "../login-form/LogInForm";
+import SignupForm from "../../signup-form/SignupForm"
+import LogInForm from "../../login-form/LogInForm";
 
-import { StoryContext } from "../../context/StoryContext";
+import { StoryContext } from "../../../context/StoryContext";
 
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useStoryContext } from "../../hooks/useStoryContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import { useStoryContext } from "../../../hooks/useStoryContext";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../story-book/storyBookSlice";
-import { initialiseStory } from "../Pages/create-stories-page/storyBookSysInfoSlice";
+import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../../story-book/storyBookSlice";
+import { initialiseStory } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
 
-import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
+import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 
 const InitialiseStoryForm = (props) => {
   const {user} = useAuthContext()

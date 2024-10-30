@@ -3,7 +3,7 @@ import "./RateStoryPanel.css"
 import AnimatedNumbers from "react-animated-numbers";
 
 import { useState } from "react";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 function RateStoryPanel(props) {
 

@@ -4,7 +4,7 @@ import FetchButton from '../fetch-button/FetchButton';
 import { useEffect, useState, useRef } from 'react';
 
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 const FetchStoriesControlPanel = (props) => {
 

@@ -1,9 +1,9 @@
 // import '../story-book/StoryBook.css'
 import './StoryBookBrowse.css'
 
-import TurnPageButton from '../turn-page-button/turnPageButton';
-import Image from '../image/image';
-import Story from '../story/Story';
+import TurnPageButton from '../../turn-page-button/turnPageButton';
+import Image from '../../image/image';
+import Story from '../../story/Story';
 
 import { useRef } from 'react';
 

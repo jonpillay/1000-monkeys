@@ -1,12 +1,12 @@
 import './RatingPanel.css'
 
 import RateStoryPanel from '../rate-story-panel/RateStoryPanel'
-import { useUpdateRating } from '../../hooks/useUpdateRating'
+import { useUpdateRating } from '../../../hooks/useUpdateRating'
 import { useEffect, useState } from 'react'
 
-import { useAuthContext } from '../../hooks/useAuthContext'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
-import RatingStar from "../../img/star.svg"
+import RatingStar from "../../../img/star.svg"
 
 function RatingPanel(props) {
 

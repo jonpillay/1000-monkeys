@@ -4,7 +4,7 @@ import "./LoginCreateContainer.css"
 
 import LogInForm from '../login-form/LogInForm';
 import StartYourStoryButton from '../start-your-story-button/StartYourStoryButton';
-import BrowseNavButton from '../browse-nav-button/BrowseNavButton';
+import BrowseNavButton from '../BrowsePageParts/browse-nav-button/BrowseNavButton';
 
 
 const LoginCreateContainer = () => {

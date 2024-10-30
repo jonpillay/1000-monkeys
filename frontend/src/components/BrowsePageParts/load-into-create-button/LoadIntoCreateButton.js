@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-import { useLoadIntoCreate } from '../../hooks/useLoadIntoCreate';
-import { StoryContext } from "../../context/StoryContext";
+import { useLoadIntoCreate } from '../../../hooks/useLoadIntoCreate';
+import { StoryContext } from "../../../context/StoryContext";
 import './LoadIntoCreateButton.css'
 
 const LoadIntoCreateButton = (props) => {

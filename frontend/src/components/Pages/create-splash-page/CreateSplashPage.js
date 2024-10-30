@@ -1,6 +1,6 @@
 import "./CreateSplashPage.css";
-import CreateSplashIntro from '../../create-splash-intro/CreateSplashIntro'
-import FormContainer from "../../initialise-story-form/InitialiseStoryForm"
+import CreateSplashIntro from '../../CreateSplashPageParts/create-splash-intro/CreateSplashIntro'
+import FormContainer from "../../CreateSplashPageParts/initialise-story-form/InitialiseStoryForm"
 import { useNavigate } from "react-router";
 
 const CreateSplashPage = (props) => {
