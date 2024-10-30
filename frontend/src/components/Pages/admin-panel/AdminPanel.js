@@ -1,6 +1,6 @@
 import "./AdminPanel.css";
-import CreateUserForm from "../create-user-form/CreateUserForm";
-import UpdateUserForm from "../update-user-form/UpdateUserForm";
+import CreateUserForm from "../../create-user-form/CreateUserForm";
+import UpdateUserForm from "../../update-user-form/UpdateUserForm";
 import { useNavigate } from "react-router";
 
 const AdminPanel = (props) => {

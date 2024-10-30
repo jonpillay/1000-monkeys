@@ -50,7 +50,7 @@
 }
   
 .nav-button {
-  margin-top: 100px;
+  display: block;
 }
 
 /* .nav-bar button {

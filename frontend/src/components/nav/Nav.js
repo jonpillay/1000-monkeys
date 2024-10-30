@@ -72,6 +72,8 @@ const NavBar = () => {
     await clearReduxPersist()
 
     dispatch({type: "END", payload: null})
+
+    navigate('/')
   }
 
     return (
@@ -92,7 +94,7 @@ const NavBar = () => {
         :
           <>
             <button onClick={() => navigate('/activate')} className="invite-button">I have an invite key!</ button>
-            <button onClick={() => navigate('/')} className="login-button" >Login</button>
+            <button onClick={() => navigate('/')} className="login-button">Login</button>
           </>
         )}
       </div>

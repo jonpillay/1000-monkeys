@@ -70,6 +70,7 @@ const FormContainer = (props) => {
       return null
     } else {
       initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
+      await dispatch({type: "BEGIN", payload: null})
       localStorage.setItem('firstChapter', 'true')
     }
   }

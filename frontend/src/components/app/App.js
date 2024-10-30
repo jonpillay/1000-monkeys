@@ -14,7 +14,7 @@ import FormContainer from '../form-container/FormContainer';
 // import ResultPage from '../Pages/result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
-import AdminPanel from '../admin-panel/AdminPanel';
+import AdminPanel from '../Pages/admin-panel/AdminPanel';
 import ActivationPage from '../Pages/activation-page/ActivationPage';
 import BrowsePage from '../Pages/browse-page/BrowsePage';
 import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
