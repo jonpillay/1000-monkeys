@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router";
-import Form from "../forms/Form";
+import DropdownSelector from "../dropdown-selector/DropdownSelector";
 import TextInput from "../text-input-form/TextInput";
-import "./form-container.css";
+import "./InitialiseStoryForm.css";
 import SignupForm from "../signup-form/SignupForm"
 import LogInForm from "../login-form/LogInForm";
 
@@ -18,7 +18,7 @@ import { initialiseStory } from "../Pages/create-stories-page/storyBookSysInfoSl
 
 import { useInitialiseStory } from "../../hooks/useIntialiseCreateStory";
 
-const FormContainer = (props) => {
+const InitialiseStoryForm = (props) => {
   const {user} = useAuthContext()
   const navigate = useNavigate()
 
@@ -95,17 +95,17 @@ const FormContainer = (props) => {
           </h1>
         </div>
         <div>
-          <Form
+          <DropdownSelector
               dropdownItems={characterOptions}
               selectionField="Character"
               onDropdownChange={(e) => setCharacterChoice(e.value)}
           />
-          <Form
+          <DropdownSelector
             dropdownItems={genreOptions}
             selectionField="Genre"
             onDropdownChange={(e) => setGenreChoice(e.value)}
           />
-          <Form
+          <DropdownSelector
             dropdownItems={styleOptions}
             selectionField="Style"
             onDropdownChange={(e) => setStyleChoice(e.value)}
@@ -126,4 +126,4 @@ const FormContainer = (props) => {
   );
 };
 
-export default FormContainer;
+export default InitialiseStoryForm;

@@ -1,7 +1,7 @@
 import Select from 'react-select';
-import './Form.css';
+import './DropdownSelector.css';
 
-const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }) => {
+const DropdownSelector = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }) => {
 
   return (
     <>
@@ -20,5 +20,5 @@ const Form = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }
   );
 };
 
-export default Form;
+export default DropdownSelector;
 

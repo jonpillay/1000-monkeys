@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 
 import Header from '../header/Header';
-import FormContainer from '../form-container/FormContainer';
+import FormContainer from '../initialise-story-form/InitialiseStoryForm';
 // import ResultPage from '../Pages/result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
