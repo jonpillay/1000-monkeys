@@ -14,7 +14,7 @@ import FormContainer from '../initialise-story-form/InitialiseStoryForm';
 // import ResultPage from '../Pages/result-page/ResultPage';
 import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
-import AdminPanel from '../Pages/admin-panel/AdminPanel';
+import AdminPage from '../Pages/admin-page/AdminPage';
 import ActivationPage from '../Pages/activation-page/ActivationPage';
 import BrowsePage from '../Pages/browse-page/BrowsePage';
 import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
@@ -56,7 +56,7 @@ const App = () => {
             <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />
             <Route exact path="/activate" element={ <ActivationPage/> } />
-            <Route exact path="/userfactoryintheenv" element={ admin == true ? <AdminPanel/> : <Navigate to="/"/> } />
+            <Route exact path="/userfactoryintheenv" element={ admin == true ? <AdminPage/> : <Navigate to="/"/> } />
             <Route exact path="/" element={ <SplashContainer/> } />
           </Routes>
         </BrowserRouter>

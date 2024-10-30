@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
-import { useLogin } from "../../hooks/useLogIn";
 import './ActivationForm.css'
-import { useActivate } from "../../hooks/useActivate";
 // const jwt = require("jsonwebtoken");
 
 const ActivationForm = ({activate, isLoading, error}) => {

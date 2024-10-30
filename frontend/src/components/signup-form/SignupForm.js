@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSignup } from "../../hooks/useSignUp";
 import './SignupForm.css'
 
-import Counter from "../counter/Counter.js"
+import Counter from "../AdminPageParts/counter/Counter.js"
 
 const SignupForm = () => {
   const email = useRef()
