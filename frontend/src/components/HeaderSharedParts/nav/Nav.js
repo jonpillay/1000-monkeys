@@ -1,24 +1,15 @@
 import { useContext } from "react";
 import './nav.css'
-import NavButton from '../navbutton/NavButton';
 import UserPanel from "../user-panel/UserPanel";
 
-import { useLogout } from "../../hooks/useLogout";
+import { useLogout } from "../../../hooks/useLogout";
 import { Navigate, useNavigate } from "react-router";
-import { useStoryContext } from "../../hooks/useStoryContext";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useStoryContext } from "../../../hooks/useStoryContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
-import { clearReduxPersist, clearStoryBookPersist } from "../../redux-state/store";
-// import { clearStoryBookPersist } from '../../redux-state/store';
+import { clearReduxPersist } from "../../../redux-state/store";
 import { useDispatch } from "react-redux";
-import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../CreateStoryPageParts/story-book-create/storyBookSlice';
-
-// import { clearLocal } from "../../hooks/useClearLocal";
-
-// import logged in context as defined in App.js
-// import {loggedInContext} from '../app/App';
-
-const clearLocal = require('../../hooks/useClearLocal')
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../../CreateStoryPageParts/story-book-create/storyBookSlice';
 
 const NavBar = () => {
 

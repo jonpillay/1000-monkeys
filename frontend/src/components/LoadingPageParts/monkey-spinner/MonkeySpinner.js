@@ -1,6 +1,6 @@
 import './MonkeySpinner.css'
 
-import SpinningMonkey from "../../img/favpng_infinite-monkey-theorem3.png"
+import SpinningMonkey from "../../../img/favpng_infinite-monkey-theorem3.png"
 
 const MonkeySpinner = () => {
 

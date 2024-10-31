@@ -1,7 +1,7 @@
 // import '../story-book/StoryBook.css'
 import './StoryBookBrowse.css'
 
-import TurnPageButton from '../../turn-page-button/turnPageButton';
+import TurnPageButton from '../../SharedStoryBookParts/turn-page-button/TurnPageButton';
 import Illustration from '../../SharedStoryBookParts/illustration/illustration';
 import StoryText from '../../SharedStoryBookParts/story-text/StoryText';
 

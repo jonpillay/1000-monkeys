@@ -1,7 +1,7 @@
 import './LoadingPage.css'
 
-import LoadingText from '../../loading-text/LoadingText';
-import LoadingBlurb from '../../loading-blurb/LoadingBlurb';
+import LoadingText from '../../LoadingPageParts/loading-text/LoadingText';
+import LoadingBlurb from '../../LoadingPageParts/loading-blurb/LoadingBlurb';
 
 const LoadingPage = () => {
   return (

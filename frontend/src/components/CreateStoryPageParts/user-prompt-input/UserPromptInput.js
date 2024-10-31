@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useCreateStory } from "../../hooks/useCreateStory";
+import { useCreateStory } from "../../../hooks/useCreateStory";
 import './UserPromptInput.css'
 
 const UserPromptInput = (props) => {

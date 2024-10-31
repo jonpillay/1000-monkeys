@@ -1,5 +1,5 @@
 import './StoryBookCreate.css'
-import TurnPageButton from '../../turn-page-button/turnPageButton';
+import TurnPageButton from '../../SharedStoryBookParts/turn-page-button/TurnPageButton';
 import Image from '../../SharedStoryBookParts/illustration/illustration';
 import Story from '../../SharedStoryBookParts/story-text/StoryText';
 

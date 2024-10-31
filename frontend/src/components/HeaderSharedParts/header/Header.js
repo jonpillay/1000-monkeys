@@ -1,21 +1,16 @@
 import './Header.css';
 import HomeIcon from './typing-logo.png';
 import Nav from '../nav/Nav'
-import UserPanel from '../user-panel/UserPanel';
 import { useNavigate } from 'react-router';
-import { useLoadingContext } from '../../hooks/useLoadingContext';
+import { useLoadingContext } from '../../../hooks/useLoadingContext';
 import { useEffect, useState } from 'react';
 
 
-import { resetStoryBookSlice } from "../CreateStoryPageParts/story-book-create/storyBookSlice";
-import { resetSysInfo, resetStorySysInfo } from "../Pages/create-stories-page/storyBookSysInfoSlice";
+import { resetStoryBookSlice } from "../../CreateStoryPageParts/story-book-create/storyBookSlice";
+import { resetSysInfo, resetStorySysInfo } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
 
-import { useStoryContext } from "../../hooks/useStoryContext";
+import { useStoryContext } from "../../../hooks/useStoryContext";
 import { useDispatch } from "react-redux";
-
-import { clearReduxPersist, clearStoryBookPersist } from "../../redux-state/store";
-
-import { store, persistor } from '../../redux-state/store';
 
 const Header = () => {
 

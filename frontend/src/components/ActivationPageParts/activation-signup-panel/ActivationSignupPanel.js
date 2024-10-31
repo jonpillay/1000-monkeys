@@ -1,7 +1,6 @@
 import "./ActivationSignupPanel.css";
 import ActivationForm from "../activation-form/ActivationForm";
-import SignupForm from "../../signup-form/SignupForm";
-import HomeButton from "../../header/Header";
+import SignupForm from "../signup-form/SignupForm";
 import { useActivate } from "../../../hooks/useActivate";
 import { useEffect, useState } from "react";
 

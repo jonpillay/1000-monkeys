@@ -1,10 +1,10 @@
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
 import "./LoginCreateContainer.css"
 
 import LogInForm from '../login-form/LogInForm';
-import StartYourStoryButton from '../CreateSplashPageParts/start-your-story-button/StartYourStoryButton';
-import BrowseNavButton from '../BrowsePageParts/browse-nav-button/BrowseNavButton';
+import StartYourStoryButton from '../../CreateSplashPageParts/start-your-story-button/StartYourStoryButton';
+import BrowseNavButton from '../../BrowsePageParts/browse-nav-button/BrowseNavButton';
 
 
 const LoginCreateContainer = () => {

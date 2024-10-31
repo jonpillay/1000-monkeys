@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
-import { useLogin } from "../../hooks/useLogIn";
+import { useRef } from "react";
+import { useLogin } from "../../../hooks/useLogIn";
 import './LogInForm.css'
+import { redirect } from "react-router";
 
-const InviteForm = () => {
+const LogInForm = () => {
   const email = useRef()
   const password = useRef()
   const { login, isLoading, error } = useLogin()
@@ -12,17 +13,20 @@ const InviteForm = () => {
 
     await login(email.current.value, password.current.value)
 
+    redirect('/create')
+
   }
 
   return (
     <div className="form-container">
+
       <form className="user-form" onSubmit={handleSubmit}>
         <div className="user-title-container">
           <div className="user-title">Adventurer's Log In</div>
         </div>
         <div className="input-container">
           <div>
-            <input type="email" className="user-input-box" ref={email} placeholder="email..."/> 
+            <input type="email" className="user-input-box" ref={email} placeholder="email..."/>
           </div>
           <div>
             <input type="password" className="user-input-box" ref={password} placeholder="password..."/> 
@@ -37,4 +41,4 @@ const InviteForm = () => {
   )
 }
 
-export default InviteForm;
+export default LogInForm;
