@@ -2,8 +2,8 @@
 import './StoryBookBrowse.css'
 
 import TurnPageButton from '../../turn-page-button/turnPageButton';
-import Image from '../../image/image';
-import Story from '../../story/Story';
+import Illustration from '../../SharedStoryBookParts/illustration/illustration';
+import StoryText from '../../SharedStoryBookParts/story-text/StoryText';
 
 import { useRef } from 'react';
 
@@ -65,8 +65,8 @@ const StoryBookBrowse = (props) => {
         }
       </div>
       <div className="storybook-container">
-          <Image link={imgUrl.current} />
-          <Story chapterNumber={renderChapter + 1} storyString={story.current} />
+          <Illustration link={imgUrl.current} />
+          <StoryText chapterNumber={renderChapter + 1} storyString={story.current} />
       </div>
       <div className="next-page-container">
         {renderChapter<chapterTexts.length-1 &&

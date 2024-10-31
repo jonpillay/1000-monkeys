@@ -5,22 +5,22 @@ import { useLoadingContext } from "../../../hooks/useLoadingContext";
 import { UseDispatch, useDispatch } from 'react-redux';
 
 import { useSelector } from 'react-redux';
-import { selectRenderChapter } from '../../story-book/storyBookSlice';
+import { selectRenderChapter } from '../../CreateStoryPageParts/story-book-create/storyBookSlice';
 
 import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, setStoryInProgress, setFirstChapter } from './storyBookSysInfoSlice';
 
-import CreateStoriesControlPanel from '../../create-stories-control-panel/CreateStoriesControlPanel';
-import ChapterTitle from '../../chapter-title/ChapterTitle';
-import SaveStoryButton from '../../save-story-button/SaveStoryButton';
-import StoryBook from '../../story-book/StoryBook';
+import CreateStoriesControlPanel from '../../CreateStoryPageParts/create-stories-control-panel/CreateStoriesControlPanel';
+import ChapterTitle from '../../SharedStoryBookParts/chapter-title/ChapterTitle';
+import SaveStoryButton from '../../SharedStoryBookParts/save-story-button/SaveStoryButton';
+// import StoryBookCreate from '../../CreateStoryPageParts/story-book-create/StoryBookCreate';
+import StoryBookCreate from '../../CreateStoryPageParts/story-book-create/StoryBookCreate.js';
 import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../../hooks/useCreateStory'
-import CreateSplashPage from '../create-splash-page/CreateSplashPage';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
-import { resetStoryBookSlice } from "../../story-book/storyBookSlice";
+import { resetStoryBookSlice } from "../../CreateStoryPageParts/story-book-create/storyBookSlice";
 import { resetSysInfo, resetStorySysInfo } from "./storyBookSysInfoSlice";
 
 import { useStoryContext } from "../../../hooks/useStoryContext";
@@ -84,7 +84,7 @@ const CreateStoriesPage = (props) => {
               <ChapterTitle chapterNumber={renderChapter + 1}/>
               <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>
           </div>
-          <StoryBook/>
+          <StoryBookCreate/>
         </div>
       ) : (
         <div className="nav-box">

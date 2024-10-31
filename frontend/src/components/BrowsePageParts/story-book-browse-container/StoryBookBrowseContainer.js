@@ -2,10 +2,8 @@ import './StoryBookBrowseContainer.css'
 
 import { useState, useEffect } from "react";
 
-import ChapterTitle from "../../chapter-title/ChapterTitle";
 import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
-import LoadIntoCreateButton from '../load-into-create-button/LoadIntoCreateButton';
-import StoryBookBrowseInfoPanel from '../../storybook-browse-info-panel/StoryBookBrowseInfoPanel';
+import StoryBookBrowseInfoPanel from '../storybook-browse-info-panel/StoryBookBrowseInfoPanel';
 
 import { useAuthContext } from '../../../hooks/useAuthContext';
 

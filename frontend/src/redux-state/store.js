@@ -11,7 +11,7 @@ import {
  } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import storyBookReducer from '../components/story-book/storyBookSlice'
+import storyBookReducer from '../components/CreateStoryPageParts/story-book-create/storyBookSlice'
 import storyBookSysInfoReducer from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { combineReducers } from '@reduxjs/toolkit';

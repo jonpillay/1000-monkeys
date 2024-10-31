@@ -11,7 +11,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { clearReduxPersist, clearStoryBookPersist } from "../../redux-state/store";
 // import { clearStoryBookPersist } from '../../redux-state/store';
 import { useDispatch } from "react-redux";
-import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../story-book/storyBookSlice';
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../CreateStoryPageParts/story-book-create/storyBookSlice';
 
 // import { clearLocal } from "../../hooks/useClearLocal";
 

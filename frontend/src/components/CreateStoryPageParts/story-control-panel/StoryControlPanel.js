@@ -1,7 +1,7 @@
 import './StoryControlPanel.css'
 
-import { useAuthContext } from '../../hooks/useAuthContext';
-import { useCreditsContext } from '../../hooks/useCreditsContext';
+import { useAuthContext } from '../../../hooks/useAuthContext';
+import { useCreditsContext } from '../../../hooks/useCreditsContext';
 
 import { useEffect, useState } from 'react';
 

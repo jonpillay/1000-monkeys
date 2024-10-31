@@ -11,8 +11,6 @@ import {
 
 import Header from '../header/Header';
 import FormContainer from '../CreateSplashPageParts/initialise-story-form/InitialiseStoryForm';
-// import ResultPage from '../Pages/result-page/ResultPage';
-import StorySoFar from '../story-so-far/StorySoFar';
 import SplashContainer from '../splash-container/SplashContainer'
 import AdminPage from '../Pages/admin-page/AdminPage';
 import ActivationPage from '../Pages/activation-page/ActivationPage';
@@ -30,7 +28,7 @@ import LoadingPage from '../Pages/loading_page/LoadingPage';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { resetSysInfo, selectUserToken } from '../Pages/create-stories-page/storyBookSysInfoSlice';
-import { resetStoryBookSlice } from '../story-book/storyBookSlice';
+import { resetStoryBookSlice } from '../CreateStoryPageParts/story-book-create/storyBookSlice';
 import { clearReduxPersist } from '../../redux-state/store';
 
 

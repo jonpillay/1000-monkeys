@@ -7,6 +7,9 @@ const UserPromptInput = (props) => {
   const { userPromtNextChapter, isLoading } = props;
 
   const handleSubmit = async (e) => {
+
+    // change this from the input handling the submit to the button (allowing it to be used in other forms)
+
     e.preventDefault()
     await userPromtNextChapter(prompt.current.value)
   }

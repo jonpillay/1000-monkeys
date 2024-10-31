@@ -1,13 +1,13 @@
-import { useAuthContext } from "../../hooks/useAuthContext"
-import { useSaveStory } from "../../hooks/useSaveStory"
+import { useAuthContext } from "../../../hooks/useAuthContext"
+import { useSaveStory } from "../../../hooks/useSaveStory"
 
 import { useSelector, useDispatch } from "react-redux"
-import { selectAllChapterTexts, selectAllChapterImages } from "../story-book/storyBookSlice"
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID } from "../Pages/create-stories-page/storyBookSysInfoSlice"
+import { selectAllChapterTexts, selectAllChapterImages } from "../../CreateStoryPageParts/story-book-create/storyBookSlice"
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID } from "../../Pages/create-stories-page/storyBookSysInfoSlice"
 
 import "./SaveStoryButton.css"
 
-import SaveIcon from "../../img/floppy-disk-save.png"
+import SaveIcon from "../../../img/floppy-disk-save.png"
 
 function SaveStoryButton(props) {
 

@@ -1,4 +1,4 @@
-import './Story.css';
+import './StoryText.css';
 import ChapterTitle from '../chapter-title/ChapterTitle';
 
 const Story = (props) => {

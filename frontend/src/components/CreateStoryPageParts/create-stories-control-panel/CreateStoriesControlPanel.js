@@ -3,10 +3,10 @@ import './CreateStoriesControlPanel.css'
 import { useEffect, useState, useRef } from 'react';
 
 import { useNavigate } from "react-router";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 import CreateButton from '../create_button/CreateButton';
-import UserPromptInput from '../user-prompt-input/UserPromptInput';
-import { useCreateStory } from '../../hooks/useCreateStory';
+import UserPromptInput from '../../user-prompt-input/UserPromptInput';
+import { useCreateStory } from '../../../hooks/useCreateStory';
 
 const CreateStoriesControlPanel = (props) => {
 

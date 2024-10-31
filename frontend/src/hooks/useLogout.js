@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { clearReduxPersist } from "../redux-state/store"
 import { useDispatch } from "react-redux"
-import { resetStoryBookSlice } from "../components/story-book/storyBookSlice"
+import { resetStoryBookSlice } from "../components/CreateStoryPageParts/story-book-create/storyBookSlice"
 import { resetSysInfo } from "../components/Pages/create-stories-page/storyBookSysInfoSlice"
 import { useNavigate } from "react-router"
 

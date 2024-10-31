@@ -1,7 +1,7 @@
-import './StoryBook.css'
-import TurnPageButton from '../turn-page-button/turnPageButton';
-import Image from '../image/image';
-import Story from '../story/Story';
+import './StoryBookCreate.css'
+import TurnPageButton from '../../turn-page-button/turnPageButton';
+import Image from '../../SharedStoryBookParts/illustration/illustration';
+import Story from '../../SharedStoryBookParts/story-text/StoryText';
 
 import { useRef, useEffect } from 'react';
 
@@ -11,11 +11,11 @@ import { useDispatch } from 'react-redux';
 
 import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset, nextPage, previousPage } from './storyBookSlice';
 
-import { clearReduxPersist } from '../../redux-state/store';
+import { clearReduxPersist } from '../../../redux-state/store';
 
 // import storyBook from './storyBookSlice';
 
-const StoryBook = (props) => {
+const StoryBookCreate = (props) => {
 
   let sysInfo = JSON.parse(localStorage.getItem("sysInfo"))
 
@@ -71,4 +71,4 @@ const StoryBook = (props) => {
   )
 }
 
-export default StoryBook;
+export default StoryBookCreate;

@@ -7,7 +7,7 @@ import { useLoadingContext } from '../../hooks/useLoadingContext';
 import { useEffect, useState } from 'react';
 
 
-import { resetStoryBookSlice } from "../story-book/storyBookSlice";
+import { resetStoryBookSlice } from "../CreateStoryPageParts/story-book-create/storyBookSlice";
 import { resetSysInfo, resetStorySysInfo } from "../Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { useStoryContext } from "../../hooks/useStoryContext";

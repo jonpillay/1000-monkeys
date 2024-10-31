@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import TextInput from '../text-input-form/TextInput';
+import TextInput from '../../text-input-form/TextInput';
 import './SteerStory.css';
 // import '../result-page/ResultPage.css'
 

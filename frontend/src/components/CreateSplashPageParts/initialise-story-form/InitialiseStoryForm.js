@@ -13,7 +13,7 @@ import { useStoryContext } from "../../../hooks/useStoryContext";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../../story-book/storyBookSlice";
+import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../../CreateStoryPageParts/story-book-create/storyBookSlice";
 import { initialiseStory } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
