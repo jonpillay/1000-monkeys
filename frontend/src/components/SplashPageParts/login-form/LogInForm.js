@@ -2,14 +2,19 @@ import { useRef } from "react";
 import { useLogin } from "../../../hooks/useLogIn";
 import './LogInForm.css'
 import { redirect } from "react-router";
+import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 
 const LogInForm = () => {
   const email = useRef()
   const password = useRef()
   const { login, isLoading, error } = useLogin()
+
+  const { SanitiseInput } = useSanitiseInput()
  
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    SanitiseInput(email.current.value)
 
     await login(email.current.value, password.current.value)
 
