@@ -1,3 +1,5 @@
+frontend/src/badWordList
+
 scrap.js
 
 # Logs
@@ -59,14 +61,8 @@ typings/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
-
-# cypress.io
-cypress/screenshots
-cypress/videos
-
 # misc
 .DS_Store
 
 api/clients/out/*
+frontend/src/test.js

@@ -15,6 +15,8 @@ import { initialiseStory } from "../../Pages/create-stories-page/storyBookSysInf
 
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 
+import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
+
 const InitialiseStoryForm = (props) => {
   const {user} = useAuthContext()
   const navigate = useNavigate()
@@ -36,6 +38,8 @@ const InitialiseStoryForm = (props) => {
 
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
+
+  const { sanitiseInput } = useSanitiseInput()
 
   const { initialiseStoryHook } = useInitialiseStory()
 
@@ -74,11 +78,29 @@ const InitialiseStoryForm = (props) => {
 
   const initialiseStoryOnClick = async (e) => {
 
-    e.preventDefault();
+    console.log("This runs")
 
-    await initialiseStory()
+    const cleanCheck = sanitiseInput(promptRef.current.value)
 
-    navigate('/create')
+    console.log(cleanCheck)
+
+    if (cleanCheck == true) {
+
+      console.log("Not catching")
+
+      // e.preventDefault();
+
+      // await initialiseStory()
+  
+      // navigate('/create')
+
+    } else {
+
+      console.log("Invlaid input")
+
+    }
+
+
 
     // reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
 
