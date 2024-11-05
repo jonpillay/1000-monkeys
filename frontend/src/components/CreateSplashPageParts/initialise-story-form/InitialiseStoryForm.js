@@ -86,7 +86,7 @@ const InitialiseStoryForm = (props) => {
 
     if (cleanCheck == true) {
 
-      console.log("Not catching")
+      console.log("Passed")
 
       // e.preventDefault();
 

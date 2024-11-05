@@ -65,4 +65,4 @@ typings/
 .DS_Store
 
 api/clients/out/*
-frontend/src/test.js
+frontend/src/badWordList.js
