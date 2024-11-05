@@ -28,17 +28,13 @@ export const useSanitiseInput = () => {
 
     for (let i = 0; i < wordListFormatted.length; i++) {
 
-      badWordList.forEach(word => {
+      for (let j = 0; j < badWordList.length; j++) {
 
-        let wordSplit = word.split(' ')
-
-        if (wordListFormatted[i] == word) {
-          strSafe = false
-        }
+        let wordSplit = badWordList[j].split(' ')
 
         if (wordSplit.length == 1) {
-          if (wordListFormatted[i] == word) {
-            strSafe = false
+          if (wordListFormatted[i] == badWordList[j]) {
+            return false
           }
         }
 
@@ -54,19 +50,18 @@ export const useSanitiseInput = () => {
                 if (wordSplit.length > 2 && wordListFormatted.length > i+2) {
                   // check if the next words match
                   if (wordSplit[2] == wordListFormatted[i+2]) {
-                    strSafe = false
+                    return false
                   }
                 } else {
-                  strSafe = false
+                  return false
                 }
               }
             }
           }
         }
       }
-    )
   }
-  return strSafe
+  return true
 }
 
   return {sanitiseInput}
