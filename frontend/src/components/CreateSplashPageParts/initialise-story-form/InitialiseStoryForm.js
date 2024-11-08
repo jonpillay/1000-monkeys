@@ -78,7 +78,7 @@ const InitialiseStoryForm = (props) => {
 
   const initialiseStoryOnClick = async (e) => {
 
-    console.log("This runs")
+    setError("")
 
     const cleanCheck = sanitiseInput(promptRef.current.value)
 
@@ -88,14 +88,17 @@ const InitialiseStoryForm = (props) => {
 
       console.log("Passed")
 
-      // e.preventDefault();
+      e.preventDefault();
 
-      // await initialiseStory()
+      await initialiseStory()
   
-      // navigate('/create')
+      navigate('/create')
 
     } else {
-
+      setError("Please Check Our Community Standards")
+      setTimeout(() => {
+        setError("")
+      }, 1500)
       console.log("Invlaid input")
 
     }
@@ -129,17 +132,20 @@ const InitialiseStoryForm = (props) => {
             selectionField="Style"
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
-          <div>
-            <input ref={promptRef} placeholder="Your first chapter..."/>
+          <div className="initialise-user-prompt-input-container">
+            <input ref={promptRef} className="initialise-user-prompt-input-box" placeholder="Your first chapter..."/>
           </div>
           <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
-          { error && (
-            <>
-            {error}
-            </>
-          )}
+          <div className="initialise-story-prompt-error">
+            { error && (
+              <>
+              {error}
+              </>
+            )}
+          </div>
+
         </div>
       </div>
   );

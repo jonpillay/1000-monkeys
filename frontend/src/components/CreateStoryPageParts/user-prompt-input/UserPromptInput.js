@@ -1,17 +1,44 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useCreateStory } from "../../../hooks/useCreateStory";
+import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 import './UserPromptInput.css'
+
+import ForbiddenLogo from "../../../img/forbidden.png"
 
 const UserPromptInput = (props) => {
   const prompt = useRef()
   const { userPromtNextChapter, isLoading } = props;
+  const [error, setError] = useState("")
 
+  const {sanitiseInput} = useSanitiseInput()
+  
   const handleSubmit = async (e) => {
 
-    // change this from the input handling the submit to the button (allowing it to be used in other forms)
-
     e.preventDefault()
-    await userPromtNextChapter(prompt.current.value)
+
+    const cleanCheck = sanitiseInput(prompt.current.value)
+
+    if (cleanCheck == true) {
+
+      console.log("Passed")
+
+      // await userPromtNextChapter(prompt.current.value)
+
+      // e.preventDefault();
+
+      // await initialiseStory()
+  
+      // navigate('/create')
+
+    } else {
+      setError("Please Check Our Community Standards")
+      setTimeout(() => {
+        setError("")
+      }, 1500)
+      console.log("Invlaid input")
+
+    }
+
   }
 
   return (
@@ -25,9 +52,17 @@ const UserPromptInput = (props) => {
             <div>
               <input type="text" className="user-prompt-input-box" ref={prompt} placeholder="Imagine..."/>
             </div>
-            <div className="user-prompt-input-submit-container">
-              <button disabled={isLoading} className="user-prompt-input-button" id="user-prompt-input-submit-button" type="submit">Create</button>
-            </div>
+            <>
+            {! error ? 
+              <div className="user-prompt-input-submit-container">
+                <button disabled={isLoading} className="user-prompt-input-button" id="user-prompt-input-submit-button" type="submit">Create</button>
+              </div>
+              :
+              <div className="user-prompt-input-submit-container">
+                <img className="forbidden" src={ForbiddenLogo}/>
+              </div>
+              }
+            </>
           </div>
         </form>
       </div>

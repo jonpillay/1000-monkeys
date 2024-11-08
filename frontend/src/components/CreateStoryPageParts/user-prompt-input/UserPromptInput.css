@@ -5,9 +5,49 @@
   justify-content: center;
 }
 
+.user-prompt-input-button {
+  padding-left: 5px;
+  background-color: white;
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+  font-family: 'merriweather';
+  height: 50px;
+  font-size: 90%;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  transition: all 150ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+}
+
+.user-prompt-input-button:hover {
+  box-shadow: 0 0 5px 1px black;
+}
+
 .user-prompt-text-input-container {
   margin-top: 2%;
   display: flex;
+}
+
+.user-prompt-input-submit-container {
+  margin-left: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forbidden {
+  max-height: 1.2rem;
+  margin-left: 0.5rem;
+  margin-top: 0.1rem;
 }
 
 .user-prompt-input-box {
