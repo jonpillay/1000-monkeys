@@ -66,3 +66,4 @@ typings/
 
 api/clients/out/*
 frontend/src/badWordList.js
+api/badWordsList.json
