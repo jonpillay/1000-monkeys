@@ -80,7 +80,11 @@ const InitialiseStoryForm = (props) => {
 
     setError("")
 
-    const cleanCheck = sanitiseInput(promptRef.current.value)
+    console.log("Boop boop here")
+
+    const cleanCheck = await sanitiseInput(promptRef.current.value)
+
+    console.log("Boop boop here though innit")
 
     console.log(cleanCheck)
 
@@ -88,19 +92,21 @@ const InitialiseStoryForm = (props) => {
 
       console.log("Passed")
 
-      e.preventDefault();
+      // e.preventDefault();
 
-      await initialiseStory()
+      // await initialiseStory()
   
-      navigate('/create')
+      // navigate('/create')
 
-    } else {
+    } else if (cleanCheck == false) {
+      console.log("here")
       setError("Please Check Our Community Standards")
       setTimeout(() => {
         setError("")
       }, 1500)
       console.log("Invlaid input")
-
+    } else {
+      setError(cleanCheck)
     }
 
 

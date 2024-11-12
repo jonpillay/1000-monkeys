@@ -1,7 +1,5 @@
 const sanitiseInput = (formInput, badWordList) => {
 
-  console.log(badWordList)
-
   const punctuationRegEx = /[!"£$%^&*()_\-=+[\]{};:'@#~,<.>?\\|]+/g;
 
   const inputList = formInput.split(" ")

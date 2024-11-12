@@ -19,17 +19,19 @@ const fetchBadWordsList = async () => {
 
   try {
 
-    const badWordList = await s3.getObject(params).promise()
+    const badWordListBuffer = await s3.getObject(params).promise()
+
+    const badWordListStr = badWordListBuffer.Body.toString()
+
+    const badWordListJSON = JSON.parse(badWordListStr)
+
+    const badWordList = badWordListJSON.badWordsList
 
     // console.log(JSON.parse(list.Body.toString()).badWordsList[0])
 
     const punctuationRegEx = /[!"£$%^&*()_\-=+[\]{};:'@#~,<.>?\\|]+/g;
-  
-    const badWordListTrimmed = badWordList.map(word => word.split(' ').trim().replace(punctuationRegEx, ""))
-  
-    const badWordListFormatted = badWordListTrimmed.filter((word) => word !== "")
 
-    return badWordListFormatted
+    return badWordList
 
   } catch (error) {
     console.log(error)
