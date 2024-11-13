@@ -7,27 +7,27 @@ const starter_prompts = [
   },
   {
     role: "system",
-    content: "Decide what the most important scene in the chapter is and return to me a written visualisation of that scene."
+    content: "Decide what the most important scene in the chapter is and return a written visualisation of that scene."
   },
   {
     role: "system",
-    content: "It will be used as a prompt for a text to inmage generator."
+    content: "It should be structured as a prompt for a text to image AI tool."
   },
   {
     role: "system",
-    content: "In the first sentance describe where the main characters are and what they are doing."
+    content: "You should first describe what the main characters are doing."
   },
   {
     role: "system",
-    content: "In the second sentance describe anything around the main characters."
+    content: "and then describe what setting they are in"
   },
   {
     role: "system",
-    content: "The prompt should be concise. Only describe the physical scene, nothing metaphysical."
+    content: "Only what can be illustrated, nothing metaphysical."
   },
   {
     role: "system",
-    content: "The prompt should be around 20 words."
+    content: "The prompt should be concise and no longer than 20 words."
   },
 ]
 
