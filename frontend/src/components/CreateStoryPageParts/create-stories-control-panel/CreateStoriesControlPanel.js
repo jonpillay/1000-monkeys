@@ -54,13 +54,14 @@ const CreateStoriesControlPanel = (props) => {
 
   // }, [])
 
-  const {AIGenCall,
-  userPromtNextChapter,
-  AIPromptNextChapter,
-  refreshStory,
-  refreshImage,
-  isLoading,
-  error,
+  const {
+    AIGenCall,
+    userPromtNextChapter,
+    AIPromptNextChapter,
+    refreshStory,
+    refreshImage,
+    isLoading,
+    error,
   } = useCreateStory();
 
   return (

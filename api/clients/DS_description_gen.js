@@ -45,7 +45,11 @@ async function DSDescriptionGen(chapter, genre, main_character, system_prompts=s
   })
   system_prompts.push(res.data.choices[0].message)
 
-  return res.data.choices[0].message.content
+  const DCPrompts = res.data.choices[0].message.content
+
+  console.log()
+
+  return DCPrompts
 }
 
 module.exports = DSDescriptionGen

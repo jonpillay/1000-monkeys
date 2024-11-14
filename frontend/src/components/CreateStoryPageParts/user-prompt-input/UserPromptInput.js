@@ -16,19 +16,13 @@ const UserPromptInput = (props) => {
 
     e.preventDefault()
 
-    const cleanCheck = sanitiseInput(prompt.current.value)
+    const cleanCheck = await sanitiseInput(prompt.current.value)
 
     if (cleanCheck == true) {
 
       console.log("Passed")
 
-      // await userPromtNextChapter(prompt.current.value)
-
-      // e.preventDefault();
-
-      // await initialiseStory()
-  
-      // navigate('/create')
+      await userPromtNextChapter(prompt.current.value)
 
     } else {
       setError("Please Check Our Community Standards")

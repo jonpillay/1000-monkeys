@@ -18,6 +18,8 @@ async function DSGenerateImage(prompts) {
 
   const requestForm = new FormData();
 
+  const finPrompt = prompts.concat(" (artstation)")
+
   requestForm.append('prompt', JSON.stringify([{ text: prompts }]));
   requestForm.append('cfg_scale', 3);
   requestForm.append('clip_guidance_preset', "FAST_BLUE");
@@ -53,7 +55,7 @@ async function DSGenerateImage(prompts) {
 
   try {
     const response = await axios.post(
-      `https://api.stability.ai/v2beta/stable-image/generate/core`,
+      `https://api.stability.ai/v2beta/stable-image/generate/sd3`,
       requestForm,
       {
         headers: { 
