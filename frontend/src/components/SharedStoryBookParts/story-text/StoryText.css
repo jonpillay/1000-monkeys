@@ -1,6 +1,6 @@
 .story-text {
-  /* margin: 10px;
-  width: 100%; */
+  margin: 10px;
+
   /* word-wrap: break-word; */
   color: black;
   font-family: 'merriweather';
@@ -15,13 +15,13 @@
   margin-left: 10px;
   justify-content: center;
   /* align-items: baseline; */
-  padding: 10px;
+  /* padding-top: 10px; */
   background: rgb(255, 255, 255);
   overflow-y: scroll;
   height: 373px;
   width: 100%;
-  /* display: flex; */
-  /* align-items: start; */
+  display: flex;
+  align-items: start;
   /* justify-content: left; */
   border: 3px solid #333333;
   border-radius: 2% 6% 5% 4% / 10% 1% 2% 4%;
