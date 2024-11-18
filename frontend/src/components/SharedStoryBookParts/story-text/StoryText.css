@@ -1,28 +1,30 @@
 .story-text {
-    /* margin: 10px;
-    width: 100%; */
-    /* word-wrap: break-word; */
-    color: black;
-    font-family: 'merriweather';
-    text-align: center;
-    font-weight: normal;
-    font-size: 30px;
+  /* margin: 10px;
+  width: 100%; */
+  /* word-wrap: break-word; */
+  color: black;
+  font-family: 'merriweather';
+  text-align: center;
+  font-weight: normal;
+  font-size: 30px;
 }
   
 .story-container {
-    margin-left: 10px;
-    justify-content: right;
-    /* align-items: baseline; */
-    padding: 10px;
-    background: rgb(255, 255, 255);
-    overflow-y: scroll;
-    height: 373px;
-    width: 100%;
-    /* display: flex; */
-    /* align-items: start; */
-    /* justify-content: left; */
-    border: 3px solid #333333;
-    border-radius: 2% 6% 5% 4% / 10% 1% 2% 4%;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  justify-content: center;
+  /* align-items: baseline; */
+  padding: 10px;
+  background: rgb(255, 255, 255);
+  overflow-y: scroll;
+  height: 373px;
+  width: 100%;
+  /* display: flex; */
+  /* align-items: start; */
+  /* justify-content: left; */
+  border: 3px solid #333333;
+  border-radius: 2% 6% 5% 4% / 10% 1% 2% 4%;
 
   }
 

@@ -1,0 +1,13 @@
+.create-storybook-container {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: 17% 63% 17%;
+  min-width: 1200px;
+}
+
+.storybook-container {
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}

@@ -21,37 +21,39 @@ async function DSGenerateImage(prompts) {
   const finPrompt = prompts.concat(" (artstation)")
 
   requestForm.append('prompt', JSON.stringify([{ text: prompts }]));
-  requestForm.append('cfg_scale', 3);
+  requestForm.append('model', "sd3-large-turbo");
+  // requestForm.append('cfg_scale', 5);
   requestForm.append('clip_guidance_preset', "FAST_BLUE");
-  requestForm.append('height', 512);
-  requestForm.append('width', 800);
-  requestForm.append('samples', 1);
-  requestForm.append('steps', 25);
+  requestForm.append('aspect_ratio', "16:9");
+  requestForm.append('height', 576);
+  requestForm.append('width', 1024);
+  // requestForm.append('samples', 1);
+  requestForm.append('steps', 40);
   requestForm.append('sampler', 'DPM++ 2M Karras');
   requestForm.append('output_format', 'png');
 
-  const payload = {
-    text_prompts: prompts,
-    height: 512,
-    width: 800,
-    samples: 1,
-    steps: 50,
-  }
+  // const payload = {
+  //   text_prompts: prompts,
+  //   height: 512,
+  //   width: 800,
+  //   samples: 1,
+  //   steps: 50,
+  // }
 
-  const requestBody = {
-    text_prompts: [
-      {
-        text: prompts
-      }
-    ],
-    output_format: 'web_p',
-    cfg_scale: 7,
-    clip_guidance_preset: "FAST_BLUE",
-    height: 512,
-    width: 800,
-    samples: 1,
-    steps: 30
-  };
+  // const requestBody = {
+  //   text_prompts: [
+  //     {
+  //       text: prompts
+  //     }
+  //   ],
+  //   output_format: 'web_p',
+  //   cfg_scale: 7,
+  //   clip_guidance_preset: "FAST_BLUE",
+  //   height: 512,
+  //   width: 800,
+  //   samples: 1,
+  //   steps: 30
+  // };
 
   try {
     const response = await axios.post(

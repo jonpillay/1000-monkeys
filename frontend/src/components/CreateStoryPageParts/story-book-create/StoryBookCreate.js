@@ -48,15 +48,15 @@ const StoryBookCreate = (props) => {
         Nothing to Show
       </div>
       ) : (
-      <div className="results-container">
+      <div className="create-storybook-container">
         <div className="next-page-container">
           {renderChapter>0 &&
             <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
           }
         </div>
         <div className="storybook-container">
-            <Image link={imgUrl} />
-            <Story storyString={story} />
+          <Image link={imgUrl} />
+          <Story storyString={story} />
         </div>
         <div className="next-page-container">
           {  renderChapter < chapterTexts.length -1 &&
