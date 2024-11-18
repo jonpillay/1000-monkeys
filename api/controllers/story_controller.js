@@ -38,6 +38,7 @@ const StoryController = {
       res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits });
 
     } catch (error) {
+      console.log(error)
       res.status(401).json({ message: error.message });
     }
   }

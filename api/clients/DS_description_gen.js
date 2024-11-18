@@ -1,4 +1,6 @@
-const { Configuration, OpenAIApi } = require("openai");
+// const { Configuration, OpenAIApi } = require("openai");
+// import OpenAI from "openai";
+const {OpenAI} = require("openai")
 
 const starter_prompts = [
   {
@@ -31,21 +33,22 @@ const starter_prompts = [
   },
 ]
 
-const openai = new OpenAIApi(new Configuration({
-  apiKey: process.env.OPENAI_API_KEY
-}))
-
 async function DSDescriptionGen(chapter, genre, main_character, system_prompts=starter_prompts) {
+
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+  })
+
   system_prompts.push({role: "user", content: "This is the chapter"})
   system_prompts.push({role: "user", content: `${chapter}`})
   system_prompts.push({role: "user", content: `the genre of the story is ${genre}`})
-  const res = await openai.createChatCompletion({
+  const res = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: system_prompts
   })
-  system_prompts.push(res.data.choices[0].message)
+  system_prompts.push(res.choices[0].message)
 
-  const DCPrompts = res.data.choices[0].message.content
+  const DCPrompts = res.choices[0].message.content
 
   console.log(DCPrompts)
 
