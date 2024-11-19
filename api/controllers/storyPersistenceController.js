@@ -62,6 +62,30 @@ const StoryPersistenceController = {
       res.status(400).json({error: error.message })
     }
 
+  },
+
+  PublishStory: async (req, res) => {
+
+    const { story_id, title } = req.body
+
+    const user_id = req.user._id
+
+    const storyBook = await StoryBook.findById(story_id)
+
+    if (storyBook.user_id != user_id) {
+      res.status(400).json({error: "Only Author Can Publish" })
+    }
+
+    try {
+
+      await StoryBook.PublishStory(story_id, title)
+
+      res.status(200).json({ message: "Published"})
+    } catch (error) {
+
+      res.status(400).json({error: error.message })
+    }
+
   }
 
 }

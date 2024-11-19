@@ -80,4 +80,16 @@ storyBookSchema.statics.submitRating = async function (story_id, userID, rating)
   )
 }
 
+storyBookSchema.statics.publishStory = async function (story_id, title) {
+
+  await this.updateOne( { _id: story_id },
+    {
+      $set: {
+        title: title,
+        published: true
+      }
+    }
+  )
+}
+
 module.exports = mongoose.model('storyBook', storyBookSchema)
