@@ -189,6 +189,8 @@ export const useCreateStory = () => {
       .then((data) => {
         reduxDispatch(swapChapterImage(renderChapter, data["page_image"]))
         reduxDispatch(turnToPage(renderChapter))
+        reduxDispatch(setStoryInSync(false))
+        setStoryInSync(false)
         loadingDispatch({type: 'LOADED'})
       })
     } else {
