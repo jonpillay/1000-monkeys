@@ -36,8 +36,14 @@ const storyBookSchema = new Schema({
   },
   author: {
     type: String,
+  },
+  published: {
+    type: Boolean,
+    default: false
   }
 })
+
+storyBookSchema.index({ published: -1, genre: 1 })
 
 // static methods
 
@@ -46,8 +52,6 @@ storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chap
   // needs error handling
 
   const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre, character: character, artstyle: artstyle, GPTChatHistory: GPTChatHistory, AIEngine: AIEngineVer, author: author })
-
-  storyBookSchema.index({ genre: genre })
 
   return story
 }
