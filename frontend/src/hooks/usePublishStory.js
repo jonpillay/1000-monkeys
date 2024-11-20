@@ -1,3 +1,9 @@
+import { useAuthContext } from "./useAuthContext"
+import { useState } from "react"
+
+import { useDispatch } from "react-redux"
+import { setMongoID } from "../components/Pages/create-stories-page/storyBookSysInfoSlice"
+
 export const usePublishStory = () => {
   
   const { user } = useAuthContext()
@@ -8,7 +14,7 @@ export const usePublishStory = () => {
   const [isLoading, setIsLoading] = useState(null)
 
   const publishStory = async (story_id, title) => {
-    setIsLoading(true)
+
     setError(null)
 
     const reqBody = {

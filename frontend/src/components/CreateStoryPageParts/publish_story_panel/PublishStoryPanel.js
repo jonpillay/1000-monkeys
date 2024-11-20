@@ -1,36 +1,43 @@
 import "./PublishStoryControlPanel.css"
 
 import { useState, useRef } from "react";
-import { useCreateStory } from "../../../hooks/useCreateStory";
+import { usePublishStory } from "../../../hooks/usePublishStory";
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 
 import ForbiddenLogo from "../../../img/forbidden.png"
 
-const PublishStoryControlPanel = () => {
+import { useSelector, useDispatch } from "react-redux"
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID } from "../../Pages/create-stories-page/storyBookSysInfoSlice"
 
-  const [error, setError] = useState("")
+const PublishStoryControlPanel = (props) => {
+
+  const { publishStory, isLoading, error } = usePublishStory()
+
+  const [forbidden, setForbidden] = useState(false)
 
   const {sanitiseInput} = useSanitiseInput()
 
   const title = useRef()
 
+  const story_id = useSelector(selectMongoID)
+
   const handleSubmit = async (e) => {
 
     e.preventDefault()
 
-    const cleanCheck = await sanitiseInput(prompt.current.value)
+    const cleanCheck = await sanitiseInput(title.current.value)
 
     if (cleanCheck == true) {
 
       console.log("Passed")
 
-      // Needs to be a usePublishStory hook
-      // await userPromtNextChapter(prompt.current.value)
+      // publish story also needs to save the story as it is (if the user has refreshed either the image or chapter without saving)
+      await publishStory(story_id, title.current.value)
 
     } else {
-      setError("Please Check Our Community Standards")
+      setForbidden(true)
       setTimeout(() => {
-        setError("")
+        setForbidden(false)
       }, 1500)
       console.log("Invlaid input")
 
@@ -50,7 +57,7 @@ const PublishStoryControlPanel = () => {
               <input type="text" className="publish-story-input-box" ref={title} placeholder="Give it a title..."/>
             </div>
             <>
-            {! error ? 
+            {! forbidden ? 
               <div className="publish-story-input-submit-container">
                 <button disabled={isLoading} className="publish-story-input-button" id="publish-story-input-submit-button" type="submit">Publish</button>
               </div>

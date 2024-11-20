@@ -6,7 +6,12 @@ import { useNavigate } from "react-router";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import CreateButton from '../create_button/CreateButton';
 import UserPromptInput from '../user-prompt-input/UserPromptInput';
+import PublishStoryControlPanel from '../publish_story_panel/PublishStoryPanel';
 import { useCreateStory } from '../../../hooks/useCreateStory';
+
+import { useSelector } from 'react-redux';
+import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter } from '.././story-book-create/storyBookSlice';
+
 
 const CreateStoriesControlPanel = (props) => {
 
@@ -18,6 +23,10 @@ const CreateStoriesControlPanel = (props) => {
   const [controlPanelScroll, setControlPanelScroll] = useState(false)
 
   const selectedButton = useRef()
+
+  const chapterTexts = useSelector(selectAllChapterTexts)
+
+  const publishable = chapterTexts.length >= 5 ? true : false
 
 
   // useEffect(() => {
@@ -74,9 +83,16 @@ const CreateStoriesControlPanel = (props) => {
             <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshStory()} font={"flavors"} value="Refresh the Text" className="genre-button" />
             {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </div>
-        <div className='create-control-user-prompt-input'>
-          <UserPromptInput userPromtNextChapter={userPromtNextChapter} isLoading={isLoading} />
-        </div>
+        { !publishable ? (
+          <div className='create-control-user-prompt-input'>
+            <UserPromptInput userPromtNextChapter={userPromtNextChapter} isLoading={isLoading} />
+          </div>
+        ) : (
+          <div className='create-control-user-prompt-input'>
+            <PublishStoryControlPanel isLoading={isLoading} />
+          </div>
+        )}
+
         {error && <div className="error">{error}</div>}
         </>
       </div>

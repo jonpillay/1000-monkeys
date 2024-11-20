@@ -78,7 +78,7 @@ const StoryPersistenceController = {
 
     try {
 
-      await StoryBook.PublishStory(story_id, title)
+      await StoryBook.publishStory(story_id, title)
 
       res.status(200).json({ message: "Published"})
     } catch (error) {
