@@ -47,7 +47,7 @@ const PublishStoryControlPanel = (props) => {
 
     if (!storyInSync) {
       if (story_id == null) {
-        await saveStory(chapterImages, chapterTexts, reduxGenre, reduxCharacter, reduxArtStyle, GPTChatHistory, AIEngineVer, user)
+        await saveStory(chapterImages, chapterTexts, reduxGenre, reduxCharacter, reduxArtStyle, GPTChatHistory, AIEngineVer, author)
       } else {
         await updateStory(story_id, chapterImages, chapterTexts, GPTChatHistory)
       }
