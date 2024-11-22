@@ -1,7 +1,7 @@
 // This is javascript code
 
 const fs = require('fs');
-const DSPromptGen = require('../prompts/DSPromptGen')
+const DSPromptGen = require('../promptGens/DSPromptGen')
 const imgBBUploader = require('../helpers/imgBBUploader')
 
 const engineId = 'stable-diffusion-xl-beta-v2-2-2';
@@ -21,15 +21,15 @@ async function DSGenerateImage(prompts) {
   const finPrompt = prompts.concat(" (artstation)")
 
   requestForm.append('prompt', JSON.stringify([{ text: prompts }]));
-  requestForm.append('model', "sd3-large-turbo");
-  // requestForm.append('cfg_scale', 5);
+  requestForm.append('model', "sd3.5-large-turbo");
+  // requestForm.append('cfg_scale', 4.800);
   requestForm.append('clip_guidance_preset', "FAST_BLUE");
   requestForm.append('aspect_ratio', "16:9");
   requestForm.append('height', 576);
   requestForm.append('width', 1024);
   // requestForm.append('samples', 1);
-  requestForm.append('steps', 40);
-  requestForm.append('sampler', 'DPM++ 2M Karras');
+  // requestForm.append('steps', 40);
+  requestForm.append('sampler', 'DPM++ 2S a');
   requestForm.append('output_format', 'png');
 
   // const payload = {

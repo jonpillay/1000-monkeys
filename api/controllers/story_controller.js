@@ -1,10 +1,10 @@
 const generateStory = require("../clients/GPTclient");
-const GPTPromptGen = require("../prompts/GPTPromptGen")
+const GPTPromptGen = require("../promptGens/GPTPromptGen")
 
 const DSDescriptionGen = require("../clients/DS_description_gen")
 
 const generateImage = require("../clients/DSclient")
-const DSPromptGen = require('../prompts/DSPromptGen')
+const DSPromptGen = require('../promptGens/DSPromptGen')
 
 const creditController = require('./creditsController')
 

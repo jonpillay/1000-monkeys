@@ -8,9 +8,6 @@ const {OpenAI} = require("openai")
 
 async function generateStory(prompts) {
 
-  console.log("Shitty here")
-  console.log(process.env.OPENAI_API_KEY)
-
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
   })

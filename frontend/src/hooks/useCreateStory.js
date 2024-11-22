@@ -115,7 +115,7 @@ export const useCreateStory = () => {
 
       GPTPromptHistory.push(userPrompt)
 
-      await pushPromptToRedux(prompt)
+      await pushPromptToRedux(userPrompt)
   
       localStorage.setItem("localGPTPromptHistory", JSON.stringify(GPTPromptHistory))
 
