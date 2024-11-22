@@ -30,10 +30,6 @@ const InitialiseStoryForm = (props) => {
 
   const promptRef = useRef()
 
-  // const { initialiseStoryHook } = useInitialiseStory()
-
-  // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
-
   const [characterChoice, setCharacterChoice] = useState();
   const [genreChoice, setGenreChoice] = useState();
   const [styleChoice, setStyleChoice] = useState();
@@ -45,31 +41,6 @@ const InitialiseStoryForm = (props) => {
   const { sanitiseInput } = useSanitiseInput()
 
   const { initialiseStoryHook } = useInitialiseStory()
-
-  // const { AIGenCall, userPromtNextChapter, AIPromptNextChapter, refreshStory, refreshImage, storyInSync, setStoryInSync, isLoading, setIsLoading, storyPages } = useCreateStory()
-
-
-  useEffect(() => {
-    setCharacterChoice()
-    setGenreChoice([dropdownSelections["genres"]])
-    setStyleChoice([dropdownSelections["style"]])
-    // setError(null)
-    // fetch("/populate", {
-    //   method: "GET",
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setCharacterOptions(data.character)
-    //     setStyleOptions(data.style)
-    //     setGenreOptions(data.genre)
-    //   });
-  }, [])
-
-  // const initialiseStoryOnClick = () => {
-
-  //   initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef)
-
-  // }
 
   const initialiseStory = async () => {
     if (user.credits < 10) {
@@ -118,11 +89,9 @@ const InitialiseStoryForm = (props) => {
 
   return (
       <div className="formcontainer-container">
-        <div>
-          <h1 className="formcontainer-title">
-            Let's start at the beginning
-          </h1>
-        </div>
+        <h1 className="formcontainer-title">
+          Let's start at the beginning
+        </h1>
         <div>
           <DropdownSelector
               dropdownItems={dropdownSelections["characters"]}
