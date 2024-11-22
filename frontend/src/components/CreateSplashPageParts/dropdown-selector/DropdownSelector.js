@@ -3,6 +3,15 @@ import './DropdownSelector.css';
 
 const DropdownSelector = ({ dropdownItems, selectionField, selectedValue, onDropdownChange }) => {
 
+  let dropdownOptions = []
+
+  dropdownItems.forEach(option => {
+    const selectionObj = {value: option, label: option}
+    dropdownOptions.push(selectionObj)
+  });
+
+  console.log(dropdownOptions)
+
   return (
     <>
     <div className="form-container">
@@ -11,7 +20,7 @@ const DropdownSelector = ({ dropdownItems, selectionField, selectedValue, onDrop
         </label>
         <Select
           classNamePrefix="react-select"
-          options={dropdownItems.map((item) => ({ value: item, label: item }))}
+          options={dropdownOptions}
           onChange={onDropdownChange}
           // value={selectedValue ? { value: selectedValue, label: selectedValue } : null}
         />
