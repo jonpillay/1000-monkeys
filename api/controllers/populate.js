@@ -1,4 +1,4 @@
-const { retrieveAllDropdowns } = require('../promptGens/prompts')
+const { retrieveAllDropdowns } = require('../promptGeneration/prompts')
 
 const PopulateController = {
   Index: (req, res) => {

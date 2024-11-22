@@ -17,7 +17,10 @@ import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 
+const dropdownSlections = require('./unifiedSelectors.json')
+
 const InitialiseStoryForm = (props) => {
+  console.log(dropdownSlections)
   const {user} = useAuthContext()
   const navigate = useNavigate()
 
@@ -47,16 +50,16 @@ const InitialiseStoryForm = (props) => {
 
 
   useEffect(() => {
-    setError(null)
-    fetch("/populate", {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setCharacterOptions(data.character)
-        setStyleOptions(data.style)
-        setGenreOptions(data.genre)
-      });
+    // setError(null)
+    // fetch("/populate", {
+    //   method: "GET",
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setCharacterOptions(data.character)
+    //     setStyleOptions(data.style)
+    //     setGenreOptions(data.genre)
+    //   });
   }, [])
 
   // const initialiseStoryOnClick = () => {

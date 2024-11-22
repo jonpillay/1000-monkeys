@@ -1,7 +1,7 @@
 // This is javascript code
 
 const fs = require('fs');
-const DSPromptGen = require('../promptGens/DSPromptGen')
+const DSPromptGen = require('../promptGeneration/DSPromptGen')
 const imgBBUploader = require('../helpers/imgBBUploader')
 
 const engineId = 'stable-diffusion-xl-beta-v2-2-2';

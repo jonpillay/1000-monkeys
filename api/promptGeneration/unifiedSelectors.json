@@ -1,0 +1,40 @@
+{
+  "characters": [
+    "Spider-Man",
+    "Miles Morales",
+    "Rapunzel",
+    "Darth Vader",
+    "Wonder Woman",
+    "Shang - Chi",
+    "Ellen Ripley",
+    "Wolverine",
+    "Black Panther",
+    "Jean Grey",
+    "Blade",
+    "Storm",
+    "Nick Fury",
+    "Luke Skywalker",
+    "Super Mario",
+    "Pikachu",
+    "Sonic"
+  ],
+  "genres": [
+    "Dystopian",
+    "Fairytale",
+    "Western",
+    "Cyberpunk",
+    "Sci-Fi"
+  ],
+  "style" : [
+    "Comic Book",
+    "Anime",
+    "CGI",
+    "Frida Kahlo",
+    "Dali",
+    "Pop Art",
+    "Jean Michel Basquiat",
+    "Banksy",
+    "Yayoi Kusama",
+    "Ralph Steadman"
+  ]
+}
