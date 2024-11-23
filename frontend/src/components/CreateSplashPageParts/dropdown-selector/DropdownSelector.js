@@ -10,8 +10,6 @@ const DropdownSelector = ({ dropdownItems, selectionField, selectedValue, onDrop
     dropdownOptions.push(selectionObj)
   });
 
-  console.log(dropdownOptions)
-
   return (
     <>
     <div className="form-container">

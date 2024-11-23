@@ -50,8 +50,6 @@ async function DSDescriptionGen(chapter, genre, main_character, system_prompts=s
 
   const DCPrompts = res.choices[0].message.content
 
-  console.log(DCPrompts)
-
   return DCPrompts
 }
 

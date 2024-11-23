@@ -6,6 +6,8 @@ const DSDescriptionGen = require("../clients/DS_description_gen")
 const generateImage = require("../clients/DSclient")
 const DSPromptGen = require('../promptGeneration/DSPromptGen')
 
+const DCPromptDresser = require('../promptGeneration/DCPromptDresser')
+
 const creditController = require('./creditsController')
 
 
@@ -33,7 +35,12 @@ const StoryController = {
 
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
 
-      const story_image = await generateImage(DS_descpription)
+      const dressed_prompt = await DCPromptDresser(DS_descpription, user_choices["style"])
+
+      console.log("This is the dressed prompt ")
+      console.log(dressed_prompt)
+
+      const story_image = await generateImage(dressed_prompt)
 
       res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits });
 
