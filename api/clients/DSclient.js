@@ -14,26 +14,26 @@ const FormData = require('form-data')
 
 if (!apiKey) throw new Error('Missing Stability API key.');
 
-async function DSGenerateImage(prompts) {
+async function DSGenerateImage(positivePrompt, negativePrompt) {
 
   const requestForm = new FormData();
 
-  const finPrompt = prompts.concat(" (artstation)")
-
-  requestForm.append('prompt', JSON.stringify([{ text: prompts }]));
+  requestForm.append('prompt', JSON.stringify([{ text: positivePrompt }]));
   requestForm.append('model', "sd3.5-large-turbo");
+  // requestForm.append('style_preset', 'anime')
+  requestForm.append('negative_prompt', negativePrompt)
   // requestForm.append('cfg_scale', 4.800);
   requestForm.append('clip_guidance_preset', "FAST_BLUE");
   requestForm.append('aspect_ratio', "16:9");
   requestForm.append('height', 576);
   requestForm.append('width', 1024);
   // requestForm.append('samples', 1);
-  // requestForm.append('steps', 40);
+  requestForm.append('steps', 40);
   requestForm.append('sampler', 'DPM++ 2S a');
   requestForm.append('output_format', 'png');
 
   // const payload = {
-  //   text_prompts: prompts,
+  //   text_positivePrompt: positivePrompt,
   //   height: 512,
   //   width: 800,
   //   samples: 1,
@@ -41,9 +41,9 @@ async function DSGenerateImage(prompts) {
   // }
 
   // const requestBody = {
-  //   text_prompts: [
+  //   text_positivePrompt: [
   //     {
-  //       text: prompts
+  //       text: positivePrompt
   //     }
   //   ],
   //   output_format: 'web_p',

@@ -1,16 +1,16 @@
-const DCPromptDresser = async (promptDecription, artStyle, genre = null, character = null) => {
+const DCPromptDresser = (promptDecription, userChoices) => {
 
-  console.log(artStyle)
+  const artStyle = userChoices['style']
 
   let stylePrompt = ''
 
   switch (artStyle) {
     case 'Comic Book':
-      stylePrompt = 'A single, exciting, and exceptionally illustrated comic book frame depicting the scene of '
+      stylePrompt = '(A single, exciting, and exceptionally illustrated comicbook frame in the style of Jack Kirby or John Romita Jr) '
       break
 
     case 'Anime':
-      stylePrompt = 'Meticulously drawn Anime style scene depicting '
+      stylePrompt = '(Anime drawing in the style of Katsuhiro Otomo or Akira Toriyama) '
       break
 
     case 'CGI':
@@ -18,7 +18,7 @@ const DCPromptDresser = async (promptDecription, artStyle, genre = null, charact
       break
 
     case 'Frida Kahlo':
-      stylePrompt = 'Surrealist fantasy style painting by the famous painter Frida Kahlo depicting the scene of '
+      stylePrompt = '(Surrealist painting by the famous mexican artist Frida Kahlo. Bold vibrant colours. Heavy brushstrokes. Impressionist technique. )'
       break
 
     case 'Dali':
@@ -45,9 +45,9 @@ const DCPromptDresser = async (promptDecription, artStyle, genre = null, charact
       stylePrompt = 'Artistic image in the style of Banksy depicting the scene of '
   }
 
-  const finalPrompt = stylePrompt.concat(promptDecription)
+  const dressedPrompt = stylePrompt.concat(': '.concat(promptDecription))
 
-  return finalPrompt
+  return dressedPrompt
 
 }
 

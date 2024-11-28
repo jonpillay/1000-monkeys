@@ -1,0 +1,79 @@
+{
+  "character": {
+      "Spiderman": {
+          "positivePrompts": ["{{Spiderman in superhero suit}}"],
+          "negativePrompts": [],
+          "homeStyle": ["comic-book"],
+          "negativeStylePrompts": []
+      },
+      "Rapunzel": {
+          "positivePrompts": ["{{Rapunzel}}"],
+          "negativePrompts": []
+      },
+      "Darth Vader": {
+          "positivePrompts": [],
+          "negativePrompts": []
+      },
+      "Wonder Woman": {
+          "positivePrompts": [],
+          "negativePrompts": []
+      },
+      "Hermione Granger": {
+          "positivePrompts": ["{{Hermione Granger}}"],
+          "negativePrompts": []
+      },
+      "Batman": {
+          "positivePrompts": [],
+          "negativePrompts": []
+      }
+  },
+  "genre": {
+      "Dystopian": {
+          "positivePrompts": ["{{dystopian}}", "oppressive", "society", "resistance", "dark", "sci-fi", "synthwave neon retro", "dramatic lighting", "synthwave neon retro"],
+          "negativePrompts": ["utopia", "harmony", "peace", "ideal", "blurry"]
+      },
+      "Fairytale": {
+          "positivePrompts": [],
+          "negativePrompts": []
+      },
+      "Western": {
+          "positivePrompts": [],
+          "negativePrompts": []
+      },
+      "Cyberpunk": {
+          "positivePrompts": [],
+          "negativePrompts": []
+      },
+      "Sci-Fi": {
+          "positivePrompts": ["{{sci-fi}}", "futuristic", "space", "spaceships", "planets and moons", "Jim Burns", "new worlds", "vivid colours", "futuristic clothing"],
+          "negativePrompts": ["fantasy", "magical", "western"]
+      }
+
+  },
+  "style": {
+      "Cartoon": {
+          "positivePrompts": ["{{cartoon}}", "funny", "whimsical", "colorful", "lively", "vivid", "digital art", "smooth", "sharp focus", "4k", "highly detailed", "smooth drawn"],
+          "negativePrompts": ["dark", "grim", "sinister", "serious", "realistic", "photorealistic", "unreal engine"]
+      },
+      "Realistic": {
+          "positivePrompts": ["{{realistic}}", "vibrant", "detailed", "high-resolution", "photorealistic", "8k", "masterpiece", "highly detailed", "sharp focus", "canon m50"],
+          "negativePrompts": ["cartoonish", "abstract", "surreal"]
+      },
+      "Pixar": {
+          "positivePrompts": ["{{pixar graphics}}", "disney graphics", "unreal engine 5", "4k", "highly detailed", "high quality", "surreal"],
+          "negativePrompts": ["realistic", "painting", "dark"]
+      },
+      "Anime": {
+          "positivePrompts": ["anime:1.8", "manga:1.7", "cartoon:1.5"],
+          "negativePrompts": ["realistic", "detailed", "3d", "computer generated"]
+      },
+      "Painting": {
+          "positivePrompts": ["{{painting}}", "handdrawn painting", "paint brushstrokes", "Jacques-Laurent Agasse", "highly detailed", "high quality"],
+          "negativePrompts": ["realistic", "3d", "low quality:1.4", "unreal engine", "canon m50"]
+      },
+      "Frida Kahlo": {
+        "positivePrompts": ["handdrawn painting", "paint brushstrokes"],
+        "negativePrompts": ["realistic", "3d"]
+    }
+    }
+  }

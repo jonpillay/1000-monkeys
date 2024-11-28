@@ -25,7 +25,7 @@ const starter_prompts = [
   },
   {
     role: "system",
-    content: "Only what can be illustrated, nothing metaphysical."
+    content: "Do no describe abstract ideas, instead describe what the characters are doing."
   },
   {
     role: "system",
@@ -40,6 +40,7 @@ async function DSDescriptionGen(chapter, genre, main_character, system_prompts=s
   })
 
   system_prompts.push({role: "user", content: "This is the chapter"})
+  system_prompts.push({role: "user", content: `The main character is ${main_character}`})
   system_prompts.push({role: "user", content: `${chapter}`})
   system_prompts.push({role: "user", content: `the genre of the story is ${genre}`})
   const res = await openai.chat.completions.create({

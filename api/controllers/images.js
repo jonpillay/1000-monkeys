@@ -3,6 +3,10 @@ const DSDescriptionGen = require("../clients/DS_description_gen")
 
 const generateImage = require("../clients/DSclient")
 
+const DCPromptDresser = require("../promptGeneration/DCPromptDresser")
+const genPromptTags = require("../promptGeneration/DSPromptTagger")
+const genNegativePromptString = require('../promptGeneration/genNegativePromptString')
+
 
 const ImagesController = {
   RefreshImage: async (req, res) => {
@@ -14,7 +18,21 @@ const ImagesController = {
 
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
 
-      const story_image = await generateImage(DS_descpription)
+      const dressed_prompt = DCPromptDresser(DS_descpription, user_choices)
+
+      const tagsObject = genPromptTags(user_choices)
+
+      const finalSDPrompt = dressed_prompt.concat(" " + tagsObject['positiveTagString']).concat(", (artstation)")
+
+      const negativePromptString = genNegativePromptString(tagsObject['negativeTagString'])
+
+      console.log("This is the negative prompt string")
+      console.log(negativePromptString)
+
+      console.log("This is the positive prompt")
+      console.log(finalSDPrompt)
+
+      const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
       res.status(200).json({ page_image: story_image });
     } catch (error) {
