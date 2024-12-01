@@ -5,19 +5,22 @@
     "Rapunzel",
     "Batman",
     "Darth Vader",
+    "Dora The Explorer",
     "Wonder Woman",
     "Shang-Chi",
     "Ellen Ripley",
     "Wolverine",
     "Black Panther",
-    "Jean Grey",
+    "The Pheonix (X-Men)",
     "Blade",
-    "Storm",
+    "Storm (X-Men)",
     "Nick Fury",
     "Luke Skywalker",
     "Super Mario",
+    "Princess Peach",
+    "The Xenomorph (Alien)",
     "Pikachu",
-    "Sonic",
+    "Sonic The Hedgehog",
     "Princess Mononoke"
   ],
   "genres": [
@@ -30,13 +33,10 @@
   "style" : [
     "Comic Book",
     "Anime",
+    "Pixar",
     "CGI",
     "Frida Kahlo",
     "Dali",
-    "Pop Art",
-    "Jean Michel Basquiat",
-    "Banksy",
-    "Yayoi Kusama",
-    "Ralph Steadman"
+    "Pop Art"
   ]
 }

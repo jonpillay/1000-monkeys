@@ -1,79 +1,110 @@
 {
-  "character": {
-      "Spiderman": {
-          "positivePrompts": ["{{Spiderman in superhero suit}}"],
-          "negativePrompts": [],
-          "homeStyle": ["comic-book"],
-          "negativeStylePrompts": []
-      },
-      "Rapunzel": {
-          "positivePrompts": ["{{Rapunzel}}"],
-          "negativePrompts": []
-      },
-      "Darth Vader": {
-          "positivePrompts": [],
-          "negativePrompts": []
-      },
-      "Wonder Woman": {
-          "positivePrompts": [],
-          "negativePrompts": []
-      },
-      "Hermione Granger": {
-          "positivePrompts": ["{{Hermione Granger}}"],
-          "negativePrompts": []
-      },
-      "Batman": {
-          "positivePrompts": [],
-          "negativePrompts": []
-      }
+"character": {
+  "Spiderman": {
+      "positivePrompts": [],
+      "negativePrompts": [],
+      "homeStyle": ["comic-book"],
+      "negativeStylePrompts": []
   },
-  "genre": {
-      "Dystopian": {
-          "positivePrompts": ["{{dystopian}}", "oppressive", "society", "resistance", "dark", "sci-fi", "synthwave neon retro", "dramatic lighting", "synthwave neon retro"],
-          "negativePrompts": ["utopia", "harmony", "peace", "ideal", "blurry"]
-      },
-      "Fairytale": {
-          "positivePrompts": [],
-          "negativePrompts": []
-      },
-      "Western": {
-          "positivePrompts": [],
-          "negativePrompts": []
-      },
-      "Cyberpunk": {
-          "positivePrompts": [],
-          "negativePrompts": []
-      },
-      "Sci-Fi": {
-          "positivePrompts": ["{{sci-fi}}", "futuristic", "space", "spaceships", "planets and moons", "Jim Burns", "new worlds", "vivid colours", "futuristic clothing"],
-          "negativePrompts": ["fantasy", "magical", "western"]
-      }
-
+  "Rapunzel": {
+      "positivePrompts": ["(Rapunzel):1.5"],
+      "negativePrompts": []
   },
-  "style": {
-      "Cartoon": {
-          "positivePrompts": ["{{cartoon}}", "funny", "whimsical", "colorful", "lively", "vivid", "digital art", "smooth", "sharp focus", "4k", "highly detailed", "smooth drawn"],
-          "negativePrompts": ["dark", "grim", "sinister", "serious", "realistic", "photorealistic", "unreal engine"]
-      },
-      "Realistic": {
-          "positivePrompts": ["{{realistic}}", "vibrant", "detailed", "high-resolution", "photorealistic", "8k", "masterpiece", "highly detailed", "sharp focus", "canon m50"],
-          "negativePrompts": ["cartoonish", "abstract", "surreal"]
-      },
-      "Pixar": {
-          "positivePrompts": ["{{pixar graphics}}", "disney graphics", "unreal engine 5", "4k", "highly detailed", "high quality", "surreal"],
-          "negativePrompts": ["realistic", "painting", "dark"]
-      },
-      "Anime": {
-          "positivePrompts": ["anime:1.8", "manga:1.7", "cartoon:1.5"],
-          "negativePrompts": ["realistic", "detailed", "3d", "computer generated"]
-      },
-      "Painting": {
-          "positivePrompts": ["{{painting}}", "handdrawn painting", "paint brushstrokes", "Jacques-Laurent Agasse", "highly detailed", "high quality"],
-          "negativePrompts": ["realistic", "3d", "low quality:1.4", "unreal engine", "canon m50"]
-      },
-      "Frida Kahlo": {
-        "positivePrompts": ["handdrawn painting", "paint brushstrokes"],
-        "negativePrompts": ["realistic", "3d"]
-    }
-    }
+  "Darth Vader": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Wonder Woman": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Hermione Granger": {
+      "positivePrompts": ["(Hermione Granger):1.5"],
+      "negativePrompts": []
+  },
+  "Dora The Explorer": {
+    "positivePrompts": ["(Dora The Explorer):1.8", "Nickelodeon:1.4", "(Chris Gifford):1.6"],
+    "negativePrompts": []
+  },
+  "Batman": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Miles Morales": {
+    "positivePrompts": ["(Miles Morales):1.6","(Sara Pichelli):1.8", "(Spider-Man: Into The Spiderverse 2018):1.8", "(Brian Bendis):1.5"],
+    "negativePrompts": []
+  },
+  "The Pheonix (X-Men)": {
+    "positivePrompts": ["(Jean Gray as Pheonix from the X-Men):1.8", "X-Men:1.4", "(Green Suite):1.3", "Stan-Lee:1.5", "(Marvel Comics):1.4"],
+    "negativePrompts": ["Bird", "Mythology"]
+  },
+  "Princess Mononoke": {
+    "positivePrompts": ["(Princess Mononoke (1997)):1.8", "(Hayao Miyazaki):1.5", "(Studio Gibli:1.5)", "Masashi Ando"],
+    "negativePrompts": []
+  },
+  "Nick Fury": {
+    "positivePrompts": ["(Samuel L Jackson):1.8", "Avengers:1.5", "Marvel:1.4"],
+    "negativePrompts": []
+  },
+  "The Xenomorph (Alien)": {
+    "positivePrompts": ["(Alien 1979):1.8", "(H.R. Giger):1.5", "extraterrestrial:1.6"],
+    "negativePrompts": []
+  },
+  "Princess Peach": {
+    "positivePrompts": ["(Princess Peach):1.5", "(Shigeru Miyamoto)", "(Mushroom Kingdom)", "(Long pink princess dress):1.5"],
+    "negativePrompts": []
   }
+},
+"genre": {
+  "Dystopian": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Fairytale": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Western": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Cyberpunk": {
+      "positivePrompts": [],
+      "negativePrompts": []
+  },
+  "Sci-Fi": {
+      "positivePrompts": ["{{sci-fi}}", "futuristic", "space", "spaceships", "planets and moons", "Jim Burns", "new worlds", "vivid colours", "futuristic clothing"],
+      "negativePrompts": ["fantasy", "magical", "western"]
+  }
+},
+"style": {
+  "Cartoon": {
+      "positivePrompts": ["cartoon:1.5", "(Chuck Jones):1.5", "(Tex Avery):1.5","(Bugs Bunny):1.3", "(Tom and Jerry):1.3"],
+      "negativePrompts": ["realistic", "photorealistic", "3d", "Computer generated"]
+  },
+  "Comic Book": {
+    "positivePrompts": ["(single comic book frame):1.8", "(Steve Ditto):1.5", "(Marvel Comics):1.7", "(DC Comics):1.7"],
+    "negativePrompts": ["realistic", "detailed", "3d", "computer generated"]
+  },
+  "CGI": {
+      "positivePrompts": ["(3d digital art):1.5", "(ray traced lighting):1.2", "(Square Enix):1.6", "(Final Fantasy):1.5", "(computer generated imagery):1.5"],
+      "negativePrompts": ["painting:1.5", "hand drawn:1.4"]
+  },
+  "Anime": {
+      "positivePrompts": ["anime:1.8", "manga:1.7", "(Akira the movie):1.7"],
+      "negativePrompts": ["realistic", "detailed", "3d", "computer generated"]
+  },
+  "Painting": {
+      "positivePrompts": ["{{painting}}", "handdrawn painting", "paint brushstrokes", "Jacques-Laurent Agasse", "highly detailed", "high quality"],
+      "negativePrompts": ["realistic", "3d", "low quality:1.4", "unreal engine", "canon m50"]
+  },
+  "Frida Kahlo": {
+    "positivePrompts": ["surrealism:1.8", "paint brushstrokes:1.5", "handdrawn painting"],
+    "negativePrompts": ["realistic", "3d"]
+  },
+  "Pop Art": {
+    "positivePrompts": ["(Pop Art):1.8", "(Bold Colours):1.5", "(David Hockney)1.4"],
+    "negativePrompts": []
+}
+}
+}

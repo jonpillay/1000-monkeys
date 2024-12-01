@@ -10,11 +10,19 @@ const DCPromptDresser = (promptDecription, userChoices) => {
       break
 
     case 'Anime':
-      stylePrompt = '(Anime drawing in the style of Katsuhiro Otomo or Akira Toriyama) '
+      stylePrompt = '(Anime drawing in the style of (Katsuhiro Otomo):1.8 or (Akira Toriyama):1.8) '
+      break
+
+    case 'Cartoon':
+      stylePrompt = '(Cartoon drawing in the style of the (Looney Toons):1.8 or (Walt Disney):1.8) '
+      break
+
+    case 'Realistic':
+      stylePrompt = '(Realistic photographic image. Still shot from a movie.) '
       break
 
     case 'CGI':
-      stylePrompt = 'Detailed computer generated image of '
+      stylePrompt = '(3D computer generated image in the style of (Dreamworks Entertainment) '
       break
 
     case 'Frida Kahlo':
@@ -26,7 +34,7 @@ const DCPromptDresser = (promptDecription, userChoices) => {
       break
 
     case 'Pop Art':
-      stylePrompt = 'Pop Art style image by Roy Lichtenstein or Andy Warhol depicting the scene of '
+      stylePrompt = 'Bright and bold graphic design piece in the Pop Art style (Roy Lichtenstein)1.5 or (Andy Warhol):1.5 depicting the scene of '
       break
 
     case 'Jean Michel Basquiat':

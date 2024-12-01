@@ -31,6 +31,10 @@ const starter_prompts = [
     role: "system",
     content: "The prompt should be concise and no longer than 20 words."
   },
+  {
+    role: "system",
+    content: "Only describe a single scene/moment in time"
+  },
 ]
 
 async function DSDescriptionGen(chapter, genre, main_character, system_prompts=starter_prompts) {
