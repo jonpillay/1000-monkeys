@@ -68,7 +68,6 @@ html, body {
   justify-content: space-around;
   align-items: center;
   width: 70%;
-  /* grid-template-columns: 17% 66% 17%; */
   min-width: 1200px;
 }
 
@@ -79,14 +78,5 @@ html, body {
 .storybook-container {
   max-width: 1300px;
   display: flex;
-  /* grid-template-columns: 50% 50%; */
   justify-content: center;
-}
-
-#previous-page-button {
-  /* margin-right: 20px; */
-}
-
-#next-page-button {
-  /* margin-left: 50px; */
 }

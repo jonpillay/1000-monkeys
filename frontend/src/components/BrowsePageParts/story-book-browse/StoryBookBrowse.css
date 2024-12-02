@@ -1,8 +1,5 @@
 .results-container {
-  /* background-color: green; */
   padding-top: 1vw;
-  /* display: flex;
-  justify-content: center; */
 }
 
 .storybook-container {
@@ -14,5 +11,4 @@
   display: flex;
   justify-content: center;
   width: 8%;
-  /* background-color: red; */
 }
