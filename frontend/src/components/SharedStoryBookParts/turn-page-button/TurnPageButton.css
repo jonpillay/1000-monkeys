@@ -1,6 +1,9 @@
 .turn-page-button {
+  /* border: none;
+  width: fit-content; */
+  opacity: 70%;
   /* align-self: center; */
-  background-color: #fff;
+  /* background-color: #fff;
   background-image: none;
   background-position: 0 90%;
   background-repeat: repeat no-repeat;
@@ -11,9 +14,9 @@
   box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
   box-sizing: border-box;
   color: #41403e;
-  cursor: pointer;
+  cursor: pointer; */
   /* display: inline-block; */
-  font-family: Neucha, sans-serif;
+  /* font-family: Neucha, sans-serif;
   font-size: 1rem;
   line-height: 23px;
   outline: none;
@@ -26,15 +29,13 @@
   border-top-right-radius: 15px 225px;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: manipulation;
+  touch-action: manipulation; */
   /* width: 60px;
   height: 350px; */
 }
 
 .turn-page-button:hover {
-  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
-  transform: translate3d(0, 2px, 0);
-  border-width: 4px;
+  opacity: 100%;
 }
 
 .turn-page-button:focus {

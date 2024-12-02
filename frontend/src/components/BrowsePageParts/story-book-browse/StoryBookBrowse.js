@@ -35,7 +35,7 @@ const StoryBookBrowse = (props) => {
   const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
   const turnPage = async (direct) => {
-    if (direct == 'back') {
+    if (direct == 'previous') {
       story.current = chapterTexts[renderChapter -1]
       imgUrl.current = chapterImgURLs[renderChapter -1]
       localPageNumbers[id] -= 1
@@ -61,7 +61,7 @@ const StoryBookBrowse = (props) => {
     <div className="results-container">
       <div className="next-page-container">
         {renderChapter>0 &&
-          <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>
+          <TurnPageButton id="previous-page-button" direct="previous" label="Previous Chapter" callback={turnPage}/>
         }
       </div>
       <div className="storybook-container">
