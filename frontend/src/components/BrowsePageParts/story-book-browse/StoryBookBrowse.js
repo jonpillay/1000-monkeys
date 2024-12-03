@@ -22,11 +22,15 @@ const StoryBookBrowse = (props) => {
   const chapterImgURLs = props.chapterImgURLs
 
   const setRenderChapter = props.setRender
+  const setChapterPromptText = props.setChapterPromptText
 
   const renderChapter = props.renderChapter
+  const GPTChatHistory = props.GPTChatHistory
 
   let imgUrl = useRef(chapterImgURLs[renderChapter] || "");
   let story = useRef(chapterTexts[renderChapter] || "");
+
+  let promptText = props.promptText
 
   /*
   Turnpage here needs to be rewritten to handle the new localStorage object.
@@ -41,12 +45,14 @@ const StoryBookBrowse = (props) => {
       localPageNumbers[id] -= 1
       await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter -1)
+      promptText.current = GPTChatHistory[renderChapter]['content']
     } else if (direct == 'next') {
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
       localPageNumbers[id] += 1
       await localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter +1)
+      promptText.current = GPTChatHistory[renderChapter]['content']
     }
     // } else if (direct == 'last') {
     //   story.current = storyPages["textHistory"].slice(-1)

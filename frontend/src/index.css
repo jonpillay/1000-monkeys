@@ -22,6 +22,11 @@
 }
 
 @font-face {
+  font-family: 'digital-dream';
+  src: url("./fonts/Digital-Dream.ttf");
+}
+
+@font-face {
   font-family: 'cynatar';
   src: url("./fonts/Cynatar.otf");
 }

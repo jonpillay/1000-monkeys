@@ -1,9 +1,10 @@
 import './StoryBookBrowseContainer.css'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import StoryBookBrowse from '../story-book-browse/StoryBookBrowse';
 import StoryBookBrowseInfoPanel from '../storybook-browse-info-panel/StoryBookBrowseInfoPanel';
+import SysInfoPanel from '../../SharedStoryBookParts/sys-info-panel/SysInfoPanel';
 
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
@@ -50,6 +51,12 @@ const StoryBookBrowseContainer = (props) => {
 
   const [renderChapter, setRenderChapter] = useState(startingPage)
 
+  const GPTChatHistory = props.GPTChatHistory
+
+  const [chapterPromptText, setChapterPromptText] = useState(GPTChatHistory[startingPage]['content'])
+
+  let promptText = useRef(GPTChatHistory[startingPage]['content'])
+
   let genreFont = ''
 
   if (genre == 'Western') {
@@ -70,7 +77,8 @@ const StoryBookBrowseContainer = (props) => {
     <>
       <div className="page-container">
         <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont} ratings={ratings}/>
-        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter}/>
+        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter} setChapterPromptText={setChapterPromptText} GPTChatHistory={GPTChatHistory} promptText={promptText}/>
+        <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artstyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} chapterPrompt={chapterPromptText} promptText={promptText}/>
       </div>
     </>
   )};
