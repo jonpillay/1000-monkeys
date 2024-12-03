@@ -53,10 +53,6 @@ const StoryBookBrowseContainer = (props) => {
 
   const GPTChatHistory = props.GPTChatHistory
 
-  const [chapterPromptText, setChapterPromptText] = useState(GPTChatHistory[startingPage]['content'])
-
-  let promptText = useRef(GPTChatHistory[startingPage]['content'])
-
   let genreFont = ''
 
   if (genre == 'Western') {
@@ -77,8 +73,7 @@ const StoryBookBrowseContainer = (props) => {
     <>
       <div className="page-container">
         <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont} ratings={ratings}/>
-        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter} setChapterPromptText={setChapterPromptText} GPTChatHistory={GPTChatHistory} promptText={promptText}/>
-        <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artstyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} chapterPrompt={chapterPromptText} promptText={promptText}/>
+        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter} genre={genre} genreFont={genreFont} artstyle={artstyle} character={character} GPTChatHistory={GPTChatHistory}/>
       </div>
     </>
   )};

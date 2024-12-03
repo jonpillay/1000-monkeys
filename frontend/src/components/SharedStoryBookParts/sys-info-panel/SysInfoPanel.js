@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 
 const SysInfoPanel = (props) => {
 
+  console.log("SysInfo rerendered")
+
   const genre = props.genre
   const genreFont = props.genreFont
   const artStyle = props.artstyle
@@ -12,11 +14,7 @@ const SysInfoPanel = (props) => {
   const renderChapter = props.renderChapter
   const chapterPrompt = props.chapterPrompt
 
-  let promptText = props.promptText
-
-  useEffect(() => {
-    promptText.current = GPTChatHistory[renderChapter]['content']
-  }, [])
+  const promptText = props.promptText
 
   return (
     <>
@@ -33,7 +31,7 @@ const SysInfoPanel = (props) => {
           </div>
         </div>
         <div className='user_prompt-display'>
-          <span>Chapter Prompt = </span><textarea rows={3} cols={50} style={{fontSize:20, resize:'none'}} readOnly>{promptText.current}</textarea>
+          <span>Chapter Prompt = </span><textarea rows={3} cols={50} style={{fontSize:20, resize:'none'}} readOnly value={promptText}/>
         </div>
       </div>
     </>
