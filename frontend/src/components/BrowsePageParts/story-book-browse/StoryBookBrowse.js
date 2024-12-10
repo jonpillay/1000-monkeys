@@ -29,6 +29,8 @@ const StoryBookBrowse = (props) => {
   const renderChapter = props.renderChapter
   const GPTChatHistory = props.GPTChatHistory
 
+  const userPromptHistory = GPTChatHistory.filter(prompt => prompt['role'] == 'user')
+
   const genre = props.genre
   const character = props.character
   const artStyle = props.artStyle
@@ -38,7 +40,7 @@ const StoryBookBrowse = (props) => {
   let imgUrl = useRef(chapterImgURLs[renderChapter] || "");
   let story = useRef(chapterTexts[renderChapter] || "");
 
-  const chapterPromptText = useRef(GPTChatHistory[renderChapter]['content'])
+  const chapterPromptText = useRef(userPromptHistory[renderChapter]['content'])
 
   const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
@@ -46,15 +48,15 @@ const StoryBookBrowse = (props) => {
     if (direct == 'previous') {
       story.current = chapterTexts[renderChapter -1]
       imgUrl.current = chapterImgURLs[renderChapter -1]
-      chapterPromptText.current = GPTChatHistory[renderChapter - 2]['content']
+      chapterPromptText.current = userPromptHistory[renderChapter - 1]['content']
       localPageNumbers[id] -= 1
       localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
-      chapterPromptText.current = GPTChatHistory[renderChapter + 2]['content']
-      console.log(GPTChatHistory)
+      chapterPromptText.current = userPromptHistory[renderChapter + 1]['content']
+      console.log(userPromptHistory)
       localPageNumbers[id] += 1
       localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter +1)

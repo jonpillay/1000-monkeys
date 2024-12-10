@@ -28,6 +28,9 @@ const storyBookSchema = new Schema({
   GPTChatHistory: {
     type: [],
   },
+  SDPromptHistory: {
+    type: [],
+  },
   title: {
     type: String,
   },

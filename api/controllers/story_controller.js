@@ -53,7 +53,7 @@ const StoryController = {
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
-      res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits });
+      res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits, SDPrompt: finalSDPrompt });
 
     } catch (error) {
       console.log(error)
