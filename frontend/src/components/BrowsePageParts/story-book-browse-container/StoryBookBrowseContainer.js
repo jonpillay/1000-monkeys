@@ -53,6 +53,8 @@ const StoryBookBrowseContainer = (props) => {
 
   const GPTChatHistory = props.GPTChatHistory
 
+  const SDPromptHistory = props.SDPromptHistory
+
   let genreFont = ''
 
   if (genre == 'Western') {
@@ -73,7 +75,7 @@ const StoryBookBrowseContainer = (props) => {
     <>
       <div className="page-container">
         <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont} ratings={ratings}/>
-        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter} genre={genre} genreFont={genreFont} artstyle={artstyle} character={character} GPTChatHistory={GPTChatHistory}/>
+        <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter} genre={genre} genreFont={genreFont} artstyle={artstyle} character={character} GPTChatHistory={GPTChatHistory} SDPromptHistory={SDPromptHistory}/>
       </div>
     </>
   )};

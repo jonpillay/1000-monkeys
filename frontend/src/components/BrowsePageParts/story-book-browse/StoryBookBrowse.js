@@ -28,8 +28,37 @@ const StoryBookBrowse = (props) => {
 
   const renderChapter = props.renderChapter
   const GPTChatHistory = props.GPTChatHistory
+  const SDPromptHistory = props.SDPromptHistory
 
   const userPromptHistory = GPTChatHistory.filter(prompt => prompt['role'] == 'user')
+  const userPromptHistoryList = []
+  userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
+
+  const combinedPrompts = []
+
+  console.log(userPromptHistory)
+  if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
+    userPromptHistoryList.forEach(prompt => {
+      const chapterPromptStr = "User Chapter Prompt = ".concat(prompt)
+
+      let SDPrompt = ""
+
+      if (SDPromptHistory.length == chapterImgURLs.length) {
+        const SDPromptInd = combinedPrompts.length
+        console.log(typeof SDPromptInd)
+        SDPrompt = SDPromptHistory[SDPromptInd]
+  
+      } else {
+        SDPrompt = "Image Gen Prompt Not Available."
+      }
+
+      const SDPromptStr = "AI Generated Image Prompt = ".concat(SDPrompt)
+
+      const finalPrompt = chapterPromptStr.concat("\n\n").concat(SDPromptStr)
+
+      combinedPrompts.push(finalPrompt)
+    });
+  }
 
   const genre = props.genre
   const character = props.character
@@ -40,7 +69,7 @@ const StoryBookBrowse = (props) => {
   let imgUrl = useRef(chapterImgURLs[renderChapter] || "");
   let story = useRef(chapterTexts[renderChapter] || "");
 
-  const chapterPromptText = useRef(userPromptHistory[renderChapter]['content'])
+  const chapterPromptText = useRef(combinedPrompts[renderChapter])
 
   const localPageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
@@ -48,14 +77,14 @@ const StoryBookBrowse = (props) => {
     if (direct == 'previous') {
       story.current = chapterTexts[renderChapter -1]
       imgUrl.current = chapterImgURLs[renderChapter -1]
-      chapterPromptText.current = userPromptHistory[renderChapter - 1]['content']
+      chapterPromptText.current = combinedPrompts[renderChapter - 1]
       localPageNumbers[id] -= 1
       localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter -1)
     } else if (direct == 'next') {
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
-      chapterPromptText.current = userPromptHistory[renderChapter + 1]['content']
+      chapterPromptText.current = combinedPrompts[renderChapter + 1]
       console.log(userPromptHistory)
       localPageNumbers[id] += 1
       localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))

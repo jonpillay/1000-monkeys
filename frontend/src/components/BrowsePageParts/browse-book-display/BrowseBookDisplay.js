@@ -26,6 +26,7 @@ const BrowseBookDisplay = (props) => {
           AIEngine={book.AIEngine}
           ratings={book.ratings}
           GPTChatHistory={book.GPTChatHistory}
+          SDPromptHistory = {book.SDPromptHistory}
           pageNumber={pageNumbers[book._id]}
         />
       </li>
