@@ -3,7 +3,7 @@ import { useSaveStory } from "../../../hooks/useSaveStory"
 
 import { useSelector, useDispatch } from "react-redux"
 import { selectAllChapterTexts, selectAllChapterImages } from "../../CreateStoryPageParts/story-book-create/storyBookSlice"
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID } from "../../Pages/create-stories-page/storyBookSysInfoSlice"
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID, selectSDPromptHistory } from "../../Pages/create-stories-page/storyBookSysInfoSlice"
 
 import "./SaveStoryButton.css"
 
@@ -26,6 +26,7 @@ function SaveStoryButton(props) {
   const reduxGenre = useSelector(selectGenre)
   const reduxArtStyle = useSelector(selectArtStyle)
   const reduxGPTPromptHistory = useSelector(selectGPTPromptHistory)
+  const reduxSDPromptHistory = useSelector(selectSDPromptHistory)
   const story_id = useSelector(selectMongoID)
 
   const handleSubmit = async (e) => {
@@ -40,6 +41,7 @@ function SaveStoryButton(props) {
     const genre = reduxGenre
     const artStyle = reduxArtStyle
     const GPTPromptHistory = reduxGPTPromptHistory
+    const SDPromptHistory = reduxSDPromptHistory
     const storyID = story_id
     const AIEngineVer = "0.9"
     const author = user.username
@@ -48,7 +50,7 @@ function SaveStoryButton(props) {
 
     if (storyID != null) {
       try {
-        await updateStory(storyID, chapterImages, chapterTexts, GPTPromptHistory)
+        await updateStory(storyID, chapterImages, chapterTexts, GPTPromptHistory, SDPromptHistory)
         reduxDispatch(setStoryInSync(true))
         localStorage.setItem('storyInSync', 'true')
         setStoryInSync(true)
@@ -57,7 +59,7 @@ function SaveStoryButton(props) {
       }
       
     } else {
-      const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artStyle, GPTPromptHistory, AIEngineVer, author)
+      const story_id = await saveStory(chapterImages, chapterTexts, genre, character, artStyle, GPTPromptHistory, SDPromptHistory, AIEngineVer, author)
       localStorage.setItem('storyInSync', 'true')
       reduxDispatch(setStoryInSync(true))
       setStoryInSync(true)

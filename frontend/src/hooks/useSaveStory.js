@@ -14,7 +14,7 @@ export const useSaveStory = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
 
-  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer, author) => {
+  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, AIEngineVer, author) => {
     setIsLoading(true)
     setError(null)
 
@@ -25,8 +25,9 @@ export const useSaveStory = () => {
       character: character,
       artstyle: artstyle,
       GPTChatHistory: GPTChatHistory,
+      SDPromptHistory: SDPromptHistory,
       AIEngineVer: AIEngineVer,
-      author: author,
+      author: author
     }
 
     try {
@@ -59,7 +60,7 @@ export const useSaveStory = () => {
     }
   }
 
-  const updateStory = async (story_id, chapterImages, chapterTexts, GPTChatHistory) => {
+  const updateStory = async (story_id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory) => {
     setIsLoading(true)
     setError(null)
 
@@ -69,7 +70,7 @@ export const useSaveStory = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${user.token}`
       },
-      body: JSON.stringify({story_id, chapterImages, chapterTexts, GPTChatHistory})
+      body: JSON.stringify({story_id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory})
     })
 
     const JSONres = await response.json()

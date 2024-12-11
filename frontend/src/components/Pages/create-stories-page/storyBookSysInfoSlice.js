@@ -56,8 +56,9 @@ const storyBookSysInfoSlice = createSlice({
         state.artStyle = action.payload.artStyle
         state.GPTPromptHistory = action.payload.GPTPrompt
         state.mongoID = action.payload.mongoID
+        state.SDPromptHistory = action.payload.SDPromptHistory
       },
-      prepare(character, genre, artStyle, GPTPrompt, mongoID) {
+      prepare(character, genre, artStyle, GPTPrompt, mongoID, SDPromptHistory) {
         return {
           payload: {
             character,
@@ -65,6 +66,7 @@ const storyBookSysInfoSlice = createSlice({
             artStyle,
             GPTPrompt,
             mongoID,
+            SDPromptHistory
           }
         }
       },
@@ -143,6 +145,7 @@ const storyBookSysInfoSlice = createSlice({
       state.genre = null
       state.artStyle = null
       state.GPTPromptHistory = []
+      state.SDPromptHistory = []
       state.mongoID = null
     },
     resetStorySysInfo: (state) => {
@@ -152,6 +155,7 @@ const storyBookSysInfoSlice = createSlice({
       state.genre = null
       state.artStyle = null
       state.GPTPromptHistory = []
+      state.SDPromptHistory = []
       state.mongoID = null
     }
   },

@@ -31,8 +31,8 @@
       "negativePrompts": []
   },
   "Miles Morales": {
-    "positivePrompts": ["(Miles Morales):1.6","(Sara Pichelli):1.8", "(Spider-Man: Into The Spiderverse 2018):1.8", "(Brian Bendis):1.5"],
-    "negativePrompts": []
+    "positivePrompts": ["(Miles Morales):1.6","(Sara Pichelli):1.8", "Humanoid:1.7", "(anatomically correct)1.7", "(Earth-1610's Spider-Man)1.5", "(Spider-Man: Into The Spiderverse 2018):1.8", "(Brian Bendis):1.5"],
+    "negativePrompts": ["(8 Legs):1.8", "deformed:1.7"]
   },
   "The Pheonix (X-Men)": {
     "positivePrompts": ["(Jean Gray as Pheonix from the X-Men):1.8", "X-Men:1.4", "(Green Suite):1.3", "Stan-Lee:1.5", "(Marvel Comics):1.4"],
@@ -73,7 +73,7 @@
       "negativePrompts": []
   },
   "Sci-Fi": {
-      "positivePrompts": ["{{sci-fi}}", "futuristic", "space", "spaceships", "planets and moons", "Jim Burns", "new worlds", "vivid colours", "futuristic clothing"],
+      "positivePrompts": ["(Sci Fiction):1.4"],
       "negativePrompts": ["fantasy", "magical", "western"]
   }
 },
@@ -84,7 +84,7 @@
   },
   "Comic Book": {
     "positivePrompts": ["(single comic book frame):1.8", "(Steve Ditto):1.5", "(Marvel Comics):1.7", "(DC Comics):1.7"],
-    "negativePrompts": ["realistic", "detailed", "3d", "computer generated"]
+    "negativePrompts": []
   },
   "CGI": {
       "positivePrompts": ["(3d digital art):1.5", "(ray traced lighting):1.2", "(Square Enix):1.6", "(Final Fantasy):1.5", "(computer generated imagery):1.5"],

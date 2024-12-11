@@ -44,7 +44,7 @@ const sdPromptBank = {
           negativePrompts: ['sunny daytime', 'suburbs', 'fantasy', 'magical', 'blurry']
       },
       'Sci-Fi': {
-          positivePrompts: ['{{sci-fi}}', 'futuristic', 'space', 'spaceships', 'planets and moons', 'Jim Burns', 'new worlds', 'vivid colours', 'futuristic clothing'],
+          positivePrompts: ['Sci-Fi'],
           negativePrompts: ['fantasy', 'magical', 'western']
       }
 

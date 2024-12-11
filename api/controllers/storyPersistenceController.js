@@ -3,13 +3,13 @@ const StoryBook = require('../database/models/storyBookModel')
 const StoryPersistenceController = {
   SaveStory: async (req, res) => {
 
-    const {chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer, author} = req.body
+    const {chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, AIEngineVer, author} = req.body
 
     const user_id = req.user._id
 
     try {
 
-      const story = await StoryBook.saveStory(user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer, author)
+      const story = await StoryBook.saveStory(user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, AIEngineVer, author)
 
       res.status(200).json({ message: "Story saved", story_id: story._id  })
     } catch (error) {
@@ -19,7 +19,7 @@ const StoryPersistenceController = {
 
   UpdateStory: async (req, res) => {
 
-    const {story_id, chapterImages, chapterTexts, GPTChatHistory} = req.body
+    const {story_id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory} = req.body
 
     const storyBook = await StoryBook.findById(story_id)
 
@@ -31,7 +31,7 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.updateStory(storyBook._id, chapterImages, chapterTexts, GPTChatHistory)
+      const story = await StoryBook.updateStory(storyBook._id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory)
 
       res.status(200).json({ error: "Story saved"})
     } catch (error) {

@@ -50,16 +50,16 @@ storyBookSchema.index({ published: -1, genre: 1 })
 
 // static methods
 
-storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, AIEngineVer, author) {
+storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, AIEngineVer, author) {
 
   // needs error handling
 
-  const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre, character: character, artstyle: artstyle, GPTChatHistory: GPTChatHistory, AIEngine: AIEngineVer, author: author })
+  const story = await this.create({ user_id: user_id, chapterText: chapterTexts, chapterImageURLs: chapterImages, genre: genre, character: character, artstyle: artstyle, GPTChatHistory: GPTChatHistory, SDPromptHistory: SDPromptHistory, AIEngine: AIEngineVer, author: author })
 
   return story
 }
 
-storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts, GPTChatHistory) {
+storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts, GPTChatHistory, SDPromptHistory) {
 
   await this.updateOne( { _id: story_id },
     {
@@ -67,6 +67,7 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
         chapterText: updatedTexts,
         chapterImageURLs: updatedImages,
         GPTChatHistory: GPTChatHistory,
+        SDPromptHistory: SDPromptHistory
       }
     }
   )

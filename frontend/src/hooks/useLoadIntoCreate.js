@@ -38,7 +38,7 @@ export const useLoadIntoCreate = () => {
     if (response.ok) {
       const storyBook = JSONres.resStoryBook
       localStorage.setItem('localGPTPromptHistory', JSON.stringify(storyBook.GPTChatHistory))
-      reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory, storyBook._id))
+      reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory, storyBook._id, storyBook.SDPromptHistory))
       reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
       setIsLoading(false)
       // return (JSONres.filteredList)
