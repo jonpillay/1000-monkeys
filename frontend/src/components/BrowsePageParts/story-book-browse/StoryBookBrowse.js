@@ -39,7 +39,7 @@ const StoryBookBrowse = (props) => {
   console.log(userPromptHistory)
   if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
     userPromptHistoryList.forEach(prompt => {
-      const chapterPromptStr = "User Chapter Prompt = ".concat(prompt)
+      const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
 
       let SDPrompt = ""
 
@@ -52,7 +52,7 @@ const StoryBookBrowse = (props) => {
         SDPrompt = "Image Gen Prompt Not Available."
       }
 
-      const SDPromptStr = "AI Generated Image Prompt = ".concat(SDPrompt)
+      const SDPromptStr = "SYS:\\> AI Generated Image Prompt = ".concat(SDPrompt)
 
       const finalPrompt = chapterPromptStr.concat("\n\n").concat(SDPromptStr)
 

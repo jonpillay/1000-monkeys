@@ -76,6 +76,11 @@
   src: url("./fonts/Codystar-Light.ttf");
 }
 
+@font-face {
+  font-family: 'VT323';
+  src: url("./fonts/VT323-Regular.ttf");
+}
+
 .title {
   font-family: 'special-elite';
   font-size: 60px;

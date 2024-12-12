@@ -30,8 +30,8 @@ const SysInfoPanel = (props) => {
             AI Engine = <span style={{fontFamily:'digital-7'}}>v.0.9</span>
           </div>
         </div>
-        <div className='user_prompt-display'>
-          <span>Chapter Prompt = </span><textarea rows={3} cols={50} style={{fontSize:20, resize:'none'}} readOnly value={promptText}/>
+        <div className='user-prompt-display'>
+          <textarea className='prompt-display-box' rows={5} cols={90} style={{fontSize:'0.8rem', fontFamily:'VT323', resize:'none', padding: '20px'}} readOnly value={promptText}/>
         </div>
       </div>
     </>
