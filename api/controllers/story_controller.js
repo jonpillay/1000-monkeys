@@ -23,9 +23,6 @@ const StoryController = {
   CreateChapter: async (req, res) => {
     try {
 
-      const creditJWT = genCreditJWT(req.user._id, -3)
-      const credits_update = await creditController.AdjustCredits(req.user._id, -3, creditJWT)
-
       const request = req.body
 
       const story_prompts = request["GPTPromptHistory"]
@@ -52,12 +49,17 @@ const StoryController = {
       console.log(finalSDPrompt)
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
+      
+      const creditJWT = genCreditJWT(req.user._id, -3)
+      const credits_update = await creditController.AdjustCredits(req.user._id, -3, creditJWT)
 
       res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits, SDPrompt: finalSDPrompt });
 
     } catch (error) {
-      console.log(error)
-      res.status(401).json({ message: error.message });
+      console.error("Create Chapter Error", error)
+      return res.status(error.status || 500).json({
+        message: error.message || "Server Error, Try Again"
+      });
     }
   }
 }

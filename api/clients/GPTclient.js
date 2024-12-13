@@ -23,16 +23,17 @@ async function generateStory(prompts) {
     return res.choices[0].message.content;
   } catch (error) {
     if (error instanceof OpenAI.APIError) {
-      console.log(error)
-      console.log(error.status); // 400
-      console.log(error.name); // BadRequestError
-      console.log(error.headers); // {server: 'nginx', ...}
+      throw {
+        status: error.status || 500,
+        message: "OpenAI API Error",
+        details: error.message,
+      }
     } else {
       console.log(error)
-      // console.error("GPT client error, check your API key");
-      // const err = new Error(`GPT client error, check your API key`);
-      // err.status = 500;
-      // throw err;
+      throw {
+        status: 500,
+        message: "Backend Server Issues"
+      }
     }
 
   }

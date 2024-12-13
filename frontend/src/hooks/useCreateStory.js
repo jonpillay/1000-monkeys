@@ -10,9 +10,10 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages, prepStoryBookRefreshChapter, selectAllChapterTexts, removeChapterImage, swapChapterImage } from "../components/CreateStoryPageParts/story-book-create/storyBookSlice";
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, pushSDPrompt, setStoryInProgress, setStoryInSync, initialiseStory, refreshChapterPrep, setFirstChapter } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, pushSDPrompt, setStoryInProgress, setStoryInSync, initialiseStory, refreshChapterPrep, setFirstChapter, resetStorySysInfo } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
+import { clearReduxPersist } from "../redux-state/store";
 
 export const useCreateStory = () => {
   const reduxDispatch = useDispatch() 
@@ -25,7 +26,7 @@ export const useCreateStory = () => {
 
   const { user } = useAuthContext()
 
-  const { navigate } = useNavigate()
+  const navigate = useNavigate()
 
   const chapterTexts = useSelector(selectAllChapterTexts)
   const chapterImages = useSelector(selectAllChapterImages)
@@ -64,7 +65,7 @@ export const useCreateStory = () => {
         credits_needed: 3
       }
   
-      fetch("/story", {
+      const response = await fetch("/story", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -72,30 +73,55 @@ export const useCreateStory = () => {
         },
         body: JSON.stringify(reqBody),
       })
-      .then((response) => response.json())
-      .then((data) => {
-        creditDispatch({type: 'UPDATE', payload: data.credits_update})
-        reduxDispatch(addChapter(data["page_image"], data["page_text"]))
-  
-        const GPTResult = {
-          role: "assistant",
-          content: data["page_text"]
+
+      if (!response.ok) {
+        console.log("Caught here")
+        console.log(error)
+        if (chapterTexts.length > 0) {
+          setError(error)
+        } else {
+          reduxDispatch(resetStorySysInfo)
+          clearReduxPersist()
+          dispatch({type: "BEGIN", payload: null})
+          localStorage.setItem('firstChapter', 'true')
+          navigate('/start-your-story', {
+            state: {error: "Creation Engine Crash, Please Try Again"},
+          })
         }
+      }
 
-        localGPTPromptHistory.push(GPTResult)
+      const data = await response.json()
 
-        localStorage.setItem('localGPTPromptHistory', JSON.stringify(localGPTPromptHistory))
-        reduxDispatch(pushGPTPrompt(GPTResult))
-        reduxDispatch(pushSDPrompt(data['SDPrompt']))
-        reduxDispatch(setStoryInProgress(true))
-        reduxDispatch(setStoryInSync(false))
-        setStoryInSync(false)
-        reduxDispatch(turnToLastPage())
-        loadingDispatch({type: 'LOADED'})
-  
-        });
+      creditDispatch({type: 'UPDATE', payload: data.credits_update})
+      reduxDispatch(addChapter(data["page_image"], data["page_text"]))
+
+      const GPTResult = {
+        role: "assistant",
+        content: data["page_text"]
+      }
+
+      localGPTPromptHistory.push(GPTResult)
+
+      localStorage.setItem('localGPTPromptHistory', JSON.stringify(localGPTPromptHistory))
+      reduxDispatch(pushGPTPrompt(GPTResult))
+      reduxDispatch(pushSDPrompt(data['SDPrompt']))
+      reduxDispatch(setStoryInProgress(true))
+      reduxDispatch(setStoryInSync(false))
+      setStoryInSync(false)
+      reduxDispatch(turnToLastPage())
+      loadingDispatch({type: 'LOADED'})
+
     } catch (error) {
-      console.error(error)
+      console.log("Caught here")
+      console.log(error)
+      if (chapterTexts.length > 0) {
+        setError(error)
+      } else {
+        setError(error)
+        console.log("This tripped")
+        navigate('/start-your-story')
+      }
+
     } 
   };
 

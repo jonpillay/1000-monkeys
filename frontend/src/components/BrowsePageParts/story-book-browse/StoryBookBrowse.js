@@ -6,7 +6,7 @@ import Illustration from '../../SharedStoryBookParts/illustration/illustration';
 import StoryText from '../../SharedStoryBookParts/story-text/StoryText';
 import SysInfoPanel from '../../SharedStoryBookParts/sys-info-panel/SysInfoPanel';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 const StoryBookBrowse = (props) => {
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import DropdownSelector from "../dropdown-selector/DropdownSelector";
 import "./InitialiseStoryForm.css";
 
@@ -11,7 +11,7 @@ import { useStoryContext } from "../../../hooks/useStoryContext";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../../CreateStoryPageParts/story-book-create/storyBookSlice";
-import { initialiseStory } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
+import { initialiseStory, resetStorySysInfo } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 
@@ -20,6 +20,9 @@ import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 const dropdownSelections = require('./unifiedSelectors.json')
 
 const InitialiseStoryForm = (props) => {
+
+  const location = useLocation()
+
   console.log(dropdownSelections)
   const {user} = useAuthContext()
   const navigate = useNavigate()
@@ -33,7 +36,7 @@ const InitialiseStoryForm = (props) => {
   const [characterChoice, setCharacterChoice] = useState();
   const [genreChoice, setGenreChoice] = useState();
   const [styleChoice, setStyleChoice] = useState();
-  const [error, setError] = useState("")
+  const [error, setError] = useState(location.state?.error)
 
   const { dispatch } = useContext(StoryContext)
   const reduxDispatch = useDispatch()
@@ -42,14 +45,22 @@ const InitialiseStoryForm = (props) => {
 
   const { initialiseStoryHook } = useInitialiseStory()
 
+
+
   const initialiseStory = async () => {
     if (user.credits < 10) {
       setError("Infufficient Credits. Contact Admin")
       return null
     } else {
-      initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
-      await dispatch({type: "BEGIN", payload: null})
-      localStorage.setItem('firstChapter', 'true')
+
+      try {
+        initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
+        await dispatch({type: "BEGIN", payload: null})
+        localStorage.setItem('firstChapter', 'true')
+      } catch(error) {
+        console.log(error)
+        setError("Creation Engine Error. Please Retry")
+      }
     }
   }
 
@@ -80,8 +91,6 @@ const InitialiseStoryForm = (props) => {
     } else {
       setError(cleanCheck)
     }
-
-
 
     // reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
 
