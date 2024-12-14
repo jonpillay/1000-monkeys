@@ -55,7 +55,6 @@ const InitialiseStoryForm = (props) => {
 
       try {
         initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
-        await dispatch({type: "BEGIN", payload: null})
         localStorage.setItem('firstChapter', 'true')
       } catch(error) {
         console.log(error)

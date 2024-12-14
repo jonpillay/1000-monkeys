@@ -22,7 +22,7 @@ export const StoryContextProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    const story = JSON.parse(localStorage.getItem('storyPages'))
+    const story = JSON.parse(localStorage.getItem('localGPTPromptHistory'))
     if (story) {
       dispatch({ type: 'BEGIN', payload: true })
     } else {

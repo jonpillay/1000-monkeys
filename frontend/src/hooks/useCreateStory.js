@@ -4,6 +4,7 @@ import { useStoryContext } from "./useStoryContext";
 
 import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
+import { StoryContext } from "../context/StoryContext";
 
 import { useNavigate } from "react-router";
 
@@ -22,7 +23,7 @@ export const useCreateStory = () => {
   const [isLoading, setIsLoading] = useState()
   const { dispatch } = useContext(AuthContext)
   const { creditDispatch } = useContext(CreditsContext)
-  // const { dispatch } = useStoryContext()
+  const { dispatch: storyDispatch } = useContext(StoryContext)
 
   const { user } = useAuthContext()
 
@@ -80,13 +81,18 @@ export const useCreateStory = () => {
         if (chapterTexts.length > 0) {
           setError(error)
         } else {
-          reduxDispatch(resetStorySysInfo)
+          localStorage.removeItem('storyPages')
+          localStorage.removeItem('sysInfo');
+          localStorage.removeItem('userChoices');
+          localStorage.removeItem('GPTPromptHistory');
+          localStorage.removeItem('localGPTPromptHistory');
+          reduxDispatch(resetStorySysInfo())
           clearReduxPersist()
-          dispatch({type: "BEGIN", payload: null})
           localStorage.setItem('firstChapter', 'true')
           navigate('/start-your-story', {
             state: {error: "Creation Engine Crash, Please Try Again"},
           })
+          return
         }
       }
 
@@ -95,21 +101,25 @@ export const useCreateStory = () => {
       creditDispatch({type: 'UPDATE', payload: data.credits_update})
       reduxDispatch(addChapter(data["page_image"], data["page_text"]))
 
+
       const GPTResult = {
         role: "assistant",
         content: data["page_text"]
       }
 
-      localGPTPromptHistory.push(GPTResult)
-
+      await localGPTPromptHistory.push(GPTResult)
       localStorage.setItem('localGPTPromptHistory', JSON.stringify(localGPTPromptHistory))
+
+      await storyDispatch({type: 'BEGIN', payload: null})
       reduxDispatch(pushGPTPrompt(GPTResult))
       reduxDispatch(pushSDPrompt(data['SDPrompt']))
       reduxDispatch(setStoryInProgress(true))
       reduxDispatch(setStoryInSync(false))
       setStoryInSync(false)
       reduxDispatch(turnToLastPage())
+      console.log("here why no proper redirect?")
       loadingDispatch({type: 'LOADED'})
+      navigate('/create')
 
     } catch (error) {
       console.log("Caught here")
