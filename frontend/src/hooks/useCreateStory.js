@@ -79,7 +79,9 @@ export const useCreateStory = () => {
         console.log("Caught here")
         console.log(error)
         if (chapterTexts.length > 0) {
-          setError(error)
+          loadingDispatch({type: 'LOADED'})
+          setError("Creation Engine Crash, Please Try Again")
+          return
         } else {
           localStorage.removeItem('storyPages')
           localStorage.removeItem('sysInfo');
@@ -141,26 +143,31 @@ export const useCreateStory = () => {
   }
 
   const userPromtNextChapter = async (prompt) => {
-    if (user) {
+    try {
+      if (user) {
 
-      const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory'))
-
-      const userPrompt = {
-        role: "user",
-        content: prompt
-      }
-
-      GPTPromptHistory.push(userPrompt)
-
-      await pushPromptToRedux(userPrompt)
+        const GPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory'))
   
-      localStorage.setItem("localGPTPromptHistory", JSON.stringify(GPTPromptHistory))
-
-      await AIGenCall()
-
-    } else {
-      navigate('/')
+        const userPrompt = {
+          role: "user",
+          content: prompt
+        }
+  
+        GPTPromptHistory.push(userPrompt)
+  
+        await pushPromptToRedux(userPrompt)
+    
+        localStorage.setItem("localGPTPromptHistory", JSON.stringify(GPTPromptHistory))
+  
+        await AIGenCall()
+  
+      } else {
+        navigate('/')
+      }
+    } catch (error) {
+      setError(error)
     }
+   
   };
 
   const AIPromptNextChapter = () => {

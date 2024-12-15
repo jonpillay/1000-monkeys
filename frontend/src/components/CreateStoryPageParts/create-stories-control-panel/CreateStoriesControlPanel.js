@@ -15,6 +15,13 @@ import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter } fr
 
 const CreateStoriesControlPanel = (props) => {
 
+  const AIPromptNextChapter = props.AIPromptNextChapter
+  const refreshImage = props.refreshImage
+  const refreshStory = props.refreshStory
+  const userPromtNextChapter = props.userPromtNextChapter
+  const isLoading = props.isLoading
+  const error = props.error
+  
   // import the callback from the FetchsStories and apply it to different genres etc...
 
   const {user} = useAuthContext()
@@ -27,51 +34,6 @@ const CreateStoriesControlPanel = (props) => {
   const chapterTexts = useSelector(selectAllChapterTexts)
 
   const publishable = chapterTexts.length >= 5 ? true : false
-
-
-  // useEffect(() => {
-  //   const controlTopScroll = () => {
-  //     if (window.scrollY > 50) {
-  //       setControlPanelTop(true)
-  //     } else {
-  //       setControlPanelTop(false)
-  //     }
-  //   };
-
-  //   window.addEventListener('scroll', controlTopScroll);
-
-  //   // const controlTopMouse = (Mpos) => {
-  //   //   if (Mpos.clientY < 70) {
-  //   //     setControlPanelTop(true)
-  //   //   } else {
-  //   //     setControlPanelTop(false)
-  //   //   }
-  //   // }
-
-  //   const controlScrollnMouse = (Mpos) => {
-  //     if (window.scrollY > 10 && Mpos.clientY < 200) {
-  //       setControlPanelScroll(true)
-  //     } else {
-  //       setControlPanelScroll(false)
-  //     }
-  //   }
-
-  //   document.addEventListener('mousemove', controlScrollnMouse);
-
-
-  //   // document.addEventListener('mousemove', controlTopMouse);
-
-  // }, [])
-
-  const {
-    AIGenCall,
-    userPromtNextChapter,
-    AIPromptNextChapter,
-    refreshStory,
-    refreshImage,
-    isLoading,
-    error,
-  } = useCreateStory();
 
   return (
     <>
@@ -92,8 +54,13 @@ const CreateStoriesControlPanel = (props) => {
             <PublishStoryControlPanel isLoading={isLoading} />
           </div>
         )}
-
-        {error && <div className="error">{error}</div>}
+        <div>
+          {error ? (
+            <div className="error">{error}</div>
+          ) : (
+            <div className="error">"Boop"</div>
+          )}
+        </div>
         </>
       </div>
     </>
