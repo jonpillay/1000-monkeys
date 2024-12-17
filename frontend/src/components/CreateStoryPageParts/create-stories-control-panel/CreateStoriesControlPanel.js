@@ -55,11 +55,9 @@ const CreateStoriesControlPanel = (props) => {
           </div>
         )}
         <div>
-          {error ? (
+          {error &&
             <div className="error">{error}</div>
-          ) : (
-            <div className="error">"Boop"</div>
-          )}
+          }
         </div>
         </>
       </div>

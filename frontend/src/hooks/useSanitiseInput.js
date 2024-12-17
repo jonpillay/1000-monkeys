@@ -27,6 +27,7 @@ export const useSanitiseInput = () => {
         return true
       } else if (data.decision == 0) {
         console.log("HERE")
+        return false
       } else {
         console.log(data.error)
         return data.error

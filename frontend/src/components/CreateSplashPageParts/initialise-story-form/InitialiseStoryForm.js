@@ -45,6 +45,18 @@ const InitialiseStoryForm = (props) => {
 
   const { initialiseStoryHook } = useInitialiseStory()
 
+  useEffect(() => {
+    console.log("Beep")
+    let timeoutId;
+
+    timeoutId = setTimeout(() => {
+        setError("");
+      }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [error]);
 
 
   const initialiseStory = async () => {
@@ -58,6 +70,7 @@ const InitialiseStoryForm = (props) => {
         localStorage.setItem('firstChapter', 'true')
       } catch(error) {
         console.log(error)
+        console.log("here fuckers")
         setError("Creation Engine Error. Please Retry")
       }
     }
@@ -82,6 +95,7 @@ const InitialiseStoryForm = (props) => {
       navigate('/create')
 
     } else if (cleanCheck == false) {
+      console.log("This fires!")
       setError("Please Check Our Community Standards")
       setTimeout(() => {
         setError("")
