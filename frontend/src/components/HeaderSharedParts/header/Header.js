@@ -35,16 +35,7 @@ const Header = () => {
 
     window.addEventListener('scroll', headerScroll);
     window.addEventListener('mousemove', headerScroll);
-
-
-    // const headerMouse = (Mpos) => {
-    //   if (Mpos.clientY < 190) {
-    //     setShowHeaderMouse(true)
-    //   }
-    // }
-
-    // document.addEventListener('mousemove', headerMouse);
-  }, [])
+  })
 
   // const goHome = () => {
   //   setTimeout(function(){
@@ -61,6 +52,7 @@ const Header = () => {
   // };
 
   const endStory = async () => {
+    console.log("This eneded here this and so this")
     await reduxDispatch(resetStorySysInfo())
     await reduxDispatch(resetStoryBookSlice())
     await localStorage.removeItem('storyPages')
@@ -68,6 +60,7 @@ const Header = () => {
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
     await localStorage.removeItem('localGPTPromptHistory');
+
 
     await dispatch({type: "END", payload: null})
 
@@ -77,7 +70,7 @@ const Header = () => {
   return (
     <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
       <button className="home-button" onClick={endStory} disabled={loading}>
-        <img className="home-icon" src={HomeIcon} alt="home" />
+        <img className="home-icon" src={HomeIcon} alt="home"/>
       </button>
       <div className='title-container'>
         <div className='title'>1000 Monkeys</div>

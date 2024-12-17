@@ -95,12 +95,11 @@ const InitialiseStoryForm = (props) => {
       navigate('/create')
 
     } else if (cleanCheck == false) {
-      console.log("This fires!")
+
       setError("Please Check Our Community Standards")
       setTimeout(() => {
         setError("")
       }, 1500)
-      console.log("Invlaid input")
     } else {
       setError(cleanCheck)
     }
