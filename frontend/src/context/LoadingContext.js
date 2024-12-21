@@ -5,10 +5,8 @@ export const LoadingContext = createContext()
 export const loadingReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
-      localStorage.setItem('isLoading', JSON.stringify(true))
       return { loading: true }
     case 'LOADED':
-      localStorage.removeItem('isLoading')
       return { loading: false }
     default:
       return state

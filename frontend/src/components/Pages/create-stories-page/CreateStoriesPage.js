@@ -70,10 +70,41 @@ const CreateStoriesPage = (props) => {
     }
 
     useEffect(() => {
+      const handleUserPageNavigation = (event) => {
+
+        if (loading) {
+          event.preventDefault()
+
+          console.log(performance.getEntriesByType("navigation")[0].type)
+
+          const userNavPrompt = window.confirm(
+            "Navigating/Refreshing During Story Creation Will Terminate Creation.\nUnsaved Data Will be Lost and Credits Will be Deducted.\nPress OK To Continue, Or Cancel To Stay on Page."
+          )
+
+          if (userNavPrompt) {
+
+            window.location.href = event.target.href
+
+            if (event.type === "beforeunload") {
+              window.location.reload();
+            }
+          }
+        }
+      }
+
+    window.addEventListener("beforeunload", handleUserPageNavigation)
+
+    return () => {
+      window.removeEventListener("beforeunload", handleUserPageNavigation)
+    }
+
+    }, [loading])
+
+    useEffect(() => {
       if (localStorage.getItem('firstChapter')) {
         genFirstChapter()
       }
-    }, [])
+    }, [loading])
 
   return (
     <>

@@ -119,7 +119,6 @@ export const useCreateStory = () => {
       reduxDispatch(setStoryInSync(false))
       setStoryInSync(false)
       reduxDispatch(turnToLastPage())
-      console.log("here why no proper redirect?")
       loadingDispatch({type: 'LOADED'})
       navigate('/create')
 
@@ -130,7 +129,6 @@ export const useCreateStory = () => {
         setError(error)
       } else {
         setError(error)
-        console.log("This tripped")
         navigate('/start-your-story')
       }
 
