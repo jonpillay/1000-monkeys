@@ -5,12 +5,12 @@ export const useLoading = () => {
 
   const {dispatch} = useContext(LoadingContext)
 
-  const clearLocalLoading = () => {
+  const clearLocalLoading = async () => {
     localStorage.removeItem('isLoading')
   }
 
   const isLoading = async () => {
-    await localStorage.setItem('isLoading', 'yes')
+    localStorage.setItem('isLoading', 'yes')
     dispatch({type: 'LOADING'}) 
   }
 

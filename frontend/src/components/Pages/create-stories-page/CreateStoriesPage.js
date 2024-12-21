@@ -77,7 +77,7 @@ const CreateStoriesPage = (props) => {
 
   return (
     <>
-      {!loading ? (
+      { loading == false ? (
           <div className="create-page-containter">
           <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
           <div className="storybook-header">

@@ -5,11 +5,11 @@ export const LoadingContext = createContext()
 export const loadingReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
-      localStorage.setItem('isLoading', true)
+      localStorage.setItem('isLoading', JSON.stringify(true))
       return { loading: true }
     case 'LOADED':
       localStorage.removeItem('isLoading')
-      return { loading: null }
+      return { loading: false }
     default:
       return state
   }
@@ -17,13 +17,15 @@ export const loadingReducer = (state, action) => {
 
 export const LoadingContextProvider = ({ children }) => {
   const [state, loadingDispatch] = useReducer(loadingReducer, {
-    loading: localStorage.getItem('isLoading') ? true : null
+    loading: JSON.parse(localStorage.getItem('isLoading')) || false
   })
 
   useEffect(() => {
     const loading = JSON.parse(localStorage.getItem('isLoading'))
-    if (loading) {
-      loadingDispatch({ type: 'BEGIN', payload: true })
+    if (loading == true) {
+      loadingDispatch({ type: 'LOADING' })
+    } else {
+      loadingDispatch({ type: 'LOADED' })
     }
   }, [])
 
