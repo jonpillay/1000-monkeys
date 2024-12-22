@@ -10,6 +10,7 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 import { clearReduxPersist } from "../../../redux-state/store";
 import { useDispatch } from "react-redux";
 import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../../CreateStoryPageParts/story-book-create/storyBookSlice';
+import { resetStorySysInfo } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
 
 const NavBar = () => {
 
@@ -51,13 +52,14 @@ const NavBar = () => {
   }
 
   const endStory = async () => {
-    await localStorage.removeItem('storyPages')
+    await localStorage.removeItem('storyPages');
     await localStorage.removeItem('sysInfo');
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
 
     await localStorage.removeItem('persist:storyBook');
 
+    await reduxDispatch(resetStorySysInfo())
     await reduxDispatch(resetStoryBookSlice())
 
     await clearReduxPersist()

@@ -131,7 +131,6 @@ export const useCreateStory = () => {
         setError(error)
         navigate('/start-your-story')
       }
-
     } 
   };
 

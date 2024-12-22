@@ -68,7 +68,9 @@ const Header = () => {
   }
 
   return (
-    <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
+    <>
+    { !loading  ? (
+      <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
       <button className="home-button" onClick={endStory} disabled={loading}>
         <img className="home-icon" src={HomeIcon} alt="home"/>
       </button>
@@ -77,6 +79,12 @@ const Header = () => {
       </div>
       <Nav />
     </div>
+    ) : (
+      <div className="spacer"></div>
+    ) }  
+    </>
+
+
   );
 };
 
