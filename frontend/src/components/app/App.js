@@ -28,7 +28,7 @@ const App = () => {
 
   const admin = user ? user.isSuper : false
 
-  console.log("app rendered")
+  console.log(story)
 
   return (
     <div className="app">

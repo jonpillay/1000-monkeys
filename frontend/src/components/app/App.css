@@ -62,15 +62,6 @@ html, body {
   margin: auto;
 }
 
-.results-container {
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 70%;
-  min-width: 1200px;
-}
-
 .nav-container {
   min-width: 900px;
 }

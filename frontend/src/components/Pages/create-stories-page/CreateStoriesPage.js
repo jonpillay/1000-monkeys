@@ -2,22 +2,22 @@ import './CreateStoriesPage.css'
 
 import { useLoadingContext } from "../../../hooks/useLoadingContext";
 
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { useSelector } from 'react-redux';
-import { selectRenderChapter } from '../../CreateStoryPageParts/story-book-create/storyBookSlice';
+import { selectRenderChapter, selectAllChapterImages } from '../../CreateStoryPageParts/story-book-create/storyBookSlice';
 
-import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, setStoryInProgress, setFirstChapter } from './storyBookSysInfoSlice';
+import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, selectGPTPromptHistory, selectSDPromptHistory, setStoryInProgress, setFirstChapter } from './storyBookSysInfoSlice';
 
 import CreateStoriesControlPanel from '../../CreateStoryPageParts/create-stories-control-panel/CreateStoriesControlPanel';
 import ChapterTitle from '../../SharedStoryBookParts/chapter-title/ChapterTitle';
 import SaveStoryButton from '../../SharedStoryBookParts/save-story-button/SaveStoryButton';
 // import StoryBookCreate from '../../CreateStoryPageParts/story-book-create/StoryBookCreate';
 import StoryBookCreate from '../../CreateStoryPageParts/story-book-create/StoryBookCreate.js';
+import SysInfoPanel from '../../SharedStoryBookParts/sys-info-panel/SysInfoPanel.js';
 import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../../hooks/useCreateStory'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
 import { resetStoryBookSlice } from "../../CreateStoryPageParts/story-book-create/storyBookSlice";
@@ -45,12 +45,66 @@ const CreateStoriesPage = (props) => {
     error } = useCreateStory()
 
     const character = useSelector(selectCharacter)
+    const genre = useSelector(selectGenre)
+    const artStyle = useSelector(selectArtStyle)
+    const GPTChatHistory = useSelector(selectGPTPromptHistory)
+    const SDPromptHistory = useSelector(selectSDPromptHistory)
+    const chapterImgURLs = useSelector(selectAllChapterImages)
 
     const firstChapter = useSelector(selectFirstChapter)
 
     const renderChapter = useSelector(selectRenderChapter) || null
 
     const storyInProgress = useSelector(selectStoryInProgress)
+
+    let genreFont = ''
+
+    if (genre == 'Western') {
+      genreFont = 'rye'
+    } else if (genre == 'Fairytale') {
+      genreFont = 'flavors'
+    } else if (genre == 'Cyberpunk') {
+      genreFont = 'cynatar'
+    } else if (genre == 'Sci-Fi') {
+      genreFont = 'major-mono'
+    }else if (genre == 'Cyberpunk') {
+      genreFont = 'cynatar'
+    } else if (genre == 'Dystopian') {
+      genreFont = 'phage-rough'
+    }
+
+    const userPromptHistory = GPTChatHistory.filter(prompt => prompt['role'] == 'user')
+    const userPromptHistoryList = []
+    userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
+  
+    const combinedPrompts = []
+  
+    console.log(userPromptHistory)
+    
+    if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
+      userPromptHistoryList.forEach(prompt => {
+        const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
+  
+        let SDPrompt = ""
+  
+        if (SDPromptHistory.length == chapterImgURLs.length) {
+          const SDPromptInd = combinedPrompts.length
+          console.log(typeof SDPromptInd)
+          SDPrompt = SDPromptHistory[SDPromptInd]
+    
+        } else {
+          SDPrompt = "Image Gen Prompt Not Available."
+        }
+  
+        const SDPromptStr = "SYS:\\> AI Generated Image Prompt = ".concat(SDPrompt)
+  
+        const finalPrompt = chapterPromptStr.concat("\n\n").concat(SDPromptStr)
+  
+        combinedPrompts.push(finalPrompt)
+      });
+    }
+
+    const chapterPromptText = useRef(combinedPrompts[renderChapter])
 
     const genFirstChapter = async () => {
       await localStorage.removeItem('firstChapter')
@@ -109,7 +163,7 @@ const CreateStoriesPage = (props) => {
   return (
     <>
       { loading == false ? (
-          <div className="create-page-containter">
+        <div className="create-page-containter">
           <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
           <div className="storybook-header">
               <ChapterTitle chapterNumber={renderChapter + 1}/>

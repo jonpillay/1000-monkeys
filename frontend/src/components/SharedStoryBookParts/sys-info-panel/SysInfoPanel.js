@@ -10,9 +10,6 @@ const SysInfoPanel = (props) => {
   const genre = props.genre
   const genreFont = props.genreFont
   const artStyle = props.artstyle
-  const GPTChatHistory = props.GPTChatHistory
-  const renderChapter = props.renderChapter
-  const chapterPrompt = props.chapterPrompt
 
   const promptText = props.promptText
 

@@ -1,5 +1,11 @@
-.results-container {
+.storybook-browse-container {
   padding-top: 1vw;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  min-width: 1200px;
 }
 
 .storybook-container {

@@ -37,6 +37,7 @@ const StoryBookBrowse = (props) => {
   const combinedPrompts = []
 
   console.log(userPromptHistory)
+
   if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
     userPromptHistoryList.forEach(prompt => {
       const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
@@ -100,8 +101,8 @@ const StoryBookBrowse = (props) => {
   }
 
   return (
-    <div className="storybook-info-container">
-      <div className="results-container">
+    <>
+      <div className="storybook-browse-container">
         <div className="next-page-container">
           {renderChapter>0 &&
             <TurnPageButton id="previous-page-button" direct="previous" label="Previous Chapter" callback={turnPage}/>
@@ -118,8 +119,7 @@ const StoryBookBrowse = (props) => {
         </div>
       </div>
       <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artStyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} promptText={chapterPromptText.current}/>
-    </div>
-
+    </>
   )
 }
 
