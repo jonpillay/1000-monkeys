@@ -18,7 +18,7 @@ async function generateStory(prompts) {
       messages: prompts,
     });
 
-    console.log(res.choices[0].message.content)
+    // console.log(res)
 
     return res.choices[0].message.content;
   } catch (error) {
