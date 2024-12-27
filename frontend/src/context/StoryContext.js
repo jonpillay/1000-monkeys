@@ -18,7 +18,8 @@ export const StoryReducer = (state, action) => {
 export const StoryContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(StoryReducer, {
-    story: null
+    story: JSON.parse(localStorage.getItem('localGPTPromptHistory'))
+
   })
 
   useEffect(() => {
