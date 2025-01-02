@@ -46,7 +46,7 @@ const InitialiseStoryForm = (props) => {
   const { initialiseStoryHook } = useInitialiseStory()
 
   useEffect(() => {
-    console.log("Beep")
+
     let timeoutId;
 
     timeoutId = setTimeout(() => {
@@ -60,6 +60,7 @@ const InitialiseStoryForm = (props) => {
 
 
   const initialiseStory = async () => {
+
     if (user.credits < 10) {
       setError("Infufficient Credits. Contact Admin")
       return null
@@ -70,7 +71,6 @@ const InitialiseStoryForm = (props) => {
         localStorage.setItem('firstChapter', 'true')
       } catch(error) {
         console.log(error)
-        console.log("here fuckers")
         setError("Creation Engine Error. Please Retry")
       }
     }
@@ -80,29 +80,35 @@ const InitialiseStoryForm = (props) => {
 
     setError("")
 
-    const cleanCheck = await sanitiseInput(promptRef.current.value)
+    const promptLength = promptRef.current.value.length
 
-    console.log(cleanCheck)
+    console.log(promptLength)
 
-    if (cleanCheck == true) {
-
-      console.log("Passed")
-
-      e.preventDefault();
-
-      await initialiseStory()
-  
-      navigate('/create')
-
-    } else if (cleanCheck == false) {
-
-      setError("Please Check Our Community Standards")
-      setTimeout(() => {
-        setError("")
-      }, 1500)
+    if (promptLength > 125) {
+      setError("Prompt Length Exceeded")
     } else {
-      setError(cleanCheck)
+
+      const cleanCheck = await sanitiseInput(promptRef.current.value)
+  
+      if (cleanCheck == true) {
+  
+        e.preventDefault();
+  
+        await initialiseStory()
+    
+        navigate('/create')
+  
+      } else if (cleanCheck == false) {
+  
+        setError("Please Check Our Community Standards")
+        setTimeout(() => {
+          setError("")
+        }, 1500)
+      } else {
+        setError(cleanCheck)
+      }
     }
+
 
     // reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
 
@@ -130,7 +136,7 @@ const InitialiseStoryForm = (props) => {
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
           <div className="initialise-user-prompt-input-container">
-            <input ref={promptRef} className="initialise-user-prompt-input-box" placeholder="Your first chapter..."/>
+            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={125} placeholder="Your first chapter..."/>
           </div>
           <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
             Start Your Adventure!
