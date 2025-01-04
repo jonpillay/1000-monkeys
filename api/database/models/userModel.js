@@ -32,6 +32,10 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
+  isWatched: {
+    type: Boolean,
+    default: false
+  }
 })
 
 // static methods
@@ -160,6 +164,24 @@ userSchema.statics.credits = async function (_id, amount) {
 
   return credit_user
  
+}
+
+userSchema.statics.watch = async function (_id) {
+
+  const filter = { _id: _id }
+  const update = { isWatched: true }
+
+  findOneAndUpdate(filter, update)
+
+}
+
+userSchema.Schema.statics.unWatch = async function (_id) {
+
+  const filter = { _id: _id }
+  const update = { isWatched: false }
+
+  findOneAndUpdate(filter, update)
+
 }
 
 module.exports = mongoose.model('User', userSchema)
