@@ -21,7 +21,7 @@ export const useCreateStory = () => {
   const { loadingDispatch } = useContext(LoadingContext)
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState()
-  const { dispatch } = useContext(AuthContext)
+  const { dispatch: authDispatch } = useContext(AuthContext)
   const { creditDispatch } = useContext(CreditsContext)
   const { dispatch: storyDispatch } = useContext(StoryContext)
 
@@ -86,17 +86,50 @@ export const useCreateStory = () => {
             switch (error) {
 
               case 'CORRUPTPROMPTHISTORY':
-                // handle corrupt prompt history
-                break
+                localStorage.removeItem('storyPages')
+                localStorage.removeItem('sysInfo');
+                localStorage.removeItem('userChoices');
+                localStorage.removeItem('GPTPromptHistory');
+                localStorage.removeItem('localGPTPromptHistory');
+                reduxDispatch(resetStorySysInfo())
+                clearReduxPersist()
+                localStorage.setItem('firstChapter', 'true')
+                navigate('/start-your-story', {
+                  state: {error: message},
+                })
+                return
 
               case 'LENGTHCHECKERROR':
-                // handle possible mallicious intent
-                break
+                localStorage.removeItem('user')
+                localStorage.removeItem('storyPages')
+                localStorage.removeItem('sysInfo');
+                localStorage.removeItem('userChoices');
+                localStorage.removeItem('GPTPromptHistory');
+                localStorage.removeItem('localGPTPromptHistory');
+                authDispatch({type: 'LOGOUT'})
+                reduxDispatch(resetStorySysInfo())
+                clearReduxPersist()
+                localStorage.setItem('firstChapter', 'true')
+                navigate('/', {
+                  state: {error: message},
+                })
+                return
 
               case 'BADWORDPROMPTERROR':
-                // handle possible mallicious intent
-                break 
-              
+                localStorage.removeItem('user')
+                localStorage.removeItem('storyPages')
+                localStorage.removeItem('sysInfo');
+                localStorage.removeItem('userChoices');
+                localStorage.removeItem('GPTPromptHistory');
+                localStorage.removeItem('localGPTPromptHistory');
+                authDispatch({type: 'LOGOUT'})
+                reduxDispatch(resetStorySysInfo())
+                clearReduxPersist()
+                localStorage.setItem('firstChapter', 'true')
+                navigate('/', {
+                  state: {error: message},
+                })
+                return
             }
 
           } else {
