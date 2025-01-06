@@ -76,26 +76,52 @@ export const useCreateStory = () => {
       })
 
       if (!response.ok) {
-        console.log("Caught here")
-        console.log(error)
-        if (chapterTexts.length > 0) {
-          loadingDispatch({type: 'LOADED'})
-          setError("Creation Engine Crash, Please Try Again")
-          return
-        } else {
-          localStorage.removeItem('storyPages')
-          localStorage.removeItem('sysInfo');
-          localStorage.removeItem('userChoices');
-          localStorage.removeItem('GPTPromptHistory');
-          localStorage.removeItem('localGPTPromptHistory');
-          reduxDispatch(resetStorySysInfo())
-          clearReduxPersist()
-          localStorage.setItem('firstChapter', 'true')
-          navigate('/start-your-story', {
-            state: {error: "Creation Engine Crash, Please Try Again"},
-          })
-          return
-        }
+
+          const errorResponse = await response.json()
+
+          if (errorResponse && errorResponse.error && errorResponse.message) {
+
+            const { error, message } = errorResponse
+
+            switch (error) {
+
+              case 'CORRUPTPROMPTHISTORY':
+                // handle corrupt prompt history
+                break
+
+              case 'LENGTHCHECKERROR':
+                // handle possible mallicious intent
+                break
+
+              case 'BADWORDPROMPTERROR':
+                // handle possible mallicious intent
+                break 
+              
+            }
+
+          } else {
+
+            console.log("Caught here")
+            console.log(error)
+            if (chapterTexts.length > 0) {
+              loadingDispatch({type: 'LOADED'})
+              setError("Creation Engine Crash, Please Try Again")
+              return
+            } else {
+              localStorage.removeItem('storyPages')
+              localStorage.removeItem('sysInfo');
+              localStorage.removeItem('userChoices');
+              localStorage.removeItem('GPTPromptHistory');
+              localStorage.removeItem('localGPTPromptHistory');
+              reduxDispatch(resetStorySysInfo())
+              clearReduxPersist()
+              localStorage.setItem('firstChapter', 'true')
+              navigate('/start-your-story', {
+                state: {error: "Creation Engine Crash, Please Try Again"},
+              })
+              return
+            }
+          }
       }
 
       const data = await response.json()

@@ -175,7 +175,7 @@ userSchema.statics.watch = async function (_id) {
 
 }
 
-userSchema.Schema.statics.unWatch = async function (_id) {
+userSchema.statics.unWatch = async function (_id) {
 
   const filter = { _id: _id }
   const update = { isWatched: false }
