@@ -32,7 +32,7 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
-  isWatched: {
+  isWarned: {
     type: Boolean,
     default: false
   }
@@ -148,7 +148,11 @@ userSchema.statics.login = async function (email, password) {
   if (!passwordCheck) {
     throw Error("Invalid Login Credentials.")
   } else {
-    return login_user
+    if (login_user.isWarned == true) {
+      throw Error("Account Suspended. Please Contact Admin")
+    } else {
+      return login_user
+    }
   }
 }
 
