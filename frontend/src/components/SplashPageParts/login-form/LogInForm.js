@@ -1,12 +1,15 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useLogin } from "../../../hooks/useLogIn";
 import './LogInForm.css'
-import { redirect } from "react-router";
+import { redirect, useLocation } from "react-router";
 
 const LogInForm = () => {
   const email = useRef()
   const password = useRef()
   const { login, isLoading, error } = useLogin()
+
+  const location = useLocation()
+  const [apiError, setApiError] = useState(location.state?.error) 
  
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -34,8 +37,9 @@ const LogInForm = () => {
         </div>
         <div className="user-submit-container">
           <button disabled={isLoading} className="submit-button" id="user-submit-button" type="submit">LOGIN</button>
-          {error && <div className="error">{error}</div>}
         </div>
+        {error && <div className="error">{error}</div>}
+        {apiError && <div className="error">{apiError}</div>}
       </form>
     </div>
   )

@@ -66,7 +66,7 @@ export const useCreateStory = () => {
         credits_needed: 3
       }
   
-      const response = await fetch("/story", {
+      const response = await fetch("/create_chapter", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -78,6 +78,8 @@ export const useCreateStory = () => {
       if (!response.ok) {
 
           const errorResponse = await response.json()
+
+          console.log(errorResponse)
 
           if (errorResponse && errorResponse.error && errorResponse.message) {
 
@@ -93,10 +95,12 @@ export const useCreateStory = () => {
                 localStorage.removeItem('localGPTPromptHistory');
                 reduxDispatch(resetStorySysInfo())
                 clearReduxPersist()
+                storyDispatch({type: 'END'})
                 localStorage.setItem('firstChapter', 'true')
                 navigate('/start-your-story', {
                   state: {error: message},
                 })
+                loadingDispatch({type: 'LOADED'})
                 return
 
               case 'LENGTHCHECKERROR':
@@ -106,6 +110,7 @@ export const useCreateStory = () => {
                 localStorage.removeItem('userChoices');
                 localStorage.removeItem('GPTPromptHistory');
                 localStorage.removeItem('localGPTPromptHistory');
+                storyDispatch({type: 'END'})
                 authDispatch({type: 'LOGOUT'})
                 reduxDispatch(resetStorySysInfo())
                 clearReduxPersist()
@@ -113,6 +118,7 @@ export const useCreateStory = () => {
                 navigate('/', {
                   state: {error: message},
                 })
+                loadingDispatch({type: 'LOADED'})
                 return
 
               case 'BADWORDPROMPTERROR':
@@ -123,17 +129,18 @@ export const useCreateStory = () => {
                 localStorage.removeItem('GPTPromptHistory');
                 localStorage.removeItem('localGPTPromptHistory');
                 authDispatch({type: 'LOGOUT'})
+                storyDispatch({type: 'END'})
                 reduxDispatch(resetStorySysInfo())
                 clearReduxPersist()
                 localStorage.setItem('firstChapter', 'true')
                 navigate('/', {
                   state: {error: message},
                 })
+                loadingDispatch({type: 'LOADED'})
                 return
             }
 
           } else {
-
             console.log("Caught here")
             console.log(error)
             if (chapterTexts.length > 0) {
@@ -148,10 +155,12 @@ export const useCreateStory = () => {
               localStorage.removeItem('localGPTPromptHistory');
               reduxDispatch(resetStorySysInfo())
               clearReduxPersist()
+              storyDispatch({type: 'END'})
               localStorage.setItem('firstChapter', 'true')
               navigate('/start-your-story', {
                 state: {error: "Creation Engine Crash, Please Try Again"},
               })
+              loadingDispatch({type: 'LOADED'})
               return
             }
           }

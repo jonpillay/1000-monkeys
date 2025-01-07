@@ -22,7 +22,7 @@ import { useStoryContext } from '../../hooks/useStoryContext';
 
 const App = () => {
 
-  const {story} = useStoryContext()
+  const story = useStoryContext()
 
   const {user} = useAuthContext()
 

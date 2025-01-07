@@ -156,7 +156,7 @@ userSchema.statics.login = async function (email, password) {
   }
 }
 
-userSchema.statics.credits = async function (_id, amount) {
+userSchema.statics.creditAdjust = async function (_id, amount) {
 
   const filter = { _id: _id }
 
@@ -173,18 +173,26 @@ userSchema.statics.credits = async function (_id, amount) {
 userSchema.statics.watch = async function (_id) {
 
   const filter = { _id: _id }
-  const update = { isWatched: true }
+  const update = { isWarned: true }
+  const options = { new: true }
 
-  findOneAndUpdate(filter, update)
+  const results = await this.findOneAndUpdate(filter, update, options)
+
+  console.log(results)
+
+  return
 
 }
 
 userSchema.statics.unWatch = async function (_id) {
 
   const filter = { _id: _id }
-  const update = { isWatched: false }
+  const update = { isWarned: false }
+  const options = { new: true }
 
-  findOneAndUpdate(filter, update)
+  await this.findOneAndUpdate(filter, update, options)
+
+  return
 
 }
 

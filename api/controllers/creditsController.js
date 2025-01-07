@@ -20,7 +20,7 @@ const creditController = {
         throw Error("Nice Try")
       }
 
-      const credit_update = await User.credits(_id, amount)
+      const credit_update = await User.creditAdjust(_id, amount)
 
       return credit_update
 

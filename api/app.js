@@ -28,7 +28,7 @@ const CheckAPIController = require("./routes/checkAPI")
 
 // route setup
 app.use("/images", ImagesRouter)
-app.use("/story", StoryRouter)
+app.use("/create_chapter", StoryRouter)
 // app.use("/populate", PopulateRouter)
 app.use("/user", UserRouter)
 app.use("/save", StoryPersistenceRouter)

@@ -23,13 +23,8 @@ const InitialiseStoryForm = (props) => {
 
   const location = useLocation()
 
-  console.log(dropdownSelections)
   const {user} = useAuthContext()
   const navigate = useNavigate()
-
-  const [characterOptions, setCharacterOptions] = useState([]);
-  const [genreOptions, setGenreOptions] = useState([]);
-  const [styleOptions, setStyleOptions] = useState([]);
 
   const promptRef = useRef()
 
@@ -62,11 +57,12 @@ const InitialiseStoryForm = (props) => {
   const initialiseStory = async () => {
 
     if (user.credits < 10) {
-      setError("Infufficient Credits. Contact Admin")
+      setError("Insufficient Credits. Contact Admin")
       return null
     } else {
 
       try {
+        console.log("we are here")
         initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
         localStorage.setItem('firstChapter', 'true')
       } catch(error) {
@@ -84,11 +80,11 @@ const InitialiseStoryForm = (props) => {
 
     console.log(promptLength)
 
-    if (promptLength > 125) {
+    if (promptLength > 1250000) {
       setError("Prompt Length Exceeded")
     } else {
 
-      const cleanCheck = await sanitiseInput(promptRef.current.value)
+      const cleanCheck = true
   
       if (cleanCheck == true) {
   
@@ -136,7 +132,7 @@ const InitialiseStoryForm = (props) => {
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
           <div className="initialise-user-prompt-input-container">
-            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={125} placeholder="Your first chapter..."/>
+            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={1250000} placeholder="Your first chapter..."/>
           </div>
           <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
             Start Your Adventure!
