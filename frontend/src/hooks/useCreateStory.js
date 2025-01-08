@@ -189,16 +189,23 @@ export const useCreateStory = () => {
       reduxDispatch(turnToLastPage())
       loadingDispatch({type: 'LOADED'})
       navigate('/create')
+      return
 
     } catch (error) {
-      console.log("Caught here")
-      console.log(error)
-      if (chapterTexts.length > 0) {
-        setError(error)
-      } else {
-        setError(error)
-        navigate('/start-your-story')
-      }
+      localStorage.removeItem('storyPages')
+      localStorage.removeItem('sysInfo');
+      localStorage.removeItem('userChoices');
+      localStorage.removeItem('GPTPromptHistory');
+      localStorage.removeItem('localGPTPromptHistory');
+      reduxDispatch(resetStorySysInfo())
+      clearReduxPersist()
+      storyDispatch({type: 'END'})
+      localStorage.setItem('firstChapter', 'true')
+      navigate('/start-your-story', {
+        state: {error: "Engine Crash. Please Reload Story."},
+      })
+      loadingDispatch({type: 'LOADED'})
+      return
     } 
   };
 

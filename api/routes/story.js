@@ -6,6 +6,6 @@ const requireAuth = require('../middleware/requireAuth');
 const requireCredits = require("../middleware/requireCredits");
 const requireCleanInput = require("../middleware/requireCleanInput")
 
-router.post("/", requireAuth, requireCleanInput, requireCredits);
+router.post("/", requireAuth, requireCleanInput);
 
 module.exports = router;

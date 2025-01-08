@@ -1,3 +1,4 @@
+const fetchBadWordsList = require('../sanitiseFuncts/badWordListFetch')
 const sanitiseInput = require('../sanitiseFuncts/sanitiseInput')
 const JWT = require('jsonwebtoken')
 const User = require('../database/models/userModel')
@@ -5,8 +6,6 @@ const User = require('../database/models/userModel')
 const requireCleanInput = async (req, res, next) => {
 
   const _id = req.user._id
-
-  console.log(_id)
 
   const GPTPromptHistory = req.body.GPTPromptHistory
 
@@ -29,7 +28,9 @@ const requireCleanInput = async (req, res, next) => {
     })
   }
 
-  const cleanCheck = sanitiseInput(checkContent)
+  const badWordList = await fetchBadWordsList()
+
+  const cleanCheck = sanitiseInput(checkContent, badWordList)
 
   if (cleanCheck == false ) {
     User.watch(_id)

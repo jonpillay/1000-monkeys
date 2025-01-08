@@ -176,9 +176,7 @@ userSchema.statics.watch = async function (_id) {
   const update = { isWarned: true }
   const options = { new: true }
 
-  const results = await this.findOneAndUpdate(filter, update, options)
-
-  console.log(results)
+  await this.findOneAndUpdate(filter, update, options)
 
   return
 

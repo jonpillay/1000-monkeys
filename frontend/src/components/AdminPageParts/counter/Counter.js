@@ -15,7 +15,7 @@ const Counter = (props) => {
 
   const [seconds, setSeconds] = useState(initSeconds.length < 2 ? "0".concat(initSeconds) : initSeconds )
 
-  useEffect(() =>{
+  useEffect(() => {
 
     if (!endTime) {
       setSeconds('00')

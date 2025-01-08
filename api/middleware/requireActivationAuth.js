@@ -18,8 +18,6 @@ const requireActivationAuth = async (req, res, next) => {
     next()
 
   } catch (error) {
-    console.log(error)
-    console.log("This is where we ended up! (user activation middleware error")
     res.status(401).json({ error: "Cannot authorise request." })
   }
 }

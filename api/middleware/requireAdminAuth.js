@@ -17,7 +17,6 @@ const requireAdminAuth = async (req, res, next) => {
     req.user = await User.findOne({ _id }).select('_id credits')
     
     if (isSuper != true) {
-      // res.status(401).json({ error: "Must be admin super check." })
       throw Error("Must be admin super check.")
     }
 
