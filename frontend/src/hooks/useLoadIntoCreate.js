@@ -4,16 +4,19 @@ import { UseDispatch, useDispatch } from "react-redux";
 import { initialiseStoryFromDB } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 import { loadIntoCreate } from "../components/CreateStoryPageParts/story-book-create/storyBookSlice";
 import { useAuthContext } from "./useAuthContext";
+import { useLoadingContext } from "./useLoadingContext";
 
 export const useLoadIntoCreate = () => {
   const { user } = useAuthContext()
+  const {loadingDispatch} = useLoadingContext()
+
   const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(null)
 
   const reduxDispatch = useDispatch()
 
   const loadIntoCreateHook = async (storyID) => {
-    setIsLoading(true)
+    loadingDispatch({type: 'LOADING'})
+    localStorage.removeItem('firstChapter')
     setError(null)
 
     // Going to code this to fetch from the DB even if the StoryBook obj is already in local. This allows for the book to be fetched
@@ -31,7 +34,7 @@ export const useLoadIntoCreate = () => {
     const JSONres = await response.json()
 
     if (!response.ok) {
-      setIsLoading(false)
+      loadingDispatch({type: 'LOADED'})
       setError(JSONres.error)
     }
 
@@ -40,7 +43,7 @@ export const useLoadIntoCreate = () => {
       localStorage.setItem('localGPTPromptHistory', JSON.stringify(storyBook.GPTChatHistory))
       reduxDispatch(initialiseStoryFromDB(storyBook.character, storyBook.genre, storyBook.artstyle, storyBook.GPTChatHistory, storyBook._id, storyBook.SDPromptHistory))
       reduxDispatch(loadIntoCreate(storyBook.chapterImageURLs, storyBook.chapterText))
-      setIsLoading(false)
+      loadingDispatch({type: 'LOADED'})
       // return (JSONres.filteredList)
     }
   }

@@ -45,10 +45,6 @@ const LogInForm = () => {
   }
 
   return (
-    <>
-    {apiError ? 
-    <div className="error">{apiError}</div>
-    :
     <div className="form-container">
       <form className="user-form" onSubmit={handleSubmit}>
         <div className="user-title-container">
@@ -67,10 +63,7 @@ const LogInForm = () => {
         </div>
         {loginError && <div className="error">{loginError}</div>}
       </form>
-    </div>
-    }
-    </>
- 
+    </div> 
   )
 }
 

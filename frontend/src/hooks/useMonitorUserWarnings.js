@@ -5,22 +5,26 @@ import { useNavigate } from "react-router";
 import { useAuthContext } from "./useAuthContext";
 import { useStoryContext } from "./useStoryContext";
 
+import { useDispatch, useSelector } from "react-redux";
+import { selectAllWarnings, issueWarning } from "../components/app/systemInfoSlice";
+
 export const useMonitorUserWarnings = () => {
+
+  const reduxDispatch = useDispatch()
+  const warnings = useSelector(selectAllWarnings)
 
   const navigate = useNavigate()
 
   const { dispatch: authDispatch } = useAuthContext()
   const { dispatch: storyDispatch } = useStoryContext()
 
-  let userWarnings = 0
-
   const [ userWarningMessage, setUserWarningMessage ] = useState()
 
   const handleUserWarning = () => {
 
-    userWarnings = userWarnings + 1
+    reduxDispatch(issueWarning())
 
-    switch(userWarnings) {
+    switch(warnings) {
 
       case 1:
         setUserWarningMessage("This is your first warning buddy! You've got 4 More.")
@@ -35,7 +39,7 @@ export const useMonitorUserWarnings = () => {
         break
 
       case 4:
-        setUserWarningMessage("This is your final warning!")
+        setUserWarningMessage("Final warning pal!")
         break
 
       case 5:
@@ -47,8 +51,6 @@ export const useMonitorUserWarnings = () => {
         localStorage.removeItem('localGPTPromptHistory');
         authDispatch({type: 'LOGOUT'})
         storyDispatch({type: 'END'})
-        reduxDispatch(resetStorySysInfo())
-        clearReduxPersist()
         localStorage.setItem('firstChapter', 'true')
         navigate('/', {
           state: {error: "You Were Warned!", warnedState: "FRONTENDREPEAT"},

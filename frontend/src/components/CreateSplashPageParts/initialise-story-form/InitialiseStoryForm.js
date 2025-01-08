@@ -3,19 +3,10 @@ import { useNavigate, useLocation } from "react-router";
 import DropdownSelector from "../dropdown-selector/DropdownSelector";
 import "./InitialiseStoryForm.css";
 
-import { StoryContext } from "../../../context/StoryContext";
-
 import { useAuthContext } from "../../../hooks/useAuthContext";
-import { useStoryContext } from "../../../hooks/useStoryContext";
-
-import { useDispatch, useSelector } from "react-redux";
-
-import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages } from "../../CreateStoryPageParts/story-book-create/storyBookSlice";
-import { initialiseStory, resetStorySysInfo } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
-
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
-
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
+import { useMonitorUserWarnings } from "../../../hooks/useMonitorUserWarnings";
 
 const dropdownSelections = require('./unifiedSelectors.json')
 
@@ -33,12 +24,10 @@ const InitialiseStoryForm = (props) => {
   const [styleChoice, setStyleChoice] = useState();
   const [error, setError] = useState(location.state?.error)
 
-  const { dispatch } = useContext(StoryContext)
-  const reduxDispatch = useDispatch()
-
   const { sanitiseInput } = useSanitiseInput()
 
   const { initialiseStoryHook } = useInitialiseStory()
+  const { handleUserWarning, userWarningMessage } = useMonitorUserWarnings()
 
   useEffect(() => {
 
@@ -76,15 +65,18 @@ const InitialiseStoryForm = (props) => {
 
     setError("")
 
-    const promptLength = promptRef.current.value.length
+    const prompt = promptRef.current.value
+
+    const promptLength = prompt.length
 
     console.log(promptLength)
 
-    if (promptLength > 1250000) {
-      setError("Prompt Length Exceeded")
+    if (promptLength > 125) {
+      handleUserWarning()
+      setError("Max Prompt Length Exceeded")
     } else {
 
-      const cleanCheck = true
+      const cleanCheck = sanitiseInput(prompt)
   
       if (cleanCheck == true) {
   
@@ -132,7 +124,7 @@ const InitialiseStoryForm = (props) => {
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
           <div className="initialise-user-prompt-input-container">
-            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={1250000} placeholder="Your first chapter..."/>
+            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={126} placeholder="Your first chapter..."/>
           </div>
           <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
             Start Your Adventure!

@@ -13,8 +13,6 @@ import { useDispatch } from 'react-redux';
 import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, selectGPTPromptHistory, selectSDPromptHistory, setStoryInProgress, setFirstChapter } from '../../Pages/create-stories-page/storyBookSysInfoSlice';
 import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset, nextPage, previousPage } from './storyBookSlice';
 
-import { clearReduxPersist } from '../../../redux-state/store';
-
 // import storyBook from './storyBookSlice';
 
 const StoryBookCreate = (props) => {

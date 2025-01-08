@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import storyBookReducer from '../components/CreateStoryPageParts/story-book-create/storyBookSlice'
 import storyBookSysInfoReducer from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
+import systemInfoReducer from "../components/app/systemInfoSlice"
 
 import { combineReducers } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
@@ -30,8 +31,14 @@ const storyBookPersistConfig = {
   storage,
 }
 
-const sysInfoPersistConfig = {
-  key: 'sysInfoData',
+const storyBookSysInfoPersistConfig = {
+  key: 'storyBooksysInfoData',
+  version: 1,
+  storage,
+}
+
+const systemInfoPersistConfig = {
+  key: 'systemInfoData',
   version: 1,
   storage,
 }
@@ -40,7 +47,8 @@ const sysInfoPersistConfig = {
 
 const persistedReducer = combineReducers({
   storyBook: persistReducer(storyBookPersistConfig, storyBookReducer),
-  storyBookSysInfo: persistReducer(sysInfoPersistConfig, storyBookSysInfoReducer),
+  storyBookSysInfo: persistReducer(storyBookSysInfoPersistConfig, storyBookSysInfoReducer),
+  systemInfo: persistReducer(systemInfoPersistConfig, systemInfoReducer)
 })
 
 export const store = configureStore({

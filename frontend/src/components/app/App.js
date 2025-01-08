@@ -19,7 +19,6 @@ import LoadingPage from '../Pages/loading_page/LoadingPage';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 
-
 const App = () => {
 
   const story = useStoryContext()
@@ -28,14 +27,12 @@ const App = () => {
 
   const admin = user ? user.isSuper : false
 
-  console.log(story)
-
   return (
     <div className="app">
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route exact path="/start-your-story" element={ user ? <CreateSplashPage/> : <Navigate to="/"/>} />
+            <Route exact path="/start-your-story" element={ user ? <CreateSplashPage /> : <Navigate to="/"/>} />
             <Route exact path="/create" element={  user && story ? <CreateStoriesPage/> : <Navigate to="/"/> } />
             <Route exact path="/browse" element={ <BrowsePage/> } />
             <Route exact path="/loading" element={ <LoadingPage/> } />

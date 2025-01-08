@@ -5,8 +5,6 @@ import { useNavigate } from "react-router";
 
 const CreateSplashPage = (props) => {
 
-  const { AIGenCall } = props
-
   return (
     <>
     <div className="splash-container">

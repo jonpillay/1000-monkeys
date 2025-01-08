@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const storyBookSysInfoSlice = createSlice({
+
   name: 'storyBookSysInfo',
+  
   initialState: {
     userToken: null,
     firstChapter: false,
