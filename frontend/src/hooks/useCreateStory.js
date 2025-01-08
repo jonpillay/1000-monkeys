@@ -116,7 +116,7 @@ export const useCreateStory = () => {
                 clearReduxPersist()
                 localStorage.setItem('firstChapter', 'true')
                 navigate('/', {
-                  state: {error: message},
+                  state: {error: message, warnedState: "APILENGTHATTEMPT"},
                 })
                 loadingDispatch({type: 'LOADED'})
                 return
@@ -134,7 +134,7 @@ export const useCreateStory = () => {
                 clearReduxPersist()
                 localStorage.setItem('firstChapter', 'true')
                 navigate('/', {
-                  state: {error: message},
+                  state: {error: message, warnedState: "APIBADWORDATTEMPT"},
                 })
                 loadingDispatch({type: 'LOADED'})
                 return
