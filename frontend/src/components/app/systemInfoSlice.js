@@ -23,10 +23,13 @@ const systemInfoSlice = createSlice({
     issueWarning: (state) => {
       state.warnings += 1;
     },
+    resetWarnings: (state) => {
+      state.warnings = 0;
+    },
   },
 })
 
 export const selectAllWarnings = (state) => state.systemInfo.warnings;
 
-export const { issueMultiWarnings, issueWarning } = systemInfoSlice.actions;
+export const { issueMultiWarnings, issueWarning, resetWarnings } = systemInfoSlice.actions;
 export default systemInfoSlice.reducer;

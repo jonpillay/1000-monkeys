@@ -72,8 +72,8 @@ const InitialiseStoryForm = (props) => {
     console.log(promptLength)
 
     if (promptLength > 125) {
-      handleUserWarning()
       setError("Max Prompt Length Exceeded")
+      handleUserWarning()
     } else {
 
       const cleanCheck = sanitiseInput(prompt)
