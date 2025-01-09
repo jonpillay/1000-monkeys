@@ -11,6 +11,7 @@ import { clearReduxPersist } from "../../../redux-state/store";
 import { useDispatch } from "react-redux";
 import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, resetStoryBookSlice } from '../../CreateStoryPageParts/story-book-create/storyBookSlice';
 import { resetStorySysInfo } from "../../Pages/create-stories-page/storyBookSysInfoSlice";
+import { resetWarnings } from "../../app/systemInfoSlice";
 
 const NavBar = () => {
 
@@ -27,6 +28,7 @@ const NavBar = () => {
   const { story } = useStoryContext()
 
   const clearRedux = () => {
+    reduxDispatch(resetWarnings())
     reduxDispatch(resetStoryBookSlice())
     clearReduxPersist()
   }

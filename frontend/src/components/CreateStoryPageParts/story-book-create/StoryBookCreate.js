@@ -101,7 +101,7 @@ const StoryBookCreate = (props) => {
       </div>
       ) : (
       <>
-            <div className="create-storybook-container">
+      <div className="create-storybook-container">
         <div className="next-page-container">
           {renderChapter>0 &&
             <TurnPageButton id="previous-page-button" direct="back" label="Previous Chapter" callback={turnPage}/>

@@ -136,7 +136,13 @@ const InitialiseStoryForm = (props) => {
               </>
             )}
           </div>
-
+          <div className="initialise-story-prompt-error">
+            { userWarningMessage && (
+              <>
+              {userWarningMessage}
+              </>
+            )}
+          </div>
         </div>
       </div>
   );

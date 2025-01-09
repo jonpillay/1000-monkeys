@@ -20,10 +20,7 @@ export const useMonitorUserWarnings = () => {
 
   const [ userWarningMessage, setUserWarningMessage ] = useState()
 
-  const handleUserWarning = () => {
-
-    reduxDispatch(issueWarning())
-
+  useEffect(() => {
     switch(warnings) {
 
       case 1:
@@ -41,7 +38,7 @@ export const useMonitorUserWarnings = () => {
       case 4:
         setUserWarningMessage("Final warning pal!")
         break
-
+        
       case 5:
         localStorage.removeItem('user')
         localStorage.removeItem('storyPages')
@@ -57,6 +54,39 @@ export const useMonitorUserWarnings = () => {
         })
         break
     }
+  }, [warnings])
+
+  const handleUserWarning = () => {
+
+    reduxDispatch(issueWarning())
+
+    // console.log(warnings)
+
+    // if (warnings == 5) {
+     
+    // } else if (warnings == 1) {
+    //   setUserWarningMessage("This is your first warning buddy! You've got 4 More.")
+    // }
+    //  else {
+    //   switch(warnings) {
+
+    //     case 1:
+    //       setUserWarningMessage("This is your first warning buddy! You've got 4 More.")
+    //       break
+  
+    //     case 2:
+    //       setUserWarningMessage("Second warning, this is getting sus. 3 Warnings left.")
+    //       break
+  
+    //     case 3:
+    //       setUserWarningMessage("Third time's a charm. 2 warnings left!")
+    //       break
+  
+    //     case 4:
+    //       setUserWarningMessage("Final warning pal!")
+    //       break
+    //   }
+    // }
 
   }
 

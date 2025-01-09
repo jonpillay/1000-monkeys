@@ -5,15 +5,40 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 
 import { useLocation } from "react-router";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetStorySysInfo } from "../create-stories-page/storyBookSysInfoSlice";
+import { selectAllWarnings, resetWarnings } from "../../app/systemInfoSlice";
 import { clearReduxPersist } from "../../../redux-state/store";
 
 const SplashContainer = (props) => {
 
   const reduxDispatch = useDispatch()
+
+  const warnings = useSelector(selectAllWarnings)
+
+  const [ waggingFinger, setWaggingFinger ] = useState(false)
+
+  useEffect(() => {
+
+    if (warnings >= 5) {
+
+      setWaggingFinger(true)
+
+      let timeoutId;
+
+      timeoutId = setTimeout(() => {
+          setWaggingFinger(false)
+          reduxDispatch(resetWarnings())
+        }, 5000);
+
+
+      return () => {
+          clearTimeout(timeoutId);
+        };
+    }
+  }, [])
   
   const location = useLocation()
 
@@ -28,12 +53,19 @@ const SplashContainer = (props) => {
 
   return (
     <>
-    <div className="splash-container">
-      <div className="splash-grid">
-        <WelcomePanel/>
-        <LoginCreateContainer/>
-      </div>
-    </div>
+    { !waggingFinger ? (
+      <>
+        <div className="splash-container">
+          <div className="splash-grid">
+            <WelcomePanel/>
+            <LoginCreateContainer/>
+          </div>
+        </div>         
+      </>
+      ) : (
+        "BOOP"
+      )    
+    }
     </>
   )
 }
