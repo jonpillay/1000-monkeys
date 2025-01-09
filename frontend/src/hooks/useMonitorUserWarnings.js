@@ -60,34 +60,6 @@ export const useMonitorUserWarnings = () => {
 
     reduxDispatch(issueWarning())
 
-    // console.log(warnings)
-
-    // if (warnings == 5) {
-     
-    // } else if (warnings == 1) {
-    //   setUserWarningMessage("This is your first warning buddy! You've got 4 More.")
-    // }
-    //  else {
-    //   switch(warnings) {
-
-    //     case 1:
-    //       setUserWarningMessage("This is your first warning buddy! You've got 4 More.")
-    //       break
-  
-    //     case 2:
-    //       setUserWarningMessage("Second warning, this is getting sus. 3 Warnings left.")
-    //       break
-  
-    //     case 3:
-    //       setUserWarningMessage("Third time's a charm. 2 warnings left!")
-    //       break
-  
-    //     case 4:
-    //       setUserWarningMessage("Final warning pal!")
-    //       break
-    //   }
-    // }
-
   }
 
   return { handleUserWarning, userWarningMessage }
