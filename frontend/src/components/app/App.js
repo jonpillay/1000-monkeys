@@ -19,6 +19,8 @@ import LoadingPage from '../Pages/loading_page/LoadingPage';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 
+import WarningSplash from '../SplashPageParts/warning-splash/WarningSplash';
+
 const App = () => {
 
   const story = useStoryContext()
@@ -32,6 +34,7 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
+            <Route exact path="/warning-test" element={ <WarningSplash/> } />
             <Route exact path="/start-your-story" element={ user ? <CreateSplashPage /> : <Navigate to="/"/>} />
             <Route exact path="/create" element={  user && story ? <CreateStoriesPage/> : <Navigate to="/"/> } />
             <Route exact path="/browse" element={ <BrowsePage/> } />
