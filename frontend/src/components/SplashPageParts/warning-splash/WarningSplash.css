@@ -12,3 +12,36 @@
 .egg:hover {
   cursor: pointer;
 }
+
+.warning-splash-container {
+  padding: 5rem;
+}
+
+.warning-splash-grid {
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+
+.warning-splash-text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* grid-template-columns: 10% 90%; */
+}
+
+.warning-splash-text {
+  font-family: 'special-elite';
+  font-size: larger;
+}
+
+.wagging-finger {
+  padding-right: 0.5rem;
+  height: 10rem;
+}
+
+.warning-splash-body-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
