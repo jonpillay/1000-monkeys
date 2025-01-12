@@ -70,18 +70,18 @@ const Header = () => {
   return (
     <>
     { !loading  ? (
-      <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
-      <button className="home-button" onClick={endStory} disabled={loading}>
-        <img className="home-icon" src={HomeIcon} alt="home"/>
-      </button>
-      <div className='title-container'>
-        <div className='title'>1000 Monkeys</div>
-      </div>
-      <Nav />
-    </div>
+        <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
+          <button className="home-button" onClick={endStory} disabled={loading}>
+            <img className="home-icon" src={HomeIcon} alt="home"/>
+          </button>
+          <div className='title-container'>
+            <div className='title'>1000 Monkeys</div>
+          </div>
+          <Nav />
+        </div>
     ) : (
       <div className="spacer"></div>
-    ) }  
+    ) }
     </>
 
 

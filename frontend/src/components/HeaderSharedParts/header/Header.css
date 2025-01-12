@@ -17,6 +17,7 @@
 }
 
 .home-button {
+  /* margin-top: 0.5rem; */
   /* margin: 2%;
   width: 6%; */
   /* border-radius: 5px; */
@@ -33,7 +34,7 @@
 }
 
 .title-container {
-  margin-top: 24px;
+  margin-top: 1rem;
 }
 
 /* .home-button:hover {
