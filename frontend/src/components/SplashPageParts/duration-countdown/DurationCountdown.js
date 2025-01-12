@@ -11,8 +11,6 @@ const DurationCountdown = (props) => {
 
   useEffect(() => {
 
-    console.log("Did fire")
-
     setSeconds(initSeconds)
 
     const countdown = setInterval(() => {

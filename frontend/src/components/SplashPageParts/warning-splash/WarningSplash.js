@@ -11,6 +11,7 @@ import magicWord from '../../../img/magic-word-cutout.gif'
 import egg from '../../../img/egg.png'
 
 import DurationCountdown from '../duration-countdown/DurationCountdown';
+import WarningExitSpiel from '../WarningExitSpiel/WarningExitSpiel';
 
 const WarningSplash = () => {
 
@@ -20,7 +21,7 @@ const WarningSplash = () => {
 
   const [ play, { duration, sound } ] = useSound(warningAudio)
 
-  const [ countdownTime, setCountdownTime ] = useState()
+  const [ countdownTime, setCountdownTime ] = useState('-')
 
   const [ eggActivated, setEggActivated ] = useState(false)
 
@@ -88,7 +89,7 @@ const WarningSplash = () => {
         </div>
       </div>
       :
-      <div className="test-div">"pass"</div>
+      <WarningExitSpiel/>
       }    
     </>
       :

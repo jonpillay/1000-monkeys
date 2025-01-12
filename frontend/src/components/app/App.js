@@ -20,6 +20,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 
 import WarningSplash from '../SplashPageParts/warning-splash/WarningSplash';
+import WarningExitSpiel from '../SplashPageParts/WarningExitSpiel/WarningExitSpiel';
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
+          <Route exact path="/exit-test" element={ <WarningExitSpiel/> } />
             <Route exact path="/warning-test" element={ <WarningSplash/> } />
             <Route exact path="/start-your-story" element={ user ? <CreateSplashPage /> : <Navigate to="/"/>} />
             <Route exact path="/create" element={  user && story ? <CreateStoriesPage/> : <Navigate to="/"/> } />

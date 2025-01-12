@@ -1,0 +1,25 @@
+.warning-exit-spiel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 7rem;
+  padding-top: 2.5rem;
+  /* background-color: red; */
+}
+
+.warning-exit-line {
+  font-size: 50px;
+  font-weight: 500;
+  font-family: "special-elite";
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
