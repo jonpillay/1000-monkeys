@@ -10,21 +10,15 @@ import magicWord from '../../../img/magic-word-cutout.gif'
 
 import egg from '../../../img/egg.png'
 
-import { useDispatch } from 'react-redux';
-import { useLoadingContext } from '../../../hooks/useLoadingContext';
-
 import DurationCountdown from '../duration-countdown/DurationCountdown';
 
 const WarningSplash = () => {
-
-  const reduxDispatch = useDispatch()
-  const { loading } = useLoadingContext()
 
   useEffect(() => {
 
   }, [])
 
-  const [ play, exposedData ] = useSound(warningAudio)
+  const [ play, { duration, sound } ] = useSound(warningAudio)
 
   const [ countdownTime, setCountdownTime ] = useState()
 
@@ -32,18 +26,22 @@ const WarningSplash = () => {
 
   const [ exitSpiel, setExitSpiel ] = useState(false)
 
+  const startTimers = () => {
+
+    setCountdownTime(duration)
+
+    setTimeout(() =>{
+      setExitSpiel(true)
+    }, duration)
+  }
 
   const giveWarningSpiel = () => {
 
     play()
 
-    setCountdownTime(exposedData['duration'])
-
-    console.log(countdownTime)
-
-    setTimeout(() =>{
-      setExitSpiel(true)
-    }, exposedData['duration'])
+    sound.once("play", () => {
+      startTimers()
+    })
 
   }
 
@@ -77,8 +75,13 @@ const WarningSplash = () => {
               <div className="angry-monkey-container">
                 <img src={warningMonkey} alt=""/>
               </div>
-              <div className="countdown-container">
-                <DurationCountdown duration={countdownTime}/>
+              <div className="standby-countdown-container">
+                <div className="standby-container">
+                  Standby!
+                </div>
+                <div className="countdown-container">
+                  <DurationCountdown duration={countdownTime}/>
+                </div>
               </div>
             </div>
           </div>

@@ -3,33 +3,37 @@ import './DurationCountdown.css';
 
 const DurationCountdown = (props) => {
 
-  console.log(props.duration)
+  let durationMillis = props.duration
 
-  let initTime = props.duration
+  const initSeconds = Math.floor(durationMillis/1000)
 
-  const initSeconds = Math.floor(initTime/1000).toString()
-
-  const [seconds, setSeconds] = useState(initSeconds.length < 2 ? "0".concat(initSeconds) : initSeconds )
+  const [seconds, setSeconds] = useState("")
 
   useEffect(() => {
 
     console.log("Did fire")
 
-      const countdown = setInterval(() => {
-        let time = initTime -= 1000
+    setSeconds(initSeconds)
 
-        if (time < 0) {
-          return () => clearInterval(countdown)
-        }
+    const countdown = setInterval(() => {
 
-        const seconds = Math.floor(time/1000);
+      console.log(durationMillis)
+      let time = durationMillis -= 1000
+      
 
-        setSeconds(seconds)
-        
-      }, 1000)
+      if (time < 0) {
+        return () => clearInterval(countdown)
+      }
+
+      const seconds = Math.floor(time/1000);
+
+      console.log(seconds)
+      setSeconds(seconds)
+      
+    }, 1000)
 
       return () => clearInterval(countdown)
-  }, [])
+  }, [durationMillis])
 
   return (
     <div className='counter-container'>
