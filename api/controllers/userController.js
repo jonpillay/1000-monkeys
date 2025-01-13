@@ -25,8 +25,6 @@ const UserController = {
 
       res.status(400).json({error: error.message })
     }
-
-    // res.json({ mssg: 'user logged in (kinda)' })
   },
   SignUpUser: async (req, res) => {
     const {email, password} = req.body
@@ -65,6 +63,18 @@ const UserController = {
       const JWT = genActivationJWT(user.email, user.invite_code)
 
       res.status(200).json({ email: email, token: JWT, error:"made it" })
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
+  },
+  Watch: async (req, res) => {
+    try {
+      const {userID} = req.user._id
+
+      await User.watch(req.user._id)
+
+      res.status(200).json({ message:"user watched" })
+
     } catch (error) {
       res.status(400).json({error: error.message})
     }

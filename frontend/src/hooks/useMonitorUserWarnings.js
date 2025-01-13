@@ -8,6 +8,8 @@ import { useStoryContext } from "./useStoryContext";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllWarnings, issueWarning } from "../components/app/systemInfoSlice";
 
+import { useWatchUser } from "./useWatchUser";
+
 export const useMonitorUserWarnings = () => {
 
   const reduxDispatch = useDispatch()
@@ -19,6 +21,7 @@ export const useMonitorUserWarnings = () => {
   const { dispatch: storyDispatch } = useStoryContext()
 
   const [ userWarningMessage, setUserWarningMessage ] = useState()
+  const { watchUser, error } = useWatchUser()
 
   useEffect(() => {
     switch(warnings) {
@@ -40,6 +43,7 @@ export const useMonitorUserWarnings = () => {
         break
         
       case 5:
+        watchUser()
         localStorage.removeItem('user')
         localStorage.removeItem('storyPages')
         localStorage.removeItem('sysInfo');
