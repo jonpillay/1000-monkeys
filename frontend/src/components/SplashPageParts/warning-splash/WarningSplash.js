@@ -1,6 +1,7 @@
 import './WarningSplash.css'
 
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router';
 
 import useSound from 'use-sound';
 
@@ -13,7 +14,19 @@ import egg from '../../../img/egg.png'
 import DurationCountdown from '../duration-countdown/DurationCountdown';
 import WarningExitSpiel from '../WarningExitSpiel/WarningExitSpiel';
 
-const WarningSplash = () => {
+import { useDispatch } from 'react-redux';
+import { resetWarnings } from '../../app/systemInfoSlice';
+
+const WarningSplash = (props) => {
+
+  const navigate = useNavigate()
+  const reduxDispatch = useDispatch()
+
+  const warnedState = props.warnedState
+  const setWaggingFinger = props.setWaggingFinger
+  console.log(warnedState)
+
+  const location = useLocation()
 
   useEffect(() => {
 
@@ -34,6 +47,13 @@ const WarningSplash = () => {
     setTimeout(() =>{
       setExitSpiel(true)
     }, duration)
+
+    setTimeout(() =>{
+      reduxDispatch(resetWarnings())
+      setWaggingFinger(false)
+      // navigate(location, { state: null, replace: true })
+      navigate(location.pathname, { state: null, replace: true });
+    }, duration+2000)
   }
 
   const giveWarningSpiel = () => {

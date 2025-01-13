@@ -12,6 +12,8 @@ import { resetStorySysInfo } from "../create-stories-page/storyBookSysInfoSlice"
 import { selectAllWarnings, resetWarnings } from "../../app/systemInfoSlice";
 import { clearReduxPersist } from "../../../redux-state/store";
 
+import WarningSplash from "../../SplashPageParts/warning-splash/WarningSplash"
+
 const SplashContainer = (props) => {
 
   const reduxDispatch = useDispatch()
@@ -20,36 +22,37 @@ const SplashContainer = (props) => {
 
   const [ waggingFinger, setWaggingFinger ] = useState(false)
 
-  useEffect(() => {
+  const [ warningState, setWarningState ] = useState()
 
-    if (warnings >= 5) {
-
-      setWaggingFinger(true)
-
-      let timeoutId;
-
-      timeoutId = setTimeout(() => {
-          setWaggingFinger(false)
-          reduxDispatch(resetWarnings())
-        }, 5000);
-
-
-      return () => {
-          clearTimeout(timeoutId);
-        };
-    }
-  }, [])
-  
   const location = useLocation()
+
+  // useEffect(() => {
+
+  //   if (warnings >= 5) {
+
+  //     setWaggingFinger(true)
+
+  //     let timeoutId;
+
+  //     timeoutId = setTimeout(() => {
+  //         setWaggingFinger(false)
+  //         reduxDispatch(resetWarnings())
+  //       }, 5000);
+
+
+  //     return () => {
+  //         clearTimeout(timeoutId);
+  //       };
+  //   }
+  // }, [])
 
   useEffect(() => {
 
     if (location.state?.warnedState) {
-      reduxDispatch(resetStorySysInfo())
-      clearReduxPersist()
+      setWaggingFinger(true)
+      setWarningState(location.state?.warnedState)
       }
-    }
-  )
+    }, [])
 
   return (
     <>
@@ -63,7 +66,7 @@ const SplashContainer = (props) => {
         </div>         
       </>
       ) : (
-        "BOOP"
+        <WarningSplash warnedState={warningState} setWaggingFinger={setWaggingFinger}/>
       )    
     }
     </>

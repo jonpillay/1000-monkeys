@@ -6,10 +6,6 @@ const WarningExitSpiel = () => {
 
   const [ lineTwo, setLineTwo ] = useState("Please Contact Admin")
 
-  useEffect(() => {
-
-  }, [])
-
   return (
 
     <div className="warning-exit-spiel-container">
