@@ -2,10 +2,6 @@
 // import OpenAI from "openai";
 const {OpenAI} = require("openai")
 
-// console.log("Here but no key")
-// console.log(process.env.OPENAI_API_KEY)
-
-
 async function generateStory(prompts) {
 
   const openai = new OpenAI({

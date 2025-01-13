@@ -1,8 +1,5 @@
 .egg-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
+  margin: 1rem;
 }
 
 .egg {
@@ -62,4 +59,31 @@
 
 .countdown-container {
   margin: auto;
+}
+
+.egg-splash-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3.5rem;
+}
+
+.egg-intro-container {
+  font-size: 2rem;
+  font-family: 'special-elite';
+  animation: fade-in ease 3s;
+}
+.click-egg-container {
+  font-family: 'special-elite';
+  animation: fade-in ease 3s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }

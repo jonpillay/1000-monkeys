@@ -66,7 +66,7 @@ export const useCreateStory = () => {
         credits_needed: 3
       }
   
-      const response = await fetch("/create_chapter", {
+      const response = await fetch("./story/create-chapter", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

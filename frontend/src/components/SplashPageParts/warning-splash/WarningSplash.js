@@ -26,11 +26,9 @@ const WarningSplash = (props) => {
   const setWaggingFinger = props.setWaggingFinger
   console.log(warnedState)
 
+  const eggIntro = warnedState == "EASTEREGGACTIVATED" ? "You Found the Easter Egg!" : "You Were Warned!"
+
   const location = useLocation()
-
-  useEffect(() => {
-
-  }, [])
 
   const [ play, { duration, sound } ] = useSound(warningAudio)
 
@@ -113,12 +111,19 @@ const WarningSplash = (props) => {
       }    
     </>
       :
-      <div className="egg-container">
-        <img className="egg" src={egg} alt="broken egg" onClick={eggClick}/>
+      <div className="egg-splash-container">
+        <div className="egg-intro-container">
+          {eggIntro}
+        </div>
+        <div className="egg-container">
+          <img className="egg" src={egg} alt="broken egg" onClick={eggClick}/>
+        </div>
+        <div className="click-egg-container">
+          Click On The Egg To Continue!
+        </div>
       </div>
     }
     </>
-
   )
 }
 

@@ -7,6 +7,7 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 import { useMonitorUserWarnings } from "../../../hooks/useMonitorUserWarnings";
+import { useCheckEggInput } from "../../../hooks/useCheckEggInput";
 
 const dropdownSelections = require('./unifiedSelectors.json')
 
@@ -25,6 +26,7 @@ const InitialiseStoryForm = (props) => {
   const [error, setError] = useState(location.state?.error)
 
   const { sanitiseInput } = useSanitiseInput()
+  const { checkEggInput, guessResponse, setGuessResponse } = useCheckEggInput()
 
   const { initialiseStoryHook } = useInitialiseStory()
   const { handleUserWarning, userWarningMessage } = useMonitorUserWarnings()
@@ -35,12 +37,13 @@ const InitialiseStoryForm = (props) => {
 
     timeoutId = setTimeout(() => {
         setError("");
+        setGuessResponse("")
       }, 2000);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [error]);
+  }, [error, guessResponse]);
 
 
   const initialiseStory = async () => {
@@ -67,7 +70,7 @@ const InitialiseStoryForm = (props) => {
 
     const prompt = promptRef.current.value
 
-    const promptLength = prompt.length
+    const promptLength = prompt.split(" ").length
 
     console.log(promptLength)
 
@@ -76,7 +79,17 @@ const InitialiseStoryForm = (props) => {
       handleUserWarning()
     } else {
 
-      const cleanCheck = sanitiseInput(prompt)
+      const eggTivated = checkEggInput(prompt)
+
+      if (eggTivated == true) {
+        return
+      } else if (eggTivated == false) {
+        return
+      }
+
+      const cleanCheck = await sanitiseInput(prompt)
+
+      console.log(cleanCheck)
   
       if (cleanCheck == true) {
   
@@ -140,6 +153,13 @@ const InitialiseStoryForm = (props) => {
             { userWarningMessage && (
               <>
               {userWarningMessage}
+              </>
+            )}
+          </div>
+          <div className="initialise-story-prompt-error">
+            { guessResponse && (
+              <>
+              {guessResponse}
               </>
             )}
           </div>
