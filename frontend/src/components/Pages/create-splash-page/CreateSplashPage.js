@@ -4,6 +4,8 @@ import InitialiseStoryForm from "../../CreateSplashPageParts/initialise-story-fo
 import { selectAllWarnings, resetWarnings } from "../../app/systemInfoSlice";
 import { useEffect, useState } from "react";
 
+import { Tooltip } from 'react-tooltip'
+
 import { useDispatch, useSelector } from "react-redux";
 
 import egg from '../../../img/egg.png'
@@ -19,7 +21,8 @@ const CreateSplashPage = (props) => {
         <InitialiseStoryForm/>
       </div>
       <div className="splash-egg-container">
-        <a href="https://github.com/jonpillay/AI-tistic-Tales-JP-Remix/blob/main/frontend/src/hooks/useCheckEggInput.js" target="_blank" rel="noopener noreferrer">
+        <Tooltip id="splash-egg-tooltip" />
+        <a href="https://github.com/jonpillay/AI-tistic-Tales-JP-Remix/blob/main/frontend/src/hooks/useCheckEggInput.js" target="_blank" rel="noopener noreferrer" data-tooltip-id="splash-egg-tooltip" data-tooltip-content="6-20">
           <img className="splash-egg" src={egg}/> 
         </a>
       </div>
