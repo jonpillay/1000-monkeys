@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import egg from '../../../img/egg.png'
+
+
 const CreateSplashPage = (props) => {
 
   return (
@@ -13,7 +16,12 @@ const CreateSplashPage = (props) => {
     <div className="splash-container">
       <div className="splash-grid">
         <CreateSplashIntro/>
-        <InitialiseStoryForm/>          
+        <InitialiseStoryForm/>
+      </div>
+      <div className="splash-egg-container">
+        <a href="https://github.com/jonpillay/AI-tistic-Tales-JP-Remix/blob/main/frontend/src/hooks/useCheckEggInput.js" target="_blank" rel="noopener noreferrer">
+          <img className="splash-egg" src={egg}/> 
+        </a>
       </div>
     </div>
     </>
