@@ -14,7 +14,7 @@ const requireInviteMatch = async (req, res, next) => {
   const token = authorization.split(' ')[1]
 
   try {
-    const {token_email, invite_code } = JWT.verify(token, process.env.JWT_SIGNATURE)
+    const {token_email, invite_code } = JWT.verify(token, process.env.JWT_SECRETKEY)
 
     if (email != token_email) {
       return res.status(401).json({ error: "Signup Email must match invite email" })

@@ -12,7 +12,7 @@ const requireAdminAuth = async (req, res, next) => {
   const token = authorization.split(' ')[1]
 
   try {
-    const {_id, isSuper} = JWT.verify(token, process.env.JWT_SIGNATURE)
+    const {_id, isSuper} = JWT.verify(token, process.env.JWT_SECRETKEY)
 
     req.user = await User.findOne({ _id }).select('_id credits')
     

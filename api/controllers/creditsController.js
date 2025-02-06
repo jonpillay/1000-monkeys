@@ -6,7 +6,7 @@ const creditController = {
 
     try {
 
-      const {token_id, token_amount} = jwt.verify(token, process.env.JWT_SIGNATURE)
+      const {token_id, token_amount} = jwt.verify(token, process.env.JWT_SECRETKEY)
 
 
       if (token_id != _id || token_amount != amount) {

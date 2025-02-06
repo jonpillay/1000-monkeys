@@ -19,6 +19,7 @@
     "react-select": "^5.7.3",
     "react-tooltip": "^5.28.0",
     "redux-persist": "^6.0.0",
+    "use-sound": "^4.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -52,7 +53,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@cypress/react": "^7.0.3",
     "cypress": "^12.13.0",
     "eslint-plugin-cypress": "^2.13.3"
   }

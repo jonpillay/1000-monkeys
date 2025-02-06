@@ -2,11 +2,11 @@ const User = require('../database/models/userModel')
 const jwt = require('jsonwebtoken')
 
 const genActivationJWT = (token_email, invite_code) => {
-  return jwt.sign({token_email, invite_code}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
+  return jwt.sign({token_email, invite_code}, process.env.JWT_SECRETKEY, {expiresIn: '10m'})
 }
 
 const genLoginJWT = (_id, isSuper) => {
-  return jwt.sign({_id, isSuper}, process.env.JWT_SIGNATURE, {expiresIn: '1d'})
+  return jwt.sign({_id, isSuper}, process.env.JWT_SECRETKEY, {expiresIn: '1d'})
 }
 
 const UserController = {

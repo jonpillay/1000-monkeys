@@ -16,7 +16,7 @@ const creditController = require('./creditsController')
 const jwt = require('jsonwebtoken')
 
 const genCreditJWT = (token_id, token_amount) => {
-  return jwt.sign({token_id, token_amount}, process.env.JWT_SIGNATURE, {expiresIn: '10m'})
+  return jwt.sign({token_id, token_amount}, process.env.JWT_SECRETKEY, {expiresIn: '10m'})
 }
 
 const StoryController = {

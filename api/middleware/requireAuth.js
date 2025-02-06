@@ -12,7 +12,7 @@ const requireAuth = async (req, res, next) => {
   const token = authorization.split(' ')[1]
 
   try {
-    const {_id} = JWT.verify(token, process.env.JWT_SIGNATURE)
+    const {_id} = JWT.verify(token, process.env.JWT_SECRETKEY)
 
     req.user = await User.findOne({ _id }).select('_id credits')
 
