@@ -24,7 +24,6 @@ const WarningSplash = (props) => {
 
   const warnedState = props.warnedState
   const setWaggingFinger = props.setWaggingFinger
-  console.log(warnedState)
 
   const eggIntro = warnedState == "EASTEREGGACTIVATED" ? "You Found the Easter Egg!" : "You Were Warned!"
 
@@ -107,7 +106,7 @@ const WarningSplash = (props) => {
         </div>
       </div>
       :
-      <WarningExitSpiel/>
+      <WarningExitSpiel warnedState={warnedState}/>
       }    
     </>
       :

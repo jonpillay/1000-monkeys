@@ -54,7 +54,6 @@ const InitialiseStoryForm = (props) => {
     } else {
 
       try {
-        console.log("we are here")
         initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
         localStorage.setItem('firstChapter', 'true')
       } catch(error) {
