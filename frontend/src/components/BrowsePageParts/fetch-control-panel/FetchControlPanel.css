@@ -1,11 +1,12 @@
 .filter-nav-container {
+  z-index: 0;
   transition: 0.3s;
   display: grid;
   grid-template-columns: 60% 40%;
 }
 
 .filter-nav-container.active {
-  z-index: 0;
+  z-index: 1;
   position: sticky;
   top: 20px;
   opacity: 30%;
