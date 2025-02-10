@@ -39,7 +39,8 @@
 }
 
 .rating-container {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin-top: 0.1rem;
+  font-family: 'special-elite';
   border: none;
 }
 
