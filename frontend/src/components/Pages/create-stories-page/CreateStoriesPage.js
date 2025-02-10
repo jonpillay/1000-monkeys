@@ -158,7 +158,7 @@ const CreateStoriesPage = (props) => {
       if (localStorage.getItem('firstChapter')) {
         genFirstChapter()
       }
-    }, [loading])
+    })
 
   return (
     <>

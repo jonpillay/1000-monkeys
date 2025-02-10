@@ -47,11 +47,11 @@ export const useCreateStory = () => {
 
   const AIGenCall = async () => {
 
+    loadingDispatch({type: 'LOADING'})
+
     const localGPTPromptHistory = JSON.parse(localStorage.getItem('localGPTPromptHistory')) || []
 
     await notFirstChapter()
-
-    loadingDispatch({type: 'LOADING'})
 
     try {
       const userChoicesJSON = { 

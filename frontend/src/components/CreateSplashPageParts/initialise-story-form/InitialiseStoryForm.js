@@ -69,22 +69,21 @@ const InitialiseStoryForm = (props) => {
 
     const prompt = promptRef.current.value
 
-    const promptLength = prompt.split(" ").length
+    const promptLength = prompt.split("").length
 
     console.log(promptLength)
 
     if (promptLength > 125) {
       setError("Max Prompt Length Exceeded")
       handleUserWarning()
+      return
     } else {
 
       const eggTivated = checkEggInput(prompt)
 
       if (eggTivated == true) {
         return
-      } else if (eggTivated == false) {
-        return
-      }
+      } 
 
       const cleanCheck = await sanitiseInput(prompt)
 
