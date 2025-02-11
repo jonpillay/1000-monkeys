@@ -86,8 +86,6 @@ const InitialiseStoryForm = (props) => {
       } 
 
       const cleanCheck = await sanitiseInput(prompt)
-
-      console.log(cleanCheck)
   
       if (cleanCheck == true) {
   
@@ -98,8 +96,9 @@ const InitialiseStoryForm = (props) => {
         navigate('/create')
   
       } else if (cleanCheck == false) {
-  
+
         setError("Please Check Our Community Standards")
+        handleUserWarning()
         setTimeout(() => {
           setError("")
         }, 1500)

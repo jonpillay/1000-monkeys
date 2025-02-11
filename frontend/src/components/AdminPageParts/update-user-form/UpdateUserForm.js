@@ -6,7 +6,6 @@ import Select from 'react-select';
 const UpdateUserForm = () => {
   const email = useRef()
   const invite_code = useRef()
-  const is_super = useRef()
   const { login, isLoading, error } = useLogin()
  
   const handleSubmit = async (e) => {

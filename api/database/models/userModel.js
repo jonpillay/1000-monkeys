@@ -73,7 +73,7 @@ userSchema.statics.signup = async function (email, password) {
   return user
 }
 
-userSchema.statics.newUser = async function (email, invite_code) {
+userSchema.statics.newUser = async function (email, invite_code, credits_issued) {
   if (!email || !invite_code) {
     throw Error("Please enter email and invite-code")
   }
@@ -90,7 +90,7 @@ userSchema.statics.newUser = async function (email, invite_code) {
   const salt = await bcrypt.genSalt()
   const inviteHash = await bcrypt.hash(invite_code, salt)
 
-  await this.create({ email: email, invite_code: inviteHash, credits: 50 })
+  await this.create({ email: email, invite_code: inviteHash, credits: credits_issued })
 }
 
 userSchema.statics.activate = async function (email, invite_code) {

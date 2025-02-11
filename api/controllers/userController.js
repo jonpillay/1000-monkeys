@@ -42,10 +42,10 @@ const UserController = {
   },
   CreateUser: async (req, res) => {
 
-    const {email, invite_code} = req.body
+    const {email, invite_code, credits_issued} = req.body
 
     try {
-      const user = await User.newUser(email, invite_code)
+      const user = await User.newUser(email, invite_code, credits_issued)
 
       res.status(200).json({message: "user created"})
     } catch (error) {

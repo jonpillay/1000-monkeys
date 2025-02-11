@@ -7,7 +7,7 @@ export const useNewUser = () => {
   const [isLoading, setIsLoading] = useState(null)
   const {user}  = useAuthContext()
 
-  const newUser = async (email, invite_code) => {
+  const newUser = async (email, invite_code, credits_issued=50) => {
     setIsLoading(true)
     setError(null)
 
@@ -18,7 +18,8 @@ export const useNewUser = () => {
 
     const reqBody = {
       email: email,
-      invite_code: invite_code
+      invite_code: invite_code,
+      credits_issued: credits_issued
     }
 
     const response = await fetch('./user/newuser', {
