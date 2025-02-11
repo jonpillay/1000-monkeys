@@ -17,9 +17,8 @@ export const useLogout = () => {
 
   const reduxDispatch = useDispatch()
 
-  const clearLocalLogout = () => {
+  const clearLocalLogout = async () => {
     localStorage.removeItem('user')
-    localStorage.removeItem('credits')
     localStorage.removeItem('credits')
   }
 
