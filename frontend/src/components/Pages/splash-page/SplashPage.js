@@ -49,8 +49,13 @@ const SplashContainer = (props) => {
   useEffect(() => {
 
     if (location.state?.warnedState) {
-      setWaggingFinger(true)
-      setWarningState(location.state?.warnedState)
+      if (location.state?.warnedState == "TOKENEXPIRELOGOUT") {
+        alert("Token Expired. You Have been Logged out. Please login.")
+      } else {
+        setWaggingFinger(true)
+        setWarningState(location.state?.warnedState)
+      }
+
       }
     }, [])
 

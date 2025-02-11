@@ -24,7 +24,7 @@ export const CreditsContextProvider = ({ children }) => {
   
   useEffect(() => {
     const credits = localStorage.getItem('credits')
-    if (credits) {
+    if (credits && authUser) {
       creditDispatch({ type: 'UPDATE', payload: credits })
     } 
   }, [])

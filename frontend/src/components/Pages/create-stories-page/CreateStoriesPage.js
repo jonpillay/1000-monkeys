@@ -17,6 +17,8 @@ import SysInfoPanel from '../../SharedStoryBookParts/sys-info-panel/SysInfoPanel
 import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../../hooks/useCreateStory'
+import { useLogout } from '../../../hooks/useLogout.js';
+
 import { useEffect, useRef } from 'react';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
@@ -24,13 +26,16 @@ import { resetStoryBookSlice } from "../../CreateStoryPageParts/story-book-creat
 import { resetSysInfo, resetStorySysInfo } from "./storyBookSysInfoSlice";
 
 import { useStoryContext } from "../../../hooks/useStoryContext";
+import { useNavigate } from 'react-router';
 
 const CreateStoriesPage = (props) => {
-  const {user} = useAuthContext
+  const {user} = useAuthContext()
   const { loading } = useLoadingContext()
 
   const reduxDispatch = useDispatch()
   const { dispatch } = useStoryContext()
+
+  const { logout } = useLogout()
 
   const { 
     AIGenCall,
@@ -78,9 +83,7 @@ const CreateStoriesPage = (props) => {
     userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
   
     const combinedPrompts = []
-  
-    console.log(userPromptHistory)
-    
+      
     if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
       userPromptHistoryList.forEach(prompt => {
         const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
@@ -159,6 +162,19 @@ const CreateStoriesPage = (props) => {
         genFirstChapter()
       }
     })
+
+    useEffect(() => {
+      
+      const localUser = localStorage.getItem('user')
+
+      if (!localUser) {
+
+        logout()
+
+        alert("Your token has expired. Please Login Again")
+        
+      }
+    }, [user])
 
   return (
     <>

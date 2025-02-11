@@ -32,9 +32,11 @@ export const AuthContextProvider = ({ children }) => {
         dispatch({type: 'LOGOUT'})
         localStorage.removeItem('user')
         localStorage.removeItem('credits')
-      } else {
-        console.log("No Boop")
       }
+    } else {
+      dispatch({type: 'LOGOUT'})
+      localStorage.removeItem('user')
+      localStorage.removeItem('credits')
     }
   }, [])
 
