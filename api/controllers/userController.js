@@ -27,11 +27,11 @@ const UserController = {
     }
   },
   SignUpUser: async (req, res) => {
-    const {email, password} = req.body
+    const {email, password, username} = req.body
     const authEmail = req.user
 
     try {
-      const user = await User.signup(email, password)
+      const user = await User.signup(email, password, username)
 
       const JWT = genLoginJWT(user._id, user.isSuper)
 

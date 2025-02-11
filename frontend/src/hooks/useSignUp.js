@@ -11,7 +11,7 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
 
-  const signup = async (email, password) => {
+  const signup = async (email, password, username) => {
     setIsLoading(true)
     setError(null)
 
@@ -23,7 +23,7 @@ export const useSignup = () => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token.token}`
       },
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({email, password, username})
     })
 
     const JSONres = await response.json()

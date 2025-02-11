@@ -40,7 +40,7 @@ const userSchema = new Schema({
 
 // static methods
 
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (email, password, username) {
 
   if (!email || !password) {
     throw Error("Must have email and password")
@@ -57,6 +57,12 @@ userSchema.statics.signup = async function (email, password) {
 
   if (!emailCheck) {
     throw Error("Email not found.")
+  }
+
+  const usernameCheck = await this.findOne({username})
+
+  if (usernameCheck) {
+    throw Error("Username in use")
   }
 
   const salt = await bcrypt.genSalt()

@@ -5,30 +5,34 @@ import './SignupForm.css'
 import Counter from "../../AdminPageParts/counter/Counter.js"
 
 const SignupForm = () => {
-  const email = useRef()
-  const password = useRef()
+  const signupEmail = useRef()
+  const signupPassword = useRef()
+  const username = useRef()
   const { signup, error, isLoading } = useSignup()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await signup(email.current.value, password.current.value)
+    await signup(signupEmail.current.value, signupPassword.current.value, username.current.value)
 
   }
 
   return (
     <>
       <div className="signup-form-container">
-        <form className="signup-form" onSubmit={handleSubmit}>
+        <form className="signup-form" onSubmit={handleSubmit} autoComplete="off">
           <div className="signup-title-container">
             <div className="signup-title">Adventurer's Sign Up</div>
           </div>
-          <div className="input-container">
+          <div className="signup-input-container">
             <div>
-              <input type="email" className="user-input-box" ref={email} placeholder="email..."/> 
+              <input type="email" name="signup-email" className="signup-input-box" ref={signupEmail} placeholder="email..."/> 
             </div>
             <div>
-              <input type="password" className="user-input-box" ref={password} placeholder="password..."/> 
+              <input type="password" name="signup-password" className="signup-input-box" ref={signupPassword} autocomplete="new-password"/> 
+            </div>
+            <div>
+              <input type="text" name="signup-username" className="signup-input-box" ref={username} placeholder="username..."/> 
             </div>
           </div>
           <div className="signup-submit-container">
