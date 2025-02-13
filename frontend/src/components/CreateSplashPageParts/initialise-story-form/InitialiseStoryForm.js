@@ -6,6 +6,7 @@ import "./InitialiseStoryForm.css";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
+import { useCheckWordFormatting } from "../../../hooks/useCheckWordFormatting";
 import { useMonitorUserWarnings } from "../../../hooks/useMonitorUserWarnings";
 import { useCheckEggInput } from "../../../hooks/useCheckEggInput";
 
@@ -26,6 +27,7 @@ const InitialiseStoryForm = (props) => {
   const [error, setError] = useState(location.state?.error)
 
   const { sanitiseInput } = useSanitiseInput()
+  const { checkWordFormatting } = useCheckWordFormatting()
   const { checkEggInput, guessResponse, setGuessResponse } = useCheckEggInput()
 
   const { initialiseStoryHook } = useInitialiseStory()
@@ -69,6 +71,8 @@ const InitialiseStoryForm = (props) => {
 
     const prompt = promptRef.current.value
 
+    // needs to be slightly rewritten to remove whitespace and count the characters then.
+    // At the moment will penalise inputs that contain lots of white space (shorter words).
     const promptLength = prompt.split("").length
 
     console.log(promptLength)
@@ -83,12 +87,24 @@ const InitialiseStoryForm = (props) => {
 
       if (eggTivated == true) {
         return
-      } 
+      }
+
+      const wordFormattingCheck = checkWordFormatting(prompt)
+
+      if (wordFormattingCheck == false) {
+        setError("Prompt Input Cannot Contain Wild Card Characters")
+        handleUserWarning()
+        setTimeout(() => {
+          setError("")
+        }, 1500)
+        return
+      }
 
       const cleanCheck = await sanitiseInput(prompt)
   
       if (cleanCheck == true) {
   
+        return
         e.preventDefault();
   
         await initialiseStory()
@@ -102,6 +118,7 @@ const InitialiseStoryForm = (props) => {
         setTimeout(() => {
           setError("")
         }, 1500)
+        return
       } else {
         setError(cleanCheck)
       }

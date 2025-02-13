@@ -18,7 +18,7 @@ const checkWordFormatting = (inputCheck) => {
 
   for (let i = 0; i < inputWords.length; i++) {
 
-    const checkWord = ""
+    let checkWord = ""
 
     // trim any extra whitespace left over from input (double spacebar tap)
     const inputWordTrim = inputWords[i].toLowerCase().trim()

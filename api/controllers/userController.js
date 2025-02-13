@@ -6,7 +6,7 @@ const genActivationJWT = (token_email, invite_code) => {
 }
 
 const genLoginJWT = (_id, isSuper) => {
-  return jwt.sign({_id, isSuper}, process.env.JWT_SECRETKEY, {expiresIn: '20s'})
+  return jwt.sign({_id, isSuper}, process.env.JWT_SECRETKEY, {expiresIn: '1d'})
 }
 
 const UserController = {
