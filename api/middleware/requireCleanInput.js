@@ -28,6 +28,8 @@ const requireCleanInput = async (req, res, next) => {
     })
   }
 
+  // add function here to check for formatting for words (if badwords are being disguised 'f**k'...)
+
   const badWordList = await fetchBadWordsList()
 
   const cleanCheck = sanitiseInput(checkContent, badWordList)
