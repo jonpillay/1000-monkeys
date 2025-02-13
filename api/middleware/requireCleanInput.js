@@ -1,5 +1,6 @@
 const fetchBadWordsList = require('../sanitiseFuncts/badWordListFetch')
 const sanitiseInput = require('../sanitiseFuncts/sanitiseInput')
+const checkWordFormatting = require('../sanitiseFuncts/checkWordFormatting')
 const JWT = require('jsonwebtoken')
 const User = require('../database/models/userModel')
 
@@ -28,7 +29,15 @@ const requireCleanInput = async (req, res, next) => {
     })
   }
 
-  // add function here to check for formatting for words (if badwords are being disguised 'f**k'...)
+  const wordFormattingCheck = checkWordFormatting(checkContent)
+
+  if (wordFormattingCheck == false) {
+    User.watch(_id)
+    return res.status(406).json({
+      error: 'WORDFORMATTINGPROMPTERROR',
+      message: 'Malicious Request Detect. Your Authorisation has been Revoked. Please Contact Admin'
+    })
+  }
 
   const badWordList = await fetchBadWordsList()
 

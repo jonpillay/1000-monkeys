@@ -82,3 +82,5 @@ const checkWordFormatting = (inputCheck) => {
   return true
 
 }
+
+module.exports = checkWordFormatting
