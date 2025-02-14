@@ -58,6 +58,7 @@ export const useMonitorUserWarnings = () => {
         })
         break
     }
+    
   }, [warnings])
 
   const handleUserWarning = () => {
@@ -66,6 +67,6 @@ export const useMonitorUserWarnings = () => {
 
   }
 
-  return { handleUserWarning, userWarningMessage }
+  return { handleUserWarning, userWarningMessage, setUserWarningMessage }
 
 }

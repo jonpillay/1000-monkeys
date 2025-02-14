@@ -31,15 +31,20 @@ const InitialiseStoryForm = (props) => {
   const { checkEggInput, guessResponse, setGuessResponse } = useCheckEggInput()
 
   const { initialiseStoryHook } = useInitialiseStory()
-  const { handleUserWarning, userWarningMessage } = useMonitorUserWarnings()
+  const { handleUserWarning, userWarningMessage, setUserWarningMessage } = useMonitorUserWarnings()
 
   useEffect(() => {
+
+    if (!error) {
+      setUserWarningMessage("")
+    }
 
     let timeoutId;
 
     timeoutId = setTimeout(() => {
         setError("");
         setGuessResponse("")
+        setUserWarningMessage("")
       }, 2000);
 
     return () => {
@@ -104,7 +109,6 @@ const InitialiseStoryForm = (props) => {
   
       if (cleanCheck == true) {
   
-        return
         e.preventDefault();
   
         await initialiseStory()
