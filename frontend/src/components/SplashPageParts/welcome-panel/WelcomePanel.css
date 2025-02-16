@@ -1,8 +1,12 @@
 .welcome-panel-container {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-panel-grid {
   display: grid;
-  grid-template-rows: 12% 88%;
-  padding-right: 9%;
-  margin-top: 2%;
+  grid-template-rows: 15% 85%;
 }
 
 .welcome-title-container {
@@ -12,9 +16,15 @@
   text-decoration: underline;
 }
 
+.welcome-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .welcome-text {
   text-align: center;
-  margin-top: -2%;
+  margin-top: -1%;
   text-indent: 30px;
   font-family: 'merriweather';
   font-size: 90%;

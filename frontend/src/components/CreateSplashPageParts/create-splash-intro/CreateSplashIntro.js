@@ -1,19 +1,19 @@
 import './CreateSplashIntro.css'
 
+const paraOne = "You’re here! The start of your creation journey. This is where you set the foundations of your story - the building blocks that make it yours and the starting point for your adventure."
+const paraTwo = "You’re going to be asked to choose the protagonist of your story, the hero (or maybe the villain). You’re going to choose the Genre that your tale will take on. The flavour of the storytelling. Will it a Western adventure, a Cyberpunk mystery, or a magical fairytale? It’s up to you! Next choose the Art Style - how do you want your wonderful tale to be brought to life in pictures - do you want your story to pop out of the page with an anime pop, or do you want to get more experimental with the mind of Frida Kahlo?"
+const paraThree = "And finally we come to the real spice of the process, where you let your neurons run free and your creative juices flow… your prompt, to put it simply - what you want to happen in your story. 1000 Monkeys AI Engine is designed to take any prompt and turn it into an adventurous tale. Prompts can be adrenaline fueled nail biting foray into surfing the solar winds of a distant star, to the more mundane tasks that make up everyday life - like buying a bag of apples. 1000M’s AI Engine is designed to turn them into an exciting fable."
+
 const WelcomePanel = () => {
   return (
     <div className="create-splash-intro-container">
       <div className="create-splash-intro-title-container">
         Let's Start The Adventure
       </div>
-      <div className='welcome-text-container'>
-        <div className='create-splash-intro-text'>
-          Sem. Pellentesque Quisque ac nec leo taciti, metus tellus justo. Interdum nam mus dis mauris sodales. Ridiculus dapibus ornare sociis sociis. Pulvinar sed condimentum nostra etiam purus dolor nisi, ante. Urna libero diam dui. Rutrum, sodales faucibus Velit eget aptent nec rutrum at, adipiscing augue. Ultricies aenean, porttitor bibendum ante. Cubilia dolor tincidunt iaculis libero arcu etiam eu volutpat Enim penatibus ultrices ligula neque. Diam adipiscing pulvinar sapien posuere.
-          <p>
-          Pede etiam nullam porta conubia. At ridiculus platea penatibus. Elit. Accumsan dis lacinia est commodo in. Cras magna quisque pellentesque. Dictum venenatis turpis ultrices ullamcorper imperdiet neque aptent. Ligula. Turpis luctus hymenaeos auctor porttitor accumsan tellus ornare in tellus mi sodales sapien massa pede tellus neque convallis ornare eu platea aliquam tortor. Suspendisse praesent iaculis mollis, amet.
-          Pede etiam nullam porta conubia. At ridiculus platea penatibus. Elit. Accumsan dis lacinia est commodo in. Cras magna quisque pellentesque. Dictum venenatis turpis ultrices ullamcorper imperdiet neque aptent. Ligula. Turpis luctus hymenaeos auctor porttitor accumsan tellus ornare in tellus mi sodales sapien massa pede tellus neque convallis ornare eu platea aliquam tortor. Suspendisse praesent iaculis mollis, amet.
-          </p>
-        </div>
+      <div className='create-splash-intro-text'>
+        <p>{paraOne}</p>
+        <p>{paraTwo}</p>
+        <p>{paraThree}</p>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 .header-container {
   display: grid;
   position: unset;
-  /* top: unset; */
+  height: 9vh;
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
   transition: top 0.5s;
@@ -30,7 +30,7 @@
 }
 
 .home-icon {
-  height: 80px;
+  height: 2.85rem;
   /* border-radius: 5px; */
 }
 

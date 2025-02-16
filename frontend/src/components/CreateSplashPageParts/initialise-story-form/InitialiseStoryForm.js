@@ -10,6 +10,10 @@ import { useCheckWordFormatting } from "../../../hooks/useCheckWordFormatting";
 import { useMonitorUserWarnings } from "../../../hooks/useMonitorUserWarnings";
 import { useCheckEggInput } from "../../../hooks/useCheckEggInput";
 
+import { Tooltip } from 'react-tooltip'
+
+import egg from '../../../img/egg.png'
+
 const dropdownSelections = require('./unifiedSelectors.json')
 
 const InitialiseStoryForm = (props) => {
@@ -134,6 +138,8 @@ const InitialiseStoryForm = (props) => {
   };
 
   return (
+    <>
+    <div className="initialise-story-form-flex">
       <div className="formcontainer-container">
         <h1 className="formcontainer-title">
           Let's start at the beginning
@@ -155,34 +161,45 @@ const InitialiseStoryForm = (props) => {
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
           <div className="initialise-user-prompt-input-container">
-            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={126} placeholder="Your first chapter..."/>
+            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={126} placeholder="The first story beat..."/>
           </div>
           <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
             Start Your Adventure!
           </button>
-          <div className="initialise-story-prompt-error">
-            { error && (
-              <>
-              {error}
-              </>
-            )}
+          <div className="initialise-story-prompt-error-container">
+            <div className="initialise-story-prompt-error">
+              { error && (
+                <>
+                {error}
+                </>
+              )}
+            </div>
+            <div className="initialise-story-prompt-error">
+              { userWarningMessage && (
+                <>
+                {userWarningMessage}
+                </>
+              )}
+            </div>
+            <div className="initialise-story-prompt-error">
+              { guessResponse && (
+                <>
+                {guessResponse}
+                </>
+              )}
+            </div>
           </div>
-          <div className="initialise-story-prompt-error">
-            { userWarningMessage && (
-              <>
-              {userWarningMessage}
-              </>
-            )}
-          </div>
-          <div className="initialise-story-prompt-error">
-            { guessResponse && (
-              <>
-              {guessResponse}
-              </>
-            )}
-          </div>
+          
         </div>
       </div>
+      <div className="splash-egg-container">
+        <Tooltip id="splash-egg-tooltip" />
+        <a href="https://github.com/jonpillay/AI-tistic-Tales-JP-Remix/blob/main/frontend/src/hooks/useCheckEggInput.js" target="_blank" rel="noopener noreferrer" data-tooltip-id="splash-egg-tooltip" data-tooltip-content="6-20">
+          <img className="splash-egg" src={egg}/> 
+        </a>
+      </div>
+    </div>
+    </>
   );
 };
 

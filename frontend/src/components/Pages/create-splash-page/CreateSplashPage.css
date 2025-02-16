@@ -1,19 +1,13 @@
-.splash-container {
+.create-splash-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }
 
-.splash-egg-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin: 0.5rem;
-}
-
-.splash-egg {
-  height: 4rem;
-}
-
-.splash-egg:hover {
-  cursor: pointer;
+.create-splash-grid {
+  width: 95%;
+  display: grid;
+  grid-template-columns: 60% 40%;
 }

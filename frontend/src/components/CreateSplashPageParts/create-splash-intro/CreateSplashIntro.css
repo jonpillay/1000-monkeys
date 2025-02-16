@@ -1,22 +1,21 @@
 .create-splash-intro-container {
-  display: grid;
-  grid-template-rows: 12% 88%;
-  padding-right: 9%;
-  margin-top: 2%;
+  /* margin-right: 0.6rem; */
+  display: flex;
+  flex-direction: column;
 }
 
 .create-splash-intro-title-container {
   font-family: 'special-elite';
-  font-size: 130%;
+  font-size: 1.5rem;
   text-align: center;
   text-decoration: underline;
+  /* margin-bottom: 0.5rem; */
 }
 
 .create-splash-intro-text {
   text-align: center;
-  margin-top: -2%;
-  text-indent: 30px;
+  /* margin-top: -2%; */
+  /* text-indent: 30px; */
   font-family: 'merriweather';
-  font-size: 90%;
-  width: 106%;
+  font-size: 0.9rem;
 }

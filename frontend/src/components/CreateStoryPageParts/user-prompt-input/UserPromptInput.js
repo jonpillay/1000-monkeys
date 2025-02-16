@@ -78,7 +78,7 @@ const UserPromptInput = (props) => {
             </div>
             <div className="user-prompt-text-input-container">
               <div>
-                <input type="text" className="user-prompt-input-box" maxLength={125} ref={prompt} placeholder="Imagine..."/>
+                <input type="text" className="user-prompt-input-box" maxLength={125} ref={prompt} placeholder="Prompt the next chapter..."/>
               </div>
               <>
               {! error ? 
