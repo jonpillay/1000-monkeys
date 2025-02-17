@@ -64,7 +64,7 @@ function RatingPanel(props) {
         <div className="rating-container">
           { (ratings.length > 0 ?
           <>
-            <div className='rating-span'>{rating}<span><img className='rating-star' src={RatingStar}/></span><span style={{fontSize:18}}>({ratings.length} Ratings)</span></div>
+            <div className='rating-span'>{rating}<span><img className='rating-star' src={RatingStar}/></span><span style={{fontSize:18}}>({ratings.length})</span></div>
           </>
             :
             <div className='needs-rating-span'>Awaiting Rating!</div>

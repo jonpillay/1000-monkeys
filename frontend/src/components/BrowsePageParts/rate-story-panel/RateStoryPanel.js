@@ -43,7 +43,7 @@ function RateStoryPanel(props) {
           })}
           animateToNumber={currentRate}
           fontStyle={{
-            fontSize: 35,
+            fontSize: "0.9rem",
             color: "black",
             fontFamily: "Impact",
           }}

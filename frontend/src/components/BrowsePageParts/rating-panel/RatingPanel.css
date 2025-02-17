@@ -1,7 +1,7 @@
 .rating-panel-container {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   margin-right: 10px;
-  border: dotted;
   /* margin-top: 2px; */
   background-color: #fff;
   opacity: 98%;
@@ -16,7 +16,6 @@
   box-sizing: border-box;
   color: #41403e;
   cursor: pointer;
-  display: inline-block;
   font-family: Neucha, sans-serif;
   /* font-size: 0.5rem; */
   /* line-height: 1px; */
@@ -35,30 +34,28 @@
 
 .rating-panel-grid {
   display: grid;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 32% 65%;
 }
 
 .rating-container {
-  margin-top: 0.1rem;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 0.7rem;
+  /* margin-top: 0.1rem; */
   font-family: 'special-elite';
-  border: none;
 }
 
 .rating-span {
-  margin-top: -10px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
 }
 
 .needs-rating-span {
-  margin-top: -12px;
-  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.6rem;
   text-align: center;
-}
-
-.rating-control-container {
-  margin-top: 3px;
-  height: 1rem;
 }
 
 .rate-verb-container {
@@ -77,12 +74,12 @@
 }
 
 .rating-star {
-  padding-top: 10px;
+  /* padding-top: 10px; */
   height: 0.7rem;
 }
 
 .your-rating {
-  margin-top: 0.4rem;
-  font-size: 0.7rem;
+  margin-top: 1rem;
+  font-size: 0.6rem;
   text-align: center;
 }
