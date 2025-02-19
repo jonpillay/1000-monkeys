@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router"
 import { useState } from "react"
 
+import { useLoadingContext } from "./useLoadingContext"
+
 export const useCheckEggInput = () => {
+
+  const {loadingDispatch} = useLoadingContext()
 
   /*
 
@@ -31,6 +35,7 @@ export const useCheckEggInput = () => {
 
     if (splitPromptLowered.includes('guess=')) {
       if (splitPromptLowered.includes(process.env.REACT_APP_WHAT_GETS_WET_WHILST_DRYING)) {
+        loadingDispatch({type: 'LOADING'})
         navigate('/', {
           state: {error: "Egg Activated!", warnedState: "EASTEREGGACTIVATED"},
         })

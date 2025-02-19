@@ -45,12 +45,12 @@ const LogInForm = () => {
   }
 
   return (
-    <div className="form-container">
+    <div className="login-form-container">
       <form className="user-form" onSubmit={handleSubmit}>
         <div className="user-title-container">
           <div className="user-title">Adventurer's Log In</div>
         </div>
-        <div className="input-container">
+        <div className="login-input-container">
           <div>
             <input type="email" className="user-input-box" ref={email} placeholder="email..."/>
           </div>
@@ -59,7 +59,7 @@ const LogInForm = () => {
           </div>
         </div>
         <div className="user-submit-container">
-          <button disabled={isLoading} className="submit-button" id="user-submit-button" type="submit">LOGIN</button>
+          <button disabled={isLoading} className="login-form-button" type="submit">LOGIN</button>
         </div>
         {loginError && <div className="error">{loginError}</div>}
       </form>

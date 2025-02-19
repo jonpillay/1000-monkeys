@@ -17,6 +17,8 @@ import WarningExitSpiel from '../WarningExitSpiel/WarningExitSpiel';
 import { useDispatch } from 'react-redux';
 import { resetWarnings } from '../../app/systemInfoSlice';
 
+import { useLoadingContext } from '../../../hooks/useLoadingContext';
+
 const WarningSplash = (props) => {
 
   const navigate = useNavigate()
@@ -36,9 +38,11 @@ const WarningSplash = (props) => {
   const [ eggActivated, setEggActivated ] = useState(false)
 
   const [ exitSpiel, setExitSpiel ] = useState(false)
+  
+  const { loadingDispatch } = useLoadingContext()
 
   const startTimers = () => {
-
+    
     setCountdownTime(duration)
 
     setTimeout(() =>{
@@ -49,6 +53,7 @@ const WarningSplash = (props) => {
       reduxDispatch(resetWarnings())
       setWaggingFinger(false)
       // navigate(location, { state: null, replace: true })
+      loadingDispatch({type: 'LOADED'})
       navigate(location.pathname, { state: null, replace: true });
     }, duration+2000)
   }
@@ -80,7 +85,7 @@ const WarningSplash = (props) => {
       <div className="warning-splash-container">
         <div className="warning-splash-grid">
           <div className="warning-splash-text-container">
-             <div className="wagging-finger-container">
+            <div className="wagging-finger-container">
               <img src={magicWord} alt="" className='wagging-finger'/>
             </div>
             <div className="warning-splash-text">

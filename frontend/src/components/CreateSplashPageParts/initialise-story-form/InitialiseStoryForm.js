@@ -96,6 +96,8 @@ const InitialiseStoryForm = (props) => {
 
       if (eggTivated == true) {
         return
+      } else if (eggTivated == false) {
+        return
       }
 
       const wordFormattingCheck = checkWordFormatting(prompt)

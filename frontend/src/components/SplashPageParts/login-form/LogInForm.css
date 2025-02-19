@@ -1,11 +1,11 @@
-.form-container {
-  margin: auto;
+.login-form-container {
+  /* margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  height: auto;
+  height: fit-content;
   width: 100%;
+  background-color: red; */
 }
 
 .user-title-container {
@@ -18,18 +18,16 @@
 .user-title {
   font-family: 'special-elite';
   font-size: 140%;
-  margin-top: 5px;
 }
 
 .user-input-box {
   margin: auto;
-  padding-left: 5px;
   background-color: white;
   text-align: left;
   width: 100%;
   border-radius: 5px;
   font-family: 'merriweather';
-  height: 50px;
+  /* height: 50px; */
   font-size: 90%;
   background-size: 4px 3px;
   border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
@@ -54,9 +52,9 @@
 } */
 
 .user-form {
-  display: grid;
-  grid-template-rows: 20% 42% 33%;
-  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .input-container {
@@ -66,11 +64,34 @@
   margin: auto;
 }
 
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
 .user-submit-container {
   margin: auto;
 }
 
-#user-submit-button {
+.login-form-button {
+  background-color: white;
+  text-align: center;
   width: 100%;
-  margin: auto;
+  border-radius: 5px;
+  font-family: 'special-elite';
+  /* height: 50px; */
+  font-size: 3vh;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  transition: all 150ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
 }
