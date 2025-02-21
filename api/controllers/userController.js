@@ -1,6 +1,8 @@
 const User = require('../database/models/userModel')
 const jwt = require('jsonwebtoken')
 
+const {sendInviteEmail} = require('../clients/emailClient')
+
 const genActivationJWT = (token_email, invite_code) => {
   return jwt.sign({token_email, invite_code}, process.env.JWT_SECRETKEY, {expiresIn: '10m'})
 }
@@ -46,6 +48,14 @@ const UserController = {
 
     try {
       const user = await User.newUser(email, invite_code, credits_issued)
+
+      try {
+
+        sendInviteEmail(email)
+
+      } catch (error) {
+        console.log(error)
+      }
 
       res.status(200).json({message: "user created"})
     } catch (error) {
