@@ -17,7 +17,7 @@ export const CreditsReducer = (state, action) => {
 export const CreditsContextProvider = ({ children }) => {
 
   const [state, creditDispatch] = useReducer(CreditsReducer, {
-    credits: null
+    credits: localStorage.getItem('credits')
   })
 
   const { authUser } = useAuthContext();
