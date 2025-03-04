@@ -51,7 +51,7 @@ const UserController = {
 
       try {
 
-        sendInviteEmail(email)
+        sendInviteEmail(email, invite_code, "http://localhost:3000/activate")
 
       } catch (error) {
         console.log(error)
