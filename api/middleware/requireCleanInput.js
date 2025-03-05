@@ -13,6 +13,7 @@ const requireCleanInput = async (req, res, next) => {
   let checkContent = ""
 
   try {
+    console.log(GPTPromptHistory)
     checkContent = GPTPromptHistory[GPTPromptHistory.length-1].content
   } catch(error) {
     return res.status(400).json({

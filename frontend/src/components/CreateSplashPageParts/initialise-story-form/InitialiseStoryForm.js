@@ -57,7 +57,7 @@ const InitialiseStoryForm = (props) => {
   }, [error, guessResponse]);
 
 
-  const initialiseStory = async () => {
+  const initialiseStory = () => {
 
     if (user.credits < 10) {
       setError("Insufficient Credits. Contact Admin")
@@ -65,6 +65,7 @@ const InitialiseStoryForm = (props) => {
     } else {
 
       try {
+        console.log(promptRef.current.value)
         initialiseStoryHook(characterChoice, genreChoice, styleChoice, promptRef.current.value)
         localStorage.setItem('firstChapter', 'true')
       } catch(error) {

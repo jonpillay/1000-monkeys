@@ -34,7 +34,6 @@ const UserPromptInput = (props) => {
     const cleanCheck = await sanitiseInput(prompt.current.value)
 
     if (cleanCheck == true) {
-      return
       await userPromtNextChapter(prompt.current.value)
 
     } else {

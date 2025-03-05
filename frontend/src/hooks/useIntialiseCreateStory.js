@@ -27,5 +27,5 @@ export const useInitialiseStory = () => {
     reduxDispatch(initialiseStory(characterChoice, genreChoice, styleChoice, GPTPrompt))
   }
 
-  return { initialiseStoryHook }
+  return { initialiseStoryHook } 
 }
