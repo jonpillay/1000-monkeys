@@ -23,7 +23,7 @@ const LoginCreateContainer = () => {
         <div className="or-container">
           OR
         </div>
-        <div>
+        <div className='browse-button-container'>
           <BrowseNavButton/>
         </div>
       </div>

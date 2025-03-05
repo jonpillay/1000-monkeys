@@ -9,9 +9,12 @@
 }
 
 .or-container {
+  font-family: 'special-elite';
+  font-size: 1.3rem;
   margin: auto;
 }
 
-.browse-container {
+.browse-button-container {
+  padding: 0.8rem;
   margin: auto;
 }
