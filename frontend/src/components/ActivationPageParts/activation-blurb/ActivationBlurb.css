@@ -1,8 +1,8 @@
 .activation-blurb-container {
   display: grid;
   grid-template-rows: 12% 88%;
-  padding-right: 9%;
   margin-top: 2%;
+  max-width: 40rem;
 }
 
 .activation-title-container {
@@ -18,5 +18,5 @@
   text-indent: 30px;
   font-family: 'merriweather';
   font-size: 90%;
-  width: 106%;
+  /* width: 106%; */
 }

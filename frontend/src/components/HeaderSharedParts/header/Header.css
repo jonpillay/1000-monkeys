@@ -1,17 +1,17 @@
 .header-container {
   display: grid;
-  position: unset;
+  /* position: top; */
   height: 9vh;
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
-  transition: top 0.5s;
+  /* transition: top 0.5s; */
 }
 
 .header-container.scroll {
-  position: sticky;
-  top: 0;
+  /* position: sticky; */
+  /* top: 0;
   z-index: 99;
-  background-color: antiquewhite;
+  background-color: antiquewhite; */
   /* offset-position: 0% -100%; */
   /* background-color: antiquewhite; */
   /* transition: 0.5s; */

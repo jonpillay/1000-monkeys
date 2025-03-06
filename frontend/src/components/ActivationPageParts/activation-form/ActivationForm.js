@@ -14,12 +14,12 @@ const ActivationForm = ({activate, isLoading, error}) => {
   }
 
   return (
-    <div className="form-container">
+    <div className="activation-form-container">
       <form className="activation-form" onSubmit={handleSubmit}>
         <div className="activation-title-container">
           <div className="activation-title">Activate Your Account!</div>
         </div>
-        <div className="input-container">
+        <div className="activation-input-container">
           <div>
             <input type="email" className="activation-input-box" ref={activationEmail} placeholder="email..."/> 
           </div>

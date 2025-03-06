@@ -1,11 +1,11 @@
-.form-container {
+/* .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* This will center the form vertically */
+  height: 100vh;
   height: auto;
   width: 100%;
-}
+} */
 
 .activation-title-container {
   margin: auto;
@@ -16,7 +16,6 @@
 
 .activation-title {
   font-family: 'special-elite';
-  font-size: 140%;
   margin-top: 5px;
 }
 
@@ -58,10 +57,9 @@
   height: 280px;
 }
 
-.input-container {
+.activation-input-container {
   display: grid;
   grid-template-rows: 60% 35%;
-
   margin: auto;
 }
 
