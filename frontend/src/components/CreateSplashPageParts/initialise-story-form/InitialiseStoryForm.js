@@ -85,8 +85,6 @@ const InitialiseStoryForm = (props) => {
     // At the moment will penalise inputs that contain lots of white space (shorter words).
     const promptLength = prompt.split("").length
 
-    console.log(promptLength)
-
     if (promptLength > 125) {
       setError("Max Prompt Length Exceeded")
       handleUserWarning()
@@ -95,10 +93,7 @@ const InitialiseStoryForm = (props) => {
 
       const eggTivated = await checkEggInput(prompt)
 
-      console.log(eggTivated)
-
       if (eggTivated == true) {
-        console.log("BEEPY HEREY")
         navigate('/', {
           state: {error: "Egg Activated!", warnedState: "EASTEREGGACTIVATED"},
         })
@@ -107,8 +102,6 @@ const InitialiseStoryForm = (props) => {
         setGuessResponse("Incorrect Guess! Please Try Again.")
         return
       }
-
-      return
 
       const wordFormattingCheck = checkWordFormatting(prompt)
 

@@ -37,11 +37,7 @@ export const useCheckEggInput = () => {
 
     if (splitPromptLowered[0] == 'guess=') {
 
-      console.log("WE BE HERE THOUGH")
-
       const inputGuess = splitPromptLowered.slice(1).join(" ")
-
-      console.log(inputGuess)
 
       try {
 
@@ -72,17 +68,6 @@ export const useCheckEggInput = () => {
         console.log(error)
         return error
       }
-
-      // if (splitPromptLowered.includes(process.env.REACT_APP_WHAT_GETS_WET_WHILST_DRYING)) {
-      //   loadingDispatch({type: 'LOADING'})
-      //   navigate('/', {
-      //     state: {error: "Egg Activated!", warnedState: "EASTEREGGACTIVATED"},
-      //   })
-      //   return true
-      // } else {
-      //   setGuessResponse("Incorrect Guess! Please Try Again.")
-      //   return false
-      // }
     }
   }
 
