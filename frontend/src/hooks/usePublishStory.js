@@ -4,6 +4,8 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { setMongoID } from "../components/Pages/create-stories-page/storyBookSysInfoSlice"
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const usePublishStory = () => {
   
   const { user } = useAuthContext()
@@ -23,7 +25,7 @@ export const usePublishStory = () => {
     }
 
     try {
-      const response = await fetch('./save/publish-story', {
+      const response = await fetch(`${baseUrl}/save/publish-story`, {
         method: 'Post',
         headers: {
           'Content-Type': 'application/json',

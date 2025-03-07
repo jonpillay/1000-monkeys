@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
 
 export const useNewUser = () => {
   const [error, setError] = useState(null)
@@ -22,7 +23,7 @@ export const useNewUser = () => {
       credits_issued: credits_issued
     }
 
-    const response = await fetch('./user/newuser', {
+    const response = await fetch(`${baseUrl}/user/newuser`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

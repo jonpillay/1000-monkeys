@@ -6,6 +6,8 @@ import { useAuthContext } from "./useAuthContext";
 import { useDispatch } from "react-redux";
 import { setMongoID } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useSaveStory = () => {
   const { user } = useAuthContext()
 
@@ -31,7 +33,7 @@ export const useSaveStory = () => {
     }
 
     try {
-      const response = await fetch('./save/create-story', {
+      const response = await fetch(`${baseUrl}/save/create-story`, {
         method: 'Post',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +66,7 @@ export const useSaveStory = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./save/update-story', {
+    const response = await fetch(`${baseUrl}/save/update-story`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

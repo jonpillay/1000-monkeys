@@ -2,6 +2,8 @@ import { useState, useContext, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useTimer } from "./useTimer";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useActivate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
@@ -25,7 +27,7 @@ export const useActivate = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./user/activate', {
+    const response = await fetch(`${baseUrl}/user/activate`, {
       method: 'Post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({email, invite_code})

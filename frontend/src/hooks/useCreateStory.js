@@ -16,6 +16,8 @@ import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, s
 import { LoadingContext } from "../context/LoadingContext";
 import { clearReduxPersist } from "../redux-state/store";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useCreateStory = () => {
   const reduxDispatch = useDispatch() 
   const { loadingDispatch } = useContext(LoadingContext)
@@ -66,7 +68,7 @@ export const useCreateStory = () => {
         credits_needed: 3
       }
   
-      const response = await fetch("./story/create-chapter", {
+      const response = await fetch(`${baseUrl}/story/create-chapter`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -293,7 +295,7 @@ export const useCreateStory = () => {
         chapterText: chapterText
       }
   
-      fetch("/images", {
+      fetch(`${baseUrl}/images`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

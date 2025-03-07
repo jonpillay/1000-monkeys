@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
 
 export const useSaveStory = () => {
   const { user } = useAuthContext()
@@ -12,7 +13,7 @@ export const useSaveStory = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./save/update-story', {
+    const response = await fetch(`${baseUrl}/save/update-story`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

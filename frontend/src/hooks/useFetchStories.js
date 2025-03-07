@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useFetchStories = () => {
   
   const [error, setError] = useState(null)
@@ -11,7 +13,7 @@ export const useFetchStories = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./fetch-stories/genre', {
+    const response = await fetch(`${baseUrl}/fetch-stories/genre`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +38,7 @@ export const useFetchStories = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./fetch-stories/user', {
+    const response = await fetch(`${baseUrl}/fetch-stories/user`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

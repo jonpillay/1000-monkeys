@@ -1,3 +1,5 @@
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useSanitiseInput = () => {
 
   // const punctuationRegEx = /[!"£$%^&*()_\-=+[\]{};:'@#~,<.>?\\|]+/g;
@@ -12,7 +14,7 @@ export const useSanitiseInput = () => {
         input: formInput
       }
 
-      const response = await fetch("/check-api/sanitiseinput", {
+      const response = await fetch(`${baseUrl}/check-api/sanitiseinput`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

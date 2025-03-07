@@ -6,6 +6,8 @@ import { loadIntoCreate } from "../components/CreateStoryPageParts/story-book-cr
 import { useAuthContext } from "./useAuthContext";
 import { useLoadingContext } from "./useLoadingContext";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useLoadIntoCreate = () => {
   const { user } = useAuthContext()
   const {loadingDispatch} = useLoadingContext()
@@ -22,7 +24,7 @@ export const useLoadIntoCreate = () => {
     // Going to code this to fetch from the DB even if the StoryBook obj is already in local. This allows for the book to be fetched
     // even if all that is available to the frontend is the storyID. Futurproofing.
 
-    const response = await fetch('./fetch-stories/ID', {
+    const response = await fetch(`${baseUrl}/fetch-stories/ID`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

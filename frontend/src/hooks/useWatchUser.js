@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
 
 export const useWatchUser = () => {
   const [error, setError] = useState(null)
@@ -15,7 +16,7 @@ export const useWatchUser = () => {
 
     const reqBody = {}
 
-    const response = await fetch('./user/watch-user', {
+    const response = await fetch(`${baseUrl}/user/watch-user`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

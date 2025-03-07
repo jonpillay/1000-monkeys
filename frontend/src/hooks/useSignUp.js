@@ -3,6 +3,7 @@ import { useAuthContext } from "./useAuthContext";
 import { redirect } from "react-router";
 import { useNavigate } from "react-router-dom";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
 
 export const useSignup = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const useSignup = () => {
 
     const token = JSON.parse(localStorage.getItem('activateLocal'))
 
-    const response = await fetch('./user/signup', {
+    const response = await fetch(`${baseUrl}/user/signup`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',

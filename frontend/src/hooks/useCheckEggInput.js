@@ -3,6 +3,8 @@ import { useState } from "react"
 
 import { useLoadingContext } from "./useLoadingContext"
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useCheckEggInput = () => {
 
   const {loadingDispatch} = useLoadingContext()
@@ -45,7 +47,7 @@ export const useCheckEggInput = () => {
           eggguess: inputGuess
         }
   
-        const response = await fetch("/check-api/checkegg", {
+        const response = await fetch(`${baseUrl}/check-api/checkegg`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',

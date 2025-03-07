@@ -8,6 +8,8 @@ import { useNavigate } from "react-router";
 import { UseDispatch, useDispatch } from "react-redux";
 import { setUserToken } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
+const baseUrl = process.env.REACT_APP_API_URL || '';
+
 export const useLogin = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
@@ -23,7 +25,7 @@ export const useLogin = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('./user/login', {
+    const response = await fetch(`${baseUrl}/user/login`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
