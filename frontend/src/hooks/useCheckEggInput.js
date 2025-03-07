@@ -33,9 +33,15 @@ export const useCheckEggInput = () => {
 
     const splitPromptLowered = splitPrompt.map(word => word.toLowerCase())
 
+    console.log(splitPromptLowered[0])
+
     if (splitPromptLowered[0] == 'guess=') {
 
+      console.log("WE BE HERE THOUGH")
+
       const inputGuess = splitPromptLowered.slice(1).join(" ")
+
+      console.log(inputGuess)
 
       try {
 

@@ -37,9 +37,9 @@ const CheckAPIController = {
     const guess = req.body.eggguess
 
     if (process.env.EGG_SECRET.indexOf(guess) != -1) {
-      res.status(200).json({ decision: 0 })
-    } else {
       res.status(200).json({ decision: 1 })
+    } else {
+      res.status(200).json({ decision: 0 })
     }
 
   }
