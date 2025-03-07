@@ -96,8 +96,12 @@ const InitialiseStoryForm = (props) => {
       const eggTivated = checkEggInput(prompt)
 
       if (eggTivated == true) {
+        navigate('/', {
+          state: {error: "Egg Activated!", warnedState: "EASTEREGGACTIVATED"},
+        })
         return
       } else if (eggTivated == false) {
+        setGuessResponse("Incorrect Guess! Please Try Again.")
         return
       }
 

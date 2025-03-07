@@ -12,7 +12,6 @@ const genNegativePromptString = require('../promptGeneration/genNegativePromptSt
 
 const creditController = require('./creditsController')
 
-
 const jwt = require('jsonwebtoken')
 
 const genCreditJWT = (token_id, token_amount) => {

@@ -34,7 +34,7 @@ app.use("/user", UserRouter)
 app.use("/save", StoryPersistenceRouter)
 app.use("/fetch-stories", FetchStoriesRouter)
 
-app.use("/api", CheckAPIController)
+app.use("/check-api", CheckAPIController)
 
 // connect to db
 

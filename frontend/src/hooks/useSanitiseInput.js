@@ -12,7 +12,7 @@ export const useSanitiseInput = () => {
         input: formInput
       }
 
-      const response = await fetch("/api/checkinput", {
+      const response = await fetch("/check-api/sanitiseinput", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

@@ -7,16 +7,15 @@ const cache = new NodeCache({ stdTTL: 3600 });
 
 const CheckAPIController = {
 
-  CheckFormInput: async (req, res) => {
+  SanitiseFormInput: async (req, res) => {
     let badWordsList = await cache.get('badWordsList');
 
     if (!badWordsList) {
-      console.log("BOOPYYY HERE!")
       try {
         badWordsList = await fetchBadWordsList()
         cache.set("badWordsList", badWordsList)
       } catch (error) {
-        res.status(500).json({ error: error})
+        res.status(500).json({ error: "Bad Word List Fetch Error"})
       }
     }
   
@@ -31,6 +30,18 @@ const CheckAPIController = {
     } else {
       res.status(500).json( { error: "Sanitise API Not Working" })
     }
+  },
+
+  CheckEggInput: (req, res) => {
+
+    const guess = req.body.eggguess
+
+    if (process.env.EGG_SECRET.indexOf(guess) != -1) {
+      res.status(200).json({ decision: 0 })
+    } else {
+      res.status(200).json({ decision: 1 })
+    }
+
   }
 }
 
