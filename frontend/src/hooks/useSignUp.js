@@ -36,6 +36,7 @@ export const useSignup = () => {
 
     if (response.ok) {
       localStorage.removeItem('activateLocal')
+      localStorage.removeItem('activateEndtime')
       localStorage.setItem('user', JSON.stringify(JSONres))
 
       dispatch({type: 'LOGIN', payload: JSONres})

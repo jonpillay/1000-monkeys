@@ -54,7 +54,7 @@ export const useActivate = () => {
 
       setTimer(setSignupActive, endTime, 'activateLocal')
 
-      await localStorage.setItem('activateEndtime', endTime.toString())
+      localStorage.setItem('activateEndtime', endTime.toString())
 
     }
   }
