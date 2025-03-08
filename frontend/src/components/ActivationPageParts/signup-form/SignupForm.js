@@ -6,7 +6,7 @@ import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 
 import Counter from "../../AdminPageParts/counter/Counter.js"
 
-const SignupForm = () => {
+const SignupForm = async () => {
   const signupEmail = useRef()
   const signupPassword = useRef()
   const username = useRef()
@@ -19,7 +19,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const cleanCheck = sanitiseInput(username.current.value)
+    const cleanCheck = await sanitiseInput(username.current.value)
 
     if (cleanCheck == true) {
       await signup(signupEmail.current.value, signupPassword.current.value, username.current.value)
