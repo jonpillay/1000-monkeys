@@ -3,13 +3,17 @@ import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
 
 import { useDispatch } from "react-redux";
-import { initialiseStory } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
+import { resetStorySysInfo, initialiseStory } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
+import { resetStoryBookSlice } from "../components/CreateStoryPageParts/story-book-create/storyBookSlice";
 import { useCreateStory } from "./useCreateStory";
 import { useNavigate } from "react-router";
 
 
 export const useInitialiseStory = () => {
   const reduxDispatch = useDispatch()
+
+  reduxDispatch(resetStorySysInfo())
+  reduxDispatch(resetStoryBookSlice())
 
   const initialiseStoryHook = (characterChoice, genreChoice, styleChoice, prompt) => {
 

@@ -50,6 +50,8 @@ const StoryBookCreate = (props) => {
   const userPromptHistoryList = []
   userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
 
+  console.log(userPromptHistoryList)
+
   const combinedPrompts = []
 
   console.log(userPromptHistory)
