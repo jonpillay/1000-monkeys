@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { useSignup } from "../../../hooks/useSignUp.js";
 import './SignupForm.css'
 
+import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
+
 import Counter from "../../AdminPageParts/counter/Counter.js"
 
 const SignupForm = () => {
@@ -10,10 +12,22 @@ const SignupForm = () => {
   const username = useRef()
   const { signup, error, isLoading } = useSignup()
 
+  const {sanitiseInput} = useSanitiseInput()
+
+  const [ cleanCheckError, setCleancheckError ] = useState()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await signup(signupEmail.current.value, signupPassword.current.value, username.current.value)
+    const cleanCheck = sanitiseInput(username.current.value)
+
+    if (cleanCheck == true) {
+      await signup(signupEmail.current.value, signupPassword.current.value, username.current.value)
+    } else {
+      setCleancheckError("Please Check Our Community Standards")
+      return
+    }
+
 
   }
 
@@ -37,8 +51,9 @@ const SignupForm = () => {
           </div>
           <div className="signup-submit-container">
             <button disabled={isLoading} className="submit-button" id="signup-submit-button" type="submit">Sign Up</button>
-            {error && <div className="error">{error}</div>}
           </div>
+          {error && <div className="error">{error}</div>}
+          {cleanCheckError && <div className="error">{cleanCheckError}</div>}
         </form>
       </div>
       <div className="countdown-notification-container">
