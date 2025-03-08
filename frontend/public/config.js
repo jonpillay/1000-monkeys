@@ -1,3 +1,3 @@
 window.env = {
-    API_URL: "FAIL_TEST",
+    API_URL: "https://m1000-api.onrender.com",
   };
