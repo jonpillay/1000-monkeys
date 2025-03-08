@@ -22,7 +22,7 @@ const SignupForm = () => {
     const cleanCheck = await sanitiseInput(username.current.value)
 
     if (cleanCheck == true) {
-      await signup(signupEmail.current.value, signupPassword.current.value, username.current.value)
+      await signup(signupEmail.current.value.trim().toLowerCase(), signupPassword.current.value.trim(), username.current.value.trim().toLowerCase())
     } else {
       setCleancheckError("Please Check Our Community Standards")
       return

@@ -51,6 +51,9 @@ userSchema.statics.signup = async function (email, password, username) {
   if (!validator.isStrongPassword(password)) {
     throw Error("Please enter a strong password.")
   }
+  if (validator.isEmail(username)) {
+    throw Error("Username Cannot Be Email")
+  }
   // validator for intive code?
 
   const emailCheck = await this.findOne({email})
@@ -133,13 +136,18 @@ userSchema.statics.login = async function (email, password) {
   }
 
   if (!email || !password) {
-    throw Error("Please enter email and password.")
-  }
-  if (!validator.isEmail(email)) {
-    throw Error("Please enter a valid email.")
+    throw Error("Please enter email/username and password.")
   }
 
-  const login_user = await this.findOne({ email })
+  const input = email.trim()
+
+  let login_user
+
+  if (validator.isEmail(input)) {
+    login_user = await this.findOne({ email:input })
+  } else {
+    login_user = await this.findOne({ username:input })
+  }
 
   if (!login_user) {
     throw Error("Email not found.")

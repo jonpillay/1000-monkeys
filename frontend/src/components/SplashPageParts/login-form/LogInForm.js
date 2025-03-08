@@ -38,7 +38,7 @@ const LogInForm = () => {
 
     e.preventDefault()
 
-    await login(email.current.value, password.current.value)
+    await login(email.current.value.trim().toLowerCase(), password.current.value)
 
     redirect('/create')
 
@@ -52,7 +52,7 @@ const LogInForm = () => {
         </div>
         <div className="login-input-container">
           <div>
-            <input type="email" className="user-input-box" ref={email} placeholder="email..."/>
+            <input type="text" className="user-input-box" ref={email} placeholder="email..."/>
           </div>
           <div>
             <input type="password" className="user-input-box" ref={password} placeholder="password..."/> 
