@@ -35,14 +35,14 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route exact path="/warning-test" element={ <WarningSplash/> } />
-            <Route exact path="/start-your-story" element={ user ? <CreateSplashPage /> : <Navigate to="/"/>} />
-            <Route exact path="/create" element={  user && story ? <CreateStoriesPage/> : <Navigate to="/"/> } />
-            <Route exact path="/browse" element={ <BrowsePage/> } />
-            <Route exact path="/loading" element={ <LoadingPage/> } />
-            <Route exact path="/activate" element={ <ActivationPage/> } />
-            <Route exact path="/userfactoryintheenv" element={ admin === true ? <AdminPage/> : <Navigate to="/"/> } />
-            <Route exact path="/" element={ <SplashPage/> } />
+            <Route path="/warning-test" element={ <WarningSplash/> } />
+            <Route path="/start-your-story" element={ user ? <CreateSplashPage /> : <Navigate to="/"/>} />
+            <Route path="/create" element={  user && story ? <CreateStoriesPage/> : <Navigate to="/"/> } />
+            <Route path="/browse" element={ <BrowsePage/> } />
+            <Route path="/loading" element={ <LoadingPage/> } />
+            <Route path="/activate" element={ <ActivationPage/> } />
+            <Route path="/userfactoryintheenv" element={ admin === true ? <AdminPage/> : <Navigate to="/"/> } />
+            <Route path="/" element={ <SplashPage/> } />
           </Routes>
         </BrowserRouter>
     </div>
