@@ -29,8 +29,8 @@ const ActivationForm = ({activate, isLoading, error}) => {
         </div>
         <div className="activation-submit-container">
           <button disabled={isLoading} className="submit-button" id="activation-submit-button" type="submit">ACTIVATE</button>
-          {error && <div className="error">{error}</div>}
         </div>
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   )

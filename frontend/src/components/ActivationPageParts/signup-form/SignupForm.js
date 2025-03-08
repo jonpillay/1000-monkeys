@@ -6,7 +6,7 @@ import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 
 import Counter from "../../AdminPageParts/counter/Counter.js"
 
-const SignupForm = async () => {
+const SignupForm = () => {
   const signupEmail = useRef()
   const signupPassword = useRef()
   const username = useRef()
