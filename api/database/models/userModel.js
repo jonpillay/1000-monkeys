@@ -68,7 +68,7 @@ userSchema.statics.signup = async function (email, password, username) {
   const salt = await bcrypt.genSalt()
   const passwordHash = await bcrypt.hash(password, salt)
 
-  const filter = {email: email}
+  const filter = {email: email, username: username}
 
   const update = { isActivated: true, password: passwordHash }
 
