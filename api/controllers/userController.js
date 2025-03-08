@@ -51,7 +51,7 @@ const UserController = {
 
       try {
 
-        sendInviteEmail(email, invite_code, "http://localhost:3000/activate")
+        sendInviteEmail(email, invite_code, "https://m1000.onrender.com/activate")
 
       } catch (error) {
         console.log(error)
