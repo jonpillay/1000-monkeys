@@ -42,8 +42,8 @@ const userSchema = new Schema({
 
 userSchema.statics.signup = async function (email, password, username) {
 
-  if (!email || !password) {
-    throw Error("Must have email and password")
+  if (!email || !password || !username) {
+    throw Error("Must have email, password, and username")
   }
   if (!validator.isEmail(email)) {
     throw Error("Please enter a valid email.")
@@ -68,9 +68,9 @@ userSchema.statics.signup = async function (email, password, username) {
   const salt = await bcrypt.genSalt()
   const passwordHash = await bcrypt.hash(password, salt)
 
-  const filter = {email: email, username: username}
+  const filter = {email: email}
 
-  const update = { isActivated: true, password: passwordHash }
+  const update = { isActivated: true, password: passwordHash, username: username }
 
   const options = { new: true }
 
