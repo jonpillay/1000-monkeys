@@ -1,0 +1,7 @@
+static_site:
+  buildCommand: "npm run build"
+  publishDirectory: "build"
+  routes:
+    - source: "/**"
+      destination: "/index.html"
+      fallback: true
