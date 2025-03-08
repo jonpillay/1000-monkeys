@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { setMongoID } from "../components/Pages/create-stories-page/storyBookSysInfoSlice"
 
-const baseUrl = process.env.REACT_APP_API_URL || '';
+const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const usePublishStory = () => {
   

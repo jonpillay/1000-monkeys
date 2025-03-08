@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
-const baseUrl = process.env.REACT_APP_API_URL || '';
+const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const useSaveStory = () => {
   const { user } = useAuthContext()

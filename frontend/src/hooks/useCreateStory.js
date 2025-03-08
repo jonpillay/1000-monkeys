@@ -16,7 +16,7 @@ import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, s
 import { LoadingContext } from "../context/LoadingContext";
 import { clearReduxPersist } from "../redux-state/store";
 
-const baseUrl = process.env.REACT_APP_API_URL || '';
+const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const useCreateStory = () => {
   const reduxDispatch = useDispatch() 

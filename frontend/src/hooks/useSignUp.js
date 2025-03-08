@@ -3,7 +3,7 @@ import { useAuthContext } from "./useAuthContext";
 import { redirect } from "react-router";
 import { useNavigate } from "react-router-dom";
 
-const baseUrl = process.env.REACT_APP_API_URL || '';
+const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const useSignup = () => {
   const navigate = useNavigate();

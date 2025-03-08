@@ -3,7 +3,7 @@ import { useAuthContext } from "./useAuthContext";
 
 import { useDispatch } from "react-redux";
 
-const baseUrl = process.env.REACT_APP_API_URL || '';
+const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const useUpdateRating = () => {
   const { user } = useAuthContext()

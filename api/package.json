@@ -1,7 +1,7 @@
 {
   "name": "1000-monkey-api",
   "version": "0.0.0",
-  "description": "Template for the AI-tistic Tales project",
+  "description": "Backend for 1000 Monkeys AI Storybook Creation App",
   "license": "CC BY-NC-SA",
   "private": true,
   "scripts": {
