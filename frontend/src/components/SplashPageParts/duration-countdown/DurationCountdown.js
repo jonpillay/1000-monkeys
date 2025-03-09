@@ -15,7 +15,6 @@ const DurationCountdown = (props) => {
 
     const countdown = setInterval(() => {
 
-      console.log(durationMillis)
       let time = durationMillis -= 1000
       
 
@@ -25,7 +24,6 @@ const DurationCountdown = (props) => {
 
       const seconds = Math.floor(time/1000);
 
-      console.log(seconds)
       setSeconds(seconds)
       
     }, 1000)

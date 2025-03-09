@@ -25,7 +25,7 @@ function RateStoryPanel(props) {
         setRatings((prevRatings) => [...prevRatings, {[user.id]: currentRate}])
         setUserRated(true)
       } catch(error) {
-        console.log(error)
+
       }
     }
   }

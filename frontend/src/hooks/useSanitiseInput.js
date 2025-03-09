@@ -29,12 +29,10 @@ export const useSanitiseInput = () => {
       } else if (data.decision == 0) {
         return false
       } else {
-        console.log(data.error)
         return data.error
       }
 
     } catch (error) {
-      console.log(error)
       return error
     }
   }

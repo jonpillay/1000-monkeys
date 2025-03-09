@@ -15,8 +15,6 @@ async function generateStory(prompts) {
       max_completion_tokens: 100,
     });
 
-    // console.log(res)
-
     return res.choices[0].message.content;
   } catch (error) {
     if (error instanceof OpenAI.APIError) {

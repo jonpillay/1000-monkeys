@@ -27,8 +27,6 @@ const fetchBadWordsList = async () => {
 
     const badWordList = badWordListJSON.badWordsList
 
-    // console.log(JSON.parse(list.Body.toString()).badWordsList[0])
-
     const punctuationRegEx = /[!"£$%^&*()_\-=+[\]{};:'@#~,<.>?\\|]+/g;
 
     return badWordList

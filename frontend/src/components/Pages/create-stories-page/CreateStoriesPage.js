@@ -92,7 +92,6 @@ const CreateStoriesPage = (props) => {
   
         if (SDPromptHistory.length == chapterImgURLs.length) {
           const SDPromptInd = combinedPrompts.length
-          console.log(typeof SDPromptInd)
           SDPrompt = SDPromptHistory[SDPromptInd]
     
         } else {
@@ -131,8 +130,6 @@ const CreateStoriesPage = (props) => {
 
         if (loading) {
           event.preventDefault()
-
-          // console.log(performance.getEntriesByType("navigation")[0].type)
 
           const userNavPrompt = window.confirm(
             "Navigating/Refreshing During Story Creation Will Terminate Creation.\nUnsaved Data Will be Lost and Credits Will be Deducted.\nPress OK To Continue, Or Cancel To Stay on Page."

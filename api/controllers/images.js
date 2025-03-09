@@ -26,12 +26,6 @@ const ImagesController = {
 
       const negativePromptString = genNegativePromptString(tagsObject['negativeTagString'])
 
-      console.log("This is the negative prompt string")
-      console.log(negativePromptString)
-
-      console.log("This is the positive prompt")
-      console.log(finalSDPrompt)
-
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
       res.status(200).json({ page_image: story_image });

@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react';
 
 const SysInfoPanel = (props) => {
 
-  console.log("SysInfo rerendered")
-
   const genre = props.genre
   const genreFont = props.genreFont
   const artStyle = props.artstyle

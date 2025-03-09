@@ -37,7 +37,6 @@ export const usePublishStory = () => {
       const JSONres = await response.json()
   
       if (!response.ok) {
-        console.log(JSONres.error)
         setIsLoading(false)
         setError(JSONres.error)
       }
@@ -48,7 +47,6 @@ export const usePublishStory = () => {
         setIsLoading(false)
       }
     } catch (error) {
-      console.log(error.message)
       setIsLoading(false)
       setError(error.message)
     }

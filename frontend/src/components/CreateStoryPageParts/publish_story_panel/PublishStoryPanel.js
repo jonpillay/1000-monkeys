@@ -57,8 +57,6 @@ const PublishStoryControlPanel = (props) => {
 
     if (cleanCheck == true) {
 
-      console.log("Passed")
-
       await publishStory(story_id, title.current.value)
 
     } else {

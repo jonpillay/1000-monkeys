@@ -81,8 +81,6 @@ export const useCreateStory = () => {
 
           const errorResponse = await response.json()
 
-          console.log(errorResponse)
-
           if (errorResponse && errorResponse.error && errorResponse.message) {
 
             const { error, message } = errorResponse
@@ -143,8 +141,6 @@ export const useCreateStory = () => {
             }
 
           } else {
-            console.log("Caught here")
-            console.log(error)
             if (chapterTexts.length > 0) {
               loadingDispatch({type: 'LOADED'})
               setError("Creation Engine Crash, Please Try Again")

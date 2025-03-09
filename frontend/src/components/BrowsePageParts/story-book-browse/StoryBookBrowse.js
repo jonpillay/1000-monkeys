@@ -9,8 +9,6 @@ import SysInfoPanel from '../../SharedStoryBookParts/sys-info-panel/SysInfoPanel
 import { useRef } from 'react';
 
 const StoryBookBrowse = (props) => {
-
-  console.log("StoryBookBrowse rerendered")
   
   /*
   Needs to fetch only the local storage info related to its own instance (current page number). 
@@ -36,8 +34,6 @@ const StoryBookBrowse = (props) => {
 
   const combinedPrompts = []
 
-  console.log(userPromptHistory)
-
   if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
     userPromptHistoryList.forEach(prompt => {
       const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
@@ -46,7 +42,6 @@ const StoryBookBrowse = (props) => {
 
       if (SDPromptHistory.length == chapterImgURLs.length) {
         const SDPromptInd = combinedPrompts.length
-        console.log(typeof SDPromptInd)
         SDPrompt = SDPromptHistory[SDPromptInd]
   
       } else {
@@ -86,7 +81,6 @@ const StoryBookBrowse = (props) => {
       story.current = chapterTexts[renderChapter +1]
       imgUrl.current = chapterImgURLs[renderChapter +1]
       chapterPromptText.current = combinedPrompts[renderChapter + 1]
-      console.log(userPromptHistory)
       localPageNumbers[id] += 1
       localStorage.setItem('browsePageNumbers', JSON.stringify(localPageNumbers))
       setRenderChapter(renderChapter +1)

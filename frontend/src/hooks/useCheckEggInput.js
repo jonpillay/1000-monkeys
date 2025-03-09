@@ -35,8 +35,6 @@ export const useCheckEggInput = () => {
 
     const splitPromptLowered = splitPrompt.map(word => word.toLowerCase())
 
-    console.log(splitPromptLowered[0])
-
     if (splitPromptLowered[0] == 'guess=') {
 
       const inputGuess = splitPromptLowered.slice(1).join(" ")
@@ -62,12 +60,10 @@ export const useCheckEggInput = () => {
         } else if (data.decision == 0) {
           return false
         } else {
-          console.log(data.error)
           return data.error
         }
   
       } catch (error) {
-        console.log(error)
         return error
       }
     }

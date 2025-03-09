@@ -18,7 +18,6 @@ const genPromptTags = (userSelections) => {
   const negativePrompts = []
 
   for (selectionField in userSelections) {
-    console.log(selectionField)
     if (promptTagsJSON.hasOwnProperty(selectionField)) {
       if (promptTagsJSON[selectionField].hasOwnProperty(userSelections[selectionField])) {
         positivePrompts.push(promptTagsJSON[selectionField][userSelections[selectionField]]['positivePrompts'])

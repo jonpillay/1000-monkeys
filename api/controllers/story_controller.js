@@ -41,12 +41,6 @@ const StoryController = {
 
       const negativePromptString = genNegativePromptString(tagsObject['negativeTagString'])
 
-      console.log("This is the negative prompt string")
-      console.log(negativePromptString)
-
-      console.log("This is the positive prompt")
-      console.log(finalSDPrompt)
-
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
       
       const creditJWT = genCreditJWT(req.user._id, -3)

@@ -52,7 +52,6 @@ const Header = () => {
   // };
 
   const endStory = async () => {
-    console.log("This eneded here this and so this")
     await reduxDispatch(resetStorySysInfo())
     await reduxDispatch(resetStoryBookSlice())
     await localStorage.removeItem('storyPages')

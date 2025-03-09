@@ -10,7 +10,6 @@ const creditController = {
 
 
       if (token_id != _id || token_amount != amount) {
-        // console.log("bad response coming from the token checks")
         throw Error("Nice Try")
       }
 
@@ -25,8 +24,6 @@ const creditController = {
       return credit_update
 
     } catch (error) {
-      // console.log("coming from catch on credits")
-      // console.log(error)
       return error
     }
   }

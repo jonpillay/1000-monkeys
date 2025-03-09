@@ -72,7 +72,7 @@ const FetchStoriesControlPanel = (props) => {
       }
     })
 
-    await localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
+    localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
 
     setBookList(bookList)
   }

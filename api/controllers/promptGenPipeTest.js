@@ -7,12 +7,6 @@ const userChoices = {"character": "Darth Vader", "genre": "Western", "style": "A
 
 const dressedPrompt = DCPromptDresser(prompt, userChoices)
 
-console.log(dressedPrompt)
-
 const promptTags = genPromptTags(userChoices)
 
 const finalPrompt = dressedPrompt.concat(promptTags['positiveTagString'].concat(" Negative prompt: ").concat(promptTags['negativeTagString']))
-
-
-
-console.log(finalPrompt)

@@ -50,11 +50,7 @@ const StoryBookCreate = (props) => {
   const userPromptHistoryList = []
   userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
 
-  console.log(userPromptHistoryList)
-
   const combinedPrompts = []
-
-  console.log(userPromptHistory)
   
   if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
     userPromptHistoryList.forEach(prompt => {
@@ -64,7 +60,6 @@ const StoryBookCreate = (props) => {
 
       if (SDPromptHistory.length == chapterImgURLs.length) {
         const SDPromptInd = combinedPrompts.length
-        console.log(typeof SDPromptInd)
         SDPrompt = SDPromptHistory[SDPromptInd]
   
       } else {
