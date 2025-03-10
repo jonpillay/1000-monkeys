@@ -1,0 +1,49 @@
+.terms-of-use-container {
+    /* margin-right: 0.6rem; */
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    padding-left: 2rem;
+    height: auto;
+  }
+
+  .terms-of-use-scroll {
+    overflow-y: auto;
+  }
+  
+  .terms-of-use-title-container {
+    font-family: 'special-elite';
+    font-size: 1.2rem;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+  }
+  
+  .terms-of-use-text {
+    text-align: center;
+    /* margin-top: -2%; */
+    /* text-indent: 30px; */
+    font-family: 'merriweather';
+    font-size: 0.8rem;
+  }
+
+  #tou-multi-para {
+    margin-bottom: -0.5rem;
+  }
+
+  .tou-subheading {
+    font-family: 'special-elite';
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-align: center;
+    display: block;
+    margin-bottom: -0.8rem;
+    margin-left: 0.7rem;
+  }
+
+  .tou-checkbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
