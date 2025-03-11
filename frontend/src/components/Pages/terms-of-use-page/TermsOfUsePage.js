@@ -22,8 +22,7 @@ const TermsOfUsePage = () => {
           <p>This app is not affiliated with, endorsed by, or sponsored by any companies, creators, or rights holders of the copyrighted characters used in the content generation. All character names, trademarks, and other intellectual properties belong to their respective owners.</p>
           <span className='tou-subheading'>Community Guidelines and Content Generation</span>
           <p>We have put into place safeguards around the type of content that can be created on 1000 Monkeys. The <b>creation of content with themes of a sex/drugs/exploitation are strictly prohibited</b> and against our terms of use. We have instigated several checks in an attempt to block the creation of sensitive material - material that goes against these terms of use will be removed and users will have their privileges revoked.</p>
-          <span className='tou-subheading'>Community Guidelines and Content Generation</span>
-          <p>We have put into place safeguards around the type of content that can be created on 1000 Monkeys. The <b>creation of content with themes of a sex/drugs/exploitation are strictly prohibited and against our terms of use</b>. We have instigated several checks in an attempt to block the creation of sensitive material - material that goes against these terms of use will be removed and users will have their privileges revoked.</p>
+          <p id='tou-multi-para'>By using this app, you agree to abide by the terms of use and accept full responsibility for how you use the generated content.</p>
         </div>
       </div>
     </div>

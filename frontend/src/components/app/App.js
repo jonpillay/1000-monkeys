@@ -17,7 +17,6 @@ import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
 import CreateStoriesPage from '../Pages/create-stories-page/CreateStoriesPage';
 import LoadingPage from '../Pages/loading_page/LoadingPage';
 import TermsOfUsePage from '../Pages/terms-of-use-page/TermsOfUsePage';
-import AcceptTermsPage from '../Pages/accept-terms-page/AcceptTermsPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
@@ -45,7 +44,7 @@ const App = () => {
             <Route path="/activate" element={ <ActivationPage/> } />
             <Route path="/userfactoryintheenv" element={ admin === true ? <AdminPage/> : <Navigate to="/"/> } />
             <Route path="/" element={ <SplashPage/> } />
-            <Route path="/terms-of-use" element={ <AcceptTermsPage/> } />
+            <Route path="/terms-of-use" element={ <TermsOfUsePage/> } />
           </Routes>
         </BrowserRouter>
     </div>

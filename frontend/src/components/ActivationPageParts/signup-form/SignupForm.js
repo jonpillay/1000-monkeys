@@ -55,10 +55,10 @@ const SignupForm = () => {
           {error && <div className="error">{error}</div>}
           {cleanCheckError && <div className="error">{cleanCheckError}</div>}
         </form>
-      </div>
-      <div className="countdown-notification-container">
-        <Counter/>
-        <div className="countdown-notification-text"> until activation expires.</div>
+        <div className="countdown-notification-container">
+          <Counter/>
+          <div className="countdown-notification-text"> until activation expires.</div>
+        </div>
       </div>
     </>
   )

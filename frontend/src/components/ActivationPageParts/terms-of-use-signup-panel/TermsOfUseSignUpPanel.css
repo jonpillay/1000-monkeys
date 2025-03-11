@@ -1,0 +1,26 @@
+.terms-of-use-signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 2%;
+  max-width: 65%;
+  height: 89vh;
+  /* background-color: red; */
+}
+
+.terms-of-use-title-container {
+  font-family: 'special-elite';
+  font-size: 130%;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.terms-of-use-text-container {
+  text-align: center;
+  margin-top: -1rem;
+  /* text-indent: 30px; */
+  font-family: 'merriweather';
+  font-size: 90%;
+  max-height: 65vh;
+  overflow-y: auto;
+}

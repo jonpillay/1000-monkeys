@@ -14,7 +14,7 @@ export const useActivate = () => {
   useEffect(()=> {
     const endTime = parseInt(localStorage.getItem('activateEndtime'))
 
-    if (Date.now() > endTime) {
+    if (Date.now() > endTime ||!endTime) {
       localStorage.clear()
       setSignupActive(false)
     } else if (localStorage.getItem('activateLocal')) {
