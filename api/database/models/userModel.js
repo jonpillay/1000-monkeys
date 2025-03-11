@@ -35,6 +35,10 @@ const userSchema = new Schema({
   isWarned: {
     type: Boolean,
     default: false
+  },
+  termsAccepted: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -200,6 +204,18 @@ userSchema.statics.unWatch = async function (_id) {
 
   const filter = { _id: _id }
   const update = { isWarned: false }
+  const options = { new: true }
+
+  await this.findOneAndUpdate(filter, update, options)
+
+  return
+
+}
+
+userSchema.statics.acceptTerms = async function (_id) {
+
+  const filter = { _id: _id }
+  const update = { termsAccepted: true }
   const options = { new: true }
 
   await this.findOneAndUpdate(filter, update, options)

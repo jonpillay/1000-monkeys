@@ -4,8 +4,6 @@ import { useState } from 'react';
 
 const TermsOfUsePage = () => {
 
-  const [termsAccepted, setTermsAccepted] = useState(false)
-
   return (
     <div className="terms-of-use-container">
       <div className="terms-of-use-title-container">
@@ -26,21 +24,6 @@ const TermsOfUsePage = () => {
           <p>We have put into place safeguards around the type of content that can be created on 1000 Monkeys. The <b>creation of content with themes of a sex/drugs/exploitation are strictly prohibited</b> and against our terms of use. We have instigated several checks in an attempt to block the creation of sensitive material - material that goes against these terms of use will be removed and users will have their privileges revoked.</p>
           <span className='tou-subheading'>Community Guidelines and Content Generation</span>
           <p>We have put into place safeguards around the type of content that can be created on 1000 Monkeys. The <b>creation of content with themes of a sex/drugs/exploitation are strictly prohibited and against our terms of use</b>. We have instigated several checks in an attempt to block the creation of sensitive material - material that goes against these terms of use will be removed and users will have their privileges revoked.</p>
-        </div>
-        <div className='tou-form-container'>
-          <div className='tou-checkbox-container'>
-            <input
-              type='checkbox'
-              checked={termsAccepted}
-              onChange={(e) => setTermsAccepted(e.target.checked)}
-              className='you-check-box'
-            />
-            <div className='tou-form-instruction'>
-              Please Tick The Box To Show You Have Understood Our Terms of Use and Check the Box to Accept Them.
-            </div>
-          </div>
-
-          <button type='button' disabled={!termsAccepted}>Accept and Continue</button>
         </div>
       </div>
     </div>

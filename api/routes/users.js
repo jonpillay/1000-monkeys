@@ -18,4 +18,6 @@ router.post('/newuser', requireAdminAuth, UserController.CreateUser)
 
 router.post('/watch-user', requireAuth, UserController.Watch)
 
+router.post('/accept-terms', requireAuth, UserController.AcceptTerms)
+
 module.exports = router

@@ -88,6 +88,20 @@ const UserController = {
     } catch (error) {
       res.status(400).json({error: error.message})
     }
+  },
+  AcceptTerms: async (req, res) => {
+
+    try {
+      const {userID} = req.user._id
+
+      User.acceptTerms(userID)
+
+      res.status(200).json({ message:"terms accepted" })
+
+    } catch (error) {
+      res.status(400).json({error: error.message})
+    }
+
   }
 }
 
