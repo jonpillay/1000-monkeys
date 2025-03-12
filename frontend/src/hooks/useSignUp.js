@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { redirect } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { useAcceptTerms } from "./useAcceptTerms";
 
 const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
@@ -13,8 +12,6 @@ export const useSignup = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
-
-  const { showTerms, acceptTerms, termsAccepted, setTermsAccepted } = useAcceptTerms()
 
   const signup = async (email, password, username) => {
     setIsLoading(true)

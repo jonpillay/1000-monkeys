@@ -14,15 +14,10 @@ const TermsOfUseSignUpPanel = (props) => {
 
   useEffect(() => {
 
-    console.log("useEffect fired")
-
     const monitorUserScroll = () => {
 
       if (termsScrollRef.current) {
         const { scrollTop, scrollHeight, clientHeight } = termsScrollRef.current;
-        console.log(scrollHeight)
-        console.log(scrollTop)
-        console.log(clientHeight)
         if (scrollTop + clientHeight >= scrollHeight) {
           setTermScrolled(true);
         }

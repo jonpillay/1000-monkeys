@@ -1,12 +1,16 @@
 import "./AcceptTermsCheckBox.css";
 
-import { useAcceptTerms } from "../../../hooks/useAcceptTerms";
+import { useEffect } from "react";
 
 const AcceptTermsCheckBox = (props) => {
 
   const termsScrolled = props.termsScrolled
   const termsAccepted = props.termsAccepted
   const setTermsAccepted = props.setTermsAccepted
+
+  useEffect(()=> {
+    setTermsAccepted(false)
+  }, [])
 
   return (
     <>

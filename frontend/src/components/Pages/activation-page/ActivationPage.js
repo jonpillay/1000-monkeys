@@ -19,15 +19,15 @@ const ActivationPage = () => {
     <>
     <div className="activation-container">
       {(
-        !true ?
+        !signupActive ?
           <div className="activation-grid">
             <ActivationBlurb/>
-            <ActivationForm/>
+            <ActivationForm activate={activate} isLoading={isLoading} error={error} />
           </div>
         :
         <div className="activation-grid">
           <TermsOfUseSignUpPanel termsAccepted={termsAccepted} setTermsAccepted={setTermsAccepted}/>
-          <SignupForm/>
+          <SignupForm termsAccepted={termsAccepted} acceptTerms={acceptTerms}/>
         </div>
       )}
       </div>

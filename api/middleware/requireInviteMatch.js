@@ -21,11 +21,10 @@ const requireInviteMatch = async (req, res, next) => {
     }
 
     req.user = await User.findOne({ email }).select('email')
-
     next()
 
   } catch (error) {
-    console.log(error)
+    console.log(error.error)
     console.log("Error coming from invite match!")
     res.status(401).json({ error: "Email not Found." })
   }

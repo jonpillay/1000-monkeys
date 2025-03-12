@@ -30,7 +30,6 @@ const UserController = {
   },
   SignUpUser: async (req, res) => {
     const {email, password, username} = req.body
-    const authEmail = req.user
 
     try {
       const user = await User.signup(email, password, username)
@@ -81,7 +80,7 @@ const UserController = {
     try {
       const {userID} = req.user._id
 
-      await User.watch(req.user._id)
+      User.watch(req.user._id)
 
       res.status(200).json({ message:"user watched" })
 
@@ -92,9 +91,9 @@ const UserController = {
   AcceptTerms: async (req, res) => {
 
     try {
-      const {userID} = req.user._id
+      const {email} = req.body
 
-      User.acceptTerms(userID)
+      User.acceptTerms(email)
 
       res.status(200).json({ message:"terms accepted" })
 

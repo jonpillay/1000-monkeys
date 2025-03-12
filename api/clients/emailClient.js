@@ -28,9 +28,7 @@ async function sendInviteEmail(invitedUserEmail, invitecode, invitelink) {
       html: inviteBody,
     }
 
-    const result = await transporter.sendMail(mailOptions)
-    
-    console.log("Email Sent", result)
+    await transporter.sendMail(mailOptions)
 
   } catch (error) {
     console.log(error)

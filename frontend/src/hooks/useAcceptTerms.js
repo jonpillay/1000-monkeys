@@ -1,29 +1,29 @@
-import { useNavigate } from "react-router"
 import { useState } from "react"
-
-import { useAuthContext } from "./useAuthContext"
 
 export const useAcceptTerms = () => {
 
   const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
-  const { user } = useAuthContext()
-
   const [termsAccepted, setTermsAccepted] = useState(false)
 
   const [ touError, setTouError ] = useState()
 
-  const { navigate } = useNavigate()
-
   const acceptTerms = async () => {
+
+    if (!termsAccepted) {
+      setTouError("Please Accept Our Term Of Use")
+      return
+    }
+
+    const activateCreds = JSON.parse(localStorage.getItem('activateLocal'))
 
     const response = await fetch(`${baseUrl}/user/accept-terms`, {
       method: 'Post',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`
+        'Authorization': `Bearer ${activateCreds.token}`
       },
-      body: JSON.stringify()
+      body: JSON.stringify({email:activateCreds.email})
     })
 
     const JSONres = await response.json()
@@ -39,5 +39,6 @@ export const useAcceptTerms = () => {
   }
 
   return { acceptTerms, termsAccepted, setTermsAccepted, touError }
+
 
 }

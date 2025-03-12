@@ -16,11 +16,13 @@
 }
 
 .terms-of-use-text-container {
-  text-align: center;
+  text-align: left;
   margin-top: -1rem;
   /* text-indent: 30px; */
   font-family: 'merriweather';
   font-size: 90%;
   max-height: 65vh;
   overflow-y: auto;
+  background-color: rgb(249, 243, 235)
+
 }

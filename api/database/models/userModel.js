@@ -212,9 +212,9 @@ userSchema.statics.unWatch = async function (_id) {
 
 }
 
-userSchema.statics.acceptTerms = async function (_id) {
+userSchema.statics.acceptTerms = async function (email) {
 
-  const filter = { _id: _id }
+  const filter = { email: email }
   const update = { termsAccepted: true }
   const options = { new: true }
 
