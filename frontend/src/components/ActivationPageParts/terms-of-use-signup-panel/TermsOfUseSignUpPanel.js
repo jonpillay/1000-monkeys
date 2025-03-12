@@ -22,7 +22,6 @@ const TermsOfUseSignUpPanel = (props) => {
           setTermScrolled(true);
         }
       }
-
     }
 
     const termsElement = termsScrollRef.current;

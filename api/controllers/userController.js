@@ -22,7 +22,7 @@ const UserController = {
 
       const JWT = genLoginJWT(user._id, user.isSuper)
 
-      res.status(200).json({ id: user._id, username: user.username, email: email, token: JWT, isSuper: user.isSuper, credits: user.credits })
+      res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits })
     } catch (error) {
 
       res.status(400).json({error: error.message })
@@ -36,7 +36,8 @@ const UserController = {
 
       const JWT = genLoginJWT(user._id, user.isSuper)
 
-      res.status(200).json({ email: email, token: JWT })
+      res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits })
+
     } catch (error) {
       res.status(400).json({error: error.message})
     }
@@ -71,7 +72,7 @@ const UserController = {
       // JWT should be a seperate one for activation only
       const JWT = genActivationJWT(user.email, user.invite_code)
 
-      res.status(200).json({ email: email, token: JWT, error:"made it" })
+      res.status(200).json({ email: email, token: JWT, credits: user.credits })
     } catch (error) {
       res.status(400).json({error: error.message})
     }

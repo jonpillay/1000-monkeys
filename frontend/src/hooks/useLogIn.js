@@ -1,11 +1,9 @@
 import { useState, useContext } from "react";
-import { useAuthContext } from "./useAuthContext";
-import { useStoryContext } from "./useStoryContext";
 import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
 import { useNavigate } from "react-router";
 
-import { UseDispatch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserToken } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
@@ -16,10 +14,6 @@ export const useLogin = () => {
   const { dispatch } = useContext(AuthContext)
   const { creditDispatch } = useContext(CreditsContext)
   const reduxDispatch = useDispatch()
-  // const { dispatch } = useStoryContext()
-
-  const navigate = useNavigate()
-
 
   const login = async (email, password) => {
     setIsLoading(true)

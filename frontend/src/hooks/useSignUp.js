@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { useAuthContext } from "./useAuthContext";
-import { redirect } from "react-router";
-import { useNavigate } from "react-router-dom";
+import { CreditsContext } from "../context/CreditsContext";
+import { useDispatch } from "react-redux";
+import { setUserToken } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const useSignup = () => {
 
-  const navigate = useNavigate();
-
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
+  const { creditDispatch } = useContext(CreditsContext)
+  const reduxDispatch = useDispatch()
+
+  const navigate = useNavigate()
 
   const signup = async (email, password, username) => {
     setIsLoading(true)
@@ -36,13 +40,14 @@ export const useSignup = () => {
     }
 
     if (response.ok) {
-      localStorage.removeItem('activateLocal')
-      localStorage.removeItem('activateEndtime')
+      reduxDispatch(setUserToken(JSONres.token))
+      {{creditDispatch({type: 'UPDATE', payload: JSONres.credits})
+      localStorage.setItem('credits', JSONres.credits)}}
       localStorage.setItem('user', JSON.stringify(JSONres))
 
       dispatch({type: 'LOGIN', payload: JSONres})
 
-      navigate('/terms-of-use', { state: { termsNotAccepted: true } })
+      navigate('/')
 
       return
     }
