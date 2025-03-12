@@ -3,13 +3,17 @@ import ActivationBlurb from "../../ActivationPageParts/activation-blurb/Activati
 import TermsOfUseText from "../../ActivationPageParts/terms-of-use-signup-panel/TermsOfUseSignUpPanel";
 import ActivationForm from "../../ActivationPageParts/activation-form/ActivationForm"
 import SignupForm from "../../ActivationPageParts/signup-form/SignupForm"
+import TermsOfUseSignUpPanel from "../../ActivationPageParts/terms-of-use-signup-panel/TermsOfUseSignUpPanel";
 
 import { useActivate } from "../../../hooks/useActivate";
+import { useAcceptTerms } from "../../../hooks/useAcceptTerms";
 
 
 const ActivationPage = () => {
 
   const { activate, isLoading, error, signupActive } = useActivate()
+  const { acceptTerms, termsAccepted, setTermsAccepted, touError } = useAcceptTerms()
+
   
   return (
     <>
@@ -22,7 +26,7 @@ const ActivationPage = () => {
           </div>
         :
         <div className="activation-grid">
-          <TermsOfUseText/>
+          <TermsOfUseSignUpPanel termsAccepted={termsAccepted} setTermsAccepted={setTermsAccepted}/>
           <SignupForm/>
         </div>
       )}

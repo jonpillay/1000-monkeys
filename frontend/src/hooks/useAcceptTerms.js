@@ -11,7 +11,7 @@ export const useAcceptTerms = () => {
 
   const [termsAccepted, setTermsAccepted] = useState(false)
 
-  const [ error, setError ] = useState()
+  const [ touError, setTouError ] = useState()
 
   const { navigate } = useNavigate()
 
@@ -30,7 +30,7 @@ export const useAcceptTerms = () => {
 
     if (!response.ok) {
       console.log(JSONres)
-      setError("Terms not Accepted, Please Retry")
+      setTouError("Terms not Accepted, Please Retry")
     }
 
     if (response.ok) {
@@ -38,6 +38,6 @@ export const useAcceptTerms = () => {
     }
   }
 
-  return { acceptTerms, termsAccepted, setTermsAccepted, error }
+  return { acceptTerms, termsAccepted, setTermsAccepted, touError }
 
 }

@@ -43,7 +43,7 @@ const SignupForm = () => {
               <input type="email" name="signup-email" className="signup-input-box" ref={signupEmail} placeholder="email..."/> 
             </div>
             <div>
-              <input type="password" name="signup-password" className="signup-input-box" ref={signupPassword} autocomplete="new-password"/> 
+              <input type="password" name="signup-password" className="signup-input-box" ref={signupPassword} autoComplete="new-password"/> 
             </div>
             <div>
               <input type="text" name="signup-username" className="signup-input-box" ref={username} placeholder="username..."/> 

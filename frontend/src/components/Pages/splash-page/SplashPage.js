@@ -14,6 +14,7 @@ import { clearReduxPersist } from "../../../redux-state/store";
 
 import WarningSplash from "../../SplashPageParts/warning-splash/WarningSplash"
 
+
 const SplashContainer = (props) => {
 
   const reduxDispatch = useDispatch()
