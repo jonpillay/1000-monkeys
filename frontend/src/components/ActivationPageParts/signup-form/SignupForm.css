@@ -1,7 +1,7 @@
 .signup-form-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -73,4 +73,24 @@
 #signup-submit-button {
   width: 100%;
   margin: auto;
+}
+
+.signup-error-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+  width: 100%;
+}
+
+.signup-form-error {
+  position: absolute;
+  font-family: 'special-elite';
+  font-size:0.9rem;
+  font-weight: 450;
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

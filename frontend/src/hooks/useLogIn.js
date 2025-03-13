@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { CreditsContext } from "../context/CreditsContext";
-import { useNavigate } from "react-router";
 
 import { useDispatch } from "react-redux";
 import { setUserToken } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
@@ -49,5 +48,5 @@ export const useLogin = () => {
     }
   }
 
-  return { login, isLoading, error }
+  return { login, isLoading, error, setError }
 }

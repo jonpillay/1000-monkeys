@@ -14,14 +14,47 @@ const SignupForm = (props) => {
   const termsAccepted = props.termsAccepted
   const acceptTerms = props.acceptTerms
 
-  const { signup, error, isLoading } = useSignup()
+  const { signup, isLoading, error, setError } = useSignup()
 
   const {sanitiseInput} = useSanitiseInput()
 
   const [ cleanCheckError, setCleancheckError ] = useState()
+  const [ formError, setFormError ] = useState()
+
+  useEffect(() => {
+
+    let timeoutId;
+
+    timeoutId = setTimeout(() => {
+        setFormError("");
+        setCleancheckError("")
+        setError("")
+      }, 2000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [error, formError, cleanCheckError]);
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
+
+    // probably won't run as form input is 'email' field
+    if (!signupEmail.current.value) {
+      setFormError("Please Enter An Email Address")
+      return
+    }
+
+    if (!signupPassword.current.value) {
+      setFormError("Please Enter A Password.")
+      return
+    }
+
+    if (!username.current.value) {
+      setFormError("Please Enter A Username.")
+      return
+    }
 
     const cleanCheck = await sanitiseInput(username.current.value)
 
@@ -38,8 +71,6 @@ const SignupForm = (props) => {
       setCleancheckError("Please Check Our Community Standards")
       return
     }
-
-
   }
 
   return (
@@ -63,12 +94,15 @@ const SignupForm = (props) => {
           <div className="signup-submit-container">
             <button disabled={isLoading || !termsAccepted} className="submit-button" id="signup-submit-button" type="submit">Sign Up</button>
           </div>
-          {error && <div className="error">{error}</div>}
-          {cleanCheckError && <div className="error">{cleanCheckError}</div>}
         </form>
         <div className="countdown-notification-container">
           <Counter/>
           <div className="countdown-notification-text"> until activation expires.</div>
+        </div>
+        <div className="signup-error-container">
+          {error && <div className="signup-form-error">{error}</div>}
+          {cleanCheckError && <div className="signup-form-error">{cleanCheckError}</div>}
+          {formError && <div className="signup-form-error">{formError}</div>}
         </div>
       </div>
     </>

@@ -76,6 +76,26 @@ const InitialiseStoryForm = (props) => {
 
   const initialiseStoryOnClick = async (e) => {
 
+    if (!characterChoice) {
+      setError("Please Select A Character.")
+      return
+    }    
+    
+    if (!genreChoice) {
+      setError("Please Select A Genre.")
+      return
+    }
+
+    if (!styleChoice) {
+      setError("Please Select A Illistration Style.")
+      return
+    }
+
+    if (!promptRef.current.value) {
+      setError("Please Enter Your Story Prompt")
+      return
+    }
+
     setError("")
 
     const prompt = promptRef.current.value
@@ -164,6 +184,7 @@ const InitialiseStoryForm = (props) => {
             selectionField="Style"
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
+        </div>
           <div className="initialise-user-prompt-input-container">
             <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={126} placeholder="The first story beat..."/>
           </div>
@@ -193,8 +214,6 @@ const InitialiseStoryForm = (props) => {
               )}
             </div>
           </div>
-          
-        </div>
       </div>
       <div className="splash-egg-container">
         <Tooltip id="splash-egg-tooltip" />

@@ -3,37 +3,18 @@ import { useLogin } from "../../../hooks/useLogIn";
 import './LogInForm.css'
 import { redirect, useLocation } from "react-router";
 
-const LogInForm = () => {
+const LogInForm = (props) => {
   const email = useRef()
   const password = useRef()
-  const { login, isLoading, error } = useLogin()
 
-
-  const location = useLocation()
-  const [apiError, setApiError] = useState(location.state?.error)
-  const [loginError, setLoginError] = useState()
-
-  useEffect(() => {
-  
-      setLoginError(error)
-
-      let timeoutId;
-  
-      timeoutId = setTimeout(() => {
-          setLoginError("");
-          setApiError("");
-        }, 2000);
-  
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }, [error, apiError]);
-
-
+  const login = props.login
+  const isLoading = props.isLoading
+  const setError = props.setError
+  const setApiError = props.setApiError
  
   const handleSubmit = async (e) => {
 
-    setLoginError("")
+    setError("")
     setApiError("")
 
     e.preventDefault()
@@ -61,7 +42,6 @@ const LogInForm = () => {
         <div className="user-submit-container">
           <button disabled={isLoading} className="login-form-button" type="submit">LOGIN</button>
         </div>
-        {loginError && <div className="error">{loginError}</div>}
       </form>
     </div> 
   )

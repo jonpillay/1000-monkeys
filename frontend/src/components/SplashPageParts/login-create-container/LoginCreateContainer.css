@@ -18,3 +18,22 @@
   /* padding: 0.8rem; */
   margin: auto;
 }
+
+.login-error-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+  width: 100%;
+}
+
+.login-error {
+  position: absolute;
+  font-family: 'special-elite';
+  font-size:0.9rem;
+  font-weight: 450;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
