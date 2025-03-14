@@ -3,6 +3,7 @@ import "./BrowsePage.css";
 import { useFetchStories } from "../../../hooks/useFetchStories";
 
 import FetchStoriesControlPanel from "../../BrowsePageParts/fetch-control-panel/FetchControlPanel";
+import SortControlPanel from "../../BrowsePageParts/sort-control-panel/SortControlPanel";
 
 import BrowseBookDisplay from "../../BrowsePageParts/browse-book-display/BrowseBookDisplay"
 
@@ -25,6 +26,7 @@ const BrowsePage = (props) => {
     <>
     <div className="browse-container">
       <FetchStoriesControlPanel fetchByGenre={fetchByGenre} fetchByUser={fetchByUser} setBookList={setBookList} />
+      <SortControlPanel/>
       <BrowseBookDisplay bookList={bookList}/>
     </div>
     </>

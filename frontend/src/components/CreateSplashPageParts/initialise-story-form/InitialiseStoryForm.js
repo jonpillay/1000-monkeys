@@ -9,6 +9,7 @@ import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 import { useCheckWordFormatting } from "../../../hooks/useCheckWordFormatting";
 import { useMonitorUserWarnings } from "../../../hooks/useMonitorUserWarnings";
 import { useCheckEggInput } from "../../../hooks/useCheckEggInput";
+import { useLoadingContext } from "../../../hooks/useLoadingContext";
 
 import { Tooltip } from 'react-tooltip'
 
@@ -37,6 +38,8 @@ const InitialiseStoryForm = (props) => {
   const { initialiseStoryHook } = useInitialiseStory()
   const { handleUserWarning, userWarningMessage, setUserWarningMessage } = useMonitorUserWarnings()
 
+  const { loadingDispatch } = useLoadingContext()
+
   useEffect(() => {
 
     if (!error) {
@@ -57,7 +60,7 @@ const InitialiseStoryForm = (props) => {
   }, [error, guessResponse]);
 
 
-  const initialiseStory = () => {
+  const initialiseStory = async () => {
 
     if (user.credits < 10) {
       setError("Insufficient Credits. Contact Admin")
@@ -70,6 +73,7 @@ const InitialiseStoryForm = (props) => {
       } catch(error) {
         console.log(error)
         setError("Creation Engine Error. Please Retry")
+        loadingDispatch({type: 'LOADED'})
       }
     }
   }
@@ -125,6 +129,7 @@ const InitialiseStoryForm = (props) => {
       const wordFormattingCheck = checkWordFormatting(prompt)
 
       if (wordFormattingCheck == false) {
+        loadingDispatch({type: 'LOADED'})
         setError("Prompt Input Cannot Contain Wild Card Characters")
         handleUserWarning()
         setTimeout(() => {
@@ -138,13 +143,20 @@ const InitialiseStoryForm = (props) => {
       if (cleanCheck == true) {
   
         e.preventDefault();
-  
-        await initialiseStory()
+
+        try {
+
+          await initialiseStory()
     
-        navigate('/create')
+          navigate('/create')
+        } catch(error) {
+          console.log(error)
+        }
+  
+
   
       } else if (cleanCheck == false) {
-
+        loadingDispatch({type: 'LOADED'})
         setError("Please Check Our Community Standards")
         handleUserWarning()
         setTimeout(() => {
@@ -152,6 +164,7 @@ const InitialiseStoryForm = (props) => {
         }, 1500)
         return
       } else {
+        loadingDispatch({type: 'LOADED'})
         setError(cleanCheck)
       }
     }

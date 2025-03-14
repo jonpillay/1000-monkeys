@@ -1,5 +1,5 @@
 .browse-container {
-  display: grid;
-  grid-template-rows: 20%, 80%;
+  /* display: grid;
+  grid-template-rows: 10%, 80%; */
   margin-top: 1vw;
 }

@@ -1,0 +1,35 @@
+.sort-nav-container {
+    z-index: 0;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .sort-nav-container.active {
+    z-index: 1;
+    position: sticky;
+    top: 20.5vh;
+  }
+  
+  /* .filter-nav-container.active-scroll {
+    position: sticky;
+    top: 4.8vw;
+    z-index: 999;
+  } */
+  
+  .button-container {
+    justify-self: start;
+    display: flex;
+    justify-content: space-around;
+    /* position: absolute; */
+  }
+  
+  .button-container.active-scroll {
+    color: bisque;
+    opacity: 100%;
+  }
+  
+  .user-fetch-button-container {
+    justify-self: end;
+  }

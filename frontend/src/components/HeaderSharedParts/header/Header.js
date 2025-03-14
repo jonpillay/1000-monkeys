@@ -26,7 +26,7 @@ const Header = () => {
 
   useEffect(() => {
     const headerScroll = (event) => {
-      if (window.scrollY > 28 && event.clientY < 170) {
+      if (window.scrollY > 28 && event.clientY < 210) {
         setShowHeaderMouse(true)
       } else {
         setShowHeaderMouse(false)
