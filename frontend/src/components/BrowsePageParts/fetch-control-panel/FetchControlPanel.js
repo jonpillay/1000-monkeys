@@ -40,10 +40,8 @@ const FetchStoriesControlPanel = (props) => {
 
     const controlScrollMouse = (event) => {
       if (window.scrollY > 28 && event.clientY < 170) {
-        console.log("This is firing")
         setControlPanelScroll(true)
       } else {
-        console.log("This is not firing")
         setControlPanelScroll(false)
       }
     }

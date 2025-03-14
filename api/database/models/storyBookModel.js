@@ -43,6 +43,9 @@ const storyBookSchema = new Schema({
   published: {
     type: Boolean,
     default: false
+  },
+  ratingsAverage: {
+    type: [],
   }
 })
 
@@ -79,9 +82,34 @@ storyBookSchema.statics.submitRating = async function (story_id, userID, rating)
 
   newRating[userID] = rating
 
-  await this.updateOne( { _id: story_id },
-    { $push : {ratings: newRating } }
+  // update the rating array, but return the original document so that the new average can be worked out
+  // incrementally, without having to scan the entire array again
+  const ratedStoryBook = await this.findOneAndUpdate(
+    { _id: story_id },
+    { $push : {ratings: newRating } },
   )
+
+  const ratingsAverage = ratedStoryBook.ratingsAverage
+
+  if (ratingsAverage == null) {
+
+    const initAverageRatings = [ newRating, 1 ]
+    await this.updateOne(
+      { _id: story_id },
+      { $set: { ratingsAverage: initAverageRatings } }
+    )
+  } else {
+
+    const newAverageRating = (ratingsAverage + newRating) / ( ratedStoryBook.ratings.length + 1 )
+
+    const newAverageRatingPair = [ newAverageRating, ratedStoryBook.ratings.length + 1 ]
+
+    await this.updateOne(
+      { _id: story_id },
+      { $set: { ratingsAverage: newAverageRatingPair } }
+    )
+
+  }
 }
 
 storyBookSchema.statics.publishStory = async function (story_id, title) {
