@@ -91,6 +91,8 @@ storyBookSchema.statics.submitRating = async function (story_id, userID, rating)
 
   const ratingsAverage = ratedStoryBook.ratingsAverage
 
+  let returnedNewRatingPair = null
+
   if (ratingsAverage == null) {
 
     const initAverageRatings = [ newRating, 1 ]
@@ -104,12 +106,14 @@ storyBookSchema.statics.submitRating = async function (story_id, userID, rating)
 
     const newAverageRatingPair = [ newAverageRating, ratedStoryBook.ratings.length + 1 ]
 
-    await this.updateOne(
+    returnedNewRatingPair = await this.findOneAndUpdate(
       { _id: story_id },
-      { $set: { ratingsAverage: newAverageRatingPair } }
+      { $set: { ratingsAverage: newAverageRatingPair } },
+      { new: true }
     )
-
   }
+
+  return returnedNewRatingPair
 }
 
 storyBookSchema.statics.publishStory = async function (story_id, title) {
