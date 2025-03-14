@@ -25,8 +25,8 @@ const Header = () => {
   const reduxDispatch = useDispatch()
 
   useEffect(() => {
-    const headerScroll = (Mpos) => {
-      if (window.scrollY > 28 && Mpos.clientY < 190) {
+    const headerScroll = (event) => {
+      if (window.scrollY > 28 && event.clientY < 170) {
         setShowHeaderMouse(true)
       } else {
         setShowHeaderMouse(false)
@@ -35,21 +35,12 @@ const Header = () => {
 
     window.addEventListener('scroll', headerScroll);
     window.addEventListener('mousemove', headerScroll);
-  })
 
-  // const goHome = () => {
-  //   setTimeout(function(){
-  //     reduxDispatch(resetStoryBookSlice)
-  //     reduxDispatch(resetStorySysInfo)
-  //     persistor.flush()
-  //     localStorage.removeItem("storyPages");
-  //     localStorage.removeItem("GPTPromptHistory")
-  //     localStorage.removeItem("userChoices");
-  //     localStorage.removeItem("sysInfo");
-  //   }, 200);
-
-  //   navigate("/");
-  // };
+    return () => {
+      window.removeEventListener('scroll', headerScroll);
+      window.removeEventListener('mousemove', headerScroll);
+    }
+  }, [])
 
   const endStory = async () => {
     await reduxDispatch(resetStorySysInfo())
@@ -69,7 +60,7 @@ const Header = () => {
   return (
     <>
     { !loading  ? (
-        <div className={showHeaderMouse ? 'header-container scroll' : 'header-container'}>
+        <div className={showHeaderMouse ? 'header-container active' : 'header-container'}>
           <button className="home-button" onClick={endStory} disabled={loading}>
             <img className="home-icon" src={HomeIcon} alt="home"/>
           </button>

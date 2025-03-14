@@ -34,7 +34,7 @@ const App = () => {
   return (
     <div className="app">
         <BrowserRouter>
-          <Header />
+          <Header/>
           <Routes>
             <Route path="/warning-test" element={ <WarningSplash/> } />
             <Route path="/start-your-story" element={ user ? <CreateSplashPage /> : <Navigate to="/"/>} />

@@ -19,36 +19,42 @@ const FetchStoriesControlPanel = (props) => {
 
 
   useEffect(() => {
-    const controlTopScroll = () => {
-      if (window.scrollY > 50) {
-        setControlPanelTop(true)
-      } else {
-        setControlPanelTop(false)
-      }
-    };
 
-    window.addEventListener('scroll', controlTopScroll);
+    // const controlTopScroll = () => {
+    //   if (window.scrollY > 50) {
+    //     setControlPanelTop(true)
+    //   } else {
+    //     setControlPanelTop(false)
+    //   }
+    // };
 
-    // const controlTopMouse = (Mpos) => {
-    //   if (Mpos.clientY < 70) {
+    // window.addEventListener('scroll', controlTopScroll);
+
+    // const controlTopMouse = (event) => {
+    //   if (event.clientY < 70) {
     //     setControlPanelTop(true)
     //   } else {
     //     setControlPanelTop(false)
     //   }
     // }
 
-    const controlScrollnMouse = (Mpos) => {
-      if (window.scrollY > 10 && Mpos.clientY < 200) {
+    const controlScrollMouse = (event) => {
+      if (window.scrollY > 28 && event.clientY < 170) {
+        console.log("This is firing")
         setControlPanelScroll(true)
       } else {
+        console.log("This is not firing")
         setControlPanelScroll(false)
       }
     }
 
-    document.addEventListener('mousemove', controlScrollnMouse);
+    window.addEventListener('scroll', controlScrollMouse);
+    window.addEventListener('mousemove', controlScrollMouse);
 
-
-    // document.addEventListener('mousemove', controlTopMouse);
+    return () => {
+      window.removeEventListener('scroll', controlScrollMouse);
+      window.removeEventListener('mousemove', controlScrollMouse);
+    }
 
   }, [])
 
@@ -79,7 +85,7 @@ const FetchStoriesControlPanel = (props) => {
 
   return (
     <>
-      <div className={controlPanelTop ? controlPanelScroll ? "filter-nav-container active-scroll" : "filter-nav-container active" : "filter-nav-container"}>
+      <div className={controlPanelScroll ? "filter-nav-container active" : "filter-nav-container"}>
         <>
         <div className='button-container'>
             <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByGenre, "Dystopian")} font={"phage-rough"} value="Dystopian" className="genre-button" />
@@ -87,7 +93,6 @@ const FetchStoriesControlPanel = (props) => {
             <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByGenre, "Fairytale")} font={"flavors"} value="Fairytale" className="genre-button" />
             <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByGenre, "Cyberpunk")} font={"cynatar"} value="Cyberpunk" className="genre-button" />
             <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByGenre, "Sci-Fi")} font={"major-mono"} value="Sci-Fi" className="genre-button" />
-            {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </div>
         </>
         {( user ?
