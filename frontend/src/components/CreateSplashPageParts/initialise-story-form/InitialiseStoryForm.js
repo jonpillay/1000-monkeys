@@ -100,6 +100,8 @@ const InitialiseStoryForm = (props) => {
       return
     }
 
+    loadingDispatch({type: 'LOADING'})
+
     setError("")
 
     const prompt = promptRef.current.value

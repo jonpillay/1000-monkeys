@@ -11,16 +11,15 @@
   position: sticky;
   top: 0px;
   z-index: 1000;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   offset-position: 0% -100%;
   transition: 0.5s;
 }
 
 .home-button {
   margin-top: 0.5rem;
-  margin: 2%;
-  width: 6%;
-  border-radius: 5px;
+  width: 100%;
+  background-color: antiquewhite;
   cursor: pointer;
   border: none;
 }

@@ -29,7 +29,6 @@ export const useAcceptTerms = () => {
     const JSONres = await response.json()
 
     if (!response.ok) {
-      console.log(JSONres)
       setTouError("Terms not Accepted, Please Retry")
     }
 

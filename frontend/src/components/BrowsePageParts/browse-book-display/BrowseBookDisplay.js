@@ -1,9 +1,6 @@
 import "./BrowseBookDisplay.css";
 
-import { useAuthContext } from "../../../hooks/useAuthContext"
-
 import StoryBookBrowseContainer from "../story-book-browse-container/StoryBookBrowseContainer";
-import { useEffect } from "react";
 
 const BrowseBookDisplay = (props) => {
 

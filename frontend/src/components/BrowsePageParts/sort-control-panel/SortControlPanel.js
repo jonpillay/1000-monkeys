@@ -1,17 +1,18 @@
 import './SortControlPanel.css'
 import SortButton from '../sort_button/SortButton';
 
+import { sortByNewest } from '../../../helpers/sortFuncts';
+
 import { useEffect, useState, useRef } from 'react';
 
 const SortControlPanel = (props) => {
-
-  // import the callback from the FetchsStories and apply it to different genres etc...
 
   const [controlPanelScroll, setControlPanelScroll] = useState(false)
 
   const selectedButton = useRef()
 
   const setBookList = props.setBookList
+  const bookList = props.bookList
 
 
   useEffect(() => {
@@ -53,14 +54,16 @@ const SortControlPanel = (props) => {
 //     setBookList(bookList)
 //   }
 
+// sort button needs functions
+
   return (
     <>
       <div className={controlPanelScroll ? "sort-nav-container active" : "sort-nav-container"}>
         <>
         <div className='button-container'>
-            <SortButton/>
-            <SortButton/>
-            <SortButton/>
+            <SortButton bookList={bookList} setBookList={setBookList} sortFunct={sortByNewest} label={"New!"}/>
+            <SortButton bookList={bookList} setBookList={setBookList}/>
+            <SortButton bookList={bookList} setBookList={setBookList}/>
         </div>
         </>
       </div>

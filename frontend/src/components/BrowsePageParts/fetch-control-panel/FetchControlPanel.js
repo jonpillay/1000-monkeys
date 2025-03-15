@@ -70,6 +70,7 @@ const FetchStoriesControlPanel = (props) => {
     const pageNumbers = await JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
     bookList.forEach((book) => {
+      // console.log(new Date(parseInt( book._id.substring(0, 8), 16) * 1000))
       if (!(book._id in pageNumbers)) {
         pageNumbers[book._id] = 0
       }
