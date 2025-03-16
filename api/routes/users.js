@@ -20,4 +20,6 @@ router.post('/watch-user', requireAuth, UserController.Watch)
 
 router.post('/accept-terms', requireInviteMatch, UserController.AcceptTerms)
 
+router.post('/book-read', requireAuth, UserController.AddBookRead)
+
 module.exports = router

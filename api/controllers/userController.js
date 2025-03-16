@@ -22,7 +22,7 @@ const UserController = {
 
       const JWT = genLoginJWT(user._id, user.isSuper)
 
-      res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits })
+      res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits, booksRead: user.booksRead  })
     } catch (error) {
 
       res.status(400).json({error: error.message })
@@ -100,6 +100,19 @@ const UserController = {
 
     } catch (error) {
       res.status(400).json({error: error.message})
+    }
+
+  },
+  AddBookRead: async (req, res) => {
+
+    try {
+      const {_id} = req.user._id
+      const {bookID} = req.body
+
+      User.AddBookRead(_id, bookID)
+
+    } catch(error) {
+      console.log("Read Books not updating.")
     }
 
   }

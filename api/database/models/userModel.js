@@ -39,6 +39,10 @@ const userSchema = new Schema({
   termsAccepted: {
     type: Boolean,
     default: false
+  },
+  booksRead: {
+    type: Array,
+    default: []
   }
 })
 
@@ -221,6 +225,18 @@ userSchema.statics.acceptTerms = async function (email) {
   await this.findOneAndUpdate(filter, update, options)
 
   return
+
+}
+
+userSchema.statics.addBookRead = async function (_id, bookID) {
+  
+  const filter = { _id: _id }
+  const update = { $push: { booksRead: bookID } }
+  const options = { new: true }
+
+  const updatedReadArray = await this.findOneAndUpdate(filter, update, options)
+
+  return updatedReadArray
 
 }
 
