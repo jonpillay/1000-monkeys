@@ -2,7 +2,11 @@ import "./BrowseBookDisplay.css";
 
 import StoryBookBrowseContainer from "../story-book-browse-container/StoryBookBrowseContainer";
 
+import { useBooksRead } from "../../../hooks/useBooksRead";
+
 const BrowseBookDisplay = (props) => {
+
+  const { addBookRead, localBooksRead, setLocalBooksRead } = useBooksRead()
 
   const pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
@@ -25,6 +29,7 @@ const BrowseBookDisplay = (props) => {
           GPTChatHistory={book.GPTChatHistory}
           SDPromptHistory = {book.SDPromptHistory}
           pageNumber={pageNumbers[book._id]}
+          addBookRead={addBookRead}
         />
       </li>
     );

@@ -55,6 +55,8 @@ const StoryBookBrowseContainer = (props) => {
 
   const SDPromptHistory = props.SDPromptHistory
 
+  const addBookRead = props.addBookRead
+
   let genreFont = ''
 
   if (genre == 'Western') {
@@ -70,6 +72,15 @@ const StoryBookBrowseContainer = (props) => {
   } else if (genre == 'Dystopian') {
     genreFont = 'phage-rough'
   }
+
+  
+
+  useEffect(() => {
+    if (currentUser && renderChapter == 4) {
+      addBookRead(bookID)
+    }
+
+  }, [renderChapter])
 
   return (
     <>

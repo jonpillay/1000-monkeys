@@ -26,6 +26,7 @@ export const useBooksRead = () => {
     const JSONres = await response.json()
 
     if (!response.ok) {
+        console.log(JSONres)
         console.log("Books Read Not Updating.")
 
     }

@@ -109,12 +109,12 @@ const UserController = {
       const {_id} = req.user._id
       const {bookID} = req.body
 
-      User.AddBookRead(_id, bookID)
+      User.addBookRead(_id, bookID)
 
     } catch(error) {
+      console.log(error)
       console.log("Read Books not updating.")
     }
-
   }
 }
 
