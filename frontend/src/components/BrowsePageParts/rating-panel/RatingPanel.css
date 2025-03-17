@@ -30,11 +30,14 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  height: fit-content;
 }
 
 .rating-panel-grid {
-  display: grid;
-  grid-template-rows: 32% 65%;
+  /* display: grid;
+  grid-template-rows: 32% 65%; */
+  display: flex;
+  flex-direction: column;
 }
 
 .rating-container {
@@ -53,7 +56,6 @@
 }
 
 .needs-rating-span {
-  margin-bottom: 0.6rem;
   font-size: 0.6rem;
   text-align: center;
 }

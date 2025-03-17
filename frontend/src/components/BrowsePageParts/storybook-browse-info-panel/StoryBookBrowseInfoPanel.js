@@ -19,6 +19,7 @@ const StoryBookBrowseInfoPanel = (props) => {
   const AIEngine = props.AIEngine
   const genreFont = props.genreFont
   const ratings = props.ratings
+  const userRead = props.userRead
 
   return (
     <>
@@ -43,7 +44,18 @@ const StoryBookBrowseInfoPanel = (props) => {
                 <LoadIntoCreateButton storyID={bookID} />
               </div>
               ) : (
-                <div className="browse-info-pane-container"></div>
+                <>
+                {!currentUser || userRead ? (
+                  <div className="browse-info-pane-container"></div>
+                ) : (
+                  <div className="new-container">
+                    <div className='new-border'>
+                      <span className='new-text'>NEW!</span>
+                    </div>                  
+                  </div>
+                ) 
+                }
+              </>
               )}
         </div>
       </div>

@@ -1,10 +1,13 @@
 import "./BrowseBookDisplay.css";
 
 import StoryBookBrowseContainer from "../story-book-browse-container/StoryBookBrowseContainer";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 import { useBooksRead } from "../../../hooks/useBooksRead";
 
 const BrowseBookDisplay = (props) => {
+
+  const { user } = useAuthContext()
 
   const { addBookRead, localBooksRead, setLocalBooksRead } = useBooksRead()
 
@@ -15,6 +18,7 @@ const BrowseBookDisplay = (props) => {
     return (
       <li key={book._id}>
         <StoryBookBrowseContainer
+          currentUser = {user}
           authorID={book.user_id}
           bookID={book._id}
           author={book.author}
@@ -30,6 +34,7 @@ const BrowseBookDisplay = (props) => {
           SDPromptHistory = {book.SDPromptHistory}
           pageNumber={pageNumbers[book._id]}
           addBookRead={addBookRead}
+          localBooksRead={localBooksRead}
         />
       </li>
     );

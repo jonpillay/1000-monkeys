@@ -81,6 +81,11 @@
   src: url("./fonts/VT323-Regular.ttf");
 }
 
+@font-face {
+  font-family: 'Bangers-Regular';
+  src: url("./fonts/Bangers-Regular.ttf");
+}
+
 .title {
   font-family: 'special-elite';
   font-size: 60px;

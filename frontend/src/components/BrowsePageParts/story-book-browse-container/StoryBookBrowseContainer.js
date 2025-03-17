@@ -21,13 +21,11 @@ const StoryBookBrowseContainer = (props) => {
     
   // })
 
-  const {user} = useAuthContext()
-
   const bookID = props.bookID
 
   const authorID = props.authorID
 
-  const currentUser = user
+  const currentUser = props.currentUser
 
   const title = props.title
 
@@ -49,11 +47,11 @@ const StoryBookBrowseContainer = (props) => {
 
   const ratings = props.ratings
 
-  const [renderChapter, setRenderChapter] = useState(startingPage)
-
   const GPTChatHistory = props.GPTChatHistory
 
   const SDPromptHistory = props.SDPromptHistory
+
+  const localBooksRead = props.localBooksRead
 
   const addBookRead = props.addBookRead
 
@@ -73,11 +71,14 @@ const StoryBookBrowseContainer = (props) => {
     genreFont = 'phage-rough'
   }
 
-  
+  const [renderChapter, setRenderChapter] = useState(startingPage)
+  const [ userRead, setUserRead ] = useState(currentUser ? currentUser.booksRead.includes(bookID) || localBooksRead.includes(bookID) : false)
 
   useEffect(() => {
     if (currentUser && renderChapter == 4) {
+      if (!currentUser.booksRead.includes(bookID) && !localBooksRead.includes(bookID))
       addBookRead(bookID)
+      setUserRead(true)
     }
 
   }, [renderChapter])
@@ -85,7 +86,7 @@ const StoryBookBrowseContainer = (props) => {
   return (
     <>
       <div className="page-container">
-        <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont} ratings={ratings}/>
+        <StoryBookBrowseInfoPanel authorID={authorID} currentUser={currentUser} bookID={bookID} author={author} title={title} character={character} genre={genre} artstyle={artstyle} AIEngine={AIEngine} genreFont={genreFont} ratings={ratings} userRead={userRead}/>
         <StoryBookBrowse id={bookID} chapterTexts={chapterTexts} chapterImgURLs={chapterImgURLs} renderChapter={renderChapter} setRender={setRenderChapter} genre={genre} genreFont={genreFont} artstyle={artstyle} character={character} GPTChatHistory={GPTChatHistory} SDPromptHistory={SDPromptHistory}/>
       </div>
     </>
