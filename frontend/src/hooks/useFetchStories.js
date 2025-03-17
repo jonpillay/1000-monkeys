@@ -33,7 +33,7 @@ export const useFetchStories = () => {
     }
   }
 
-  const fetchByUser = async (user_id) => {
+  const fetchByUser = async (_id) => {
     setIsLoading(true)
     setError(null)
 
@@ -42,7 +42,7 @@ export const useFetchStories = () => {
       headers: {
         'Content-Type': 'application/json',
     },
-      body: JSON.stringify({user_id})
+      body: JSON.stringify({_id})
     })
 
     const JSONres = await response.json()

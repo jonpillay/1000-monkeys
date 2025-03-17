@@ -70,7 +70,6 @@ const FetchStoriesControlPanel = (props) => {
     const pageNumbers = await JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
     bookList.forEach((book) => {
-      // console.log(new Date(parseInt( book._id.substring(0, 8), 16) * 1000))
       if (!(book._id in pageNumbers)) {
         pageNumbers[book._id] = 0
       }
@@ -95,7 +94,7 @@ const FetchStoriesControlPanel = (props) => {
         </>
         {( user ?
           <div className="user-fetch-button-container">
-            <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByUser, user._id)} font={"major-mono"} value="My Stories" className="user-fetch-button" />
+            <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByUser, user.id)} font={"major-mono"} value="My Stories" className="user-fetch-button" />
           </div>
           :
           <div className="user-fetch-filler">

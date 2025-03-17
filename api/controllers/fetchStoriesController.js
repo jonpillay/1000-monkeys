@@ -23,7 +23,7 @@ const FetchStoriesController = {
 
     try {
 
-      const bookList = await StoryBook.find(requestUser).exec()
+      const bookList = await StoryBook.find({user_id: requestUser}).exec()
 
       res.status(200).json({ filteredList: bookList })
     } catch (error) {
