@@ -36,8 +36,8 @@ export const useUpdateRating = () => {
       }
   
       if (response.ok) {
-
         setIsLoading(false)
+        return JSONres.updatedRatingsAverage
       }
     } catch (error) {
       console.log(error.message)

@@ -64,8 +64,6 @@ const PublishStoryControlPanel = (props) => {
       setTimeout(() => {
         setForbidden(false)
       }, 1500)
-      console.log("Invlaid input")
-
     }
 
   }

@@ -14,8 +14,8 @@ const storyBookSchema = new Schema({
     type: [],
   },
   ratings: {
-    type: Array,
-    default: []
+    type: Object,
+    default: {}
   },
   genre: {
     type: String,
@@ -80,15 +80,15 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
 
 storyBookSchema.statics.submitRating = async function (story_id, userID, rating) {
 
-  const newRating = {}
+  // const newRating = {}
 
-  newRating[userID] = rating
+  // newRating[userID] = rating
 
   // update the rating array, but return the original document so that the new average can be worked out
   // incrementally, without having to scan the entire array again
   const ratedStoryBook = await this.findOneAndUpdate(
     { _id: story_id },
-    { $push : { ratings: newRating } },
+    { $set: { [`ratings.${userID}`]: rating } },
   )
 
   const ratingsAverage = ratedStoryBook.ratingsAverage
@@ -101,26 +101,35 @@ storyBookSchema.statics.submitRating = async function (story_id, userID, rating)
 
     const updatedStorybook = await this.findOneAndUpdate(
       { _id: story_id },
-      { $set: { ratingsAverage: initAverageRatings } }
+      { $set: { ratingsAverage: initAverageRatings } },
+      { new: true }
     )
     return updatedStorybook
 
   } else {
-    const count = ratedStoryBook.ratings.length
+    const count = Object.keys(ratedStoryBook.ratings).length
+
     const newAverageRating = ((ratingsAverage[0] * count) + rating) / (count+1)
 
     const newAverageRatingPair = []
     newAverageRatingPair.push(newAverageRating)
-    newAverageRatingPair.push(ratedStoryBook.ratings.length)
+    newAverageRatingPair.push(count)
 
-    const updatedStorybook = await this.findOneAndUpdate(
-      { _id: story_id },
-      { $set: { ratingsAverage: newAverageRatingPair } },
-      { new: true }
-    )
 
-    return updatedStorybook
+    try {
+      const updatedStorybook = await this.findOneAndUpdate(
+        { _id: story_id },
+        { $set: { ratingsAverage: newAverageRatingPair } },
+        { new: true }
+      )
+  
+
+      return updatedStorybook
+
+    } catch(error) {
+      console.log(error)
     }
+  }
 }
 
 storyBookSchema.statics.publishStory = async function (story_id, title) {

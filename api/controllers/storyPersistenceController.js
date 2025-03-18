@@ -54,9 +54,9 @@ const StoryPersistenceController = {
 
     try {
 
-      await StoryBook.submitRating(storyBook._id, user_id, rating)
+      const updatedStorybook = await StoryBook.submitRating(storyBook._id, user_id, rating)
 
-      res.status(200).json({ message: "Rated"})
+      res.status(200).json({ updatedRatingsAverage: updatedStorybook.ratingsAverage})
     } catch (error) {
 
       res.status(400).json({error: error.message })

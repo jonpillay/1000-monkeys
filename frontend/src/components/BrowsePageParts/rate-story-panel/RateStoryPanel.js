@@ -13,19 +13,26 @@ function RateStoryPanel(props) {
 
   const submitRating = props.submitRating
   const bookID = props.bookID
-  const setUserRated = props.setRated
-  const setRatings = props.setRatings
+  const setRatedBool = props.setRatedBool
+  const setRatingsAverage = props.setRatingsAverage
+  const setUserRating = props.setUserRating
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (user != null) {
       try {
-        await submitRating(bookID, currentRate)
-        setRatings((prevRatings) => [...prevRatings, {[user.id]: currentRate}])
-        setUserRated(true)
-      } catch(error) {
+        const updatedRatingsAverage = await submitRating(bookID, currentRate)
+        if (updatedRatingsAverage.length > 0) {
+          setRatingsAverage(updatedRatingsAverage)
+          setUserRating(currentRate)
+          setRatedBool(true)
+        } else {
+          console.log("Ratings not returning average properly")
+        }
 
+      } catch(error) {
+        console.log(error)
       }
     }
   }

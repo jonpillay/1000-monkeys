@@ -22,18 +22,6 @@ export const useBooksRead = () => {
       },
       body: JSON.stringify(reqBody)
     })
-
-    const JSONres = await response.json()
-
-    if (!response.ok) {
-        console.log(JSONres)
-        console.log("Books Read Not Updating.")
-
-    }
-
-    if (response.ok) {
-        console.log("Books Read Updating.")
-    }
   }
 
   return { addBookRead, localBooksRead, setLocalBooksRead }

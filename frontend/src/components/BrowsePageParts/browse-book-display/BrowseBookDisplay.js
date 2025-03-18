@@ -35,6 +35,7 @@ const BrowseBookDisplay = (props) => {
           pageNumber={pageNumbers[book._id]}
           addBookRead={addBookRead}
           localBooksRead={localBooksRead}
+          ratingsAverage={book.ratingsAverage}
         />
       </li>
     );

@@ -20,13 +20,14 @@ const StoryBookBrowseInfoPanel = (props) => {
   const genreFont = props.genreFont
   const ratings = props.ratings
   const userRead = props.userRead
+  const ratingsAverage = props.ratingsAverage
 
   return (
     <>
     <div className="storybook-browse-info-panel-container">
       <div className="storybook-browse-info-panel-grid">
         <div className="rating-container">
-          <RatingPanel ratings={ratings} bookID={bookID} authorID={authorID} />
+          <RatingPanel ratings={ratings} bookID={bookID} authorID={authorID} ratingsAverage={ratingsAverage}/>
         </div>
         <div className="star-title-container">
           <div className="browse-info-pane-container">
