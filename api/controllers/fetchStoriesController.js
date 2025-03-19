@@ -1,4 +1,5 @@
 const StoryBook = require('../database/models/storyBookModel')
+const {roundVoteAverageList} = require('../helpers/mathFuncts')
 
 const FetchStoriesController = {
 
@@ -9,6 +10,8 @@ const FetchStoriesController = {
     try {
 
       const bookList = await StoryBook.find(requestGenre).exec()
+
+      roundVoteAverageList(bookList)
 
       res.status(200).json({ filteredList: bookList })
     } catch (error) {

@@ -113,7 +113,7 @@ storyBookSchema.statics.submitRating = async function (story_id, userID, rating)
 
     const newAverageRatingPair = []
     newAverageRatingPair.push(newAverageRating)
-    newAverageRatingPair.push(count)
+    newAverageRatingPair.push(count+1)
 
 
     try {

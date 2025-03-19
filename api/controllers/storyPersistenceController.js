@@ -1,4 +1,5 @@
 const StoryBook = require('../database/models/storyBookModel')
+const {roundStoryBookVoteAvg} = require('../helpers/mathFuncts')
 
 const StoryPersistenceController = {
   SaveStory: async (req, res) => {
@@ -55,6 +56,8 @@ const StoryPersistenceController = {
     try {
 
       const updatedStorybook = await StoryBook.submitRating(storyBook._id, user_id, rating)
+
+      roundStoryBookVoteAvg(updatedStorybook)
 
       res.status(200).json({ updatedRatingsAverage: updatedStorybook.ratingsAverage})
     } catch (error) {
