@@ -12,12 +12,13 @@ export const usePublishStory = () => {
 
   const reduxDispatch = useDispatch()
 
-  const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(null)
+  const [publishError, setPublishError] = useState(null)
+  const [publishing, setPublishing] = useState(null)
+  const [justPublished, setJustPublished] = useState(false)
 
   const publishStory = async (story_id, title) => {
 
-    setError(null)
+    setPublishError(null)
 
     const reqBody = {
       story_id: story_id,
@@ -37,20 +38,19 @@ export const usePublishStory = () => {
       const JSONres = await response.json()
   
       if (!response.ok) {
-        setIsLoading(false)
-        setError(JSONres.error)
+        setPublishing(false)
+        setPublishError(JSONres.error)
       }
   
       if (response.ok) {
-
-        reduxDispatch(setMongoID(JSONres.story_id))
-        setIsLoading(false)
+        setJustPublished(true)
+        setPublishing(false)
       }
     } catch (error) {
-      setIsLoading(false)
-      setError(error.message)
+      setPublishing(false)
+      setPublishError(error.message)
     }
   }
 
-  return { publishStory, isLoading, error }
+  return { publishStory, publishing, publishError, justPublished }
 }

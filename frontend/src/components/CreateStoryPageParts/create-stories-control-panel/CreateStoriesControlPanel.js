@@ -21,6 +21,9 @@ const CreateStoriesControlPanel = (props) => {
   const userPromtNextChapter = props.userPromtNextChapter
   const isLoading = props.isLoading
   const error = props.error
+  const publishStory = props.publishStory
+  const publishing = props.publishing
+  const publishError = props.publishError
   
   // import the callback from the FetchsStories and apply it to different genres etc...
 
@@ -51,7 +54,7 @@ const CreateStoriesControlPanel = (props) => {
           </div>
         ) : (
           <div className='create-control-user-prompt-input'>
-            <PublishStoryControlPanel isLoading={isLoading} />
+            <PublishStoryControlPanel isLoading={isLoading}/>
           </div>
         )}
         <div>

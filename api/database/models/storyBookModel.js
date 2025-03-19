@@ -45,6 +45,9 @@ const storyBookSchema = new Schema({
     type: Boolean,
     default: false
   },
+  publishedOn: {
+    type: Date,
+  },
   ratingsAverage: {
     type: Array,
     default: []
@@ -138,7 +141,8 @@ storyBookSchema.statics.publishStory = async function (story_id, title) {
     {
       $set: {
         title: title,
-        published: true
+        published: true,
+        publishedOn: Date.now()
       }
     }
   )

@@ -2,14 +2,14 @@ import './FetchControlPanel.css'
 import FetchButton from '../fetch-button/FetchButton';
 
 import { useEffect, useState, useRef } from 'react';
+import { useLocation } from 'react-router';
 
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
 const FetchStoriesControlPanel = (props) => {
 
-  // import the callback from the FetchsStories and apply it to different genres etc...
-
+  const location = useLocation()
   const {user} = useAuthContext()
 
   const [controlPanelScroll, setControlPanelScroll] = useState(false)
@@ -94,7 +94,7 @@ const FetchStoriesControlPanel = (props) => {
         </>
         {( user ?
           <div className="user-fetch-button-container">
-            <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByUser, user.id)} font={"major-mono"} value="My Stories" className="user-fetch-button" />
+            <FetchButton selectedButton={selectedButton.current} fetchFunct={() => browseStorySetup(fetchByUser, user.id)} font={"major-mono"} value="MyStories" className="user-fetch-button" />
           </div>
           :
           <div className="user-fetch-filler">

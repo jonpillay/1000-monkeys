@@ -58,7 +58,7 @@ const StoryBookBrowse = (props) => {
 
   const genre = props.genre
   const character = props.character
-  const artStyle = props.artStyle
+  const artStyle = props.artstyle
 
   const genreFont = props.genreFont
 

@@ -13,10 +13,12 @@ import ChapterTitle from '../../SharedStoryBookParts/chapter-title/ChapterTitle'
 import SaveStoryButton from '../../SharedStoryBookParts/save-story-button/SaveStoryButton';
 // import StoryBookCreate from '../../CreateStoryPageParts/story-book-create/StoryBookCreate';
 import StoryBookCreate from '../../CreateStoryPageParts/story-book-create/StoryBookCreate.js';
-import SysInfoPanel from '../../SharedStoryBookParts/sys-info-panel/SysInfoPanel.js';
+import JustPublishedInfo from '../../CreateStoryPageParts/just-published-info/JustPublishedInfo.js';
 import LoadingPage from '../loading_page/LoadingPage'
 
 import { useCreateStory } from '../../../hooks/useCreateStory'
+import { usePublishStory } from '../../../hooks/usePublishStory.js';
+
 import { useLogout } from '../../../hooks/useLogout.js';
 
 import { useEffect, useRef } from 'react';
@@ -29,12 +31,11 @@ import { useStoryContext } from "../../../hooks/useStoryContext";
 import { useNavigate } from 'react-router';
 
 const CreateStoriesPage = (props) => {
+
   const {user} = useAuthContext()
   const { loading } = useLoadingContext()
-
   const reduxDispatch = useDispatch()
   const { dispatch } = useStoryContext()
-
   const { logout } = useLogout()
 
   const { 
@@ -49,135 +50,141 @@ const CreateStoriesPage = (props) => {
     setIsLoading,
     error } = useCreateStory()
 
-    const character = useSelector(selectCharacter)
-    const genre = useSelector(selectGenre)
-    const artStyle = useSelector(selectArtStyle)
-    const GPTChatHistory = useSelector(selectGPTPromptHistory)
-    const SDPromptHistory = useSelector(selectSDPromptHistory)
-    const chapterImgURLs = useSelector(selectAllChapterImages)
+  const { publishStory, publishing, publishError, justPublished } = usePublishStory()
 
-    const firstChapter = useSelector(selectFirstChapter)
+  const character = useSelector(selectCharacter)
+  const genre = useSelector(selectGenre)
+  const artStyle = useSelector(selectArtStyle)
+  const GPTChatHistory = useSelector(selectGPTPromptHistory)
+  const SDPromptHistory = useSelector(selectSDPromptHistory)
+  const chapterImgURLs = useSelector(selectAllChapterImages)
 
-    const renderChapter = useSelector(selectRenderChapter) || null
+  const firstChapter = useSelector(selectFirstChapter)
 
-    const storyInProgress = useSelector(selectStoryInProgress)
+  const renderChapter = useSelector(selectRenderChapter) || null
 
-    let genreFont = ''
+  const storyInProgress = useSelector(selectStoryInProgress)
 
-    if (genre == 'Western') {
-      genreFont = 'rye'
-    } else if (genre == 'Fairytale') {
-      genreFont = 'flavors'
-    } else if (genre == 'Cyberpunk') {
-      genreFont = 'cynatar'
-    } else if (genre == 'Sci-Fi') {
-      genreFont = 'major-mono'
-    }else if (genre == 'Cyberpunk') {
-      genreFont = 'cynatar'
-    } else if (genre == 'Dystopian') {
-      genreFont = 'phage-rough'
-    }
+  let genreFont = ''
 
-    const userPromptHistory = GPTChatHistory.filter(prompt => prompt['role'] == 'user')
-    const userPromptHistoryList = []
-    userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
-  
-    const combinedPrompts = []
-      
-    if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
-      userPromptHistoryList.forEach(prompt => {
-        const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
-  
-        let SDPrompt = ""
-  
-        if (SDPromptHistory.length == chapterImgURLs.length) {
-          const SDPromptInd = combinedPrompts.length
-          SDPrompt = SDPromptHistory[SDPromptInd]
+  if (genre == 'Western') {
+    genreFont = 'rye'
+  } else if (genre == 'Fairytale') {
+    genreFont = 'flavors'
+  } else if (genre == 'Cyberpunk') {
+    genreFont = 'cynatar'
+  } else if (genre == 'Sci-Fi') {
+    genreFont = 'major-mono'
+  }else if (genre == 'Cyberpunk') {
+    genreFont = 'cynatar'
+  } else if (genre == 'Dystopian') {
+    genreFont = 'phage-rough'
+  }
+
+  const userPromptHistory = GPTChatHistory.filter(prompt => prompt['role'] == 'user')
+  const userPromptHistoryList = []
+  userPromptHistory.forEach(promptObj => userPromptHistoryList.push(promptObj['content']))
+
+  const combinedPrompts = []
     
-        } else {
-          SDPrompt = "Image Gen Prompt Not Available."
-        }
+  if (userPromptHistory && userPromptHistoryList.length == chapterImgURLs.length) {
+    userPromptHistoryList.forEach(prompt => {
+      const chapterPromptStr = "SYS:\\> User Chapter Prompt = ".concat(prompt)
+
+      let SDPrompt = ""
+
+      if (SDPromptHistory.length == chapterImgURLs.length) {
+        const SDPromptInd = combinedPrompts.length
+        SDPrompt = SDPromptHistory[SDPromptInd]
   
-        const SDPromptStr = "SYS:\\> AI Generated Image Prompt = ".concat(SDPrompt)
-  
-        const finalPrompt = chapterPromptStr.concat("\n\n").concat(SDPromptStr)
-  
-        combinedPrompts.push(finalPrompt)
-      });
-    }
+      } else {
+        SDPrompt = "Image Gen Prompt Not Available."
+      }
 
-    const chapterPromptText = useRef(combinedPrompts[renderChapter])
+      const SDPromptStr = "SYS:\\> AI Generated Image Prompt = ".concat(SDPrompt)
 
-    const genFirstChapter = async () => {
-      await localStorage.removeItem('firstChapter')
-      await AIGenCall()
-    }
+      const finalPrompt = chapterPromptStr.concat("\n\n").concat(SDPromptStr)
 
-    const createStoryCleanup = () => {
-      reduxDispatch(resetStorySysInfo())
-      reduxDispatch(resetStoryBookSlice())
-      localStorage.removeItem('storyPages')
-      localStorage.removeItem('sysInfo');
-      localStorage.removeItem('userChoices');
-      localStorage.removeItem('GPTPromptHistory');
-      localStorage.removeItem('localGPTPromptHistory');
-  
-      dispatch({type: "END", payload: null})
-    }
+      combinedPrompts.push(finalPrompt)
+    });
+  }
 
-    useEffect(() => {
-      const handleUserPageNavigation = (event) => {
+  const chapterPromptText = useRef(combinedPrompts[renderChapter])
 
-        if (loading) {
-          event.preventDefault()
+  const genFirstChapter = async () => {
+    await localStorage.removeItem('firstChapter')
+    await AIGenCall()
+  }
 
-          const userNavPrompt = window.confirm(
-            "Navigating/Refreshing During Story Creation Will Terminate Creation.\nUnsaved Data Will be Lost and Credits Will be Deducted.\nPress OK To Continue, Or Cancel To Stay on Page."
-          )
+  const createStoryCleanup = () => {
+    reduxDispatch(resetStorySysInfo())
+    reduxDispatch(resetStoryBookSlice())
+    localStorage.removeItem('storyPages')
+    localStorage.removeItem('sysInfo');
+    localStorage.removeItem('userChoices');
+    localStorage.removeItem('GPTPromptHistory');
+    localStorage.removeItem('localGPTPromptHistory');
 
-          if (userNavPrompt) {
+    dispatch({type: "END", payload: null})
+  }
 
-            window.location.href = event.target.href
+  useEffect(() => {
+    const handleUserPageNavigation = (event) => {
 
-            if (event.type === "beforeunload") {
-              window.location.reload();
-            }
+      if (loading) {
+        event.preventDefault()
+
+        const userNavPrompt = window.confirm(
+          "Navigating/Refreshing During Story Creation Will Terminate Creation.\nUnsaved Data Will be Lost and Credits Will be Deducted.\nPress OK To Continue, Or Cancel To Stay on Page."
+        )
+
+        if (userNavPrompt) {
+
+          window.location.href = event.target.href
+
+          if (event.type === "beforeunload") {
+            window.location.reload();
           }
         }
       }
-
-    window.addEventListener("beforeunload", handleUserPageNavigation)
-
-    return () => {
-      window.removeEventListener("beforeunload", handleUserPageNavigation)
     }
 
-    }, [loading])
+  window.addEventListener("beforeunload", handleUserPageNavigation)
 
-    useEffect(() => {
-      if (localStorage.getItem('firstChapter')) {
-        genFirstChapter()
-      }
-    })
+  return () => {
+    window.removeEventListener("beforeunload", handleUserPageNavigation)
+  }
 
-    useEffect(() => {
+  }, [loading])
+
+  useEffect(() => {
+    if (localStorage.getItem('firstChapter')) {
+      genFirstChapter()
+    }
+  })
+
+  useEffect(() => {
+    
+    const localUser = localStorage.getItem('user')
+
+    if (!localUser) {
+
+      logout()
+
+      alert("Your token has expired. Please Login Again")
       
-      const localUser = localStorage.getItem('user')
-
-      if (!localUser) {
-
-        logout()
-
-        alert("Your token has expired. Please Login Again")
-        
-      }
-    }, [user])
+    }
+  }, [user])
 
   return (
     <>
       { loading == false ? (
         <div className="create-page-containter">
-          <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error}/>
+          {!true ? (
+            <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error} publishStory={publishStory} publishing={publishing} publishError={publishError}/>
+          ) : (
+            <JustPublishedInfo/>
+          )}
           <div className="storybook-header">
               <ChapterTitle chapterNumber={renderChapter + 1}/>
               <SaveStoryButton setStoryInSync={[storyInSync, setStoryInSync]}/>

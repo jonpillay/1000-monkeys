@@ -15,7 +15,11 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 
 const PublishStoryControlPanel = (props) => {
 
-  const { publishStory, isLoading, error } = usePublishStory()
+  const publishStory = props.publishStory
+  const publishing = props.publishing
+  const publishError = props.publishError
+
+  // const { publishStory, isLoading, error } = usePublishStory()
 
   const [forbidden, setForbidden] = useState(false)
 
@@ -82,7 +86,7 @@ const PublishStoryControlPanel = (props) => {
             <>
             {! forbidden ? 
               <div className="publish-story-input-submit-container">
-                <button disabled={isLoading} className="publish-story-input-button" id="publish-story-input-submit-button" type="submit">Publish</button>
+                <button disabled={publishing} className="publish-story-input-button" id="publish-story-input-submit-button" type="submit">Publish</button>
               </div>
               :
               <div className="publish-story-input-submit-container">
