@@ -19,7 +19,7 @@ const ActivationPage = () => {
     <>
     <div className="activation-container">
       {(
-        !true ?
+        !signupActive ?
           <div className="activation-grid">
             <ActivationBlurb/>
             <ActivationForm activate={activate} isLoading={isLoading} error={error} />

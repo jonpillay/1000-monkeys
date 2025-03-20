@@ -180,7 +180,7 @@ const CreateStoriesPage = (props) => {
     <>
       { loading == false ? (
         <div className="create-page-containter">
-          {!true ? (
+          {!justPublished ? (
             <CreateStoriesControlPanel AIGenCall={AIGenCall} userPromtNextChapter={userPromtNextChapter} AIPromptNextChapter={AIPromptNextChapter} refreshStory={refreshStory} refreshImage={refreshImage} isLoading={isLoading} error={error} publishStory={publishStory} publishing={publishing} publishError={publishError}/>
           ) : (
             <JustPublishedInfo/>

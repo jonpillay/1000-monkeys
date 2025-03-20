@@ -9,9 +9,9 @@ const AcceptTermsCheckBox = (props) => {
   const termsAccepted = props.termsAccepted
   const setTermsAccepted = props.setTermsAccepted
 
-  useEffect(()=> {
-    setTermsAccepted(false)
-  }, [])
+  // useEffect(()=> {
+  //   setTermsAccepted(false)
+  // }, [])
 
   return (
     <>

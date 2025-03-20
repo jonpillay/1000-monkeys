@@ -12,6 +12,7 @@ import Header from '../HeaderSharedParts/header/Header';
 import SplashPage from '../Pages/splash-page/SplashPage'
 import AdminPage from '../Pages/admin-page/AdminPage';
 import ActivationPage from '../Pages/activation-page/ActivationPage';
+import ActivationSignupPanel from '../ActivationPageParts/activation-signup-panel/ActivationSignupPanel';
 import BrowsePage from '../Pages/browse-page/BrowsePage';
 import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
 import CreateStoriesPage from '../Pages/create-stories-page/CreateStoriesPage';

@@ -54,7 +54,7 @@ const CreateStoriesControlPanel = (props) => {
           </div>
         ) : (
           <div className='create-control-user-prompt-input'>
-            <PublishStoryControlPanel isLoading={isLoading}/>
+            <PublishStoryControlPanel publishing={publishing} publishStory={publishStory} publishError={publishError}/>
           </div>
         )}
         <div>

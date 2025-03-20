@@ -7,7 +7,7 @@ const roundStoryBookVoteAvg = (storyBook) => {
         return
     }
 
-    const roundedVote = Math.round((unroundedVote*10)/10)
+    const roundedVote = Math.round(unroundedVote*10)/10
 
     storyBook.ratingsAverage[0] = roundedVote
 }

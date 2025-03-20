@@ -18,7 +18,7 @@ function RatingPanel(props) {
 
   // let ratedBool = false
 
-  const [ratings, setRatings] = useState(props.ratings ? props.rating : [])
+  const [ratings, setRatings] = useState(props.ratings ? props.ratings : [])
 
   const [ratedBool, setRatedBool] = useState(!ratings || !user ? false : user.id in ratings ? true : false)
 
@@ -34,7 +34,7 @@ function RatingPanel(props) {
     <div className="rating-panel-container">
       <div className="rating-panel-grid">
         <div className="rating-container">
-          { (ratingsAverage.length > 0 && ratingsAverage[0] != undefined ?
+          { (ratingsAverage.length == 2 ?
           <>
             <div className='rating-span'>{ratingsAverage[0]}<span><img className='rating-star' src={RatingStar}/></span><span style={{fontSize:18}}>({ratingsAverage[1]})</span></div>
           </>

@@ -61,7 +61,7 @@ const StoryPersistenceController = {
 
       res.status(200).json({ updatedRatingsAverage: updatedStorybook.ratingsAverage})
     } catch (error) {
-
+      console.log(error)
       res.status(400).json({error: error.message })
     }
 
