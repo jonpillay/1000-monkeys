@@ -10,9 +10,7 @@ const JustPublishedInfo = () => {
 
     e.preventDefault()
 
-    navigate('/browse', {
-      state: { justPublished: "Just Published" }
-    })
+    navigate('/browse')
 
   }
 

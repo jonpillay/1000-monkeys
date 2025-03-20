@@ -18,8 +18,6 @@ const BrowsePage = (props) => {
 
   const { fetchByGenre, fetchByUser, isLoading, error, bookList, setBookList } = useFetchStories()
 
-
-
   /* 
   
   Browse page makes the api call and return a list of the filtered books dependant on genre
