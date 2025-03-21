@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addChapter, nextPage, previousPage, turnToPage, turnToLastPage, selectRenderChapter, selectAllChapterImages, prepStoryBookRefreshChapter, selectAllChapterTexts, removeChapterImage, swapChapterImage } from "../components/CreateStoryPageParts/story-book-create/storyBookSlice";
-import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, pushSDPrompt, setStoryInProgress, setStoryInSync, initialiseStory, refreshChapterPrep, setFirstChapter, resetStorySysInfo } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
+import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, pushGPTPrompt, pushSDPrompt, setStoryInProgress, setStoryInSync, initialiseStory, refreshChapterPrep, swapChapterSDPrompt, setFirstChapter, resetStorySysInfo } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 
 import { LoadingContext } from "../context/LoadingContext";
 import { clearReduxPersist } from "../redux-state/store";
@@ -302,6 +302,7 @@ export const useCreateStory = () => {
       .then((response) => response.json())
       .then((data) => {
         reduxDispatch(swapChapterImage(renderChapter, data["page_image"]))
+        reduxDispatch(swapChapterSDPrompt(renderChapter, data["SD_prompt"]))
         reduxDispatch(turnToPage(renderChapter))
         reduxDispatch(setStoryInSync(false))
         setStoryInSync(false)

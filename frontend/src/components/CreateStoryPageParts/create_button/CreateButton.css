@@ -35,6 +35,8 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  font-family: 'VT323';
+  font-size: 1.5rem;
 }
 
 .create-button.hover {

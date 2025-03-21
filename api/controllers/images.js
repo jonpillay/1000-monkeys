@@ -28,7 +28,7 @@ const ImagesController = {
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
-      res.status(200).json({ page_image: story_image });
+      res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt });
     } catch (error) {
       res.status(error.status).json({ message: error.message });
     }

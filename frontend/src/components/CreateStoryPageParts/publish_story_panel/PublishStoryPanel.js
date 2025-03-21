@@ -77,7 +77,7 @@ const PublishStoryControlPanel = (props) => {
       <div className="publish-story-input-container">
         <form className="publish-story-input-form" onSubmit={handleSubmit}>
           <div className="publish-story-input-title-container">
-            <div className="publish-story-input-title">Publish Your Story?</div>
+            <div className="publish-story-input-title">Publish Your Story!</div>
           </div>
           <div className="publish-story-text-input-container">
             <div>

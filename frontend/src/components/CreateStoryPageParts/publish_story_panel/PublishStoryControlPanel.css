@@ -1,12 +1,18 @@
 .publish-story-input-form {
-  display: grid;
-  grid-template-columns: 30% 50%;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
+.publish-story-input-title-container {
+  margin-top: 0.7rem;
+  margin-right: 0.3rem;
+  font-size: 1.5rem;
+  font-family: 'VT323';
+}
+
 .publish-story-input-button {
-  padding-left: 5px;
   background-color: white;
   text-align: left;
   width: 100%;
@@ -33,7 +39,7 @@
 }
 
 .publish-story-text-input-container {
-  margin-top: 2%;
+  margin-top: 0.5rem;
   display: flex;
 }
 
@@ -44,6 +50,12 @@
   align-items: center;
 }
 
+.publish-story-input-button {
+  font-family: 'VT323';
+  font-size: 1.5rem;
+  color: rgb(0, 255, 13);
+}
+
 .forbidden {
   max-height: 1.2rem;
   margin-left: 0.5rem;
@@ -52,7 +64,8 @@
 
 .publish-story-input-box {
   margin: auto;
-  padding-left: 5px;
+  padding-left: 0.3rem;
+  padding-top: 0.3rem;
   background-color: white;
   text-align: left;
   width: 100%;
@@ -72,4 +85,6 @@
   border-bottom-right-radius: 225px 15px;
   border-top-left-radius: 255px 15px;
   border-top-right-radius: 15px 225px;
+  font-family: 'special-elite';
+  font-size: 1.2rem;
 }

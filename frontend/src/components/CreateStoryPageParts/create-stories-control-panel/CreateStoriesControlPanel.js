@@ -35,17 +35,19 @@ const CreateStoriesControlPanel = (props) => {
   const selectedButton = useRef()
 
   const chapterTexts = useSelector(selectAllChapterTexts)
+  const renderChapter = useSelector(selectRenderChapter)
 
   const publishable = chapterTexts.length >= 5 ? true : false
+  const lastChapter = chapterTexts.length == renderChapter+1 ? true : false
 
   return (
     <>
       <div className='create-control-nav-container'>
         <>
         <div className='create-control-button-container'>
-            <CreateButton disabledVar={publishable} selectedButton={selectedButton.current} createFunct={() => AIPromptNextChapter()} font={"phage-rough"} value="You write the next chapter" className="genre-button" />
+            <CreateButton disabledVar={publishable} selectedButton={selectedButton.current} createFunct={() => AIPromptNextChapter()} font={"phage-rough"} value="AI Prompt The Next Chapter" className="genre-button" />
             <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshImage()} font={"rye"} value="Refresh the Picture" className="genre-button" />
-            <CreateButton selectedButton={selectedButton.current} createFunct={() => refreshStory()} font={"flavors"} value="Refresh the Text" className="genre-button" />
+            <CreateButton disabledVar={!lastChapter} selectedButton={selectedButton.current} createFunct={() => refreshStory()} font={"flavors"} value="Refresh Chapter" className="genre-button" />
             {/* <NavButton onClick={fetchByGenre("Western")} value="Western" className="genre-button" /> */}
         </div>
         { !publishable ? (
