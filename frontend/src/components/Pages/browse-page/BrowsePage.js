@@ -81,7 +81,7 @@ const BrowsePage = (props) => {
     <div className="browse-container">
       <div className={ controlPanelScroll ? "browse-control-container active" : "browse-control-container"}>
         <FetchStoriesControlPanel fetchByGenre={fetchByGenre} fetchByUser={fetchByUser} setBookList={setBookList} controlPanelScroll={controlPanelScroll} />
-        <SortControlPanel bookList={bookList} setDisplayBookList={setDisplayBookList} localBooksRead={localBooksRead} controlPanelScroll={controlPanelScroll}/>
+        <SortControlPanel bookList={bookList} displayBookList={displayBookList} setDisplayBookList={setDisplayBookList} localBooksRead={localBooksRead} controlPanelScroll={controlPanelScroll}/>
       </div>
       <BrowseBookDisplay bookList={bookList} displayBookList={displayBookList} localBooksRead={localBooksRead} addBookRead={addBookRead}/>
     </div>

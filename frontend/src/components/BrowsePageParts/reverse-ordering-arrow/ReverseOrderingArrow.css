@@ -1,13 +1,14 @@
-.sort-button {
+.reverse-sort-button {
     opacity: 95%;
-    font-size: 1.5vw;
-    border: none;
+    cursor: pointer;
+    height: 2rem;
     background-color: transparent;
+    /* font-size: 1.5vw;
+    border: none;
     transition: 0.2s;
     cursor: pointer;
     margin-top: 4px;
     margin-right: 10px;
-    background-color: #fff;
     opacity: 98%;
     background-image: none;
     background-position: 0 90%;
@@ -19,13 +20,12 @@
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
     box-sizing: border-box;
     color: #41403e;
-    cursor: pointer;
     display: inline-block;
     line-height: 23px;
     outline: none;
     padding: .35rem;
-    text-decoration: none;
-    transition: all 235ms ease-in-out;
+    text-decoration: none; */
+    transition: all 250ms ease-in-out;
     border-bottom-left-radius: 10px 100px;
     border-bottom-right-radius: 150px 15px;
     border-top-left-radius: 30px 20px;
@@ -33,24 +33,14 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    font-family: 'VT323';
-    font-size: 1.2rem;
-    opacity: 85%;
   }
   
-  .sort-button.hover {
-    color: rgb(3, 131, 31);
+  .reverse-sort-button.reversed {
+    transform: rotate(180deg);
   }
   
-  .sort-button.selected {
-    font-size: 2vw;
-    color: green;
-    text-decoration: underline;
-    opacity: 100%;
-  }
-  
-  .sort-button-container {
-    margin: .1vw;
-    /* width: fit-content; */
+  .reverse-sort-button-container {
+    margin: auto;
+    margin-left: 0.2rem;
     border-radius: 30%;
   }

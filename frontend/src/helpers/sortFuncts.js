@@ -41,3 +41,13 @@ export const sortByNewToYou = (bookList, booksRead, userID) => {
   return bookListCopy
 
 }
+
+export const reverseBookListOrder = (bookList) => {
+
+  const bookListCopy = JSON.parse(JSON.stringify(bookList))
+
+  const reversedBookList = bookListCopy.reverse()
+
+  return reversedBookList
+
+}

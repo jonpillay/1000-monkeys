@@ -6,9 +6,12 @@ import { sortByNewest, sortByRating, sortByNewToYou } from '../../../helpers/sor
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../../hooks/useAuthContext';
 
+import ReverseOrderingArrow from '../reverse-ordering-arrow/ReverseOrderingArrow';
+
 const SortControlPanel = (props) => {
 
   const bookList = props.bookList
+  const displayBookList = props.displayBookList
   const setDisplayBookList = props.setDisplayBookList
   const localBooksRead = props.localBooksRead
   const controlPanelScroll = props.controlPanelScroll
@@ -29,6 +32,7 @@ const SortControlPanel = (props) => {
             <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewest} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} label={"Published"}/>
             <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByRating} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} label={"Rating"}/>
             <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewToYou} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} booksRead={localBooksRead} userID={user ? user.id : null} label={"New To You"}/>
+            <ReverseOrderingArrow displayBookList={displayBookList} setDisplayBookList={setDisplayBookList}/>  
         </div>
         </>
       </div>

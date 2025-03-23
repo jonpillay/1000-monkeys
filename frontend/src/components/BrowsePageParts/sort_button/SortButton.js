@@ -35,7 +35,7 @@ const SortButton = (props) => {
 
   return (
     <div className='sort-button-container'>
-      <button onMouseEnter={() => setButtonHover(true)} onMouseLeave={() => setButtonHover(false)} onClick={handleSortClick} className={selectedSortButton == label ? "sort-button selected" : buttonHover ? "sort-button hover" : "sort-button"}>{label}</button>
+      <button disabled={bookList.length == 0} onMouseEnter={() => setButtonHover(true)} onMouseLeave={() => setButtonHover(false)} onClick={handleSortClick} className={selectedSortButton == label ? "sort-button selected" : buttonHover ? "sort-button hover" : "sort-button"}>{label}</button>
     </div>
   )
 }

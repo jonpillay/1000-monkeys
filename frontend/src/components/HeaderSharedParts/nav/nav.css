@@ -1,8 +1,9 @@
 /* our brand colours are white and #3b5998 */
 
 .logout-button, .invite-button, .login-button {
-  padding-right: 0px;
-  margin-top: 4px;
+  margin-right: 0.4rem;
+  height: 2rem;
+  margin-top: 0.6rem;
   background-color: #fff;
   opacity: 100%;
   background-image: none;
@@ -20,7 +21,7 @@
   font-size: 1rem;
   line-height: 23px;
   outline: none;
-  padding: .55rem;
+  padding: .2rem;
   text-decoration: none;
   transition: all 235ms ease-in-out;
   border-bottom-left-radius: 15px 100px;
@@ -30,9 +31,11 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  font-family: 'VT323';
+  font-size: 1.3rem;
 }
 
-.logout-button, .invite-button, .login-button:hover {
+.logout-button:hover, .invite-button:hover, .login-button:hover {
   opacity: 90%;
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);
@@ -46,8 +49,8 @@
 .header-nav-container {
   display: flex;
   justify-content: right;
-  padding: 10px;
-  background-color: antiquewhite;
+  /* padding: 10px; */
+  /* background-color: antiquewhite; */
 }
   
 .nav-button {

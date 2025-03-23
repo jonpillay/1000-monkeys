@@ -19,7 +19,8 @@ html, body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: antiquewhite;
   background-image: url('../../img/favpng_infinite-monkey-theorem3.png');
-  background-position-x: 95vb;
+  background-position-x: 30rem;
+  background-position-y: 3.7rem;
   background-size: 60vw;
   background-repeat: no-repeat;
   background-attachment: fixed;

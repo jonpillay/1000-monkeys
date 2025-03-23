@@ -2,10 +2,10 @@
   display: grid;
   grid-template-columns: 60% 40%;
   right: 0%;
-  margin-top: 8px;
+  margin-top: 0.6rem;
   margin-right: 5px;
-  width: 450px;
-  
+  width: 20rem;
+  height: min-content;
   background-color: #fff;
   opacity: 98%;
   background-image: none;
@@ -28,8 +28,8 @@
   border-bottom-right-radius: 225px 15px;
   border-top-left-radius: 30px 15px;
   border-top-right-radius: 15px 5px;
-  /* user-select: none;
-  -webkit-user-select: none; */
+  font-family: 'VT323';
+  font-size: 1.5rem;
 }
 
 .nut-count {
