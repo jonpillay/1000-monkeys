@@ -234,9 +234,9 @@ userSchema.statics.addBookRead = async function (_id, bookID) {
   const update = { $push: { booksRead: bookID } }
   const options = { new: true }
 
-  const updatedReadArray = await this.findOneAndUpdate(filter, update, options)
+  const updatedUser = await this.findOneAndUpdate(filter, update, options)
 
-  return updatedReadArray
+  return updatedUser.booksRead
 
 }
 

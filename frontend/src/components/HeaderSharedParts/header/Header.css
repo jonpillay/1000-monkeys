@@ -1,10 +1,10 @@
 .header-container {
   display: grid;
-  position: sticky;
+  position: relative;
   height: 11vh;
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
-  transition: top 0.5s;
+  /* background-color: antiquewhite; */
 }
 
 .header-container.active {

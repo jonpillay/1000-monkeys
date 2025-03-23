@@ -6,7 +6,7 @@ const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 export const useBooksRead = () => {
 
   const {user}  = useAuthContext()
-  const [ localBooksRead, setLocalBooksRead ] = useState([])
+  const [ localBooksRead, setLocalBooksRead ] = useState(user ? user.booksRead : [])
 
   const addBookRead = async (bookID) => {
 
@@ -22,6 +22,12 @@ export const useBooksRead = () => {
       },
       body: JSON.stringify(reqBody)
     })
+
+    const JSONres = await response.json()
+
+    if (response.ok) {
+      setLocalBooksRead(JSONres.booksRead)
+    }
   }
 
   return { addBookRead, localBooksRead, setLocalBooksRead }

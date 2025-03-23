@@ -1,6 +1,6 @@
 import "./BrowsePage.css";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 import { useFetchStories } from "../../../hooks/useFetchStories";
@@ -13,10 +13,19 @@ import BrowseBookDisplay from "../../BrowsePageParts/browse-book-display/BrowseB
 
 import StoryBookBrowse from "../../BrowsePageParts/story-book-browse/StoryBookBrowse";
 
+import { useBooksRead } from "../../../hooks/useBooksRead";
+
 const BrowsePage = (props) => {
 
-
   const { fetchByGenre, fetchByUser, isLoading, error, bookList, setBookList } = useFetchStories()
+
+  const { addBookRead, localBooksRead, setLocalBooksRead } = useBooksRead()
+
+  const [ displayBookList, setDisplayBookList ] = useState(bookList)
+
+  useEffect(() => {
+    setDisplayBookList(bookList)
+  }, [bookList])
 
   /* 
   
@@ -31,8 +40,8 @@ const BrowsePage = (props) => {
     <>
     <div className="browse-container">
       <FetchStoriesControlPanel fetchByGenre={fetchByGenre} fetchByUser={fetchByUser} setBookList={setBookList} />
-      <SortControlPanel bookList={bookList} setBookList={setBookList}/>
-      <BrowseBookDisplay bookList={bookList}/>
+      <SortControlPanel bookList={bookList} setDisplayBookList={setDisplayBookList} localBooksRead={localBooksRead}/>
+      <BrowseBookDisplay bookList={bookList} displayBookList={displayBookList} localBooksRead={localBooksRead} addBookRead={addBookRead}/>
     </div>
     </>
   )

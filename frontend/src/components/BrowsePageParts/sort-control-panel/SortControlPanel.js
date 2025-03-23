@@ -1,24 +1,25 @@
 import './SortControlPanel.css'
 import SortButton from '../sort_button/SortButton';
 
-import { sortByNewest } from '../../../helpers/sortFuncts';
+import { sortByNewest, sortByRating, sortByNewToYou } from '../../../helpers/sortFuncts';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
 const SortControlPanel = (props) => {
 
+  const bookList = props.bookList
+  const setDisplayBookList = props.setDisplayBookList
+  const localBooksRead = props.localBooksRead
+
   const [controlPanelScroll, setControlPanelScroll] = useState(false)
 
-  const selectedButton = useRef()
-
-  const setBookList = props.setBookList
-  const bookList = props.bookList
-
+  const { user } = useAuthContext()
 
   useEffect(() => {
 
     const controlScrollMouse = (event) => {
-      if (window.scrollY > 28 && event.clientY < 210) {
+      if (window.scrollY > window.innerHeight/8 && event.clientY < window.innerHeight/4) {
         setControlPanelScroll(true)
       } else {
         setControlPanelScroll(false)
@@ -35,35 +36,14 @@ const SortControlPanel = (props) => {
 
   }, [])
 
-//   const browseStorySetup = async (fetchFunct, keyword) => {
-
-//     selectedButton.current = keyword
-
-//     const bookList = await fetchFunct(keyword)
-
-//     const pageNumbers = await JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
-
-//     bookList.forEach((book) => {
-//       if (!(book._id in pageNumbers)) {
-//         pageNumbers[book._id] = 0
-//       }
-//     })
-
-//     localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
-
-//     setBookList(bookList)
-//   }
-
-// sort button needs functions
-
   return (
     <>
       <div className={controlPanelScroll ? "sort-nav-container active" : "sort-nav-container"}>
         <>
-        <div className='button-container'>
-            <SortButton bookList={bookList} setBookList={setBookList} sortFunct={sortByNewest} label={"New!"}/>
-            <SortButton bookList={bookList} setBookList={setBookList}/>
-            <SortButton bookList={bookList} setBookList={setBookList}/>
+        <div className='sort-control-button-container'>
+            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewest} label={"Published"}/>
+            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByRating} label={"Rating"}/>
+            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewToYou} booksRead={localBooksRead} userID={user ? user.id : null} label={"New To You"}/>
         </div>
         </>
       </div>

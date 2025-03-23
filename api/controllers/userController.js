@@ -109,7 +109,9 @@ const UserController = {
       const {_id} = req.user._id
       const {bookID} = req.body
 
-      User.addBookRead(_id, bookID)
+      const upadtedBooksRead = await User.addBookRead(_id, bookID)
+
+      res.status(200).json({ booksRead: upadtedBooksRead })
 
     } catch(error) {
       console.log(error)

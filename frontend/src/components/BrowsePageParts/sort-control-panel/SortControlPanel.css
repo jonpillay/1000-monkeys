@@ -18,11 +18,12 @@
     z-index: 999;
   } */
   
-  .button-container {
+  .sort-control-button-container {
     justify-self: start;
     display: flex;
     justify-content: space-around;
-    /* position: absolute; */
+    flex-direction: row;
+    margin-left: 1rem;
   }
   
   .button-container.active-scroll {

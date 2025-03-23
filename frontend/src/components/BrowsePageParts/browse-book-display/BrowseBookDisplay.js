@@ -7,14 +7,15 @@ import { useBooksRead } from "../../../hooks/useBooksRead";
 
 const BrowseBookDisplay = (props) => {
 
-  const { user } = useAuthContext()
+  const localBooksRead = props.localBooksRead
+  const addBookRead = props.addBookRead
 
-  const { addBookRead, localBooksRead, setLocalBooksRead } = useBooksRead()
+  const { user } = useAuthContext()
 
   const pageNumbers = JSON.parse(localStorage.getItem('browsePageNumbers')) || {}
 
   // const browsingBooks = props.bookList.map(book => return ( <li><StoryBookBrowseContainer key={book._id} chapterTexts={book.chapterText} chapterImgURLs={book.chapterImageURLs} pageNumber={pageNumbers[book._id]}/></li> ) )
-  const browsingBooks = props.bookList.map(book => {
+  const browsingBooks = props.displayBookList.map(book => {
     return (
       <li key={book._id}>
         <StoryBookBrowseContainer
