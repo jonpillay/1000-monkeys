@@ -1,6 +1,14 @@
 .browse-container {
   /* display: grid;
   grid-template-rows: 10%, 80%; */
-  margin-top: 1vw;
-  padding-bottom: 10px;
+  /* margin-top: 1vw; */
+  /* padding-bottom: 10px; */
+}
+
+.browse-control-container.active {
+  z-index: 1000;
+  background-color: antiquewhite;
+  position: sticky;
+  top: 11vh;
+  transition: 0.2s;
 }

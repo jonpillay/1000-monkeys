@@ -9,6 +9,8 @@ const SortButton = (props) => {
   const label = props.label
   const booksRead = props.booksRead || null
   const userID = props.userID
+  const selectedSortButton = props.selectedSortButton
+  const setSelectedSortButton = props.setSelectedSortButton
 
   const [buttonHover, setButtonHover] = useState(false)
 
@@ -21,20 +23,19 @@ const SortButton = (props) => {
     console.log(bookList)
 
     if (booksRead != null) {
-      console.log("This is here")
-      console.log(bookList)
       sortedBookList = sortFunct(bookList, booksRead, userID)
     } else {
       sortedBookList = sortFunct(bookList)
     }
 
+    setSelectedSortButton(label)
     setDisplayBookList(sortedBookList)
 
   }
 
   return (
     <div className='sort-button-container'>
-      <button onMouseEnter={() => setButtonHover(true)} onMouseLeave={() => setButtonHover(false)} onClick={handleSortClick} className={"sort-button"}>{label}</button>
+      <button onMouseEnter={() => setButtonHover(true)} onMouseLeave={() => setButtonHover(false)} onClick={handleSortClick} className={selectedSortButton == label ? "sort-button selected" : buttonHover ? "sort-button hover" : "sort-button"}>{label}</button>
     </div>
   )
 }

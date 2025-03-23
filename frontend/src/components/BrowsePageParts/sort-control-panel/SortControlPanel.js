@@ -11,39 +11,24 @@ const SortControlPanel = (props) => {
   const bookList = props.bookList
   const setDisplayBookList = props.setDisplayBookList
   const localBooksRead = props.localBooksRead
+  const controlPanelScroll = props.controlPanelScroll
 
-  const [controlPanelScroll, setControlPanelScroll] = useState(false)
+  const [selectedSortButton, setSelectedSortButton] = useState(null)
 
   const { user } = useAuthContext()
 
   useEffect(() => {
-
-    const controlScrollMouse = (event) => {
-      if (window.scrollY > window.innerHeight/8 && event.clientY < window.innerHeight/4) {
-        setControlPanelScroll(true)
-      } else {
-        setControlPanelScroll(false)
-      }
-    }
-
-    window.addEventListener('scroll', controlScrollMouse);
-    window.addEventListener('mousemove', controlScrollMouse);
-
-    return () => {
-      window.removeEventListener('scroll', controlScrollMouse);
-      window.removeEventListener('mousemove', controlScrollMouse);
-    }
-
-  }, [])
+    setSelectedSortButton(null)
+  }, [bookList])
 
   return (
     <>
       <div className={controlPanelScroll ? "sort-nav-container active" : "sort-nav-container"}>
         <>
         <div className='sort-control-button-container'>
-            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewest} label={"Published"}/>
-            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByRating} label={"Rating"}/>
-            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewToYou} booksRead={localBooksRead} userID={user ? user.id : null} label={"New To You"}/>
+            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewest} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} label={"Published"}/>
+            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByRating} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} label={"Rating"}/>
+            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewToYou} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} booksRead={localBooksRead} userID={user ? user.id : null} label={"New To You"}/>
         </div>
         </>
       </div>

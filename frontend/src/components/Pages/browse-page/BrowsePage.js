@@ -23,6 +23,46 @@ const BrowsePage = (props) => {
 
   const [ displayBookList, setDisplayBookList ] = useState(bookList)
 
+  const [controlPanelScroll, setControlPanelScroll] = useState(false)
+
+  useEffect(() => {
+
+    // const controlTopScroll = () => {
+    //   if (window.scrollY > 50) {
+    //     setControlPanelTop(true)
+    //   } else {
+    //     setControlPanelTop(false)
+    //   }
+    // };
+
+    // window.addEventListener('scroll', controlTopScroll);
+
+    // const controlTopMouse = (event) => {
+    //   if (event.clientY < 70) {
+    //     setControlPanelTop(true)
+    //   } else {
+    //     setControlPanelTop(false)
+    //   }
+    // }
+
+    const controlScrollMouse = (event) => {
+      if (window.scrollY > window.innerHeight/8 && event.clientY < window.innerHeight/4) {
+        setControlPanelScroll(true)
+      } else {
+        setControlPanelScroll(false)
+      }
+    }
+
+    window.addEventListener('scroll', controlScrollMouse);
+    window.addEventListener('mousemove', controlScrollMouse);
+
+    return () => {
+      window.removeEventListener('scroll', controlScrollMouse);
+      window.removeEventListener('mousemove', controlScrollMouse);
+    }
+
+  }, [])
+
   useEffect(() => {
     setDisplayBookList(bookList)
   }, [bookList])
@@ -39,8 +79,10 @@ const BrowsePage = (props) => {
   return (
     <>
     <div className="browse-container">
-      <FetchStoriesControlPanel fetchByGenre={fetchByGenre} fetchByUser={fetchByUser} setBookList={setBookList} />
-      <SortControlPanel bookList={bookList} setDisplayBookList={setDisplayBookList} localBooksRead={localBooksRead}/>
+      <div className={ controlPanelScroll ? "browse-control-container active" : "browse-control-container"}>
+        <FetchStoriesControlPanel fetchByGenre={fetchByGenre} fetchByUser={fetchByUser} setBookList={setBookList} controlPanelScroll={controlPanelScroll} />
+        <SortControlPanel bookList={bookList} setDisplayBookList={setDisplayBookList} localBooksRead={localBooksRead} controlPanelScroll={controlPanelScroll}/>
+      </div>
       <BrowseBookDisplay bookList={bookList} displayBookList={displayBookList} localBooksRead={localBooksRead} addBookRead={addBookRead}/>
     </div>
     </>

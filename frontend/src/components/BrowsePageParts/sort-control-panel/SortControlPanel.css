@@ -7,9 +7,9 @@
   }
   
   .sort-nav-container.active {
-    z-index: 1;
+    z-index: auto;
     position: sticky;
-    top: 20.5vh;
+    /* top: 27vh; */
   }
   
   /* .filter-nav-container.active-scroll {
@@ -24,6 +24,8 @@
     justify-content: space-around;
     flex-direction: row;
     margin-left: 1rem;
+    background-color: antiquewhite;
+
   }
   
   .button-container.active-scroll {

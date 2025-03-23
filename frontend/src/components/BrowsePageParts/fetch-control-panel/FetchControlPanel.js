@@ -12,8 +12,6 @@ const FetchStoriesControlPanel = (props) => {
   const location = useLocation()
   const {user} = useAuthContext()
 
-  const [controlPanelScroll, setControlPanelScroll] = useState(false)
-
   const selectedButton = useRef()
 
   const fetchByGenre = props.fetchByGenre
@@ -22,44 +20,7 @@ const FetchStoriesControlPanel = (props) => {
 
   const setBookList = props.setBookList
 
-
-  useEffect(() => {
-
-    // const controlTopScroll = () => {
-    //   if (window.scrollY > 50) {
-    //     setControlPanelTop(true)
-    //   } else {
-    //     setControlPanelTop(false)
-    //   }
-    // };
-
-    // window.addEventListener('scroll', controlTopScroll);
-
-    // const controlTopMouse = (event) => {
-    //   if (event.clientY < 70) {
-    //     setControlPanelTop(true)
-    //   } else {
-    //     setControlPanelTop(false)
-    //   }
-    // }
-
-    const controlScrollMouse = (event) => {
-      if (window.scrollY > 28 && event.clientY < 210) {
-        setControlPanelScroll(true)
-      } else {
-        setControlPanelScroll(false)
-      }
-    }
-
-    window.addEventListener('scroll', controlScrollMouse);
-    window.addEventListener('mousemove', controlScrollMouse);
-
-    return () => {
-      window.removeEventListener('scroll', controlScrollMouse);
-      window.removeEventListener('mousemove', controlScrollMouse);
-    }
-
-  }, [])
+  const controlPanelScroll = props.controlPanelScroll
 
   const browseStorySetup = async (fetchFunct, keyword) => {
 

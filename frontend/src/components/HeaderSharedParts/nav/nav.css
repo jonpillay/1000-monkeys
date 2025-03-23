@@ -47,6 +47,7 @@
   display: flex;
   justify-content: right;
   padding: 10px;
+  background-color: antiquewhite;
 }
   
 .nav-button {

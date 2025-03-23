@@ -6,9 +6,9 @@
 }
 
 .filter-nav-container.active {
-  z-index: 1;
+  z-index: auto;
   position: sticky;
-  top: 11.5vh;
+  background-color: antiquewhite;
 }
 
 /* .filter-nav-container.active-scroll {
