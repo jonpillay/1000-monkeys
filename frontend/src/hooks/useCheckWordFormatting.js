@@ -38,49 +38,53 @@ export const useCheckWordFormatting = () => {
       // identify if there is punctuation contained within the word
       if (wordLength != formattedWord.length) {
   
-        // identify if the punctuation in the word is allowed (don't, etc...). A single apostrophy or hyphen should be the only puncuation.
-        
-        // if difference in length between the two is more that one, do not pass (assumed word disguising attempt)
-        if (wordLength - formattedWord.length > 1) {
-            return false
-        }
+          // identify if the punctuation in the word is allowed (don't, etc...). A single apostrophy or hyphen should be the only puncuation.
+          
+          // if difference in length between the two is more that one, do not pass (assumed word disguising attempt)
+          if (wordLength - formattedWord.length > 1) {
+            console.log("numerous punct firing")
+              return false
+          }
 
-        const wordSplit = checkWord.split('')
+          const wordSplit = checkWord.split('')
+          console.log(wordSplit)
+          console.log(wordSplit[wordSplit.length-1])
+          console.log(wordSplit[wordSplit.length-2])
+          // check if the punctuation is an allowed apostrophe in different cases
 
-        // check if the punctuation is an allowed apostrophe in different cases
+          // s (that's, Sarah's)
+          if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-1] == "s") {
+            console.log("This should fire")
+              continue
+          }
 
-        // s (that's, Sarah's)
-        if (wordSplit[-2] == "'" && wordSplit[-1] == "s") {
-            continue
-        }
+          // d (I'd, you'd)
+          if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-1] == "d") {
+              continue
+          }
 
-        // d (I'd, you'd)
-        if (wordSplit[-2] == "'" && wordSplit[-1] == "d") {
-            continue
-        }
+          // n't on the end (couldn't, shouldn't)
+          if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-3] == "n" && wordSplit[wordSplit.length-1] == "t" && wordSplit[0] != "c" && wordSplit[1] != "u") {
+              continue
+          }
 
-        // n't on the end (couldn't, shouldn't)
-        if (wordSplit[-2] == "'" && wordSplit[-3] == "n" && wordSplit[-1] == "t" && wordSplit[0] != "c" && wordSplit[1] != "u") {
-            continue
-        }
+          // ll on the end (we'll, I'll)
+          if (wordSplit[wordSplit.length-3] == "'" && wordSplit[wordSplit.length-2] == "l" && wordSplit[wordSplit.length-1] == "l") {
+              continue
+          }
 
-        // ll on the end (we'll, I'll)
-        if (wordSplit[-3] == "'" && wordSplit[-2] == "l" && wordSplit[-1] == "l") {
-            continue
-        }
+          // ve on the end (could've, should've)
+          if (wordSplit[wordSplit.length-3] == "'" && wordSplit[wordSplit.length-2] == "v" && wordSplit[wordSplit.length-1] == "e") {
+              continue
+          }
 
-        // ve on the end (could've, should've)
-        if (wordSplit[-3] == "'" && wordSplit[-2] == "v" && wordSplit[-1] == "e") {
-            continue
-        }
-
-        // if none of the allowed cases are met, return false
-        return false
+          // if none of the allowed cases are met, return false
+          return false
   
       }
     }
   
-      return true
+    return true
     }
 
   return {checkWordFormatting}

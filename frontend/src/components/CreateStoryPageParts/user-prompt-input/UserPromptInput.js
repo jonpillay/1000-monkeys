@@ -27,7 +27,7 @@ const UserPromptInput = (props) => {
       setTimeout(() => {
         setError("")
         setUserWarningMessage("")
-      }, 1500)
+      }, 2500)
       return
     }
 

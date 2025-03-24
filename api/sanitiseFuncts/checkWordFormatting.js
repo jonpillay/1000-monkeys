@@ -49,27 +49,27 @@ const checkWordFormatting = (inputCheck) => {
       // check if the punctuation is an allowed apostrophe in different cases
 
       // s (that's, Sarah's)
-      if (wordSplit[-2] == "'" && wordSplit[-1] == "s") {
+      if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-1] == "s") {
           continue
       }
 
       // d (I'd, you'd)
-      if (wordSplit[-2] == "'" && wordSplit[-1] == "d") {
+      if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-1] == "d") {
           continue
       }
 
       // n't on the end (couldn't, shouldn't)
-      if (wordSplit[-2] == "'" && wordSplit[-3] == "n" && wordSplit[-1] == "t" && wordSplit[0] != "c" && wordSplit[1] != "u") {
+      if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-3] == "n" && wordSplit[wordSplit.length-1] == "t" && wordSplit[0] != "c" && wordSplit[1] != "u") {
           continue
       }
 
       // ll on the end (we'll, I'll)
-      if (wordSplit[-3] == "'" && wordSplit[-2] == "l" && wordSplit[-1] == "l") {
+      if (wordSplit[wordSplit.length-3] == "'" && wordSplit[wordSplit.length-2] == "l" && wordSplit[wordSplit.length-1] == "l") {
           continue
       }
 
       // ve on the end (could've, should've)
-      if (wordSplit[-3] == "'" && wordSplit[-2] == "v" && wordSplit[-1] == "e") {
+      if (wordSplit[wordSplit.length-3] == "'" && wordSplit[wordSplit.length-2] == "v" && wordSplit[wordSplit.length-1] == "e") {
           continue
       }
 

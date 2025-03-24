@@ -76,7 +76,7 @@ const NavBar = () => {
       <div className="header-nav-container">
         {(story ? 
           <>
-            <button className="nav-button" onClick={endStory}>End Story</button>
+            <button className="end-story-button" onClick={endStory}>End Story</button>
           </>
         :
         <></>
