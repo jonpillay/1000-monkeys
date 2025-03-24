@@ -31,7 +31,7 @@ const SortControlPanel = (props) => {
         <div className='sort-control-button-container'>
             <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewest} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} label={"Published"}/>
             <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByRating} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} label={"Rating"}/>
-            <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewToYou} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} booksRead={localBooksRead} userID={user ? user.id : null} label={"New To You"}/>
+            { user? <SortButton bookList={bookList} setDisplayBookList={setDisplayBookList} sortFunct={sortByNewToYou} selectedSortButton={selectedSortButton} setSelectedSortButton={setSelectedSortButton} booksRead={localBooksRead} userID={user ? user.id : null} label={"New To You"}/> : null}
             <ReverseOrderingArrow displayBookList={displayBookList} setDisplayBookList={setDisplayBookList}/>  
         </div>
         </>

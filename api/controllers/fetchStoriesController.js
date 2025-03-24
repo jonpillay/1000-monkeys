@@ -9,7 +9,7 @@ const FetchStoriesController = {
 
     try {
 
-      const bookList = await StoryBook.find(requestGenre).exec()
+      const bookList = await StoryBook.find({...requestGenre, published: true}).exec()
 
       roundVoteAverageList(bookList)
 

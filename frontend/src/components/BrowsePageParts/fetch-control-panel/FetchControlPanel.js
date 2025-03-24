@@ -39,6 +39,10 @@ const FetchStoriesControlPanel = (props) => {
     localStorage.setItem('browsePageNumbers', JSON.stringify(pageNumbers))
 
     setBookList(bookList)
+
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    
   }
 
   return (
@@ -62,7 +66,6 @@ const FetchStoriesControlPanel = (props) => {
             
           </div>
         )}
-
       </div>
     </>
   );
