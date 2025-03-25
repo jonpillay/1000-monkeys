@@ -2,8 +2,6 @@ const AWS = require('aws-sdk');
 require('aws-sdk/lib/maintenance_mode_message').suppress = true;
 require('dotenv').config();
 
-console.log(process.env.AWS_ACCESS_KEY_ID)
-
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -40,6 +38,4 @@ const fetchBadWordsList = async () => {
 
 }
 
-fetchBadWordsList()
-
-// module.exports = fetchBadWordsList;
+module.exports = fetchBadWordsList;

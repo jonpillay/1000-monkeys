@@ -22,15 +22,28 @@ import TermsOfUsePage from '../Pages/terms-of-use-page/TermsOfUsePage';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
 
+import { useLoadSystemInfo } from '../../hooks/useLoadSystemInfo' 
+
 import WarningSplash from '../SplashPageParts/warning-splash/WarningSplash';
 
 const App = () => {
+
+  const { loadSystemInfo, fetchingSysInfo } = useLoadSystemInfo()
 
   const story = useStoryContext()
 
   const {user} = useAuthContext()
 
   const admin = user ? user.isSuper : false
+
+  useEffect(() => {
+    console.log("app use effect firing")
+    loadSystemInfo()
+  }, [])
+
+  if (fetchingSysInfo) {
+    return <div>Loading Sytem Info...</div>
+  }
 
   return (
     <div className="app">

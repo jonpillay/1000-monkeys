@@ -30,7 +30,7 @@ const fetchSysInfo = async () => {
 
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME,
-      Key: process.env.AWS_FILE_KEY
+      Key: process.env.SYS_ASSETS_FILE_KEY
 
     }
 
@@ -39,6 +39,8 @@ const fetchSysInfo = async () => {
     const SysInfoStr = sysInfoBuffer.Body.toString()
 
     const sysInfoJSON = JSON.parse(SysInfoStr)
+
+    // console.log(sysInfoJSON.badWordsList)
 
     const AiEngineVer = sysInfoJSON.AiEngineVer
 
@@ -51,11 +53,12 @@ const fetchSysInfo = async () => {
       cache.set('badWordList', badWordList)
       cache.set('unifiedCategories', unifiedCategories)
 
+      console.log("This is coming from the fetch sys info controller")
       console.log(AiEngineVer)
 
-      // const cachedCats = cache.get('unifiedCategories')
+      return AiEngineVer
 
-      console.log(cachedCats)
+      // const cachedCats = cache.get('unifiedCategories')
     } catch (error) {
       console.log(error)
       console.log("Unable to cache data")
@@ -70,4 +73,4 @@ const fetchSysInfo = async () => {
   }
 }
 
-fetchSysInfo()
+module.exports = {fetchSysInfo}

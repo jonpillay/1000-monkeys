@@ -29,7 +29,8 @@ const PopulateRouter = require("./routes/populate");
 const UserRouter = require('./routes/users');
 const StoryPersistenceRouter = require('./routes/storyPersistence')
 const FetchStoriesRouter = require('./routes/fetchStories')
-const CheckAPIController = require("./routes/checkAPI")
+const CheckAPIRouter = require("./routes/checkAPI")
+const SystemInitRouter = require("./routes/systemInit")
 
 // route setup
 app.use("/images", ImagesRouter)
@@ -38,8 +39,8 @@ app.use("/story", StoryRouter)
 app.use("/user", UserRouter)
 app.use("/save", StoryPersistenceRouter)
 app.use("/fetch-stories", FetchStoriesRouter)
-
-app.use("/check-api", CheckAPIController)
+app.use("/check-api", CheckAPIRouter)
+app.use("/initialise-sys", SystemInitRouter)
 
 // connect to db
 
