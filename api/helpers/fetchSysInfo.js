@@ -22,9 +22,10 @@ const s3 = new AWS.S3
 const fetchSysInfo = async () => {
 
   try {
-    const cachedAiVer = cache.get('AiVer')
+    const cachedAiVer = cache.get('AiEngineVer')
 
     if (cachedAiVer) {
+      console.log("SYSINFO already loaded")
       return "SYSINFOLOADED"
     }
 
@@ -44,19 +45,22 @@ const fetchSysInfo = async () => {
 
     const AiEngineVer = sysInfoJSON.AiEngineVer
 
-    const badWordList = sysInfoJSON.badWordsList
+    const badWordsList = sysInfoJSON.badWordsList
 
     const unifiedCategories = sysInfoJSON.unifiedCategories
 
     try {
       cache.set('AiEngineVer', AiEngineVer)
-      cache.set('badWordList', badWordList)
+      cache.set('badWordList', badWordsList)
       cache.set('unifiedCategories', unifiedCategories)
 
-      console.log("This is coming from the fetch sys info controller")
-      console.log(AiEngineVer)
+      const characters = Object.keys(unifiedCategories.character).sort()
+      const genres = Object.keys(unifiedCategories.genre).sort()
+      const artStyles = Object.keys(unifiedCategories.style).sort()
 
-      return AiEngineVer
+      console.log(genres)
+
+      return {AiEngineVer, characters, genres, artStyles}
 
       // const cachedCats = cache.get('unifiedCategories')
     } catch (error) {

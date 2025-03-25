@@ -1,6 +1,10 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { initiliseSystemInfo } from "../components/app/systemInfoSlice"
 
 export const useLoadSystemInfo = () => {
+
+  const reduxDispatch = useDispatch()
 
   const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState()
   const [ fetchingSysInfo, setFetchingSysInfo ] = useState(true)
@@ -18,15 +22,32 @@ export const useLoadSystemInfo = () => {
       },
     })
 
+    // check her is response is 500 (server down/uncontactable)
+    console.log(response)
+
+    if (response.ok == false) {
+      console.log("This fired though")
+    }
+
     const JSONres = await response.json()
 
     if (!response.ok) {
+      console.log("Response server down fired")
+      console.log(JSONres)
       setFetchingSysInfoError(JSONres.error)
       setFetchingSysInfo(false)
     }
 
     if (response.ok) {
-      console.log(JSONres.sysInfo)
+      console.log(JSONres)
+
+      const AiEngineVer = JSONres.AiEngineVer
+      const characters = JSONres.characters
+      const genres = JSONres.genres
+      const artStyles = JSONres.artStyles
+
+      reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
+      
     }
 
   }
