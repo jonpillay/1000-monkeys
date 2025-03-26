@@ -41,10 +41,12 @@ export const useLoadSystemInfo = () => {
     if (response.ok) {
       console.log(JSONres)
 
-      const AiEngineVer = JSONres.AiEngineVer
-      const characters = JSONres.characters
-      const genres = JSONres.genres
-      const artStyles = JSONres.artStyles
+      console.log(JSONres.sysInfo.AiEngineVer)
+
+      const AiEngineVer = JSONres.sysInfo.AiEngineVer
+      const characters = JSONres.sysInfo.characters
+      const genres = JSONres.sysInfo.genres
+      const artStyles = JSONres.sysInfo.artStyles
 
       reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
       

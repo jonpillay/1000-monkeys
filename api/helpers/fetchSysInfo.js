@@ -58,8 +58,6 @@ const fetchSysInfo = async () => {
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
 
-      console.log(genres)
-
       return {AiEngineVer, characters, genres, artStyles}
 
       // const cachedCats = cache.get('unifiedCategories')

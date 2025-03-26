@@ -1,6 +1,6 @@
 import { createContext, useReducer, useEffect } from "react";
 
-import { clearReduxPersist } from "../redux-state/store";
+import { clearStoryBookPersist } from "../redux-state/store";
 
 export const StoryContext = createContext()
 
@@ -27,7 +27,7 @@ export const StoryContextProvider = ({ children }) => {
     if (story) {
       dispatch({ type: 'BEGIN', payload: true })
     } else {
-      clearReduxPersist()
+      clearStoryBookPersist()
     }
   }, [])
 

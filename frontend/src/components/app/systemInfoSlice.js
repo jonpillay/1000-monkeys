@@ -55,6 +55,7 @@ export const selectAllWarnings = (state) => state.systemInfo.warnings;
 export const selectAllCharacters = (state) => state.systemInfo.characters;
 export const selectAllGenres = (state) => state.systemInfo.genres;
 export const selectAllArtStyles = (state) => state.systemInfo.artStyles;
+export const selectAiEngineVer = (state) => state.systemInfo.AiEngineVer;
 
 
 export const { initiliseSystemInfo, issueMultiWarnings, issueWarning, resetWarnings } = systemInfoSlice.actions;

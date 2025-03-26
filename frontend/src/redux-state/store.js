@@ -66,7 +66,7 @@ export const clearReduxPersist = () => {
 }
 
 export const clearStoryBookPersist = async () => {
-  await localStorage.removeItem('persist:storyBook');
+  localStorage.removeItem('persist:storyBook');
 };
 
 export const clearSPersist = () => {
