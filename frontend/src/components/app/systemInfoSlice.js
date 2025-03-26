@@ -6,7 +6,7 @@ const systemInfoSlice = createSlice({
 
   initialState: {
     warnings: 0,
-    AiEngineVer: [],
+    AiEngineVer: null,
     characters: [],
     genres: [],
     artStyles: []

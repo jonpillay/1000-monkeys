@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 
+import { useSelector } from 'react-redux';
+import { selectAiEngineVer } from './systemInfoSlice';
+
 import './App.css';
 import {
   BrowserRouter,
@@ -28,6 +31,8 @@ import WarningSplash from '../SplashPageParts/warning-splash/WarningSplash';
 
 const App = () => {
 
+  const AiEngineVer = useSelector(selectAiEngineVer)
+
   const { loadSystemInfo, fetchingSysInfo } = useLoadSystemInfo()
 
   const story = useStoryContext()
@@ -37,8 +42,10 @@ const App = () => {
   const admin = user ? user.isSuper : false
 
   useEffect(() => {
-    console.log("app use effect firing")
-    loadSystemInfo()
+    if (AiEngineVer == null) {
+      console.log("loading sys info")
+      loadSystemInfo()
+    }
   }, [])
 
   if (fetchingSysInfo) {
