@@ -49,6 +49,8 @@ export const useLoadSystemInfo = () => {
       const artStyles = JSONres.sysInfo.artStyles
 
       reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
+
+      setFetchingSysInfo(false)
       
     }
 

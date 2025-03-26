@@ -3,6 +3,10 @@ import { useNavigate, useLocation } from "react-router";
 import DropdownSelector from "../dropdown-selector/DropdownSelector";
 import "./InitialiseStoryForm.css";
 
+import { useSelector } from "react-redux";
+import { selectAllCharacters, selectAllArtStyles, selectAllGenres } from "../../app/systemInfoSlice";
+
+
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useInitialiseStory } from "../../../hooks/useIntialiseCreateStory";
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
@@ -14,8 +18,6 @@ import { useLoadingContext } from "../../../hooks/useLoadingContext";
 import { Tooltip } from 'react-tooltip'
 
 import egg from '../../../img/egg.png'
-
-const dropdownSelections = require('./unifiedSelectors.json')
 
 const InitialiseStoryForm = (props) => {
 
@@ -30,6 +32,10 @@ const InitialiseStoryForm = (props) => {
   const [genreChoice, setGenreChoice] = useState();
   const [styleChoice, setStyleChoice] = useState();
   const [error, setError] = useState(location.state?.error)
+
+  const charaters = useSelector(selectAllCharacters)
+  const genres = useSelector(selectAllGenres)
+  const artStyles = useSelector(selectAllArtStyles)
 
   const { sanitiseInput } = useSanitiseInput()
   const { checkWordFormatting } = useCheckWordFormatting()
@@ -185,17 +191,17 @@ const InitialiseStoryForm = (props) => {
         </h1>
         <div>
           <DropdownSelector
-              dropdownItems={dropdownSelections["characters"]}
+              dropdownItems={charaters}
               selectionField="Character"
               onDropdownChange={(e) => setCharacterChoice(e.value)}
           />
           <DropdownSelector
-            dropdownItems={dropdownSelections["genres"]}
+            dropdownItems={genres}
             selectionField="Genre"
             onDropdownChange={(e) => setGenreChoice(e.value)}
           />
           <DropdownSelector
-            dropdownItems={dropdownSelections["style"]}
+            dropdownItems={artStyles}
             selectionField="Style"
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />

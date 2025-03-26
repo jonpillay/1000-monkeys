@@ -46,9 +46,9 @@ const App = () => {
       console.log("loading sys info")
       loadSystemInfo()
     }
-  }, [])
+  }, [AiEngineVer])
 
-  if (fetchingSysInfo) {
+  if (!fetchingSysInfo) {
     return <div>Loading Sytem Info...</div>
   }
 
