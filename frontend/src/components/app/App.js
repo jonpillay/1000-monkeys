@@ -48,7 +48,7 @@ const App = () => {
     }
   }, [AiEngineVer])
 
-  if (!fetchingSysInfo) {
+  if (!AiEngineVer) {
     return <div>Loading Sytem Info...</div>
   }
 
