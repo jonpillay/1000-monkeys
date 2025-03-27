@@ -4,10 +4,13 @@ import { initiliseSystemInfo } from "../components/app/systemInfoSlice"
 
 export const useLoadSystemInfo = () => {
 
+  const retryPause = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   const reduxDispatch = useDispatch()
 
-  const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState()
+  const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState(null)
   const [ fetchingSysInfo, setFetchingSysInfo ] = useState(true)
+  const [ fetchSysInfoSuccess, setFetchingSysInfoSuccess ] = useState()
 
   const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
@@ -22,11 +25,13 @@ export const useLoadSystemInfo = () => {
       },
     })
 
-    // check her is response is 500 (server down/uncontactable)
+    // check here is response is 500 (server down/uncontactable)
     console.log(response)
 
     if (response.ok == false) {
-      console.log("This fired though")
+      retryLoadSystemInfo()
+      setFetchingSysInfoSuccess(false)
+      setFetchingSysInfo(false)
     }
 
     const JSONres = await response.json()
@@ -35,7 +40,10 @@ export const useLoadSystemInfo = () => {
       console.log("Response server down fired")
       console.log(JSONres)
       setFetchingSysInfoError(JSONres.error)
+      retryLoadSystemInfo()
+      setFetchingSysInfoSuccess(false)
       setFetchingSysInfo(false)
+      return
     }
 
     if (response.ok) {
@@ -50,12 +58,21 @@ export const useLoadSystemInfo = () => {
 
       reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
 
+      setFetchingSysInfoSuccess(true)
       setFetchingSysInfo(false)
+      return
       
     }
 
   }
 
-  return { loadSystemInfo, fetchingSysInfo }
+  const retryLoadSystemInfo = async () => {
+
+    await retryPause(5000)
+    loadSystemInfo()
+
+  }
+
+  return { loadSystemInfo, fetchingSysInfo, fetchSysInfoSuccess, fetchingSysInfoError }
 
 }

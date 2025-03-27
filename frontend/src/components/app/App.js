@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import { selectAiEngineVer } from './systemInfoSlice';
@@ -28,12 +28,15 @@ import { useStoryContext } from '../../hooks/useStoryContext';
 import { useLoadSystemInfo } from '../../hooks/useLoadSystemInfo' 
 
 import WarningSplash from '../SplashPageParts/warning-splash/WarningSplash';
+import InitialiseSystemPage from '../Pages/initialise-system-page/InitialiseSystemPage';
 
 const App = () => {
 
   const AiEngineVer = useSelector(selectAiEngineVer)
 
-  const { loadSystemInfo, fetchingSysInfo } = useLoadSystemInfo()
+  const [ sysInfoLoading, setSysInfoLoading ] = useState(!AiEngineVer)
+
+  const { loadSystemInfo, fetchingSysInfo, fetchSysInfoSuccess } = useLoadSystemInfo()
 
   const story = useStoryContext()
 
@@ -48,8 +51,8 @@ const App = () => {
     }
   }, [AiEngineVer])
 
-  if (!AiEngineVer) {
-    return <div>Loading Sytem Info...</div>
+  if (true) {
+    return <div><InitialiseSystemPage fetchingSysInfo={fetchingSysInfo} fetchSysInfoSuccess={fetchSysInfoSuccess} setSysInfoLoading={setSysInfoLoading}/></div>
   }
 
   return (
