@@ -21,7 +21,7 @@
   text-shadow: rgb(0, 255, 26) 1px 0 10px;
   font-family: 'VT323';
   white-space: pre-wrap;
-  /* background-color: red; */
+  line-height: 1.25rem;
   padding-bottom: 0;
 }
 

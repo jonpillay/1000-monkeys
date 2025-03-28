@@ -7,8 +7,6 @@ require('dotenv').config()
 
 const NodeCache = require('node-cache')
 
-console.log(process.env.AWS_FILE_KEY)
-
 const cache = new NodeCache({ stdTTL: 3600 });
 
 AWS.config.update({
@@ -40,8 +38,6 @@ const fetchSysInfo = async () => {
     const SysInfoStr = sysInfoBuffer.Body.toString()
 
     const sysInfoJSON = JSON.parse(SysInfoStr)
-
-    // console.log(sysInfoJSON.badWordsList)
 
     const AiEngineVer = sysInfoJSON.AiEngineVer
 

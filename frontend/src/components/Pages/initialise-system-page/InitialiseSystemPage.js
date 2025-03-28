@@ -4,17 +4,19 @@ import { useState, useEffect, useRef } from 'react'
 const InitialiseSystemPage = (props) => {
 
   const fetchingSysInfo = props.fetchingSysInfo
-  const fetchSysInfoSuccess = props.fetchSysInfoSuccess
+  const fetchingSysInfoSuccess = props.fetchingSysInfoSuccess
   const setSysInfoLoading = props.setSysInfoLoading
+  const retryLoadSystemInfo = props.retryLoadSystemInfo
 
   const consoleDisplay = useRef()
   const dot = useRef()
 
   const cursorBlinkingRef = useRef(false)
 
-  const versionText = `The 1000m AI Mainframe\nVer 1.0.0. Est 2025`
+  const versionText = `The 1000m AI Mainframe\nVer 1.0.0. J. Pillay 2025`
 
   const [ cursorBlinking, setCursorBlinking ] = useState(false)
+  const [ introFinished, setIntroFinished ] = useState(false)
 
   const typePause = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -70,9 +72,33 @@ const InitialiseSystemPage = (props) => {
 
   }
 
-  const displayLoadingResults = async () => {
+  const displaySysInitSuccessMessage = async () => {
 
+    await displayLine(" Sys Info Fetched")
+    
+    await typePause(1500)
 
+    setCursorBlinking(false)
+
+    await typePause(100)
+
+    await displayLine(" System Initialised")
+
+    await typePause(2000)
+
+    setCursorBlinking(false)
+
+    await typePause(200)
+
+    await displayLine(" Lab Connection Made. Recieving Message")
+
+    await typePause(2000)
+
+    setCursorBlinking(false)
+
+    await typePause(200)
+
+    await displayLine(" OH OH AH AH!")
 
   }
 
@@ -96,17 +122,21 @@ const InitialiseSystemPage = (props) => {
 
     await displayLine(" Fetching Sys Info")
 
+    setIntroFinished(true)
+
   }, [])
 
   useEffect(() => {
 
-    if (fetchSysInfoSuccess == true) {
-      // print sys info success and exit screen
+    if (fetchingSysInfoSuccess == true) {
+      console.log("This is here")
+      displaySysInitSuccessMessage()
     } else {
-      // print retrying info and reset consoleDisplay
+      consoleDisplay.current.textContent = ""
+      retryLoadSystemInfo()
     }
 
-  }, [fetchSysInfoSuccess])
+  }, [introFinished])
 
   return (
     <>

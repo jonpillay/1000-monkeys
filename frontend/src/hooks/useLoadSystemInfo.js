@@ -10,7 +10,7 @@ export const useLoadSystemInfo = () => {
 
   const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState(null)
   const [ fetchingSysInfo, setFetchingSysInfo ] = useState(true)
-  const [ fetchSysInfoSuccess, setFetchingSysInfoSuccess ] = useState()
+  const [ fetchingSysInfoSuccess, setFetchingSysInfoSuccess ] = useState()
 
   const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
@@ -29,7 +29,8 @@ export const useLoadSystemInfo = () => {
     console.log(response)
 
     if (response.ok == false) {
-      retryLoadSystemInfo()
+      console.log("server not responding")
+      console.log(response)
       setFetchingSysInfoSuccess(false)
       setFetchingSysInfo(false)
     }
@@ -43,7 +44,6 @@ export const useLoadSystemInfo = () => {
       retryLoadSystemInfo()
       setFetchingSysInfoSuccess(false)
       setFetchingSysInfo(false)
-      return
     }
 
     if (response.ok) {
@@ -60,7 +60,6 @@ export const useLoadSystemInfo = () => {
 
       setFetchingSysInfoSuccess(true)
       setFetchingSysInfo(false)
-      return
       
     }
 
@@ -73,6 +72,6 @@ export const useLoadSystemInfo = () => {
 
   }
 
-  return { loadSystemInfo, fetchingSysInfo, fetchSysInfoSuccess, fetchingSysInfoError }
+  return { loadSystemInfo, retryLoadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError }
 
 }

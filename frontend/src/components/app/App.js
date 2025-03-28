@@ -36,7 +36,7 @@ const App = () => {
 
   const [ sysInfoLoading, setSysInfoLoading ] = useState(!AiEngineVer)
 
-  const { loadSystemInfo, fetchingSysInfo, fetchSysInfoSuccess } = useLoadSystemInfo()
+  const { loadSystemInfo, retryLoadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError } = useLoadSystemInfo()
 
   const story = useStoryContext()
 
@@ -48,11 +48,14 @@ const App = () => {
     if (AiEngineVer == null) {
       console.log("loading sys info")
       loadSystemInfo()
+    } else {
+      console.log("it be here")
+      setSysInfoLoading(false)
     }
-  }, [AiEngineVer])
+  }, [])
 
   if (true) {
-    return <div><InitialiseSystemPage fetchingSysInfo={fetchingSysInfo} fetchSysInfoSuccess={fetchSysInfoSuccess} setSysInfoLoading={setSysInfoLoading}/></div>
+    return <div><InitialiseSystemPage retryLoadSystemInfo={retryLoadSystemInfo} fetchingSysInfo={fetchingSysInfo} fetchingSysInfoSuccess={fetchingSysInfoSuccess} setSysInfoLoading={setSysInfoLoading}/></div>
   }
 
   return (
