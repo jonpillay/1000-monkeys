@@ -6,7 +6,7 @@ const InitialiseSystemPage = (props) => {
   const fetchingSysInfo = props.fetchingSysInfo
   const fetchingSysInfoSuccess = props.fetchingSysInfoSuccess
   const setSysInfoLoading = props.setSysInfoLoading
-  const retryLoadSystemInfo = props.retryLoadSystemInfo
+  const loadSystemInfo = props.loadSystemInfo
 
   const consoleDisplay = useRef()
   const dot = useRef()
@@ -68,8 +68,6 @@ const InitialiseSystemPage = (props) => {
 
     setCursorBlinking(true)
 
-    return
-
   }
 
   const displaySysInitSuccessMessage = async () => {
@@ -100,6 +98,10 @@ const InitialiseSystemPage = (props) => {
 
     await displayLine(" OH OH AH AH!")
 
+    await typePause(2000)
+
+    setSysInfoLoading(false)
+
   }
 
   useEffect( async () =>{
@@ -128,15 +130,22 @@ const InitialiseSystemPage = (props) => {
 
   useEffect(() => {
 
-    if (fetchingSysInfoSuccess == true) {
-      console.log("This is here")
-      displaySysInitSuccessMessage()
-    } else {
-      consoleDisplay.current.textContent = ""
-      retryLoadSystemInfo()
+    if (introFinished) {
+
+      if (fetchingSysInfoSuccess == true) {
+        console.log("This is here")
+        displaySysInitSuccessMessage()
+      } else if (fetchingSysInfoSuccess == false) {
+        console.log("Firing here")
+        typePause(5000)
+        consoleDisplay.current.textContent = ""
+        setIntroFinished(false)
+        loadSystemInfo()
+      }
     }
 
-  }, [introFinished])
+
+  }, [introFinished, fetchingSysInfoSuccess])
 
   return (
     <>

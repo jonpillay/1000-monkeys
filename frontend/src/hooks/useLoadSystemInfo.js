@@ -8,7 +8,9 @@ export const useLoadSystemInfo = () => {
 
   const reduxDispatch = useDispatch()
 
-  const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState(null)
+  // change this all to a single useState to attempt to avoid multiple rerenders when loadSysInfoCycles
+
+  const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState(false)
   const [ fetchingSysInfo, setFetchingSysInfo ] = useState(true)
   const [ fetchingSysInfoSuccess, setFetchingSysInfoSuccess ] = useState()
 
@@ -41,15 +43,13 @@ export const useLoadSystemInfo = () => {
       console.log("Response server down fired")
       console.log(JSONres)
       setFetchingSysInfoError(JSONres.error)
-      retryLoadSystemInfo()
       setFetchingSysInfoSuccess(false)
       setFetchingSysInfo(false)
     }
 
     if (response.ok) {
-      console.log(JSONres)
 
-      console.log(JSONres.sysInfo.AiEngineVer)
+      console.log(JSONres)
 
       const AiEngineVer = JSONres.sysInfo.AiEngineVer
       const characters = JSONres.sysInfo.characters
@@ -65,13 +65,13 @@ export const useLoadSystemInfo = () => {
 
   }
 
-  const retryLoadSystemInfo = async () => {
+  // const retryLoadSystemInfo = async () => {
 
-    await retryPause(5000)
-    loadSystemInfo()
+  //   // await retryPause(5000)
+  //   loadSystemInfo()
 
-  }
+  // }
 
-  return { loadSystemInfo, retryLoadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError }
+  return { loadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError }
 
 }

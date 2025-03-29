@@ -20,11 +20,21 @@ const s3 = new AWS.S3
 const fetchSysInfo = async () => {
 
   try {
-    const cachedAiVer = cache.get('AiEngineVer')
+    const cachedAiVer = cache.get("AiEngineVer")
 
     if (cachedAiVer) {
       console.log("SYSINFO already loaded")
-      return "SYSINFOLOADED"
+
+      const unifiedCategories = cache.get("unifiedCategories")
+
+      console.log("This should be unified categories")
+      console.log(unifiedCategories)
+
+      const characters = Object.keys(unifiedCategories.character).sort()
+      const genres = Object.keys(unifiedCategories.genre).sort()
+      const artStyles = Object.keys(unifiedCategories.style).sort()
+
+      return {AiEngineVer, characters, genres, artStyles}
     }
 
     const params = {
@@ -46,9 +56,9 @@ const fetchSysInfo = async () => {
     const unifiedCategories = sysInfoJSON.unifiedCategories
 
     try {
-      cache.set('AiEngineVer', AiEngineVer)
-      cache.set('badWordList', badWordsList)
-      cache.set('unifiedCategories', unifiedCategories)
+      cache.set("AiEngineVer", AiEngineVer)
+      cache.set("badWordList", badWordsList)
+      cache.set("unifiedCategories", unifiedCategories)
 
       const characters = Object.keys(unifiedCategories.character).sort()
       const genres = Object.keys(unifiedCategories.genre).sort()
