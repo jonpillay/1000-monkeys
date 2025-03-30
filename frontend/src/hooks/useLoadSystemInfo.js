@@ -8,11 +8,15 @@ export const useLoadSystemInfo = () => {
 
   const reduxDispatch = useDispatch()
 
-  // change this all to a single useState to attempt to avoid multiple rerenders when loadSysInfoCycles
-
-  const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState(false)
-  const [ fetchingSysInfo, setFetchingSysInfo ] = useState(true)
+  const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState()
+  const [ fetchingSysInfo, setFetchingSysInfo ] = useState()
   const [ fetchingSysInfoSuccess, setFetchingSysInfoSuccess ] = useState()
+
+  const [ sysInfoObj, setSysInfoObj ] = useState({ 
+                                          error: null,
+                                          fetchingInfo: false,
+                                          fetchSuccess: false
+                                        })
 
   const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
@@ -32,18 +36,24 @@ export const useLoadSystemInfo = () => {
 
     if (response.ok == false) {
       console.log("server not responding")
-      console.log(response)
-      setFetchingSysInfoSuccess(false)
+      setSysInfoObj({ 
+        error: "Server Not Responding",
+        fetchingInfo: false,
+        fetchSuccess: false
+      })
       setFetchingSysInfo(false)
     }
 
     const JSONres = await response.json()
 
     if (!response.ok) {
-      console.log("Response server down fired")
+      console.log("Sys Info Data Fetch Failed")
       console.log(JSONres)
-      setFetchingSysInfoError(JSONres.error)
-      setFetchingSysInfoSuccess(false)
+      setSysInfoObj({ 
+        error: "Server Not Responding",
+        fetchingInfo: false,
+        fetchSuccess: false
+      })
       setFetchingSysInfo(false)
     }
 
@@ -58,11 +68,13 @@ export const useLoadSystemInfo = () => {
 
       reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
 
-      setFetchingSysInfoSuccess(true)
+      setSysInfoObj({ 
+        error: "Sys Info Data Fetched",
+        fetchingInfo: false,
+        fetchSuccess: true
+      })
       setFetchingSysInfo(false)
-      
     }
-
   }
 
   // const retryLoadSystemInfo = async () => {
@@ -72,6 +84,6 @@ export const useLoadSystemInfo = () => {
 
   // }
 
-  return { loadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError }
+  return { loadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError, sysInfoObj, setSysInfoObj }
 
 }

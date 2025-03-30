@@ -39,7 +39,7 @@ root.render(
         </WarningsContextProvider>
       </AuthContextProvider>
     </LoadingContextProvider>
-  // </React.StrictMode>
+  /* </React.StrictMode> */
 );
 
 reportWebVitals();

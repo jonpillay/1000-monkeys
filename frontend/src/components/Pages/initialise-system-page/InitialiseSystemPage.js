@@ -7,6 +7,10 @@ const InitialiseSystemPage = (props) => {
   const fetchingSysInfoSuccess = props.fetchingSysInfoSuccess
   const setSysInfoLoading = props.setSysInfoLoading
   const loadSystemInfo = props.loadSystemInfo
+  const sysInfoLoading = props.sysInfoLoading
+
+  const sysInfoObj = props.sysInfoObj
+  const setSysInfoObj = props.setSysInfoObj
 
   const consoleDisplay = useRef()
   const dot = useRef()
@@ -26,7 +30,7 @@ const InitialiseSystemPage = (props) => {
 
     cursorBlinkingRef.current = true;
 
-    while (cursorBlinking) {
+    while (cursorBlinking && dot.current) {
 
       dot.current.textContent = dot.current.textContent ? '' : '.'
 
@@ -39,11 +43,15 @@ const InitialiseSystemPage = (props) => {
 
   useEffect(() => {
 
-    dot.current.textContent = ''
-
-    if (cursorBlinking == true) {
-      toggleDot()
+    if (!dot.current.textContent && sysInfoLoading) {
+  
+      dot.current.textContent = ''
+  
+      if (cursorBlinking == true) {
+        toggleDot()
+      }
     }
+
 
   }, [cursorBlinking])
 
@@ -56,6 +64,26 @@ const InitialiseSystemPage = (props) => {
     dot.current.textContent = ''
 
     consoleDisplay.current.textContent += "\nSYS\\>:"
+
+    for (let i = 0; i < text.length; i++) {
+
+      consoleDisplay.current.textContent += text[i]
+      await typePause(35)
+
+    }
+
+    await typePause(300)
+
+    setCursorBlinking(true)
+
+  }
+
+  const displayLabLine = async (text) => {
+    // code for writing a single line of text.
+
+    dot.current.textContent = ''
+
+    consoleDisplay.current.textContent += "\nLAB\\>:"
 
     for (let i = 0; i < text.length; i++) {
 
@@ -90,24 +118,60 @@ const InitialiseSystemPage = (props) => {
 
     await displayLine(" Lab Connection Made. Recieving Message")
 
-    await typePause(2000)
+    await typePause(300)
 
     setCursorBlinking(false)
 
     await typePause(200)
 
-    await displayLine(" OH OH AH AH!")
+    await displayLabLine(" OH OH AH AH!")
 
-    await typePause(2000)
+    await typePause(200)
+
+    cursorBlinkingRef.current = false
 
     setSysInfoLoading(false)
 
   }
 
-  useEffect( async () =>{
+  const displaySysInitFailMessage = async () => {
+
+    await displayLine(" Sys Info Fetch Failed")
+    
+    await typePause(600)
+
+    setCursorBlinking(false)
+
+    await displayLine(" Lab Must Be Sleeping")
+    
+    await typePause(300)
+
+    setCursorBlinking(false)
+
+    await displayLine(" Retrying...")
+    
+    await typePause(5000)
+
+    setCursorBlinking(false)
+
+  }
+
+  const retryLoadSystemInfo = async () => {
+    consoleDisplay.current.textContent = " "
+    loadSystemInfo()
+    await displayIntro()
+  }
+
+  const displayIntro = async () => {
+
+    await displayLine(" brrrrrr.... so cold!")
+  
+    await typePause(1000)
+
+    setCursorBlinking(false)
 
     await displayLine(" System Initialising")
-    
+  
     await typePause(1500)
 
     setCursorBlinking(false)
@@ -124,28 +188,45 @@ const InitialiseSystemPage = (props) => {
 
     await displayLine(" Fetching Sys Info")
 
+    setCursorBlinking(false)
+
     setIntroFinished(true)
+
+  }
+
+  useEffect(() =>{
+
+    console.log("intro use Effect running")
+    displayIntro()
 
   }, [])
 
   useEffect(() => {
 
-    if (introFinished) {
+    if (!introFinished) return;
 
-      if (fetchingSysInfoSuccess == true) {
-        console.log("This is here")
-        displaySysInitSuccessMessage()
-      } else if (fetchingSysInfoSuccess == false) {
-        console.log("Firing here")
-        typePause(5000)
-        consoleDisplay.current.textContent = ""
-        setIntroFinished(false)
-        loadSystemInfo()
+    const checkSysInfoStatus = async () => {
+
+      const { error, fetchingInfo, fetchSuccess  } = sysInfoObj
+
+      console.log(introFinished)
+      if (introFinished) {
+        if (fetchSuccess == true) {
+          console.log("This is here")
+          await displaySysInitSuccessMessage()
+        } else if (fetchSuccess == false) {
+          await displaySysInitFailMessage()
+          setIntroFinished(false)
+          await retryLoadSystemInfo()
+        }
       }
     }
 
 
-  }, [introFinished, fetchingSysInfoSuccess])
+    checkSysInfoStatus()
+
+  }, [sysInfoObj, introFinished])
+
 
   return (
     <>

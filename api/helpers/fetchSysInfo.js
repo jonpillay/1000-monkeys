@@ -1,13 +1,13 @@
-// const cache = require('./createCache')
+const {cache} = require('./createCache')
 const AWS = require('aws-sdk');
 require('aws-sdk/lib/maintenance_mode_message').suppress = true;
 require('dotenv').config()
 
 // import NodeCache from 'node-cache';
 
-const NodeCache = require('node-cache')
+// const NodeCache = require('node-cache')
 
-const cache = new NodeCache({ stdTTL: 3600 });
+// const cache = new NodeCache({ stdTTL: 3600 });
 
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -19,17 +19,15 @@ const s3 = new AWS.S3
 
 const fetchSysInfo = async () => {
 
+  const cachedAiVer = cache.get("AiEngineVer")
+
   try {
-    const cachedAiVer = cache.get("AiEngineVer")
 
     if (cachedAiVer) {
-      console.log("SYSINFO already loaded")
 
       const unifiedCategories = cache.get("unifiedCategories")
 
-      console.log("This should be unified categories")
-      console.log(unifiedCategories)
-
+      const AiEngineVer = cachedAiVer 
       const characters = Object.keys(unifiedCategories.character).sort()
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
