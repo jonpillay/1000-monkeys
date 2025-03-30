@@ -5,6 +5,7 @@ import { clearReduxPersist } from "../redux-state/store"
 import { useDispatch } from "react-redux"
 import { resetStoryBookSlice } from "../components/CreateStoryPageParts/story-book-create/storyBookSlice"
 import { resetSysInfo } from "../components/Pages/create-stories-page/storyBookSysInfoSlice"
+import { resetWarnings } from "../components/app/systemInfoSlice"
 import { useNavigate } from "react-router"
 
 const clearLocal = require("./useClearLocal")
@@ -30,6 +31,7 @@ export const useLogout = () => {
     await clearLocalLogout()
     reduxDispatch(resetStoryBookSlice())
     reduxDispatch(resetSysInfo())
+    reduxDispatch(resetWarnings())
     clearReduxPersist()
     dispatch({type: 'LOGOUT'})
     storyDispatch({ type: 'END' })
