@@ -13,4 +13,4 @@ const SysInitController = {
   },
 }
 
-module.exports = SysInitController
+module.exports = SysInitController;

@@ -3,12 +3,6 @@ const AWS = require('aws-sdk');
 require('aws-sdk/lib/maintenance_mode_message').suppress = true;
 require('dotenv').config()
 
-// import NodeCache from 'node-cache';
-
-// const NodeCache = require('node-cache')
-
-// const cache = new NodeCache({ stdTTL: 3600 });
-
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -64,7 +58,6 @@ const fetchSysInfo = async () => {
 
       return {AiEngineVer, characters, genres, artStyles}
 
-      // const cachedCats = cache.get('unifiedCategories')
     } catch (error) {
       console.log(error)
       console.log("Unable to cache data")
@@ -74,7 +67,6 @@ const fetchSysInfo = async () => {
   } catch (error) {
     console.log(error)
     console.log("Could not fetch system info")
-    // res.status(500).json({ error: 'Could not fetch system info'})
 
   }
 }

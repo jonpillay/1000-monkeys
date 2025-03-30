@@ -16,14 +16,6 @@ import storyBookSysInfoReducer from "../components/Pages/create-stories-page/sto
 import systemInfoReducer from "../components/app/systemInfoSlice"
 
 import { combineReducers } from '@reduxjs/toolkit';
-import rootReducer from './reducers';
-// import { version } from 'mongoose';
-
-// const persistConfig = {
-//   key: 'root',
-//   version: 1,
-//   storage,
-// };
 
 const storyBookPersistConfig = {
   key: 'storyBookData',

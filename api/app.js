@@ -25,7 +25,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const ImagesRouter = require('./routes/images');
 const StoryRouter = require("./routes/story");
-const PopulateRouter = require("./routes/populate");
 const UserRouter = require('./routes/users');
 const StoryPersistenceRouter = require('./routes/storyPersistence')
 const FetchStoriesRouter = require('./routes/fetchStories')

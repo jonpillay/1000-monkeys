@@ -196,7 +196,6 @@ const InitialiseSystemPage = (props) => {
 
   useEffect(() =>{
 
-    console.log("intro use Effect running")
     displayIntro()
 
   }, [])
@@ -211,7 +210,6 @@ const InitialiseSystemPage = (props) => {
 
       if (introFinished) {
         if (fetchSuccess == true) {
-          console.log("This is here")
           await displaySysInitSuccessMessage()
         } else if (fetchSuccess == false) {
           await displaySysInitFailMessage()

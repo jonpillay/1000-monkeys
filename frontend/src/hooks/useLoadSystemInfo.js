@@ -4,8 +4,6 @@ import { initiliseSystemInfo } from "../components/app/systemInfoSlice"
 
 export const useLoadSystemInfo = () => {
 
-  const retryPause = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
   const reduxDispatch = useDispatch()
 
   const [ fetchingSysInfoError, setFetchingSysInfoError ] = useState()
@@ -32,10 +30,8 @@ export const useLoadSystemInfo = () => {
     })
 
     // check here is response is 500 (server down/uncontactable)
-    console.log(response)
 
     if (response.ok == false) {
-      console.log("server not responding")
       setSysInfoObj({ 
         error: "Server Not Responding",
         fetchingInfo: false,
@@ -47,8 +43,6 @@ export const useLoadSystemInfo = () => {
     const JSONres = await response.json()
 
     if (!response.ok) {
-      console.log("Sys Info Data Fetch Failed")
-      console.log(JSONres)
       setSysInfoObj({ 
         error: "Server Not Responding",
         fetchingInfo: false,
@@ -58,8 +52,6 @@ export const useLoadSystemInfo = () => {
     }
 
     if (response.ok) {
-
-      console.log(JSONres)
 
       const AiEngineVer = JSONres.sysInfo.AiEngineVer
       const characters = JSONres.sysInfo.characters
@@ -76,13 +68,6 @@ export const useLoadSystemInfo = () => {
       setFetchingSysInfo(false)
     }
   }
-
-  // const retryLoadSystemInfo = async () => {
-
-  //   // await retryPause(5000)
-  //   loadSystemInfo()
-
-  // }
 
   return { loadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError, sysInfoObj, setSysInfoObj }
 
