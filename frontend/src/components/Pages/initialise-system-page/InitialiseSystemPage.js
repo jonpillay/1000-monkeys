@@ -209,7 +209,6 @@ const InitialiseSystemPage = (props) => {
 
       const { error, fetchingInfo, fetchSuccess  } = sysInfoObj
 
-      console.log(introFinished)
       if (introFinished) {
         if (fetchSuccess == true) {
           console.log("This is here")

@@ -61,16 +61,17 @@ export const store = configureStore({
   devtools: process.env.NODE_ENV !== 'production',
 });
 
-export const clearReduxPersist = () => {
-  persistor.purge()
-}
-
 export const clearStoryBookPersist = async () => {
-  localStorage.removeItem('persist:storyBook');
+  localStorage.removeItem('persist:storyBookData');
 };
 
-export const clearSPersist = () => {
-  localStorage.removeItem('persist:storyBook');
+export const clearStoryBookSysInfoPersist = () => {
+  localStorage.removeItem('persist:storyBookSysInfo');
 };
+
+export const clearReduxPersist = () => {
+  clearStoryBookPersist()
+  clearStoryBookSysInfoPersist()
+}
 
 export const persistor = persistStore(store);
