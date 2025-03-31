@@ -1,18 +1,10 @@
-const promptTagsJSON = require('./promptTags.json')
+const {cache} = require('../helpers/createCache')
 
-// const matchSelectionCriteria = (userSelection) => {
-//   const positivePrompts = []
-//   const negativePrompts = []
-//   for (let key in userSelection) {
-//       if (promptTags.hasOwnProperty(key)) {
-//           positivePrompts.push(promptTags[key][userSelection[key]]['positivePrompts'])
-//           negativePrompts.push(promptTags[key][userSelection[key]]['negativePrompts'])
-//       }
-//   }
-//   return {positivePrompts: positivePrompts.flat().join(', '), negativePrompts: negativePrompts.flat().join(', ')}
-// }
+// const promptTagsJSON = require('./promptTags.json')
 
 const genPromptTags = (userSelections) => {
+
+  const promptTagsJSON = cache.get("unifiedCategories")
 
   const positivePrompts = []
   const negativePrompts = []
@@ -23,10 +15,7 @@ const genPromptTags = (userSelections) => {
         positivePrompts.push(promptTagsJSON[selectionField][userSelections[selectionField]]['positivePrompts'])
         negativePrompts.push(promptTagsJSON[selectionField][userSelections[selectionField]]['negativePrompts'])
       }
-
     }
-
-
   }
 
   const tagsObject = {positiveTagString: positivePrompts.flat().join(', '), negativeTagString: negativePrompts.flat().join(', ')}

@@ -11,9 +11,15 @@ AWS.config.update({
 
 const s3 = new AWS.S3
 
+const cachedAiVer = cache.get("AiEngineVer")
+
+console.log(cachedAiVer)
+
 const fetchSysInfo = async () => {
 
   const cachedAiVer = cache.get("AiEngineVer")
+
+  console.log(cachedAiVer)
 
   try {
 
