@@ -5,10 +5,11 @@ const UserController = require('../controllers/userController')
 const requireAdminAuth = require('../middleware/requireAdminAuth')
 const requireInviteMatch = require('../middleware/requireInviteMatch')
 const requireAuth = require('../middleware/requireAuth')
+const requireSysInfo = require('../middleware/requireSysInfo')
 
 const router = express.Router()
 
-router.post('/login', UserController.LoginUser)
+router.post('/login', requireSysInfo, UserController.LoginUser)
 
 router.post('/activate', UserController.Activation)
 

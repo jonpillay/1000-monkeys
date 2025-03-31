@@ -45,7 +45,7 @@ export const useSignup = () => {
       localStorage.setItem('credits', JSONres.credits)}}
       localStorage.setItem('user', JSON.stringify(JSONres))
 
-      dispatch({type: 'LOGIN', payload: JSONres})
+      // dispatch({type: 'LOGIN', payload: JSONres})
 
       navigate('/')
 

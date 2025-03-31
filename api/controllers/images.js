@@ -29,7 +29,7 @@ const ImagesController = {
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
-      const credits_update = await creditController.AdjustCredits(req.user._id, -3, creditJWT)
+      const credits_update = await creditController.AdjustCredits(req.user._id, -2, creditJWT)
 
       res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt, credits_update: credits_update });
     } catch (error) {
