@@ -44,7 +44,7 @@ export const useLoadSystemInfo = () => {
 
     if (!response.ok) {
       setSysInfoObj({ 
-        error: "Server Not Responding",
+        error: "Bad Response",
         fetchingInfo: false,
         fetchSuccess: false
       })

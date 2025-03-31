@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
-import { selectAiEngineVer } from './systemInfoSlice';
+import { selectAiEngineVer, selectSysInfoExpiry } from './systemInfoSlice';
 
 import './App.css';
 import {
@@ -33,8 +33,9 @@ import InitialiseSystemPage from '../Pages/initialise-system-page/InitialiseSyst
 const App = () => {
 
   const AiEngineVer = useSelector(selectAiEngineVer)
+  const sysInfoExpiry = useSelector(selectSysInfoExpiry)
 
-  const [ sysInfoLoading, setSysInfoLoading ] = useState()
+  const [ sysInfoLoading, setSysInfoLoading ] = useState(!AiEngineVer || Date.now() > sysInfoExpiry || !sysInfoExpiry)
 
   const { loadSystemInfo, fetchingSysInfo, fetchingSysInfoSuccess, fetchingSysInfoError, sysInfoObj, setSysInfoObj } = useLoadSystemInfo()
 
@@ -44,15 +45,15 @@ const App = () => {
 
   const admin = user ? user.isSuper : false
 
-  useEffect(() => {
-    if (AiEngineVer == null) {
-      setSysInfoLoading(true)
-      loadSystemInfo()
-    } else {
-      console.log("it be here")
-      setSysInfoLoading(false)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (AiEngineVer == null) {
+  //     setSysInfoLoading(true)
+  //     loadSystemInfo()
+  //   } else {
+  //     console.log("it be here")
+  //     setSysInfoLoading(false)
+  //   }
+  // }, [])
 
   if (sysInfoLoading) {
     return <div><InitialiseSystemPage loadSystemInfo={loadSystemInfo} fetchingSysInfo={fetchingSysInfo} fetchingSysInfoSuccess={fetchingSysInfoSuccess} sysInfoLoading={sysInfoLoading} setSysInfoLoading={setSysInfoLoading} sysInfoObj={sysInfoObj} setSysInfoObj={setSysInfoObj} /></div>

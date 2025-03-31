@@ -9,7 +9,8 @@ const systemInfoSlice = createSlice({
     AiEngineVer: null,
     characters: [],
     genres: [],
-    artStyles: []
+    artStyles: [],
+    sysInfoExpiry: null
   },
   reducers: {
     initiliseSystemInfo: {
@@ -18,6 +19,7 @@ const systemInfoSlice = createSlice({
         state.characters = action.payload.characters
         state.genres = action.payload.genres
         state.artStyles = action.payload.artStyles
+        state.sysInfoExpiry = Date.now() + 12 * 60 * 60 * 1000;
       },
       prepare(AiEngineVer, characters, genres, artStyles) {
         return {
@@ -56,6 +58,7 @@ export const selectAllCharacters = (state) => state.systemInfo.characters;
 export const selectAllGenres = (state) => state.systemInfo.genres;
 export const selectAllArtStyles = (state) => state.systemInfo.artStyles;
 export const selectAiEngineVer = (state) => state.systemInfo.AiEngineVer;
+export const selectSysInfoExpiry = (state) => state.systemInfo.sysInfoExpiry
 
 
 export const { initiliseSystemInfo, issueMultiWarnings, issueWarning, resetWarnings } = systemInfoSlice.actions;
