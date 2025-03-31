@@ -305,6 +305,7 @@ export const useCreateStory = () => {
         reduxDispatch(swapChapterSDPrompt(renderChapter, data["SD_prompt"]))
         reduxDispatch(turnToPage(renderChapter))
         reduxDispatch(setStoryInSync(false))
+        creditDispatch({type: 'UPDATE', payload: data.credits_update})
         setStoryInSync(false)
         loadingDispatch({type: 'LOADED'})
       })

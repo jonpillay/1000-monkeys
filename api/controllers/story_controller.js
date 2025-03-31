@@ -46,7 +46,7 @@ const StoryController = {
       const creditJWT = genCreditJWT(req.user._id, -3)
       const credits_update = await creditController.AdjustCredits(req.user._id, -3, creditJWT)
 
-      res.status(200).json({  page_text: story_text, page_image: story_image, credits_update: credits_update.credits, SDPrompt: finalSDPrompt });
+      res.status(200).json({ page_text: story_text, page_image: story_image, credits_update: credits_update.credits, SDPrompt: finalSDPrompt });
 
     } catch (error) {
       console.error("Create Chapter Error", error)

@@ -25,5 +25,3 @@ const genPromptTags = (userSelections) => {
 }
 
 module.exports = genPromptTags
-
-// genPromptTags({'style': 'Anime'})

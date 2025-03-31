@@ -7,6 +7,7 @@ const DCPromptDresser = require("../promptGeneration/DCPromptDresser")
 const genPromptTags = require("../promptGeneration/DSPromptTagger")
 const genNegativePromptString = require('../promptGeneration/genNegativePromptString')
 
+const creditController = require('./creditsController')
 
 const ImagesController = {
   RefreshImage: async (req, res) => {
@@ -28,7 +29,9 @@ const ImagesController = {
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
-      res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt });
+      const credits_update = await creditController.AdjustCredits(req.user._id, -3, creditJWT)
+
+      res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt, credits_update: credits_update });
     } catch (error) {
       res.status(error.status).json({ message: error.message });
     }
