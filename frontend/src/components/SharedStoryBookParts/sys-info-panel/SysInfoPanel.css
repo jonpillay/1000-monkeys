@@ -8,21 +8,17 @@
 
 .user-choices-panel {
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: baseline;
-  /* background-color: green; */
-  padding: 0.3%;
-  width: 80%;
+  padding: 0.3rem;
+  width: 100%;
   margin: auto;
   font-family: 'special-elite';
 }
 
 .user_prompt-display {
   font-family: 'special-elite';
-}
-
-.genre-panel {
-  padding-inline: 1%;
 }
 
 .art-style-panel {

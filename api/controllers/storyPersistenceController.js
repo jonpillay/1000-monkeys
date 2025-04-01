@@ -20,7 +20,7 @@ const StoryPersistenceController = {
 
   UpdateStory: async (req, res) => {
 
-    const {story_id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory} = req.body
+    const {story_id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory, AIEngineVer} = req.body
 
     const storyBook = await StoryBook.findById(story_id)
 
@@ -32,7 +32,7 @@ const StoryPersistenceController = {
 
     try {
 
-      const story = await StoryBook.updateStory(storyBook._id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory)
+      const story = await StoryBook.updateStory(storyBook._id, chapterImages, chapterTexts, GPTChatHistory, SDPromptHistory, AIEngineVer)
 
       res.status(200).json({ error: "Story saved"})
     } catch (error) {

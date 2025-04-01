@@ -67,7 +67,7 @@ storyBookSchema.statics.saveStory = async function (user_id, chapterImages, chap
   return story
 }
 
-storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts, GPTChatHistory, SDPromptHistory) {
+storyBookSchema.statics.updateStory = async function (story_id, updatedImages, updatedTexts, GPTChatHistory, SDPromptHistory, AIEngineVer) {
 
   await this.updateOne( { _id: story_id },
     {
@@ -75,7 +75,8 @@ storyBookSchema.statics.updateStory = async function (story_id, updatedImages, u
         chapterText: updatedTexts,
         chapterImageURLs: updatedImages,
         GPTChatHistory: GPTChatHistory,
-        SDPromptHistory: SDPromptHistory
+        SDPromptHistory: SDPromptHistory,
+        AIEngine: AIEngineVer
       }
     }
   )
