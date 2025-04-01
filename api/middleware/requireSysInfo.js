@@ -1,5 +1,5 @@
 const {cache} = require('../helpers/createCache')
-const fetchSysInfo = require('../helpers/fetchSysInfo')
+const {fetchSysInfo} = require('../helpers/fetchSysInfo')
 
 const requireSysInfo = async (req, res, next) => {
 
@@ -11,9 +11,10 @@ const requireSysInfo = async (req, res, next) => {
     try {
       const systemInfo = await fetchSysInfo()
       req.systemInfo = systemInfo
-      return next()
+      next()
     } catch (error) {
-      return res.status(503).json({ error: 'Cannot Load Sysstem Info' });
+      console.log(error)
+      return res.status(503).json({ error: 'Cannot Load System Info' });
     }
   }
 }

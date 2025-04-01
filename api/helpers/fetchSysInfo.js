@@ -1,19 +1,12 @@
 const {cache} = require('./createCache')
-const AWS = require('aws-sdk');
-require('aws-sdk/lib/maintenance_mode_message').suppress = true;
-require('dotenv').config()
-
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION,
-});
-
-const s3 = new AWS.S3
+const s3 = require('../clients/AWSS3client')
 
 const fetchSysInfo = async () => {
 
-  const cachedAiVer = cache.get("AiEngineVer")
+  const cachedAiVer = cache.get("AiEngineVer") || null
+
+  console.log("Cached version")
+  console.log(cachedAiVer)
 
   try {
 
@@ -61,13 +54,14 @@ const fetchSysInfo = async () => {
     } catch (error) {
       console.log(error)
       console.log("Unable to cache data")
+      throw new Error("Sys Info Not Loading")
     }
 
 
   } catch (error) {
     console.log(error)
     console.log("Could not fetch system info")
-
+    throw new Error("Sys Info Not Loading")
   }
 }
 

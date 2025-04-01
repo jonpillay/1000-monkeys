@@ -3,6 +3,7 @@
   grid-template-columns: 10%, 90%;
   width: 65%;
   margin: auto;
+  margin-bottom: .5vh;
 }
 
 .user-choices-panel {

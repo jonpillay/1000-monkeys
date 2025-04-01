@@ -4,6 +4,7 @@ import { CreditsContext } from "../context/CreditsContext";
 
 import { useDispatch } from "react-redux";
 import { setUserToken } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
+import { initiliseSystemInfo } from "../components/app/systemInfoSlice";
 
 const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
@@ -34,6 +35,16 @@ export const useLogin = () => {
     }
 
     if (response.ok) {
+      if (JSONres.systemInfo != null) {
+        console.log("login sysinfo fired")
+        console.log(JSONres.systemInfo)
+        const AiEngineVer = JSONres.systemInfo.AiEngineVer
+        const characters = JSONres.systemInfo.characters
+        const genres = JSONres.systemInfo.genres
+        const artStyles = JSONres.systemInfo.artStyles
+
+        reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
+      }
       reduxDispatch(setUserToken(JSONres.token))
       creditDispatch({type: 'UPDATE', payload: JSONres.credits})
       localStorage.setItem('credits', JSONres.credits)

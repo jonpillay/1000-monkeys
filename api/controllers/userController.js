@@ -16,13 +16,15 @@ const UserController = {
 
     const {email, password} = req.body
 
+    const systemInfo = req.systemInfo || null
+
     try {
 
       const user = await User.login(email, password)
 
       const JWT = genLoginJWT(user._id, user.isSuper)
 
-      res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits, booksRead: user.booksRead  })
+      res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits, booksRead: user.booksRead, systemInfo: systemInfo })
     } catch (error) {
 
       res.status(400).json({error: error.message })
