@@ -1,10 +1,10 @@
 .user-panel-container {
-  display: grid;
-  grid-template-columns: 60% 40%;
+  display: flex;
+  /* grid-template-columns: 60% 40%; */
+  flex-direction: row;
   right: 0%;
   margin-top: 0.6rem;
-  margin-right: 5px;
-  width: 20rem;
+  margin-right: 1rem;
   height: min-content;
   background-color: #fff;
   opacity: 98%;
@@ -32,6 +32,16 @@
   font-size: 1.5rem;
 }
 
+.credit-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
 .nut-count {
   width: max-content;
+}
+
+.peanut-credit {
+  height: 1rem;
 }

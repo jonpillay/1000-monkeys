@@ -5,6 +5,8 @@ import { useCreditsContext } from '../../../hooks/useCreditsContext';
 
 import { useEffect, useState } from 'react';
 
+import Peanut from "../../../img/peanut.svg"
+
 const UserPanel = () => {
 
   const {user} = useAuthContext()
@@ -25,9 +27,12 @@ const UserPanel = () => {
       <div className="user-name-container">
         <span>{`Hi ${user.email}!`}</span>
       </div>
-      <div>
+      <div className='credit-container'>
         <div className='nut-count'>
           {`You have ${displayCredits}`}
+        </div>
+        <div>
+          <img src={Peanut} className='peanut-credit'/>
         </div>
       </div>
     </div>
