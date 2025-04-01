@@ -12,7 +12,7 @@ async function generateStory(prompts) {
     const res = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: prompts,
-      max_completion_tokens: 100,
+      max_completion_tokens: 100
     });
 
     return res.choices[0].message.content;

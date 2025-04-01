@@ -5,3 +5,27 @@
 .browse-book-list {
   list-style: none;
 }
+
+.load-book-cta-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
+
+.load-book-cta-border {
+  height: fit-content;
+  background-color: white;
+  border: 1rem;
+  border-style: solid;
+  border-color: rgb(25, 12, 204);
+  border-radius: 4%;
+  padding: 0.5rem;
+  opacity: 96%;
+}
+
+.load-book-cta {
+  font-family: 'VT323';
+  font-size: 3rem;
+  color: rgb(226, 43, 43);
+}

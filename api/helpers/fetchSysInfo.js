@@ -5,9 +5,6 @@ const fetchSysInfo = async () => {
 
   const cachedAiVer = cache.get("AiEngineVer") || null
 
-  console.log("Cached version")
-  console.log(cachedAiVer)
-
   try {
 
     if (cachedAiVer) {
