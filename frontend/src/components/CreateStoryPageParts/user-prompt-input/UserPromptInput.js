@@ -103,7 +103,6 @@ const UserPromptInput = (props) => {
               {userWarningMessage}
             </div>
           </div>
-    
         </>
       )}
 

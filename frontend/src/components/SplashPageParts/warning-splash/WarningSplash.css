@@ -31,7 +31,6 @@
   justify-content: space-between;
   align-items: center;
   /* grid-template-columns: 10% 90%; */
-  border: dotted;
 }
 
 .warning-splash-text {
@@ -49,7 +48,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: dotted;
 }
 
 .standby-countdown-container {

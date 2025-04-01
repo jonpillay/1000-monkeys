@@ -3,12 +3,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  max-height: 2.5rem;
 }
 
 .publish-story-input-title-container {
-  margin-top: 0.7rem;
   margin-right: 0.3rem;
   font-size: 1.5rem;
+  line-height: 0.2rem;
   font-family: 'VT323';
 }
 
@@ -34,6 +35,15 @@
   border-top-right-radius: 15px 225px;
 }
 
+.publish-prompt-error-messages {
+  font-family: 'VT323';
+  font-size: 1.1rem;
+  display: column;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .publish-story-input-button:hover {
   box-shadow: 0 0 5px 1px black;
 }
@@ -41,6 +51,7 @@
 .publish-story-text-input-container {
   margin-top: 0.5rem;
   display: flex;
+  align-items: center;
 }
 
 .publish-story-input-submit-container {

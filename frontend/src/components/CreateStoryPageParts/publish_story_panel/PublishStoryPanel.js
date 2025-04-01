@@ -4,7 +4,9 @@ import { useState, useRef } from "react";
 import { usePublishStory } from "../../../hooks/usePublishStory";
 import { useSanitiseInput } from "../../../hooks/useSanitiseInput";
 import { useSaveStory } from "../../../hooks/useSaveStory";
+import { useMonitorUserWarnings } from "../../../hooks/useMonitorUserWarnings";
 
+import { useCheckWordFormatting } from "../../../hooks/useCheckWordFormatting";
 import ForbiddenLogo from "../../../img/forbidden.png"
 
 import { useSelector, useDispatch } from "react-redux"
@@ -19,9 +21,13 @@ const PublishStoryControlPanel = (props) => {
   const publishing = props.publishing
   const publishError = props.publishError
 
+  const { handleUserWarning, userWarningMessage, setUserWarningMessage } = useMonitorUserWarnings()
+  const {checkWordFormatting} = useCheckWordFormatting()
+
   // const { publishStory, isLoading, error } = usePublishStory()
 
   const [forbidden, setForbidden] = useState(false)
+  const [ publishInputError, setPublishInputError ] = useState()
 
   const {sanitiseInput} = useSanitiseInput()
 
@@ -57,6 +63,19 @@ const PublishStoryControlPanel = (props) => {
       }
     }
 
+    const wordFormattingCheck = checkWordFormatting(title.current.value)
+
+    if (wordFormattingCheck == false) {
+      setPublishInputError("Input Cannot Contain Wild Card Characters")
+      setForbidden(true)
+      handleUserWarning()
+      setTimeout(() => {
+        setForbidden(false)
+        setPublishInputError("")
+      }, 2500)
+      return
+    }
+
     const cleanCheck = await sanitiseInput(title.current.value)
 
     if (cleanCheck == true) {
@@ -65,9 +84,11 @@ const PublishStoryControlPanel = (props) => {
 
     } else {
       setForbidden(true)
+      setPublishInputError("Check Community Standards")
       setTimeout(() => {
         setForbidden(false)
-      }, 1500)
+        setPublishInputError("")
+      }, 2500)
     }
 
   }
@@ -76,13 +97,26 @@ const PublishStoryControlPanel = (props) => {
     <>
       <div className="publish-story-input-container">
         <form className="publish-story-input-form" onSubmit={handleSubmit}>
-          <div className="publish-story-input-title-container">
-            <div className="publish-story-input-title">Publish Your Story!</div>
-          </div>
           <div className="publish-story-text-input-container">
-            <div>
-              <input type="text" className="publish-story-input-box" ref={title} placeholder="Give it a title..."/>
+            {!publishInputError ?
+            <>
+              <div className="publish-story-input-title-container">
+                <div className="publish-story-input-title">Publish Your Story!</div>
+              </div>
+              <div>
+                <input type="text" className="publish-story-input-box" ref={title} placeholder="Give it a title..."/>
+              </div>
+            </>
+            :
+            <div className="publish-prompt-error-messages">
+              <div>
+                {publishInputError}
+              </div>
+              <div>
+                {userWarningMessage}
+              </div>
             </div>
+            }
             <>
             {! forbidden ? 
               <div className="publish-story-input-submit-container">
