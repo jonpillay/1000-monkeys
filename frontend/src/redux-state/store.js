@@ -50,7 +50,7 @@ export const store = configureStore({
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  devtools: process.env.NODE_ENV !== 'production',
+  devtools: process.env.NODE_ENV === 'development',
 });
 
 export const clearStoryBookPersist = async () => {

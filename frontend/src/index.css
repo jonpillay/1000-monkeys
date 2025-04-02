@@ -86,6 +86,11 @@
   src: url("./fonts/Bangers-Regular.ttf");
 }
 
+@font-face {
+  font-family: 'SyneMono-Regular';
+  src: url("./fonts/SyneMono-Regular.ttf");
+}
+
 .title {
   font-family: 'special-elite';
   font-size: 60px;

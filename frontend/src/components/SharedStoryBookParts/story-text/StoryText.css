@@ -1,12 +1,11 @@
 .story-text {
-  margin: 10px;
-
-  /* word-wrap: break-word; */
+  margin: 0.5rem;
   color: black;
-  font-family: 'merriweather';
+  font-family: 'SyneMono-Regular';
   text-align: center;
   font-weight: normal;
-  font-size: 30px;
+  text-indent: 1rem;
+  font-size: 1.1rem;
 }
   
 .story-container {
