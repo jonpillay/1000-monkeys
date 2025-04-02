@@ -5,14 +5,11 @@ const requireSysInfo = async (req, res, next) => {
 
   const AiEngineVer = cache.get('AiEngineVer')
 
-  console.log(AiEngineVer)
-
   if (AiEngineVer) {
     next()
   } else {
     try {
       const systemInfo = await fetchSysInfo()
-      console.log(systemInfo)
       req.systemInfo = systemInfo
       next()
     } catch (error) {
