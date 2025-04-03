@@ -46,6 +46,7 @@ const App = () => {
   const admin = user ? user.isSuper : false
 
   useEffect(() => {
+    console.log(process.env.NODE_ENV)
     if (sysInfoLoading) {
       loadSystemInfo()
     }

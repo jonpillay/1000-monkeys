@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setUserToken } from "../components/Pages/create-stories-page/storyBookSysInfoSlice";
 import { initiliseSystemInfo } from "../components/app/systemInfoSlice";
 
-const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
+const baseUrl = process.env.NODE_ENV === "production" ? window.env.API_URL : '';
 
 export const useLogin = () => {
   const [error, setError] = useState(null)
@@ -18,6 +18,9 @@ export const useLogin = () => {
   const login = async (email, password) => {
     setIsLoading(true)
     setError(null)
+
+    console.log(process.env.NODE_ENV)
+    console.log(baseUrl)
 
     const response = await fetch(`${baseUrl}/user/login`, {
       method: 'Post',
