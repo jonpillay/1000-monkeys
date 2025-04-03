@@ -26,7 +26,7 @@ const UserController = {
 
       res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits, booksRead: user.booksRead, systemInfo: systemInfo })
     } catch (error) {
-
+      console.log(error)
       res.status(400).json({error: error.message })
     }
   },
