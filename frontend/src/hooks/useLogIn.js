@@ -19,9 +19,6 @@ export const useLogin = () => {
     setIsLoading(true)
     setError(null)
 
-    console.log(process.env.NODE_ENV)
-    console.log(baseUrl)
-
     const response = await fetch(`${baseUrl}/user/login`, {
       method: 'Post',
       headers: {
