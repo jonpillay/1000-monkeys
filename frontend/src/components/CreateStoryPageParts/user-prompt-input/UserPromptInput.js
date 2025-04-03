@@ -14,6 +14,8 @@ const UserPromptInput = (props) => {
   const {sanitiseInput} = useSanitiseInput()
   const { checkWordFormatting } = useCheckWordFormatting()
   const { handleUserWarning, userWarningMessage, setUserWarningMessage } = useMonitorUserWarnings()
+
+  const [ createActive, setCreateActive ] = useState()
   
   const handleSubmit = async (e) => {
 
@@ -67,6 +69,10 @@ const UserPromptInput = (props) => {
     };
   }, [error]);
 
+  const checkPromptInput = () => {
+    setCreateActive(prompt.current.value)
+  }
+
   return (
     <>
       {!userWarningMessage ? (
@@ -77,12 +83,12 @@ const UserPromptInput = (props) => {
             </div>
             <div className="user-prompt-text-input-container">
               <div>
-                <input type="text" className="user-prompt-input-box" maxLength={125} ref={prompt} placeholder="Prompt the next chapter..."/>
+                <input type="text" className="user-prompt-input-box" maxLength={125} ref={prompt} onChange={checkPromptInput} placeholder="Prompt the next chapter..."/>
               </div>
               <>
               {! error ? 
                 <div className="user-prompt-input-submit-container">
-                  <button disabled={isLoading} className="user-prompt-input-button" id="user-prompt-input-submit-button" type="submit">Create</button>
+                  <button disabled={!createActive} className={ createActive ? "user-prompt-input-button active" :  "user-prompt-input-button"} id="user-prompt-input-submit-button" type="submit">Create</button>
                 </div>
                 :
                 <div className="user-prompt-input-submit-container">
