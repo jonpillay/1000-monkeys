@@ -292,7 +292,7 @@ export const useCreateStory = () => {
       }
   
       fetch(`${baseUrl}/images`, {
-        method: "POST",
+        method: "post",
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`

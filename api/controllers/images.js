@@ -33,6 +33,8 @@ const ImagesController = {
 
       res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt, credits_update: credits_update });
     } catch (error) {
+      console.log("error from the images controller")
+      console.log(error)
       res.status(error.status).json({ message: error.message });
     }
   },

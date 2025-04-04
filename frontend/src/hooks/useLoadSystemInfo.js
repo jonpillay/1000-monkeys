@@ -23,7 +23,7 @@ export const useLoadSystemInfo = () => {
     setFetchingSysInfo(true)
 
     const response = await fetch(`${baseUrl}/initialise-sys`, {
-      method: 'Post',
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
