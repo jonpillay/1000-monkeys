@@ -20,7 +20,7 @@ export const useLogin = () => {
     setError(null)
 
     const response = await fetch(`${baseUrl}/user/login`, {
-      method: 'Post',
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
     },

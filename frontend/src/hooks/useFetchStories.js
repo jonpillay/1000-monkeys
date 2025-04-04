@@ -13,7 +13,7 @@ export const useFetchStories = () => {
     setError(null)
 
     const response = await fetch(`${baseUrl}/fetch-stories/genre`, {
-      method: 'Post',
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
     },
