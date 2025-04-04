@@ -13,7 +13,8 @@ const app = express();
 app.use(cors({
   origin: 'https://m1000.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.options('*', cors());
