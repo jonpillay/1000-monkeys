@@ -10,7 +10,11 @@ const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 
 const app = express();
-app.use(cors(corsOptions))
+app.use(cors({
+  origin: 'https://m1000.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
 
 const NodeCache = require('node-cache')
 
