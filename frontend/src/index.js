@@ -23,7 +23,7 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <LoadingContextProvider>
       <AuthContextProvider>
         <WarningsContextProvider>
@@ -39,7 +39,7 @@ root.render(
         </WarningsContextProvider>
       </AuthContextProvider>
     </LoadingContextProvider>
-  /* </React.StrictMode> */
+  </React.StrictMode>
 );
 
 reportWebVitals();
