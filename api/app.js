@@ -10,6 +10,7 @@ const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 
 const app = express();
+
 app.use(cors({
   origin: 'https://m1000.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -17,7 +18,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-app.options('*', cors());
+// app.options('*', cors());
 
 // const NodeCache = require('node-cache')
 
