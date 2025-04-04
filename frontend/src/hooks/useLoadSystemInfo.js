@@ -48,6 +48,7 @@ export const useLoadSystemInfo = () => {
         fetchingInfo: false,
         fetchSuccess: false
       })
+      console.log(JSONres)
       setFetchingSysInfo(false)
     }
 
