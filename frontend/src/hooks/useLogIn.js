@@ -36,8 +36,6 @@ export const useLogin = () => {
 
     if (response.ok) {
       if (JSONres.systemInfo != null) {
-        console.log("login sysinfo fired")
-        console.log(JSONres.systemInfo)
         const AiEngineVer = JSONres.systemInfo.AiEngineVer
         const characters = JSONres.systemInfo.characters
         const genres = JSONres.systemInfo.genres

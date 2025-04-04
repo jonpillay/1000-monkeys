@@ -238,7 +238,7 @@ const InitialiseStoryForm = (props) => {
       </div>
       <div className="splash-egg-container">
         <Tooltip id="splash-egg-tooltip" />
-        <a href="https://github.com/jonpillay/AI-tistic-Tales-JP-Remix/blob/main/frontend/src/hooks/useCheckEggInput.js" target="_blank" rel="noopener noreferrer" data-tooltip-id="splash-egg-tooltip" data-tooltip-content="6-20">
+        <a href="https://github.com/jonpillay/AI-tistic-Tales-JP-Remix/blob/main/frontend/src/hooks/useCheckEggInput.js" target="_blank" rel="noopener noreferrer" data-tooltip-id="splash-egg-tooltip" data-tooltip-content="12-26">
           <img className="splash-egg" src={egg}/> 
         </a>
       </div>
