@@ -16,9 +16,11 @@ app.use(cors({
   credentials: true
 }));
 
-const NodeCache = require('node-cache')
+app.options('*', cors());
 
-const cache = new NodeCache({ stdTTL: 3600 });
+// const NodeCache = require('node-cache')
+
+// const cache = new NodeCache({ stdTTL: 43200 });
 
 // setup for receiving JSON
 app.use(express.json())
