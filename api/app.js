@@ -2,16 +2,7 @@ require('dotenv').config()
 
 const app = express();
 
-const cors = require('cors')
-const corsOptions = require('./config/corsOptions')
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-
-app.use(express.json())
-
 app.use(logger("dev"));
-app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 const createError = require("http-errors");
@@ -19,6 +10,14 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const connectToMongo = require("./database/db-connection")
+
+const cors = require('cors')
+const corsOptions = require('./config/corsOptions')
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+app.use(express.json())
 
 const ImagesRouter = require('./routes/images');
 const StoryRouter = require("./routes/story");
