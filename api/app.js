@@ -18,7 +18,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// app.options('*', cors());
+app.options('*', cors());
 
 // const NodeCache = require('node-cache')
 
