@@ -6,6 +6,10 @@ const User = require('../database/models/userModel')
 
 const requireCleanInput = async (req, res, next) => {
 
+  if (req.method === 'OPTIONS') {
+    return next();
+  }
+
   const _id = req.user._id
 
   const GPTPromptHistory = req.body.GPTPromptHistory

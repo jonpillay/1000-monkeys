@@ -3,6 +3,10 @@ const User = require('../database/models/userModel')
 
 const requireAuth = async (req, res, next) => {
 
+  if (req.method === 'OPTIONS') {
+    return next();
+  }
+
   const { authorization } = req.headers
 
   if (!authorization) {
@@ -13,6 +17,8 @@ const requireAuth = async (req, res, next) => {
 
   try {
     const {_id} = JWT.verify(token, process.env.JWT_SECRETKEY)
+
+    // should add in books read here
 
     req.user = await User.findOne({ _id }).select('_id credits')
 

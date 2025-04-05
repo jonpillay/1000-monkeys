@@ -3,6 +3,10 @@ const User = require('../database/models/userModel')
 
 const requireAdminAuth = async (req, res, next) => {
 
+  if (req.method === 'OPTIONS') {
+    return next();
+  }
+
   const { authorization } = req.headers
 
   if (!authorization) {
