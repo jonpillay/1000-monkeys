@@ -69,7 +69,7 @@ export const useCreateStory = () => {
       }
   
       const response = await fetch(`${baseUrl}/story/create-chapter`, {
-        method: "POST",
+        method: 'post',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`
@@ -292,7 +292,7 @@ export const useCreateStory = () => {
       }
   
       fetch(`${baseUrl}/images`, {
-        method: "post",
+        method: 'post',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`
