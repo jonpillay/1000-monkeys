@@ -7,10 +7,6 @@ const requireSysInfo = async (req, res, next) => {
     return next();
   }
 
-  if (req.method === 'OPTIONS') {
-    return next();
-  }
-
   const AiEngineVer = cache.get('AiEngineVer')
 
   if (AiEngineVer) {
