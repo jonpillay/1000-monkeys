@@ -9,6 +9,10 @@ const genNegativePromptString = require('../promptGeneration/genNegativePromptSt
 
 const creditController = require('./creditsController')
 
+const genCreditJWT = (token_id, token_amount) => {
+  return jwt.sign({token_id, token_amount}, process.env.JWT_SECRETKEY, {expiresIn: '10m'})
+}
+
 const ImagesController = {
   RefreshImage: async (req, res) => {
 
@@ -29,6 +33,7 @@ const ImagesController = {
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
+      const creditJWT = genCreditJWT(req.user._id, -3)
       const credits_update = await creditController.AdjustCredits(req.user._id, -2, creditJWT)
 
       res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt, credits_update: credits_update });
