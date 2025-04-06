@@ -1,11 +1,5 @@
 require('dotenv').config()
 
-const app = express();
-app.use(express.json())
-
-app.use(logger("dev"));
-app.use(express.static(path.join(__dirname, "public")));
-
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -13,6 +7,13 @@ const logger = require("morgan");
 const connectToMongo = require("./database/db-connection")
 
 const cors = require('cors')
+
+const app = express();
+app.use(express.json())
+
+app.use(logger("dev"));
+app.use(express.static(path.join(__dirname, "public")));
+
 const corsOptions = require('./config/corsOptions')
 
 app.use(cors(corsOptions));
