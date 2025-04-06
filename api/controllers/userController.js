@@ -27,7 +27,7 @@ const UserController = {
       res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits, booksRead: user.booksRead, systemInfo: systemInfo })
     } catch (error) {
       console.log(error)
-      res.status(400).json({error: "Server Not Responding" })
+      res.status(400).json({error: error.message })
     }
   },
   SignUpUser: async (req, res) => {
@@ -41,7 +41,7 @@ const UserController = {
       res.status(200).json({ id: user._id, username: user.username, email: user.email, token: JWT, isSuper: user.isSuper, credits: user.credits })
 
     } catch (error) {
-      res.status(400).json({error: "Server Not Responding"})
+      res.status(400).json({error: error.message})
     }
   },
   CreateUser: async (req, res) => {
