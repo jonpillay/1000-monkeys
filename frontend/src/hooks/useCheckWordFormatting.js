@@ -43,18 +43,15 @@ export const useCheckWordFormatting = () => {
           // if difference in length between the two is more that one, do not pass (assumed word disguising attempt)
           if (wordLength - formattedWord.length > 1) {
             console.log("numerous punct firing")
-              return false
+            return false
           }
 
           const wordSplit = checkWord.split('')
-          console.log(wordSplit)
-          console.log(wordSplit[wordSplit.length-1])
-          console.log(wordSplit[wordSplit.length-2])
+
           // check if the punctuation is an allowed apostrophe in different cases
 
           // s (that's, Sarah's)
           if (wordSplit[wordSplit.length-2] == "'" && wordSplit[wordSplit.length-1] == "s") {
-            console.log("This should fire")
               continue
           }
 

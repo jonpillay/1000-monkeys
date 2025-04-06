@@ -35,11 +35,11 @@ const StoryController = {
 
       const dressed_prompt = DCPromptDresser(DS_descpription, user_choices)
 
-      const tagsObject = genPromptTags(user_choices)
+      const tagsObject = await genPromptTags(user_choices)
 
-      const finalSDPrompt = dressed_prompt.concat(" " + tagsObject['positiveTagString'])
+      const finalSDPrompt = dressed_prompt.concat(" " + tagsObject.positiveTagString).concat(", (artstation)")
 
-      const negativePromptString = genNegativePromptString(tagsObject['negativeTagString'])
+      const negativePromptString = genNegativePromptString(tagsObject.negativeTagString)
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
       

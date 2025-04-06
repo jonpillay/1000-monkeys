@@ -11,11 +11,9 @@ export const sortByNewest = (bookList) => {
 export const sortByRating = (bookList) => {
 
   const bookListCopy = JSON.parse(JSON.stringify(bookList))
-  console.log(bookListCopy)
 
   bookListCopy.sort((a, b) => b.ratingsAverage[0] - a.ratingsAverage[0])
 
-  console.log(bookListCopy)
   return bookListCopy
 
 }

@@ -1,21 +1,35 @@
 const {cache} = require('../helpers/createCache')
+const {fetchSysInfo} = require('../helpers/fetchSysInfo')
 
 // const promptTagsJSON = require('./promptTags.json')
 
-const genPromptTags = (userSelections) => {
+const genPromptTags = async (userSelections) => {
 
-  const promptTagsJSON = cache.get("unifiedCategories")
+  let promptTagsJSON = await cache.get("unifiedCategories")
+
+  if (!promptTagsJSON) {
+    console.log("This fired")
+    await fetchSysInfo()
+    promptTagsJSON = await cache.get("unifiedCategories")
+  }
 
   const positivePrompts = []
   const negativePrompts = []
 
-  for (selectionField in userSelections) {
-    if (promptTagsJSON.hasOwnProperty(selectionField)) {
-      if (promptTagsJSON[selectionField].hasOwnProperty(userSelections[selectionField])) {
-        positivePrompts.push(promptTagsJSON[selectionField][userSelections[selectionField]]['positivePrompts'])
-        negativePrompts.push(promptTagsJSON[selectionField][userSelections[selectionField]]['negativePrompts'])
-      }
+  for (const [field, selection] of Object.entries(userSelections)) {
+
+    let positiveTags
+    let negativeTags
+    
+    if (promptTagsJSON.hasOwnProperty(field) && promptTagsJSON[field].hasOwnProperty(selection)) {
+
+      positiveTags = promptTagsJSON[field][selection].positivePrompts || []
+      negativeTags = promptTagsJSON[field][selection].negativePrompts || []
+
     }
+
+    positivePrompts.push(...positiveTags)
+    negativePrompts.push(...negativeTags)
   }
 
   const tagsObject = {positiveTagString: positivePrompts.flat().join(', '), negativeTagString: negativePrompts.flat().join(', ')}

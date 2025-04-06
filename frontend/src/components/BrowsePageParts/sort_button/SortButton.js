@@ -20,8 +20,6 @@ const SortButton = (props) => {
 
     let sortedBookList = null
 
-    console.log(bookList)
-
     if (booksRead != null) {
       sortedBookList = sortFunct(bookList, booksRead, userID)
     } else {

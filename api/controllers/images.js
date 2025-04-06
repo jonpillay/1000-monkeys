@@ -27,7 +27,7 @@ const ImagesController = {
 
       const dressed_prompt = DCPromptDresser(DS_descpription, user_choices)
 
-      const tagsObject = genPromptTags(user_choices)
+      const tagsObject = await genPromptTags(user_choices)
 
       const finalSDPrompt = dressed_prompt.concat(" " + tagsObject['positiveTagString']).concat(", (artstation)")
 
@@ -35,10 +35,10 @@ const ImagesController = {
 
       const story_image = await generateImage(finalSDPrompt, negativePromptString)
 
-      const creditJWT = genCreditJWT(req.user._id, -3)
+      const creditJWT = genCreditJWT(req.user._id, -2)
       const credits_update = await creditController.AdjustCredits(req.user._id, -2, creditJWT)
 
-      res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt, credits_update: credits_update });
+      res.status(200).json({ page_image: story_image, SD_prompt: finalSDPrompt, credits_update: credits_update.credits });
     } catch (error) {
       console.log("error from the images controller")
       console.log(error)

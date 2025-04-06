@@ -8,6 +8,8 @@ const creditController = {
 
       const {token_id, token_amount} = jwt.verify(token, process.env.JWT_SECRETKEY)
 
+      console.log(token_amount)   
+      console.log(token_id)   
 
       if (token_id != _id || token_amount != amount) {
         throw Error("Nice Try")
