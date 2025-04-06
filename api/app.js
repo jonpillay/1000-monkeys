@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const app = express();
+app.use(express.json())
 
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -17,7 +18,6 @@ const corsOptions = require('./config/corsOptions')
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-app.use(express.json())
 
 const ImagesRouter = require('./routes/images');
 const StoryRouter = require("./routes/story");
