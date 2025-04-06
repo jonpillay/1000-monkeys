@@ -22,16 +22,6 @@ export const sortByNewToYou = (bookList, booksRead, userID) => {
 
   const bookListCopy = JSON.parse(JSON.stringify(bookList))
 
-  // bookListCopy.sort((a, b) => {
-  //   if (booksRead.includes(a.id) - booksRead.includes(b.id)) {
-  //     return -1;
-  //   } else if (booksRead.includes(a.id) - booksRead.includes(b.id)) {
-  //     return 1;
-  //   } else {
-  //     return parseInt( b._id.substring(0, 8), 16) * 1000 - parseInt( a._id.substring(0, 8), 16) * 1000
-  //   }
-  // })
-
   bookListCopy.sort((a,b) => booksRead.includes(a._id) - booksRead.includes(b._id))
 
   bookListCopy.filter((book) => book.authorID != userID)
