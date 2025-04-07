@@ -33,11 +33,13 @@ const StoryController = {
 
       const DS_descpription = await DSDescriptionGen(story_text, user_choices["genre"], user_choices["character"]) // needs 'system_prompts, chapter, genre, main_character' story text here needs to be only the content, not the full JSON object
 
-      const dressed_prompt = DCPromptDresser(DS_descpription, user_choices)
+      const dressed_prompt = await DCPromptDresser(DS_descpription, user_choices)
 
       const tagsObject = await genPromptTags(user_choices)
 
-      const finalSDPrompt = dressed_prompt.concat(" " + tagsObject.positiveTagString).concat(", (artstation)")
+      console.log(dressed_prompt)
+
+      const finalSDPrompt = dressed_prompt.concat(" " + tagsObject.positiveTagString)
 
       const negativePromptString = genNegativePromptString(tagsObject.negativeTagString)
 

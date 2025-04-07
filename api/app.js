@@ -6,6 +6,8 @@ const path = require("path");
 const logger = require("morgan");
 const connectToMongo = require("./database/db-connection")
 
+const {cache} = require('./helpers/createCache')
+
 const cors = require('cors')
 
 const app = express();

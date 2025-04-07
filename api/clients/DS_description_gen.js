@@ -25,7 +25,7 @@ const starter_prompts = [
   },
   {
     role: "system",
-    content: "Do no describe abstract ideas, instead describe what the characters are doing."
+    content: "Do no describe abstract ideas, describe what the characters are doing."
   },
   {
     role: "system",
