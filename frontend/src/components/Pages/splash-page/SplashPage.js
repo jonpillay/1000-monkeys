@@ -1,5 +1,6 @@
 import "./SplashPage.css";
-import WelcomePanel from "../../SplashPageParts/welcome-panel/WelcomePanel";
+// import WelcomePanel from "../../SplashPageParts/welcome-panel/WelcomePanel";
+import SplashTabs from "../../SplashPageParts/splash-tabs/SplashTabs";
 import LoginCreateContainer from "../../SplashPageParts/login-create-container/LoginCreateContainer"
 import { useAuthContext } from "../../../hooks/useAuthContext";
 
@@ -66,7 +67,7 @@ const SplashContainer = (props) => {
       <>
         <div className="splash-container">
           <div className="splash-grid">
-            <WelcomePanel/>
+            <SplashTabs/>
             <LoginCreateContainer/>
           </div>
         </div>         

@@ -1,9 +1,9 @@
 .splash-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   min-width: 1300px;
-  height: 82vh;
+  /* height: 82vh; */
 }
 
 .splash-grid {

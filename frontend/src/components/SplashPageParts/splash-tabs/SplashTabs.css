@@ -1,0 +1,11 @@
+.background-border {
+  background-color: rgb(255, 255, 255, 0.6);
+  border-radius: 1%;
+  border-style: ridge;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+.react-tabs {
+  height: 85vh;
+}
