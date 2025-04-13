@@ -10,6 +10,7 @@ const SysInfoPanel = (props) => {
   const artStyle = props.artstyle
 
   const promptText = props.promptText
+  const AIEngine = props.AIEngine
 
   return (
     <>
@@ -22,7 +23,7 @@ const SysInfoPanel = (props) => {
             Art Style = <span style={{fontFamily:'merriweather-bold'}}>{artStyle}</span>
           </div>
           <div className="ai-engine-panel">
-            AI Engine = <span style={{fontFamily:'digital-7'}}>v.0.9</span>
+            AI Engine = <span style={{fontFamily:'digital-7'}}>v.{AIEngine}</span>
           </div>
         </div>
         <div className='user-prompt-display'>

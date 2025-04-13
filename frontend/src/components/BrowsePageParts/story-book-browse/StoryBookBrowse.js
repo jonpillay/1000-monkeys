@@ -27,6 +27,7 @@ const StoryBookBrowse = (props) => {
   const renderChapter = props.renderChapter
   const GPTChatHistory = props.GPTChatHistory
   const SDPromptHistory = props.SDPromptHistory
+  const AIEngine = props.AIEngine
 
   const userPromptHistory = GPTChatHistory.filter(prompt => prompt['role'] == 'user')
   const userPromptHistoryList = []
@@ -112,7 +113,7 @@ const StoryBookBrowse = (props) => {
           }
         </div>
       </div>
-      <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artStyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} promptText={chapterPromptText.current}/>
+      <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artStyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} promptText={chapterPromptText.current} AIEngine={AIEngine}/>
     </>
   )
 }

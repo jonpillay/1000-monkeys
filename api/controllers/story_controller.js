@@ -37,8 +37,6 @@ const StoryController = {
 
       const tagsObject = await genPromptTags(user_choices)
 
-      console.log(dressed_prompt)
-
       const finalSDPrompt = dressed_prompt.concat(" " + tagsObject.positiveTagString)
 
       const negativePromptString = genNegativePromptString(tagsObject.negativeTagString)

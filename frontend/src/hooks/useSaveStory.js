@@ -13,7 +13,6 @@ const baseUrl = process.env.NODE_ENV === 'production' ? window.env.API_URL : '';
 
 export const useSaveStory = () => {
 
-  const AIEngineVer = useSelector(selectAiEngineVer)
   const { user } = useAuthContext()
 
   const reduxDispatch = useDispatch()
@@ -21,7 +20,7 @@ export const useSaveStory = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
 
-  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, author) => {
+  const saveStory = async (chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, AIEngineVer, author) => {
     setIsLoading(true)
     setError(null)
 

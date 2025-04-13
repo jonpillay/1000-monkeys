@@ -17,15 +17,19 @@ const starter_prompts = [
   },
   {
     role: "system",
-    content: "You should first describe what the main characters are doing."
+    content: "You should first describe the main characters and what they are doing."
   },
   {
     role: "system",
-    content: "and then describe what setting they are in"
+    content: "Describe famous characters only by their name."
   },
   {
     role: "system",
-    content: "Do no describe abstract ideas, describe what the characters are doing."
+    content: "If the character is not famous describe what they are ('bungles the cat', 'harry the horse')"
+  },
+  {
+    role: "system",
+    content: "Do not describe abstract ideas like emotions, only describe what is visual."
   },
   {
     role: "system",

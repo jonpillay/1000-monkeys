@@ -1,4 +1,4 @@
-const negativeGeneralPrompts = "portrait:1.6, twins:1.6, duplicates:1.6, doppelganger:1.6"
+const negativeGeneralPrompts = "portrait, twins, duplicates, doppelganger"
 
 const genNegativePromptString = (negativePrompts) => {
   if (negativePrompts != "") {

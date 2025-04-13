@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 
 import { selectStoryInProgress, selectCharacter, selectGenre, selectArtStyle, selectFirstChapter, selectGPTPromptHistory, selectSDPromptHistory, setStoryInProgress, setFirstChapter } from '../../Pages/create-stories-page/storyBookSysInfoSlice';
 import { selectAllChapterImages, selectAllChapterTexts, selectRenderChapter, reset, nextPage, previousPage } from './storyBookSlice';
+import { selectAiEngineVer } from '../../app/systemInfoSlice';
 
 // import storyBook from './storyBookSlice';
 
@@ -27,6 +28,7 @@ const StoryBookCreate = (props) => {
   const SDPromptHistory = useSelector(selectSDPromptHistory)
   const chapterImgURLs = useSelector(selectAllChapterImages)
   const renderChapter = useSelector(selectRenderChapter)
+  const AIEngineVer = useSelector(selectAiEngineVer)
 
   const reduxDispatch = useDispatch()
 
@@ -114,13 +116,10 @@ const StoryBookCreate = (props) => {
           }
         </div>
       </div>
-      <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artStyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} promptText={chapterPromptText.current}/>
+      <SysInfoPanel genre={genre} genreFont={genreFont} artstyle={artStyle} renderChapter={renderChapter} GPTChatHistory={GPTChatHistory} promptText={chapterPromptText.current} AIEngine={AIEngineVer}/>
       </>
-
       )}
-   
     </>
-
   )
 }
 

@@ -4,6 +4,8 @@ import { useSaveStory } from "../../../hooks/useSaveStory"
 import { useSelector, useDispatch } from "react-redux"
 import { selectAllChapterTexts, selectAllChapterImages } from "../../CreateStoryPageParts/story-book-create/storyBookSlice"
 import { selectCharacter, selectGenre, selectArtStyle, selectGPTPromptHistory, selectStoryInSync, setStoryInSync, setMongoID, selectMongoID, selectSDPromptHistory } from "../../Pages/create-stories-page/storyBookSysInfoSlice"
+import { selectAiEngineVer } from "../../app/systemInfoSlice"
+
 
 import "./SaveStoryButton.css"
 
@@ -28,6 +30,7 @@ function SaveStoryButton(props) {
   const reduxGPTPromptHistory = useSelector(selectGPTPromptHistory)
   const reduxSDPromptHistory = useSelector(selectSDPromptHistory)
   const story_id = useSelector(selectMongoID)
+  const AIEngineVer = useSelector(selectAiEngineVer)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -43,7 +46,6 @@ function SaveStoryButton(props) {
     const GPTPromptHistory = reduxGPTPromptHistory
     const SDPromptHistory = reduxSDPromptHistory
     const storyID = story_id
-    const AIEngineVer = "0.9"
     const author = user.username
 
     const storyPages = JSON.parse(stringStoryPages)
