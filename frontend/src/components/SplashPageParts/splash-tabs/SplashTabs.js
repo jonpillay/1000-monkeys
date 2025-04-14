@@ -3,6 +3,7 @@ import 'react-tabs/style/react-tabs.css';
 import './SplashTabs.css'
 
 import WelcomePanel from '../welcome-panel/WelcomePanel';
+import ReleaseLogDisplay from '../release-log-display/ReleaseLogDisplay';
 
 const SplashTabs = () => {
   return (
@@ -21,7 +22,7 @@ const SplashTabs = () => {
           Videos
         </TabPanel>
         <TabPanel>
-          Release Log
+          <ReleaseLogDisplay/>
         </TabPanel>
       </Tabs>
     </div>

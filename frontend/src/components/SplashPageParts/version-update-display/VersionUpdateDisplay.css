@@ -1,0 +1,62 @@
+.version-update-container {
+  margin-bottom: 1rem;
+}
+
+.release-ver {
+  font-family: 'special-elite';
+  font-size: 1.4rem;
+  color: rgb(18, 114, 18);
+}
+
+.ver-date-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.release-notes-list {
+  list-style-type: circle;
+}
+
+.release-note-li {
+  font-size: 0.8rem;
+  font-family: 'Raleway-Regular';
+  margin-bottom: 0.2rem;
+}
+
+.release-date {
+  font-family: 'Raleway-Regular';
+}
+
+.updated-tech-container {
+  margin-left: 0.2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.sys-updated-title {
+  font-family: 'Raleway-Regular';
+  font-size: 1rem;
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
+}
+
+.updated-tech-badges-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.update-badge {
+  margin-right: 0.1rem;
+}
+
+.tech-badge {
+  height: 1.15rem;
+}
+
+.release-notes {
+  margin-left: 0.4rem;
+  font-family: 'Raleway-Regular';
+  font-size: 0.85rem;
+}

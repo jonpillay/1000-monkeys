@@ -91,6 +91,16 @@
   src: url("./fonts/SyneMono-Regular.ttf");
 }
 
+@font-face {
+  font-family: 'Raleway-Regular';
+  src: url("./fonts/Raleway-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: 'Raleway-Italic';
+  src: url("./fonts/Raleway-Italic-VariableFont_wght.ttf");
+}
+
 .title {
   font-family: 'special-elite';
   font-size: 60px;
