@@ -8,4 +8,31 @@
 
 .react-tabs {
   height: 85vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.react-tabs__tab-panel {
+  display: block;
+}
+
+.react-tabs__tab {
+  font-family: 'special-elite';
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 4px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: black;
+  transition: all 150ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+}
+
+.react-tabs__tab--selected {
+  text-decoration: underline;
+  border-color: rgb(218, 49, 49);
+  background-color: rgb(219, 85, 67);
 }
