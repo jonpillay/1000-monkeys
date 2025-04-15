@@ -75,7 +75,7 @@ const VersionUpdateDisplay = (props) => {
         </div>
       </div>
       <ul className='release-notes-list'>{formattedReleaseNotes}</ul>
-      <div className='updated-by'>{props.updatedBy}</div>
+      <div className='updated-by'>Updated By: {props.updatedBy}</div>
     </div>
 
   )

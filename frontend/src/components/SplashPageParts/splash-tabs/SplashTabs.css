@@ -8,12 +8,12 @@
 
 .react-tabs {
   height: 85vh;
-  overflow: hidden;
-  overflow-y: scroll;
 }
 
 .react-tabs__tab-panel {
-  display: block;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 77vh;
 }
 
 .react-tabs__tab {
