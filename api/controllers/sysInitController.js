@@ -5,8 +5,8 @@ const SysInitController = {
   InitialiseSystem: async (req, res) => {
 
     try {
-      const AiEngineVer = await fetchSysInfo()
-      res.status(200).json({ sysInfo: AiEngineVer })
+      const sysInfo = await fetchSysInfo()
+      res.status(200).json({ sysInfo: sysInfo })
     } catch (error) {
       console.log(error)
     }

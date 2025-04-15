@@ -48,7 +48,6 @@ export const useLoadSystemInfo = () => {
         fetchingInfo: false,
         fetchSuccess: false
       })
-      console.log(JSONres)
       setFetchingSysInfo(false)
     }
 
@@ -58,8 +57,9 @@ export const useLoadSystemInfo = () => {
       const characters = JSONres.sysInfo.characters
       const genres = JSONres.sysInfo.genres
       const artStyles = JSONres.sysInfo.artStyles
+      const releaseLog = JSONres.sysInfo.releaseLog
 
-      reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles))
+      reduxDispatch(initiliseSystemInfo(AiEngineVer, characters, genres, artStyles, releaseLog))
 
       setSysInfoObj({ 
         error: "Sys Info Data Fetched",

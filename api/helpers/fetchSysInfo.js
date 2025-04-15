@@ -16,7 +16,7 @@ const fetchSysInfo = async () => {
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
 
-      return {AiEngineVer, characters, genres, artStyles}
+      return {AiEngineVer, characters, genres, artStyles, releaseLog}
     }
 
     const params = {
@@ -37,6 +37,8 @@ const fetchSysInfo = async () => {
 
     const unifiedCategories = sysInfoJSON.unifiedCategories
 
+    const releaseLog = sysInfoJSON.ReleaseLog
+
     try {
       cache.set("AiEngineVer", AiEngineVer)
       cache.set("badWordList", badWordsList)
@@ -46,7 +48,7 @@ const fetchSysInfo = async () => {
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
 
-      return {AiEngineVer, characters, genres, artStyles}
+      return {AiEngineVer, characters, genres, artStyles, releaseLog}
 
     } catch (error) {
       console.log(error)

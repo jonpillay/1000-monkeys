@@ -10,6 +10,7 @@ const systemInfoSlice = createSlice({
     characters: [],
     genres: [],
     artStyles: [],
+    releaseLog: [],
     sysInfoExpiry: null
   },
   reducers: {
@@ -19,15 +20,17 @@ const systemInfoSlice = createSlice({
         state.characters = action.payload.characters
         state.genres = action.payload.genres
         state.artStyles = action.payload.artStyles
+        state.releaseLog = action.payload.releaseLog
         state.sysInfoExpiry = Date.now() + 12 * 60 * 60 * 1000;
       },
-      prepare(AiEngineVer, characters, genres, artStyles) {
+      prepare(AiEngineVer, characters, genres, artStyles, releaseLog) {
         return {
           payload: {
             AiEngineVer,
             characters,
             genres,
-            artStyles
+            artStyles,
+            releaseLog
           }
         }
       }
@@ -58,7 +61,8 @@ export const selectAllCharacters = (state) => state.systemInfo.characters;
 export const selectAllGenres = (state) => state.systemInfo.genres;
 export const selectAllArtStyles = (state) => state.systemInfo.artStyles;
 export const selectAiEngineVer = (state) => state.systemInfo.AiEngineVer;
-export const selectSysInfoExpiry = (state) => state.systemInfo.sysInfoExpiry
+export const selectSysInfoExpiry = (state) => state.systemInfo.sysInfoExpiry;
+export const selectAllReleaseLog = (state) => state.systemInfo.releaseLog;
 
 
 export const { initiliseSystemInfo, issueMultiWarnings, issueWarning, resetWarnings } = systemInfoSlice.actions;
