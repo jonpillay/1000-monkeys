@@ -10,5 +10,21 @@
   justify-self: start;
   display: flex;
   justify-content: space-around;
-  opacity: 99%;
+}
+
+.create-inputs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* position: relative; */
+}
+
+.user-publish-button-container {
+  /* position: absolute; */
+}
+
+.create-control-user-prompt-input {
+  padding-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }

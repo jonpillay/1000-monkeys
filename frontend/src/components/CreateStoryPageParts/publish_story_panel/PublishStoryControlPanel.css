@@ -9,7 +9,6 @@
 .publish-story-input-title-container {
   margin-right: 0.3rem;
   font-size: 1.5rem;
-  line-height: 0.2rem;
   font-family: 'VT323';
 }
 
@@ -49,7 +48,6 @@
 }
 
 .publish-story-text-input-container {
-  margin-top: 0.5rem;
   display: flex;
   align-items: center;
 }
