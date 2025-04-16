@@ -8,7 +8,7 @@ router.use(requestIp.mw());
 
 const sysInitLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 50,
+    max: 100,
     message: "Too many requests, please try again later.",
     keyGenerator: (req) => req.clientIp || req.ip,
   });
