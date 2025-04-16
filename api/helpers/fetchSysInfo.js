@@ -15,6 +15,7 @@ const fetchSysInfo = async () => {
       const characters = Object.keys(unifiedCategories.character).sort()
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
+      const releaseLog = unifiedCategories.ReleaseLog
 
       return {AiEngineVer, characters, genres, artStyles, releaseLog}
     }
