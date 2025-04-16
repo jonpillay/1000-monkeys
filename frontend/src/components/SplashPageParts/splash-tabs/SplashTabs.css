@@ -36,3 +36,11 @@
   border-color: rgb(218, 49, 49);
   background-color: rgb(219, 85, 67);
 }
+
+.tech-overview-holder {
+  display: flex;
+  font-family: 'special-elite';
+  font-size: 1.5rem;
+  justify-content: center;
+  margin-top: 3rem;
+}

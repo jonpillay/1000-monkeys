@@ -19,7 +19,9 @@ const SplashTabs = () => {
           <WelcomePanel/>
         </TabPanel>
         <TabPanel>
-          Videos
+          <div className='tech-overview-holder'>
+            Tech videos/overview incoming.
+          </div>
         </TabPanel>
         <TabPanel>
           <ReleaseLogDisplay/>
