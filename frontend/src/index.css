@@ -101,6 +101,13 @@
   src: url("./fonts/Raleway-Italic-VariableFont_wght.ttf");
 }
 
+@font-face {
+  font-family: 'Rakkas-Regular';
+  src: url("./fonts/Rakkas-Regular.ttf");
+}
+
+
+
 .title {
   font-family: 'special-elite';
   font-size: 60px;

@@ -32,7 +32,7 @@ const StoryBookBrowseInfoPanel = (props) => {
         <div className="star-title-container">
           <div className="browse-info-pane-container">
             <div className='starring-genre-span'>
-              <span className='starring-container'>{character} </span> In A <span style={{fontFamily:genreFont, paddingLeft:'0.3vw', paddingRight:'0.3vw'}}>{genre}</span> Story by {author}
+              <span className='starring-container'>{character} </span> In A <span style={{fontFamily:genreFont, paddingLeft:'0.5rem', paddingRight:'0.5rem'}}>{genre}</span> Story by {author}
             </div>
           </div>
           <div className="storybook-browse-title-container">
@@ -47,14 +47,14 @@ const StoryBookBrowseInfoPanel = (props) => {
               ) : (
                 <>
                 {!currentUser || userRead ? (
-                  <div className="browse-info-pane-container"></div>
+                  <div className="browse-info-pane-filler"></div>
                 ) : (
                   <div className="new-container">
                     <div className='new-border'>
                       <span className='new-text'>NEW!</span>
                     </div>                  
                   </div>
-                ) 
+                )
                 }
               </>
               )}
