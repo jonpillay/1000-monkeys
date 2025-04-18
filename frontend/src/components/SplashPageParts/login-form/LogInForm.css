@@ -75,7 +75,7 @@
   border-radius: 5px;
   font-family: 'special-elite';
   height: 40px;
-  font-size: 3vh;
+  font-size: 3.2vh;
   background-size: 4px 3px;
   border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
   border-style: solid;
@@ -87,4 +87,11 @@
   border-bottom-right-radius: 225px 15px;
   border-top-left-radius: 255px 15px;
   border-top-right-radius: 15px 225px;
+  cursor: pointer;
+}
+
+.login-form-button:hover {
+  opacity: 90%;
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
 }

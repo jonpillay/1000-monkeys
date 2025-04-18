@@ -5,6 +5,8 @@ import VersionUpdateDisplay from '../version-update-display/VersionUpdateDisplay
 import { useSelector } from 'react-redux'
 import { selectAllReleaseLog } from '../../app/systemInfoSlice'
 
+import TechStackKey from '../tech-stack-key/TeckStackKey'
+
 const ReleaseLogDisplay = () => {
 
   const releaseList = useSelector(selectAllReleaseLog)
@@ -12,15 +14,18 @@ const ReleaseLogDisplay = () => {
   const releaseLog = releaseList.map(release => {
 
     return (
-      <li key={(release.version)}>
-        <VersionUpdateDisplay
-          version={release.version}
-          releaseDate={release.releaseDate}
-          systemsUpdated={release.systemsUpdated}
-          releaseNotes={release.releaseNotes}
-          updatedBy={release.updatedBy}
-        />
-      </li>
+      <>
+        <li key={(release.version)}>
+          <VersionUpdateDisplay
+            version={release.version}
+            releaseDate={release.releaseDate}
+            systemsUpdated={release.systemsUpdated}
+            releaseNotes={release.releaseNotes}
+            updatedBy={release.updatedBy}
+          />
+        </li>     
+      </>
+
     )
   })
 

@@ -14,7 +14,7 @@ const BrowseNavButton = () => {
 
   return (
     <div className='browse-nav-container'>
-      <button className="submit-button" id="browse-button" type="submit" onClick={browseBooks}>Browse Stories</button>
+      <button className="browse-button" id="browse-button" type="submit" onClick={browseBooks}>Browse Stories</button>
     </div>
   )
 }

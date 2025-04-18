@@ -1,8 +1,8 @@
 .login-create-container {
-  margin-top: 40%;
+  margin-top: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 20vh;
   width: 100%;
@@ -15,8 +15,7 @@
 }
 
 .browse-button-container {
-  /* padding: 0.8rem; */
-  margin: auto;
+
 }
 
 .login-error-container {

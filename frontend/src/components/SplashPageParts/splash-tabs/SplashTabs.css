@@ -13,7 +13,7 @@
 .react-tabs__tab-panel {
   overflow: hidden;
   overflow-y: scroll;
-  height: 77vh;
+  height: 79vh;
 }
 
 .react-tabs__tab {
@@ -37,10 +37,26 @@
   background-color: rgb(219, 85, 67);
 }
 
+.tech-overview-title {
+  font-family: 'special-elite';
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+.tech-overview-subheading {
+  font-family: 'special-elite';
+  font-size: 1.7rem;
+  margin-top: 1rem;
+  margin-left: 0.7rem;
+}
+
+
 .tech-overview-holder {
   display: flex;
   font-family: 'special-elite';
   font-size: 1.5rem;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }

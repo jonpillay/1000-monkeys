@@ -17,20 +17,14 @@
 }
 
 .welcome-text-container {
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: left;
+  font-size: 90%;
+  padding: 0.7rem;
 }
 
 .welcome-text {
   text-align: center;
-  margin-top: 1rem;
   text-indent: 1rem;
   font-family: 'Raleway-Regular';
-  font-size: 0.85rem;
-  width: 106%;
-  line-height: 1.3rem;
-  /* overflow-y: auto; */
+  line-height: 1.2rem;
 }

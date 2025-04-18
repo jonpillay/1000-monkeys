@@ -1,0 +1,36 @@
+.stack-component-container {
+  padding: 0.5rem;
+}
+
+.stack-component-header-container {
+  padding-left: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tech-badge {
+  height: 1.2rem;
+}
+
+#AiEngineBadge {
+  height: 1.7rem;
+}
+
+.stack-component-title-container {
+  font-family: 'special-elite';
+  margin-left: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.stack-component-text-container {
+  font-family: 'Raleway-Regular';
+  text-align: left;
+  font-size: 0.8rem;
+  padding-left: 1rem;
+  padding-bottom: 0.3rem;
+}
+
+#notable-mentions {
+  margin-left: 0rem;
+}

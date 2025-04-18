@@ -4,6 +4,8 @@ import './SplashTabs.css'
 
 import WelcomePanel from '../welcome-panel/WelcomePanel';
 import ReleaseLogDisplay from '../release-log-display/ReleaseLogDisplay';
+import TermsOfUseSplash from '../terms-of-use-splash/TermsOfUseSplash';
+import TechStackKey from '../tech-stack-key/TeckStackKey';
 
 const SplashTabs = () => {
   return (
@@ -11,20 +13,28 @@ const SplashTabs = () => {
       <Tabs>
         <TabList>
           <Tab>Welcome!</Tab>
-          <Tab>Technical Videos</Tab>
+          <Tab>Technical Overview</Tab>
           <Tab>Release Log</Tab>
+          <Tab>Terms Of Use</Tab>
         </TabList>
 
         <TabPanel>
           <WelcomePanel/>
         </TabPanel>
         <TabPanel>
+          <div className='tech-overview-subheading'>
+            Tech Stack:
+          </div>
+          <TechStackKey/>
           <div className='tech-overview-holder'>
-            Tech videos/overview incoming.
+            Tech videos incoming.
           </div>
         </TabPanel>
         <TabPanel>
           <ReleaseLogDisplay/>
+        </TabPanel>
+        <TabPanel>
+          <TermsOfUseSplash/>
         </TabPanel>
       </Tabs>
     </div>
