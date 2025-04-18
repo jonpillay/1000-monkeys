@@ -2,7 +2,7 @@ export const AiEngineTitle = "1000m Ai Engine:"
 export const AiEngineText = "The 1000 Monkeys Ai Engine is the interface between your imagination and the Ai Compute we employ to generate your stories. Taking your choices and prompts, we form them into a ball and throw them at the different Ai models to see what we get (when we say 'ball' we mean well formed JSON objects, and when we say 'throw at' we mean process through our effective system prompts)."
 
 export const ReactTitle = "Frontend:"
-export const ReactText = "We use React for our frontend. Built on top of a create-react-app base it is coded in classic JavaScript. It uses extensive Hooks and Contexts for state management, making API calls to the API, and disseminating information throughout the app. There are some complex functional components that can fetch and present data to the user dynamically."
+export const ReactText = "We use React for our frontend. Built on top of a create-react-app base it is written in classic JavaScript. It uses extensive Hooks and Contexts for state management, managing API calls, and disseminating information throughout the app. Complex functional components are used to fetch and present data to the user dynamically."
 
 export const MongoTitle = "Database:"
 export const MongoText = "Data is stored on a Mongo Cloud Atlas server. A Mongoose layer handles requests from controllers. Static functions in the models handle database access, fetches, and writes/deletes. Allowing for responsive interactions with the frontend."
