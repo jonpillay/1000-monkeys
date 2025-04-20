@@ -15,7 +15,7 @@ const fetchSysInfo = async () => {
       const characters = Object.keys(unifiedCategories.character).sort()
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
-      const releaseLog = unifiedCategories.ReleaseLog
+      const releaseLog = unifiedCategories.releaseLog
 
       return {AiEngineVer, characters, genres, artStyles, releaseLog}
     }
@@ -38,7 +38,7 @@ const fetchSysInfo = async () => {
 
     const unifiedCategories = sysInfoJSON.unifiedCategories
 
-    const releaseLog = sysInfoJSON.ReleaseLog
+    const releaseLog = sysInfoJSON.releaseLog
 
     try {
       cache.set("AiEngineVer", AiEngineVer)
