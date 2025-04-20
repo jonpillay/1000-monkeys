@@ -3,5 +3,5 @@
   "label": "1000M",
   "message": "Ai Engine",
   "colour": "orange",
-  "logoSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><image href=\"https://raw.githubusercontent.com/jonpillay/1000-monkeys/refs/heads/main/frontend/src/img/infinite-monkey-svg.svg\" width=\"24\" height=\"24\"/></svg>"
+  "logoSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><image href=\"raw.githubusercontent.com/jonpillay/1000-monkeys/refs/heads/main/frontend/src/img/infinite-monkey-svg.svg\" width=\"24\" height=\"24\"/></svg>"
 }
