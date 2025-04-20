@@ -4,16 +4,12 @@
   border-style: ridge;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
-}
-
-.react-tabs {
   height: 85vh;
 }
 
 .react-tabs__tab-panel {
-  overflow: hidden;
-  overflow-y: scroll;
-  height: 79vh;
+  overflow-y: auto;
+  height: 78vh;
 }
 
 .react-tabs__tab {

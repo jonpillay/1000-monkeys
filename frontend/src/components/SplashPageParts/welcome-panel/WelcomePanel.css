@@ -1,7 +1,5 @@
 .welcome-panel-container {
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
+  margin-top: 1rem;
 }
 
 .welcome-panel-grid {
@@ -11,7 +9,7 @@
 
 .welcome-title-container {
   font-family: 'special-elite';
-  font-size: 130%;
+  font-size: 100%;
   text-align: center;
   text-decoration: underline;
 }
