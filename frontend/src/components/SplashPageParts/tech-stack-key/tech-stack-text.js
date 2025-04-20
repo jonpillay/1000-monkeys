@@ -1,4 +1,4 @@
-export const AiEngineTitle = "1000m Ai Engine:"
+export const AiEngineTitle = "Storybook Creation:"
 export const AiEngineText = "The 1000 Monkeys Ai Engine is the interface between your imagination and the Ai Compute we employ to generate your stories. Taking your choices and prompts, we form them into a ball and throw them at the different Ai models to see what we get (when we say 'ball' we mean well formed JSON objects, and when we say 'throw at' we mean process through our effective system prompts)."
 
 export const ReactTitle = "Frontend:"

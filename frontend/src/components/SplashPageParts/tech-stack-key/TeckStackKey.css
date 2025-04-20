@@ -14,7 +14,7 @@
 }
 
 #AiEngineBadge {
-  height: 1.7rem;
+  max-height: 1.7rem;
 }
 
 .stack-component-title-container {

@@ -6,7 +6,7 @@ import reactLogo from '../../../img/tech-badges/react-badge.svg'
 import mongoLogo from '../../../img/tech-badges/mongo-badge.svg'
 import expressLogo from '../../../img/tech-badges/express-badge.svg'
 import nodeLogo from '../../../img/tech-badges/node-badge.svg'
-import AiEngineLogo from '../../../img/favpng_infinite-monkey-theorem2.png'
+import AiEngineLogo from '../../../img/1000m-tech-badge-svg.svg'
 import { AiEngineTitle, AiEngineText, ReactTitle, ReactText, MongoTitle, MongoText, ExpressTitle, ExpressText, NodeTitle, NodeText, NotableTitle, NotableText1, NotableText2 } from './tech-stack-text.js'
 
 const TechStackKey = () => {
