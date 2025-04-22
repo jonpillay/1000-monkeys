@@ -9,16 +9,24 @@
 
 .welcome-title-container {
   font-family: 'special-elite';
-  font-size: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
   text-decoration: underline;
 }
 
 .welcome-text-container {
-  text-align: left;
-  font-size: 90%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'special-elite';
+  text-align: center;
+  font-size: 1rem;
   padding: 0.7rem;
   padding-bottom: 1rem;
+}
+
+.welcome-text-para {
+  margin-bottom: 1.5rem;
 }
 
 .welcome-text {
