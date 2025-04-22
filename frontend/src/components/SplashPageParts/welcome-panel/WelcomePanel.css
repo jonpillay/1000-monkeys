@@ -10,7 +10,7 @@
 .welcome-title-container {
   font-family: 'special-elite';
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
   text-align: center;
   text-decoration: underline;
 }
@@ -18,15 +18,20 @@
 .welcome-text-container {
   display: flex;
   flex-direction: column;
-  font-family: 'special-elite';
+  font-family: 'Raleway-Regular';
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 0.7rem;
   padding-bottom: 1rem;
 }
 
 .welcome-text-para {
   margin-bottom: 1.5rem;
+}
+
+.welcome-text-holder {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .welcome-text {

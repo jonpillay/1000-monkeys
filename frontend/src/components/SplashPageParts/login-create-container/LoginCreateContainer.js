@@ -24,7 +24,7 @@ const LoginCreateContainer = () => {
     timeoutId = setTimeout(() => {
         setError("");
         setApiError("");
-      }, 2000);
+      }, 2500);
 
     return () => {
       clearTimeout(timeoutId);

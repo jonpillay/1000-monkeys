@@ -14,12 +14,17 @@ const LogInForm = (props) => {
  
   const handleSubmit = async (e) => {
 
+    e.preventDefault()
+
+    if (!email.current.value || !password.current.value) {
+      setError("Please Enter Your Email and Password")
+      return
+    }
+
     setError("")
     setApiError("")
 
-    e.preventDefault()
-
-    await login(email.current.value.trim().toLowerCase(), password.current.value)
+    await login(email.current.value.trim().toLowerCase(), password.current.value.trim())
 
     redirect('/create')
 

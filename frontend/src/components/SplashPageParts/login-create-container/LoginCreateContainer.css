@@ -1,5 +1,6 @@
 .login-create-container {
   margin-top: 50%;
+  margin-left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,6 +22,7 @@
 .login-error-container {
   position: relative;
   display: flex;
+  margin-top: 1rem;
   flex-direction: column;
   align-items: center;
   z-index: 10000;
