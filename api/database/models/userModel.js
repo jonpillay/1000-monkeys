@@ -56,7 +56,10 @@ userSchema.statics.signup = async function (email, password, username) {
   if (!validator.isEmail(email)) {
     throw Error("Please enter a valid email.")
   }
-  if (!validator.isStrongPassword(password)) {
+
+  const passwordScore = validator.isStrongPassword(password, { returnScore: true })
+
+  if (passwordScore < 45) {
     throw Error("Please enter a strong password.")
   }
   if (validator.isEmail(username)) {
@@ -70,7 +73,7 @@ userSchema.statics.signup = async function (email, password, username) {
     throw Error("Email not found.")
   }
 
-  const usernameCheck = await this.findOne({username})
+  const usernameCheck = await this.findOne({username: new RegExp(`^${usernameInput}$`, 'i') })
 
   if (usernameCheck) {
     throw Error("Username in use")
