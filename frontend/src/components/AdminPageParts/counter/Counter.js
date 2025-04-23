@@ -40,7 +40,10 @@ const Counter = (props) => {
         
       }, 1000)
 
-      return () => clearInterval(countdown)
+      return () => {
+        clearInterval(countdown)
+        localStorage.removeItem('activateEndTime')
+      }
     }
   }, [])
 

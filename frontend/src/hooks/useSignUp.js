@@ -40,6 +40,7 @@ export const useSignup = () => {
     }
 
     if (response.ok) {
+      localStorage.removeItem('activateEndTime')
       reduxDispatch(setUserToken(JSONres.token))
       {{creditDispatch({type: 'UPDATE', payload: JSONres.credits})
       localStorage.setItem('credits', JSONres.credits)}}
