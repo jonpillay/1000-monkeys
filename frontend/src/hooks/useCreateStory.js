@@ -110,6 +110,7 @@ export const useCreateStory = () => {
                 localStorage.removeItem('userChoices');
                 localStorage.removeItem('GPTPromptHistory');
                 localStorage.removeItem('localGPTPromptHistory');
+                localStorage.removeItem('browsePageNumbers');
                 storyDispatch({type: 'END'})
                 authDispatch({type: 'LOGOUT'})
                 reduxDispatch(resetStorySysInfo())
@@ -128,6 +129,7 @@ export const useCreateStory = () => {
                 localStorage.removeItem('userChoices');
                 localStorage.removeItem('GPTPromptHistory');
                 localStorage.removeItem('localGPTPromptHistory');
+                localStorage.removeItem('browsePageNumbers');
                 authDispatch({type: 'LOGOUT'})
                 storyDispatch({type: 'END'})
                 reduxDispatch(resetStorySysInfo())

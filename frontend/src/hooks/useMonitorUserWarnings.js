@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAllWarnings, issueWarning } from "../components/app/systemInfoSlice";
 
 import { useWatchUser } from "./useWatchUser";
+import { useLogout } from "./useLogout";
 
 export const useMonitorUserWarnings = () => {
 
@@ -50,6 +51,7 @@ export const useMonitorUserWarnings = () => {
         localStorage.removeItem('userChoices');
         localStorage.removeItem('GPTPromptHistory');
         localStorage.removeItem('localGPTPromptHistory');
+        localStorage.removeItem('browsePageNumbers');
         authDispatch({type: 'LOGOUT'})
         storyDispatch({type: 'END'})
         localStorage.setItem('firstChapter', 'true')
