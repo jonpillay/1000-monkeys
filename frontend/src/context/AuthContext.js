@@ -1,6 +1,5 @@
 import { createContext, useReducer, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode";
-import { useLogout } from '../hooks/useLogout';
 
 export const AuthContext = createContext()
 
@@ -17,8 +16,6 @@ export const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
 
-  const { logout } = useLogout()
-
   const [state, dispatch] = useReducer(AuthReducer, {
     user: JSON.parse(localStorage.getItem('user'))
   })
@@ -33,11 +30,13 @@ export const AuthContextProvider = ({ children }) => {
 
       if (exp * 1000 < Date.now()) {
         dispatch({type: 'LOGOUT'})
-        logout()
+        localStorage.removeItem('user')
+        localStorage.removeItem('credits')
       }
     } else {
       dispatch({type: 'LOGOUT'})
-      logout()
+      localStorage.removeItem('user')
+      localStorage.removeItem('credits')
     }
   }, [])
 
