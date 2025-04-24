@@ -6,7 +6,6 @@ const DCPromptDresser = async (promptDecription, userChoices) => {
   let promptTagsJSON = await cache.get("unifiedCategories")
 
   if (!promptTagsJSON) {
-    console.log("This fired")
     await fetchSysInfo()
     promptTagsJSON = await cache.get("unifiedCategories")
   }
