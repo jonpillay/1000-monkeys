@@ -1,7 +1,7 @@
 .header-container {
   display: grid;
   position: top;
-  z-index: 0;
+  z-index: 1000;
   height: 4rem;
   grid-template-columns: 9% 35% 56%;
   min-width: 60vw;
@@ -11,7 +11,6 @@
 .header-container.active {
   position: sticky;
   top: 0px;
-  z-index: 1000;
   background-color: antiquewhite;
   offset-position: 0% -100%;
   transition: 0.2s;

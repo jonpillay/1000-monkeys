@@ -11,6 +11,7 @@ import { resetSysInfo, resetStorySysInfo } from "../../Pages/create-stories-page
 
 import { useStoryContext } from "../../../hooks/useStoryContext";
 import { useDispatch } from "react-redux";
+import { Tooltip } from 'react-tooltip'
 
 const Header = () => {
 
@@ -62,7 +63,8 @@ const Header = () => {
     { !loading  ? (
         <div className={showHeaderMouse ? 'header-container active' : 'header-container'}>
           <button className="home-button" onClick={endStory} disabled={loading}>
-            <img className="home-icon" src={HomeIcon} alt="home"/>
+            <Tooltip id="home-button-tooltip" />
+            <img className="home-icon" src={HomeIcon} alt="home" data-tooltip-id="home-button-tooltip" data-tooltip-content="To Homepage"/>
           </button>
           <div className='title-container'>
             <div className='title'>1000 Monkeys</div>

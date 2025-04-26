@@ -10,4 +10,5 @@
 #start-story-button {
   margin: auto;
   width: fit-content;
+  cursor: pointer;
 }
