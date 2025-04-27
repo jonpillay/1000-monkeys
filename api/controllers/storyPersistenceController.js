@@ -1,5 +1,5 @@
 const StoryBook = require('../database/models/storyBookModel')
-const sysInfo = require('../database/models/sysInfoModel')
+const SysInfo = require('../database/models/sysInfoModel')
 const {roundStoryBookVoteAvg} = require('../helpers/mathFuncts')
 
 const StoryPersistenceController = {
@@ -57,6 +57,12 @@ const StoryPersistenceController = {
     try {
 
       const updatedStorybook = await StoryBook.submitRating(storyBook._id, user_id, rating)
+
+      let sysInfo = await SysInfo.findOne({})
+
+      if (!sysInfo) {
+        sysInfo = await SysInfo.create({ topTen: [ updatedStorybook.ratingsAverage ] })
+      }
 
       roundStoryBookVoteAvg(updatedStorybook)
 

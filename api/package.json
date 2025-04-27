@@ -8,7 +8,8 @@
     "start": "nodemon ./bin/www",
     "start:test": "MONGODB_URL='mongodb://0.0.0.0/aitistic_tales_test' npm start",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "init-db": "node ./scripts/initSysInfo.js"
   },
   "engines": {
     "node": ">=18.1.0"

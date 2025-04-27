@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const sysInfoSchema = new Schema({
 
   AiEngineVer: {
-    type: Number
+    type: String
   },
   topTen: [{
     storybookId: { 
