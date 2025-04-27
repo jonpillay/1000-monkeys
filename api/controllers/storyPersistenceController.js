@@ -1,4 +1,5 @@
 const StoryBook = require('../database/models/storyBookModel')
+const sysInfo = require('../database/models/sysInfoModel')
 const {roundStoryBookVoteAvg} = require('../helpers/mathFuncts')
 
 const StoryPersistenceController = {

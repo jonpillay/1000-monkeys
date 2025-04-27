@@ -43,6 +43,7 @@ const requireCleanInput = async (req, res, next) => {
     })
   }
 
+  // needs to be changed to fetch from the cache
   const badWordList = await fetchBadWordsList()
 
   const cleanCheck = sanitiseInput(checkContent, badWordList)
