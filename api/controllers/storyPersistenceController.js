@@ -1,6 +1,6 @@
 const StoryBook = require('../database/models/storyBookModel')
 const SysInfo = require('../database/models/sysInfoModel')
-const {roundStoryBookVoteAvg} = require('../helpers/mathFuncts')
+const {roundStoryBookVoteAvg, checkTopThirteenAdmission} = require('../helpers/mathFuncts')
 
 const StoryPersistenceController = {
   SaveStory: async (req, res) => {
@@ -60,11 +60,18 @@ const StoryPersistenceController = {
 
       let sysInfo = await SysInfo.findOne({})
 
-      if (!sysInfo) {
-        sysInfo = await SysInfo.create({ topTen: [ updatedStorybook.ratingsAverage ] })
-      }
-
       roundStoryBookVoteAvg(updatedStorybook)
+
+      // check if there are more than 3 user ratings, if so, check if the candidate storybook should be inserted into the top ten
+      if (updatedStorybook.ratingsAverage[1] >= 3) {
+        // sysInfo top thirteen array and rating need to be passed into a function, allowing for cleaner control of flow
+        const topAdmissionCheck = checkTopThirteenAdmission(sysInfo.topThirteen, updatedStorybook)
+
+        if (topAdmissionCheck != false) {
+          // refresh the database sys info top thirteen with the updated list
+        }
+
+      }
 
       res.status(200).json({ updatedRatingsAverage: updatedStorybook.ratingsAverage})
     } catch (error) {

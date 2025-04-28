@@ -7,7 +7,7 @@ const sysInfoSchema = new Schema({
   AiEngineVer: {
     type: String
   },
-  topTen: [{
+  topThirteen: [{
     storybookId: { 
       type: mongoose.Schema.Types.ObjectId,
       ref: 'storyBook'
