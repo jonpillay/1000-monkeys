@@ -73,7 +73,7 @@ userSchema.statics.signup = async function (email, password, username) {
     throw Error("Email not found.")
   }
 
-  const usernameCheck = await this.findOne({username: new RegExp(`^${usernameInput}$`, 'i') })
+  const usernameCheck = await this.findOne({username: new RegExp(`^${username}$`, 'i') })
 
   if (usernameCheck) {
     throw Error("Username in use")

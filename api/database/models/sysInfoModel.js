@@ -29,4 +29,13 @@ sysInfoSchema.pre('save', async function(next) {
   next()
 })
 
+sysInfoSchema.statics.setTopThirteen = async function (newTopThirteen) {
+
+  await this.updateOne(
+    {},
+    { $set: { topThirteen: newTopThirteen }},
+  )
+
+}
+
 module.exports = mongoose.model('sysInfo', sysInfoSchema)

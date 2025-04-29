@@ -58,7 +58,9 @@ const StoryPersistenceController = {
 
       const updatedStorybook = await StoryBook.submitRating(storyBook._id, user_id, rating)
 
-      let sysInfo = await SysInfo.findOne({})
+      const sysInfo = await SysInfo.findOne({})
+
+      console.log(sysInfo)
 
       roundStoryBookVoteAvg(updatedStorybook)
 
@@ -67,13 +69,17 @@ const StoryPersistenceController = {
         // sysInfo top thirteen array and rating need to be passed into a function, allowing for cleaner control of flow
         const topAdmissionCheck = checkTopThirteenAdmission(sysInfo.topThirteen, updatedStorybook)
 
+        console.log(topAdmissionCheck)
+
         if (topAdmissionCheck != false) {
-          // refresh the database sys info top thirteen with the updated list
+          
+          await SysInfo.setTopThirteen(topAdmissionCheck)
+
         }
 
       }
 
-      res.status(200).json({ updatedRatingsAverage: updatedStorybook.ratingsAverage})
+      res.status(200).json({ updatedRatingsAverage: updatedStorybook.ratingsAverage })
     } catch (error) {
       console.log(error)
       res.status(400).json({error: error.message })
