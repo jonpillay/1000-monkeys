@@ -30,6 +30,8 @@ const sortTopThirteen = (topTen) => {
     if (rating1.rating.votes > rating2.rating.votes) return -1;
     if (rating1.rating.votes < rating2.rating.votes) return 1;
 
+    // this needs an else in the case that both values checked are equal
+
   })
 
   // make sure there are only thirteen elements at most. Using a three element buffer in case the candidate drops out/multiple operations at once

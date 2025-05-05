@@ -10,12 +10,12 @@ const fetchSysInfo = async () => {
     if (cachedAiVer) {
 
       const unifiedCategories = cache.get("unifiedCategories")
+      const releaseLog = cache.get("releaseLog")
 
       const AiEngineVer = cachedAiVer 
       const characters = Object.keys(unifiedCategories.character).sort()
       const genres = Object.keys(unifiedCategories.genre).sort()
       const artStyles = Object.keys(unifiedCategories.style).sort()
-      const releaseLog = unifiedCategories.releaseLog
 
       return {AiEngineVer, characters, genres, artStyles, releaseLog}
     }
@@ -44,6 +44,7 @@ const fetchSysInfo = async () => {
       cache.set("AiEngineVer", AiEngineVer)
       cache.set("badWordList", badWordsList)
       cache.set("unifiedCategories", unifiedCategories)
+      cache.set("releaseLog", releaseLog)
 
       const characters = Object.keys(unifiedCategories.character).sort()
       const genres = Object.keys(unifiedCategories.genre).sort()

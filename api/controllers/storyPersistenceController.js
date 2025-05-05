@@ -3,6 +3,7 @@ const SysInfo = require('../database/models/sysInfoModel')
 const {roundStoryBookVoteAvg, checkTopThirteenAdmission} = require('../helpers/mathFuncts')
 
 const StoryPersistenceController = {
+  
   SaveStory: async (req, res) => {
 
     const {chapterImages, chapterTexts, genre, character, artstyle, GPTChatHistory, SDPromptHistory, AIEngineVer, author} = req.body
@@ -68,9 +69,7 @@ const StoryPersistenceController = {
       if (updatedStorybook.ratingsAverage[1] >= 3) {
         // sysInfo top thirteen array and rating need to be passed into a function, allowing for cleaner control of flow
         const topAdmissionCheck = checkTopThirteenAdmission(sysInfo.topThirteen, updatedStorybook)
-
-        console.log(topAdmissionCheck)
-
+ 
         if (topAdmissionCheck != false) {
           
           await SysInfo.setTopThirteen(topAdmissionCheck)
