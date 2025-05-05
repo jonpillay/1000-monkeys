@@ -184,9 +184,9 @@ const InitialiseStoryForm = (props) => {
 
   return (
     <>
-    <div className="initialise-story-form-flex">
-      <div className="formcontainer-container">
-        <h1 className="formcontainer-title">
+    <div className="initialise-story-form-grid">
+      <div className="initialise-story-form-container">
+        <h1 className="initialise-story-form-title">
           Let's start at the beginning
         </h1>
         <div>
@@ -206,35 +206,35 @@ const InitialiseStoryForm = (props) => {
             onDropdownChange={(e) => setStyleChoice(e.value)}
           />
         </div>
-          <div className="initialise-user-prompt-input-container">
-            <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={126} placeholder="The first story beat..."/>
-          </div>
-          <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
-            Start Your Adventure!
-          </button>
-          <div className="initialise-story-prompt-error-container">
-            <div className="initialise-story-prompt-error">
-              { error && (
-                <>
-                {error}
-                </>
-              )}
-            </div>
-            <div className="initialise-story-prompt-error">
-              { userWarningMessage && (
-                <>
-                {userWarningMessage}
-                </>
-              )}
-            </div>
-            <div className="initialise-story-prompt-error">
-              { guessResponse && (
-                <>
-                {guessResponse}
-                </>
-              )}
-            </div>
-          </div>
+        <div className="initialise-user-prompt-input-container">
+          <input ref={promptRef} className="initialise-user-prompt-input-box" maxLength={126} placeholder="The first story beat..."/>
+        </div>
+        <button onClick={initialiseStoryOnClick} type="submit" className="submit-button">
+          Start Your Adventure!
+        </button>
+      </div>
+      <div className="initialise-story-prompt-error-container">
+        <div className="initialise-story-prompt-error">
+          { error && (
+            <>
+            {error}
+            </>
+          )}
+        </div>
+        <div className="initialise-story-prompt-error">
+          { userWarningMessage && (
+            <>
+            {userWarningMessage}
+            </>
+          )}
+        </div>
+        <div className="initialise-story-prompt-error">
+          { guessResponse && (
+            <>
+            {guessResponse}
+            </>
+          )}
+        </div>
       </div>
       <div className="splash-egg-container">
         <Tooltip id="splash-egg-tooltip" />
