@@ -61,8 +61,6 @@ const StoryPersistenceController = {
 
       const sysInfo = await SysInfo.findOne({})
 
-      console.log(sysInfo)
-
       roundStoryBookVoteAvg(updatedStorybook)
 
       // check if there are more than 3 user ratings, if so, check if the candidate storybook should be inserted into the top ten

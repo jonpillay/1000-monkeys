@@ -6,7 +6,6 @@ const genPromptTags = async (userSelections) => {
   let promptTagsJSON = await cache.get("unifiedCategories")
 
   if (!promptTagsJSON) {
-    console.log("This fired")
     await fetchSysInfo()
     promptTagsJSON = await cache.get("unifiedCategories")
   }
@@ -31,8 +30,6 @@ const genPromptTags = async (userSelections) => {
   }
 
   const tagsObject = {positiveTagString: positivePrompts.flat().join(', '), negativeTagString: negativePrompts.flat().join(', ')}
-
-  console.log(tagsObject)
 
   return tagsObject
 
