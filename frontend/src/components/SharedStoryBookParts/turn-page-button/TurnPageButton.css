@@ -1,4 +1,11 @@
+.turn-page-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .turn-page-button {
+  position: absolute;
   /* border: none;
   width: fit-content; */
   opacity: 70%;

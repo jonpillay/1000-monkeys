@@ -1,8 +1,8 @@
-.page-container {
+.browse-page-container {
   display: flex;
   /* display: inline-block; */
   justify-content: center;
-  width: fit-content;
+  width: 100%;
   position: relative;
   min-height: fit-content;
   margin-bottom: 4rem;
@@ -10,9 +10,10 @@
 
 .storybook-browse-border {
   display: inline-block;
+  /* position: absolute; */
   padding: 1rem;
   min-height: fit-content;
-  min-width: fit-content;
+  min-width: 100%;
   border: solid;
   border-color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0.705);
