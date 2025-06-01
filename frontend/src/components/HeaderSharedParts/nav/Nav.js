@@ -59,6 +59,7 @@ const NavBar = () => {
     await localStorage.removeItem('userChoices');
     await localStorage.removeItem('GPTPromptHistory');
     await localStorage.removeItem('localGPTPromptHistory');
+    await localStorage.removeItem('browsePageNumbers');
     await localStorage.removeItem('persist:storyBook');
 
     await reduxDispatch(resetStorySysInfo())
