@@ -13,7 +13,7 @@ const starter_prompts = [
   },
   {
     role: "system",
-    content: "It should be structured as a prompt for a text to image AI tool."
+    content: "It should be structured as a prompt for an Ai text to image API."
   },
   {
     role: "system",
