@@ -19,11 +19,11 @@
 }
 
 .video-container {
-  display: inline-block;       /* Shrink to fit content (i.e., the video) */
-  border: 4px solid #1c4bc2a3;   /* Customize the border */
-  border-radius: 8px;          /* Optional: Rounded corners */                /* Optional: Space between video and border */
+  display: inline-block;
+  border: 4px solid #1c4bc2a3;
+  border-radius: 8px;
   box-sizing: border-box;
-  max-width: 100%;             /* Make sure it’s responsive */
+  max-width: 100%;
 }
 
 .video-container iframe,
