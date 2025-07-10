@@ -1,0 +1,34 @@
+.intro-video-page-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  height: auto;
+  padding-bottom: 4vh;
+  /* align-items: center; */
+  /* background-color: red; */
+}
+
+.video-title {
+  font-family: 'special-elite';
+  font-size: 5vh;
+  margin-top: 2vh;
+}
+
+.video-description {
+  font-family: 'Raleway-Regular';
+  margin: 2vh;
+}
+
+.video-container {
+  display: inline-block;       /* Shrink to fit content (i.e., the video) */
+  border: 4px solid #1c4bc2a3;   /* Customize the border */
+  border-radius: 8px;          /* Optional: Rounded corners */                /* Optional: Space between video and border */
+  box-sizing: border-box;
+  max-width: 100%;             /* Make sure it’s responsive */
+}
+
+.video-container iframe,
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}

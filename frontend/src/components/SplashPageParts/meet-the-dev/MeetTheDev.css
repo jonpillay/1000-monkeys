@@ -1,0 +1,7 @@
+.video-tab-container {
+  height: auto;
+  margin: 0.7vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
