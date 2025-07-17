@@ -31,7 +31,7 @@
 }
 
 .spinning-monkey {
-  height: 5rem;
+  height: 4rem;
   animation: spin 6s infinite;
 }
 
@@ -47,4 +47,8 @@
   100% {
     transform: rotate(360deg)
   }
+}
+
+.mobile-splash-typing {
+ height: 6rem; 
 }
