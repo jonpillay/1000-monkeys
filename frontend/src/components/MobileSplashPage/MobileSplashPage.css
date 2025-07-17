@@ -1,0 +1,14 @@
+.mobile-splash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-splash-title {
+  font-family: 'special-elite';
+  font-size: 4vh;
+}
+
+.mobile-splash-text {
+  font-family: 'Raleway-Regular';
+}
