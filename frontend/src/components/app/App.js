@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAiEngineVer, selectSysInfoExpiry } from './systemInfoSlice';
 
+import { useIsMobile } from '../../hooks/useIsMobile';
+
 import './App.css';
 import {
   BrowserRouter,
@@ -15,7 +17,6 @@ import Header from '../HeaderSharedParts/header/Header';
 import SplashPage from '../Pages/splash-page/SplashPage'
 import AdminPage from '../Pages/admin-page/AdminPage';
 import ActivationPage from '../Pages/activation-page/ActivationPage';
-import ActivationSignupPanel from '../ActivationPageParts/activation-signup-panel/ActivationSignupPanel';
 import BrowsePage from '../Pages/browse-page/BrowsePage';
 import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
 import CreateStoriesPage from '../Pages/create-stories-page/CreateStoriesPage';
@@ -30,7 +31,7 @@ import { useLoadSystemInfo } from '../../hooks/useLoadSystemInfo'
 import WarningSplash from '../SplashPageParts/warning-splash/WarningSplash';
 import InitialiseSystemPage from '../Pages/initialise-system-page/InitialiseSystemPage';
 
-const App = () => {
+const App = () => { 
 
   const AiEngineVer = useSelector(selectAiEngineVer)
   const sysInfoExpiry = useSelector(selectSysInfoExpiry)
@@ -50,6 +51,13 @@ const App = () => {
       loadSystemInfo()
     }
   }, [])
+
+  const mobileLoad = useIsMobile()
+
+  if (mobileLoad) {
+    console.log("is mobile load")
+    return <div>"This site must run on desktop"</div>
+  }
 
   if (sysInfoLoading) {
     return <div><InitialiseSystemPage loadSystemInfo={loadSystemInfo} fetchingSysInfo={fetchingSysInfo} fetchingSysInfoSuccess={fetchingSysInfoSuccess} sysInfoLoading={sysInfoLoading} setSysInfoLoading={setSysInfoLoading} sysInfoObj={sysInfoObj} setSysInfoObj={setSysInfoObj} /></div>
