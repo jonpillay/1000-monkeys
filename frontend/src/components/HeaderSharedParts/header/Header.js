@@ -1,5 +1,5 @@
 import './Header.css';
-import HomeIcon from './typing-logo.png';
+import HomeIcon from '../../../img/typing-logo.png';
 import Nav from '../nav/Nav'
 import { useNavigate } from 'react-router';
 import { useLoadingContext } from '../../../hooks/useLoadingContext';

@@ -1,7 +1,6 @@
 import './MobileSplashPage.css';
 
-import TypingMonkey from "../../img/favpng_infinite-monkey-theorem3.png"
-
+import TypingMonkey from '../../img/typing-logo.png';
 import MonkeySpinner from '../LoadingPageParts/monkey-spinner/MonkeySpinner';
 
 const MobileSplashPage = (props) => {
