@@ -29,3 +29,22 @@
   text-align: center;
   margin-bottom: 2rem; 
 }
+
+.spinning-monkey {
+  height: 5rem;
+  animation: spin 6s infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(360deg)
+  }
+
+  50% {
+    transform: rotate(-360deg);
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
