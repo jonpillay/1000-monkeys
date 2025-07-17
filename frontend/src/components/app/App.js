@@ -22,6 +22,7 @@ import CreateSplashPage from '../Pages/create-splash-page/CreateSplashPage';
 import CreateStoriesPage from '../Pages/create-stories-page/CreateStoriesPage';
 import LoadingPage from '../Pages/loading_page/LoadingPage';
 import TermsOfUsePage from '../Pages/terms-of-use-page/TermsOfUsePage';
+import MobileSplashPage from '../MobileSplashPage/MobileSplashPage';
 
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useStoryContext } from '../../hooks/useStoryContext';
@@ -56,7 +57,7 @@ const App = () => {
 
   if (mobileLoad) {
     console.log("is mobile load")
-    return <div>"This site must run on desktop"</div>
+    return <div><MobileSplashPage/></div>
   }
 
   if (sysInfoLoading) {
