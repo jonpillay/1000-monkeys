@@ -13,7 +13,11 @@ const MobileSplashPage = (props) => {
       </div>
       <div className='mobile-splash-page-cta'>
         Or Head Over To My <a href='https://github.com/jonpillay' target="_blank" rel="noopener noreferrer">GitHub</a> Or <a href='https://www.linkedin.com/in/jonpillay/' target="_blank" rel="noopener noreferrer">Linkedin</a>
-        To Find Out More
+        To Find Out More About Me (The Dev)
+      </div>
+      <div className='mobile-splash-page-video-cta'>
+        Check Out A video Introduction to 1000M <a href='https://gumlet.tv/playlist/684584bf0f8d7a0518536218/' target="_blank" rel="noopener noreferrer">here</a>
+        To Find Out More About Me (The Dev)
       </div>
     </div>
   )
