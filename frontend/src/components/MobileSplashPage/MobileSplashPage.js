@@ -12,7 +12,7 @@ const MobileSplashPage = (props) => {
         Head Over To Your Desktop or Laptop To Check It out.
       </div>
       <div className='mobile-splash-page-cta'>
-        Or Head Over To My <a href='https://github.com/jonpillay'>GitHub</a> Or <a href='https://www.linkedin.com/in/jonpillay/'>Linkedin</a>
+        Or Head Over To My <a href='https://github.com/jonpillay' target="_blank" rel="noopener noreferrer">GitHub</a> Or <a href='https://www.linkedin.com/in/jonpillay/' target="_blank" rel="noopener noreferrer">Linkedin</a>
         To Find Out More
       </div>
     </div>
