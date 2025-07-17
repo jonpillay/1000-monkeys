@@ -1,9 +1,16 @@
 import './MobileSplashPage.css';
 
+import SpinningMonkey from "../../../img/favpng_infinite-monkey-theorem3.png"
+
+import MonkeySpinner from '../LoadingPageParts/monkey-spinner/MonkeySpinner';
+
 const MobileSplashPage = (props) => {
 
   return (
     <div className="mobile-splash-container">
+      <div className='spinner-container'>
+        <MonkeySpinner/>
+      </div>
       <div className="mobile-splash-title">
         Hello Mobile User!
       </div>
