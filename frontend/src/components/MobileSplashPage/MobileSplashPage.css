@@ -3,13 +3,23 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin: 1rem;
 }
 
 .mobile-splash-title {
   font-family: 'special-elite';
   font-size: 4vh;
+  margin-bottom: 2rem;
 }
 
 .mobile-splash-text-container {
   font-family: 'Raleway-Regular';
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mobile-splash-page-cta {
+  font-family: 'Raleway-Regular';
+  text-align: center;
+  margin-bottom: 2rem;
 }
