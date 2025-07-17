@@ -8,8 +8,8 @@ const MobileSplashPage = (props) => {
         Hello Mobile User!
       </div>
       <div className='mobile-splash-text-container'>
-        This Site Has Been Optimised To Run In A Desktop Environment.
-        Head Over To Your Desktop or Laptop To Check It out.
+        The 1000 Monkeys App Has Been Optimised To Run In A Desktop Environment
+        Head Over To Your Desktop or Laptop To Check It out
       </div>
       <div className='mobile-splash-page-cta'>
         Or Head Over To My <a href='https://github.com/jonpillay' target="_blank" rel="noopener noreferrer">GitHub</a> Or <a href='https://www.linkedin.com/in/jonpillay/' target="_blank" rel="noopener noreferrer">Linkedin</a>
