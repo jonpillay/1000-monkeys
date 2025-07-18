@@ -14,15 +14,15 @@ const MobileSplashPage = (props) => {
         Hello Mobile User!
       </div>
       <div className='mobile-splash-text-container'>
-        <div>The 1000 Monkeys App Has Been Optimised To Run In Desktop Browsers</div>
-        <div>Grab Your Laptop or Keyboard to Check It Out</div>
+        <div>The 1000 Monkeys App Has Been Optimised To Run In Desktop Browsers.</div>
+        <div>Grab Your Laptop or Keyboard to Check It Out.</div>
       </div>
       <div className='mobile-splash-page-cta'>
         <div>Or Head Over To My <a href='https://github.com/jonpillay' target="_blank" rel="noopener noreferrer">GitHub</a> Or <a href='https://www.linkedin.com/in/jonpillay/' target="_blank" rel="noopener noreferrer">Linkedin</a></div>
         <div>To Find Out More About Me (The Dev)</div>
       </div>
       <div className='mobile-splash-page-video-cta'>
-        <div>And Check Out The Video Introduction to 1000M</div>
+        <div>And You Can Check Out The Video Introduction to 1000M</div>
         <div> <a href='https://gumlet.tv/playlist/684584bf0f8d7a0518536218/' target="_blank" rel="noopener noreferrer">HERE</a></div>
       </div>
       <div className='spinner-container'>
