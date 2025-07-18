@@ -6,6 +6,10 @@
   margin: 1rem;
 }
 
+.typing-monkey-container {
+  height: 0.5vh;
+}
+
 .mobile-splash-title {
   font-family: 'special-elite';
   font-size: 4vh;

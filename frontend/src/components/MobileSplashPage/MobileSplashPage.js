@@ -22,7 +22,7 @@ const MobileSplashPage = (props) => {
         <div>To Find Out More About Me (The Dev)</div>
       </div>
       <div className='mobile-splash-page-video-cta'>
-        <div>Check Out A video Introduction to 1000M</div>
+        <div>And Check Out The Video Introduction to 1000M</div>
         <div> <a href='https://gumlet.tv/playlist/684584bf0f8d7a0518536218/' target="_blank" rel="noopener noreferrer">HERE</a></div>
       </div>
       <div className='spinner-container'>
