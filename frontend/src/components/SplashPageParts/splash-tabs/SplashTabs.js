@@ -16,7 +16,7 @@ const SplashTabs = () => {
         <TabList>
           <Tab>Welcome!</Tab>
           <Tab>Intro Videos</Tab>
-          <Tab>Teck Stack</Tab>
+          <Tab>Tech Stack</Tab>
           <Tab>Release Log</Tab>
           <Tab>Meet The Dev</Tab>
           <Tab>Terms Of Use</Tab>
