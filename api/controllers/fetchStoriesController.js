@@ -9,7 +9,7 @@ const FetchStoriesController = {
 
     try {
 
-      const bookList = await StoryBook.find({...requestGenre, published: true, character: 'Winnie The Pooh'}).exec()
+      const bookList = await StoryBook.find({...requestGenre, published: true}).exec()
 
       roundVoteAverageList(bookList)
 
@@ -26,7 +26,7 @@ const FetchStoriesController = {
 
     try {
 
-      const bookList = await StoryBook.find({user_id: requestUser, character: 'Winnie The Pooh'}).exec()
+      const bookList = await StoryBook.find({user_id: requestUser}).exec()
 
       res.status(200).json({ filteredList: bookList })
     } catch (error) {
